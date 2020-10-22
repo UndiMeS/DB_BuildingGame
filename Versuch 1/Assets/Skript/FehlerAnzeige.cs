@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class FehlerAnzeige : MonoBehaviour
 {
-    public Text fehlerObject;
+    public GameObject fehlerObject;
     public static string fehlertext;
 
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class FehlerAnzeige : MonoBehaviour
         {
             Invoke("Zuruek", 2);
         }
-        fehlerObject.text = fehlertext;     
+        Utilitys.TextInTMP(fehlerObject, fehlertext);
     }
 
     private void Zuruek()

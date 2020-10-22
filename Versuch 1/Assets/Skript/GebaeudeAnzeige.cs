@@ -8,12 +8,12 @@ using UnityEngine.UI;
 public class GebaeudeAnzeige : MonoBehaviour
 {
     public GameObject ueberschrift;
-    public GameObject mText;
+   
 
     // Start is called before the first frame update
     void Start()
     {
-        ueberschrift.text = "";
+        Utilitys.TextInTMP(ueberschrift, "");
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class GebaeudeAnzeige : MonoBehaviour
                 cursorPos.z = 2f;
                 int wert = Testing.grid.GetWert(cursorPos);
                 
-                switch ((int)wert / 10)
+                switch (wert / 10)
                 {
                     case 0:
                         Debug.Log("nichts!");

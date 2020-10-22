@@ -47,6 +47,6 @@ public class Utilitys
 
     public static void TextInTMP(GameObject textfeld, string text)
     {
-        textfeld.GetComponent<TextMeshPro>().text = text;
+        textfeld.GetComponent<TextMeshProUGUI>().SetText(text);
     }
 }

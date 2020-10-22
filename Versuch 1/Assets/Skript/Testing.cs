@@ -5,13 +5,13 @@ using UnityEngine;
 public class Testing : MonoBehaviour
 {
     public GameObject boden;
+    public GameObject fehlermeldung;
 
     //Grundlegende Werte, die verändert werden können
     public static int weite=20;
     public static int hoehe=13;
     public static int zellengroesse=10;
     public static int geld = 100000;
-
     public static Grid grid;
 
     // Start is called before the first frame update
@@ -28,18 +28,28 @@ public class Testing : MonoBehaviour
         boden.transform.Rotate(90f, 180f, 0);
         GameObject.FindGameObjectWithTag("MainCamera").transform.Translate(KameraX, KameraY, KameraZ);
         FehlerAnzeige.fehlertext = "";
+        
+
 
      }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (geld < 0)
+        {
+            ZuWenigGeld();
+        }
     }
 
-   
+    public void ZuWenigGeld()
+    {
+        Utilitys.TextInTMP(fehlermeldung, "Du hast zu wenig Geld!");
+    }
 
-    
+
+
+
 
 
 }

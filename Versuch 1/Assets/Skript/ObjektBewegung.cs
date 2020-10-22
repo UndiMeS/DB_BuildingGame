@@ -10,6 +10,7 @@ public class ObjektBewegung : MonoBehaviour
 {
     public static bool selected;
     public Text fehlermeldung;
+    public int preis;
   
 
 
@@ -17,7 +18,6 @@ public class ObjektBewegung : MonoBehaviour
     void Start()
     {
         selected = true;
-        
     }
     
 
@@ -32,6 +32,7 @@ public class ObjektBewegung : MonoBehaviour
             if (Input.mousePosition.y < 280)
             {
             FehlerAnzeige.fehlertext= "Objekt konnte nicht gesetzt werden!";
+            
             Toolbar.objektGebaut = 0;
             Destroy(gameObject);
             }
@@ -44,11 +45,14 @@ public class ObjektBewegung : MonoBehaviour
                     transform.position += new Vector3(0, 0, 0.42f);
                     Testing.grid.SetWert(transform.position, Toolbar.objektGebaut);
                     Toolbar.objektGebaut = 0;
+                    Testing.geld -= preis;
+              
                     Destroy(GetComponent<ObjektBewegung>());
                 }
                 else
                 {
                     Toolbar.objektGebaut = 0;
+                    FehlerAnzeige.fehlertext = "Objekt konnte nicht gesetzt werden!";
                     Destroy(gameObject);
                 }
 

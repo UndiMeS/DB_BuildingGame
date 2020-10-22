@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GeldAnzeige : MonoBehaviour
 {
    
-    public Text geldText;
+    public GameObject geldText;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +17,6 @@ public class GeldAnzeige : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        geldText.text = "Geld: " + Testing.geld+"€";
+        Utilitys.TextInTMP(geldText, "Geld: " + Testing.geld + "€");
     }
 }
