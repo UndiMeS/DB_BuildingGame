@@ -27,6 +27,7 @@ public class Testing : MonoBehaviour
         boden.transform.localScale += new Vector3(weite +20 , 1, hoehe+20 );
         boden.transform.Rotate(90f, 180f, 0);
         GameObject.FindGameObjectWithTag("MainCamera").transform.Translate(KameraX, KameraY, KameraZ);
+        FehlerAnzeige.fehlertext = "";
 
      }
 

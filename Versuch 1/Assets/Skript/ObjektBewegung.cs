@@ -31,11 +31,8 @@ public class ObjektBewegung : MonoBehaviour
             //Schaue ob Maus im Panel
             if (Input.mousePosition.y < 280)
             {
-            Text fehler= Instantiate(fehlermeldung, transform.position, transform.rotation);
-            fehler.text = "Objekt konnte nicht gesetzt werden!";
-            //yield return new WaitForSeconds(4);
-            UnityEngine.Debug.Log("Objekt konnte nicht gesetzt werden!");
-            //fehlermeldung.GetComponent<Text>().text = "";
+            FehlerAnzeige.fehlertext= "Objekt konnte nicht gesetzt werden!";
+            Toolbar.objektGebaut = 0;
             Destroy(gameObject);
             }
             
@@ -46,11 +43,12 @@ public class ObjektBewegung : MonoBehaviour
                     selected = false;
                     transform.position += new Vector3(0, 0, 0.42f);
                     Testing.grid.SetWert(transform.position, Toolbar.objektGebaut);
+                    Toolbar.objektGebaut = 0;
                     Destroy(GetComponent<ObjektBewegung>());
-
                 }
                 else
                 {
+                    Toolbar.objektGebaut = 0;
                     Destroy(gameObject);
                 }
 

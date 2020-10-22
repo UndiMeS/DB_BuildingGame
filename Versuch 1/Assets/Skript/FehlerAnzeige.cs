@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class FehlerAnzeige : MonoBehaviour
+{
+    public Text fehlerObject;
+    public static string fehlertext;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!fehlertext.Equals(""))
+        {
+            Invoke("Zuruek", 2);
+        }
+        fehlerObject.text = fehlertext;     
+    }
+
+    private void Zuruek()
+    {
+        fehlertext = "";
+    }
+
+ }

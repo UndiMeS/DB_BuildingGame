@@ -81,5 +81,12 @@ public class Grid
         }
         return false;
     }
+
+    public int GetWert(Vector3 weltPosition)
+    {
+        int x, y;
+        GetXY(weltPosition, out x, out y);
+        return gridArray[x, y];
+    }
         
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Utilitys 
@@ -42,5 +43,10 @@ public class Utilitys
            
         }
         return new Vector3(-1,-1,-1) ;
+    }
+
+    public static void TextInTMP(GameObject textfeld, string text)
+    {
+        textfeld.GetComponent<TextMeshPro>().text = text;
     }
 }
