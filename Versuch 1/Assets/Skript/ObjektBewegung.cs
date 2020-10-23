@@ -30,7 +30,8 @@ public class ObjektBewegung : MonoBehaviour
         {
             
             //Schaue, ob schon Gebäude ander Stelle und abfangen ob in Interface
-            if (Testing.grid.CheckEmpty(transform.position,Toolbar.objektGebaut, transform.rotation.eulerAngles.z) && Input.mousePosition.y>280*Screen.height/900 && Input.mousePosition.x<1000*Screen.width/1600)
+            if (Testing.grid.CheckEmpty(transform.position,Toolbar.objektGebaut, (int) transform.rotation.eulerAngles.z) 
+                && Input.mousePosition.y>280*Screen.height/900 && Input.mousePosition.x<1000*Screen.width/1600)
             {
 
                 selected = false;
@@ -60,7 +61,11 @@ public class ObjektBewegung : MonoBehaviour
         //Drehen
         if (Input.GetMouseButtonDown(1))
         {
-            transform.rotation *= Quaternion.Euler(0, 0, 90f);
+            if (Toolbar.objektGebaut < 20 || Toolbar.objektGebaut % 10 % 3 != 2)
+            {
+                transform.rotation *= Quaternion.Euler(0, 0, 90f);
+            }
+            
         }
         //Position der Maus= Postion vom Haus
         if (selected == true)
@@ -78,7 +83,9 @@ public class ObjektBewegung : MonoBehaviour
 
     private void GridWertSetzen2x2()
     {
-        throw new NotImplementedException();
+        Testing.grid.SetWert(transform.position + new Vector3(10, 0, 0), Toolbar.objektGebaut);
+        Testing.grid.SetWert(transform.position + new Vector3(0,-10, 0), Toolbar.objektGebaut);
+        Testing.grid.SetWert(transform.position + new Vector3(10,-10, 0), Toolbar.objektGebaut);
     }
 
     private void GridWertSetzen1x2()

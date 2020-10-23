@@ -92,7 +92,14 @@ public class Grid
             else if (drehung == 180) { ausgabe = ausgabe && CheckEmpty(weltposition + new Vector3(-10, 0, 0)); }
             else { ausgabe = ausgabe && CheckEmpty(weltposition + new Vector3(0, -10, 0)); }
         }
-        
+        if (objektnummer > 20 && objektnummer % 10 % 3 == 2)
+        {
+            ausgabe = ausgabe & CheckEmpty(weltposition + new Vector3(10, 0, 0));
+            ausgabe = ausgabe & CheckEmpty(weltposition + new Vector3(0, -10, 0));
+            ausgabe = ausgabe & CheckEmpty(weltposition + new Vector3(10, -10, 0));
+        }
+
+        return ausgabe;
     }
 
     public int GetWert(Vector3 weltPosition)

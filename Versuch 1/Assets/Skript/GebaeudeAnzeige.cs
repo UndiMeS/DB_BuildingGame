@@ -30,12 +30,16 @@ public class GebaeudeAnzeige : MonoBehaviour
                 switch (wert / 10)
                 {
                     case 0:
-                        Debug.Log("nichts!");
                         Nichts();
                         break;
                     case 1:
                         Haus(wert);
-                        Debug.Log("Haus");
+                        break;
+                    case 2:
+                        Weide(wert);
+                        break;
+                    case 3:
+                        Feld(wert);
                         break;
                 }
             }
@@ -44,11 +48,11 @@ public class GebaeudeAnzeige : MonoBehaviour
 
     private void Haus(int wert)
     {
-        if (wert == 11)
+        if (wert == 10)
         {
             Utilitys.TextInTMP (ueberschrift, "kleines Haus");
         }
-        else if (wert == 12)
+        else if (wert == 11)
         {
             Utilitys.TextInTMP(ueberschrift, "mittleres Haus");
         }
@@ -57,6 +61,38 @@ public class GebaeudeAnzeige : MonoBehaviour
             Utilitys.TextInTMP(ueberschrift, "großes Haus");
         }
         
+    }
+    private void Weide(int wert)
+    {
+        if (wert == 20)
+        {
+            Utilitys.TextInTMP(ueberschrift, "kleine Weide");
+        }
+        else if (wert == 21)
+        {
+            Utilitys.TextInTMP(ueberschrift, "mittlere Weide");
+        }
+        else
+        {
+            Utilitys.TextInTMP(ueberschrift, "große Weide");
+        }
+
+    }
+    private void Feld(int wert)
+    {
+        if (wert == 30)
+        {
+            Utilitys.TextInTMP(ueberschrift, "kleines Feld");
+        }
+        else if (wert == 31)
+        {
+            Utilitys.TextInTMP(ueberschrift, "mittleres Feld");
+        }
+        else
+        {
+            Utilitys.TextInTMP(ueberschrift, "großes Feld");
+        }
+
     }
 
     private void Nichts()

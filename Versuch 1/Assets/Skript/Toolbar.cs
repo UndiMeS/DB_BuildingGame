@@ -11,6 +11,10 @@ public class Toolbar : MonoBehaviour
     public GameObject haus3;
     public GameObject weide1;
     public GameObject weide2;
+    public GameObject weide3;
+    public GameObject feld1;
+    public GameObject feld2;
+    public GameObject feld3;
 
     //für Grid
     public static int objektGebaut;
@@ -48,6 +52,30 @@ public class Toolbar : MonoBehaviour
         Instantiate(weide2);
     }
 
+    public void GroßeWeideBauen()
+    {
+        objektGebaut = 22;
+        Instantiate(weide3);
+    }
 
+
+    public void KleinesFeldBauen()
+    {
+
+        objektGebaut = 30;
+        Instantiate(feld1);
+    }
+
+    public void MittleresFeldBauen()
+    {
+        objektGebaut = 31;
+        Instantiate(feld2);
+    }
+
+    public void GroßesFeldBauen()
+    {
+        objektGebaut = 32;
+        Instantiate(feld3);
+    }
 
 }
