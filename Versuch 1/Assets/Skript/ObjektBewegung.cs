@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
 
 public class ObjektBewegung : MonoBehaviour
 {
     public static bool selected;
-    public Text fehlermeldung;
     public int preis;
-  
+
+    private bool bauen;
+
 
 
     // Start is called before the first frame update
@@ -19,45 +21,40 @@ public class ObjektBewegung : MonoBehaviour
     {
         selected = true;
     }
-    
+
 
     // Update is called once per frame
     void Update()
     {
-        
         if (Input.GetMouseButtonDown(0))
         {
-           
-            //Schaue ob Maus im Panel
-            if (Input.mousePosition.y < 280)
+            
+            //Schaue, ob schon Gebäude ander Stelle und abfangen ob in Interface
+            if (Testing.grid.CheckEmpty(transform.position,Toolbar.objektGebaut, transform.rotation.eulerAngles.z) && Input.mousePosition.y>280*Screen.height/900 && Input.mousePosition.x<1000*Screen.width/1600)
             {
-            FehlerAnzeige.fehlertext= "Objekt konnte nicht gesetzt werden!";
-            
-            Toolbar.objektGebaut = 0;
-            Destroy(gameObject);
+
+                selected = false;
+                transform.position += new Vector3(0, 0, 0.8f);
+                Testing.grid.SetWert(transform.position, Toolbar.objektGebaut);
+                //2x1 und 2x2 Bauten abfangen und wert setzen
+                if (Toolbar.objektGebaut>20 && Toolbar.objektGebaut % 10 % 3 == 1)
+                {
+                    GridWertSetzen1x2();
+                }
+                if (Toolbar.objektGebaut > 20 && Toolbar.objektGebaut % 10 % 3 == 2)
+                {
+                    GridWertSetzen2x2();
+                }
+                Toolbar.objektGebaut = 0;
+                Testing.geld -= preis;
+                
+                Destroy(GetComponent<ObjektBewegung>());
             }
-            
-            else{
-                //Schaue, ob schon Gebäude ander Stelle
-                if (Testing.grid.CheckEmpty(transform.position))
-                {
-                    selected = false;
-                    transform.position += new Vector3(0, 0, 0.42f);
-                    Testing.grid.SetWert(transform.position, Toolbar.objektGebaut);
-                    Toolbar.objektGebaut = 0;
-                    Testing.geld -= preis;
-              
-                    Destroy(GetComponent<ObjektBewegung>());
-                }
-                else
-                {
-                    Toolbar.objektGebaut = 0;
-                    FehlerAnzeige.fehlertext = "Objekt konnte nicht gesetzt werden!";
-                    Destroy(gameObject);
-                }
-
-
-
+            else
+            {
+                FehlerAnzeige.fehlertext = "Objekt konnte nicht gesetzt werden!";
+                Toolbar.objektGebaut = 0;
+                Destroy(gameObject);
             }
         }
         //Drehen
@@ -68,36 +65,30 @@ public class ObjektBewegung : MonoBehaviour
         //Position der Maus= Postion vom Haus
         if (selected == true)
         {
-            Vector3 cursorPos = Utilitys.GetMouseWorldPosition();
-            cursorPos.z = 2f;
-            Vector3 position =stayInGrid(cursorPos);
+            Vector3 vector3 = Utilitys.GetMouseWorldPosition();
+            Vector3 cursorPos = vector3;
+            Vector3 position = Testing.grid.stayInGrid(cursorPos);
             transform.position = position;
-
+        }
+        
+            
+            
             
         }
-    }
 
-    //Weltposition in Grid 
-    private Vector3 stayInGrid(Vector3 cursorPos)
+    private void GridWertSetzen2x2()
     {
-        Vector3 position= new Vector3(-1,-1,-1);
-        float x = cursorPos.x;
-        x = ((int)(x / Testing.zellengroesse))*Testing.zellengroesse + Testing.zellengroesse / 2;
-        position.x = x;
-
-        float y = cursorPos.y;
-        y = ((int)(y / Testing.zellengroesse)) * Testing.zellengroesse + Testing.zellengroesse / 2;
-        position.y = y;
-
-        position.z = 0.88f;
-        if (position.x > Testing.weite * Testing.zellengroesse) { position.x = Testing.weite*Testing.zellengroesse - Testing.zellengroesse / 2; }
-        if (position.x < 0) { position.x = Testing.zellengroesse / 2; }
-        if (position.y > Testing.hoehe * Testing.zellengroesse) { position.y = Testing.hoehe*Testing.zellengroesse - Testing.zellengroesse / 2; }
-        if (position.y < 0) { position.y = Testing.zellengroesse / 2; }
-        return position;
+        throw new NotImplementedException();
     }
 
-
-  
-   
+    private void GridWertSetzen1x2()
+    {
+        if (transform.rotation.eulerAngles.z == 0) { Testing.grid.SetWert(transform.position+new Vector3(10,0,0), Toolbar.objektGebaut);        }
+        else if (transform.rotation.eulerAngles.z == 90) { Testing.grid.SetWert(transform.position + new Vector3(0, 10, 0), Toolbar.objektGebaut); }
+        else if (transform.rotation.eulerAngles.z ==180) { Testing.grid.SetWert(transform.position + new Vector3(-10, 0, 0), Toolbar.objektGebaut); }
+        else { Testing.grid.SetWert(transform.position + new Vector3(0, -10, 0), Toolbar.objektGebaut); }
+    }
 }
+
+    
+

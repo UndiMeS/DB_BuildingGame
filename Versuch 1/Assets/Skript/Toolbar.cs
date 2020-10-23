@@ -10,31 +10,44 @@ public class Toolbar : MonoBehaviour
     public GameObject haus2;
     public GameObject haus3;
     public GameObject weide1;
+    public GameObject weide2;
 
     //für Grid
     public static int objektGebaut;
+   
 
     public void KleinesHausBauen()
     {
-        objektGebaut = 11;
+        
+        objektGebaut = 10;
         Instantiate(haus1);
         }
     public void MittleresHausBauen()
     {
-        objektGebaut = 12;
+        
+        objektGebaut = 11;
         Instantiate(haus2);
     }
     public void GroßesHausBauen()
     {
-        objektGebaut = 13;
+       
+        objektGebaut = 12;
         Instantiate(haus3);
     }
- 
+
     public void KleineWeideBauen()
     {
-        objektGebaut = 21;
+
+        objektGebaut = 20;
         Instantiate(weide1);
     }
-    
 
- }
+    public void MittlereWeideBauen()
+    {
+        objektGebaut = 21;
+        Instantiate(weide2);
+    }
+
+
+
+}

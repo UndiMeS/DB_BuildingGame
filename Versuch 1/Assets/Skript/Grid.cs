@@ -82,11 +82,45 @@ public class Grid
         return false;
     }
 
+    public bool CheckEmpty(Vector3 weltposition, int objektnummer, int drehung)
+    {
+        bool ausgabe = CheckEmpty(weltposition);
+        if(objektnummer > 20 &&  objektnummer% 10 % 3 == 1)
+        {
+            if (drehung == 0) { ausgabe = ausgabe && CheckEmpty(weltposition + new Vector3(10, 0, 0)); }
+            else if (drehung == 90) { ausgabe = ausgabe && CheckEmpty(weltposition + new Vector3(0, 10, 0)); }
+            else if (drehung == 180) { ausgabe = ausgabe && CheckEmpty(weltposition + new Vector3(-10, 0, 0)); }
+            else { ausgabe = ausgabe && CheckEmpty(weltposition + new Vector3(0, -10, 0)); }
+        }
+        
+    }
+
     public int GetWert(Vector3 weltPosition)
     {
         int x, y;
         GetXY(weltPosition, out x, out y);
         return gridArray[x, y];
     }
-        
+
+    //Weltposition in Grid 
+    public Vector3 stayInGrid(Vector3 cursorPos)
+    {
+        Vector3 position = new Vector3(-1, -1, -1);
+        float x = cursorPos.x;
+        x = ((int)(x / Testing.zellengroesse)) * Testing.zellengroesse + Testing.zellengroesse / 2;
+        position.x = x;
+
+        float y = cursorPos.y;
+        y = ((int)(y / Testing.zellengroesse)) * Testing.zellengroesse + Testing.zellengroesse / 2;
+        position.y = y;
+
+
+        position.z = -0.8f;
+        if (position.x > Testing.weite * Testing.zellengroesse) { position.x = Testing.weite * Testing.zellengroesse - Testing.zellengroesse / 2; }
+        if (position.x < 0) { position.x = Testing.zellengroesse / 2; }
+        if (position.y > Testing.hoehe * Testing.zellengroesse) { position.y = Testing.hoehe * Testing.zellengroesse - Testing.zellengroesse / 2; }
+        if (position.y < 0) { position.y = Testing.zellengroesse / 2; }
+        return position;
+    }
+
 }

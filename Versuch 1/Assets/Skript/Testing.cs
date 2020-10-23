@@ -14,6 +14,9 @@ public class Testing : MonoBehaviour
     public static int geld = 100000;
     public static Grid grid;
 
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,8 @@ public class Testing : MonoBehaviour
         boden.transform.Rotate(90f, 180f, 0);
         GameObject.FindGameObjectWithTag("MainCamera").transform.Translate(KameraX, KameraY, KameraZ);
         FehlerAnzeige.fehlertext = "";
+
+
         
 
 
@@ -40,12 +45,13 @@ public class Testing : MonoBehaviour
         {
             ZuWenigGeld();
         }
-    }
+            }
 
     public void ZuWenigGeld()
     {
         Utilitys.TextInTMP(fehlermeldung, "Du hast zu wenig Geld!");
     }
+  
 
 
 
