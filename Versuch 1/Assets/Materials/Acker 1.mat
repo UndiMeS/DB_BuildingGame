@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Acker 1
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _GLOSSYREFLECTIONS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -77,6 +77,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_A3591117: 0.1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -103,6 +104,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_78C2E6ED: {r: 0.546, g: 0.3100819, b: 0.17839605, a: 0}
+    - Vector2_2D944B98: {r: 1, g: 3, b: 0, a: 0}
     - _BaseColor: {r: 0.533, g: 0.24531713, b: 0.022627348, a: 0}
     - _Color: {r: 0.4245283, g: 0.26299858, b: 0.09011215, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

@@ -21,7 +21,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (Input.mousePosition.y > 280 && Toolbar.objektGebaut==0)
+            if (Utilitys.ImBildschirm() && Toolbar.objektGebaut==0)
             {
                 Vector3 cursorPos = Utilitys.GetMouseWorldPosition();
                 cursorPos.z = 2f;
@@ -51,6 +51,7 @@ public class GebaeudeAnzeige : MonoBehaviour
         if (wert == 10)
         {
             Utilitys.TextInTMP (ueberschrift, "kleines Haus");
+            Debug.Log("kleines Haus");
         }
         else if (wert == 11)
         {

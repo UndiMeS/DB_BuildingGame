@@ -31,7 +31,7 @@ public class ObjektBewegung : MonoBehaviour
             
             //Schaue, ob schon Gebäude ander Stelle und abfangen ob in Interface
             if (Testing.grid.CheckEmpty(transform.position,Toolbar.objektGebaut, (int) transform.rotation.eulerAngles.z) 
-                && Input.mousePosition.y>280*Screen.height/900 && Input.mousePosition.x<1000*Screen.width/1600)
+                && Utilitys.ImBildschirm())
             {
 
                 selected = false;
