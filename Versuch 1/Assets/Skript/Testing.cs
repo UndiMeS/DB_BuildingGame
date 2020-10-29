@@ -14,6 +14,7 @@ public class Testing : MonoBehaviour
     public static int geld = 100000;
     public static Grid grid;
 
+    public static int objektGebaut;
     
 
 

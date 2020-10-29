@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 4674156950543734205}
   - component: {fileID: 2374425968448784482}
   - component: {fileID: 5728358519931562753}
+  - component: {fileID: 7379336795545383946}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -495,6 +496,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &7379336795545383946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930742460225047605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986977660256973499e75ad23a8e84de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalMaterial: {fileID: 0}
+  redMaterial: {fileID: 0}
+  gruenMaterial: {fileID: 0}
 --- !u!1 &1241486344775792202
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,6 +524,7 @@ GameObject:
   - component: {fileID: 5589140177471827046}
   - component: {fileID: 6386913384064091220}
   - component: {fileID: 1132368815163332523}
+  - component: {fileID: 1489197701786455015}
   m_Layer: 0
   m_Name: Prism
   m_TagString: Untagged
@@ -768,6 +785,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &1489197701786455015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241486344775792202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986977660256973499e75ad23a8e84de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalMaterial: {fileID: 2100000, guid: 5c7a51100b8a1e643b1be6f04d239f58, type: 2}
+  redMaterial: {fileID: 2100000, guid: bf375d435863dac4bb31ceed14eb8c04, type: 2}
+  gruenMaterial: {fileID: 2100000, guid: 7b7779e34cf20d042bc64eeaec18383b, type: 2}
 --- !u!1 &7011125640756487675
 GameObject:
   m_ObjectHideFlags: 0

@@ -121,6 +121,77 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &9386763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9386764}
+  - component: {fileID: 9386766}
+  - component: {fileID: 9386765}
+  m_Layer: 5
+  m_Name: RawImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &9386764
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9386763}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1437679000}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -274, y: 0.037422}
+  m_SizeDelta: {x: 124.773605, y: 124.773605}
+  m_Pivot: {x: 0.49999997, y: 0.5}
+--- !u!114 &9386765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9386763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 8c3b0237f6b78554b80ab314b362b567, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &9386766
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9386763}
+  m_CullTransparentMesh: 0
 --- !u!1 &38714213
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +204,7 @@ GameObject:
   - component: {fileID: 38714217}
   - component: {fileID: 38714216}
   - component: {fileID: 38714215}
+  - component: {fileID: 38714218}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -203,8 +275,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2065574045}
-        m_MethodName: MittlereWeideBauen
+      - m_Target: {fileID: 38714218}
+        m_MethodName: KnopfGedrueckt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -251,6 +323,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 38714213}
   m_CullTransparentMesh: 0
+--- !u!114 &38714218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38714213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfde6a98bd82ae1449906fad318e0567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gebaeudeNummer: 21
+  gebaeude: {fileID: 483445705780078254, guid: 7ec7ef6e324394547968cce1f0dbcc7d, type: 3}
 --- !u!1 &74083548
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,6 +520,7 @@ GameObject:
   - component: {fileID: 151425275}
   - component: {fileID: 151425274}
   - component: {fileID: 151425273}
+  - component: {fileID: 151425276}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -504,8 +591,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2065574045}
-        m_MethodName: "Gro\xDFesHausBauen"
+      - m_Target: {fileID: 151425276}
+        m_MethodName: KnopfGedrueckt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -552,6 +639,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151425271}
   m_CullTransparentMesh: 0
+--- !u!114 &151425276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151425271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfde6a98bd82ae1449906fad318e0567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gebaeudeNummer: 12
+  gebaeude: {fileID: 483445705780078254, guid: 70368e28c040f40418e8d1c3cbcd1b51, type: 3}
 --- !u!1 &202441624
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,6 +798,7 @@ GameObject:
   - component: {fileID: 231906687}
   - component: {fileID: 231906686}
   - component: {fileID: 231906685}
+  - component: {fileID: 231906688}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -767,8 +869,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2065574045}
-        m_MethodName: "Gro\xDFesFeldBauen"
+      - m_Target: {fileID: 231906688}
+        m_MethodName: KnopfGedrueckt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -815,6 +917,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231906683}
   m_CullTransparentMesh: 0
+--- !u!114 &231906688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231906683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfde6a98bd82ae1449906fad318e0567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gebaeudeNummer: 32
+  gebaeude: {fileID: 2349848642799645956, guid: 6a68ed660b9d56c4da2b19d61eead918,
+    type: 3}
 --- !u!1 &245753988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,77 +1551,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &575535028
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 575535029}
-  - component: {fileID: 575535031}
-  - component: {fileID: 575535030}
-  m_Layer: 5
-  m_Name: RawImage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &575535029
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575535028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1184873482}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.037422}
-  m_SizeDelta: {x: 124.773605, y: 124.773605}
-  m_Pivot: {x: 0.49999997, y: 0.5}
---- !u!114 &575535030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575535028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 8c3b0237f6b78554b80ab314b362b567, type: 3}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
---- !u!222 &575535031
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575535028}
-  m_CullTransparentMesh: 0
 --- !u!1 &608227078
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,6 +2083,7 @@ GameObject:
   - component: {fileID: 709410668}
   - component: {fileID: 709410667}
   - component: {fileID: 709410666}
+  - component: {fileID: 709410669}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2107,8 +2154,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2065574045}
-        m_MethodName: KleineWeideBauen
+      - m_Target: {fileID: 709410669}
+        m_MethodName: KnopfGedrueckt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2155,6 +2202,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709410664}
   m_CullTransparentMesh: 0
+--- !u!114 &709410669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709410664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfde6a98bd82ae1449906fad318e0567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gebaeudeNummer: 20
+  gebaeude: {fileID: 483445705780078254, guid: 5c014438010fbc541b5f844b92332b6d, type: 3}
 --- !u!1 &725161467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2862,6 +2923,7 @@ GameObject:
   - component: {fileID: 817504518}
   - component: {fileID: 817504517}
   - component: {fileID: 817504516}
+  - component: {fileID: 817504519}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2932,8 +2994,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2065574045}
-        m_MethodName: "Gro\xDFeWeideBauen"
+      - m_Target: {fileID: 817504519}
+        m_MethodName: KnopfGedrueckt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2980,6 +3042,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817504514}
   m_CullTransparentMesh: 0
+--- !u!114 &817504519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817504514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfde6a98bd82ae1449906fad318e0567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gebaeudeNummer: 22
+  gebaeude: {fileID: 483445705780078254, guid: 0da294f3636700a40b4ddc7b89f84157, type: 3}
 --- !u!1 &862085881
 GameObject:
   m_ObjectHideFlags: 0
@@ -3619,6 +3695,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1007809527}
+  - component: {fileID: 1007809530}
+  - component: {fileID: 1007809529}
+  - component: {fileID: 1007809528}
   m_Layer: 5
   m_Name: Knopf Haus1
   m_TagString: Untagged
@@ -3638,7 +3717,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1282210611}
-  - {fileID: 1184873482}
+  - {fileID: 1437679000}
   m_Father: {fileID: 1405141146}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3647,6 +3726,67 @@ RectTransform:
   m_AnchoredPosition: {x: 28, y: 20.400002}
   m_SizeDelta: {x: 3.123413, y: -1.3500366}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1007809528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007809526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfde6a98bd82ae1449906fad318e0567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gebaeudeNummer: 10
+  gebaeude: {fileID: 483445705780078254, guid: 370112c12831dd4459477a90cb68cee4, type: 3}
+--- !u!61 &1007809529
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007809526}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 6.2400513, y: -17.472794}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 180.71649, y: 225.65176}
+  m_EdgeRadius: 0
+--- !u!50 &1007809530
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007809526}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1017283553
 GameObject:
   m_ObjectHideFlags: 0
@@ -4389,136 +4529,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1181630880}
   m_CullTransparentMesh: 0
---- !u!1 &1184873481
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1184873482}
-  - component: {fileID: 1184873485}
-  - component: {fileID: 1184873484}
-  - component: {fileID: 1184873483}
-  m_Layer: 5
-  m_Name: Button
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1184873482
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184873481}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 575535029}
-  m_Father: {fileID: 1007809527}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.14983045, y: 0.3421948}
-  m_AnchorMax: {x: 0.8358651, y: 1}
-  m_AnchoredPosition: {x: 1.3769989, y: 0.0000076293945}
-  m_SizeDelta: {x: -2.3865051, y: -3.903595}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1184873483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184873481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1184873484}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2065574045}
-        m_MethodName: KleinesHausBauen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1184873484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184873481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1184873485
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184873481}
-  m_CullTransparentMesh: 0
 --- !u!1 &1191553361
 GameObject:
   m_ObjectHideFlags: 0
@@ -4737,6 +4747,7 @@ GameObject:
   - component: {fileID: 1203861826}
   - component: {fileID: 1203861825}
   - component: {fileID: 1203861824}
+  - component: {fileID: 1203861827}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -4807,8 +4818,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2065574045}
-        m_MethodName: MittleresFeldBauen
+      - m_Target: {fileID: 1203861827}
+        m_MethodName: KnopfGedrueckt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4855,6 +4866,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1203861822}
   m_CullTransparentMesh: 0
+--- !u!114 &1203861827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203861822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfde6a98bd82ae1449906fad318e0567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gebaeudeNummer: 31
+  gebaeude: {fileID: 2349848642799645956, guid: c8274e34f3bb4e34795382d578af737f,
+    type: 3}
 --- !u!1 &1236821110
 GameObject:
   m_ObjectHideFlags: 0
@@ -5648,6 +5674,151 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405141145}
   m_CullTransparentMesh: 0
+--- !u!1 &1437678999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1437679000}
+  - component: {fileID: 1437679004}
+  - component: {fileID: 1437679003}
+  - component: {fileID: 1437679002}
+  - component: {fileID: 1437679001}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1437679000
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437678999}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 9386764}
+  m_Father: {fileID: 1007809527}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.14983045, y: 0.3421948}
+  m_AnchorMax: {x: 0.8358651, y: 1}
+  m_AnchoredPosition: {x: 278.527, y: 0.000022888184}
+  m_SizeDelta: {x: -2.3865051, y: -3.903595}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1437679001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437678999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfde6a98bd82ae1449906fad318e0567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gebaeudeNummer: 10
+  gebaeude: {fileID: 483445705780078254, guid: 370112c12831dd4459477a90cb68cee4, type: 3}
+--- !u!114 &1437679002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437678999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1437679003}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1437679001}
+        m_MethodName: KnopfGedrueckt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1437679003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437678999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1437679004
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437678999}
+  m_CullTransparentMesh: 0
 --- !u!1 &1549915512
 GameObject:
   m_ObjectHideFlags: 0
@@ -5731,6 +5902,7 @@ GameObject:
   - component: {fileID: 1554668335}
   - component: {fileID: 1554668334}
   - component: {fileID: 1554668333}
+  - component: {fileID: 1554668336}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -5801,8 +5973,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2065574045}
-        m_MethodName: KleinesFeldBauen
+      - m_Target: {fileID: 1554668336}
+        m_MethodName: KnopfGedrueckt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5849,6 +6021,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554668331}
   m_CullTransparentMesh: 0
+--- !u!114 &1554668336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554668331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfde6a98bd82ae1449906fad318e0567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gebaeudeNummer: 30
+  gebaeude: {fileID: 2349848642799645956, guid: 7c2d5c99bda9ac44ea45a7f6177fabcf,
+    type: 3}
 --- !u!1 &1561244897
 GameObject:
   m_ObjectHideFlags: 0
@@ -6373,6 +6560,7 @@ GameObject:
   - component: {fileID: 1845590289}
   - component: {fileID: 1845590288}
   - component: {fileID: 1845590287}
+  - component: {fileID: 1845590290}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -6443,8 +6631,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2065574045}
-        m_MethodName: MittleresHausBauen
+      - m_Target: {fileID: 1845590290}
+        m_MethodName: KnopfGedrueckt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6491,6 +6679,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845590285}
   m_CullTransparentMesh: 0
+--- !u!114 &1845590290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845590285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfde6a98bd82ae1449906fad318e0567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gebaeudeNummer: 11
+  gebaeude: {fileID: 483445705780078254, guid: 7f845bbd566fdba41928f7df2a3a742f, type: 3}
 --- !u!1 &1889726033
 GameObject:
   m_ObjectHideFlags: 0
