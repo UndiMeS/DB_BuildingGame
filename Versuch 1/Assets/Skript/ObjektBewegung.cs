@@ -48,7 +48,12 @@ public class ObjektBewegung : MonoBehaviour
                 }
                 Testing.objektGebaut = 0;
                 Testing.geld -= preis;
-                gameObject.GetComponentsInChildren<GlowOnOff>();
+                GlowOnOff.status = 0;
+                
+                UnityEngine.Debug.Log(GlowOnOff.status);
+                
+               
+                                
                 
                 Destroy(GetComponent<ObjektBewegung>());
             }

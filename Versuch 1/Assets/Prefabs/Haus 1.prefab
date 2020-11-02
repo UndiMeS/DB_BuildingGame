@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 4674156950543734205}
   - component: {fileID: 2374425968448784482}
   - component: {fileID: 5728358519931562753}
-  - component: {fileID: 7379336795545383946}
+  - component: {fileID: 5915410391849233076}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -496,7 +496,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &7379336795545383946
+--- !u!114 &5915410391849233076
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -508,9 +508,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986977660256973499e75ad23a8e84de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalMaterial: {fileID: 0}
-  redMaterial: {fileID: 0}
-  gruenMaterial: {fileID: 0}
+  originalMaterial: {fileID: 2100000, guid: e57675ac55fb83a4cb1ab83f6c1b83fb, type: 2}
+  redMaterial: {fileID: 2100000, guid: ac7e77d5e92280945b76d81b8225f1f6, type: 2}
+  gruenMaterial: {fileID: 2100000, guid: e696faa3de9998c409f3b38b72572dc0, type: 2}
 --- !u!1 &1241486344775792202
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,6 +813,7 @@ GameObject:
   - component: {fileID: 7631422101384450625}
   - component: {fileID: 3486318814743639982}
   - component: {fileID: 6850579912160964684}
+  - component: {fileID: 5302710952514093463}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -860,7 +861,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96dd742df732ecf4089fecbceefc2328, type: 2}
+  - {fileID: 2100000, guid: fd745c71badd1d24caacb8ee60bdc294, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1110,3 +1111,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &5302710952514093463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011125640756487675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986977660256973499e75ad23a8e84de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalMaterial: {fileID: 2100000, guid: 96dd742df732ecf4089fecbceefc2328, type: 2}
+  redMaterial: {fileID: 2100000, guid: 177cb1463b3cf56479b31b9c48aa1e56, type: 2}
+  gruenMaterial: {fileID: 2100000, guid: fd745c71badd1d24caacb8ee60bdc294, type: 2}

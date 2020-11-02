@@ -11,14 +11,14 @@ public class GlowOnOff : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
 
-    [SerializeField]
-    private Material originalMaterial;
+    
+    public Material originalMaterial;
 
-    [SerializeField]
-    private Material redMaterial;
+    
+    public Material redMaterial;
 
-    [SerializeField]
-    private Material gruenMaterial;
+    
+    public Material gruenMaterial;
 
     public static int status;
 
@@ -53,4 +53,6 @@ public class GlowOnOff : MonoBehaviour
     {
         EnableHighlight(status);
     }
+
+    
 }
