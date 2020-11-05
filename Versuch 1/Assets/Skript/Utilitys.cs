@@ -52,6 +52,6 @@ public class Utilitys
 
     public static bool ImBildschirm()
     {
-        return Input.mousePosition.y > 280 * Screen.height / 900 && Input.mousePosition.x < 1000 * Screen.width / 1600;
+        return Input.mousePosition.y > 280 * Screen.height / 900 ;
     }
 }

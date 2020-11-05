@@ -8,6 +8,9 @@ using UnityEngine.UI;
 public class GebaeudeAnzeige : MonoBehaviour
 {
     public GameObject ueberschrift;
+    public GameObject feld;
+    public GameObject anAusKnoepfe;
+    public GameObject panelHaus;
    
 
     // Start is called before the first frame update
@@ -23,6 +26,7 @@ public class GebaeudeAnzeige : MonoBehaviour
         {
             if (Utilitys.ImBildschirm() && Testing.objektGebaut==0)
             {
+
                 Vector3 cursorPos = Utilitys.GetMouseWorldPosition();
                 cursorPos.z = 2f;
                 int wert = Testing.grid.GetWert(cursorPos);
@@ -31,19 +35,30 @@ public class GebaeudeAnzeige : MonoBehaviour
                 {
                     case 0:
                         Nichts();
+                        setActive(false);
                         break;
                     case 1:
                         Haus(wert);
+                        setActive(true);
                         break;
                     case 2:
                         Weide(wert);
+                        setActive(true);
                         break;
                     case 3:
                         Feld(wert);
+                        setActive(true);
                         break;
                 }
             }
         }
+    }
+
+    private void setActive(bool wahr)
+    {
+        feld.SetActive(wahr);
+        anAusKnoepfe.SetActive(!wahr);
+        panelHaus.SetActive(!wahr);
     }
 
     private void Haus(int wert)
