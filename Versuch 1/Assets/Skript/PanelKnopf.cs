@@ -16,7 +16,6 @@ public class PanelKnopf : MonoBehaviour
 
     public void KnopfGedrueckt()
     {
-        Debug.Log("Test");
         Testing.objektGebaut = gebaeudeNummer;
         Instantiate(gebaeude);
     }

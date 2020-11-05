@@ -46,15 +46,21 @@ public class ObjektBewegung : MonoBehaviour
                 {
                     GridWertSetzen2x2();
                 }
-                Testing.objektGebaut = 0;
+                
                 Testing.geld -= preis;
                 GlowOnOff.status = 0;
-                
-                UnityEngine.Debug.Log(GlowOnOff.status);
-                
-               
-                                
-                
+
+                //if, da nur für haus1 Glow on of
+                if (Testing.objektGebaut == 10) {
+                    int anz = gameObject.transform.childCount;
+                    for (int i = 0; i < anz; i++)
+                    {
+                        GameObject kind = gameObject.transform.GetChild(i).gameObject;
+                        kind.GetComponent<GlowOnOff>().EnableHighlight(0);
+                        Destroy(kind.GetComponent<GlowOnOff>());
+                    }
+                }
+                Testing.objektGebaut = 0;
                 Destroy(GetComponent<ObjektBewegung>());
             }
             else
