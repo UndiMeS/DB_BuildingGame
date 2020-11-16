@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class ERErstellung : MonoBehaviour
 {
-    private new string name;
-    private GameObject objekt;
-    private bool erschaffen=false;
+    private GameObject selectedGameObjekt;
+    private ArrayList modellObjekte = new ArrayList();
 
     // Start is called before the first frame update
     void Start()
@@ -17,21 +16,22 @@ public class ERErstellung : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (erschaffen) { Utilitys.TextInTMP(objekt.transform.GetChild(0).gameObject, name); }
         
     }
 
-    public void eingabeText(string eingabe)
-    {
-        name = eingabe;
-        Debug.Log(name);
-    }
+    
 
     public void erstelleObjekt(GameObject prefab)
     {
-        objekt=Instantiate(prefab, transform);
-        objekt.transform.Translate(Screen.width / 2, Screen.height / 2, 0);
-        erschaffen = true;
+        if (modellObjekte.Count != 0) { selectedGameObjekt.GetComponent<ERObjekt>().selected = false; }
+        selectedGameObjekt = Instantiate(prefab, transform);
+        selectedGameObjekt.transform.Translate(Screen.width / 2, Screen.height / 2, 0);
+        modellObjekte.Add(selectedGameObjekt);
+    }
+
+    public void giveSelectedGameObjektName(string eingabe)
+    {
+        selectedGameObjekt.GetComponent<ERObjekt>().nameVonObjekt = eingabe;
     }
 
 }

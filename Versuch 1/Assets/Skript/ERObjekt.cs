@@ -1,72 +1,78 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
+
 
 
 public class ERObjekt : MonoBehaviour
 {
-    private float startPosX;
-    private float startPosY;
-    private bool selected = false;
+    private int width = 200;
+    private int height = 50;
+    private bool moveSelected = false;
+    public bool selected = true;
+    public String nameVonObjekt;
+
+    public void Start()
+    {
+    }
 
     private void Update()
     {
-        if (selected)
-        {
-            Vector3 mousePos;
-            mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        Utilitys.TextInTMP(gameObject.transform.GetChild(0).gameObject, nameVonObjekt);
+        gameObject.name = nameVonObjekt;
 
-            gameObject.transform.localPosition = new Vector3(mousePos.x, mousePos.y, 0);
-        }
-    }
+        bewegen();
 
-    private void OnMouseDown()
-    {
-        if (Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition))
         {
             selected = true;
         }
+
     }
 
-    private void OnMouseUp()
+    private void bewegen()
     {
-        selected = false;
+        if (selected)
+        {
+            if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition))
+            {
+                moveSelected = true;
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                moveSelected = false;
+            }
+            if (moveSelected)
+            {
+                Vector3 cursorPos = Input.mousePosition;
+                cursorPos = imSichtfeld(cursorPos);
+                transform.position = cursorPos;
+            }
+        }
+    }
+
+    private Vector3 imSichtfeld(Vector3 cursorPos)
+    {
+        if (cursorPos.y > (425 * Screen.height / 530) - height / 2)
+        {
+            cursorPos.y = 425 * Screen.height / 530 - height / 2;
+        }
+        if (cursorPos.y < (60 * Screen.height / 530) + height / 2)
+        {
+            cursorPos.y = 60 * Screen.height / 530 + height / 2;
+        }
+        if (cursorPos.x < width / 2) { cursorPos.x = width / 2; }
+        if (cursorPos.x > Screen.width - width / 2) { cursorPos.x = Screen.width - width / 2; }
+        return cursorPos;
+    }
+
+    private bool checkMausIn(Vector3 mousePosition)
+    {
+        Vector3 position = gameObject.transform.position;
+        int abstandX = (int)Math.Abs(mousePosition.x - position.x);
+        int abstandY = (int)Math.Abs(mousePosition.y - position.y);
+        bool drin = abstandX < width / 2 && abstandY < height / 2;
+        return drin;
     }
 
 }
 
-/*private bool selected;
-
-// Start is called before the first frame update
-void Start()
-{
-
-
-}
-// Update is called once per frame
-void Update()
-{
-    Debug.Log("Start!");
-    if (selected == true)
-    {
-        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(cursorPos.x, cursorPos.y, 0);
-
-    }
-}
-
-void OnMouseOver()
-{
-    Debug.Log("Test!");
-    if (Input.GetMouseButtonDown(0))
-    {
-        selected = true;
-
-    }
-
-    if (Input.GetMouseButtonUp(0))
-    {
-        selected = false;
-    }
-}*/

@@ -82,8 +82,7 @@ public class ObjektBewegung : MonoBehaviour
         //Position der Maus= Postion vom Haus
         if (selected == true)
         {
-            Vector3 vector3 = Utilitys.GetMouseWorldPosition();
-            Vector3 cursorPos = vector3;
+            Vector3 cursorPos = Utilitys.GetMouseWorldPosition();
             Vector3 position = Testing.grid.stayInGrid(cursorPos);
             transform.position = position;
 
