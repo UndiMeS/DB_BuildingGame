@@ -12,7 +12,7 @@ public class Testing : MonoBehaviour
     public static int hoehe=13;
     public static int zellengroesse=10;
     public static int geld = 100000;
-    public static Grid grid;
+    public static Gitter grid;
 
     public static int objektGebaut;
     
@@ -21,7 +21,7 @@ public class Testing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        grid = new Grid(weite, hoehe, zellengroesse);
+        grid = new Gitter(weite, hoehe, zellengroesse);
         int KameraX = weite / 2 * zellengroesse;
         int KameraY = hoehe / 2 * zellengroesse;
         int KameraZ = -1 * Mathf.Max(hoehe, weite) / 2 * zellengroesse;
