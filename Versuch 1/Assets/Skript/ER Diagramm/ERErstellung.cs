@@ -46,7 +46,7 @@ public class ERErstellung : MonoBehaviour
 
     private void zeichneLinie()
     {
-        LineAlignment= 
+      //  LineAlignment= 
     }
 
     public void giveSelectedGameObjektName(string eingabe)
