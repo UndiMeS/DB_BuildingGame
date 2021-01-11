@@ -66,7 +66,6 @@ public class GebaeudeAnzeige : MonoBehaviour
         if (wert == 10)
         {
             Utilitys.TextInTMP (ueberschrift, "kleines Haus");
-            Debug.Log("kleines Haus");
         }
         else if (wert == 11)
         {

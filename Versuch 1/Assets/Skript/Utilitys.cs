@@ -39,8 +39,7 @@ public class Utilitys
 
         if (Physics.Raycast(ray, out hit))
         {
-           return hit.point;
-           
+           return hit.point;  
         }
         return new Vector3(-1,-1,-1) ;
     }

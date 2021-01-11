@@ -21,35 +21,37 @@ public class ERObjekt : MonoBehaviour
         Utilitys.TextInTMP(gameObject.transform.GetChild(0).gameObject, nameVonObjekt);
         gameObject.name = nameVonObjekt;
         bewegen();
-        markiert();
 
         if(Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition))
         {
+            if (!selected)
+            {
+                ERErstellung.changeSelectedGameobjekt(gameObject);
+            }
             selected = true;
-            ERErstellung.changeSelectedGameobjekt(gameObject);
         }
 
-    }
-
-    private void markiert()
-    {
-        if (selected)
-        {
-            
-        }
     }
 
     private void bewegen()
     {
-        if (selected)
+        if (selected&&ERErstellung.selectedGameObjekt.Equals(gameObject))
         {
-            if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition))
+            if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition)&&!moveSelected)
             {
                 moveSelected = true;
+
+                RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
+                float pivotX = (Input.mousePosition.x - gameObject.transform.position.x) * (1 / rectTransform.sizeDelta.x) + rectTransform.pivot.x;
+                float pivotY = (Input.mousePosition.y - gameObject.transform.position.y) * (1 / rectTransform.sizeDelta.y) + rectTransform.pivot.y;
+
+                rectTransform.pivot = new Vector2(pivotX, pivotY);
+                
             }
             if (Input.GetMouseButtonUp(0))
             {
                 moveSelected = false;
+                gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f,0.5f);
             }
             if (moveSelected)
             {
@@ -83,6 +85,7 @@ public class ERObjekt : MonoBehaviour
         bool drin = abstandX < width / 2 && abstandY < height / 2;
         return drin;
     }
+
 
 }
 

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class FehlerAnzeige : MonoBehaviour
 {
     public GameObject fehlerObject;
-    public static string fehlertext;
+    public static string fehlertext="";
 
     // Start is called before the first frame update
     void Start()
