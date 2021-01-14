@@ -10,10 +10,13 @@ public class ERObjekt : MonoBehaviour
     private bool moveSelected = false;
     public bool selected = true;
     public String nameVonObjekt;
+    private RectTransform rectTransform;
 
+    public TMPro.TMP_Text eingabe;
 
     public void Start()
     {
+        rectTransform = gameObject.GetComponent<RectTransform>();
     }
 
     private void Update()
@@ -22,36 +25,39 @@ public class ERObjekt : MonoBehaviour
         gameObject.name = nameVonObjekt;
         bewegen();
 
-        if(Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition))
+        if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition))
         {
             if (!selected)
             {
                 ERErstellung.changeSelectedGameobjekt(gameObject);
             }
             selected = true;
+
         }
 
     }
 
     private void bewegen()
     {
-        if (selected&&ERErstellung.selectedGameObjekt.Equals(gameObject))
+        if (selected && ERErstellung.selectedGameObjekt.Equals(gameObject))
         {
-            if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition)&&!moveSelected)
+            if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition) && !moveSelected)
             {
                 moveSelected = true;
 
-                RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
                 float pivotX = (Input.mousePosition.x - gameObject.transform.position.x) * (1 / rectTransform.sizeDelta.x) + rectTransform.pivot.x;
                 float pivotY = (Input.mousePosition.y - gameObject.transform.position.y) * (1 / rectTransform.sizeDelta.y) + rectTransform.pivot.y;
-
                 rectTransform.pivot = new Vector2(pivotX, pivotY);
-                
+
             }
             if (Input.GetMouseButtonUp(0))
             {
+                float x = (0.5f - rectTransform.pivot.x) * rectTransform.sizeDelta.x + gameObject.transform.position.x;
+                float y = (0.5f - rectTransform.pivot.y) * rectTransform.sizeDelta.y + gameObject.transform.position.y;
+                gameObject.transform.position = new Vector2(x, y);
+                gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+
                 moveSelected = false;
-                gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f,0.5f);
             }
             if (moveSelected)
             {
