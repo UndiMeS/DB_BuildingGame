@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*noch nicht implemetiert, soll beim ERDiagramm in der Eingabezeile immer den Namen des aktuellen Objektes anzeigen
+ */
 public class Namensanzeige : MonoBehaviour
 {
     // Start is called before the first frame update

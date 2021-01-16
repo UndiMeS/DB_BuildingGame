@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Grundlegende Methoden
 public class Testing : MonoBehaviour
 {
     public GameObject boden;

@@ -7,14 +7,12 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
 
+//Bewgung der Gebaeude
 public class ObjektBewegung : MonoBehaviour
 {
     public static bool selected;
     public int preis;
-
     private bool bauen;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -29,16 +27,15 @@ public class ObjektBewegung : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             
-            //Schaue, ob schon Gebäude ander Stelle und abfangen ob in Interface
+            //Schaue, ob schon Gebäude ander Stelle und abfangen ob in Bildschirmflaeche
             if (Testing.grid.CheckEmpty(transform.position,Testing.objektGebaut, (int) transform.rotation.eulerAngles.z) 
                 && Utilitys.ImBildschirm())
             {
-
                 selected = false;
                 transform.position += new Vector3(0, 0, 0.8f);
                 Testing.grid.SetWert(transform.position, Testing.objektGebaut);
                 //2x1 und 2x2 Bauten abfangen und wert setzen
-                if (Testing.objektGebaut>20 && Testing.objektGebaut % 10 % 3 == 1)
+                if (Testing.objektGebaut>20 && Testing.objektGebaut % 10 % 3 == 1)//10,11,12 haus; 20,21,22 weide; 30,31,32 feld; ...1 klein;...2 mittel;...3 groß
                 {
                     GridWertSetzen1x2();
                 }

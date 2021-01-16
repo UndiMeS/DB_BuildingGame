@@ -2,7 +2,8 @@
 using UnityEngine;
 
 
-
+/*Prefab der Objekte im ERD besitzten das Skript
+ Bewegung des ER objektes*/
 public class ERObjekt : MonoBehaviour
 {
     private int width = 200;
@@ -21,13 +22,13 @@ public class ERObjekt : MonoBehaviour
 
     private void Update()
     {
-        Utilitys.TextInTMP(gameObject.transform.GetChild(0).gameObject, nameVonObjekt);
+        Utilitys.TextInTMP(gameObject.transform.GetChild(0).gameObject, nameVonObjekt); //Setzt Objektnamen mit angezeigten Namen des Objektes
         gameObject.name = nameVonObjekt;
         bewegen();
 
-        if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition))
+        if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition))//wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
         {
-            if (!selected)
+            if (!selected) //wenn neu selected, dann wird Objekt zu aktuellen ER-Objekt
             {
                 ERErstellung.changeSelectedGameobjekt(gameObject);
             }
@@ -45,6 +46,7 @@ public class ERObjekt : MonoBehaviour
             {
                 moveSelected = true;
 
+                //setzt Pivot des Objektes auf die Position der Maus
                 float pivotX = (Input.mousePosition.x - gameObject.transform.position.x) * (1 / rectTransform.sizeDelta.x) + rectTransform.pivot.x;
                 float pivotY = (Input.mousePosition.y - gameObject.transform.position.y) * (1 / rectTransform.sizeDelta.y) + rectTransform.pivot.y;
                 rectTransform.pivot = new Vector2(pivotX, pivotY);
@@ -52,6 +54,7 @@ public class ERObjekt : MonoBehaviour
             }
             if (Input.GetMouseButtonUp(0))
             {
+                //setzt Pivot zurueck in die Mitte, wenn Maus losgelassen wird
                 float x = (0.5f - rectTransform.pivot.x) * rectTransform.sizeDelta.x + gameObject.transform.position.x;
                 float y = (0.5f - rectTransform.pivot.y) * rectTransform.sizeDelta.y + gameObject.transform.position.y;
                 gameObject.transform.position = new Vector2(x, y);
@@ -59,7 +62,7 @@ public class ERObjekt : MonoBehaviour
 
                 moveSelected = false;
             }
-            if (moveSelected)
+            if (moveSelected)//bewegen des Objekts
             {
                 Vector3 cursorPos = Input.mousePosition;
                 cursorPos = imSichtfeld(cursorPos);
@@ -67,7 +70,7 @@ public class ERObjekt : MonoBehaviour
             }
         }
     }
-
+    //Begrenzung der Bewegung des Objektes
     private Vector3 imSichtfeld(Vector3 cursorPos)
     {
         if (cursorPos.y > (425 * Screen.height / 530) - height / 2)
@@ -82,7 +85,7 @@ public class ERObjekt : MonoBehaviour
         if (cursorPos.x > Screen.width - width / 2) { cursorPos.x = Screen.width - width / 2; }
         return cursorPos;
     }
-
+    //Überprüft ob der Mausklick auf dem Objket ist
     private bool checkMausIn(Vector3 mousePosition)
     {
         Vector3 position = gameObject.transform.position;

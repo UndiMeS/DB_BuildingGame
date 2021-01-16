@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(Collider))]
 
+//gruen/ rot faerbung eines Objekts beim setzten, funktioniert aktuell nicht
 public class GlowOnOff : MonoBehaviour
 {
     private MeshRenderer meshRenderer;

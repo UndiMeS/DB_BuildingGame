@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
-
+// Auskommentierte Zeilen geben die Nummer in dem Feld an
 public class Gitter
 {
     private int weite;
@@ -10,8 +10,6 @@ public class Gitter
     private int[,] gridArray;
     private float zellengroesse;
     //private TextMesh[,] debugTextArray;
-
-
 
     public Gitter(int weite, int hoehe, float zellengroesse)
     {

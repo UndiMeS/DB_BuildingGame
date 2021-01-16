@@ -43,7 +43,7 @@ public class Utilitys
         }
         return new Vector3(-1,-1,-1) ;
     }
-
+    //verändert Text in TMP
     public static void TextInTMP(GameObject textfeld, string text)
     {
         textfeld.GetComponent<TextMeshProUGUI>().SetText(text);

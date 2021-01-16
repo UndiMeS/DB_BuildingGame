@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+//Anzeige der Informationen eines Gebauedes, noch nicht vollstaendig
 public class GebaeudeAnzeige : MonoBehaviour
 {
     public GameObject ueberschrift;
