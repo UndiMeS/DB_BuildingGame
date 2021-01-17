@@ -6,70 +6,62 @@ using UnityEngine;
  Bewegung des ER objektes*/
 public class ERObjekt : MonoBehaviour
 {
-    private int width = 200;
-    private int height = 50;
+    private float width;
+    private float height;
     private bool moveSelected = false;
     public bool selected = true;
     public String nameVonObjekt;
     private RectTransform rectTransform;
 
-    public TMPro.TMP_Text eingabe;
+    public GameObject erstellungsflaeche;
 
     public void Start()
     {
         rectTransform = gameObject.GetComponent<RectTransform>();
+        width = rectTransform.sizeDelta.x;
+        height = rectTransform.sizeDelta.y;
     }
 
     private void Update()
     {
         Utilitys.TextInTMP(gameObject.transform.GetChild(0).gameObject, nameVonObjekt); //Setzt Objektnamen mit angezeigten Namen des Objektes
         gameObject.name = nameVonObjekt;
-        bewegen();
-
-        if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition))//wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
+        
+        if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition)&&ERErstellung.testAufGleicherPosition(Input.mousePosition).Equals(gameObject))//wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
         {
             if (!selected) //wenn neu selected, dann wird Objekt zu aktuellen ER-Objekt
             {
+                
                 ERErstellung.changeSelectedGameobjekt(gameObject);
-            }
-            selected = true;
-
-        }
-
-    }
-
-    private void bewegen()
-    {
-        if (selected && ERErstellung.selectedGameObjekt.Equals(gameObject))
-        {
-            if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition) && !moveSelected)
-            {
-                moveSelected = true;
 
                 //setzt Pivot des Objektes auf die Position der Maus
-                float pivotX = (Input.mousePosition.x - gameObject.transform.position.x) * (1 / rectTransform.sizeDelta.x) + rectTransform.pivot.x;
-                float pivotY = (Input.mousePosition.y - gameObject.transform.position.y) * (1 / rectTransform.sizeDelta.y) + rectTransform.pivot.y;
+                float pivotX = (Input.mousePosition.x - gameObject.transform.position.x) * (1 / width) + rectTransform.pivot.x;
+                float pivotY = (Input.mousePosition.y - gameObject.transform.position.y) * (1 /height) + rectTransform.pivot.y;
                 rectTransform.pivot = new Vector2(pivotX, pivotY);
-
             }
-            if (Input.GetMouseButtonUp(0))
-            {
-                //setzt Pivot zurueck in die Mitte, wenn Maus losgelassen wird
-                float x = (0.5f - rectTransform.pivot.x) * rectTransform.sizeDelta.x + gameObject.transform.position.x;
-                float y = (0.5f - rectTransform.pivot.y) * rectTransform.sizeDelta.y + gameObject.transform.position.y;
-                gameObject.transform.position = new Vector2(x, y);
-                gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
-
-                moveSelected = false;
-            }
-            if (moveSelected)//bewegen des Objekts
-            {
-                Vector3 cursorPos = Input.mousePosition;
-                cursorPos = imSichtfeld(cursorPos);
-                transform.position = cursorPos;
-            }
+            selected = true;
+            moveSelected = true;
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            moveSelected = false;
+
+            //setzt Pivot zurueck in die Mitte, wenn Maus losgelassen wird
+            float x = (0.5f - rectTransform.pivot.x) * width + gameObject.transform.position.x;
+            float y = (0.5f - rectTransform.pivot.y) * height + gameObject.transform.position.y;
+            gameObject.transform.position = new Vector2(x, y);
+            gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+        }
+        if (moveSelected)//bewegen des Objekts
+        {
+            Vector3 cursorPos = Input.mousePosition;
+            cursorPos = imSichtfeld(cursorPos);
+            transform.position = cursorPos;
+        }
+
     }
+
+    
     //Begrenzung der Bewegung des Objektes
     private Vector3 imSichtfeld(Vector3 cursorPos)
     {

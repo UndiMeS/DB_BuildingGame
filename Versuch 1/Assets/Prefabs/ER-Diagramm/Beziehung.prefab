@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 2985591180458513505}
   - component: {fileID: 6479371036645028230}
   - component: {fileID: 3568129828781434529}
+  - component: {fileID: 8694772428233353551}
   m_Layer: 5
   m_Name: Beziehung
   m_TagString: Beziehung
@@ -205,3 +206,18 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &8694772428233353551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8607144142062295259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc66c34d53a871429c9fba11d7f21b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: 1
+  nameVonObjekt: 
+  eingabe: {fileID: 0}

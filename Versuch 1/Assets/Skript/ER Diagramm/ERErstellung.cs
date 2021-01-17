@@ -9,11 +9,20 @@ public class ERErstellung : MonoBehaviour
 {
     public static GameObject selectedGameObjekt;
     public static GameObject lastselected;
-    private ArrayList modellObjekte = new ArrayList(); //Liste an Objekten in ERD, vielleicht fuer spaeter
+    public static ArrayList modellObjekte = new ArrayList(); //Liste an Objekten in ERD, vielleicht fuer spaeter
     public GameObject linie;
     public static GameObject entitaet;
     public static GameObject attribut;
     public static GameObject beziehung;
+
+    public static GameObject entitaetOberflaeche;
+    public static GameObject attributOberflaeche;
+    public static GameObject beziehOberflaeche;
+
+     
+
+    public Texture entity;
+    public Texture schwachEntity;
 
 
     // Start is called before the first frame update
@@ -22,29 +31,30 @@ public class ERErstellung : MonoBehaviour
     {
         lastselected = null;
         selectedGameObjekt = null;
+
+        entitaetOberflaeche = gameObject.transform.GetChild(3).gameObject;
+        attributOberflaeche = gameObject.transform.GetChild(4).gameObject;
+        beziehOberflaeche = gameObject.transform.GetChild(5).gameObject;
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
     /* wenn auf die 3 Tasten gedrueckt wird, wird das Objekt erstellt
-    prefab istdas ER-Objekt (Entity, Attribut, Beziehung)*/ 
+    prefab istdas ER-Objekt (Entity, Attribut, Beziehung)*/
     public void erstelleObjekt(GameObject prefab)
     {
         //wenn es vorer schon ein Objekt gibt
-        if (modellObjekte.Count != 0) 
+        if (modellObjekte.Count != 0)
         {
             selectedGameObjekt.GetComponent<ERObjekt>().selected = false;//bei ERObjekt auswahl aufloesen
             selectedGameObjekt.GetComponent<RawImage>().color = Color.white; //Objekt nicht mehr hervorgehoben/gelb
             lastselected = selectedGameObjekt;
         }
-        
+
         GameObject temp = Instantiate(prefab, transform);
 
         //nur wenn vorhergehendes Objekt Entity kann Attribut erzeugt werden
-        if ((temp.CompareTag("Attribut") && !(selectedGameObjekt.CompareTag("Entitaet") || modellObjekte.Count == 0)))
+        if (temp.CompareTag("Attribut") && !(selectedGameObjekt.CompareTag("Entitaet") || modellObjekte.Count == 0))
         {
             Destroy(temp.GetComponent<ERObjekt>());
             FehlerAnzeige.fehlertext = "Wähle zuerst die Entität aus zu der das Attribute gehören soll.";
@@ -53,19 +63,25 @@ public class ERErstellung : MonoBehaviour
         else //erzeugt neues Objekt und markiert es
         {
             selectedGameObjekt = temp;
+            if (selectedGameObjekt.CompareTag("Attribut"))
+            {
+                selectedGameObjekt.transform.SetParent(lastselected.transform);
+            }
             selectedGameObjekt.transform.Translate(Screen.width / 2, Screen.height / 2, 0);
             modellObjekte.Add(selectedGameObjekt);
             selectedGameObjekt.GetComponent<RawImage>().color = Color.yellow;
             if (selectedGameObjekt.CompareTag("Attribut") && lastselected.CompareTag("Entitaet"))
             {
-                zeichneLinie();
+               zeichneLinie();
             }
         }
     }
 
     private void zeichneLinie()
     {
-        
+        Instantiate(linie, transform);
+        linie.GetComponent<Linienzeichner>().setzeGameObjekte(lastselected, selectedGameObjekt);
+        linie.GetComponent<Linienzeichner>().zeichnen = true;
     }
 
     //Namensanpassung, hat eingabefeld als Methode
@@ -79,15 +95,18 @@ public class ERErstellung : MonoBehaviour
 
     //verändert die Farbe und aktuell ausgewaehltes/ vorheriges ER-Objekt
     public static void changeSelectedGameobjekt(GameObject newSelected)
-    { 
+    {
         lastselected = selectedGameObjekt;
-        
+
         selectedGameObjekt = newSelected;
         selectedGameObjekt.GetComponent<RawImage>().color = Color.yellow;
-        if (!(lastselected==null)) { lastselected.GetComponent<RawImage>().color = Color.white;
+        if (lastselected != null)
+        {
+            lastselected.GetComponent<RawImage>().color = Color.white;
             lastselected.GetComponent<ERObjekt>().selected = false;
         }
-       
+        changeOberflaeche();
+
     }
 
     //Kennzeichnung des Primärschlüssels bei Attributen, hat Ankreuzfeld als Methode
@@ -106,12 +125,12 @@ public class ERErstellung : MonoBehaviour
     // hat Löschknopf als Methode
     public void loeschen()
     {
-        if (!(selectedGameObjekt == null))
+        if (selectedGameObjekt != null)
         {
             Destroy(selectedGameObjekt.GetComponent<ERObjekt>());
             Destroy(selectedGameObjekt);
             modellObjekte.Remove(selectedGameObjekt);
-            if (lastselected== null)//wenn man das erste Objekt gleich wieder loescht
+            if (lastselected == null)//wenn man das erste Objekt gleich wieder loescht
             {
                 selectedGameObjekt = null;
             }
@@ -126,5 +145,67 @@ public class ERErstellung : MonoBehaviour
                 lastselected = null;
             }
         }
+    }
+
+    public static GameObject testAufGleicherPosition(Vector3 pos)
+    {
+        foreach (GameObject objekt in modellObjekte)
+        {
+            if (checkMausIn(pos, objekt))
+            {
+                return objekt;
+            }
+        }
+        return null;
+    }
+
+    private static bool checkMausIn(Vector3 mousePosition, GameObject objekt)
+    {
+        Vector3 position = objekt.transform.position;
+        int abstandX = (int)Math.Abs(mousePosition.x - position.x);
+        int abstandY = (int)Math.Abs(mousePosition.y - position.y);
+        bool drin = abstandX < objekt.GetComponent<RectTransform>().sizeDelta.x / 2 && abstandY < objekt.GetComponent<RectTransform>().sizeDelta.y / 2;
+        return drin;
+    }
+
+    public void schwacheEntity()
+    {
+        if (selectedGameObjekt.CompareTag("Entitaet"))
+        {
+            if (selectedGameObjekt.GetComponent<RawImage>().texture.Equals(entity)){
+                selectedGameObjekt.GetComponent<RawImage>().texture = schwachEntity;
+            }
+            else
+            {
+                selectedGameObjekt.GetComponent<RawImage>().texture = entity;
+            }
+        }
+    }
+
+    private static void changeOberflaeche()
+    {
+        GameObject oberflaeche;
+        if (selectedGameObjekt.CompareTag("Entitaet")){
+            entitaetOberflaeche.SetActive(true);
+            attributOberflaeche.SetActive(false);
+            beziehOberflaeche.SetActive(false);
+             oberflaeche = entitaetOberflaeche;
+        }else if(selectedGameObjekt.CompareTag("Attribut")){
+            entitaetOberflaeche.SetActive(false);
+            attributOberflaeche.SetActive(true);
+            beziehOberflaeche.SetActive(false);
+             oberflaeche = entitaetOberflaeche;
+        }
+        else {
+            entitaetOberflaeche.SetActive(false);
+            attributOberflaeche.SetActive(false);
+            beziehOberflaeche.SetActive(true);
+             oberflaeche = entitaetOberflaeche;
+        }
+        GameObject inputfield = oberflaeche.transform.GetChild(0).gameObject;
+        GameObject textArea = inputfield.transform.GetChild(0).gameObject;
+        GameObject text = textArea.transform.GetChild(2).gameObject;
+        Debug.Log(text.name);
+
     }
 }
