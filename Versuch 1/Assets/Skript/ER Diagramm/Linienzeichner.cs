@@ -22,10 +22,16 @@ public class Linienzeichner : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (zeichnen && objekt1!=null)
+    {   
+        if(zeichnen &&( objekt1 == null || objekt2 == null))
         {
-
+            Debug.Log("hier!");
+            Destroy(gameObject);
+            Destroy(gameObject.GetComponent<Linienzeichner>());
+        }
+        changeName();
+        if (zeichnen && objekt1!=null&&objekt2!=null)
+        {
             pos1 = objekt1.transform.position;
             pos2 = objekt2.transform.position;
 
@@ -33,22 +39,32 @@ public class Linienzeichner : MonoBehaviour
         }
     }
 
+    private void changeName()
+    {
+        if (objekt1 != null && objekt2 != null)
+        {
+            gameObject.name = objekt1.name + "-" + objekt2.name;
+        }
+    }
+
     private void berechneLinie()
     {
-        Debug.Log("?");
         rect.sizeDelta = new Vector2((pos2 - pos1).magnitude, breite);
         gameObject.transform.position = pos1;
 
-        double winkel = Math.Atan((pos2.y - pos1.y) / (pos2.x - pos2.y));
-        gameObject.transform.rotation = Quaternion.AngleAxis((float)winkel, Vector3.forward);
-        
+        double winkel = Vector3.Angle(pos2-pos1,Vector3.right);
+        gameObject.transform.rotation = Quaternion.Euler(0, 0, (float)winkel);
+        if (pos2.y < pos1.y)
+        {
+            gameObject.transform.rotation = Quaternion.Euler(-180f, 0, (float) winkel);
+        }
+
+
     }
 
     public void setzeGameObjekte(GameObject last, GameObject select)
     {
         objekt1 = last;
         objekt2 = select;
-
-
     }
 }

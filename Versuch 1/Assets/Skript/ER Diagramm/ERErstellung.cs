@@ -11,6 +11,7 @@ public class ERErstellung : MonoBehaviour
     public static GameObject lastselected;
     public static ArrayList modellObjekte = new ArrayList(); //Liste an Objekten in ERD, vielleicht fuer spaeter
     public GameObject linie;
+    public GameObject linienOrdner;
     public static GameObject entitaet;
     public static GameObject attribut;
     public static GameObject beziehung;
@@ -18,8 +19,6 @@ public class ERErstellung : MonoBehaviour
     public static GameObject entitaetOberflaeche;
     public static GameObject attributOberflaeche;
     public static GameObject beziehOberflaeche;
-
-     
 
     public Texture entity;
     public Texture schwachEntity;
@@ -79,9 +78,11 @@ public class ERErstellung : MonoBehaviour
 
     private void zeichneLinie()
     {
-        Instantiate(linie, transform);
-        linie.GetComponent<Linienzeichner>().setzeGameObjekte(lastselected, selectedGameObjekt);
-        linie.GetComponent<Linienzeichner>().zeichnen = true;
+        GameObject templinie = Instantiate(linie, transform);
+
+        templinie.GetComponent<Linienzeichner>().setzeGameObjekte(lastselected, selectedGameObjekt);
+        templinie.GetComponent<Linienzeichner>().zeichnen = true;
+        templinie.transform.SetParent(linienOrdner.transform);
     }
 
     //Namensanpassung, hat eingabefeld als Methode
@@ -127,9 +128,14 @@ public class ERErstellung : MonoBehaviour
     {
         if (selectedGameObjekt != null)
         {
+            modellObjekte.Remove(selectedGameObjekt);
+            for(int i =0; i< selectedGameObjekt.transform.childCount; i++)
+            {
+                modellObjekte.Remove(selectedGameObjekt.transform.GetChild(i).gameObject);
+            }            
             Destroy(selectedGameObjekt.GetComponent<ERObjekt>());
             Destroy(selectedGameObjekt);
-            modellObjekte.Remove(selectedGameObjekt);
+            
             if (lastselected == null)//wenn man das erste Objekt gleich wieder loescht
             {
                 selectedGameObjekt = null;
@@ -194,18 +200,19 @@ public class ERErstellung : MonoBehaviour
             entitaetOberflaeche.SetActive(false);
             attributOberflaeche.SetActive(true);
             beziehOberflaeche.SetActive(false);
-             oberflaeche = entitaetOberflaeche;
+             oberflaeche = attributOberflaeche;
         }
         else {
             entitaetOberflaeche.SetActive(false);
             attributOberflaeche.SetActive(false);
             beziehOberflaeche.SetActive(true);
-             oberflaeche = entitaetOberflaeche;
+             oberflaeche = beziehOberflaeche;
         }
         GameObject inputfield = oberflaeche.transform.GetChild(0).gameObject;
         GameObject textArea = inputfield.transform.GetChild(0).gameObject;
         GameObject text = textArea.transform.GetChild(2).gameObject;
-        Debug.Log(text.name);
 
+        Debug.Log(selectedGameObjekt.name);
+        Utilitys.TextInTMP(text, selectedGameObjekt.name);
     }
 }

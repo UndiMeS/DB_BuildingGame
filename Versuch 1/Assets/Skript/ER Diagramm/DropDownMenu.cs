@@ -5,6 +5,8 @@ using UnityEngine;
 public class DropDownMenu : MonoBehaviour
 {
     public TMPro.TMP_Dropdown menu;
+    public int einsOderZwei;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +24,10 @@ public class DropDownMenu : MonoBehaviour
                 menu.options.Add(new TMPro.TMP_Dropdown.OptionData(obj.name));
             }
         }
+    }
+
+    public void eingabeDropDown(int option)
+    {
+        ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().welcheEntity(einsOderZwei, option);
     }
 }

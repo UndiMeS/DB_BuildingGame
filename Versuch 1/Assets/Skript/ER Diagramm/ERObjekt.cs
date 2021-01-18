@@ -13,8 +13,6 @@ public class ERObjekt : MonoBehaviour
     public String nameVonObjekt;
     private RectTransform rectTransform;
 
-    public GameObject erstellungsflaeche;
-
     public void Start()
     {
         rectTransform = gameObject.GetComponent<RectTransform>();
