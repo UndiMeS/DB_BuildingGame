@@ -212,7 +212,6 @@ public class ERErstellung : MonoBehaviour
         GameObject textArea = inputfield.transform.GetChild(0).gameObject;
         GameObject text = textArea.transform.GetChild(2).gameObject;
 
-        Debug.Log(selectedGameObjekt.name);
         Utilitys.TextInTMP(text, selectedGameObjekt.name);
     }
 }

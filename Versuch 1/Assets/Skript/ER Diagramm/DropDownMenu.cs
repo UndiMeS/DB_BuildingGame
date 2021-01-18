@@ -30,4 +30,9 @@ public class DropDownMenu : MonoBehaviour
     {
         ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().welcheEntity(einsOderZwei, option);
     }
+
+    public void kardinalitaetSetzen(int option)
+    {
+        ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().kardinalitaet(einsOderZwei, option);
+    }
 }

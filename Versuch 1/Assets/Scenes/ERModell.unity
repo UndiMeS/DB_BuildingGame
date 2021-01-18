@@ -1632,7 +1632,18 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2135260147}
+        m_MethodName: kardinalitaetSetzen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &240094424
 MonoBehaviour:
@@ -3514,7 +3525,18 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2116043111}
+        m_MethodName: kardinalitaetSetzen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &549637674
 MonoBehaviour:
@@ -7949,7 +7971,7 @@ MonoBehaviour:
         m_MethodName: erstelleObjekt
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8607144142062295259, guid: c2fee3d82361b2144b137225b0e730be,
+          m_ObjectArgument: {fileID: 7487772603277265486, guid: b28ae60a593bdcb42bc5bd0026e6463d,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0

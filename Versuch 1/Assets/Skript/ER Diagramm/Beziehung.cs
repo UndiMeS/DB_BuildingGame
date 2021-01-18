@@ -7,8 +7,11 @@ public class Beziehung : MonoBehaviour
 {
     public GameObject objekt1;
     public GameObject objekt2;
+
     private string kard1;
+    private GameObject kardText1;
     private string kard2;
+    private GameObject kardText2;
 
     private GameObject linie1;
     private GameObject linie2;
@@ -22,15 +25,47 @@ public class Beziehung : MonoBehaviour
         linienOrdner = gameObject.transform.parent.gameObject.transform.GetChild(6).gameObject;
          objekt1=null;
          objekt2=null;
+
+        kardText1=gameObject.transform.GetChild(1).gameObject;
+        kardText2 = gameObject.transform.GetChild(2).gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Utilitys.TextInTMP(kardText1, kard1);
+        Utilitys.TextInTMP(kardText2, kard2);
+        if (objekt1 != null)
+        {
+            positionOfKardinalitaet(kardText1, objekt1);
+        }
+        if (objekt2 != null)
+        {
+            positionOfKardinalitaet(kardText2, objekt2);
+        }
     }
 
-    public void welcheEntity(int einsOderZwei, int option)
+    private void positionOfKardinalitaet( GameObject kardtext, GameObject objekt)   //GRÖßE VON EROBJEKT /2
+    {
+        Vector3 pos2 = objekt.transform.position;
+        Vector3 pos1 = gameObject.transform.position;
+      
+        double winkel = Vector3.Angle(pos2-pos1,Vector3.right);
+
+        double fac = 50 * Math.Abs(Math.Cos(winkel / 180 * Math.PI) )+ 60; //abhaenig von Größe ER objekt!!!
+        kardtext.transform.position = pos1 + (float)fac * Vector3.Normalize(pos2 - pos1);
+
+        if (45 < winkel && winkel < 135 || 225 < winkel && 305 > winkel)
+        {
+            kardtext.transform.position += new Vector3(10, 0, 0);
+        }
+        else
+        {
+            kardtext.transform.position += new Vector3(0,10, 0);
+        }
+    }
+
+     public void welcheEntity(int einsOderZwei, int option)
     {
         GameObject entity =null;
         int z=0;
@@ -45,28 +80,26 @@ public class Beziehung : MonoBehaviour
                 z++;
             }            
         }
-        Debug.Log(entity.name);
         if (einsOderZwei == 1)
         {
-            erstellen(objekt1,entity);
+            if (objekt1 != null)
+            {
+                Destroy(linie1.GetComponent<Linienzeichner>());
+                Destroy(linie1);
+            }
+            objekt1 = entity;
+            linie1 = zeichneLinie(objekt1);
         }
         else
         {
-            erstellen(objekt2, entity);
+            if (objekt2 != null)
+            {
+                Destroy(linie2.GetComponent<Linienzeichner>());
+                Destroy(linie2);
+            }
+            objekt2 = entity;
+            linie2 = zeichneLinie(objekt2);
         }
-    }
-
-    private void erstellen(GameObject obj, GameObject entity)
-    {
-        Debug.Log(obj != null);
-        if (obj != null)
-        {
-            Destroy(linie1.GetComponent<Linienzeichner>());
-            Destroy(linie1);
-        }
-        obj = entity;
-        Debug.Log(obj.name);
-        linie1 = zeichneLinie(obj);
     }
 
     private GameObject zeichneLinie(GameObject obj)
@@ -78,5 +111,45 @@ public class Beziehung : MonoBehaviour
         templinie.transform.SetParent(linienOrdner.transform);
 
         return templinie;
+    }
+
+    public void kardinalitaet(int einoderzwei, int option)
+    {
+        Debug.Log(option);
+        if (einoderzwei == 1)
+        {
+            if (objekt1 == null)
+            {
+                FehlerAnzeige.fehlertext = "Lege zuerst die Entität fest!";
+                return;
+            }
+            if (option == 0)
+            {
+                kard1 = "1";
+            }
+            else
+            {
+                Debug.Log("n");
+                kard1 = "n";
+            }
+            kardText1.SetActive(true);
+        }
+        else
+        {
+            if (objekt2 == null)
+            {
+                FehlerAnzeige.fehlertext = "Lege zuerst die Entität fest!";
+                return;
+            }
+            if (option == 0)
+            {
+                kard2 = "1";
+            }
+            else
+            {
+                kard2 = "m";
+            }
+            kardText2.SetActive(true);
+        }
     }
 }

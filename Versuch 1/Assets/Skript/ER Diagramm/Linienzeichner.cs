@@ -25,7 +25,6 @@ public class Linienzeichner : MonoBehaviour
     {   
         if(zeichnen &&( objekt1 == null || objekt2 == null))
         {
-            Debug.Log("hier!");
             Destroy(gameObject);
             Destroy(gameObject.GetComponent<Linienzeichner>());
         }
