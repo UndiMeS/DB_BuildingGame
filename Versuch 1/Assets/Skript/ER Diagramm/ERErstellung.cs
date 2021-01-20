@@ -10,8 +10,11 @@ public class ERErstellung : MonoBehaviour
     public static GameObject selectedGameObjekt;
     public static GameObject lastselected;
     public static ArrayList modellObjekte = new ArrayList(); //Liste an Objekten in ERD, vielleicht fuer spaeter
+
     public GameObject linie;
     public GameObject linienOrdner;
+    public GameObject erModellflaeche;
+
     public static GameObject entitaet;
     public static GameObject attribut;
     public static GameObject beziehung;
@@ -62,6 +65,7 @@ public class ERErstellung : MonoBehaviour
         else //erzeugt neues Objekt und markiert es
         {
             selectedGameObjekt = temp;
+            selectedGameObjekt.transform.SetParent(erModellflaeche.transform);
             if (selectedGameObjekt.CompareTag("Attribut"))
             {
                 selectedGameObjekt.transform.SetParent(lastselected.transform);

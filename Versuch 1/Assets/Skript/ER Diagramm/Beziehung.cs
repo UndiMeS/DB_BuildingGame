@@ -17,12 +17,12 @@ public class Beziehung : MonoBehaviour
     private GameObject linie2;
 
     public GameObject linie;
-    private GameObject linienOrdner;
+    public GameObject linienOrdner;
     
     // Start is called before the first frame update
     void Start()
     {
-        linienOrdner = gameObject.transform.parent.gameObject.transform.GetChild(6).gameObject;
+        linienOrdner = gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject;
          objekt1=null;
          objekt2=null;
 
