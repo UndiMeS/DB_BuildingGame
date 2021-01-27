@@ -18,11 +18,14 @@ public class KameraKontroller : MonoBehaviour
     public Vector3 dragCurrentPosition;
     public static bool aktiviert=true;
 
+    public int hintergrund;
+
     // Start is called before the first frame update
     void Start()
     {
         transform.position = newPosition;
         newZoom = cameraTransform.localPosition;
+        Debug.Log(Screen.width + " " + Screen.height);
     }
 
     // Update is called once per frame
@@ -44,12 +47,26 @@ public class KameraKontroller : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-           dragStartPosition= Utilitys.GetMouseWorldPosition(Input.mousePosition);
+            dragStartPosition = Utilitys.GetMouseWorldPosition(Input.mousePosition);
         }
-        if (Input.GetMouseButton(0))
+        if (Input.touchCount == 2)  //multitouch--> testen!!!
         {
-           dragCurrentPosition= Utilitys.GetMouseWorldPosition(Input.mousePosition);
-            newPosition = transform.position + dragStartPosition-dragCurrentPosition;
+            Touch touch1 = Input.GetTouch(0);
+            Touch touch2 = Input.GetTouch(1);
+
+            Vector2 prevTouchPos1 = touch1.position - touch1.deltaPosition;
+            Vector2 prevTouchPos2 = touch2.position - touch2.deltaPosition;
+
+            float prevMagnitude = (prevTouchPos1 - prevTouchPos2).magnitude;
+            float cureentMagnitude = (touch1.position - touch2.position).magnitude;
+
+            float differenz = cureentMagnitude - prevMagnitude;
+            newZoom += differenz *zoomAmount* 0.01f;
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            dragCurrentPosition = Utilitys.GetMouseWorldPosition(Input.mousePosition);
+            newPosition = transform.position + dragStartPosition - dragCurrentPosition;
         }
     }
 
@@ -79,10 +96,65 @@ public class KameraKontroller : MonoBehaviour
         {
             newZoom -= zoomAmount;
         }
-        
+        Grenze();
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementTime);
         cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.deltaTime * movementTime);
     }
 
-    
+    private void Grenze()
+    {
+        int rechteGrenze;
+        int obereGrenze;
+        int linkeGrenze;
+        int untereGrenze;
+        int zoomMax;
+        int zoomMin;
+
+        if (hintergrund == 0) //baumenue
+        {
+            rechteGrenze = Testing.weite * Testing.zellengroesse+10;
+            obereGrenze = Testing.hoehe * Testing.zellengroesse+10;
+            linkeGrenze = -10;
+            untereGrenze = -40;
+
+            zoomMax = -520;
+            zoomMin = -50;
+        }
+        else  //ER-Diagramm
+        {
+            rechteGrenze = Screen.width-10;
+            obereGrenze = Screen.height-10;
+            linkeGrenze = 10;
+            untereGrenze = 10;
+            zoomMin = -20;
+            zoomMax = -999;
+
+        }
+        if (Utilitys.GetMouseWorldPosition(new Vector2(0,0)).x < linkeGrenze)
+        {
+            newPosition.x = transform.position.x+2;
+            Debug.Log("links");
+        }
+        if (Utilitys.GetMouseWorldPosition(new Vector2(Screen.width,Screen.height)).x > rechteGrenze)
+        {
+            newPosition.x = transform.position.x-2;
+            Debug.Log("rechts");
+        }
+        if (Utilitys.GetMouseWorldPosition(new Vector2(0, 0)).y < untereGrenze)
+        {
+            newPosition.y = transform.position.y+2;
+            Debug.Log("unten");
+        }
+        if (Utilitys.GetMouseWorldPosition(new Vector2(Screen.width, Screen.height)).y > obereGrenze)
+        {
+            newPosition.y = transform.position.y-2;
+            Debug.Log("oben");
+        }
+        if (zoomMax > newZoom.z || zoomMin < newZoom.z)
+        {
+            newZoom = cameraTransform.localPosition;
+            Debug.Log("Zoom");
+        }
+    }
+
 }

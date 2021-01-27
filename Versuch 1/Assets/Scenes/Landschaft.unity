@@ -1966,7 +1966,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648121695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 120, y: 60, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
@@ -1993,6 +1993,7 @@ MonoBehaviour:
   cameraTransform: {fileID: 963194228}
   dragStartPosition: {x: 0, y: 0, z: 0}
   dragCurrentPosition: {x: 0, y: 0, z: 0}
+  hintergrund: 0
 --- !u!1 &649996826
 GameObject:
   m_ObjectHideFlags: 0
@@ -7228,7 +7229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.68200004, y: 0}
   m_AnchorMax: {x: 0.68200004, y: 0}
-  m_AnchoredPosition: {x: 9.6489, y: 123.49639}
+  m_AnchoredPosition: {x: 9.648926, y: 123.49639}
   m_SizeDelta: {x: 507.8296, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2030115636
