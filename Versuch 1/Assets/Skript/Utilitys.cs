@@ -32,14 +32,15 @@ public class Utilitys
     }
 
     //Gibt position der Maus in der Welt aus, mittels Ray
-    public static Vector3 GetMouseWorldPosition()
+    public static Vector3 GetMouseWorldPosition(Vector3 mousePosition)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit = new RaycastHit();
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        Plane plane = new Plane(Vector3.forward, Vector3.zero);
+        float hit;
 
-        if (Physics.Raycast(ray, out hit))
+        if (plane.Raycast(ray, out hit))
         {
-           return hit.point;  
+           return ray.GetPoint(hit);  
         }
         return new Vector3(-1,-1,-1) ;
     }

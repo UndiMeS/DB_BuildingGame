@@ -70,7 +70,9 @@ public class ERErstellung : MonoBehaviour
             {
                 selectedGameObjekt.transform.SetParent(lastselected.transform);
             }
-            selectedGameObjekt.transform.Translate(Screen.width / 2, Screen.height / 2, 0);
+            Vector3 pos =Utilitys.GetMouseWorldPosition(Input.mousePosition + new Vector3(-Screen.width / 2, Screen.height / 2, 0));
+
+            selectedGameObjekt.transform.Translate(pos);
             modellObjekte.Add(selectedGameObjekt);
             selectedGameObjekt.GetComponent<RawImage>().color = Color.yellow;
             if (selectedGameObjekt.CompareTag("Attribut") && lastselected.CompareTag("Entitaet"))

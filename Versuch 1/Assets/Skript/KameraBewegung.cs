@@ -7,12 +7,15 @@ public class KameraBewegung : MonoBehaviour
     public Camera kamera;
     public float speed;
 
-    public GameObject testing;
-
     // Start is called before the first frame update
     void Start()
     {
-         
+        int KameraX = Testing.weite / 2 * Testing.zellengroesse;
+        int KameraY = Testing.hoehe / 2 * Testing.zellengroesse;
+        int KameraZ = -1 * Mathf.Max(Testing.hoehe, Testing.weite) / 2 * Testing.zellengroesse;
+
+        gameObject.transform.Translate(KameraX, KameraY, KameraZ);
+
     }
 
     // Update is called once per frame

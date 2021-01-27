@@ -25,7 +25,7 @@ public class ERObjekt : MonoBehaviour
         Utilitys.TextInTMP(gameObject.transform.GetChild(0).gameObject, nameVonObjekt); //Setzt Objektnamen mit angezeigten Namen des Objektes
         gameObject.name = nameVonObjekt;
         
-        if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition)&&ERErstellung.testAufGleicherPosition(Input.mousePosition).Equals(gameObject))//wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
+        if (Input.GetMouseButtonDown(0) && checkMausIn(Utilitys.GetMouseWorldPosition(Input.mousePosition))&&ERErstellung.testAufGleicherPosition(Utilitys.GetMouseWorldPosition(Input.mousePosition)).Equals(gameObject))//wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
         {
             if (!selected) //wenn neu selected, dann wird Objekt zu aktuellen ER-Objekt
             {
@@ -33,17 +33,18 @@ public class ERObjekt : MonoBehaviour
                 ERErstellung.changeSelectedGameobjekt(gameObject);
 
                 //setzt Pivot des Objektes auf die Position der Maus
-                float pivotX = (Input.mousePosition.x - gameObject.transform.position.x) * (1 / width) + rectTransform.pivot.x;
-                float pivotY = (Input.mousePosition.y - gameObject.transform.position.y) * (1 /height) + rectTransform.pivot.y;
+                float pivotX = (Utilitys.GetMouseWorldPosition(Input.mousePosition).x - gameObject.transform.position.x) * (1 / width) + rectTransform.pivot.x;
+                float pivotY = (Utilitys.GetMouseWorldPosition(Input.mousePosition).y - gameObject.transform.position.y) * (1 /height) + rectTransform.pivot.y;
                 rectTransform.pivot = new Vector2(pivotX, pivotY);
             }
             selected = true;
             moveSelected = true;
+            KameraKontroller.aktiviert = false;
         }
         if (Input.GetMouseButtonUp(0))
         {
             moveSelected = false;
-
+            KameraKontroller.aktiviert = true;
             //setzt Pivot zurueck in die Mitte, wenn Maus losgelassen wird
             float x = (0.5f - rectTransform.pivot.x) * width + gameObject.transform.position.x;
             float y = (0.5f - rectTransform.pivot.y) * height + gameObject.transform.position.y;
@@ -52,7 +53,7 @@ public class ERObjekt : MonoBehaviour
         }
         if (moveSelected)//bewegen des Objekts
         {
-            Vector3 cursorPos = Input.mousePosition;
+            Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);
             cursorPos = imSichtfeld(cursorPos);
             transform.position = cursorPos;
         }

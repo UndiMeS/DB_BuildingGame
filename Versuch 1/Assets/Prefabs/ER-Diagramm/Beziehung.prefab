@@ -410,8 +410,8 @@ GameObject:
   - component: {fileID: 4176434584097883892}
   - component: {fileID: 5291738206589756179}
   - component: {fileID: 2386860871196701748}
-  - component: {fileID: 7507877748841315290}
   - component: {fileID: 4231858260462562781}
+  - component: {fileID: 4375037563891726464}
   m_Layer: 5
   m_Name: Beziehung
   m_TagString: Beziehung
@@ -475,20 +475,6 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &7507877748841315290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7487772603277265486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adc66c34d53a871429c9fba11d7f21b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selected: 1
-  nameVonObjekt: 
 --- !u!114 &4231858260462562781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,3 +490,18 @@ MonoBehaviour:
   objekt1: {fileID: 0}
   objekt2: {fileID: 0}
   linie: {fileID: 7522486218302427998, guid: 4329b69ee7c51364f95bd8e085357311, type: 3}
+  linienOrdner: {fileID: 0}
+--- !u!114 &4375037563891726464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7487772603277265486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc66c34d53a871429c9fba11d7f21b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: 1
+  nameVonObjekt: 

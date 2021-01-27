@@ -38,10 +38,20 @@ public class Beziehung : MonoBehaviour
         if (objekt1 != null)
         {
             positionOfKardinalitaet(kardText1, objekt1);
+            kardText1.SetActive(true);
+        }
+        else
+        {
+            kardText1.SetActive(false);
         }
         if (objekt2 != null)
         {
             positionOfKardinalitaet(kardText2, objekt2);
+            kardText2.SetActive(true);
+        }
+        else
+        {
+            kardText2.SetActive(false);
         }
     }
 
@@ -115,7 +125,6 @@ public class Beziehung : MonoBehaviour
 
     public void kardinalitaet(int einoderzwei, int option)
     {
-        Debug.Log(option);
         if (einoderzwei == 1)
         {
             if (objekt1 == null)
@@ -128,8 +137,7 @@ public class Beziehung : MonoBehaviour
                 kard1 = "1";
             }
             else
-            {
-                Debug.Log("n");
+            { 
                 kard1 = "n";
             }
             kardText1.SetActive(true);
