@@ -9,7 +9,7 @@ public class Gitter
     private int hoehe;
     private int[,] gridArray;
     private float zellengroesse;
-    //private TextMesh[,] debugTextArray;
+    private TextMesh[,] debugTextArray;
 
     public Gitter(int weite, int hoehe, float zellengroesse)
     {
@@ -18,14 +18,14 @@ public class Gitter
         this.zellengroesse = zellengroesse;
 
         gridArray = new int[weite, hoehe];
-        //debugTextArray = new TextMesh[weite,hoehe];
+        debugTextArray = new TextMesh[weite,hoehe];
 
         //Erzeugt Grid in der Welt mit Gizmolinien
         for(int x = 0; x < gridArray.GetLength(0); x++)
         {
             for(int y = 0; y < gridArray.GetLength(1); y++)
             {
-                //debugTextArray[x,y] = Utilitys.CreateWorldText(gridArray[x, y].ToString(), null, GetWorldPosition(x,y )+new Vector3(zellengroesse,zellengroesse)*0.5f, 20, Color.white,TextAnchor.MiddleCenter); //20 Textgröße
+                debugTextArray[x,y] = Utilitys.CreateWorldText(gridArray[x, y].ToString(), null, GetWorldPosition(x,y )+new Vector3(zellengroesse,zellengroesse)*0.5f, 20, Color.white,TextAnchor.MiddleCenter); //20 Textgröße
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1),Color.white,100);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x+1, y),Color.white,100);
             }
@@ -54,8 +54,8 @@ public class Gitter
     {
         if(x >= 0 && y >= 0 && x < weite && y < hoehe) {    //später vielleicht Werte für Gebäude??
             gridArray[x, y] = wert;
-            //debugTextArray[x, y].text = gridArray[x, y].ToString();
-            //debugTextArray[x, y] = Utilitys.CreateWorldText(gridArray[x, y].ToString(), null, GetWorldPosition(x, y) + new Vector3(zellengroesse, zellengroesse) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
+            debugTextArray[x, y].text = gridArray[x, y].ToString();
+            debugTextArray[x, y] = Utilitys.CreateWorldText(gridArray[x, y].ToString(), null, GetWorldPosition(x, y) + new Vector3(zellengroesse, zellengroesse) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
 
         }
     }
@@ -75,6 +75,7 @@ public class Gitter
         GetXY(weltposition, out x, out y);
         if (gridArray[x, y] == 0)
         {
+            Debug.Log("!");
             return true;
         }
         return false;
@@ -82,8 +83,9 @@ public class Gitter
 
     public bool CheckEmpty(Vector3 weltposition, int objektnummer, int drehung)
     {
+        
         bool ausgabe = CheckEmpty(weltposition);
-        if(objektnummer > 20 &&  objektnummer% 10 % 3 == 1)
+        /*if(objektnummer > 20 &&  objektnummer% 10 % 3 == 1)
         {
             if (drehung == 0) { ausgabe = ausgabe && CheckEmpty(weltposition + new Vector3(10, 0, 0)); }
             else if (drehung == 90) { ausgabe = ausgabe && CheckEmpty(weltposition + new Vector3(0, 10, 0)); }
@@ -95,8 +97,8 @@ public class Gitter
             ausgabe = ausgabe & CheckEmpty(weltposition + new Vector3(10, 0, 0));
             ausgabe = ausgabe & CheckEmpty(weltposition + new Vector3(0, -10, 0));
             ausgabe = ausgabe & CheckEmpty(weltposition + new Vector3(10, -10, 0));
-        }
-
+        }*/
+        Debug.Log(ausgabe);
         return ausgabe;
     }
 

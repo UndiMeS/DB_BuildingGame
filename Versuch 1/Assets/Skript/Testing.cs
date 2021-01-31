@@ -23,15 +23,11 @@ public class Testing : MonoBehaviour
     void Start()
     {
         grid = new Gitter(weite, hoehe, zellengroesse);
-        //int KameraX = weite / 2 * zellengroesse;
-        //int KameraY = hoehe / 2 * zellengroesse;
-        //int KameraZ = -1 * Mathf.Max(hoehe, weite) / 2 * zellengroesse;
 
         //Hintergrund und Camera
         boden.transform.Translate(weite / 2 * zellengroesse , hoehe / 2 * zellengroesse , 1);
         boden.transform.localScale += new Vector3(weite +20 , 1, hoehe+20 );
         boden.transform.Rotate(90f, 180f, 0);
-        //GameObject.FindGameObjectWithTag("MainCamera").transform.Translate(KameraX, KameraY, KameraZ);
         FehlerAnzeige.fehlertext = "";
 
 

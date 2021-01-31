@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -26,29 +25,29 @@ public class ObjektBewegung : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            
+
             //Schaue, ob schon Gebäude ander Stelle und abfangen ob in Bildschirmflaeche
-            if (Testing.grid.CheckEmpty(transform.position,Testing.objektGebaut, (int) transform.rotation.eulerAngles.z) 
-                && Utilitys.ImBildschirm())
+            if (Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z))
             {
+                Debug.Log("hallo!");
                 selected = false;
                 transform.position += new Vector3(0, 0, 0.8f);
                 Testing.grid.SetWert(transform.position, Testing.objektGebaut);
                 //2x1 und 2x2 Bauten abfangen und wert setzen
-                if (Testing.objektGebaut>20 && Testing.objektGebaut % 10 % 3 == 1)//10,11,12 haus; 20,21,22 weide; 30,31,32 feld; ...1 klein;...2 mittel;...3 groß
+                /*if (Testing.objektGebaut>20 && Testing.objektGebaut % 10 % 3 == 1)//10,11,12 haus; 20,21,22 weide; 30,31,32 feld; ...1 klein;...2 mittel;...3 groß
                 {
                     GridWertSetzen1x2();
                 }
                 if (Testing.objektGebaut > 20 && Testing.objektGebaut % 10 % 3 == 2)
                 {
                     GridWertSetzen2x2();
-                }
-                
+                }*/
+
                 Testing.geld -= preis;
-                GlowOnOff.status = 0;
+                //GlowOnOff.status = 0;
 
                 //if, da nur für haus1 Glow on of
-                if (Testing.objektGebaut == 10) {
+                /*if (Testing.objektGebaut == 10) {
                     int anz = gameObject.transform.childCount;
                     for (int i = 0; i < anz; i++)
                     {
@@ -56,18 +55,24 @@ public class ObjektBewegung : MonoBehaviour
                         kind.GetComponent<GlowOnOff>().EnableHighlight(0);
                         Destroy(kind.GetComponent<GlowOnOff>());
                     }
-                }
+                }*/
                 Testing.objektGebaut = 0;
                 Destroy(GetComponent<ObjektBewegung>());
+                KameraKontroller.aktiviert = true;
             }
             else
             {
                 FehlerAnzeige.fehlertext = "Objekt konnte nicht gesetzt werden!";
+                int x, y;
+                Testing.grid.GetXY(transform.position, out x, out y);
+                Debug.Log(x + " " + y);
                 Testing.objektGebaut = 0;
+                Destroy(GetComponent<ObjektBewegung>());
                 Destroy(gameObject);
+                KameraKontroller.aktiviert = true;
             }
         }
-        //Drehen
+        /*//Drehen
         if (Input.GetMouseButtonDown(1))
         {
             if (Testing.objektGebaut < 20 || Testing.objektGebaut % 10 % 3 != 2)
@@ -75,7 +80,8 @@ public class ObjektBewegung : MonoBehaviour
                 transform.rotation *= Quaternion.Euler(0, 0, 90f);
             }
             
-        }
+        }*/
+
         //Position der Maus= Postion vom Haus
         if (selected == true)
         {
@@ -83,33 +89,33 @@ public class ObjektBewegung : MonoBehaviour
             Vector3 position = Testing.grid.stayInGrid(cursorPos);
             transform.position = position;
 
-            if(Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z))
+            /*if(Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z))
             {
                 GlowOnOff.status = 2;
             }
-            else { GlowOnOff.status = 1; }
+            else { GlowOnOff.status = 1; }*/
         }
-        
-            
-            
-            
-        }
+
+
+
+
+    }
 
     private void GridWertSetzen2x2()
     {
         Testing.grid.SetWert(transform.position + new Vector3(10, 0, 0), Testing.objektGebaut);
-        Testing.grid.SetWert(transform.position + new Vector3(0,-10, 0), Testing.objektGebaut);
-        Testing.grid.SetWert(transform.position + new Vector3(10,-10, 0), Testing.objektGebaut);
+        Testing.grid.SetWert(transform.position + new Vector3(0, -10, 0), Testing.objektGebaut);
+        Testing.grid.SetWert(transform.position + new Vector3(10, -10, 0), Testing.objektGebaut);
     }
 
     private void GridWertSetzen1x2()
     {
-        if (transform.rotation.eulerAngles.z == 0) { Testing.grid.SetWert(transform.position+new Vector3(10,0,0), Testing.objektGebaut);        }
+        if (transform.rotation.eulerAngles.z == 0) { Testing.grid.SetWert(transform.position + new Vector3(10, 0, 0), Testing.objektGebaut); }
         else if (transform.rotation.eulerAngles.z == 90) { Testing.grid.SetWert(transform.position + new Vector3(0, 10, 0), Testing.objektGebaut); }
-        else if (transform.rotation.eulerAngles.z ==180) { Testing.grid.SetWert(transform.position + new Vector3(-10, 0, 0), Testing.objektGebaut); }
+        else if (transform.rotation.eulerAngles.z == 180) { Testing.grid.SetWert(transform.position + new Vector3(-10, 0, 0), Testing.objektGebaut); }
         else { Testing.grid.SetWert(transform.position + new Vector3(0, -10, 0), Testing.objektGebaut); }
     }
 }
 
-    
+
 

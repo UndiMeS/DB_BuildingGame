@@ -25,7 +25,6 @@ public class KameraKontroller : MonoBehaviour
     {
         transform.position = newPosition;
         newZoom = cameraTransform.localPosition;
-        Debug.Log(Screen.width + " " + Screen.height);
     }
 
     // Update is called once per frame
@@ -61,7 +60,7 @@ public class KameraKontroller : MonoBehaviour
             float cureentMagnitude = (touch1.position - touch2.position).magnitude;
 
             float differenz = cureentMagnitude - prevMagnitude;
-            newZoom += differenz *zoomAmount* 0.01f;
+            newZoom += differenz *zoomAmount* 0.1f;
         }
         else if (Input.GetMouseButton(0))
         {
@@ -132,28 +131,23 @@ public class KameraKontroller : MonoBehaviour
         }
         if (Utilitys.GetMouseWorldPosition(new Vector2(0,0)).x < linkeGrenze)
         {
-            newPosition.x = transform.position.x+2;
-            Debug.Log("links");
+            newPosition.x = transform.position.x+0.2f;
         }
         if (Utilitys.GetMouseWorldPosition(new Vector2(Screen.width,Screen.height)).x > rechteGrenze)
         {
-            newPosition.x = transform.position.x-2;
-            Debug.Log("rechts");
+            newPosition.x = transform.position.x-0.2f;
         }
         if (Utilitys.GetMouseWorldPosition(new Vector2(0, 0)).y < untereGrenze)
         {
-            newPosition.y = transform.position.y+2;
-            Debug.Log("unten");
+            newPosition.y = transform.position.y+0.2f;
         }
         if (Utilitys.GetMouseWorldPosition(new Vector2(Screen.width, Screen.height)).y > obereGrenze)
         {
-            newPosition.y = transform.position.y-2;
-            Debug.Log("oben");
+            newPosition.y = transform.position.y-0.2f;
         }
         if (zoomMax > newZoom.z || zoomMin < newZoom.z)
         {
             newZoom = cameraTransform.localPosition;
-            Debug.Log("Zoom");
         }
     }
 
