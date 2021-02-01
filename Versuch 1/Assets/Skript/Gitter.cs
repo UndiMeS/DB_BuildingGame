@@ -75,9 +75,9 @@ public class Gitter
         GetXY(weltposition, out x, out y);
         if (gridArray[x, y] == 0)
         {
-            Debug.Log("!");
             return true;
         }
+        
         return false;
     }
 
@@ -98,7 +98,6 @@ public class Gitter
             ausgabe = ausgabe & CheckEmpty(weltposition + new Vector3(0, -10, 0));
             ausgabe = ausgabe & CheckEmpty(weltposition + new Vector3(10, -10, 0));
         }*/
-        Debug.Log(ausgabe);
         return ausgabe;
     }
 

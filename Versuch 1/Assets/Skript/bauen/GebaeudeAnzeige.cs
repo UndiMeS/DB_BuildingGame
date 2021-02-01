@@ -35,31 +35,22 @@ public class GebaeudeAnzeige : MonoBehaviour
                 {
                     case 0:
                         Nichts();
-                        setActive(false);
                         break;
                     case 1:
                         Haus(wert);
-                        setActive(true);
                         break;
                     case 2:
                         Weide(wert);
-                        setActive(true);
                         break;
                     case 3:
                         Feld(wert);
-                        setActive(true);
                         break;
                 }
             }
         }
     }
 
-    private void setActive(bool wahr)
-    {
-        feld.SetActive(wahr);
-        anAusKnoepfe.SetActive(!wahr);
-        panelHaus.SetActive(!wahr);
-    }
+    
 
     private void Haus(int wert)
     {

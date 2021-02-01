@@ -17,6 +17,7 @@ public class KameraKontroller : MonoBehaviour
     public Vector3 dragStartPosition;
     public Vector3 dragCurrentPosition;
     public static bool aktiviert=true;
+    private bool prevaktiviert = true;
 
     public int hintergrund;
 
@@ -34,7 +35,9 @@ public class KameraKontroller : MonoBehaviour
         {
             HandleMouseInput();
             HandleMovementInput();
+            prevaktiviert = true;
         }
+        
 
     }
 
@@ -61,6 +64,10 @@ public class KameraKontroller : MonoBehaviour
 
             float differenz = cureentMagnitude - prevMagnitude;
             newZoom += differenz *zoomAmount* 0.1f;
+        }
+        else if (!aktiviert && prevaktiviert&& Input.GetMouseButton(0))
+        {
+            prevaktiviert = false;
         }
         else if (Input.GetMouseButton(0))
         {
@@ -109,6 +116,9 @@ public class KameraKontroller : MonoBehaviour
         int zoomMax;
         int zoomMin;
 
+        movementSpeed=1;
+        movementTime = 5;
+
         if (hintergrund == 0) //baumenue
         {
             rechteGrenze = Testing.weite * Testing.zellengroesse+10;
@@ -131,22 +141,31 @@ public class KameraKontroller : MonoBehaviour
         }
         if (Utilitys.GetMouseWorldPosition(new Vector2(0,0)).x < linkeGrenze)
         {
+            
+            movementTime = 50;
             newPosition.x = transform.position.x+0.2f;
         }
         if (Utilitys.GetMouseWorldPosition(new Vector2(Screen.width,Screen.height)).x > rechteGrenze)
         {
+            
+            movementTime = 50;
             newPosition.x = transform.position.x-0.2f;
         }
         if (Utilitys.GetMouseWorldPosition(new Vector2(0, 0)).y < untereGrenze)
         {
+            
+            movementTime = 50;
             newPosition.y = transform.position.y+0.2f;
         }
         if (Utilitys.GetMouseWorldPosition(new Vector2(Screen.width, Screen.height)).y > obereGrenze)
         {
+            
+            movementTime = 50;
             newPosition.y = transform.position.y-0.2f;
         }
         if (zoomMax > newZoom.z || zoomMin < newZoom.z)
         {
+            movementTime = 50;
             newZoom = cameraTransform.localPosition;
         }
     }

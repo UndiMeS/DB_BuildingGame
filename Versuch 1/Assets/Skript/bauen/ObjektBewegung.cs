@@ -29,7 +29,6 @@ public class ObjektBewegung : MonoBehaviour
             //Schaue, ob schon Gebäude ander Stelle und abfangen ob in Bildschirmflaeche
             if (Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z))
             {
-                Debug.Log("hallo!");
                 selected = false;
                 transform.position += new Vector3(0, 0, 0.8f);
                 Testing.grid.SetWert(transform.position, Testing.objektGebaut);
@@ -57,19 +56,21 @@ public class ObjektBewegung : MonoBehaviour
                     }
                 }*/
                 Testing.objektGebaut = 0;
-                Destroy(GetComponent<ObjektBewegung>());
+                PanelKnopf.gebautetsGebaeude = null;
                 KameraKontroller.aktiviert = true;
+                Destroy(GetComponent<ObjektBewegung>());
+               
             }
             else
             {
                 FehlerAnzeige.fehlertext = "Objekt konnte nicht gesetzt werden!";
                 int x, y;
                 Testing.grid.GetXY(transform.position, out x, out y);
-                Debug.Log(x + " " + y);
                 Testing.objektGebaut = 0;
-                Destroy(GetComponent<ObjektBewegung>());
-                Destroy(gameObject);
                 KameraKontroller.aktiviert = true;
+                PanelKnopf.gebautetsGebaeude = null;
+                Destroy(gameObject);
+                Destroy(GetComponent<ObjektBewegung>());
             }
         }
         /*//Drehen
