@@ -16,6 +16,8 @@ public class Testing : MonoBehaviour
     public static Gitter grid;
 
     public static int objektGebaut;
+
+    public static Wohncontainer[] wohncontainer;
     
 
 

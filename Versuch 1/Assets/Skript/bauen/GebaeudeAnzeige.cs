@@ -31,7 +31,7 @@ public class GebaeudeAnzeige : MonoBehaviour
                 cursorPos.z = 2f;
                 int wert = Testing.grid.GetWert(cursorPos);
                 
-                switch (wert / 10)
+                switch (wert)
                 {
                     case 0:
                         Nichts();
@@ -40,32 +40,35 @@ public class GebaeudeAnzeige : MonoBehaviour
                         Haus(wert);
                         break;
                     case 2:
-                        Weide(wert);
+                        Forschung(wert);
                         break;
                     case 3:
                         Feld(wert);
+                        break;
+                    case 4:
+                        Weide(wert);
+                        break;
+                    case 5:
+                        Stall(wert);
                         break;
                 }
             }
         }
     }
 
-    
+    private void Stall(int wert)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void Forschung(int wert)
+    {
+        throw new NotImplementedException();
+    }
 
     private void Haus(int wert)
     {
-        if (wert == 10)
-        {
-            Utilitys.TextInTMP (ueberschrift, "kleines Haus");
-        }
-        else if (wert == 11)
-        {
-            Utilitys.TextInTMP(ueberschrift, "mittleres Haus");
-        }
-        else
-        {
-            Utilitys.TextInTMP(ueberschrift, "großes Haus");
-        }
+        
         
     }
     private void Weide(int wert)
