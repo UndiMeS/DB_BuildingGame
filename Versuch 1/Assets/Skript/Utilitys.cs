@@ -49,6 +49,10 @@ public class Utilitys
     {
         textfeld.GetComponent<TextMeshProUGUI>().SetText(text);
     }
+    public static void TextInTMP(GameObject textfeld, int text)
+    {
+        textfeld.GetComponent<TextMeshProUGUI>().SetText(text.ToString());
+    }
 
     public static bool ImBildschirm()
     {

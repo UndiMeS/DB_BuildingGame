@@ -11,14 +11,19 @@ public class Testing : MonoBehaviour
     //Grundlegende Werte, die verändert werden können
     public static int weite=20;
     public static int hoehe=13;
-    public static int zellengroesse=10;
-    public static int geld = 100000;
+    public static int zellengroesse = 10;
     public static Gitter grid;
 
     public static int objektGebaut;
 
-    public static Wohncontainer[] wohncontainer;
-    
+    public static int geld = 100000;
+    public static int forscher=0;
+    public static int feldarbeiter = 0;
+    public static int tierpfleger = 0;
+    public static int maxAnzMenschen = 0;
+
+    public GameObject erstellfenster;
+    public GameObject infofesnter;
 
 
     // Start is called before the first frame update
@@ -32,7 +37,8 @@ public class Testing : MonoBehaviour
         boden.transform.Rotate(90f, 180f, 0);
         FehlerAnzeige.fehlertext = "";
 
-
+        ObjektBewegung.erstellfenster = erstellfenster;
+        ObjektBewegung.infoAnzeige = infofesnter;
         
 
 

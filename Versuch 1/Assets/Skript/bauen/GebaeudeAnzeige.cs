@@ -7,16 +7,20 @@ using UnityEngine.UI;
 //Anzeige der Informationen eines Gebauedes, noch nicht vollstaendig
 public class GebaeudeAnzeige : MonoBehaviour
 {
-    public GameObject ueberschrift;
-    public GameObject feld;
-    public GameObject anAusKnoepfe;
-    public GameObject panelHaus;
-   
+    public List<GameObject> anzeigen;
+
+    public GameObject wohncontainerTabelle;
+
+    public GameObject gebaeude;
+
+    private int wert = 0;
+
+    private int menschkosten = 10;
 
     // Start is called before the first frame update
     void Start()
     {
-        Utilitys.TextInTMP(ueberschrift, "");
+        Nichts();
     }
 
     // Update is called once per frame
@@ -24,90 +28,114 @@ public class GebaeudeAnzeige : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if ( Testing.objektGebaut==0)
+            if ( Testing.objektGebaut==0 && outBox(Input.mousePosition))
             {
-
                 Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);
                 cursorPos.z = 2f;
-                int wert = Testing.grid.GetWert(cursorPos);
-                
-                switch (wert)
+                wert = Testing.grid.GetWert(cursorPos);
+                gebaeude = Testing.grid.GetGebaeude(cursorPos);
+
+                int i = 1;
+                foreach (GameObject anzeige in anzeigen)
                 {
-                    case 0:
-                        Nichts();
-                        break;
-                    case 1:
-                        Haus(wert);
-                        break;
-                    case 2:
-                        Forschung(wert);
-                        break;
-                    case 3:
-                        Feld(wert);
-                        break;
-                    case 4:
-                        Weide(wert);
-                        break;
-                    case 5:
-                        Stall(wert);
-                        break;
+                    if (i != wert)
+                    {
+                        anzeige.SetActive(false);
+                    }
+                    else
+                    {
+                        anzeige.SetActive(true);
+                    }i++;
                 }
+
+            
+                
             }
         }
+        switch (wert)
+        {
+            case 0:
+                Nichts();
+                break;
+            case 1:
+                Haus(gebaeude);
+                break;
+            case 2:
+                Feld(wert);
+                break;
+            case 3:
+                Forschung(wert);
+                break;
+            case 4:
+                Weide(wert);
+                break;
+            case 5:
+                Stall(wert);
+                break;
+        }
+    }
+
+    private bool outBox(Vector3 mousePosition)
+    {
+        Vector3[] v = new Vector3[4];
+        gameObject.GetComponent<RectTransform>().GetWorldCorners(v);
+        return mousePosition.x > v[3].x && mousePosition.y > v[3].y;
+    }
+
+    private void Haus(GameObject gebaeude)
+    {
+        gebaeude.GetComponent<Wohncontainer>().ausgabe(wohncontainerTabelle);
+    }
+    private void Feld(int wert)
+    {
+
+    }
+    private void Forschung(int wert)
+    {
+
     }
 
     private void Stall(int wert)
     {
-        throw new NotImplementedException();
-    }
-
-    private void Forschung(int wert)
-    {
-        throw new NotImplementedException();
-    }
-
-    private void Haus(int wert)
-    {
-        
-        
-    }
-    private void Weide(int wert)
-    {
-        if (wert == 20)
-        {
-            Utilitys.TextInTMP(ueberschrift, "kleine Weide");
-        }
-        else if (wert == 21)
-        {
-            Utilitys.TextInTMP(ueberschrift, "mittlere Weide");
-        }
-        else
-        {
-            Utilitys.TextInTMP(ueberschrift, "große Weide");
-        }
-
-    }
-    private void Feld(int wert)
-    {
-        if (wert == 30)
-        {
-            Utilitys.TextInTMP(ueberschrift, "kleines Feld");
-        }
-        else if (wert == 31)
-        {
-            Utilitys.TextInTMP(ueberschrift, "mittleres Feld");
-        }
-        else
-        {
-            Utilitys.TextInTMP(ueberschrift, "großes Feld");
-        }
-
-    }
-
-    private void Nichts()
-    {
-        Utilitys.TextInTMP(ueberschrift, "");
     }
 
     
+
+    
+    private void Weide(int wert)
+    {
+    }
+   
+
+    private void Nichts()
+    {
+    }
+
+    public void Forscher()
+    {
+        if(gebaeude.GetComponent<Wohncontainer>().freieBetten!= 0)
+        {
+            gebaeude.GetComponent<Wohncontainer>().freieBetten--;
+            Testing.forscher++;
+            Testing.geld -= menschkosten;
+        }        
+    }
+    public void Feldarbeiter()
+    {
+        if (gebaeude.GetComponent<Wohncontainer>().freieBetten != 0)
+        {
+            gebaeude.GetComponent<Wohncontainer>().freieBetten--;
+            Testing.feldarbeiter++;
+            Testing.geld -= menschkosten;
+        }
+    }
+    public void Tierpfleger()
+    {
+        if (gebaeude.GetComponent<Wohncontainer>().freieBetten != 0)
+        {
+            gebaeude.GetComponent<Wohncontainer>().freieBetten--;
+            Testing.tierpfleger++;
+            Testing.geld -= menschkosten;
+        }
+    }
 }

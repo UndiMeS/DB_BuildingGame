@@ -19,4 +19,14 @@ public class Hauptmenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void SwitchToER()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void SwitchToBaumenue()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+    }
+
 }

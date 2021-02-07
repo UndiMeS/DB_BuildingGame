@@ -10,7 +10,7 @@ public class Linienzeichner : MonoBehaviour
     private Vector3 pos1;
     private Vector3 pos2;
     private RectTransform rect;
-    private int breite=5;
+    private int breite=1;
     public bool zeichnen=false;
 
     // Start is called before the first frame update

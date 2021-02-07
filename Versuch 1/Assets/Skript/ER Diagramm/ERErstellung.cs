@@ -54,6 +54,7 @@ public class ERErstellung : MonoBehaviour
         }
 
         GameObject temp = Instantiate(prefab, transform);
+        temp.transform.position=Utilitys.GetMouseWorldPosition(new Vector3(Screen.width / 4, Screen.height / 4, 0));
 
         //nur wenn vorhergehendes Objekt Entity kann Attribut erzeugt werden
         if (temp.CompareTag("Attribut") && !(selectedGameObjekt.CompareTag("Entitaet") || modellObjekte.Count == 0))
@@ -70,9 +71,9 @@ public class ERErstellung : MonoBehaviour
             {
                 selectedGameObjekt.transform.SetParent(lastselected.transform);
             }
-            Vector3 pos =Utilitys.GetMouseWorldPosition(Input.mousePosition + new Vector3(-Screen.width / 2, Screen.height / 2, 0));
+           
+            selectedGameObjekt.transform.position = Utilitys.GetMouseWorldPosition(new Vector3(Screen.width / 4, Screen.height / 4, 0));
 
-            selectedGameObjekt.transform.Translate(pos);
             modellObjekte.Add(selectedGameObjekt);
             selectedGameObjekt.GetComponent<RawImage>().color = Color.yellow;
             if (selectedGameObjekt.CompareTag("Attribut") && lastselected.CompareTag("Entitaet"))

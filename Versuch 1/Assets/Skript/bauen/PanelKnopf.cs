@@ -39,6 +39,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public void OnPointerClick(PointerEventData eventData)
     {
         knopfGruppe.OnTabSelected(this);
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)

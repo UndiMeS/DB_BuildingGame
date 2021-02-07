@@ -13,6 +13,9 @@ public class ObjektBewegung : MonoBehaviour
     public int preis;
     private bool bauen;
 
+    public static GameObject erstellfenster;
+    public static GameObject infoAnzeige;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +30,12 @@ public class ObjektBewegung : MonoBehaviour
         {
 
             //Schaue, ob schon Gebäude ander Stelle und abfangen ob in Bildschirmflaeche
-            if (Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z))
+            if (Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
             {
                 selected = false;
                 transform.position += new Vector3(0, 0, 0.8f);
-                Testing.grid.SetWert(transform.position, Testing.objektGebaut);
+                Testing.grid.SetWert(transform.position, Testing.objektGebaut,gameObject);
+
                 //2x1 und 2x2 Bauten abfangen und wert setzen
                 /*if (Testing.objektGebaut>20 && Testing.objektGebaut % 10 % 3 == 1)//10,11,12 haus; 20,21,22 weide; 30,31,32 feld; ...1 klein;...2 mittel;...3 groß
                 {
@@ -102,7 +106,17 @@ public class ObjektBewegung : MonoBehaviour
 
     }
 
-    private void GridWertSetzen2x2()
+    private bool outBox(Vector3 mousePosition)
+    {
+        Vector3[] v = new Vector3[4];
+        erstellfenster.GetComponent<RectTransform>().GetWorldCorners(v);
+        bool temp = mousePosition.x > v[3].x;
+
+        infoAnzeige.GetComponent<RectTransform>().GetWorldCorners(v);
+        return temp && mousePosition.x > v[3].x && mousePosition.y > v[3].y;
+    }
+
+    /*private void GridWertSetzen2x2()
     {
         Testing.grid.SetWert(transform.position + new Vector3(10, 0, 0), Testing.objektGebaut);
         Testing.grid.SetWert(transform.position + new Vector3(0, -10, 0), Testing.objektGebaut);
@@ -115,7 +129,7 @@ public class ObjektBewegung : MonoBehaviour
         else if (transform.rotation.eulerAngles.z == 90) { Testing.grid.SetWert(transform.position + new Vector3(0, 10, 0), Testing.objektGebaut); }
         else if (transform.rotation.eulerAngles.z == 180) { Testing.grid.SetWert(transform.position + new Vector3(-10, 0, 0), Testing.objektGebaut); }
         else { Testing.grid.SetWert(transform.position + new Vector3(0, -10, 0), Testing.objektGebaut); }
-    }
+    }*/
 }
 
 
