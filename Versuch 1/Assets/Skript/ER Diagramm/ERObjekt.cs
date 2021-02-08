@@ -22,8 +22,8 @@ public class ERObjekt : MonoBehaviour
 
     private void Update()
     {
-        Utilitys.TextInTMP(gameObject.transform.GetChild(0).gameObject, nameVonObjekt); //Setzt Objektnamen mit angezeigten Namen des Objektes
-        gameObject.name = nameVonObjekt;
+        //Utilitys.TextInTMP(gameObject.transform.GetChild(0).gameObject, nameVonObjekt); //Setzt Objektnamen mit angezeigten Namen des Objektes
+        //gameObject.name = nameVonObjekt;
         
         if (Input.GetMouseButtonDown(0) && checkMausIn(Utilitys.GetMouseWorldPosition(Input.mousePosition))&&ERErstellung.testAufGleicherPosition(Utilitys.GetMouseWorldPosition(Input.mousePosition)).Equals(gameObject))//wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
         {
@@ -86,6 +86,9 @@ public class ERObjekt : MonoBehaviour
         return drin;
     }
 
-
+    public void nameAendern(string str)
+    {
+        gameObject.name = str;
+    }
 }
 

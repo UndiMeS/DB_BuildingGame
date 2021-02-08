@@ -92,7 +92,7 @@ public class ERErstellung : MonoBehaviour
         templinie.transform.SetParent(linienOrdner.transform);
     }
 
-    //Namensanpassung, hat eingabefeld als Methode
+    //Namensanpassung, hat eingabefeld unten als Methode (old)
     public void giveSelectedGameObjektName(string eingabe)
     {
         if (modellObjekte.Count != 0)
@@ -100,6 +100,7 @@ public class ERErstellung : MonoBehaviour
             selectedGameObjekt.GetComponent<ERObjekt>().nameVonObjekt = eingabe;
         }
     }
+
 
     //verändert die Farbe und aktuell ausgewaehltes/ vorheriges ER-Objekt
     public static void changeSelectedGameobjekt(GameObject newSelected)
