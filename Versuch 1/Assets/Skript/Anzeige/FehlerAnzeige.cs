@@ -23,7 +23,7 @@ public class FehlerAnzeige : MonoBehaviour
     {
         if (!fehlertext.Equals(""))
         {
-            Invoke("Zuruek", 2);//anzeige des Fehlertextes fuer 2s, dann wieder auf "" zurückgesetzt
+            Invoke("Zuruek", 5);//anzeige des Fehlertextes fuer 2s, dann wieder auf "" zurückgesetzt
         }
         Utilitys.TextInTMP(fehlerObject, fehlertext);
     }

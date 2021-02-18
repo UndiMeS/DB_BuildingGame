@@ -17,10 +17,16 @@ public class Testing : MonoBehaviour
     public static int objektGebaut;
 
     public static int geld = 100000;
+    public static int umsatz = 10;
+
     public static int forscher=0;
     public static int feldarbeiter = 0;
     public static int tierpfleger = 0;
-    public static int maxAnzMenschen = 0;
+    public static int tiere = 0;
+
+    public static int summeAnzMenschen = 0;
+    public static int summeTiere = 0;
+    public static int summeForschungen = 0;
 
     public GameObject erstellfenster;
     public GameObject infofesnter;

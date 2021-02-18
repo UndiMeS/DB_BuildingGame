@@ -20,6 +20,7 @@ public class ObjektBewegung : MonoBehaviour
     void Start()
     {
         selected = true;
+        
     }
 
 
@@ -28,7 +29,6 @@ public class ObjektBewegung : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-
             //Schaue, ob schon Gebäude ander Stelle und abfangen ob in Bildschirmflaeche
             if (Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
             {
@@ -47,21 +47,11 @@ public class ObjektBewegung : MonoBehaviour
                 }*/
 
                 Testing.geld -= preis;
-                //GlowOnOff.status = 0;
-
-                //if, da nur für haus1 Glow on of
-                /*if (Testing.objektGebaut == 10) {
-                    int anz = gameObject.transform.childCount;
-                    for (int i = 0; i < anz; i++)
-                    {
-                        GameObject kind = gameObject.transform.GetChild(i).gameObject;
-                        kind.GetComponent<GlowOnOff>().EnableHighlight(0);
-                        Destroy(kind.GetComponent<GlowOnOff>());
-                    }
-                }*/
+                addAnzeigeComponent();
                 Testing.objektGebaut = 0;
                 PanelKnopf.gebautetsGebaeude = null;
                 KameraKontroller.aktiviert = true;
+                
                 Destroy(GetComponent<ObjektBewegung>());
                
             }
@@ -93,12 +83,6 @@ public class ObjektBewegung : MonoBehaviour
             Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);
             Vector3 position = Testing.grid.stayInGrid(cursorPos);
             transform.position = position;
-
-            /*if(Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z))
-            {
-                GlowOnOff.status = 2;
-            }
-            else { GlowOnOff.status = 1; }*/
         }
 
 
@@ -106,14 +90,24 @@ public class ObjektBewegung : MonoBehaviour
 
     }
 
+    private void addAnzeigeComponent()
+    {
+        if(Testing.objektGebaut == 1)
+        {
+            gameObject.AddComponent<Wohncontainer>();
+        }else if(Testing.objektGebaut == 2)
+        {
+            gameObject.AddComponent<Feld>();
+        }
+    }
+
     private bool outBox(Vector3 mousePosition)
     {
         Vector3[] v = new Vector3[4];
         erstellfenster.GetComponent<RectTransform>().GetWorldCorners(v);
-        bool temp = mousePosition.x > v[3].x;
-
+        bool temp = mousePosition.x < v[3].x;
         infoAnzeige.GetComponent<RectTransform>().GetWorldCorners(v);
-        return temp && mousePosition.x > v[3].x && mousePosition.y > v[3].y;
+        return !(temp || (mousePosition.x > v[1].x && mousePosition.y < v[1].y));
     }
 
     /*private void GridWertSetzen2x2()

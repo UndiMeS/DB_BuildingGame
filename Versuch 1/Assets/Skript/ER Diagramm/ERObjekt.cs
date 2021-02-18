@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 /*Prefab der Objekte im ERD besitzten das Skript
@@ -10,36 +11,43 @@ public class ERObjekt : MonoBehaviour
     private float height;
     private bool moveSelected = false;
     public bool selected = true;
-    public String nameVonObjekt;
     private RectTransform rectTransform;
+
+    public bool schreibenSelected = false;
+
+    public Sprite selectedSprite;
+    public Sprite originalSprite;
+
+
 
     public void Start()
     {
         rectTransform = gameObject.GetComponent<RectTransform>();
         width = rectTransform.sizeDelta.x;
         height = rectTransform.sizeDelta.y;
+
     }
 
     private void Update()
     {
-        //Utilitys.TextInTMP(gameObject.transform.GetChild(0).gameObject, nameVonObjekt); //Setzt Objektnamen mit angezeigten Namen des Objektes
-        //gameObject.name = nameVonObjekt;
-        
-        if (Input.GetMouseButtonDown(0) && checkMausIn(Utilitys.GetMouseWorldPosition(Input.mousePosition))&&ERErstellung.testAufGleicherPosition(Utilitys.GetMouseWorldPosition(Input.mousePosition)).Equals(gameObject))//wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
+        if (selected)
+        {
+            changeSprite(true);
+        }
+        if (schreibenSelected || Input.GetMouseButtonDown(0) && checkMausIn(Utilitys.GetMouseWorldPosition(Input.mousePosition)) && ERErstellung.testAufGleicherPosition(Utilitys.GetMouseWorldPosition(Input.mousePosition)).Equals(gameObject))//wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
         {
             if (!selected) //wenn neu selected, dann wird Objekt zu aktuellen ER-Objekt
             {
-                
-                ERErstellung.changeSelectedGameobjekt(gameObject);
-
                 //setzt Pivot des Objektes auf die Position der Maus
                 float pivotX = (Utilitys.GetMouseWorldPosition(Input.mousePosition).x - gameObject.transform.position.x) * (1 / width) + rectTransform.pivot.x;
-                float pivotY = (Utilitys.GetMouseWorldPosition(Input.mousePosition).y - gameObject.transform.position.y) * (1 /height) + rectTransform.pivot.y;
+                float pivotY = (Utilitys.GetMouseWorldPosition(Input.mousePosition).y - gameObject.transform.position.y) * (1 / height) + rectTransform.pivot.y;
                 rectTransform.pivot = new Vector2(pivotX, pivotY);
+                ERErstellung.changeSelectedGameobjekt(gameObject);
             }
             selected = true;
             moveSelected = true;
             KameraKontroller.aktiviert = false;
+            schreibenSelected = false;
         }
         if (Input.GetMouseButtonUp(0))
         {
@@ -50,6 +58,8 @@ public class ERObjekt : MonoBehaviour
             float y = (0.5f - rectTransform.pivot.y) * height + gameObject.transform.position.y;
             gameObject.transform.position = new Vector2(x, y);
             gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+
+
         }
         if (moveSelected)//bewegen des Objekts
         {
@@ -60,7 +70,25 @@ public class ERObjekt : MonoBehaviour
 
     }
 
-    
+    public void changeSprite(bool state)
+    {
+        if (state)
+        {
+            gameObject.GetComponent<Image>().sprite = selectedSprite;
+        }
+        else
+        {
+            gameObject.GetComponent<Image>().sprite = originalSprite;
+        }
+    }
+
+    public void ChangeSchreibenselected()
+    {
+        selected = false;
+        schreibenSelected = true;
+    }
+
+
     //Begrenzung der Bewegung des Objektes
     private Vector3 imSichtfeld(Vector3 cursorPos)
     {
@@ -90,5 +118,7 @@ public class ERObjekt : MonoBehaviour
     {
         gameObject.name = str;
     }
+
+
 }
 

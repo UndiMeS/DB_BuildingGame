@@ -10,7 +10,7 @@ public class Linienzeichner : MonoBehaviour
     private Vector3 pos1;
     private Vector3 pos2;
     private RectTransform rect;
-    private int breite=1;
+    private int breite=3;
     public bool zeichnen=false;
 
     // Start is called before the first frame update
@@ -48,7 +48,7 @@ public class Linienzeichner : MonoBehaviour
 
     private void berechneLinie()
     {
-        rect.sizeDelta = new Vector2((pos2 - pos1).magnitude, breite);
+        rect.sizeDelta = new Vector2(2*(pos2 - pos1).magnitude, breite);
         gameObject.transform.position = pos1;
 
         double winkel = Vector3.Angle(pos2-pos1,Vector3.right);

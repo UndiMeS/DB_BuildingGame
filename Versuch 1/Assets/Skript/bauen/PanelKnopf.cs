@@ -48,7 +48,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         if (gebaeudeNummer != 0 && Testing.objektGebaut == 0)
         {
             KameraKontroller.aktiviert = false;
-            KnopfGedrueckt();
+            testenObBedingungenErfuellt();
         }
         else
         {
@@ -66,5 +66,18 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public void OnPointerExit(PointerEventData eventData)
     {
         knopfGruppe.OnTabExit(this);
+    }
+
+    public void testenObBedingungenErfuellt()
+    {
+        if (gebaeudeNummer == 2)
+        {
+            if (Feld.arbeiter >= Testing.feldarbeiter)
+            {
+                FehlerAnzeige.fehlertext = "Erstelle zuerst Arbeiter!";
+                return;
+            }
+        }
+        KnopfGedrueckt();
     }
 }

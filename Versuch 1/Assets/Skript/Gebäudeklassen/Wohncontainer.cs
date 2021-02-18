@@ -20,7 +20,7 @@ public class Wohncontainer : MonoBehaviour
         baukosten = gameObject.GetComponent<ObjektBewegung>().preis;
         bettenanzahl = 5;
         freieBetten = bettenanzahl;
-        Testing.maxAnzMenschen += bettenanzahl;
+        Testing.summeAnzMenschen += bettenanzahl;
     }
 
     public void ausgabe(GameObject tabelle) 

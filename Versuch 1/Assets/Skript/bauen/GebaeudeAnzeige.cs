@@ -10,6 +10,8 @@ public class GebaeudeAnzeige : MonoBehaviour
     public List<GameObject> anzeigen;
 
     public GameObject wohncontainerTabelle;
+    public GameObject feldTabelle;
+
 
     public GameObject gebaeude;
 
@@ -45,6 +47,7 @@ public class GebaeudeAnzeige : MonoBehaviour
                     else
                     {
                         anzeige.SetActive(true);
+                        ObjektBewegung.infoAnzeige = anzeige;
                     }i++;
                 }
 
@@ -61,7 +64,7 @@ public class GebaeudeAnzeige : MonoBehaviour
                 Haus(gebaeude);
                 break;
             case 2:
-                Feld(wert);
+                Feld(gebaeude);
                 break;
             case 3:
                 Forschung(wert);
@@ -79,16 +82,16 @@ public class GebaeudeAnzeige : MonoBehaviour
     {
         Vector3[] v = new Vector3[4];
         gameObject.GetComponent<RectTransform>().GetWorldCorners(v);
-        return mousePosition.x > v[3].x && mousePosition.y > v[3].y;
+        return mousePosition.x < v[2].x && mousePosition.y > v[2].y;
     }
 
     private void Haus(GameObject gebaeude)
     {
         gebaeude.GetComponent<Wohncontainer>().ausgabe(wohncontainerTabelle);
     }
-    private void Feld(int wert)
+    private void Feld(GameObject gebaeude)
     {
-
+        gebaeude.GetComponent<Feld>().ausgabe(feldTabelle);
     }
     private void Forschung(int wert)
     {

@@ -34,10 +34,9 @@ public class ERErstellung : MonoBehaviour
         lastselected = null;
         selectedGameObjekt = null;
 
-        entitaetOberflaeche = gameObject.transform.GetChild(3).gameObject;
-        attributOberflaeche = gameObject.transform.GetChild(4).gameObject;
-        beziehOberflaeche = gameObject.transform.GetChild(5).gameObject;
-
+        entitaetOberflaeche = gameObject.transform.GetChild(1).gameObject;
+        attributOberflaeche = gameObject.transform.GetChild(2).gameObject;
+        beziehOberflaeche = gameObject.transform.GetChild(3).gameObject;
     }
 
 
@@ -49,12 +48,11 @@ public class ERErstellung : MonoBehaviour
         if (modellObjekte.Count != 0)
         {
             selectedGameObjekt.GetComponent<ERObjekt>().selected = false;//bei ERObjekt auswahl aufloesen
-            selectedGameObjekt.GetComponent<RawImage>().color = Color.white; //Objekt nicht mehr hervorgehoben/gelb
-            lastselected = selectedGameObjekt;
         }
 
         GameObject temp = Instantiate(prefab, transform);
         temp.transform.position=Utilitys.GetMouseWorldPosition(new Vector3(Screen.width / 4, Screen.height / 4, 0));
+        
 
         //nur wenn vorhergehendes Objekt Entity kann Attribut erzeugt werden
         if (temp.CompareTag("Attribut") && !(selectedGameObjekt.CompareTag("Entitaet") || modellObjekte.Count == 0))
@@ -65,17 +63,17 @@ public class ERErstellung : MonoBehaviour
         }
         else //erzeugt neues Objekt und markiert es
         {
-            selectedGameObjekt = temp;
+            modellObjekte.Add(temp);
+            changeSelectedGameobjekt(temp);
             selectedGameObjekt.transform.SetParent(erModellflaeche.transform);
             if (selectedGameObjekt.CompareTag("Attribut"))
             {
                 selectedGameObjekt.transform.SetParent(lastselected.transform);
             }
-           
+            
             selectedGameObjekt.transform.position = Utilitys.GetMouseWorldPosition(new Vector3(Screen.width / 4, Screen.height / 4, 0));
-
-            modellObjekte.Add(selectedGameObjekt);
-            selectedGameObjekt.GetComponent<RawImage>().color = Color.yellow;
+            
+            
             if (selectedGameObjekt.CompareTag("Attribut") && lastselected.CompareTag("Entitaet"))
             {
                zeichneLinie();
@@ -92,27 +90,21 @@ public class ERErstellung : MonoBehaviour
         templinie.transform.SetParent(linienOrdner.transform);
     }
 
-    //Namensanpassung, hat eingabefeld unten als Methode (old)
-    public void giveSelectedGameObjektName(string eingabe)
-    {
-        if (modellObjekte.Count != 0)
-        {
-            selectedGameObjekt.GetComponent<ERObjekt>().nameVonObjekt = eingabe;
-        }
-    }
+    
 
 
     //verändert die Farbe und aktuell ausgewaehltes/ vorheriges ER-Objekt
     public static void changeSelectedGameobjekt(GameObject newSelected)
     {
         lastselected = selectedGameObjekt;
-
         selectedGameObjekt = newSelected;
-        selectedGameObjekt.GetComponent<RawImage>().color = Color.yellow;
-        if (lastselected != null)
+        selectedGameObjekt.GetComponent<ERObjekt>().changeSprite(true);
+
+        if (lastselected != null&& modellObjekte.Count!=1&& !lastselected.Equals(selectedGameObjekt))
         {
-            lastselected.GetComponent<RawImage>().color = Color.white;
+            
             lastselected.GetComponent<ERObjekt>().selected = false;
+            lastselected.GetComponent<ERObjekt>().changeSprite(false);
         }
         changeOberflaeche();
 
@@ -198,28 +190,20 @@ public class ERErstellung : MonoBehaviour
 
     private static void changeOberflaeche()
     {
-        GameObject oberflaeche;
         if (selectedGameObjekt.CompareTag("Entitaet")){
             entitaetOberflaeche.SetActive(true);
             attributOberflaeche.SetActive(false);
             beziehOberflaeche.SetActive(false);
-             oberflaeche = entitaetOberflaeche;
         }else if(selectedGameObjekt.CompareTag("Attribut")){
             entitaetOberflaeche.SetActive(false);
             attributOberflaeche.SetActive(true);
             beziehOberflaeche.SetActive(false);
-             oberflaeche = attributOberflaeche;
         }
         else {
             entitaetOberflaeche.SetActive(false);
             attributOberflaeche.SetActive(false);
             beziehOberflaeche.SetActive(true);
-             oberflaeche = beziehOberflaeche;
         }
-        GameObject inputfield = oberflaeche.transform.GetChild(0).gameObject;
-        GameObject textArea = inputfield.transform.GetChild(0).gameObject;
-        GameObject text = textArea.transform.GetChild(2).gameObject;
-
-        Utilitys.TextInTMP(text, selectedGameObjekt.name);
+       
     }
 }

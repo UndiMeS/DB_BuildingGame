@@ -59,6 +59,7 @@ public class Gitter
         {    //später vielleicht Werte für Gebäude??
             gridArray[x, y] = wert;
             debugTextArray[x, y].text = gridArray[x, y].ToString();
+            
             debugTextArray[x, y] = Utilitys.CreateWorldText(gridArray[x, y].ToString(), null, GetWorldPosition(x, y) + new Vector3(zellengroesse, zellengroesse) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
             erzeugeGebaede(x, y, wert, gebaeude);
         }
