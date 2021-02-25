@@ -21,6 +21,8 @@ public class KameraKontroller : MonoBehaviour
 
     public int hintergrund;
 
+    public GameObject bottomLeiste;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,38 +45,40 @@ public class KameraKontroller : MonoBehaviour
 
     private void HandleMouseInput()
     {
-        if (Input.mouseScrollDelta.y != 0)
-        {
-            newZoom += Input.mouseScrollDelta.y * zoomAmount*10;
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            dragStartPosition = Utilitys.GetMouseWorldPosition(Input.mousePosition);
-        }
-        if (Input.touchCount == 2)  //multitouch--> testen!!!
-        {
-            Touch touch1 = Input.GetTouch(0);
-            Touch touch2 = Input.GetTouch(1);
+            if (Input.mouseScrollDelta.y != 0)
+            {
+                newZoom += Input.mouseScrollDelta.y * zoomAmount * 10;
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                dragStartPosition = Utilitys.GetMouseWorldPosition(Input.mousePosition);
+            }
+            if (Input.touchCount == 2)  //multitouch--> testen!!!
+            {
+                Touch touch1 = Input.GetTouch(0);
+                Touch touch2 = Input.GetTouch(1);
 
-            Vector2 prevTouchPos1 = touch1.position - touch1.deltaPosition;
-            Vector2 prevTouchPos2 = touch2.position - touch2.deltaPosition;
+                Vector2 prevTouchPos1 = touch1.position - touch1.deltaPosition;
+                Vector2 prevTouchPos2 = touch2.position - touch2.deltaPosition;
 
-            float prevMagnitude = (prevTouchPos1 - prevTouchPos2).magnitude;
-            float cureentMagnitude = (touch1.position - touch2.position).magnitude;
+                float prevMagnitude = (prevTouchPos1 - prevTouchPos2).magnitude;
+                float cureentMagnitude = (touch1.position - touch2.position).magnitude;
 
-            float differenz = cureentMagnitude - prevMagnitude;
-            newZoom += differenz *zoomAmount* 0.1f;
-        }
-        else if (!aktiviert && prevaktiviert&& Input.GetMouseButton(0))
-        {
-            prevaktiviert = false;
-        }
-        else if (Input.GetMouseButton(0))
-        {
-            dragCurrentPosition = Utilitys.GetMouseWorldPosition(Input.mousePosition);
-            newPosition = transform.position + dragStartPosition - dragCurrentPosition;
-        }
+                float differenz = cureentMagnitude - prevMagnitude;
+                newZoom += differenz * zoomAmount * 0.1f;
+            }
+            else if (!aktiviert && prevaktiviert && Input.GetMouseButton(0))
+            {
+                prevaktiviert = false;
+            }
+            else if (Input.GetMouseButton(0))
+            {
+                dragCurrentPosition = Utilitys.GetMouseWorldPosition(Input.mousePosition);
+                newPosition = transform.position + dragStartPosition - dragCurrentPosition;
+            }
+        
     }
+
 
     void HandleMovementInput()
     {

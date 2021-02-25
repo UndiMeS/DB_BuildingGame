@@ -9,6 +9,7 @@ public class Wohncontainer : MonoBehaviour
     public static int nummerZaehler=1;
     private int containernummer;
     public int bettenanzahl;
+    public static int preis;
     private int baukosten;
     public int freieBetten;
 
@@ -17,7 +18,7 @@ public class Wohncontainer : MonoBehaviour
     {
         containernummer = nummerZaehler;
         nummerZaehler++;
-        baukosten = gameObject.GetComponent<ObjektBewegung>().preis;
+        baukosten = preis;
         bettenanzahl = 5;
         freieBetten = bettenanzahl;
         Testing.summeAnzMenschen += bettenanzahl;

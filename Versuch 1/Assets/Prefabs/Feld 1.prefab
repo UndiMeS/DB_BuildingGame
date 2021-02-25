@@ -1250,6 +1250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 466822389767397348}
   - component: {fileID: 5669637864592414059}
+  - component: {fileID: -3777701256692832500}
   m_Layer: 0
   m_Name: Feld 1
   m_TagString: Untagged
@@ -1298,6 +1299,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preis: 90
+--- !u!114 &-3777701256692832500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2349848642799645956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6db8612be86404597f93ae8c1a42f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2771633960944720574
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(RawImage))]
+
 public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public int gebaeudeNummer;//0 nichts; 1 haus, 2 forschung, 3 Feld, 4 Weide 5 stall
@@ -14,8 +14,8 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public RawImage hintergrund;
 
     public static GameObject gebautetsGebaeude;
+    public GameObject spezialisierungsauswahl;
 
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +27,11 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     {
         Testing.objektGebaut = gebaeudeNummer;
         gebautetsGebaeude = Instantiate(gebaeude);
+
+        if (gebaeudeNummer == 3)
+        {
+            spezialisierungsauswahl.SetActive(true);
+        }
         
     }
 
@@ -70,13 +75,44 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
     public void testenObBedingungenErfuellt()
     {
+        if (GebaeudeAnzeige.forschungsauswahl)
+        {
+            FehlerAnzeige.fehlertext = "Wähle zuerst eine Spezialisierung des Forschungsprojektes aus!";
+            return;
+        }
         if (gebaeudeNummer == 2)
         {
             if (Feld.arbeiter >= Testing.feldarbeiter)
             {
-                FehlerAnzeige.fehlertext = "Erstelle zuerst Arbeiter!";
+                FehlerAnzeige.fehlertext = "Erstelle zuerst Feldarbeiter!";
                 return;
             }
+        }
+        if(gebaeudeNummer == 4)
+        {
+            if (Weide.arbeiter >= Testing.tierpfleger&&Weide.tiere>= Testing.summeTiere)
+            {
+                FehlerAnzeige.fehlertext = "Erstelle zuerst Tierpfleger und Tiere!";
+                return;
+            }else if (Weide.arbeiter >= Testing.tierpfleger)
+            {
+                FehlerAnzeige.fehlertext = "Erstelle zuerst Tierpfleger!";
+                return;
+            }
+            else if (Weide.tiere >= Testing.tiere)
+            {
+                FehlerAnzeige.fehlertext = "Erstelle zuerst Tiere!";
+                return;
+            }
+        }
+        if (gebaeudeNummer == 3)
+        {
+            if (0== Testing.forscher)
+            {
+                FehlerAnzeige.fehlertext = "Erstelle zuerst Forscher!";
+                return;
+            }
+
         }
         KnopfGedrueckt();
     }

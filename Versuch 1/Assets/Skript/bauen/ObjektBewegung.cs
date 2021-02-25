@@ -20,7 +20,7 @@ public class ObjektBewegung : MonoBehaviour
     void Start()
     {
         selected = true;
-        
+        Testing.gebautesObjekt = gameObject;
     }
 
 
@@ -45,13 +45,13 @@ public class ObjektBewegung : MonoBehaviour
                 {
                     GridWertSetzen2x2();
                 }*/
+                
 
                 Testing.geld -= preis;
-                addAnzeigeComponent();
                 Testing.objektGebaut = 0;
                 PanelKnopf.gebautetsGebaeude = null;
                 KameraKontroller.aktiviert = true;
-                
+                Testing.gebautesObjekt = null;
                 Destroy(GetComponent<ObjektBewegung>());
                
             }
@@ -63,20 +63,12 @@ public class ObjektBewegung : MonoBehaviour
                 Testing.objektGebaut = 0;
                 KameraKontroller.aktiviert = true;
                 PanelKnopf.gebautetsGebaeude = null;
+                Testing.gebautesObjekt = null;
                 Destroy(gameObject);
                 Destroy(GetComponent<ObjektBewegung>());
             }
         }
-        /*//Drehen
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (Testing.objektGebaut < 20 || Testing.objektGebaut % 10 % 3 != 2)
-            {
-                transform.rotation *= Quaternion.Euler(0, 0, 90f);
-            }
-            
-        }*/
-
+        
         //Position der Maus= Postion vom Haus
         if (selected == true)
         {
@@ -90,16 +82,7 @@ public class ObjektBewegung : MonoBehaviour
 
     }
 
-    private void addAnzeigeComponent()
-    {
-        if(Testing.objektGebaut == 1)
-        {
-            gameObject.AddComponent<Wohncontainer>();
-        }else if(Testing.objektGebaut == 2)
-        {
-            gameObject.AddComponent<Feld>();
-        }
-    }
+
 
     private bool outBox(Vector3 mousePosition)
     {

@@ -7,6 +7,8 @@ public class DropDownMenu : MonoBehaviour
 {
     public TMPro.TMP_Dropdown menu;
     public int einsOderZwei;
+    public TMPro.TMP_Dropdown kard;
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,10 @@ public class DropDownMenu : MonoBehaviour
     void Update()
     {
         menu.options.Clear();
-
+        if (kard != null)
+        {
+            kard.RefreshShownValue();
+        }
 
         foreach(GameObject obj in ERErstellung.modellObjekte)
         {if (obj != null)
@@ -30,10 +35,12 @@ public class DropDownMenu : MonoBehaviour
             }
             
         }
+        menu.RefreshShownValue();
     }
 
     public void eingabeDropDown(int option)
     {
+        
         ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().welcheEntity(einsOderZwei, option);
     }
 

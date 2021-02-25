@@ -5,12 +5,31 @@ using UnityEngine.UI;
 
 public class LeisteBottom : MonoBehaviour
 {
+    public static GameObject leiste_bottom;
+
     public Sprite schwacheEntitaet;
     public Sprite selecSchwacheEntitaet;
     public Sprite entitaet;
     public Sprite selecEntitaet;
     public Toggle schwEntKnopf;
     public GameObject dropdownSE;
+    public GameObject prefabBez;
+
+    public GameObject erFlaeche;
+
+    public GameObject bezEinstellung;
+    public static TMPro.TMP_Dropdown objekt1;
+    public static TMPro.TMP_Dropdown objekt2;
+    public  TMPro.TMP_Dropdown kard1;
+    public  TMPro.TMP_Dropdown kard2;
+    public Toggle primKnopf;
+
+    public void Start()
+    {
+       leiste_bottom = gameObject;
+       objekt1= bezEinstellung.transform.GetChild(1).gameObject.GetComponent<TMPro.TMP_Dropdown>();
+       objekt2= bezEinstellung.transform.GetChild(4).gameObject.GetComponent<TMPro.TMP_Dropdown>();
+    }
 
     public void Update()
     {
@@ -27,6 +46,45 @@ public class LeisteBottom : MonoBehaviour
                 dropdownSE.SetActive(false);
             }
         }
+        if (ERErstellung.selectedGameObjekt != null && ERErstellung.selectedGameObjekt.CompareTag("Attribut"))
+        {
+            if (ERErstellung.selectedGameObjekt.transform.parent.GetComponent<Entitaet>().primaerschluessel.Contains(ERErstellung.selectedGameObjekt))
+            {
+                primKnopf.isOn = true;
+            }
+            else
+            {
+                primKnopf.isOn = false;
+            }
+        }
+        if (ERErstellung.selectedGameObjekt != null && ERErstellung.selectedGameObjekt.CompareTag("Beziehung"))
+        {
+            objekt1.value = entityZuNummer(ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().objekt1);
+            objekt2.value = entityZuNummer(ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().objekt2);
+            if (ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().kard2.Equals("")) { }
+            else if (ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().kard2.Equals("1"))
+            {
+
+                kard2.value = 0;
+            }
+            else
+            {
+                kard2.value = 1;
+            }
+
+            if (ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().kard1.Equals("")) { }
+
+            else if (ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().kard1.Equals("1"))
+            {
+                kard1.value = 0;
+            }
+            else
+            {
+                kard1.value = 1;
+            }
+            
+        }
+
     }
 
     public void SchwacheEntitaet(bool state)
@@ -40,17 +98,21 @@ public class LeisteBottom : MonoBehaviour
             ERErstellung.selectedGameObjekt.GetComponent<ERObjekt>().originalSprite = schwacheEntitaet;
             ERErstellung.selectedGameObjekt.GetComponent<ERObjekt>().selectedSprite = selecSchwacheEntitaet;
             ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwach = true;
+
         }
         else
         {
             ERErstellung.selectedGameObjekt.GetComponent<ERObjekt>().originalSprite = entitaet;
             ERErstellung.selectedGameObjekt.GetComponent<ERObjekt>().selectedSprite = selecEntitaet;
             ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwach = false;
+            ERErstellung.modellObjekte.Remove(ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung);
+            Destroy(ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung);
         }
     }
 
     public void SchwacheEntitaetAuswahl(int option)
     {
+        dropdownSE.GetComponent<TMPro.TMP_Dropdown>().RefreshShownValue();
         GameObject entity = null;
         int z = 0;
         foreach (GameObject obj in ERErstellung.modellObjekte)
@@ -59,11 +121,85 @@ public class LeisteBottom : MonoBehaviour
             {
                 if (z == option)
                 {
-                   Debug.Log(obj.name);
                     entity = obj;
                 }
                 z++;
             }
+        }
+        if (entity != null && !entity.Equals(ERErstellung.selectedGameObjekt))
+        {
+            ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().vaterEntitaet = entity;
+            gameObject.GetComponent<ERErstellung>().erstelleObjekt(prefabBez);
+            ERErstellung.changeSelectedGameobjekt(ERErstellung.lastselected);
+            ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung = ERErstellung.lastselected;
+
+            ERErstellung.lastselected.GetComponent<Beziehung>().welcheEntity(1, entityZuNummer(ERErstellung.selectedGameObjekt));
+            ERErstellung.lastselected.GetComponent<Beziehung>().schwach = true;
+            ERErstellung.lastselected.GetComponent<Beziehung>().welcheEntity(2, option);
+
+        }
+        else
+        {
+            FehlerAnzeige.fehlertext = "Es kann keine schwache Entität zu sich selber erstellt werden";
+        }
+    }
+
+    private int entityZuNummer(GameObject ent)
+    {
+        int z = 0;
+        foreach (GameObject obj in ERErstellung.modellObjekte)
+        {
+            if (obj.CompareTag("Entitaet"))
+            {
+                if (ent.Equals(obj))
+                {
+                    return z;
+                }
+                z++;
+            }
+        }
+        return -1;
+    }
+
+    public static void setValueDropDown(GameObject ent, int einsOderZwei)
+    {
+        int entnummer = -1;
+        int z = 0;
+        foreach (GameObject obj in ERErstellung.modellObjekte)
+        {
+            if (obj.CompareTag("Entitaet"))
+            {
+                if (ent.Equals(obj))
+                {
+                    entnummer = z;
+                }
+                z++;
+            }
+        }
+        if (einsOderZwei == 1&&entnummer!=-1)
+        {
+            objekt1.value = z;
+        }else if(einsOderZwei == 2 && entnummer != -1)
+        {
+            objekt2.value = z;
+        }
+    }
+
+    public void primaerschluessel(bool state)
+    {
+        if (ERErstellung.selectedGameObjekt == null)
+        {
+            return;
+        }
+        if (state)
+        {
+            ERErstellung.selectedGameObjekt.transform.parent.GetComponent<Entitaet>().primaerschluessel.Add(ERErstellung.selectedGameObjekt);
+            ERErstellung.selectedGameObjekt.transform.GetChild(0).GetChild(2).transform.GetComponent<TMPro.TextMeshProUGUI>().fontStyle = TMPro.FontStyles.Underline;
+        }
+        else
+        {
+            ERErstellung.selectedGameObjekt.transform.GetChild(0).GetChild(2).transform.GetComponent<TMPro.TextMeshProUGUI>().fontStyle = TMPro.FontStyles.Normal;
+            ERErstellung.selectedGameObjekt.transform.parent.GetComponent<Entitaet>().primaerschluessel.Remove(ERErstellung.selectedGameObjekt);
         }
     }
 }

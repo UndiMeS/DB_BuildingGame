@@ -11,18 +11,39 @@ public class GebaeudeAnzeige : MonoBehaviour
 
     public GameObject wohncontainerTabelle;
     public GameObject feldTabelle;
+    public GameObject stallTabelle;
+    public GameObject forschungsTabelle;
+    public GameObject weidenTabelle;
+    public GameObject projektTabelle;
 
+    public GameObject spezialisierungsauswahl;
 
     public GameObject gebaeude;
 
     private int wert = 0;
 
     private int menschkosten = 10;
+    private int tierkosten = 10;
+
+    public static bool forschungsauswahl = false;
+
+    public TMP_Dropdown Forschungsmerkmal;
+
+    public GameObject spezialisierungsIcon;
+    public Sprite wohn;
+    public Sprite feld;
+    public Sprite weide;
+    public Sprite stall;
+
+    public static int[] projektMerkmalStufen;
+
+    public GameObject ProjektBlockPanel;
 
     // Start is called before the first frame update
     void Start()
     {
         Nichts();
+        projektMerkmalStufen = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1,1,1 };
     }
 
     // Update is called once per frame
@@ -37,22 +58,26 @@ public class GebaeudeAnzeige : MonoBehaviour
                 wert = Testing.grid.GetWert(cursorPos);
                 gebaeude = Testing.grid.GetGebaeude(cursorPos);
 
-                int i = 1;
-                foreach (GameObject anzeige in anzeigen)
-                {
-                    if (i != wert)
-                    {
-                        anzeige.SetActive(false);
-                    }
-                    else
-                    {
-                        anzeige.SetActive(true);
-                        ObjektBewegung.infoAnzeige = anzeige;
-                    }i++;
-                }
 
-            
-                
+            }
+            if (Testing.objektGebaut != 0&&Testing.gebautesObjekt!=null)
+            {
+                wert = Testing.objektGebaut;
+                gebaeude = Testing.gebautesObjekt;
+            }
+            int i = 1;
+            foreach (GameObject anzeige in anzeigen)
+            {
+                if (i != wert)
+                {
+                    anzeige.SetActive(false);
+                }
+                else
+                {
+                    anzeige.SetActive(true);
+                    ObjektBewegung.infoAnzeige = anzeige;
+                }
+                i++;
             }
         }
         switch (wert)
@@ -67,14 +92,22 @@ public class GebaeudeAnzeige : MonoBehaviour
                 Feld(gebaeude);
                 break;
             case 3:
-                Forschung(wert);
+                Forschung(gebaeude);
                 break;
             case 4:
-                Weide(wert);
+                Weide(gebaeude);
                 break;
             case 5:
-                Stall(wert);
+                Stall(gebaeude);
                 break;
+        }
+        if (forschungsauswahl)
+        {
+            FehlerAnzeige.fehlertext = "Wähle eine Spezialisierung der Forschungsstation fest.";
+            foreach (GameObject anzeige in anzeigen)
+            {
+                    anzeige.SetActive(false);
+            }
         }
     }
 
@@ -93,20 +126,24 @@ public class GebaeudeAnzeige : MonoBehaviour
     {
         gebaeude.GetComponent<Feld>().ausgabe(feldTabelle);
     }
-    private void Forschung(int wert)
+    private void Forschung(GameObject gebaeude)
     {
-
+        if (!forschungsauswahl)
+        {
+            gebaeude.GetComponent<Forschung>().ausgabeStation(forschungsTabelle);
+            gebaeude.GetComponent<Forschung>().ausgabeProjekt(projektTabelle);
+        }
     }
 
-    private void Stall(int wert)
+    private void Stall(GameObject gebaeude)
     {
-    }
+        gebaeude.GetComponent<Stallcontainer>().ausgabe(stallTabelle);
+    }   
 
     
-
-    
-    private void Weide(int wert)
+    private void Weide(GameObject gebaeude)
     {
+        gebaeude.GetComponent<Weide>().ausgabe(weidenTabelle);
     }
    
 
@@ -140,5 +177,68 @@ public class GebaeudeAnzeige : MonoBehaviour
             Testing.tierpfleger++;
             Testing.geld -= menschkosten;
         }
+    }
+     public void Tiere()
+    {
+        if (gebaeude.GetComponent<Stallcontainer>().freieGehege != 0)
+        {
+            gebaeude.GetComponent<Stallcontainer>().freieGehege--;
+            Testing.tiere++;
+            Testing.geld -= tierkosten;
+        }
+    }
+
+    public void Spezialisierung(string spezialisierung)
+    {
+        gebaeude.GetComponent<Forschung>().spezialisierung = spezialisierung;
+        spezialisierungsauswahl.SetActive(false);
+        forschungsauswahl = false;
+
+        if (spezialisierung.Equals("Wohncontainer"))
+        {
+            gebaeude.GetComponent<Forschung>().spezInt = 1;
+            spezialisierungsIcon.GetComponent<Image>().sprite = wohn;
+
+        }else if (spezialisierung.Equals("Feldsphäre"))
+        {
+            gebaeude.GetComponent<Forschung>().spezInt = 2;
+            spezialisierungsIcon.GetComponent<Image>().sprite = feld;
+        }
+        else if (spezialisierung.Equals("Weidesphäre"))
+        {
+            gebaeude.GetComponent<Forschung>().spezInt = 4;
+            spezialisierungsIcon.GetComponent<Image>().sprite = weide;
+        }
+        else if (spezialisierung.Equals("Stallcontainer"))
+        {
+            gebaeude.GetComponent<Forschung>().spezInt = 5;
+            spezialisierungsIcon.GetComponent<Image>().sprite = stall;
+        }
+        gebaeude.GetComponent<Forschung>().verbesserung(Forschungsmerkmal);
+        ProjektBlockPanel.SetActive(true);
+    }
+    public void erstelleProjekt()
+    {
+        if(gebaeude.GetComponent<Forschung>().maxAnzahlProjekte >= gebaeude.GetComponent<Forschung>().anzahlProjekte&& Testing.forscher >= Projekt.forscheranzahl)
+        {
+            Projekt projekt = new Projekt();
+            gebaeude.GetComponent<Forschung>().addProjekt(projekt);
+            gebaeude.GetComponent<Forschung>().anzahlProjekte++;
+            ProjektBlockPanel.SetActive(false);
+        }
+        else
+        {            
+            FehlerAnzeige.fehlertext = "Du kannst hier keine neuen Projekte mehr erzeugen.";
+            if (gebaeude.GetComponent<Forschung>().anzahlProjekte == 0)
+            {
+                ProjektBlockPanel.SetActive(true);
+            }
+        }
+        
+    }
+
+    public void projektMerkmal(int option)
+    {
+        gebaeude.GetComponent<Forschung>().setMerkmal(option);
     }
 }

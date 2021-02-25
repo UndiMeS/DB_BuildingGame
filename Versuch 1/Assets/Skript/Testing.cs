@@ -15,6 +15,7 @@ public class Testing : MonoBehaviour
     public static Gitter grid;
 
     public static int objektGebaut;
+    public static GameObject gebautesObjekt;
 
     public static int geld = 100000;
     public static int umsatz = 10;
@@ -30,6 +31,7 @@ public class Testing : MonoBehaviour
 
     public GameObject erstellfenster;
     public GameObject infofesnter;
+
 
 
     // Start is called before the first frame update

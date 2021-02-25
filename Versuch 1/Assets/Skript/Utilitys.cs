@@ -54,6 +54,11 @@ public class Utilitys
         textfeld.GetComponent<TextMeshProUGUI>().SetText(text.ToString());
     }
 
+    public static void TextInTMP(GameObject textfeld, float text)
+    {
+        textfeld.GetComponent<TextMeshProUGUI>().SetText(text.ToString());
+    }
+
     public static bool ImBildschirm()
     {
         return Input.mousePosition.y > 280 * Screen.height / 900 ;

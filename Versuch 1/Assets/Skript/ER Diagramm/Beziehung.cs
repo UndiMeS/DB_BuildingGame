@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Beziehung : MonoBehaviour
 {
-    public GameObject objekt1;
-    public GameObject objekt2;
+    public GameObject objekt1 =null;
+    public GameObject objekt2=null;
 
-    private string kard1;
+    public string kard1="";
     private GameObject kardText1;
-    private string kard2;
+    public string kard2 = "";
     private GameObject kardText2;
 
     private GameObject linie1;
@@ -18,14 +18,19 @@ public class Beziehung : MonoBehaviour
 
     public GameObject linie;
     public GameObject linienOrdner;
+
+    public Sprite schwachSelected;
+    public Sprite schwachOriginal;
+    public Sprite Selected;
+    public Sprite Original;
+
+    public bool schwach = false;
+
     
     // Start is called before the first frame update
     void Start()
     {
         linienOrdner = gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject;
-         objekt1=null;
-         objekt2=null;
-
         kardText1=gameObject.transform.GetChild(1).gameObject;
         kardText2 = gameObject.transform.GetChild(2).gameObject;
     }
@@ -42,6 +47,7 @@ public class Beziehung : MonoBehaviour
         }
         else
         {
+            schwach = false;
             kardText1.SetActive(false);
         }
         if (objekt2 != null)
@@ -51,7 +57,19 @@ public class Beziehung : MonoBehaviour
         }
         else
         {
+            schwach = false;
             kardText2.SetActive(false);
+        }
+
+        if (schwach)
+        {
+            gameObject.GetComponent<ERObjekt>().selectedSprite = schwachSelected;
+            gameObject.GetComponent<ERObjekt>().originalSprite = schwachOriginal;
+        }
+        else
+        {
+            gameObject.GetComponent<ERObjekt>().selectedSprite = Selected;
+            gameObject.GetComponent<ERObjekt>().originalSprite = Original;
         }
     }
 
@@ -62,21 +80,31 @@ public class Beziehung : MonoBehaviour
       
         double winkel = Vector3.Angle(pos2-pos1,Vector3.right);
 
-        double fac = 50 * Math.Abs(Math.Cos(winkel / 180 * Math.PI) )+ 60; //abhaenig von Größe ER objekt!!!
+        double fac = 15 * Math.Abs(2*Math.Cos(winkel / 180 * Math.PI) )+ 10; //abhaenig von Größe ER objekt!!!
         kardtext.transform.position = pos1 + (float)fac * Vector3.Normalize(pos2 - pos1);
 
         if (45 < winkel && winkel < 135 || 225 < winkel && 305 > winkel)
         {
-            kardtext.transform.position += new Vector3(10, 0, 0);
+            kardtext.transform.position += new Vector3(5, 0, 0);
         }
         else
         {
-            kardtext.transform.position += new Vector3(0,10, 0);
+            kardtext.transform.position += new Vector3(0,5, 0);
         }
     }
 
      public void welcheEntity(int einsOderZwei, int option)
     {
+        Start();
+        if(option == -1)
+        {
+            return;
+        }
+        if (schwach&&einsOderZwei==1)
+        {
+            FehlerAnzeige.fehlertext = "Änderung der Entitäten nicht möglich!";
+            return;
+        }
         GameObject entity =null;
         int z=0;
         foreach (GameObject obj in ERErstellung.modellObjekte)
@@ -90,7 +118,22 @@ public class Beziehung : MonoBehaviour
                 z++;
             }            
         }
-        if (einsOderZwei == 1)
+        if (schwach && einsOderZwei == 2)
+        {
+            if (objekt1.Equals(entity))
+            {
+                FehlerAnzeige.fehlertext = "Es kann keine schwache Entität zu sich selber erstellt werden";
+                return;
+            }else if (objekt2 != null)
+            {
+                Destroy(linie2.GetComponent<Linienzeichner>());
+                Destroy(linie2);
+            }
+            objekt2 = entity;
+            objekt1.GetComponent<Entitaet>().vaterEntitaet = entity;
+            linie2 = zeichneLinie(objekt2);
+        }
+        else if (!entity.Equals(objekt1)&&einsOderZwei == 1)
         {
             if (objekt1 != null)
             {
@@ -100,7 +143,7 @@ public class Beziehung : MonoBehaviour
             objekt1 = entity;
             linie1 = zeichneLinie(objekt1);
         }
-        else
+        else if(!entity.Equals(objekt2) && einsOderZwei == 2)
         {
             if (objekt2 != null)
             {
@@ -111,6 +154,8 @@ public class Beziehung : MonoBehaviour
             linie2 = zeichneLinie(objekt2);
         }
     }
+
+   
 
     private GameObject zeichneLinie(GameObject obj)
     {
@@ -125,28 +170,10 @@ public class Beziehung : MonoBehaviour
 
     public void kardinalitaet(int einoderzwei, int option)
     {
-        if (einoderzwei == 1)
-        {
-            if (objekt1 == null)
-            {
-                FehlerAnzeige.fehlertext = "Lege zuerst die Entität fest!";
-                return;
-            }
-            if (option == 0)
-            {
-                kard1 = "1";
-            }
-            else
-            { 
-                kard1 = "n";
-            }
-            kardText1.SetActive(true);
-        }
-        else
+        if (einoderzwei == 2)
         {
             if (objekt2 == null)
             {
-                FehlerAnzeige.fehlertext = "Lege zuerst die Entität fest!";
                 return;
             }
             if (option == 0)
@@ -158,6 +185,25 @@ public class Beziehung : MonoBehaviour
                 kard2 = "m";
             }
             kardText2.SetActive(true);
+            
+        }
+        else
+        {
+            if (objekt1 == null)
+            {
+                FehlerAnzeige.fehlertext = "Lege zuerst die Entität fest!";
+                return;
+            }
+            if (option == 0)
+            {
+                kard1 = "1";
+            }
+            else
+            {
+                kard1 = "n";
+            }
+            kardText1.SetActive(true);
+
         }
     }
 }

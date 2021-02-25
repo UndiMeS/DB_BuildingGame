@@ -45,17 +45,23 @@ public class ERErstellung : MonoBehaviour
     public void erstelleObjekt(GameObject prefab)
     {
         //wenn es vorer schon ein Objekt gibt
-        if (modellObjekte.Count != 0)
+        if (modellObjekte.Count != 0&& selectedGameObjekt!= null)
         {
             selectedGameObjekt.GetComponent<ERObjekt>().selected = false;//bei ERObjekt auswahl aufloesen
         }
 
         GameObject temp = Instantiate(prefab, transform);
         temp.transform.position=Utilitys.GetMouseWorldPosition(new Vector3(Screen.width / 4, Screen.height / 4, 0));
-        
 
+        
         //nur wenn vorhergehendes Objekt Entity kann Attribut erzeugt werden
-        if (temp.CompareTag("Attribut") && !(selectedGameObjekt.CompareTag("Entitaet") || modellObjekte.Count == 0))
+        if (temp.CompareTag("Attribut") && modellObjekte.Count == 0)
+        {
+            Destroy(temp.GetComponent<ERObjekt>());
+            FehlerAnzeige.fehlertext = "Wähle zuerst die Entität aus zu der das Attribute gehören soll.";
+            Destroy(temp);
+        }
+        if (temp.CompareTag("Attribut") && !selectedGameObjekt.CompareTag("Entitaet") )
         {
             Destroy(temp.GetComponent<ERObjekt>());
             FehlerAnzeige.fehlertext = "Wähle zuerst die Entität aus zu der das Attribute gehören soll.";
@@ -69,6 +75,8 @@ public class ERErstellung : MonoBehaviour
             if (selectedGameObjekt.CompareTag("Attribut"))
             {
                 selectedGameObjekt.transform.SetParent(lastselected.transform);
+                lastselected.GetComponent<Entitaet>().attribute.Add(selectedGameObjekt);
+
             }
             
             selectedGameObjekt.transform.position = Utilitys.GetMouseWorldPosition(new Vector3(Screen.width / 4, Screen.height / 4, 0));
@@ -110,25 +118,18 @@ public class ERErstellung : MonoBehaviour
 
     }
 
-    //Kennzeichnung des Primärschlüssels bei Attributen, hat Ankreuzfeld als Methode
-    public void unterstreichen()
-    {
-
-        if (selectedGameObjekt.CompareTag("Attribut") && selectedGameObjekt.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().fontStyle.Equals(FontStyles.Normal))
-        {
-            selectedGameObjekt.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Underline;
-        }
-        else if (selectedGameObjekt.CompareTag("Attribut") && selectedGameObjekt.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().fontStyle.Equals(FontStyles.Underline))
-        {
-            selectedGameObjekt.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Normal;
-        }
-    }
+  
     // hat Löschknopf als Methode
     public void loeschen()
     {
         if (selectedGameObjekt != null)
         {
             modellObjekte.Remove(selectedGameObjekt);
+            if (selectedGameObjekt.CompareTag("Entitaet")&&selectedGameObjekt.GetComponent<Entitaet>().schwach)
+            {
+                modellObjekte.Remove(selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung);
+                Destroy(selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung);
+            }
             for(int i =0; i< selectedGameObjekt.transform.childCount; i++)
             {
                 modellObjekte.Remove(selectedGameObjekt.transform.GetChild(i).gameObject);
@@ -174,19 +175,7 @@ public class ERErstellung : MonoBehaviour
         return drin;
     }
 
-    public void schwacheEntity()
-    {
-        if (selectedGameObjekt.CompareTag("Entitaet"))
-        {
-            if (selectedGameObjekt.GetComponent<RawImage>().texture.Equals(entity)){
-                selectedGameObjekt.GetComponent<RawImage>().texture = schwachEntity;
-            }
-            else
-            {
-                selectedGameObjekt.GetComponent<RawImage>().texture = entity;
-            }
-        }
-    }
+
 
     private static void changeOberflaeche()
     {

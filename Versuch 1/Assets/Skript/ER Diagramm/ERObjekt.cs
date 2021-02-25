@@ -18,8 +18,6 @@ public class ERObjekt : MonoBehaviour
     public Sprite selectedSprite;
     public Sprite originalSprite;
 
-
-
     public void Start()
     {
         rectTransform = gameObject.GetComponent<RectTransform>();
@@ -29,13 +27,15 @@ public class ERObjekt : MonoBehaviour
     }
 
     private void Update()
-    {
-        if (selected)
-        {
-            changeSprite(true);
-        }
+    {       
+        changeSprite(selected);
+        
         if (schreibenSelected || Input.GetMouseButtonDown(0) && checkMausIn(Utilitys.GetMouseWorldPosition(Input.mousePosition)) && ERErstellung.testAufGleicherPosition(Utilitys.GetMouseWorldPosition(Input.mousePosition)).Equals(gameObject))//wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
         {
+            if (inBox())
+            {
+                return;
+            }
             if (!selected) //wenn neu selected, dann wird Objekt zu aktuellen ER-Objekt
             {
                 //setzt Pivot des Objektes auf die Position der Maus
@@ -68,6 +68,14 @@ public class ERObjekt : MonoBehaviour
             transform.position = cursorPos;
         }
 
+    }
+
+    private bool inBox()
+    {
+        
+        Vector3[] v = new Vector3[4];
+        LeisteBottom.leiste_bottom.GetComponent<RectTransform>().GetWorldCorners(v);
+        return Input.mousePosition.y< v[2].y;
     }
 
     public void changeSprite(bool state)
