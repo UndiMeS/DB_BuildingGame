@@ -15,6 +15,7 @@ public class ObjektBewegung : MonoBehaviour
 
     public static GameObject erstellfenster;
     public static GameObject infoAnzeige;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -48,10 +49,15 @@ public class ObjektBewegung : MonoBehaviour
                 
 
                 Testing.geld -= preis;
+                if (Testing.objektGebaut == 3)
+                {
+                    GebaeudeAnzeige.staticSpezialisierungsauswahl.SetActive(true);
+                }
                 Testing.objektGebaut = 0;
                 PanelKnopf.gebautetsGebaeude = null;
                 KameraKontroller.aktiviert = true;
                 Testing.gebautesObjekt = null;
+                Testing.gebauedeListe.Add(gameObject);
                 Destroy(GetComponent<ObjektBewegung>());
                
             }
@@ -60,6 +66,7 @@ public class ObjektBewegung : MonoBehaviour
                 FehlerAnzeige.fehlertext = "Objekt konnte nicht gesetzt werden!";
                 int x, y;
                 Testing.grid.GetXY(transform.position, out x, out y);
+                deleteGebaeudeKlasse();
                 Testing.objektGebaut = 0;
                 KameraKontroller.aktiviert = true;
                 PanelKnopf.gebautetsGebaeude = null;
@@ -82,13 +89,36 @@ public class ObjektBewegung : MonoBehaviour
 
     }
 
-
+    private void deleteGebaeudeKlasse()
+    {
+        if (Testing.objektGebaut == 1)
+        {
+            Wohncontainer.nummerZaehler--;
+        }else if (Testing.objektGebaut == 2)
+        {
+            Feld.nummerZaehler--;
+        }
+        else if (Testing.objektGebaut == 3)
+        {
+            Forschung.nummerZaehler--;
+        }
+        else if (Testing.objektGebaut == 4)
+        {
+            Weide.nummerZaehler--;
+        }
+        else if (Testing.objektGebaut == 5)
+        {
+            Stallcontainer.nummerZaehler--;
+        }
+    }
 
     private bool outBox(Vector3 mousePosition)
     {
+        
         Vector3[] v = new Vector3[4];
         erstellfenster.GetComponent<RectTransform>().GetWorldCorners(v);
         bool temp = mousePosition.x < v[3].x;
+        if (!infoAnzeige.activeSelf) { return !temp; }
         infoAnzeige.GetComponent<RectTransform>().GetWorldCorners(v);
         return !(temp || (mousePosition.x > v[1].x && mousePosition.y < v[1].y));
     }

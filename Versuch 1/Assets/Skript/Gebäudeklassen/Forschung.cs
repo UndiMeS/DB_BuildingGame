@@ -8,7 +8,7 @@ public class Forschung : MonoBehaviour
     private int stationsnummer;
     private int baukosten;
     public static int arbeiter = 1;
-    public string spezialisierung;
+    public string spezialisierung="";
     public int spezInt;
 
     public Projekt[] projekte;
@@ -29,7 +29,6 @@ public class Forschung : MonoBehaviour
         Testing.forscher -= arbeiter;
         GebaeudeAnzeige.forschungsauswahl = true;
         projekte = new Projekt[0];
-
     }
 
     public void ausgabeStation(GameObject tabelle)
@@ -101,14 +100,14 @@ public class Forschung : MonoBehaviour
             {
                 Projekt temp = projekte[i];
                 projekte[i] = projekte[projekte.Length - 1];
-                projekte[projekte.Length - 1] = temp;                
+                projekte[projekte.Length - 1] = temp;
                 return;
             }if(projekte[i]!= null)
             {
+                
                 projektzaehler++;
             }
         }
-
         if (projektzaehler==anzahlProjekte)
         {
             FehlerAnzeige.fehlertext = "Erzeuge erst ein neues Projekt!";
@@ -123,9 +122,22 @@ public class Forschung : MonoBehaviour
                 selectedProj.SetMerkmal("Baukosten");
                 selectedProj.merkmalInt = option - 1;
                 selectedProj.pos = -1;
-                selectedProj.setStufe(GebaeudeAnzeige.projektMerkmalStufen[0]);
+                Debug.Log("1");
+                Wohncontainer.preis = selectedProj.neuerWert(Wohncontainer.preis, GebaeudeAnzeige.projektMerkmalStufen[0]);
                 GebaeudeAnzeige.projektMerkmalStufen[0]++;
-                Wohncontainer.preis =Mathf.RoundToInt( Wohncontainer.preis* selectedProj.verbesserungsfaktor);
+                
+            }
+            else if(option==2)
+            {
+                selectedProj.SetMerkmal("Bettenanzahl");
+                selectedProj.merkmalInt = option - 1;
+                selectedProj.pos = 1;
+                Wohncontainer.bettenanzahl = selectedProj.neuerWert(Wohncontainer.bettenanzahl, GebaeudeAnzeige.projektMerkmalStufen[1]);
+                GebaeudeAnzeige.projektMerkmalStufen[1]++;
+            }
+            else
+            {
+                FehlerAnzeige.fehlertext = "Fehler!";
             }
         }
         if (spezInt == 2)

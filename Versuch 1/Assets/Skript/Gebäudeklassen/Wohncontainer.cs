@@ -8,8 +8,8 @@ public class Wohncontainer : MonoBehaviour
 {
     public static int nummerZaehler=1;
     private int containernummer;
-    public int bettenanzahl;
-    public static int preis;
+    public static int bettenanzahl;
+    public static int preis=75;
     private int baukosten;
     public int freieBetten;
 

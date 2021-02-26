@@ -28,10 +28,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         Testing.objektGebaut = gebaeudeNummer;
         gebautetsGebaeude = Instantiate(gebaeude);
 
-        if (gebaeudeNummer == 3)
-        {
-            spezialisierungsauswahl.SetActive(true);
-        }
+        
         
     }
 

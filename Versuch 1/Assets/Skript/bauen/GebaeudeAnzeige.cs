@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 //Anzeige der Informationen eines Gebauedes, noch nicht vollstaendig
 public class GebaeudeAnzeige : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class GebaeudeAnzeige : MonoBehaviour
     public GameObject projektTabelle;
 
     public GameObject spezialisierungsauswahl;
+    public static GameObject staticSpezialisierungsauswahl;
+
 
     public GameObject gebaeude;
 
@@ -44,6 +47,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     {
         Nichts();
         projektMerkmalStufen = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1,1,1 };
+        staticSpezialisierungsauswahl = spezialisierungsauswahl;
     }
 
     // Update is called once per frame
@@ -60,11 +64,7 @@ public class GebaeudeAnzeige : MonoBehaviour
 
 
             }
-            if (Testing.objektGebaut != 0&&Testing.gebautesObjekt!=null)
-            {
-                wert = Testing.objektGebaut;
-                gebaeude = Testing.gebautesObjekt;
-            }
+            
             int i = 1;
             foreach (GameObject anzeige in anzeigen)
             {
@@ -103,7 +103,6 @@ public class GebaeudeAnzeige : MonoBehaviour
         }
         if (forschungsauswahl)
         {
-            FehlerAnzeige.fehlertext = "Wähle eine Spezialisierung der Forschungsstation fest.";
             foreach (GameObject anzeige in anzeigen)
             {
                     anzeige.SetActive(false);
@@ -115,7 +114,8 @@ public class GebaeudeAnzeige : MonoBehaviour
     {
         Vector3[] v = new Vector3[4];
         gameObject.GetComponent<RectTransform>().GetWorldCorners(v);
-        return mousePosition.x < v[2].x && mousePosition.y > v[2].y;
+        if (gameObject.activeSelf) { return mousePosition.x < v[2].x && mousePosition.y > v[2].y; }
+        else { return true; }
     }
 
     private void Haus(GameObject gebaeude)
@@ -190,6 +190,11 @@ public class GebaeudeAnzeige : MonoBehaviour
 
     public void Spezialisierung(string spezialisierung)
     {
+        foreach (GameObject ge in Testing.gebauedeListe)
+        {
+            gebaeude = ge;
+        }
+        wert = 3;
         gebaeude.GetComponent<Forschung>().spezialisierung = spezialisierung;
         spezialisierungsauswahl.SetActive(false);
         forschungsauswahl = false;
@@ -219,16 +224,24 @@ public class GebaeudeAnzeige : MonoBehaviour
     }
     public void erstelleProjekt()
     {
-        if(gebaeude.GetComponent<Forschung>().maxAnzahlProjekte >= gebaeude.GetComponent<Forschung>().anzahlProjekte&& Testing.forscher >= Projekt.forscheranzahl)
+        Projekt projekt = new Projekt();
+        if (gebaeude.GetComponent<Forschung>().maxAnzahlProjekte >= gebaeude.GetComponent<Forschung>().anzahlProjekte&& Testing.forscher + projekt.forscheranzahl >= projekt.forscheranzahl)
         {
-            Projekt projekt = new Projekt();
             gebaeude.GetComponent<Forschung>().addProjekt(projekt);
             gebaeude.GetComponent<Forschung>().anzahlProjekte++;
             ProjektBlockPanel.SetActive(false);
         }
         else
-        {            
-            FehlerAnzeige.fehlertext = "Du kannst hier keine neuen Projekte mehr erzeugen.";
+        {   if(Testing.forscher + projekt.forscheranzahl < projekt.forscheranzahl)
+            {
+                FehlerAnzeige.fehlertext = "Du hast zu wenige Forscher";
+            }
+            else
+            {
+                FehlerAnzeige.fehlertext = "Du kannst hier keine neuen Projekte mehr erzeugen.";
+            }
+            Testing.forscher += projekt.forscheranzahl;
+            
             if (gebaeude.GetComponent<Forschung>().anzahlProjekte == 0)
             {
                 ProjektBlockPanel.SetActive(true);
@@ -241,4 +254,11 @@ public class GebaeudeAnzeige : MonoBehaviour
     {
         gebaeude.GetComponent<Forschung>().setMerkmal(option);
     }
+
+    public static void spezialMenueAnzeigen()
+    {
+        FehlerAnzeige.fehlertext = "Wähle eine Spezialisierung der Forschungsstation fest.";
+        staticSpezialisierungsauswahl.SetActive(true);
+    }
+
 }

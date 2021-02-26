@@ -63,6 +63,7 @@ public class PauseMenu : MonoBehaviour
         if (objekt.activeSelf)
         {
             objekt.SetActive(false);
+            
         }
         else
         {

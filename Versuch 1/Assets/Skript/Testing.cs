@@ -32,6 +32,7 @@ public class Testing : MonoBehaviour
     public GameObject erstellfenster;
     public GameObject infofesnter;
 
+    public static List<GameObject> gebauedeListe = new List<GameObject>();
 
 
     // Start is called before the first frame update
