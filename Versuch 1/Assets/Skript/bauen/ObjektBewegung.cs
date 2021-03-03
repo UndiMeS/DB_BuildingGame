@@ -28,10 +28,10 @@ public class ObjektBewegung : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) )
         {
             //Schaue, ob schon Gebäude ander Stelle und abfangen ob in Bildschirmflaeche
-            if (Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
+            if ( Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
             {
                 selected = false;
                 transform.position += new Vector3(0, 0, 0.8f);
@@ -46,8 +46,8 @@ public class ObjektBewegung : MonoBehaviour
                 {
                     GridWertSetzen2x2();
                 }*/
-                
 
+                
                 Testing.geld -= preis;
                 if (Testing.objektGebaut == 3)
                 {
@@ -57,7 +57,7 @@ public class ObjektBewegung : MonoBehaviour
                 PanelKnopf.gebautetsGebaeude = null;
                 KameraKontroller.aktiviert = true;
                 Testing.gebautesObjekt = null;
-                Testing.gebauedeListe.Add(gameObject);
+                
                 Destroy(GetComponent<ObjektBewegung>());
                
             }
@@ -74,6 +74,19 @@ public class ObjektBewegung : MonoBehaviour
                 Destroy(gameObject);
                 Destroy(GetComponent<ObjektBewegung>());
             }
+        }
+        if (PauseMenu.SpielIstPausiert)
+        {
+            int x, y;
+            Testing.grid.GetXY(transform.position, out x, out y);
+            Testing.grid.SetWert(transform.position, 0, null);
+            deleteGebaeudeKlasse();
+            Testing.objektGebaut = 0;
+            KameraKontroller.aktiviert = true;
+            PanelKnopf.gebautetsGebaeude = null;
+            Testing.gebautesObjekt = null;
+            Destroy(gameObject);
+            Destroy(GetComponent<ObjektBewegung>());
         }
         
         //Position der Maus= Postion vom Haus
@@ -100,6 +113,8 @@ public class ObjektBewegung : MonoBehaviour
         }
         else if (Testing.objektGebaut == 3)
         {
+            GebaeudeAnzeige.forschungsauswahl = false;
+            Testing.forscher++;
             Forschung.nummerZaehler--;
         }
         else if (Testing.objektGebaut == 4)
@@ -117,10 +132,10 @@ public class ObjektBewegung : MonoBehaviour
         
         Vector3[] v = new Vector3[4];
         erstellfenster.GetComponent<RectTransform>().GetWorldCorners(v);
-        bool temp = mousePosition.x < v[3].x;
-        if (!infoAnzeige.activeSelf) { return !temp; }
+        bool temp = RectTransformUtility.RectangleContainsScreenPoint(erstellfenster.GetComponent<RectTransform>(), mousePosition, Camera.main);
+        if (!GebaeudeAnzeige.childOn) { return !temp; }
         infoAnzeige.GetComponent<RectTransform>().GetWorldCorners(v);
-        return !(temp || (mousePosition.x > v[1].x && mousePosition.y < v[1].y));
+        return !temp&&!RectTransformUtility.RectangleContainsScreenPoint(infoAnzeige.GetComponent<RectTransform>(), mousePosition, Camera.main); 
     }
 
     /*private void GridWertSetzen2x2()

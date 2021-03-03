@@ -19,8 +19,8 @@ public class SpielInfos : MonoBehaviour
     public GameObject tiere;
 
     public float currenttime;
-    private int erdentag;
-    private int soltag;
+    public static int erdenTag;
+    public static int marsTag;
 
     
 
@@ -33,7 +33,7 @@ public class SpielInfos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Utilitys.TextInTMP(maxAnzMenschen, Testing.summeAnzMenschen);
+        Utilitys.TextInTMP(maxAnzMenschen, Testing.summeMenschen);
         Utilitys.TextInTMP(maxTiere, Testing.summeTiere);
         Utilitys.TextInTMP(maxForschungen, Testing.summeForschungen);
 
@@ -44,22 +44,23 @@ public class SpielInfos : MonoBehaviour
         {
             currenttime = Time.time;
             float neuSoltag = Mathf.RoundToInt(currenttime / 5 );
-            if (neuSoltag % 10 == 0 && soltag != neuSoltag)
+            if (neuSoltag % 10 == 0 && marsTag != neuSoltag)
             {
                 Testing.geld += Testing.umsatz;
             }
 
-            soltag = Mathf.RoundToInt(neuSoltag);
-            erdentag = Mathf.RoundToInt(currenttime / 2 );
+            marsTag = Mathf.RoundToInt(neuSoltag);
+            erdenTag = Mathf.RoundToInt(currenttime / 2 );
         }
         
 
-        Utilitys.TextInTMP(sol, soltag);
-        Utilitys.TextInTMP(erde, erdentag);
+        Utilitys.TextInTMP(sol, marsTag);
+        Utilitys.TextInTMP(erde, erdenTag);
 
         Utilitys.TextInTMP(tiere, Testing.tiere);
         Utilitys.TextInTMP(feldarbeiter, Testing.feldarbeiter );
         Utilitys.TextInTMP(tierpfleger, Testing.tierpfleger);
         Utilitys.TextInTMP(forscher,  Testing.forscher );
     }
+
 }

@@ -20,19 +20,24 @@ public class Testing : MonoBehaviour
     public static int geld = 100000;
     public static int umsatz = 10;
 
-    public static int forscher=0;
-    public static int feldarbeiter = 0;
-    public static int tierpfleger = 0;
-    public static int tiere = 0;
+    public static int forscher=100;
+    public static int feldarbeiter = 100;
+    public static int tierpfleger = 100;
+    public static int tiere = 100;
 
-    public static int summeAnzMenschen = 0;
+    public static int summeMenschen = 0;
     public static int summeTiere = 0;
     public static int summeForschungen = 0;
 
     public GameObject erstellfenster;
     public GameObject infofesnter;
 
-    public static List<GameObject> gebauedeListe = new List<GameObject>();
+    public static List<Wohncontainer> wohncontainer = new List<Wohncontainer>();
+    public static List<Feld> felder = new List<Feld>();
+    public static List<Forschung> forschungsstationen = new List<Forschung>();
+    public static List<Projekt> forschungsprojekte = new List<Projekt>();
+    public static List<Weide> weiden = new List<Weide>();
+    public static List<Stallcontainer> stallcontainer = new List<Stallcontainer>();
 
 
     // Start is called before the first frame update
@@ -68,7 +73,7 @@ public class Testing : MonoBehaviour
     }
   
 
-
+  
 
 
 

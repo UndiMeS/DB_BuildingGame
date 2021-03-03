@@ -4,21 +4,30 @@ using UnityEngine;
 
 public class Feld : MonoBehaviour
 {
-    public static int nummerZaehler = 1;
-    private int feldnummer;
-    private int baukosten;
-    public static int arbeiter = 3;
-    private int ertrag;
+    public int x;
+    public int y;    
+   
+    public int feldnummer;
+    public int baukosten;
+    public int arbeiter;
+    public int ertrag;
 
+    public static int neuErtrag = 10;
+    public static int nummerZaehler = 1;
+    public static int preis = 90;
+    public static int arbeiterzahl = 3;
 
     public void Start()
     {
         feldnummer = nummerZaehler;
-        nummerZaehler++;
-        baukosten = gameObject.GetComponent<ObjektBewegung>().preis;
+        nummerZaehler++;        
+        baukosten =preis;
+        arbeiter = arbeiterzahl;
         Testing.feldarbeiter -= arbeiter;
-        ertrag = 10;
+        ertrag = neuErtrag;
         Testing.umsatz += ertrag;
+
+        Testing.felder.Add(this);
     }
 
     public void ausgabe(GameObject tabelle)
@@ -28,5 +37,11 @@ public class Feld : MonoBehaviour
         Utilitys.TextInTMP(tabelle.transform.GetChild(1).gameObject, baukosten);
         Utilitys.TextInTMP(tabelle.transform.GetChild(2).gameObject, arbeiter);
         Utilitys.TextInTMP(tabelle.transform.GetChild(3).gameObject, ertrag);
+    }
+
+    public void SetXY(int neuX,int neuY)
+    {
+        x = neuX;
+        y = neuY;
     }
 }

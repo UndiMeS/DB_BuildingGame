@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projekt 
 {
-    
+    public int stationsnummer;
     public string merkmal="";
     public int merkmalInt=-1;
     public int stufe=1;
@@ -16,7 +16,8 @@ public class Projekt
     public Projekt()
     {
         Testing.geld -= kosten;
-        Testing.forscher -= forscheranzahl;   
+        Testing.summeForschungen++;
+        Testing.forschungsprojekte.Add(this);
     }
 
     public void SetMerkmal(string merkmalNeu)
@@ -38,10 +39,9 @@ public class Projekt
         else
         {
             stufe = stufeNeu;
-            verbesserungsfaktor = stufe * (pos + 0.1f);
+            verbesserungsfaktor =(1+pos * 0.1f);
             neuerWert = Mathf.RoundToInt(alterWert * verbesserungsfaktor);
         }
-        Debug.Log(neuerWert);
         return neuerWert;
     }
 }

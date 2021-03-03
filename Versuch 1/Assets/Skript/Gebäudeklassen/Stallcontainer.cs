@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class Stallcontainer : MonoBehaviour
 {
-    public static int nummerZaehler = 1;
-    private int containernummer;
+    public int x;
+    public int y;
+
+    public int containernummer;
     public int gehegezahl;
-    private int baukosten;
+    public int baukosten;
     public int freieGehege;
 
+    public static int nummerZaehler = 1;
+    public static int preis = 90;
+    public static int gehege = 5;
 
     public void Start()
     {
         containernummer = nummerZaehler;
         nummerZaehler++;
-        baukosten = gameObject.GetComponent<ObjektBewegung>().preis;
-        gehegezahl = 5;
+        baukosten = preis;
+        gehegezahl = gehege;
         freieGehege = gehegezahl;
         Testing.summeTiere += gehegezahl;
+
+        Testing.stallcontainer.Add(this);
     }
 
     public void ausgabe(GameObject tabelle)
@@ -28,5 +35,10 @@ public class Stallcontainer : MonoBehaviour
         Utilitys.TextInTMP(tabelle.transform.GetChild(1).gameObject, baukosten);
         Utilitys.TextInTMP(tabelle.transform.GetChild(2).gameObject, gehegezahl);
         Utilitys.TextInTMP(tabelle.transform.GetChild(3).gameObject, freieGehege);
+    }
+    public void SetXY(int neuX, int neuY)
+    {
+        x = neuX;
+        y = neuY;
     }
 }

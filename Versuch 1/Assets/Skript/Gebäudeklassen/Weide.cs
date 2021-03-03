@@ -4,23 +4,33 @@ using UnityEngine;
 
 public class Weide : MonoBehaviour
 {
-    public static int nummerZaehler = 1;
-    private int weidennummer;
-    private int baukosten;
-    public static int arbeiter = 3;
-    private int ertrag;
-    public static int tiere = 3;
+    public int x;
+    public int y;
 
+    public int weidennummer;
+    public int baukosten;
+    public int arbeiter ;
+    public int ertrag;
+    public int tiere;
+
+    public static int nummerZaehler = 1;
+    public static int preis = 80;
+    public static int arbeiterzahl =3;
+    public static int neuErtrag = 10;
+    public static int tierAnzahl = 3;
 
     public void Start()
     {
         weidennummer = nummerZaehler;
         nummerZaehler++;
-        baukosten = gameObject.GetComponent<ObjektBewegung>().preis;
+        baukosten = preis;
+        arbeiter = arbeiterzahl;
         Testing.tierpfleger -= arbeiter;
-        ertrag = 10;
+        ertrag = neuErtrag;
         Testing.umsatz += ertrag;
+        tiere = tierAnzahl;
         Testing.tiere -= tiere;
+        Testing.weiden.Add(this);
     }
 
     public void ausgabe(GameObject tabelle)
@@ -30,5 +40,11 @@ public class Weide : MonoBehaviour
         Utilitys.TextInTMP(tabelle.transform.GetChild(2).gameObject, arbeiter);
         Utilitys.TextInTMP(tabelle.transform.GetChild(3).gameObject, ertrag);
         Utilitys.TextInTMP(tabelle.transform.GetChild(4).gameObject, tiere);
+    }
+
+    public void SetXY(int neuX, int neuY)
+    {
+        x = neuX;
+        y = neuY;
     }
 }

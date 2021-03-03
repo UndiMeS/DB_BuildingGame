@@ -42,20 +42,25 @@ public class GebaeudeAnzeige : MonoBehaviour
 
     public GameObject ProjektBlockPanel;
 
+    public static bool childOn = false;
+
     // Start is called before the first frame update
     void Start()
     {
         Nichts();
         projektMerkmalStufen = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1,1,1 };
         staticSpezialisierungsauswahl = spezialisierungsauswahl;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        
+        if (Input.GetMouseButtonDown(0)&& !PauseMenu.SpielIstPausiert)
         {
-            if ( Testing.objektGebaut==0 && outBox(Input.mousePosition))
+            
+            if (( Testing.objektGebaut==0 && outBox(Input.mousePosition)))
             {
                 Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);
                 cursorPos.z = 2f;
@@ -76,9 +81,11 @@ public class GebaeudeAnzeige : MonoBehaviour
                 {
                     anzeige.SetActive(true);
                     ObjektBewegung.infoAnzeige = anzeige;
+                    
                 }
                 i++;
             }
+            childOn = true;
         }
         switch (wert)
         {
@@ -108,13 +115,13 @@ public class GebaeudeAnzeige : MonoBehaviour
                     anzeige.SetActive(false);
             }
         }
+
+        
     }
 
     private bool outBox(Vector3 mousePosition)
     {
-        Vector3[] v = new Vector3[4];
-        gameObject.GetComponent<RectTransform>().GetWorldCorners(v);
-        if (gameObject.activeSelf) { return mousePosition.x < v[2].x && mousePosition.y > v[2].y; }
+        if (childOn) { return !RectTransformUtility.RectangleContainsScreenPoint(ObjektBewegung.infoAnzeige.GetComponent<RectTransform>(),mousePosition,Camera.main); }
         else { return true; }
     }
 
@@ -149,6 +156,7 @@ public class GebaeudeAnzeige : MonoBehaviour
 
     private void Nichts()
     {
+        childOn = false;
     }
 
     public void Forscher()
@@ -190,10 +198,15 @@ public class GebaeudeAnzeige : MonoBehaviour
 
     public void Spezialisierung(string spezialisierung)
     {
-        foreach (GameObject ge in Testing.gebauedeListe)
+        Forschung f= new Forschung();
+        foreach(Forschung fors in Testing.forschungsstationen)
         {
-            gebaeude = ge;
+            f = fors;
         }
+        int x,y;
+        f.getXY(out x, out y);
+        gebaeude = Testing.grid.GetGebaeude(x, y);
+
         wert = 3;
         gebaeude.GetComponent<Forschung>().spezialisierung = spezialisierung;
         spezialisierungsauswahl.SetActive(false);
@@ -201,22 +214,22 @@ public class GebaeudeAnzeige : MonoBehaviour
 
         if (spezialisierung.Equals("Wohncontainer"))
         {
-            gebaeude.GetComponent<Forschung>().spezInt = 1;
+            gebaeude.GetComponent<Forschung>().spezialisierung = "Wohncontainer";
             spezialisierungsIcon.GetComponent<Image>().sprite = wohn;
 
         }else if (spezialisierung.Equals("Feldsphäre"))
         {
-            gebaeude.GetComponent<Forschung>().spezInt = 2;
+            gebaeude.GetComponent<Forschung>().spezialisierung= "Feldsphäre";
             spezialisierungsIcon.GetComponent<Image>().sprite = feld;
         }
         else if (spezialisierung.Equals("Weidesphäre"))
         {
-            gebaeude.GetComponent<Forschung>().spezInt = 4;
+            gebaeude.GetComponent<Forschung>().spezialisierung= "Weidesphäre";
             spezialisierungsIcon.GetComponent<Image>().sprite = weide;
         }
         else if (spezialisierung.Equals("Stallcontainer"))
         {
-            gebaeude.GetComponent<Forschung>().spezInt = 5;
+            gebaeude.GetComponent<Forschung>().spezialisierung = "Stallcontainer";
             spezialisierungsIcon.GetComponent<Image>().sprite = stall;
         }
         gebaeude.GetComponent<Forschung>().verbesserung(Forschungsmerkmal);
@@ -225,9 +238,9 @@ public class GebaeudeAnzeige : MonoBehaviour
     public void erstelleProjekt()
     {
         Projekt projekt = new Projekt();
-        if (gebaeude.GetComponent<Forschung>().maxAnzahlProjekte >= gebaeude.GetComponent<Forschung>().anzahlProjekte&& Testing.forscher + projekt.forscheranzahl >= projekt.forscheranzahl)
+        if (gebaeude.GetComponent<Forschung>().maxAnzahlProjekte > gebaeude.GetComponent<Forschung>().anzahlProjekte&& Testing.forscher >= projekt.forscheranzahl)
         {
-            gebaeude.GetComponent<Forschung>().addProjekt(projekt);
+            Testing.forscher -= projekt.forscheranzahl;
             gebaeude.GetComponent<Forschung>().anzahlProjekte++;
             ProjektBlockPanel.SetActive(false);
         }
@@ -240,7 +253,6 @@ public class GebaeudeAnzeige : MonoBehaviour
             {
                 FehlerAnzeige.fehlertext = "Du kannst hier keine neuen Projekte mehr erzeugen.";
             }
-            Testing.forscher += projekt.forscheranzahl;
             
             if (gebaeude.GetComponent<Forschung>().anzahlProjekte == 0)
             {

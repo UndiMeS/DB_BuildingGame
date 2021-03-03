@@ -56,12 +56,30 @@ public class Gitter
     public void SetWert(int x, int y, int wert, GameObject gebaeude)
     {
         if (x >= 0 && y >= 0 && x < weite && y < hoehe)
-        {    //später vielleicht Werte für Gebäude??
+        {    
             gridArray[x, y] = wert;
             debugTextArray[x, y].text = gridArray[x, y].ToString();
-            
-            debugTextArray[x, y] = Utilitys.CreateWorldText(gridArray[x, y].ToString(), null, GetWorldPosition(x, y) + new Vector3(zellengroesse, zellengroesse) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
             erzeugeGebaede(x, y, wert, gebaeude);
+
+            if (wert == 1)
+            {
+                gebaeude.GetComponent<Wohncontainer>().SetXY(x, y);
+            }else if (wert == 2)
+            {
+                gebaeude.GetComponent<Feld>().SetXY(x, y);
+            }
+            else if (wert == 3)
+            {
+                gebaeude.GetComponent<Forschung>().SetXY(x, y);
+            }
+            else if (wert == 4)
+            {
+                gebaeude.GetComponent<Weide>().SetXY(x, y);
+            }
+            else if (wert == 5)
+            {
+                gebaeude.GetComponent<Stallcontainer>().SetXY(x, y);
+            }
         }
     }
 
@@ -130,6 +148,10 @@ public class Gitter
     {
         int x, y;
         GetXY(weltPosition, out x, out y);
+        return gebaeudeArray[x, y];
+    }
+    public GameObject GetGebaeude(int x, int y)
+    { 
         return gebaeudeArray[x, y];
     }
 

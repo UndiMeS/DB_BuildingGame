@@ -79,7 +79,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         }
         if (gebaeudeNummer == 2)
         {
-            if (Feld.arbeiter >= Testing.feldarbeiter)
+            if (Feld.arbeiterzahl >= Testing.feldarbeiter)
             {
                 FehlerAnzeige.fehlertext = "Erstelle zuerst Feldarbeiter!";
                 return;
@@ -87,16 +87,16 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         }
         if(gebaeudeNummer == 4)
         {
-            if (Weide.arbeiter >= Testing.tierpfleger&&Weide.tiere>= Testing.summeTiere)
+            if (Weide.arbeiterzahl >= Testing.tierpfleger&&Weide.tierAnzahl>= Testing.summeTiere)
             {
                 FehlerAnzeige.fehlertext = "Erstelle zuerst Tierpfleger und Tiere!";
                 return;
-            }else if (Weide.arbeiter >= Testing.tierpfleger)
+            }else if (Weide.arbeiterzahl >= Testing.tierpfleger)
             {
                 FehlerAnzeige.fehlertext = "Erstelle zuerst Tierpfleger!";
                 return;
             }
-            else if (Weide.tiere >= Testing.tiere)
+            else if (Weide.tierAnzahl >= Testing.tiere)
             {
                 FehlerAnzeige.fehlertext = "Erstelle zuerst Tiere!";
                 return;

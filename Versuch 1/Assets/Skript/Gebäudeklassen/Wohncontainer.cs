@@ -6,22 +6,27 @@ using UnityEngine.EventSystems;
 
 public class Wohncontainer : MonoBehaviour
 {
-    public static int nummerZaehler=1;
-    private int containernummer;
-    public static int bettenanzahl;
-    public static int preis=75;
-    private int baukosten;
+    public int x;
+    public int y;
+    
+    public int containernummer;    
+    public int baukosten;
+    public int bettenanzahl;
     public int freieBetten;
 
-    
+    public static int nummerZaehler = 1;
+    public static int betten = 5;
+    public static int preis = 75;
+
     public void Start()
     {
         containernummer = nummerZaehler;
         nummerZaehler++;
         baukosten = preis;
-        bettenanzahl = 5;
+        bettenanzahl = betten;
         freieBetten = bettenanzahl;
-        Testing.summeAnzMenschen += bettenanzahl;
+        Testing.summeMenschen += bettenanzahl;
+        Testing.wohncontainer.Add(this);
     }
 
     public void ausgabe(GameObject tabelle) 
@@ -33,5 +38,9 @@ public class Wohncontainer : MonoBehaviour
         Utilitys.TextInTMP(tabelle.transform.GetChild(3).gameObject, freieBetten);
     }
 
-    
+    public void SetXY(int neuX, int neuY)
+    {
+        x = neuX;
+        y = neuY;
+    }
 }
