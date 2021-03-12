@@ -57,7 +57,7 @@ public class ObjektBewegung : MonoBehaviour
                 PanelKnopf.gebautetsGebaeude = null;
                 KameraKontroller.aktiviert = true;
                 Testing.gebautesObjekt = null;
-                
+                Testing.gebauedeListe.Add(gameObject);
                 Destroy(GetComponent<ObjektBewegung>());
                
             }

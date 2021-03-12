@@ -198,19 +198,14 @@ public class GebaeudeAnzeige : MonoBehaviour
 
     public void Spezialisierung(string spezialisierung)
     {
-        Forschung f= new Forschung();
-        foreach(Forschung fors in Testing.forschungsstationen)
+        foreach (GameObject fors in Testing.gebauedeListe)
         {
-            f = fors;
-        }
-        int x,y;
-        f.getXY(out x, out y);
-        gebaeude = Testing.grid.GetGebaeude(x, y);
-
-        wert = 3;
+            gebaeude = fors;
+        }wert = 3;    
         gebaeude.GetComponent<Forschung>().spezialisierung = spezialisierung;
         spezialisierungsauswahl.SetActive(false);
         forschungsauswahl = false;
+        
 
         if (spezialisierung.Equals("Wohncontainer"))
         {

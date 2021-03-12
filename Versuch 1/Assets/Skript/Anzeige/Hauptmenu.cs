@@ -23,10 +23,15 @@ public class Hauptmenu : MonoBehaviour
 
     public void SwitchToBaumenue()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+        SceneManager.LoadScene(1);
         Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
     }
 
+    public void Laden()
+    {
+        Testing.laden = true;
+        SwitchToBaumenue();
+    }
 }

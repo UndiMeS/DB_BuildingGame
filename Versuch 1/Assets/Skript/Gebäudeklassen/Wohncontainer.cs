@@ -5,10 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class Wohncontainer : MonoBehaviour
-{
-    public int x;
-    public int y;
-    
+{   
     public int containernummer;    
     public int baukosten;
     public int bettenanzahl;
@@ -17,6 +14,9 @@ public class Wohncontainer : MonoBehaviour
     public static int nummerZaehler = 1;
     public static int betten = 5;
     public static int preis = 75;
+
+    public int x;
+    public int y;
 
     public void Start()
     {
@@ -42,5 +42,16 @@ public class Wohncontainer : MonoBehaviour
     {
         x = neuX;
         y = neuY;
+    }
+
+    public void setAll(int contNr, int kosten, int betAnz, int betfrei, int xNeu, int yNeu)
+    {
+        containernummer = contNr;
+        nummerZaehler = contNr;
+        baukosten = kosten;
+        bettenanzahl = betAnz;
+        freieBetten = betfrei;
+        x = xNeu;
+        y = yNeu;
     }
 }

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Stallcontainer : MonoBehaviour
 {
-    public int x;
-    public int y;
+   
 
     public int containernummer;
     public int gehegezahl;
@@ -15,6 +14,9 @@ public class Stallcontainer : MonoBehaviour
     public static int nummerZaehler = 1;
     public static int preis = 90;
     public static int gehege = 5;
+
+    public int x;
+    public int y;
 
     public void Start()
     {

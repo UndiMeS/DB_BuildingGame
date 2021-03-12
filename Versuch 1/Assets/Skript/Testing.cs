@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 //Grundlegende Methoden
 public class Testing : MonoBehaviour
 {
+    public static bool laden = false;
+    public GameObject speichermenue;
+
     public GameObject boden;
     public GameObject fehlermeldung;
 
@@ -38,6 +42,7 @@ public class Testing : MonoBehaviour
     public static List<Projekt> forschungsprojekte = new List<Projekt>();
     public static List<Weide> weiden = new List<Weide>();
     public static List<Stallcontainer> stallcontainer = new List<Stallcontainer>();
+    public static List<GameObject> gebauedeListe = new List<GameObject>();
 
 
     // Start is called before the first frame update
@@ -54,6 +59,12 @@ public class Testing : MonoBehaviour
         ObjektBewegung.erstellfenster = erstellfenster;
         ObjektBewegung.infoAnzeige = infofesnter;
         
+
+        if (laden)
+        {
+            laden = false;
+            speichermenue.GetComponent<SaveLoad>().laden();
+        }
 
 
      }

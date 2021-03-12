@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Feld : MonoBehaviour
 {
-    public int x;
-    public int y;    
+
    
     public int feldnummer;
     public int baukosten;
@@ -17,6 +16,8 @@ public class Feld : MonoBehaviour
     public static int preis = 90;
     public static int arbeiterzahl = 3;
 
+    public int x;
+    public int y;
     public void Start()
     {
         feldnummer = nummerZaehler;

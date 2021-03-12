@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Weide : MonoBehaviour
 {
-    public int x;
-    public int y;
-
     public int weidennummer;
     public int baukosten;
     public int arbeiter ;
@@ -18,6 +15,10 @@ public class Weide : MonoBehaviour
     public static int arbeiterzahl =3;
     public static int neuErtrag = 10;
     public static int tierAnzahl = 3;
+
+    public int x;
+    public int y;
+
 
     public void Start()
     {

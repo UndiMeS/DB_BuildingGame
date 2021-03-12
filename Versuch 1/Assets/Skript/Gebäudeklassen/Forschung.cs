@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Forschung : MonoBehaviour
 {
-    public int x;
-    public int y;
+   
     
     private int stationsnummer;
     private int baukosten;
-    
-    public string spezialisierung="";
+
+    public string spezialisierung;
     private int spezInt;
 
     public static int nummerZaehler = 1;
@@ -19,11 +18,14 @@ public class Forschung : MonoBehaviour
     private Projekt[] projekte;
     private Projekt selectedProj;
 
-    public int anzahlProjekte;
-    public int maxAnzahlProjekte;
+    public int anzahlProjekte=0;
+    public int maxAnzahlProjekte=3;
 
     private int projektArbeiter;
     private TMPro.TMP_Dropdown dropdown;
+
+    public int x;
+    public int y;
 
     public void Start()
     {
@@ -48,14 +50,15 @@ public class Forschung : MonoBehaviour
         Utilitys.TextInTMP(tabelle.transform.GetChild(5).gameObject, anzahlProjekte);
         Utilitys.TextInTMP(tabelle.transform.GetChild(6).gameObject, maxAnzahlProjekte);
 
-
-        if (projekte[projekte.Length-1]!=null)
+        if (maxAnzahlProjekte !=0)
         {
-            
-            Utilitys.TextInTMP(tabelle.transform.GetChild(1).gameObject, projekte[projekte.Length-1].stufe);
-            Utilitys.TextInTMP(tabelle.transform.GetChild(2).gameObject, projekte[projekte.Length - 1].kosten);
-            Utilitys.TextInTMP(tabelle.transform.GetChild(3).gameObject, projekte[projekte.Length - 1].forscheranzahl);
-            Utilitys.TextInTMP(tabelle.transform.GetChild(4).gameObject, projekte[projekte.Length - 1].verbesserungsfaktor);
+            if (projekte[maxAnzahlProjekte - 1] != null)
+            {
+                Utilitys.TextInTMP(tabelle.transform.GetChild(1).gameObject, projekte[projekte.Length - 1].stufe);
+                Utilitys.TextInTMP(tabelle.transform.GetChild(2).gameObject, projekte[projekte.Length - 1].kosten);
+                Utilitys.TextInTMP(tabelle.transform.GetChild(3).gameObject, projekte[projekte.Length - 1].forscheranzahl);
+                Utilitys.TextInTMP(tabelle.transform.GetChild(4).gameObject, projekte[projekte.Length - 1].verbesserungsfaktor);
+            }
         }
         
         
@@ -64,31 +67,36 @@ public class Forschung : MonoBehaviour
 
     public void verbesserung(TMPro.TMP_Dropdown ddm)
     {
+
         dropdown = ddm;
         List<string> listeMerkmale = new List<string>();
-
-        if (spezInt == 1)
+        if (spezialisierung.Equals("Wohncontainer"))
         {
             listeMerkmale = new List<string> { "", "Baukosten", "Bettenanzahl" };
             maxAnzahlProjekte = 2;
+            spezInt = 1;            
         }
-        if (spezInt == 2)
+        if (spezialisierung.Equals("Feldsphäre"))
         {
             listeMerkmale = new List<string> { "", "Baukosten", "Arbeiteranzahl", "Ertrag" };
             maxAnzahlProjekte = 3;
+            spezInt = 2;
         }
-        if (spezInt == 4)
+        if (spezialisierung.Equals("Weidesphäre"))
         {
             listeMerkmale = new List<string> { "", "Baukosten", "Arbeiteranzahl", "Ertrag", "Tieranzahl" };
             maxAnzahlProjekte = 4;
+            spezInt = 4;
         }
-        if (spezInt == 5)
+        if (spezialisierung.Equals("Stallcontainer"))
         {
             listeMerkmale = new List<string> { "", "Baukosten", "Gehegezahl" };
             maxAnzahlProjekte = 2;
+            spezInt = 5;
         }
         ddm.ClearOptions();
         ddm.AddOptions(listeMerkmale);
+        Debug.Log(ddm.options.Count);
         projekte = new Projekt[maxAnzahlProjekte];
     }
 
