@@ -30,7 +30,7 @@ public class ObjektBewegung : MonoBehaviour
         if (Input.GetMouseButtonUp(0) )
         {
             //Schaue, ob schon Gebäude ander Stelle und abfangen ob in Bildschirmflaeche
-            if ( Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
+            if (initKlasseTestePreis()&& Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
             {
                 selected = false;
                 transform.position += new Vector3(0, 0, 0.8f);
@@ -47,7 +47,6 @@ public class ObjektBewegung : MonoBehaviour
                 }*/
 
                 
-                Testing.geld -= preis;
                 if (Testing.objektGebaut == 3)
                 {
                     GebaeudeAnzeige.staticSpezialisierungsauswahl.SetActive(true);
@@ -98,6 +97,71 @@ public class ObjektBewegung : MonoBehaviour
 
 
 
+    }
+
+    private bool initKlasseTestePreis()
+    {
+        if (Testing.objektGebaut == 1)
+        {
+            if (Testing.geld < Wohncontainer.preis)
+            {
+                return false;
+            }
+            else
+            {
+                gameObject.AddComponent<Wohncontainer>();
+                return true;
+            }
+        }
+        else if (Testing.objektGebaut == 2)
+        {
+            if (Testing.geld < Feld.preis)
+            {
+                return false;
+            }
+            else
+            {
+                gameObject.AddComponent<Feld>();
+                return true;
+            }
+        }
+        else if (Testing.objektGebaut == 3)
+        {
+            if (Testing.geld < Forschung.preis)
+            {
+                return false;
+            }
+            else
+            {
+                gameObject.AddComponent<Forschung>();
+                return true;
+            }
+        }
+        else if (Testing.objektGebaut == 4)
+        {
+            if (Testing.geld < Weide.preis)
+            {
+                return false;
+            }
+            else
+            {
+                gameObject.AddComponent<Weide>();
+                return true;
+            }
+        }
+        else if (Testing.objektGebaut == 5)
+        {
+            if (Testing.geld < Stallcontainer.preis)
+            {
+                return false;
+            }
+            else
+            {
+                gameObject.AddComponent<Stallcontainer>();
+                return true;
+            }
+        }
+        return false;
     }
 
     private void deleteGebaeudeKlasse()

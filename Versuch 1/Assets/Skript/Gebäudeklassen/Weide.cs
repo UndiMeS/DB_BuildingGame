@@ -25,6 +25,7 @@ public class Weide : MonoBehaviour
         weidennummer = nummerZaehler;
         nummerZaehler++;
         baukosten = preis;
+        Testing.geld -= preis;
         arbeiter = arbeiterzahl;
         Testing.tierpfleger -= arbeiter;
         ertrag = neuErtrag;

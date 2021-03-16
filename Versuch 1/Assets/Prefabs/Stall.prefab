@@ -57,6 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,6 +82,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &8954288368940056391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +332,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -354,6 +357,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &1277648620439032836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,7 +597,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7602815678841818729}
   - component: {fileID: 1112011228732529276}
-  - component: {fileID: -6488728358907522027}
   m_Layer: 0
   m_Name: Stall
   m_TagString: Stall
@@ -634,20 +637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f421cb733154a4f459682073e1720b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preis: 90
---- !u!114 &-6488728358907522027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6480939531429702549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44e861ccf268df6429aa05118329d69b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  freieGehege: 0
 --- !u!1 &8025388103765917485
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +694,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -729,6 +719,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &8736242655647975921
 MonoBehaviour:
   m_ObjectHideFlags: 0

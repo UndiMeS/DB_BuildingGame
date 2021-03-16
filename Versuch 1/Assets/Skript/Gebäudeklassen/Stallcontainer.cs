@@ -23,6 +23,7 @@ public class Stallcontainer : MonoBehaviour
         containernummer = nummerZaehler;
         nummerZaehler++;
         baukosten = preis;
+        Testing.geld -= preis;
         gehegezahl = gehege;
         freieGehege = gehegezahl;
         Testing.summeTiere += gehegezahl;

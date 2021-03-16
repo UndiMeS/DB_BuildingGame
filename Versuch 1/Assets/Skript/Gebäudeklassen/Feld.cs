@@ -21,6 +21,7 @@ public class Feld : MonoBehaviour
         feldnummer = nummerZaehler;
         nummerZaehler++;        
         baukosten =preis;
+        Testing.geld -= preis;
         arbeiter = arbeiterzahl;
         Testing.feldarbeiter -= arbeiter;
         ertrag = neuErtrag;

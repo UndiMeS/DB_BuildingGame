@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Forschung : MonoBehaviour
@@ -13,7 +11,7 @@ public class Forschung : MonoBehaviour
     public int maxAnzahlProjekte = 3;
 
     public static int nummerZaehler = 1;
-    public static int arbeiter = 1;
+    public static int chef = 1;
     public static int preis = 200;
 
     public int x;
@@ -29,7 +27,8 @@ public class Forschung : MonoBehaviour
         stationsnummer = nummerZaehler;
         nummerZaehler++;
         baukosten = preis;
-        Testing.forscher -= arbeiter;
+        Testing.geld -= preis;
+        Testing.forscher -= chef;
         GebaeudeAnzeige.forschungsauswahl = true;
         projekte = new Projekt[0];
 
@@ -278,7 +277,7 @@ public class Forschung : MonoBehaviour
         x = xNeu;
         y = yNeu;
 
-        Testing.forscher += arbeiter;
+        Testing.forscher += chef;
         GebaeudeAnzeige.forschungsauswahl = false;
     }
 }

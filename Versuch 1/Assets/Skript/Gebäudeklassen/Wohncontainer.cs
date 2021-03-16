@@ -23,6 +23,7 @@ public class Wohncontainer : MonoBehaviour
         containernummer = nummerZaehler;
         nummerZaehler++;
         baukosten = preis;
+        Testing.geld -= preis;
         bettenanzahl = betten;
         freieBetten = bettenanzahl;
         Testing.summeMenschen += bettenanzahl;
