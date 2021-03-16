@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Feld : MonoBehaviour
-{
-
-   
+{   
     public int feldnummer;
     public int baukosten;
     public int arbeiter;

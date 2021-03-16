@@ -10,7 +10,6 @@ using UnityEngine.EventSystems;
 public class ObjektBewegung : MonoBehaviour
 {
     public static bool selected;
-    public int preis;
     private bool bauen;
 
     public static GameObject erstellfenster;

@@ -4,35 +4,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Forschung : MonoBehaviour
-{
-   
-    
+{ 
     public int stationsnummer;
     private int baukosten;
-
     public string spezialisierung;
     private int spezInt;
+    public int anzahlProjekte = 0;
+    public int maxAnzahlProjekte = 3;
 
     public static int nummerZaehler = 1;
     public static int arbeiter = 1;
-
-    private Projekt[] projekte;
-    private Projekt selectedProj;
-
-    public int anzahlProjekte=0;
-    public int maxAnzahlProjekte=3;
-
-    private int projektArbeiter;
-    private TMPro.TMP_Dropdown dropdown;
+    public static int preis = 200;
 
     public int x;
     public int y;
+
+    private TMPro.TMP_Dropdown dropdown;
+
+    private Projekt[] projekte;
+    private Projekt selectedProj;
 
     public void Start()
     {
         stationsnummer = nummerZaehler;
         nummerZaehler++;
-        baukosten = gameObject.GetComponent<ObjektBewegung>().preis;
+        baukosten = preis;
         Testing.forscher -= arbeiter;
         GebaeudeAnzeige.forschungsauswahl = true;
         projekte = new Projekt[0];
@@ -62,10 +58,7 @@ public class Forschung : MonoBehaviour
                 Utilitys.TextInTMP(tabelle.transform.GetChild(3).gameObject, projekte[projekte.Length - 1].forscheranzahl);
                 Utilitys.TextInTMP(tabelle.transform.GetChild(4).gameObject, projekte[projekte.Length - 1].verbesserungsfaktor);
             }
-        }
-        
-        
-
+        }  
     }
 
     public void verbesserung(TMPro.TMP_Dropdown ddm)
