@@ -28,6 +28,7 @@ public class Stallcontainer : MonoBehaviour
         Testing.summeTiere += gehegezahl;
 
         Testing.stallcontainer.Add(this);
+        Testing.gebauedeListe.Add(gameObject);
     }
 
     public void ausgabe(GameObject tabelle)
@@ -42,5 +43,18 @@ public class Stallcontainer : MonoBehaviour
     {
         x = neuX;
         y = neuY;
+    }
+    public void setAll(int nr, int kosten, int gehege, int freiGeh, int xNeu, int yNeu)
+    {
+        containernummer = nr;
+        nummerZaehler = nr;
+        baukosten = kosten;
+        gehegezahl = gehege;
+        freieGehege = freiGeh;
+        x = xNeu;
+        y = yNeu;
+
+        Testing.summeTiere -= gehegezahl;
+
     }
 }

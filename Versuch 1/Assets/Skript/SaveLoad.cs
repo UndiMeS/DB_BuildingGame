@@ -10,6 +10,11 @@ public class SaveLoad : MonoBehaviour
     public PlayerData playerData;
 
     public GameObject wohncontainerPrefab;
+    public GameObject feldPrefab;
+    public GameObject forschungPrefab;
+    public GameObject weidePrefab;
+    public GameObject stallPrefab;
+    public TMPro.TMP_Dropdown dropDownProjekt;
 
 
     public void speichern()
@@ -69,15 +74,301 @@ public class SaveLoad : MonoBehaviour
 
     public void laden()
     {
-        
-
+     
         string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
         LoadedPlayerData loadedplayerData = JsonUtility.FromJson<LoadedPlayerData>(json);
         loadedplayerData.setData();
 
         wohncontainerLaden();
+        feldLaden();
+        forschungLaden();
+        //projekteLaden();
+        weideLaden();
+        stallLaden();
+        GebaeudeAnzeige.forschungsauswahl = false;
     }
 
+    private void projekteLaden()
+    {
+        int nr = 0;
+        int gehege = 0;
+        int kosten = 0;
+        int freiGeh = 0;
+        int x = 0;
+        int y = 0;
+
+        string json = File.ReadAllText(Application.dataPath + "/Stallcontainer.json");
+        string[] split = json.Split(':');
+        for (int i = 1; i < split.Length; i++)
+        {
+            string[] tmp = split[i].Split(',');
+            if ((i - 1) % 6 == 0)
+            {
+                nr = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 1)
+            {
+                gehege = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 2)
+            {
+                kosten = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 3)
+            {
+                freiGeh = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 4)
+            {
+                x = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 5)
+            {
+                if (i + 1 == split.Length)
+                {
+                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
+                }
+                else
+                {
+                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
+                }
+                Projekt pro = new Projekt(0);
+                //pro.setAll(nr, gehege, kosten, freiGeh, x, y);
+            }
+        }
+    }
+
+    private void stallLaden()
+    {
+        int nr = 0;
+        int gehege = 0;
+        int kosten = 0;
+        int freiGeh = 0;
+        int x = 0;
+        int y = 0;
+
+        string json = File.ReadAllText(Application.dataPath + "/Stallcontainer.json");
+        string[] split = json.Split(':');
+        for (int i = 1; i < split.Length; i++)
+        {
+            string[] tmp = split[i].Split(',');
+            if ((i - 1) % 6 == 0)
+            {
+                nr = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 1)
+            {
+                gehege = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 2)
+            {
+                kosten = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 3)
+            {
+                freiGeh = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 4)
+            {
+                x = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 5)
+            {
+                if (i + 1 == split.Length)
+                {
+                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
+                }
+                else
+                {
+                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
+                }
+
+                GameObject geb = Instantiate(stallPrefab, transform);
+                Destroy(geb.GetComponent<ObjektBewegung>());
+                geb.transform.parent = null;
+                geb.transform.localScale = new Vector3(10, 10, 1);
+                geb.transform.rotation = Quaternion.Euler(0, 0, 0);
+                geb.transform.position = Testing.grid.GetWorldPosition(x, y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
+                Testing.grid.SetWert(x, y, 5, geb);
+                geb.GetComponent<Stallcontainer>().setAll(nr, gehege, kosten, freiGeh, x, y);
+            }
+        }
+    }
+    private void weideLaden()
+    {
+        {
+            int nr = 0;
+            int kosten = 0;
+            int arbeiter = 0;
+            int ertrag = 0;
+            int tiere = 0;
+            int x = 0;
+            int y = 0;
+
+            string json = File.ReadAllText(Application.dataPath + "/Weidesphaere.json");
+            string[] split = json.Split(':');
+            for (int i = 1; i < split.Length; i++)
+            {
+                string[] tmp = split[i].Split(',');
+                if ((i - 1) % 7 == 0)
+                {
+                    nr = int.Parse(tmp[0]);
+                }
+                else if ((i - 1) % 7 == 1)
+                {
+                    kosten = int.Parse(tmp[0]);
+                }
+                else if ((i - 1) % 7 == 2)
+                {
+                    arbeiter = int.Parse(tmp[0]);
+                }
+                else if ((i - 1) % 7 == 3)
+                {
+                    ertrag = int.Parse(tmp[0]);
+                }
+                else if ((i - 1) % 7 == 4)
+                {
+                    tiere = int.Parse(tmp[0]);
+                }
+                else if ((i - 1) % 7 == 5)
+                {
+                    x = int.Parse(tmp[0]);
+                }
+                else if ((i - 1) % 7 == 6)
+                {
+                    if (i + 1 == split.Length)
+                    {
+                        y = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
+                    }
+                    else
+                    {
+                        y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
+                    }
+
+                    GameObject geb = Instantiate(weidePrefab, transform);
+                    Destroy(geb.GetComponent<ObjektBewegung>());
+                    geb.transform.parent = null;
+                    geb.transform.localScale = new Vector3(1, 1, 1);
+                    geb.transform.rotation = Quaternion.Euler(0, 0, 0);
+                    geb.transform.position = Testing.grid.GetWorldPosition(x, y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
+                    Testing.grid.SetWert(x, y, 4, geb);
+                    geb.GetComponent<Weide>().setAll(nr, kosten, arbeiter, ertrag,tiere, x, y);
+                }
+            }
+        }
+    }
+    private void feldLaden()
+    {
+        int nr = 0;
+        int kosten = 0;
+        int arbeiter = 0;
+        int ertrag = 0;
+        int x = 0;
+        int y = 0;
+
+        string json = File.ReadAllText(Application.dataPath + "/Feldsphaere.json");
+        string[] split = json.Split(':');
+        for (int i = 1; i < split.Length; i++)
+        {
+            string[] tmp = split[i].Split(',');
+            if ((i - 1) % 6 == 0)
+            {
+                nr = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 1)
+            {
+                kosten = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 2)
+            {
+                arbeiter = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 3)
+            {
+                ertrag = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 4)
+            {
+                x = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 5)
+            {
+                if (i + 1 == split.Length)
+                {
+                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
+                }
+                else
+                {
+                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
+                }
+
+                GameObject geb = Instantiate(feldPrefab, transform);
+                Destroy(geb.GetComponent<ObjektBewegung>());
+                geb.transform.parent = null;
+                geb.transform.localScale = new Vector3(1, 1, 1);
+                geb.transform.rotation = Quaternion.Euler(0, 0, 0);
+                geb.transform.position = Testing.grid.GetWorldPosition(x, y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
+                Testing.grid.SetWert(x, y,2, geb);
+                geb.GetComponent<Feld>().setAll(nr, kosten, arbeiter, ertrag, x, y);
+            }
+        }
+    }
+    private void forschungLaden()
+    {
+        int nr = 0;
+        String spez = "";
+        int anzProj = 0;
+        int maxAnz = 0;
+        int x = 0;
+        int y = 0;
+
+        string json = File.ReadAllText(Application.dataPath + "/Stallcontainer.json");
+        string[] split = json.Split(':');
+        for (int i = 1; i < split.Length; i++)
+        {
+            string[] tmp = split[i].Split(',');
+            if ((i - 1) % 6 == 0)
+            {
+                nr = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 1)
+            {
+                spez = tmp[0];
+            }
+            else if ((i - 1) % 6 == 2)
+            {
+                anzProj = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 3)
+            {
+                maxAnz = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 4)
+            {
+                x = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 6 == 5)
+            {
+                if (i + 1 == split.Length)
+                {
+                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
+                }
+                else
+                {
+                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
+                }
+                y--;
+                GameObject geb = Instantiate(forschungPrefab, transform);
+                Destroy(geb.GetComponent<ObjektBewegung>());
+                geb.transform.parent = null;
+                geb.transform.localScale = new Vector3(1, 1, 1);
+                geb.transform.rotation = Quaternion.Euler(0, 0, 0);
+                geb.transform.position = Testing.grid.GetWorldPosition(x, y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
+                Testing.grid.SetWert(x, y, 3, geb);
+                geb.GetComponent<Forschung>().setAll(nr, spez, anzProj, maxAnz, x, y, dropDownProjekt);
+            }
+        }
+    }
     private void wohncontainerLaden()
     {
         int nr=0;

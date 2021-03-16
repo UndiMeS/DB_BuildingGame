@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ public class Forschung : MonoBehaviour
 {
    
     
-    private int stationsnummer;
+    public int stationsnummer;
     private int baukosten;
 
     public string spezialisierung;
@@ -35,7 +36,9 @@ public class Forschung : MonoBehaviour
         Testing.forscher -= arbeiter;
         GebaeudeAnzeige.forschungsauswahl = true;
         projekte = new Projekt[0];
+
         Testing.forschungsstationen.Add(this);
+        Testing.gebauedeListe.Add(gameObject);
     }
 
     public void ausgabeStation(GameObject tabelle)
@@ -96,7 +99,6 @@ public class Forschung : MonoBehaviour
         }
         ddm.ClearOptions();
         ddm.AddOptions(listeMerkmale);
-        Debug.Log(ddm.options.Count);
         projekte = new Projekt[maxAnzahlProjekte];
     }
 
@@ -134,9 +136,8 @@ public class Forschung : MonoBehaviour
             setMerkmal(tempInt);
 
         }
-        selectedProj = new Projekt();
+        selectedProj = new Projekt(stationsnummer);
         projekte[frei]= selectedProj ;
-        selectedProj.stationsnummer = stationsnummer;
 
         if (spezInt == 1)
         {
@@ -271,5 +272,20 @@ public class Forschung : MonoBehaviour
     {
         outx = x;
         outy = y;
+    }
+
+    public void setAll(int nr, string spez, int anzProj, int maxAnz, int xNeu, int yNeu, TMPro.TMP_Dropdown ddm)
+    {
+        stationsnummer = nr;
+        nummerZaehler = nr;
+        spezialisierung = spez;
+        verbesserung(ddm);
+        anzahlProjekte = anzProj;
+        maxAnzahlProjekte = maxAnz;
+        x = xNeu;
+        y = yNeu;
+
+        Testing.forscher += arbeiter;
+        GebaeudeAnzeige.forschungsauswahl = false;
     }
 }

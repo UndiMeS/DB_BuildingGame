@@ -26,7 +26,9 @@ public class Wohncontainer : MonoBehaviour
         bettenanzahl = betten;
         freieBetten = bettenanzahl;
         Testing.summeMenschen += bettenanzahl;
+
         Testing.wohncontainer.Add(this);
+        Testing.gebauedeListe.Add(gameObject);
     }
 
     public void ausgabe(GameObject tabelle) 
@@ -50,6 +52,7 @@ public class Wohncontainer : MonoBehaviour
         nummerZaehler = contNr;
         baukosten = kosten;
         bettenanzahl = betAnz;
+        Testing.summeMenschen -= bettenanzahl;
         freieBetten = betfrei;
         x = xNeu;
         y = yNeu;

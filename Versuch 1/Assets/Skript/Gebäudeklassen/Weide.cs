@@ -31,7 +31,9 @@ public class Weide : MonoBehaviour
         Testing.umsatz += ertrag;
         tiere = tierAnzahl;
         Testing.tiere -= tiere;
+
         Testing.weiden.Add(this);
+        Testing.gebauedeListe.Add(gameObject);
     }
 
     public void ausgabe(GameObject tabelle)
@@ -47,5 +49,22 @@ public class Weide : MonoBehaviour
     {
         x = neuX;
         y = neuY;
+    }
+
+    public void setAll(int nr, int kosten, int arb, int ert, int tier, int xNeu, int yNeu)
+    {
+        weidennummer = nr;
+        nummerZaehler = nr;
+        baukosten = kosten;
+        arbeiter = arb;
+        ertrag = ert;
+        tiere = tier;
+        x = xNeu;
+        y = yNeu;
+
+        Testing.umsatz -= ertrag;
+        Testing.tierpfleger += arbeiter;
+        Testing.tiere += tiere;
+
     }
 }

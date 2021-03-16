@@ -29,6 +29,7 @@ public class Feld : MonoBehaviour
         Testing.umsatz += ertrag;
 
         Testing.felder.Add(this);
+        Testing.gebauedeListe.Add(gameObject);
     }
 
     public void ausgabe(GameObject tabelle)
@@ -44,5 +45,19 @@ public class Feld : MonoBehaviour
     {
         x = neuX;
         y = neuY;
+    }
+
+    public void setAll(int nr, int kosten, int arb, int ert, int xNeu, int yNeu)
+    {
+        feldnummer = nr;
+        nummerZaehler = nr;
+        baukosten = kosten;
+        arbeiter = arb;
+        ertrag = ert;
+        x = xNeu;
+        y = yNeu;
+        Testing.feldarbeiter += arbeiter;
+        Testing.umsatz -= ertrag;
+
     }
 }

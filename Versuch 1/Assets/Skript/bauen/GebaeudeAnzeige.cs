@@ -59,14 +59,12 @@ public class GebaeudeAnzeige : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0)&& !PauseMenu.SpielIstPausiert)
         {
-            
-            if (( Testing.objektGebaut==0 && outBox(Input.mousePosition)))
+            if ( Testing.objektGebaut==0 && outBox(Input.mousePosition))
             {
                 Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);
                 cursorPos.z = 2f;
                 wert = Testing.grid.GetWert(cursorPos);
                 gebaeude = Testing.grid.GetGebaeude(cursorPos);
-
 
             }
             
@@ -81,7 +79,6 @@ public class GebaeudeAnzeige : MonoBehaviour
                 {
                     anzeige.SetActive(true);
                     ObjektBewegung.infoAnzeige = anzeige;
-                    
                 }
                 i++;
             }
@@ -108,7 +105,11 @@ public class GebaeudeAnzeige : MonoBehaviour
                 Stall(gebaeude);
                 break;
         }
-        if (forschungsauswahl)
+        if (Testing.laden)
+        {
+            forschungsauswahl = false;
+        }
+        if (forschungsauswahl&&Testing.objektGebaut==3)
         {
             foreach (GameObject anzeige in anzeigen)
             {
@@ -232,7 +233,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     }
     public void erstelleProjekt()
     {
-        Projekt projekt = new Projekt();
+        Projekt projekt = new Projekt(0);
         if (gebaeude.GetComponent<Forschung>().maxAnzahlProjekte > gebaeude.GetComponent<Forschung>().anzahlProjekte&& Testing.forscher >= projekt.forscheranzahl)
         {
             Testing.forscher -= projekt.forscheranzahl;
@@ -254,6 +255,7 @@ public class GebaeudeAnzeige : MonoBehaviour
                 ProjektBlockPanel.SetActive(true);
             }
         }
+        
         
     }
 

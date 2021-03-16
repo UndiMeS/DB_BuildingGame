@@ -13,11 +13,14 @@ public class Projekt
     public float verbesserungsfaktor=0.1f;
     public int pos;
 
-    public Projekt()
+    public Projekt(int nr)
     {
-        Testing.geld -= kosten;
-        Testing.summeForschungen++;
-        Testing.forschungsprojekte.Add(this);
+        if (nr != 0)
+        {
+            Testing.geld -= kosten;
+            Testing.summeForschungen++;
+            Testing.forschungsprojekte.Add(this);
+        }
     }
 
     public void SetMerkmal(string merkmalNeu)
