@@ -44,7 +44,7 @@ public class SpielInfos : MonoBehaviour
         {
             currenttime = Time.time;
             float neuSoltag = Mathf.RoundToInt(currenttime / 20.54f ) + 1; // +1 da es keinen Tag 0  gibt/ Marstag = 1,02748 * Erdtag --> 20* 1,02748
-            if (neuSoltag % 10 == 0 && marsTag != neuSoltag)
+            if (neuSoltag % 5 == 0 && marsTag != neuSoltag)
             {
                 Testing.geld += Testing.umsatz;
             }
