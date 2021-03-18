@@ -12,7 +12,7 @@ public class Forschung : MonoBehaviour
 
     public static int nummerZaehler = 1;
     public static int chef = 1;
-    public static int preis = 200;
+    public static int preis = 100;
 
     public int x;
     public int y;

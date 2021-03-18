@@ -13,7 +13,7 @@ public class Wohncontainer : MonoBehaviour
 
     public static int nummerZaehler = 1;
     public static int betten = 5;
-    public static int preis = 75;
+    public static int preis = 50;
 
     public int x;
     public int y;

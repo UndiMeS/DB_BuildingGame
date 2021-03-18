@@ -56,21 +56,21 @@ public class GebaeudeAnzeige : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (Input.GetMouseButtonDown(0)&& !PauseMenu.SpielIstPausiert)
         {
+
             if ( Testing.objektGebaut==0 && outBox(Input.mousePosition))
             {
                 Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);
                 cursorPos.z = 2f;
                 wert = Testing.grid.GetWert(cursorPos);
                 gebaeude = Testing.grid.GetGebaeude(cursorPos);
-
             }
             
             int i = 1;
             foreach (GameObject anzeige in anzeigen)
             {
+                
                 if (i != wert)
                 {
                     anzeige.SetActive(false);
@@ -109,7 +109,7 @@ public class GebaeudeAnzeige : MonoBehaviour
         {
             forschungsauswahl = false;
         }
-        if (forschungsauswahl&&Testing.objektGebaut==3)
+        if (forschungsauswahl)
         {
             foreach (GameObject anzeige in anzeigen)
             {
@@ -162,6 +162,11 @@ public class GebaeudeAnzeige : MonoBehaviour
 
     public void Forscher()
     {
+        if (Testing.geld < menschkosten)
+        {
+            FehlerAnzeige.fehlertext = "Zu wenig Geld.";
+            return;
+        }
         if(gebaeude.GetComponent<Wohncontainer>().freieBetten!= 0)
         {
             gebaeude.GetComponent<Wohncontainer>().freieBetten--;
@@ -171,6 +176,11 @@ public class GebaeudeAnzeige : MonoBehaviour
     }
     public void Feldarbeiter()
     {
+        if (Testing.geld < menschkosten)
+        {
+            FehlerAnzeige.fehlertext = "Zu wenig Geld.";
+            return;
+        }
         if (gebaeude.GetComponent<Wohncontainer>().freieBetten != 0)
         {
             gebaeude.GetComponent<Wohncontainer>().freieBetten--;
@@ -180,6 +190,11 @@ public class GebaeudeAnzeige : MonoBehaviour
     }
     public void Tierpfleger()
     {
+        if (Testing.geld < menschkosten)
+        {
+            FehlerAnzeige.fehlertext = "Zu wenig Geld.";
+            return;
+        }
         if (gebaeude.GetComponent<Wohncontainer>().freieBetten != 0)
         {
             gebaeude.GetComponent<Wohncontainer>().freieBetten--;
@@ -189,6 +204,11 @@ public class GebaeudeAnzeige : MonoBehaviour
     }
      public void Tiere()
     {
+        if (Testing.geld < tierkosten)
+        {
+            FehlerAnzeige.fehlertext = "Zu wenig Geld.";
+            return;
+        }
         if (gebaeude.GetComponent<Stallcontainer>().freieGehege != 0)
         {
             gebaeude.GetComponent<Stallcontainer>().freieGehege--;

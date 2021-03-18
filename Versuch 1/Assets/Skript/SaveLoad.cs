@@ -185,6 +185,7 @@ public class SaveLoad : MonoBehaviour
 
                 GameObject geb = Instantiate(stallPrefab, transform);
                 Destroy(geb.GetComponent<ObjektBewegung>());
+                geb.AddComponent<Stallcontainer>();
                 geb.transform.parent = null;
                 geb.transform.localScale = new Vector3(10, 10, 1);
                 geb.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -246,6 +247,7 @@ public class SaveLoad : MonoBehaviour
                     }
 
                     GameObject geb = Instantiate(weidePrefab, transform);
+                    geb.AddComponent<Weide>();
                     Destroy(geb.GetComponent<ObjektBewegung>());
                     geb.transform.parent = null;
                     geb.transform.localScale = new Vector3(1, 1, 1);
@@ -304,6 +306,7 @@ public class SaveLoad : MonoBehaviour
 
                 GameObject geb = Instantiate(feldPrefab, transform);
                 Destroy(geb.GetComponent<ObjektBewegung>());
+                geb.AddComponent<Feld>();
                 geb.transform.parent = null;
                 geb.transform.localScale = new Vector3(1, 1, 1);
                 geb.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -322,7 +325,7 @@ public class SaveLoad : MonoBehaviour
         int x = 0;
         int y = 0;
 
-        string json = File.ReadAllText(Application.dataPath + "/Stallcontainer.json");
+        string json = File.ReadAllText(Application.dataPath + "/Forschungsstation.json");
         string[] split = json.Split(':');
         for (int i = 1; i < split.Length; i++)
         {
@@ -357,8 +360,8 @@ public class SaveLoad : MonoBehaviour
                 {
                     y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
                 }
-                y--;
                 GameObject geb = Instantiate(forschungPrefab, transform);
+                geb.AddComponent<Forschung>();
                 Destroy(geb.GetComponent<ObjektBewegung>());
                 geb.transform.parent = null;
                 geb.transform.localScale = new Vector3(1, 1, 1);
@@ -412,8 +415,8 @@ public class SaveLoad : MonoBehaviour
                 {
                     y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
                 }
-
                 GameObject geb = Instantiate(wohncontainerPrefab, transform);
+                geb.AddComponent<Wohncontainer>();
                 Destroy( geb.GetComponent<ObjektBewegung>());
                 geb.transform.parent = null;
                 geb.transform.localScale= new Vector3(1, 1, 1);
