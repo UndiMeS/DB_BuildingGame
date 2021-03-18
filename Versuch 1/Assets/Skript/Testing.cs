@@ -31,18 +31,6 @@ public class Testing : MonoBehaviour
     public static int tierpfleger = 0;
     public static int tiere =0;
 
-    public static int umsatz = 0;
-
-
-    public static int umsatz = 0;
-
-
-    public static int forscher=0;
-    public static int feldarbeiter = 0;
-    public static int tierpfleger = 0;
-    public static int tiere = 0;
-
-
     public static int summeMenschen = 0;
     public static int summeTiere = 0;
     public static int summeForschungen = 0;
