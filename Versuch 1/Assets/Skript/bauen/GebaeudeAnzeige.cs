@@ -172,6 +172,7 @@ public class GebaeudeAnzeige : MonoBehaviour
             gebaeude.GetComponent<Wohncontainer>().freieBetten--;
             Testing.forscher++;
             Testing.geld -= menschkosten;
+            Testing.summeMenschen++;
         }        
     }
     public void Feldarbeiter()
@@ -186,6 +187,7 @@ public class GebaeudeAnzeige : MonoBehaviour
             gebaeude.GetComponent<Wohncontainer>().freieBetten--;
             Testing.feldarbeiter++;
             Testing.geld -= menschkosten;
+            Testing.summeMenschen++;
         }
     }
     public void Tierpfleger()
@@ -200,6 +202,7 @@ public class GebaeudeAnzeige : MonoBehaviour
             gebaeude.GetComponent<Wohncontainer>().freieBetten--;
             Testing.tierpfleger++;
             Testing.geld -= menschkosten;
+            Testing.summeMenschen++;
         }
     }
      public void Tiere()
@@ -214,6 +217,7 @@ public class GebaeudeAnzeige : MonoBehaviour
             gebaeude.GetComponent<Stallcontainer>().freieGehege--;
             Testing.tiere++;
             Testing.geld -= tierkosten;
+            Testing.summeTiere++;
         }
     }
 

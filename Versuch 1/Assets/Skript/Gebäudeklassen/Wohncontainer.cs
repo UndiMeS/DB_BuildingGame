@@ -26,10 +26,10 @@ public class Wohncontainer : MonoBehaviour
         Testing.geld -= preis;
         bettenanzahl = betten;
         freieBetten = bettenanzahl;
-        Testing.summeMenschen += bettenanzahl;
 
         Testing.wohncontainer.Add(this);
         Testing.gebauedeListe.Add(gameObject);
+
     }
 
     public void ausgabe(GameObject tabelle) 

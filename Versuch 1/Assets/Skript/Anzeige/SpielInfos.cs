@@ -22,7 +22,6 @@ public class SpielInfos : MonoBehaviour
     public static int erdenTag;
     public static int marsTag;
 
-    
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +35,7 @@ public class SpielInfos : MonoBehaviour
         Utilitys.TextInTMP(maxAnzMenschen, Testing.summeMenschen);
         Utilitys.TextInTMP(maxTiere, Testing.summeTiere);
         Utilitys.TextInTMP(maxForschungen, Testing.summeForschungen);
+
 
         Utilitys.TextInTMP(geld, Testing.geld );
         Utilitys.TextInTMP(umsatz, Testing.umsatz);

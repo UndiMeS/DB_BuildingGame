@@ -26,7 +26,6 @@ public class Stallcontainer : MonoBehaviour
         Testing.geld -= preis;
         gehegezahl = gehege;
         freieGehege = gehegezahl;
-        Testing.summeTiere += gehegezahl;
 
         Testing.stallcontainer.Add(this);
         Testing.gebauedeListe.Add(gameObject);
