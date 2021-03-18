@@ -21,7 +21,7 @@ public class Testing : MonoBehaviour
     public static int objektGebaut;
     public static GameObject gebautesObjekt;
 
-    public static int geld = 1000;
+    public static int geld = 800;
 
 
     public static int umsatz = 0;

@@ -46,14 +46,14 @@ public class SpielInfos : MonoBehaviour
         if (!PauseMenu.SpielIstPausiert)
         {
             currenttime = Time.time;
-            float neuSoltag = Mathf.RoundToInt(currenttime / 20.54f ) + 1; // +1 da es keinen Tag 0  gibt/ Marstag = 1,02748 * Erdtag --> 20* 1,02748
+            float neuSoltag = Mathf.RoundToInt(currenttime / 10.274f ) + 1; // +1 da es keinen Tag 0  gibt/ Marstag = 1,02748 * Erdtag --> 20* 1,02748
             if (neuSoltag % 5 == 0 && marsTag != neuSoltag)
             {
                 Testing.geld += Testing.umsatz;
             }
 
             marsTag = Mathf.RoundToInt(neuSoltag);
-            erdenTag = Mathf.RoundToInt(currenttime / 20 ) + 1;
+            erdenTag = Mathf.RoundToInt(currenttime / 10 ) + 1;
         }
         
 

@@ -9,7 +9,7 @@ public class Feld : MonoBehaviour
     public int arbeiter;
     public int ertrag;
 
-    public static int neuErtrag = 10;
+    public static int neuErtrag = 20;
     public static int nummerZaehler = 1;
     public static int preis = 90;
     public static int arbeiterzahl = 3;
