@@ -73,13 +73,13 @@ public class Forschung : MonoBehaviour
         }
         if (spezialisierung.Equals("Feldsphäre"))
         {
-            listeMerkmale = new List<string> { "", "Baukosten", "Arbeiteranzahl", "Ertrag" };
+            listeMerkmale = new List<string> { "", "Baukosten", "Arbeiterzahl", "Ertrag" };
             maxAnzahlProjekte = 3;
             spezInt = 2;
         }
         if (spezialisierung.Equals("Weidesphäre"))
         {
-            listeMerkmale = new List<string> { "", "Baukosten", "Arbeiteranzahl", "Ertrag", "Tieranzahl" };
+            listeMerkmale = new List<string> { "", "Baukosten", "Arbeiterzahl", "Ertrag", "Tieranzahl" };
             maxAnzahlProjekte = 4;
             spezInt = 4;
         }

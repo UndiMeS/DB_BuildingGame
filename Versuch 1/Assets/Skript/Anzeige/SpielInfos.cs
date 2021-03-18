@@ -18,6 +18,8 @@ public class SpielInfos : MonoBehaviour
     public GameObject feldarbeiter;
     public GameObject tiere;
 
+
+
     public float currenttime;
     public static int erdenTag;
     public static int marsTag;
@@ -35,10 +37,11 @@ public class SpielInfos : MonoBehaviour
         Utilitys.TextInTMP(maxAnzMenschen, Testing.summeMenschen);
         Utilitys.TextInTMP(maxTiere, Testing.summeTiere);
         Utilitys.TextInTMP(maxForschungen, Testing.summeForschungen);
+        Utilitys.TextInTMP(maxForschungen, Testing.summeForschungen);
 
-
-        Utilitys.TextInTMP(geld, Testing.geld );
+        Utilitys.TextInTMP(geld, Testing.geld);
         Utilitys.TextInTMP(umsatz, Testing.umsatz);
+
 
         if (!PauseMenu.SpielIstPausiert)
         {
