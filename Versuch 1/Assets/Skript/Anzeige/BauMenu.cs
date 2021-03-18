@@ -25,8 +25,8 @@ public class BauMenu : MonoBehaviour
     {
         Utilitys.TextInTMP(preisWohncontainer, Wohncontainer.preis);
         Utilitys.TextInTMP(preisStallcontainer, Stallcontainer.preis);
-        Utilitys.TextInTMP(preisWeidesphaere, Feld.preis);
-        Utilitys.TextInTMP(preisFeldsphaere, Weide.preis);
+        Utilitys.TextInTMP(preisWeidesphaere, Weide.preis);
+        Utilitys.TextInTMP(preisFeldsphaere, Feld.preis);
         Utilitys.TextInTMP(preisForschungsstation, Forschung.preis);
     }
 }
