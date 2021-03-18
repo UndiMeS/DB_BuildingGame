@@ -35,7 +35,6 @@ public class Testing : MonoBehaviour
     public static int summeTiere = 0;
     public static int summeForschungen = 0;
 
-
     public GameObject erstellfenster;
     public GameObject infofesnter;
 
