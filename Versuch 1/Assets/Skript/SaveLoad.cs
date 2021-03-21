@@ -132,7 +132,7 @@ public class SaveLoad : MonoBehaviour
                 {
                     y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
                 }
-                Projekt pro = new Projekt(0);
+                //Projekt pro = new Projekt(0);
                 //pro.setAll(nr, gehege, kosten, freiGeh, x, y);
             }
         }

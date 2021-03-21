@@ -21,7 +21,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     public static GameObject staticSpezialisierungsauswahl;
 
 
-    public GameObject gebaeude;
+    public static GameObject gebaeude;
 
     private int wert = 0;
 
@@ -173,6 +173,8 @@ public class GebaeudeAnzeige : MonoBehaviour
             Testing.forscher++;
             Testing.geld -= menschkosten;
             Testing.summeMenschen++;
+            Mensch temp = new Mensch("Forscher", gebaeude.GetComponent<Wohncontainer>().containernummer);
+            gebaeude.GetComponent<Wohncontainer>().bewohner.Add(temp);
         }        
     }
     public void Feldarbeiter()
@@ -188,6 +190,8 @@ public class GebaeudeAnzeige : MonoBehaviour
             Testing.feldarbeiter++;
             Testing.geld -= menschkosten;
             Testing.summeMenschen++;
+            Mensch temp = new Mensch("Bauer", gebaeude.GetComponent<Wohncontainer>().containernummer);
+            gebaeude.GetComponent<Wohncontainer>().bewohner.Add(temp);
         }
     }
     public void Tierpfleger()
@@ -203,6 +207,8 @@ public class GebaeudeAnzeige : MonoBehaviour
             Testing.tierpfleger++;
             Testing.geld -= menschkosten;
             Testing.summeMenschen++;
+            Mensch temp = new Mensch("Tierpfleger", gebaeude.GetComponent<Wohncontainer>().containernummer);
+            gebaeude.GetComponent<Wohncontainer>().bewohner.Add(temp);
         }
     }
      public void Tiere()
@@ -253,21 +259,27 @@ public class GebaeudeAnzeige : MonoBehaviour
             spezialisierungsIcon.GetComponent<Image>().sprite = stall;
         }
         gebaeude.GetComponent<Forschung>().verbesserung(Forschungsmerkmal);
+        gebaeude.GetComponent<Forschung>().ProjekteBlockPanel = ProjektBlockPanel;
         ProjektBlockPanel.SetActive(true);
     }
     public void erstelleProjekt()
     {
-        Projekt projekt = new Projekt(0);
-        if (gebaeude.GetComponent<Forschung>().maxAnzahlProjekte > gebaeude.GetComponent<Forschung>().anzahlProjekte&& Testing.forscher >= projekt.forscheranzahl)
+        if (gebaeude.GetComponent<Forschung>().maxAnzahlProjekte > gebaeude.GetComponent<Forschung>().anzahlProjekte&& Testing.forscher >= Projekt.forscher&&Testing.geld>=Projekt.preis)
         {
-            Testing.forscher -= projekt.forscheranzahl;
             gebaeude.GetComponent<Forschung>().anzahlProjekte++;
-            ProjektBlockPanel.SetActive(false);
+            gebaeude.GetComponent<Forschung>().projekteAktiviert = true;
+
+
         }
         else
-        {   if(Testing.forscher + projekt.forscheranzahl < projekt.forscheranzahl)
+        {
+            if (Testing.geld< Projekt.preis)
             {
-                FehlerAnzeige.fehlertext = "Du hast zu wenige Forscher";
+                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld.";
+            }
+            else if (Testing.forscher < Projekt.forscher)
+            {
+                FehlerAnzeige.fehlertext = "Du hast zu wenige Forscher.";
             }
             else
             {

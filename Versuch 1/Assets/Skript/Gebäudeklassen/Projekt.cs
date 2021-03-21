@@ -8,19 +8,22 @@ public class Projekt
     public string merkmal="";
     public int merkmalInt=-1;
     public int stufe=1;
-    public int kosten=100;
-    public int forscheranzahl=3;
+    public static int preis=100;
+    public static int forscher=3;
+    public int kosten;
+    public int forscheranzahl;
     public float verbesserungsfaktor=0.1f;
     public int pos;
 
     public Projekt(int nr)
     {
-        if (nr != 0)
-        {
-            Testing.geld -= kosten;
-            Testing.summeForschungen++;
-            Testing.forschungsprojekte.Add(this);
-        }
+        forscheranzahl = forscher;
+        Testing.forscher -= forscher;
+        kosten = preis;
+        Testing.geld -= kosten;
+        Testing.summeForschungen++;
+        Testing.forschungsprojekte.Add(this);
+        
     }
 
     public void SetMerkmal(string merkmalNeu)
@@ -47,4 +50,6 @@ public class Projekt
         }
         return neuerWert;
     }
+
+    
 }

@@ -39,6 +39,7 @@ public class Testing : MonoBehaviour
     public GameObject infofesnter;
 
     public static List<Wohncontainer> wohncontainer = new List<Wohncontainer>();
+    public static List<Mensch> menschen = new List<Mensch>();
     public static List<Feld> felder = new List<Feld>();
     public static List<Forschung> forschungsstationen = new List<Forschung>();
     public static List<Projekt> forschungsprojekte = new List<Projekt>();

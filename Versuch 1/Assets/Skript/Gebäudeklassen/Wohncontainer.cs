@@ -18,6 +18,8 @@ public class Wohncontainer : MonoBehaviour
     public int x;
     public int y;
 
+    public List<Mensch> bewohner= new List<Mensch>();
+
     public void Start()
     {
         containernummer = nummerZaehler;
