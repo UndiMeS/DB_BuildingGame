@@ -41,16 +41,16 @@ public class GebaeudeAnzeige : MonoBehaviour
     public static int[] projektMerkmalStufen;
     public static int[] maxStufen;
 
-    public GameObject ProjektBlockPanel;
-
     public static bool childOn = false;
+
+    public GameObject merkmalGO;
 
     // Start is called before the first frame update
     void Start()
     {
         Nichts();
         projektMerkmalStufen = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1,1,1 };
-        projektMerkmalStufen = new int[] { 10, 10, 10, 2, 10, 10, 2, 10, 2, 10, 10 };
+        maxStufen = new int[] { 10, 10, 10, 2, 10, 10, 2, 10, 2, 10, 10 };
         staticSpezialisierungsauswahl = spezialisierungsauswahl;
 
     }
@@ -157,7 +157,7 @@ public class GebaeudeAnzeige : MonoBehaviour
                 spezialisierungsIcon.GetComponent<Image>().sprite = stall;
             }
 
-            //gebaeude.GetComponent<Forschung>().ausgabeProjekt(projektTabelle);
+            gebaeude.GetComponent<Forschung>().ausgabeProjekt(projektTabelle, merkmalGO);
         }
     }
 
@@ -276,18 +276,14 @@ public class GebaeudeAnzeige : MonoBehaviour
             gebaeude.GetComponent<Forschung>().spezialisierung = "Stallcontainer";
             spezialisierungsIcon.GetComponent<Image>().sprite = stall;
         }
-        gebaeude.GetComponent<Forschung>().verbesserung(Forschungsmerkmal);
-        gebaeude.GetComponent<Forschung>().ProjekteBlockPanel = ProjektBlockPanel;
-        ProjektBlockPanel.SetActive(true);
+        gebaeude.GetComponent<Forschung>().verbesserung(Forschungsmerkmal, merkmalGO);
     }
     public void erstelleProjekt()
     {
+        Debug.Log("? " + gebaeude.GetComponent<Forschung>().merkmal);
         if (gebaeude.GetComponent<Forschung>().maxAnzahlProjekte > gebaeude.GetComponent<Forschung>().anzahlProjekte&& Testing.forscher >= Projekt.forscher&&Testing.geld>=Projekt.preis)
         {
-            gebaeude.GetComponent<Forschung>().anzahlProjekte++;
-            gebaeude.GetComponent<Forschung>().projekteAktiviert = true;
-
-
+            gebaeude.GetComponent<Forschung>().createProjekt();
         }
         else
         {
@@ -304,10 +300,7 @@ public class GebaeudeAnzeige : MonoBehaviour
                 FehlerAnzeige.fehlertext = "Du kannst hier keine neuen Projekte mehr erzeugen.";
             }
             
-            if (gebaeude.GetComponent<Forschung>().anzahlProjekte == 0)
-            {
-                ProjektBlockPanel.SetActive(true);
-            }
+            
         }
         
         

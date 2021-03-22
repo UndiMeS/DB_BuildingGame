@@ -14,7 +14,9 @@ public class SaveLoad : MonoBehaviour
     public GameObject forschungPrefab;
     public GameObject weidePrefab;
     public GameObject stallPrefab;
+
     public TMPro.TMP_Dropdown dropDownProjekt;
+    public GameObject merkmalGO;
 
 
     public void speichern()
@@ -368,7 +370,7 @@ public class SaveLoad : MonoBehaviour
                 geb.transform.rotation = Quaternion.Euler(0, 0, 0);
                 geb.transform.position = Testing.grid.GetWorldPosition(x, y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
                 Testing.grid.SetWert(x, y, 3, geb);
-                geb.GetComponent<Forschung>().setAll(nr, spez, anzProj, maxAnz, x, y, dropDownProjekt);
+                geb.GetComponent<Forschung>().setAll(nr, spez, anzProj, maxAnz, x, y, dropDownProjekt, merkmalGO);
             }
         }
     }
