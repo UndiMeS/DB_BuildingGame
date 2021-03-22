@@ -39,6 +39,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     public Sprite stall;
 
     public static int[] projektMerkmalStufen;
+    public static int[] maxStufen;
 
     public GameObject ProjektBlockPanel;
 
@@ -49,6 +50,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     {
         Nichts();
         projektMerkmalStufen = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1,1,1 };
+        projektMerkmalStufen = new int[] { 10, 10, 10, 2, 10, 10, 2, 10, 2, 10, 10 };
         staticSpezialisierungsauswahl = spezialisierungsauswahl;
 
     }
@@ -139,7 +141,23 @@ public class GebaeudeAnzeige : MonoBehaviour
         if (!forschungsauswahl)
         {
             gebaeude.GetComponent<Forschung>().ausgabeStation(forschungsTabelle);
-            gebaeude.GetComponent<Forschung>().ausgabeProjekt(projektTabelle);
+            if (gebaeude.GetComponent<Forschung>().spezialisierung.Equals("Wohncontainer"))
+            {
+                spezialisierungsIcon.GetComponent<Image>().sprite = wohn;
+            }else if (gebaeude.GetComponent<Forschung>().spezialisierung.Equals("Feldsphäre"))
+            {
+                spezialisierungsIcon.GetComponent<Image>().sprite = feld;
+            }
+            else if (gebaeude.GetComponent<Forschung>().spezialisierung.Equals("Weidesphäre"))
+            {
+                spezialisierungsIcon.GetComponent<Image>().sprite = weide;
+            }
+            else if (gebaeude.GetComponent<Forschung>().spezialisierung.Equals("Stallcontainer"))
+            {
+                spezialisierungsIcon.GetComponent<Image>().sprite = stall;
+            }
+
+            //gebaeude.GetComponent<Forschung>().ausgabeProjekt(projektTabelle);
         }
     }
 

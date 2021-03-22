@@ -36,11 +36,19 @@ public class Projekt
     public int neuerWert(int alterWert, int stufeNeu)
     {
         int neuerWert = 0;
-        if (alterWert <= 10)
+        if (alterWert <= 10 && pos==1)
         {
             stufe = stufeNeu;
             alterWert++;
             neuerWert = alterWert;
+            verbesserungsfaktor=1.1f;
+        }
+        else if(alterWert <= 10)
+        {
+            stufe = stufeNeu;
+            alterWert--;
+            neuerWert = alterWert;
+            verbesserungsfaktor = 0.9f;
         }
         else
         {

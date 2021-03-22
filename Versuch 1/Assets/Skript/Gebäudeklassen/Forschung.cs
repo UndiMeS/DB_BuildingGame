@@ -27,6 +27,7 @@ public class Forschung : MonoBehaviour
 
     public GameObject ProjekteBlockPanel;
 
+
     public void Start()
     {
         stationsnummer = nummerZaehler;
@@ -48,7 +49,7 @@ public class Forschung : MonoBehaviour
         Utilitys.TextInTMP(tabelle.transform.GetChild(2).gameObject, spezialisierung);
     }
 
-    public void ausgabeProjekt(GameObject tabelle)
+    public void ausgabeProjekt(GameObject tabelle, GameObject merkmalsNameGO)
     {
         Utilitys.TextInTMP(tabelle.transform.GetChild(5).gameObject, anzahlProjekte);
         Utilitys.TextInTMP(tabelle.transform.GetChild(6).gameObject, maxAnzahlProjekte);
@@ -62,9 +63,21 @@ public class Forschung : MonoBehaviour
                 Utilitys.TextInTMP(tabelle.transform.GetChild(2).gameObject, selectedProj.kosten);
                 Utilitys.TextInTMP(tabelle.transform.GetChild(3).gameObject, selectedProj.forscheranzahl);
                 Utilitys.TextInTMP(tabelle.transform.GetChild(4).gameObject, selectedProj.verbesserungsfaktor);
+
+                Utilitys.TextInTMP(merkmalsNameGO, "Projekt für <i>"+ selectedProj.merkmal+"</i> anlegen.");
+
                 refreshDropdown();
             }
-            
+            else
+            {
+                Utilitys.TextInTMP(tabelle.transform.GetChild(1).gameObject, "");
+                Utilitys.TextInTMP(tabelle.transform.GetChild(2).gameObject, "");
+                Utilitys.TextInTMP(tabelle.transform.GetChild(3).gameObject, "");
+                Utilitys.TextInTMP(tabelle.transform.GetChild(4).gameObject, "");
+
+                verbesserung(dropdown);
+            }
+
 
         }
         else
@@ -231,9 +244,10 @@ public class Forschung : MonoBehaviour
             }
             else if (option == 1)
             {
-                selectedProj.SetMerkmal("Bettenanzahl");
+                selectedProj.SetMerkmal("Arbeiterzahl");
+                Debug.Log("1");
                 selectedProj.merkmalInt = option ;
-                selectedProj.pos = 1;
+                selectedProj.pos = -1;
                 Feld.arbeiterzahl = selectedProj.neuerWert(Feld.arbeiterzahl, GebaeudeAnzeige.projektMerkmalStufen[3]);
                 GebaeudeAnzeige.projektMerkmalStufen[3]++;
             }
@@ -262,7 +276,7 @@ public class Forschung : MonoBehaviour
             }
             else if (option == 1)
             {
-                selectedProj.SetMerkmal("Bettenanzahl");
+                selectedProj.SetMerkmal("Arbeiterzahl");
                 selectedProj.merkmalInt = option;
                 selectedProj.pos = 1;
                 Weide.arbeiterzahl = selectedProj.neuerWert(Weide.arbeiterzahl, GebaeudeAnzeige.projektMerkmalStufen[6]);
@@ -280,7 +294,7 @@ public class Forschung : MonoBehaviour
             {
                 selectedProj.SetMerkmal("Tieranzahl");
                 selectedProj.merkmalInt = option ;
-                selectedProj.pos = 1;
+                selectedProj.pos = -1;
                 Weide.tierAnzahl = selectedProj.neuerWert(Weide.tierAnzahl, GebaeudeAnzeige.projektMerkmalStufen[8]);
                 GebaeudeAnzeige.projektMerkmalStufen[8]++;
             }

@@ -60,6 +60,7 @@ public class ObjektBewegung : MonoBehaviour
             }
             else
             {
+                selected = false;
                 FehlerAnzeige.fehlertext = "Objekt konnte nicht gesetzt werden!";
                 int x, y;
                 Testing.grid.GetXY(transform.position, out x, out y);

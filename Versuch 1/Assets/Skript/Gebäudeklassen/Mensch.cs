@@ -17,7 +17,6 @@ public class Mensch
         geburtstag=randomGeburtstag();
         name = randomName();
         containerNummer = nummer;
-        Debug.Log(name + " " + geburtstag);
         Testing.menschen.Add(this);
     }
 
