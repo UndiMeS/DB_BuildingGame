@@ -63,11 +63,17 @@ public class PauseMenu : MonoBehaviour
         if (objekt.activeSelf)
         {
             objekt.SetActive(false);
+            Time.timeScale = 1;
+            SpielIstPausiert = false;
+            KameraKontroller.aktiviert = true;
             
         }
         else
         {
             objekt.SetActive(true);
+            Time.timeScale = 0;
+            SpielIstPausiert = true;
+            KameraKontroller.aktiviert = false;
         }
     }
 
