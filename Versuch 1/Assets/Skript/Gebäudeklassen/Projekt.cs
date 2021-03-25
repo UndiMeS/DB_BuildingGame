@@ -23,12 +23,13 @@ public class Projekt
         Testing.geld -= kosten;
         Testing.summeForschungen++;
         Testing.forschungsprojekte.Add(this);
-        
+
     }
 
     public void SetMerkmal(string merkmalNeu)
     {
         merkmal = merkmalNeu;
+        Debug.Log(stationsnummer + " " + merkmal + " " + stufe);
     }
 
    

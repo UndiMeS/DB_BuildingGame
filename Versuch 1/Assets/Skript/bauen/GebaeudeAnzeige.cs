@@ -280,7 +280,6 @@ public class GebaeudeAnzeige : MonoBehaviour
     }
     public void erstelleProjekt()
     {
-        Debug.Log("? " + gebaeude.GetComponent<Forschung>().merkmal);
         if (gebaeude.GetComponent<Forschung>().maxAnzahlProjekte > gebaeude.GetComponent<Forschung>().anzahlProjekte&& Testing.forscher >= Projekt.forscher&&Testing.geld>=Projekt.preis)
         {
             gebaeude.GetComponent<Forschung>().createProjekt();

@@ -55,8 +55,10 @@ public class Forschung : MonoBehaviour
         Utilitys.TextInTMP(tabelle.transform.GetChild(5).gameObject, anzahlProjekte);
         Utilitys.TextInTMP(tabelle.transform.GetChild(6).gameObject, maxAnzahlProjekte);
 
+
         if (selectedProj != null)
         {
+            Debug.Log("*");
             Utilitys.TextInTMP(tabelle.transform.GetChild(1).gameObject, selectedProj.stufe);
             Utilitys.TextInTMP(tabelle.transform.GetChild(2).gameObject, selectedProj.kosten);
             Utilitys.TextInTMP(tabelle.transform.GetChild(3).gameObject, selectedProj.forscheranzahl);
@@ -106,7 +108,7 @@ public class Forschung : MonoBehaviour
         }
         ddm.ClearOptions();
         ddm.AddOptions(listeMerkmale);
-        ddm.value = 0;
+        ddm.SetValueWithoutNotify(0);
         setMerkmal(0);
     }
 
@@ -137,7 +139,6 @@ public class Forschung : MonoBehaviour
     public void setMerkmal(int opt)
     {
         option = opt;
-        int merkmal = -1;
         if (spezInt == 1)
         {
             if (opt == 0)
@@ -226,13 +227,10 @@ public class Forschung : MonoBehaviour
                 selectedProj = pro;
             }
         }
-        Debug.Log("*" + merkmal);
-
-    }
+   }
 
     public void createProjekt()
     {
-        Debug.Log(option);
         if (anzahlProjekte == maxAnzahlProjekte || GebaeudeAnzeige.maxStufen[merkmal] == GebaeudeAnzeige.projektMerkmalStufen[merkmal])
         {
             return;
@@ -280,7 +278,6 @@ public class Forschung : MonoBehaviour
             else if (option == 1)
             {
                 selectedProj.SetMerkmal("Arbeiterzahl");
-                Debug.Log("1");
                 selectedProj.merkmalInt = option;
                 selectedProj.pos = -1;
                 Feld.arbeiterzahl = selectedProj.neuerWert(Feld.arbeiterzahl, GebaeudeAnzeige.projektMerkmalStufen[3]);
@@ -370,7 +367,8 @@ public class Forschung : MonoBehaviour
                 FehlerAnzeige.fehlertext = "Fehler!";
             }
         }
-
+        projekte.Add(selectedProj);
+        Debug.Log(selectedProj.merkmal);
     }
 
     /*public void setMerkmal(int option)
