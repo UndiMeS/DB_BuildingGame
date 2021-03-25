@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class Projekt
 
     public Projekt(int nr)
     {
+        stationsnummer= nr;
         forscheranzahl = forscher;
         Testing.forscher -= forscher;
         kosten = preis;
@@ -26,10 +28,31 @@ public class Projekt
 
     }
 
+    public Projekt(int nr, string merk, int merkInt, int st, int kost, int forAnz, int p)
+    {
+        stationsnummer = nr;
+        merkmal = merk;
+        merkmalInt = merkInt;
+        stufe = st;
+        preis = kost;
+        forscher = forAnz;
+        pos = p;
+        forscheranzahl = forscher;
+        kosten = preis;
+
+        Testing.forschungsprojekte.Add(this);
+        foreach(Forschung fors in Testing.forschungsstationen)
+        {
+            if (fors.stationsnummer == nr)
+            {
+                fors.addProjekt(this);
+            }
+        }
+    }
+
     public void SetMerkmal(string merkmalNeu)
     {
         merkmal = merkmalNeu;
-        Debug.Log(stationsnummer + " " + merkmal + " " + stufe);
     }
 
    
@@ -37,7 +60,7 @@ public class Projekt
     public int neuerWert(int alterWert, int stufeNeu)
     {
         int neuerWert = 0;
-        if (alterWert <= 10 && pos==1)
+        if (alterWert <= 10 && pos-1==1)
         {
             stufe = stufeNeu;
             alterWert++;
@@ -54,11 +77,9 @@ public class Projekt
         else
         {
             stufe = stufeNeu;
-            verbesserungsfaktor =(1+pos * 0.1f);
+            verbesserungsfaktor =(1+(pos-1) * 0.1f);
             neuerWert = Mathf.RoundToInt(alterWert * verbesserungsfaktor);
         }
         return neuerWert;
     }
-
-    
 }

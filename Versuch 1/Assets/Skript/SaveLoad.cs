@@ -23,7 +23,7 @@ public class SaveLoad : MonoBehaviour
     {
         playerData = new PlayerData();
         string json = JsonUtility.ToJson(playerData);
-        File.WriteAllText(Application.dataPath + "/saveFile.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/saveFile.json", json);
 
         json = "[";
         foreach (Wohncontainer wohn in Testing.wohncontainer)
@@ -31,7 +31,7 @@ public class SaveLoad : MonoBehaviour
             json +=JsonUtility.ToJson(wohn)+",";
         }
         json = json.Remove(json.Length - 1)+"]";
-        File.WriteAllText(Application.dataPath + "/Wohncontainer.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/Wohncontainer.json", json);
 
         json = "[";
         foreach (Feld feld in Testing.felder)
@@ -39,7 +39,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(feld) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/Feldsphaere.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/Feldsphaere.json", json);
 
         json = "[";
         foreach (Forschung obj in Testing.forschungsstationen)
@@ -47,7 +47,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/Forschungsstation.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/Forschungsstation.json", json);
 
         json = "[";
         foreach (Projekt obj in Testing.forschungsprojekte)
@@ -55,7 +55,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/Forschungsprojekte.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/Forschungsprojekte.json", json);
 
         json = "[";
         foreach (Weide obj in Testing.weiden)
@@ -63,7 +63,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/Weidesphaere.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/Weidesphaere.json", json);
 
         json = "[";
         foreach (Stallcontainer obj in Testing.stallcontainer)
@@ -71,20 +71,20 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/Stallcontainer.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/Stallcontainer.json", json);
     }
 
     public void laden()
     {
      
-        string json = File.ReadAllText(Application.dataPath + "/saveFile.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/saveFile.json");
         LoadedPlayerData loadedplayerData = JsonUtility.FromJson<LoadedPlayerData>(json);
         loadedplayerData.setData();
 
         wohncontainerLaden();
         feldLaden();
         forschungLaden();
-        //projekteLaden();
+        projekteLaden();
         weideLaden();
         stallLaden();
         GebaeudeAnzeige.forschungsauswahl = false;
@@ -93,49 +93,54 @@ public class SaveLoad : MonoBehaviour
     private void projekteLaden()
     {
         int nr = 0;
-        int gehege = 0;
+        string merkmal = "";
+        int merkmalInt = 0;
+        int stufe = 0;
         int kosten = 0;
-        int freiGeh = 0;
-        int x = 0;
-        int y = 0;
+        int forscherAnz = 0;
+        int pos = 0;
 
-        string json = File.ReadAllText(Application.dataPath + "/Stallcontainer.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/Stallcontainer.json");
         string[] split = json.Split(':');
         for (int i = 1; i < split.Length; i++)
         {
             string[] tmp = split[i].Split(',');
-            if ((i - 1) % 6 == 0)
+            if ((i - 1) % 7 == 0)
             {
                 nr = int.Parse(tmp[0]);
             }
-            else if ((i - 1) % 6 == 1)
+            else if ((i - 1) % 7 == 1)
             {
-                gehege = int.Parse(tmp[0]);
+                merkmal = tmp[0];
             }
-            else if ((i - 1) % 6 == 2)
+            else if ((i - 1) % 7 == 2)
+            {
+                merkmalInt = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 7 == 3)
+            {
+                stufe = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 7 == 4)
             {
                 kosten = int.Parse(tmp[0]);
             }
-            else if ((i - 1) % 6 == 3)
+            else if ((i - 1) % 7 == 5)
             {
-                freiGeh = int.Parse(tmp[0]);
+                forscherAnz = int.Parse(tmp[0]);
             }
-            else if ((i - 1) % 6 == 4)
-            {
-                x = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 6 == 5)
+            else if ((i - 1) % 7 == 6)
             {
                 if (i + 1 == split.Length)
                 {
-                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
+                    pos = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
                 }
                 else
                 {
-                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
+                    pos = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
                 }
-                //Projekt pro = new Projekt(0);
-                //pro.setAll(nr, gehege, kosten, freiGeh, x, y);
+                Debug.Log(pos);
+                Projekt pro = new Projekt(nr,merkmal, merkmalInt,stufe, kosten,forscherAnz,pos);
             }
         }
     }
@@ -149,7 +154,7 @@ public class SaveLoad : MonoBehaviour
         int x = 0;
         int y = 0;
 
-        string json = File.ReadAllText(Application.dataPath + "/Stallcontainer.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/Stallcontainer.json");
         string[] split = json.Split(':');
         for (int i = 1; i < split.Length; i++)
         {
@@ -208,7 +213,7 @@ public class SaveLoad : MonoBehaviour
             int x = 0;
             int y = 0;
 
-            string json = File.ReadAllText(Application.dataPath + "/Weidesphaere.json");
+            string json = File.ReadAllText(Application.dataPath + "/SaveState/Weidesphaere.json");
             string[] split = json.Split(':');
             for (int i = 1; i < split.Length; i++)
             {
@@ -270,7 +275,7 @@ public class SaveLoad : MonoBehaviour
         int x = 0;
         int y = 0;
 
-        string json = File.ReadAllText(Application.dataPath + "/Feldsphaere.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/Feldsphaere.json");
         string[] split = json.Split(':');
         for (int i = 1; i < split.Length; i++)
         {
@@ -327,7 +332,7 @@ public class SaveLoad : MonoBehaviour
         int x = 0;
         int y = 0;
 
-        string json = File.ReadAllText(Application.dataPath + "/Forschungsstation.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/Forschungsstation.json");
         string[] split = json.Split(':');
         for (int i = 1; i < split.Length; i++)
         {
@@ -360,6 +365,7 @@ public class SaveLoad : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log(tmp[0]);
                     y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
                 }
                 GameObject geb = Instantiate(forschungPrefab, transform);
@@ -383,7 +389,7 @@ public class SaveLoad : MonoBehaviour
         int x = 0;
         int y = 0;
 
-        string json = File.ReadAllText(Application.dataPath + "/Wohncontainer.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/Wohncontainer.json");
         string[] split=json.Split(':');
         for(int i =1; i < split.Length; i++)
         {

@@ -50,7 +50,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     {
         Nichts();
         projektMerkmalStufen = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1,1,1 };
-        maxStufen = new int[] { 10, 10, 10, 2, 10, 10, 2, 10, 2, 10, 10 };
+        maxStufen = new int[] { 10, 10, 10, 3, 10, 10, 3, 10, 3, 10, 10 }; // max+1 angeben
         staticSpezialisierungsauswahl = spezialisierungsauswahl;
 
     }
@@ -60,7 +60,6 @@ public class GebaeudeAnzeige : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)&& !PauseMenu.SpielIstPausiert)
         {
-
             if ( Testing.objektGebaut==0 && outBox(Input.mousePosition))
             {
                 Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);
@@ -68,24 +67,36 @@ public class GebaeudeAnzeige : MonoBehaviour
                 wert = Testing.grid.GetWert(cursorPos);
                 gebaeude = Testing.grid.GetGebaeude(cursorPos);
             }
-            
-            int i = 1;
-            foreach (GameObject anzeige in anzeigen)
+        }
+        if (!ObjektBewegung.selected && Testing.gebautesObjekt != null)
+        {
+            wert = Testing.objektGebaut;
+            gebaeude = Testing.grid.GetGebaeude(Testing.gebautesObjekt.transform.position);
+            Testing.gebautesObjekt = null;
+            Testing.objektGebaut = 0;
+        }
+        if (ObjektBewegung.selected)
+        {
+            wert = 0;
+        }
+        int i = 1;
+        foreach (GameObject anzeige in anzeigen)
+        {
+            if (i != wert)
+            {
+               
+                anzeige.SetActive(false);
+            }
+            else
             {
                 
-                if (i != wert)
-                {
-                    anzeige.SetActive(false);
-                }
-                else
-                {
-                    anzeige.SetActive(true);
-                    ObjektBewegung.infoAnzeige = anzeige;
-                }
-                i++;
+                anzeige.SetActive(true);
+                ObjektBewegung.infoAnzeige = anzeige;
             }
-            childOn = true;
+            i++;
         }
+        childOn = true;
+
         switch (wert)
         {
             case 0:

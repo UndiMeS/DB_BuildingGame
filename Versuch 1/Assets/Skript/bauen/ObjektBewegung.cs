@@ -51,10 +51,10 @@ public class ObjektBewegung : MonoBehaviour
                 {
                     GebaeudeAnzeige.staticSpezialisierungsauswahl.SetActive(true);
                 }
-                Testing.objektGebaut = 0;
+                
                 PanelKnopf.gebautetsGebaeude = null;
                 KameraKontroller.aktiviert = true;
-                Testing.gebautesObjekt = null;
+                
                 Destroy(GetComponent<ObjektBewegung>());
                
             }
