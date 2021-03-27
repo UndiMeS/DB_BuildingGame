@@ -89,7 +89,6 @@ public class GebaeudeAnzeige : MonoBehaviour
             }
             else
             {
-                
                 anzeige.SetActive(true);
                 ObjektBewegung.infoAnzeige = anzeige;
             }

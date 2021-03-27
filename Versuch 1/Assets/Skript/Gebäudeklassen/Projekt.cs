@@ -39,12 +39,13 @@ public class Projekt
         pos = p;
         forscheranzahl = forscher;
         kosten = preis;
-
+        Debug.Log("*");
         Testing.forschungsprojekte.Add(this);
         foreach(Forschung fors in Testing.forschungsstationen)
         {
             if (fors.stationsnummer == nr)
             {
+                Debug.Log(stationsnummer + " " + stufe + " " + merkmal);
                 fors.addProjekt(this);
             }
         }

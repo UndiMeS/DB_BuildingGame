@@ -100,8 +100,9 @@ public class SaveLoad : MonoBehaviour
         int forscherAnz = 0;
         int pos = 0;
 
-        string json = File.ReadAllText(Application.dataPath + "/SaveState/Stallcontainer.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/Forschungsprojekte.json");
         string[] split = json.Split(':');
+        Debug.Log(split.Length);
         for (int i = 1; i < split.Length; i++)
         {
             string[] tmp = split[i].Split(',');
@@ -111,7 +112,7 @@ public class SaveLoad : MonoBehaviour
             }
             else if ((i - 1) % 7 == 1)
             {
-                merkmal = tmp[0];
+                merkmal = tmp[0].Split('"')[1];
             }
             else if ((i - 1) % 7 == 2)
             {
@@ -139,8 +140,8 @@ public class SaveLoad : MonoBehaviour
                 {
                     pos = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
                 }
-                Debug.Log(pos);
-                Projekt pro = new Projekt(nr,merkmal, merkmalInt,stufe, kosten,forscherAnz,pos);
+                Debug.Log("!");
+                new Projekt(nr,merkmal, merkmalInt,stufe, kosten,forscherAnz,pos);
             }
         }
     }
@@ -343,7 +344,7 @@ public class SaveLoad : MonoBehaviour
             }
             else if ((i - 1) % 6 == 1)
             {
-                spez = tmp[0];
+                spez = tmp[0].Split('"')[1];
             }
             else if ((i - 1) % 6 == 2)
             {
@@ -365,20 +366,22 @@ public class SaveLoad : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log(tmp[0]);
                     y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
                 }
                 GameObject geb = Instantiate(forschungPrefab, transform);
                 geb.AddComponent<Forschung>();
+                geb.GetComponent<Forschung>().setAll(nr, spez, anzProj, maxAnz, x, y, dropDownProjekt, merkmalGO);
+              
                 Destroy(geb.GetComponent<ObjektBewegung>());
                 geb.transform.parent = null;
                 geb.transform.localScale = new Vector3(1, 1, 1);
                 geb.transform.rotation = Quaternion.Euler(0, 0, 0);
                 geb.transform.position = Testing.grid.GetWorldPosition(x, y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
                 Testing.grid.SetWert(x, y, 3, geb);
-                geb.GetComponent<Forschung>().setAll(nr, spez, anzProj, maxAnz, x, y, dropDownProjekt, merkmalGO);
+                
             }
         }
+        GebaeudeAnzeige.forschungsauswahl = false;
     }
     private void wohncontainerLaden()
     {

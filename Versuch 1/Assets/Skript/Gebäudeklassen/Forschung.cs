@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Forschung : MonoBehaviour
 {
-    public int stationsnummer;
+    public int stationsnummer=0;
     private int baukosten;
     public string spezialisierung;
     private int spezInt;
@@ -29,16 +29,19 @@ public class Forschung : MonoBehaviour
 
     public void Start()
     {
-        stationsnummer = nummerZaehler;
-        nummerZaehler++;
-        baukosten = preis;
-        Testing.geld -= preis;
-        Testing.forscher -= chef;
-        GebaeudeAnzeige.forschungsauswahl = true;
-        projekte = new List<Projekt>();
+        if (stationsnummer == 0)
+        {
+            stationsnummer = nummerZaehler;
+            nummerZaehler++;
+            baukosten = preis;
+            Testing.geld -= preis;
+            Testing.forscher -= chef;
+            GebaeudeAnzeige.forschungsauswahl = true;
+            projekte = new List<Projekt>();
 
-        Testing.forschungsstationen.Add(this);
-        Testing.gebauedeListe.Add(gameObject);
+            Testing.forschungsstationen.Add(this);
+            Testing.gebauedeListe.Add(gameObject);
+        }
     }
 
     
@@ -394,15 +397,16 @@ public class Forschung : MonoBehaviour
         stationsnummer = nr;
         nummerZaehler = nr;
         spezialisierung = spez;
+        baukosten = preis;
 
         anzahlProjekte = anzProj;
         maxAnzahlProjekte = maxAnz;
         x = xNeu;
         y = yNeu;
 
-        Testing.forscher += chef;
-        GebaeudeAnzeige.forschungsauswahl = false;
         projekte = new List<Projekt>();
         verbesserung(ddm, merkmalGO);
+
+        GebaeudeAnzeige.forschungsauswahl = false;
     }
 }
