@@ -18,15 +18,17 @@ public class Feld : MonoBehaviour
     public int y;
     public void Start()
     {
-        feldnummer = nummerZaehler;
-        nummerZaehler++;        
-        baukosten =preis;
-        Testing.geld -= preis;
-        arbeiter = arbeiterzahl;
-        Testing.feldarbeiter -= arbeiter;
-        ertrag = neuErtrag;
-        Testing.umsatz += ertrag;
-
+        if (feldnummer == 0)
+        {
+            feldnummer = nummerZaehler;
+            nummerZaehler++;
+            baukosten = preis;
+            Testing.geld -= preis;
+            arbeiter = arbeiterzahl;
+            Testing.feldarbeiter -= arbeiter;
+            ertrag = neuErtrag;
+            Testing.umsatz += ertrag;
+        }
         Testing.felder.Add(this);
         Testing.gebauedeListe.Add(gameObject);
     }
@@ -55,8 +57,6 @@ public class Feld : MonoBehaviour
         ertrag = ert;
         x = xNeu;
         y = yNeu;
-        Testing.feldarbeiter += arbeiter;
-        Testing.umsatz -= ertrag;
 
     }
 }

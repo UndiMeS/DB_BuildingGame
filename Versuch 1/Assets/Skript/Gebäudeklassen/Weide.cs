@@ -22,17 +22,19 @@ public class Weide : MonoBehaviour
 
     public void Start()
     {
-        weidennummer = nummerZaehler;
-        nummerZaehler++;
-        baukosten = preis;
-        Testing.geld -= preis;
-        arbeiter = arbeiterzahl;
-        Testing.tierpfleger -= arbeiter;
-        ertrag = neuErtrag;
-        Testing.umsatz += ertrag;
-        tiere = tierAnzahl;
-        Testing.tiere -= tiere;
-
+        if (weidennummer == 0)
+        {
+            weidennummer = nummerZaehler;
+            nummerZaehler++;
+            baukosten = preis;
+            Testing.geld -= preis;
+            arbeiter = arbeiterzahl;
+            Testing.tierpfleger -= arbeiter;
+            ertrag = neuErtrag;
+            Testing.umsatz += ertrag;
+            tiere = tierAnzahl;
+            Testing.tiere -= tiere;
+        }
         Testing.weiden.Add(this);
         Testing.gebauedeListe.Add(gameObject);
     }
@@ -62,10 +64,5 @@ public class Weide : MonoBehaviour
         tiere = tier;
         x = xNeu;
         y = yNeu;
-
-        Testing.umsatz -= ertrag;
-        Testing.tierpfleger += arbeiter;
-        Testing.tiere += tiere;
-
     }
 }

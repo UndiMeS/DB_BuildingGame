@@ -69,7 +69,6 @@ public class Testing : MonoBehaviour
             speichermenue.GetComponent<SaveLoad>().laden();
         }
 
-
      }
 
   

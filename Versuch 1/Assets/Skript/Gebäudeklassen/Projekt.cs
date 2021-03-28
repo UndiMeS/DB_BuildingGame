@@ -28,7 +28,7 @@ public class Projekt
 
     }
 
-    public Projekt(int nr, string merk, int merkInt, int st, int kost, int forAnz, int p)
+    public Projekt(int nr, string merk, int merkInt, int st, int kost, int forAnz,float faktor, int p)
     {
         stationsnummer = nr;
         merkmal = merk;
@@ -39,13 +39,17 @@ public class Projekt
         pos = p;
         forscheranzahl = forscher;
         kosten = preis;
-        Debug.Log("*");
+        verbesserungsfaktor = faktor;
         Testing.forschungsprojekte.Add(this);
-        foreach(Forschung fors in Testing.forschungsstationen)
+        if (GebaeudeAnzeige.projektMerkmalStufen[merkmalInt] < stufe+1)
+        {
+            GebaeudeAnzeige.projektMerkmalStufen[merkmalInt] = stufe+1;
+        }
+
+        foreach (Forschung fors in Testing.forschungsstationen)
         {
             if (fors.stationsnummer == nr)
             {
-                Debug.Log(stationsnummer + " " + stufe + " " + merkmal);
                 fors.addProjekt(this);
             }
         }

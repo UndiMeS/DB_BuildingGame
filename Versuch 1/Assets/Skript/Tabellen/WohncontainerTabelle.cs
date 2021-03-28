@@ -17,7 +17,6 @@ public class WohncontainerTabelle : MonoBehaviour
     public GameObject scrollContent;
 
     
-
     public void wohnendeAstroTabelleAn()
     {
         Time.timeScale = 0;
@@ -31,7 +30,7 @@ public class WohncontainerTabelle : MonoBehaviour
         for(int i =0; i< GebaeudeAnzeige.gebaeude.GetComponent<Wohncontainer>().bewohner.Count;i++)
         {
             GameObject zeile = Instantiate(prefabTabelle,wohnendeTabelle.transform);
-            Vector3 pos = wohnendeTabelle.transform.GetChild(0).position;
+            Vector3 pos =  wohnendeTabelle.transform.GetChild(0).position;
             zeile.GetComponent<RectTransform>().position =   pos;        
         }
     }

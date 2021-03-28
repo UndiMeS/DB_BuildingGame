@@ -10,6 +10,9 @@ public class Mensch
     public string name;
     public string aufgabe;
     public int containerNummer;
+    private int gebuehr;
+    private string bday;
+    private int nr;
 
     public Mensch(string aufg, int nummer)
     {
@@ -18,6 +21,25 @@ public class Mensch
         name = randomName();
         containerNummer = nummer;
         Testing.menschen.Add(this);
+    }
+
+    public Mensch(int gebuehr, string bday, string name, string aufgabe, int nr)
+    {
+        anreisegebuehr = gebuehr;
+        geburtstag = bday;
+        this.name = name;
+        this.aufgabe = aufgabe;
+        containerNummer = nr;
+        Testing.menschen.Add(this);
+
+        foreach(Wohncontainer wohn in Testing.wohncontainer)
+        {
+            if (wohn.containernummer == containerNummer)
+            {
+                Debug.Log("!");
+                wohn.bewohner.Add(this);
+            }
+        }
     }
 
     private string randomName()

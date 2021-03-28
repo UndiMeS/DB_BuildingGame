@@ -38,7 +38,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     public Sprite weide;
     public Sprite stall;
 
-    public static int[] projektMerkmalStufen;
+    public static int[] projektMerkmalStufen = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
     public static int[] maxStufen;
 
     public static bool childOn = false;
@@ -49,7 +49,6 @@ public class GebaeudeAnzeige : MonoBehaviour
     void Start()
     {
         Nichts();
-        projektMerkmalStufen = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1,1,1 };
         maxStufen = new int[] { 10, 10, 10, 3, 10, 10, 3, 10, 3, 10, 10 }; // max+1 angeben
         staticSpezialisierungsauswahl = spezialisierungsauswahl;
 

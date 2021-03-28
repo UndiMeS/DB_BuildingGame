@@ -19,7 +19,7 @@ public class KameraKontroller : MonoBehaviour
     public static bool aktiviert=true;
     private bool prevaktiviert = true;
 
-    public int hintergrund;
+    public static int hintergrund;
 
     public GameObject bottomLeiste;
 
@@ -28,6 +28,7 @@ public class KameraKontroller : MonoBehaviour
     {
         transform.position = newPosition;
         newZoom = cameraTransform.localPosition;
+        Debug.Log(hintergrund);
     }
 
     // Update is called once per frame

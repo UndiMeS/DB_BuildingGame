@@ -141,7 +141,11 @@ public class Gitter
     {
         int x, y;
         GetXY(weltPosition, out x, out y);
-        return gridArray[x, y];
+        if (x < weite && y < hoehe)
+        {
+            return gridArray[x, y];
+        }
+        return 0;
     }
 
     public GameObject GetGebaeude(Vector3 weltPosition)
@@ -151,8 +155,13 @@ public class Gitter
         return gebaeudeArray[x, y];
     }
     public GameObject GetGebaeude(int x, int y)
-    { 
-        return gebaeudeArray[x, y];
+    {
+        if (x < weite && y < hoehe)
+        {
+            return gebaeudeArray[x, y];
+        }
+        return null;
+        
     }
 
     //Weltposition in Grid 

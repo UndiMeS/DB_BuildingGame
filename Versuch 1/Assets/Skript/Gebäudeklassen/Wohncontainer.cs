@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Wohncontainer : MonoBehaviour
 {   
-    public int containernummer;    
+    public int containernummer=0;    
     public int baukosten;
     public int bettenanzahl;
     public int freieBetten;
@@ -22,15 +22,19 @@ public class Wohncontainer : MonoBehaviour
 
     public void Start()
     {
-        containernummer = nummerZaehler;
-        nummerZaehler++;
-        baukosten = preis;
-        Testing.geld -= preis;
-        bettenanzahl = betten;
-        freieBetten = bettenanzahl;
+        if (containernummer == 0)
+        {
+            containernummer = nummerZaehler;
+            nummerZaehler++;
+            baukosten = preis;
+            Testing.geld -= preis;
+            bettenanzahl = betten;
+            freieBetten = bettenanzahl;
+            Testing.wohncontainer.Add(this);
+            Testing.gebauedeListe.Add(gameObject);
+        }
 
-        Testing.wohncontainer.Add(this);
-        Testing.gebauedeListe.Add(gameObject);
+        
 
     }
 
@@ -55,9 +59,11 @@ public class Wohncontainer : MonoBehaviour
         nummerZaehler = contNr;
         baukosten = kosten;
         bettenanzahl = betAnz;
-        Testing.summeMenschen -= bettenanzahl;
         freieBetten = betfrei;
         x = xNeu;
         y = yNeu;
+
+        Testing.wohncontainer.Add(this);
+        Testing.gebauedeListe.Add(gameObject);
     }
 }

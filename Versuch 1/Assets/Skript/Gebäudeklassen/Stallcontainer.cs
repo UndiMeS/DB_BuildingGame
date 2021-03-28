@@ -20,13 +20,15 @@ public class Stallcontainer : MonoBehaviour
 
     public void Start()
     {
-        containernummer = nummerZaehler;
-        nummerZaehler++;
-        baukosten = preis;
-        Testing.geld -= preis;
-        gehegezahl = gehege;
-        freieGehege = gehegezahl;
-
+        if (containernummer == 0)
+        {
+            containernummer = nummerZaehler;
+            nummerZaehler++;
+            baukosten = preis;
+            Testing.geld -= preis;
+            gehegezahl = gehege;
+            freieGehege = gehegezahl;
+        }
         Testing.stallcontainer.Add(this);
         Testing.gebauedeListe.Add(gameObject);
     }
@@ -53,8 +55,6 @@ public class Stallcontainer : MonoBehaviour
         freieGehege = freiGeh;
         x = xNeu;
         y = yNeu;
-
-        Testing.summeTiere -= gehegezahl;
 
     }
 }

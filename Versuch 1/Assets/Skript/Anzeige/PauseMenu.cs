@@ -82,6 +82,15 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 0;
         SpielIstPausiert = true;
+        KameraKontroller.hintergrund = 1;
+    }
+
+    public void SwitchToBaumenue()
+    {
+        SceneManager.LoadScene(1);
+        Time.timeScale = 1;
+        PauseMenu.SpielIstPausiert = false;
+        KameraKontroller.hintergrund = 0;
     }
 
     public void AllesAusblenden()

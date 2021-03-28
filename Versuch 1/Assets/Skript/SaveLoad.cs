@@ -72,6 +72,14 @@ public class SaveLoad : MonoBehaviour
         }
         json = json.Remove(json.Length - 1) + "]";
         File.WriteAllText(Application.dataPath + "/SaveState/Stallcontainer.json", json);
+
+        json = "[";
+        foreach (Mensch obj in Testing.menschen)
+        {
+            json += JsonUtility.ToJson(obj) + ",";
+        }
+        json = json.Remove(json.Length - 1) + "]";
+        File.WriteAllText(Application.dataPath + "/SaveState/Menschen.json", json);
     }
 
     public void laden()
@@ -87,7 +95,52 @@ public class SaveLoad : MonoBehaviour
         projekteLaden();
         weideLaden();
         stallLaden();
+        menschenLaden();
         GebaeudeAnzeige.forschungsauswahl = false;
+    }
+
+    private void menschenLaden()
+    {
+        int gebuehr = 0;
+        string bday = "";
+        string name = "";
+        string aufgabe = "";
+        int nr = 0;
+
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/Menschen.json");
+        string[] split = json.Split(':');
+        for (int i = 1; i < split.Length; i++)
+        {
+            string[] tmp = split[i].Split(',');
+            if ((i - 1) % 5 == 0)
+            {
+                gebuehr = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 5 == 1)
+            {
+                bday = tmp[0].Split('"')[1];
+            }
+            else if ((i - 1) % 5 == 2)
+            {
+                name = tmp[0].Split('"')[1];
+            }
+            else if ((i - 1) % 5 == 3)
+            {
+                aufgabe = tmp[0].Split('"')[1];
+            }
+            else if ((i - 1) % 5==4)
+            {
+                if (i + 1 == split.Length)
+                {
+                    nr = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
+                }
+                else
+                {
+                    nr = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
+                }
+                new Mensch(gebuehr, bday, name, aufgabe, nr);
+            }
+        }
     }
 
     private void projekteLaden()
@@ -98,39 +151,51 @@ public class SaveLoad : MonoBehaviour
         int stufe = 0;
         int kosten = 0;
         int forscherAnz = 0;
+        float faktor = 0;
         int pos = 0;
 
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Forschungsprojekte.json");
         string[] split = json.Split(':');
-        Debug.Log(split.Length);
         for (int i = 1; i < split.Length; i++)
         {
             string[] tmp = split[i].Split(',');
-            if ((i - 1) % 7 == 0)
+            if ((i - 1) % 8 == 0)
             {
                 nr = int.Parse(tmp[0]);
             }
-            else if ((i - 1) % 7 == 1)
+            else if ((i - 1) % 8 == 1)
             {
                 merkmal = tmp[0].Split('"')[1];
             }
-            else if ((i - 1) % 7 == 2)
+            else if ((i - 1) % 8== 2)
             {
                 merkmalInt = int.Parse(tmp[0]);
             }
-            else if ((i - 1) % 7 == 3)
+            else if ((i - 1) % 8 == 3)
             {
                 stufe = int.Parse(tmp[0]);
             }
-            else if ((i - 1) % 7 == 4)
+            else if ((i - 1) % 8 == 4)
             {
                 kosten = int.Parse(tmp[0]);
             }
-            else if ((i - 1) % 7 == 5)
+            else if ((i - 1) % 8 == 5)
             {
                 forscherAnz = int.Parse(tmp[0]);
             }
-            else if ((i - 1) % 7 == 6)
+            else if ((i - 1) % 8 == 6)
+            {
+                if (float.Parse(tmp[0]) < 4E+15)
+                {
+                    faktor = 1.1f;
+                }
+                else
+                {
+                    faktor = 0.9f;
+                }
+
+            }
+            else if ((i - 1) % 8 == 7)
             {
                 if (i + 1 == split.Length)
                 {
@@ -140,12 +205,10 @@ public class SaveLoad : MonoBehaviour
                 {
                     pos = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
                 }
-                Debug.Log("!");
-                new Projekt(nr,merkmal, merkmalInt,stufe, kosten,forscherAnz,pos);
+                new Projekt(nr,merkmal, merkmalInt,stufe, kosten,forscherAnz,faktor,pos);
             }
         }
     }
-
     private void stallLaden()
     {
         int nr = 0;
@@ -192,6 +255,7 @@ public class SaveLoad : MonoBehaviour
                 }
 
                 GameObject geb = Instantiate(stallPrefab, transform);
+                Testing.gebauedeListe.Add(geb);
                 Destroy(geb.GetComponent<ObjektBewegung>());
                 geb.AddComponent<Stallcontainer>();
                 geb.transform.parent = null;
@@ -255,6 +319,7 @@ public class SaveLoad : MonoBehaviour
                     }
 
                     GameObject geb = Instantiate(weidePrefab, transform);
+                    Testing.gebauedeListe.Add(geb);
                     geb.AddComponent<Weide>();
                     Destroy(geb.GetComponent<ObjektBewegung>());
                     geb.transform.parent = null;
@@ -313,6 +378,7 @@ public class SaveLoad : MonoBehaviour
                 }
 
                 GameObject geb = Instantiate(feldPrefab, transform);
+                Testing.gebauedeListe.Add(geb);
                 Destroy(geb.GetComponent<ObjektBewegung>());
                 geb.AddComponent<Feld>();
                 geb.transform.parent = null;
@@ -378,7 +444,7 @@ public class SaveLoad : MonoBehaviour
                 geb.transform.rotation = Quaternion.Euler(0, 0, 0);
                 geb.transform.position = Testing.grid.GetWorldPosition(x, y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
                 Testing.grid.SetWert(x, y, 3, geb);
-                
+                Testing.gebauedeListe.Add(geb);
             }
         }
         GebaeudeAnzeige.forschungsauswahl = false;
@@ -428,6 +494,7 @@ public class SaveLoad : MonoBehaviour
                 }
                 GameObject geb = Instantiate(wohncontainerPrefab, transform);
                 geb.AddComponent<Wohncontainer>();
+                Testing.gebauedeListe.Add(geb);
                 Destroy( geb.GetComponent<ObjektBewegung>());
                 geb.transform.parent = null;
                 geb.transform.localScale= new Vector3(1, 1, 1);

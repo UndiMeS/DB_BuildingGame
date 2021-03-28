@@ -221,9 +221,10 @@ public class Forschung : MonoBehaviour
             }
         }
         selectedProj = null;
+        
         foreach (Projekt pro in projekte)
         {
-            if (pro.merkmalInt == opt && pro.stufe == GebaeudeAnzeige.projektMerkmalStufen[merkmal]-1)
+            if (pro.merkmalInt == merkmal && pro.stufe == GebaeudeAnzeige.projektMerkmalStufen[merkmal]-1)
             {
                 selectedProj = pro;
             }
@@ -249,21 +250,22 @@ public class Forschung : MonoBehaviour
         {
             if (option == 0)
             {
+                merkmal = 0;
                 selectedProj.SetMerkmal("Baukosten");
-                selectedProj.merkmalInt = option;
+                selectedProj.merkmalInt = merkmal;
                 selectedProj.pos = 0;
                 Wohncontainer.preis = selectedProj.neuerWert(Wohncontainer.preis, GebaeudeAnzeige.projektMerkmalStufen[0]);
                 GebaeudeAnzeige.projektMerkmalStufen[0]++;
-                merkmal = 0;
+                
             }
             else if (option == 1)
             {
+                merkmal = 1;
                 selectedProj.SetMerkmal("Bettenanzahl");
-                selectedProj.merkmalInt = option;
+                selectedProj.merkmalInt = merkmal;
                 selectedProj.pos =2;
                 Wohncontainer.betten = selectedProj.neuerWert(Wohncontainer.betten, GebaeudeAnzeige.projektMerkmalStufen[1]);
                 GebaeudeAnzeige.projektMerkmalStufen[1]++;
-                merkmal = 1;
             }
             else
             {
@@ -275,29 +277,32 @@ public class Forschung : MonoBehaviour
             if (option == 0)
             {
                 selectedProj.SetMerkmal("Baukosten");
-                selectedProj.merkmalInt = option;
+                merkmal = 2;
+                selectedProj.merkmalInt = merkmal;
                 selectedProj.pos = 0;
                 Feld.preis = selectedProj.neuerWert(Feld.preis, GebaeudeAnzeige.projektMerkmalStufen[2]);
                 GebaeudeAnzeige.projektMerkmalStufen[2]++;
-                merkmal = 2;
+                
             }
             else if (option == 1)
             {
                 selectedProj.SetMerkmal("Arbeiterzahl");
-                selectedProj.merkmalInt = option;
+                merkmal = 3; 
+                selectedProj.merkmalInt = merkmal;
                 selectedProj.pos = 0;
                 Feld.arbeiterzahl = selectedProj.neuerWert(Feld.arbeiterzahl, GebaeudeAnzeige.projektMerkmalStufen[3]);
                 GebaeudeAnzeige.projektMerkmalStufen[3]++;
-                merkmal = 3;
+                
             }
             else if (option == 2)
             {
                 selectedProj.SetMerkmal("Ertrag");
-                selectedProj.merkmalInt = option;
+                merkmal = 4;
+                selectedProj.merkmalInt = merkmal;
                 selectedProj.pos = 2;
                 Feld.neuErtrag = selectedProj.neuerWert(Feld.neuErtrag, GebaeudeAnzeige.projektMerkmalStufen[4]);
                 GebaeudeAnzeige.projektMerkmalStufen[4]++;
-                merkmal = 4;
+                
             }
             else
             {
@@ -309,38 +314,42 @@ public class Forschung : MonoBehaviour
             if (option == 0)
             {
                 selectedProj.SetMerkmal("Baukosten");
-                selectedProj.merkmalInt = option;
+                merkmal = 5;
+                selectedProj.merkmalInt = merkmal;
                 selectedProj.pos = 0;
                 Weide.preis = selectedProj.neuerWert(Weide.preis, GebaeudeAnzeige.projektMerkmalStufen[5]);
                 GebaeudeAnzeige.projektMerkmalStufen[5]++;
-                merkmal = 5;
+                
             }
             else if (option == 1)
             {
                 selectedProj.SetMerkmal("Arbeiterzahl");
-                selectedProj.merkmalInt = option;
+                merkmal = 6;
+                selectedProj.merkmalInt = merkmal;
                 selectedProj.pos = 2;
                 Weide.arbeiterzahl = selectedProj.neuerWert(Weide.arbeiterzahl, GebaeudeAnzeige.projektMerkmalStufen[6]);
                 GebaeudeAnzeige.projektMerkmalStufen[6]++;
-                merkmal = 6;
+                
             }
             else if (option == 2)
             {
                 selectedProj.SetMerkmal("Ertrag");
-                selectedProj.merkmalInt = option;
+                merkmal = 7;
+                selectedProj.merkmalInt = merkmal;
                 selectedProj.pos = 2;
                 Weide.neuErtrag = selectedProj.neuerWert(Weide.neuErtrag, GebaeudeAnzeige.projektMerkmalStufen[7]);
                 GebaeudeAnzeige.projektMerkmalStufen[7]++;
-                merkmal = 7;
+                
             }
             else if (option == 3)
             {
                 selectedProj.SetMerkmal("Tieranzahl");
-                selectedProj.merkmalInt = option;
+                merkmal = 8;
+                selectedProj.merkmalInt = merkmal;
                 selectedProj.pos = 0;
                 Weide.tierAnzahl = selectedProj.neuerWert(Weide.tierAnzahl, GebaeudeAnzeige.projektMerkmalStufen[8]);
                 GebaeudeAnzeige.projektMerkmalStufen[8]++;
-                merkmal = 8;
+                
             }
             else
             {
@@ -352,21 +361,25 @@ public class Forschung : MonoBehaviour
             if (option == 0)
             {
                 selectedProj.SetMerkmal("Baukosten");
-                selectedProj.merkmalInt = option;
+
+                merkmal = 9; 
+                selectedProj.merkmalInt = merkmal;
                 selectedProj.pos = 0;
                 Stallcontainer.preis = selectedProj.neuerWert(Stallcontainer.preis, GebaeudeAnzeige.projektMerkmalStufen[9]);
                 GebaeudeAnzeige.projektMerkmalStufen[9]++;
-                merkmal = 9;
+                
 
             }
             else if (option == 1)
             {
                 selectedProj.SetMerkmal("Gehegezahl");
-                selectedProj.merkmalInt = option;
+
+                merkmal = 10; 
+                selectedProj.merkmalInt = merkmal;
                 selectedProj.pos = 2;
                 Stallcontainer.gehege = selectedProj.neuerWert(Stallcontainer.gehege, GebaeudeAnzeige.projektMerkmalStufen[10]);
                 GebaeudeAnzeige.projektMerkmalStufen[10]++;
-                merkmal = 10;
+                
             }
             else
             {
@@ -394,6 +407,8 @@ public class Forschung : MonoBehaviour
 
     public void setAll(int nr, string spez, int anzProj, int maxAnz, int xNeu, int yNeu, TMPro.TMP_Dropdown ddm, GameObject merkmalGO)
     {
+        Testing.forschungsstationen.Add(this);
+
         stationsnummer = nr;
         nummerZaehler = nr;
         spezialisierung = spez;
@@ -408,5 +423,7 @@ public class Forschung : MonoBehaviour
         verbesserung(ddm, merkmalGO);
 
         GebaeudeAnzeige.forschungsauswahl = false;
+
+        
     }
 }

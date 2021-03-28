@@ -26,7 +26,7 @@ public class Hauptmenu : MonoBehaviour
         SceneManager.LoadScene(1);
         Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;
-        KameraKontroller.aktiviert = true;
+        KameraKontroller.hintergrund = 0;
     }
 
     public void Laden()
