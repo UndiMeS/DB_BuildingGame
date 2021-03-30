@@ -10,7 +10,7 @@ public class ERObjekt : MonoBehaviour
     private float width;
     private float height;
     private bool moveSelected = false;
-    public bool selected = true;
+    public bool selected = false;
     private RectTransform rectTransform;
 
     public bool schreibenSelected = false;
@@ -30,8 +30,11 @@ public class ERObjekt : MonoBehaviour
     {       
         changeSprite(selected);
         
-        if (schreibenSelected || Input.GetMouseButtonDown(0) && checkMausIn(Utilitys.GetMouseWorldPosition(Input.mousePosition)) && ERErstellung.testAufGleicherPosition(Utilitys.GetMouseWorldPosition(Input.mousePosition)).Equals(gameObject))//wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
+        if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition))
+        // && ERErstellung.testAufGleicherPosition(Utilitys.GetMouseWorldPosition(Input.mousePosition)).Equals(gameObject)
+        //wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
         {
+  
             if (inBox())
             {
                 return;
@@ -52,6 +55,7 @@ public class ERObjekt : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             moveSelected = false;
+            selected = false;
             KameraKontroller.aktiviert = true;
             //setzt Pivot zurueck in die Mitte, wenn Maus losgelassen wird
             float x = (0.5f - rectTransform.pivot.x) * width + gameObject.transform.position.x;
@@ -115,6 +119,12 @@ public class ERObjekt : MonoBehaviour
     //Überprüft ob der Mausklick auf dem Objket ist
     private bool checkMausIn(Vector3 mousePosition)
     {
+        /*Vector3[] v = new Vector3[4];
+        gameObject.GetComponent<RectTransform>().GetWorldCorners(v);
+        mousePosition = Utilitys.GetMouseWorldPosition(mousePosition);
+        gameObject.GetComponent<RectTransform>().GetLocalCorners(v);*/
+
+
         Vector3 position = gameObject.transform.position;
         int abstandX = (int)Math.Abs(mousePosition.x - position.x);
         int abstandY = (int)Math.Abs(mousePosition.y - position.y);

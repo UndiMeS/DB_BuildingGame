@@ -31,7 +31,9 @@ public class WohncontainerTabelle : MonoBehaviour
         {
             GameObject zeile = Instantiate(prefabTabelle,wohnendeTabelle.transform);
             Vector3 pos =  wohnendeTabelle.transform.GetChild(0).position;
-            zeile.GetComponent<RectTransform>().position =   pos;        
+            pos += new Vector3(0, -20, 0);
+            Debug.Log(pos + " " + (pos + new Vector3(0, -20, 0)));
+            zeile.GetComponent<RectTransform>().transform.Translate(pos);
         }
     }
     public void wohnendeAstroTabelleAus()

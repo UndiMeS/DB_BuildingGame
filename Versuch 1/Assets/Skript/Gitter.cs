@@ -152,7 +152,11 @@ public class Gitter
     {
         int x, y;
         GetXY(weltPosition, out x, out y);
-        return gebaeudeArray[x, y];
+        if (x < weite && y < hoehe)
+        {
+            return gebaeudeArray[x, y];
+        }
+        return null;
     }
     public GameObject GetGebaeude(int x, int y)
     {

@@ -21,14 +21,20 @@ public class KameraKontroller : MonoBehaviour
 
     public static int hintergrund;
 
-    public GameObject bottomLeiste;
+    public GameObject mars;
+    public GameObject erModell;
+
+    public Vector3 oldPos;
+    public Vector3 oldZoom;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.position = newPosition;
         newZoom = cameraTransform.localPosition;
-        Debug.Log(hintergrund);
+
+        oldPos = new Vector3(370, 205, 0); //für ER-Modell; Mars: (60,-10,5);
+        oldZoom = new Vector3(0, 50, -300); // für ER-Modell; Mars: (0,-40,-140);
     }
 
     // Update is called once per frame
@@ -40,8 +46,54 @@ public class KameraKontroller : MonoBehaviour
             HandleMovementInput();
             prevaktiviert = true;
         }
-        
+        else
+        {
+            //Debug.Log("Bewegeung pausiert");
+        }
+   
 
+    }
+
+    public void changeHintergrund(int newHintergrund)
+    {
+        Vector3 tempPos;
+        Vector3 tempZoom;
+        if (newHintergrund == hintergrund)
+        {
+            return;
+        }else if (newHintergrund == 0)
+        {
+            hintergrund = 0;
+            erModell.SetActive(false);
+            mars.SetActive(true);
+            cameraTransform.rotation = Quaternion.Euler(-45, 0, 0);
+            zoomAmount = new Vector3(0, 1, 1);
+
+            tempPos = transform.position;
+            tempZoom = cameraTransform.localPosition;
+
+            aktiviert = true;
+        }
+        else{
+            hintergrund =1;
+            erModell.SetActive(true);
+            mars.SetActive(false);
+            cameraTransform.rotation = Quaternion.Euler(0, 0, 0);
+            zoomAmount = new Vector3(0, 0, 1);
+             tempPos = transform.position;
+             tempZoom = cameraTransform.localPosition;
+            aktiviert = true;
+        }
+
+        dragCurrentPosition = Vector3.zero;
+        dragStartPosition = Vector3.zero;
+        newPosition = oldPos;
+        transform.position = newPosition;
+        newZoom = oldZoom;
+        cameraTransform.localPosition= newZoom;
+
+        oldPos = tempPos;
+        oldZoom = tempZoom;
     }
 
     private void HandleMouseInput()
@@ -77,7 +129,6 @@ public class KameraKontroller : MonoBehaviour
                 dragCurrentPosition = Utilitys.GetMouseWorldPosition(Input.mousePosition);
                 newPosition = transform.position + dragStartPosition - dragCurrentPosition;
             }
-        
     }
 
 
@@ -108,6 +159,7 @@ public class KameraKontroller : MonoBehaviour
             newZoom -= zoomAmount;
         }*/
         Grenze();
+        
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementTime);
         cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.deltaTime * movementTime);
     }
@@ -136,8 +188,8 @@ public class KameraKontroller : MonoBehaviour
         }
         else  //ER-Diagramm
         {
-            rechteGrenze = Screen.width-10;
-            obereGrenze = Screen.height-10;
+            rechteGrenze = 800;
+            obereGrenze = 400;
             linkeGrenze = 10;
             untereGrenze = 10;
             zoomMin = -20;
@@ -146,30 +198,31 @@ public class KameraKontroller : MonoBehaviour
         }
         if (Utilitys.GetMouseWorldPosition(new Vector2(0,0)).x < linkeGrenze)
         {
-            
+            Debug.Log("linkeGrenze");
             movementTime = 50;
             newPosition.x = transform.position.x+0.2f;
         }
         if (Utilitys.GetMouseWorldPosition(new Vector2(Screen.width,Screen.height)).x > rechteGrenze)
         {
-            
+            Debug.Log("rechte Grenze");
             movementTime = 50;
             newPosition.x = transform.position.x-0.2f;
         }
         if (Utilitys.GetMouseWorldPosition(new Vector2(0, 0)).y < untereGrenze)
         {
-            
+            Debug.Log("untere Grenze");
             movementTime = 50;
             newPosition.y = transform.position.y+0.2f;
         }
         if (Utilitys.GetMouseWorldPosition(new Vector2(Screen.width, Screen.height)).y > obereGrenze)
         {
-            
+            Debug.Log("oberer Grenze");
             movementTime = 50;
             newPosition.y = transform.position.y-0.2f;
         }
         if (zoomMax > newZoom.z || zoomMin < newZoom.z)
         {
+            Debug.Log("zoom");
             movementTime = 50;
             newZoom = cameraTransform.localPosition;
         }

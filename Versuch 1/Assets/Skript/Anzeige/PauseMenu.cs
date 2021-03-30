@@ -9,7 +9,7 @@ public class PauseMenu : MonoBehaviour
     public static bool SpielIstPausiert= false;
 
     public GameObject PauseMenuUI;
-
+    public GameObject kameraKontroller;
     public GameObject canvas;
 
     // Update is called once per frame
@@ -79,18 +79,17 @@ public class PauseMenu : MonoBehaviour
 
     public void SwitchToER()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+ 
         Time.timeScale = 0;
         SpielIstPausiert = true;
-        KameraKontroller.hintergrund = 1;
+        kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(1);
     }
 
     public void SwitchToBaumenue()
     {
-        SceneManager.LoadScene(1);
         Time.timeScale = 1;
-        PauseMenu.SpielIstPausiert = false;
-        KameraKontroller.hintergrund = 0;
+        SpielIstPausiert = false;
+        kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(0);
     }
 
     public void AllesAusblenden()

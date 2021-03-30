@@ -15,6 +15,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
     public static GameObject gebautetsGebaeude;
     public GameObject spezialisierungsauswahl;
+    public GameObject gebaeudeOrdner;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     {
         Testing.objektGebaut = gebaeudeNummer;
         gebautetsGebaeude = Instantiate(gebaeude);
-
+        gebautetsGebaeude.transform.SetParent(gebaeudeOrdner.transform);
         
         
     }
