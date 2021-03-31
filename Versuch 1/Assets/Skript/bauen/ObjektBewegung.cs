@@ -192,12 +192,8 @@ public class ObjektBewegung : MonoBehaviour
 
     private bool outBox(Vector3 mousePosition)
     {
-        
-        Vector3[] v = new Vector3[4];
-        erstellfenster.GetComponent<RectTransform>().GetWorldCorners(v);
         bool temp = RectTransformUtility.RectangleContainsScreenPoint(erstellfenster.GetComponent<RectTransform>(), mousePosition, Camera.main);
         if (!GebaeudeAnzeige.childOn) { return !temp; }
-        infoAnzeige.GetComponent<RectTransform>().GetWorldCorners(v);
         return !temp&&!RectTransformUtility.RectangleContainsScreenPoint(infoAnzeige.GetComponent<RectTransform>(), mousePosition, Camera.main); 
     }
 

@@ -31,7 +31,6 @@ public class PauseMenu : MonoBehaviour
     public void Weiterspielen()
     {
         PauseMenuUI.SetActive(false);
-        Time.timeScale = 1;
         SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
     }
@@ -44,7 +43,6 @@ public class PauseMenu : MonoBehaviour
     void Pause()
     {
         PauseMenuUI.SetActive(true);
-        Time.timeScale = 0;
         SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
     }
@@ -63,7 +61,6 @@ public class PauseMenu : MonoBehaviour
         if (objekt.activeSelf)
         {
             objekt.SetActive(false);
-            Time.timeScale = 1;
             SpielIstPausiert = false;
             KameraKontroller.aktiviert = true;
             
@@ -71,7 +68,6 @@ public class PauseMenu : MonoBehaviour
         else
         {
             objekt.SetActive(true);
-            Time.timeScale = 0;
             SpielIstPausiert = true;
             KameraKontroller.aktiviert = false;
         }
@@ -80,14 +76,12 @@ public class PauseMenu : MonoBehaviour
     public void SwitchToER()
     {
  
-        Time.timeScale = 0;
         SpielIstPausiert = true;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(1);
     }
 
     public void SwitchToBaumenue()
     {
-        Time.timeScale = 1;
         SpielIstPausiert = false;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(0);
     }

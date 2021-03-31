@@ -27,7 +27,7 @@ public class Testing : MonoBehaviour
     public static int umsatz = 0;
 
     public static int forscher=100;
-    public static int feldarbeiter = 0;
+    public static int feldarbeiter =100;
     public static int tierpfleger = 0;
     public static int tiere =0;
 

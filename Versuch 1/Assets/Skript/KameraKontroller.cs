@@ -27,6 +27,8 @@ public class KameraKontroller : MonoBehaviour
     public Vector3 oldPos;
     public Vector3 oldZoom;
 
+    private Vector3 testPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +36,7 @@ public class KameraKontroller : MonoBehaviour
         newZoom = cameraTransform.localPosition;
 
         oldPos = new Vector3(370, 205, 0); //für ER-Modell; Mars: (60,-10,5);
-        oldZoom = new Vector3(0, 50, -300); // für ER-Modell; Mars: (0,-40,-140);
+        oldZoom = new Vector3(0, 50, -100); // für ER-Modell; Mars: (0,-40,-140);
     }
 
     // Update is called once per frame
@@ -42,9 +44,10 @@ public class KameraKontroller : MonoBehaviour
     {
         if (aktiviert)
         {
-            HandleMouseInput();
-            HandleMovementInput();
-            prevaktiviert = true;
+            testPos = newPosition;
+            HandleMouseInput();     //speichert Daten des Touch Inputs in newPosition und newZoom
+            HandleMovementInput();  //speichert Daten der Tastaur in newPosition und newZoom
+            prevaktiviert = true;   // im Moment wo pausiert sollen Daten nicht weiter verarbeittet werden
         }
         else
         {
@@ -54,6 +57,8 @@ public class KameraKontroller : MonoBehaviour
 
     }
 
+    // Wechsel zwischen Marslandschaft und ER-Diagramm
+    // 0 Mars 1 ER-Dia
     public void changeHintergrund(int newHintergrund)
     {
         Vector3 tempPos;
@@ -61,52 +66,56 @@ public class KameraKontroller : MonoBehaviour
         if (newHintergrund == hintergrund)
         {
             return;
-        }else if (newHintergrund == 0)
+        }else if (newHintergrund == 0)//Mars
         {
             hintergrund = 0;
             erModell.SetActive(false);
             mars.SetActive(true);
-            cameraTransform.rotation = Quaternion.Euler(-45, 0, 0);
+            cameraTransform.rotation = Quaternion.Euler(-45, 0, 0);//Kamerawinkel
             zoomAmount = new Vector3(0, 1, 1);
+
+            tempPos = transform.position;               //Zwischenspeichern der Zoom und Pos Daten
+            tempZoom = cameraTransform.localPosition;
+
+            aktiviert = true;
+        }
+        else{ //ER-Dia
+            hintergrund =1;
+            erModell.SetActive(true);
+            mars.SetActive(false);
+            cameraTransform.rotation = Quaternion.Euler(0, 0, 0);
+            zoomAmount = new Vector3(0, 0, 1);
 
             tempPos = transform.position;
             tempZoom = cameraTransform.localPosition;
 
             aktiviert = true;
         }
-        else{
-            hintergrund =1;
-            erModell.SetActive(true);
-            mars.SetActive(false);
-            cameraTransform.rotation = Quaternion.Euler(0, 0, 0);
-            zoomAmount = new Vector3(0, 0, 1);
-             tempPos = transform.position;
-             tempZoom = cameraTransform.localPosition;
-            aktiviert = true;
-        }
 
-        dragCurrentPosition = Vector3.zero;
+        dragCurrentPosition = Vector3.zero; //0, da sonst allten Koordinaten von anderen Hintergrund
         dragStartPosition = Vector3.zero;
-        newPosition = oldPos;
-        transform.position = newPosition;
-        newZoom = oldZoom;
-        cameraTransform.localPosition= newZoom;
 
-        oldPos = tempPos;
+        newPosition = oldPos;
+        transform.position = newPosition;   //KameraVerankerung auf alte Position setzen
+        newZoom = oldZoom;
+        cameraTransform.localPosition= newZoom; //Kamera auf alte Position setzen
+
+        oldPos = tempPos;       //Daten von vorherigen Hintergrund
         oldZoom = tempZoom;
     }
 
+    //Touch Input
     private void HandleMouseInput()
     {
-            if (Input.mouseScrollDelta.y != 0)
+            if (Input.mouseScrollDelta.y != 0)      //Mausrad
             {
                 newZoom += Input.mouseScrollDelta.y * zoomAmount * 10;
             }
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))        //Beginn des Ziehens
             {
                 dragStartPosition = Utilitys.GetMouseWorldPosition(Input.mousePosition);
             }
-            if (Input.touchCount == 2)  //multitouch--> testen!!!
+            if (Input.touchCount == 2)  //multitouch
             {
                 Touch touch1 = Input.GetTouch(0);
                 Touch touch2 = Input.GetTouch(1);
@@ -120,14 +129,14 @@ public class KameraKontroller : MonoBehaviour
                 float differenz = cureentMagnitude - prevMagnitude;
                 newZoom += differenz * zoomAmount * 0.1f;
             }
-            else if (!aktiviert && prevaktiviert && Input.GetMouseButton(0))
+            else if (!aktiviert && prevaktiviert && Input.GetMouseButton(0))    // wenn vorher an und jetzt aus verarbeite Daten nicht mehr
             {
                 prevaktiviert = false;
             }
-            else if (Input.GetMouseButton(0))
+            else if (Input.GetMouseButton(0)) //aktuelle position des Ziehens
             {
                 dragCurrentPosition = Utilitys.GetMouseWorldPosition(Input.mousePosition);
-                newPosition = transform.position + dragStartPosition - dragCurrentPosition;
+                newPosition = transform.position + dragStartPosition - dragCurrentPosition; //start-aktuelle Position des ziehens  (wie viel gezogen) addiert auf aktuelle position
             }
     }
 
@@ -158,8 +167,9 @@ public class KameraKontroller : MonoBehaviour
         {
             newZoom -= zoomAmount;
         }*/
-        Grenze();
-        
+        Grenze();// Grenzen der Karte
+               
+        //Verschiebung der KameraVerankerung und Kamera 
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementTime);
         cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.deltaTime * movementTime);
     }
@@ -193,7 +203,7 @@ public class KameraKontroller : MonoBehaviour
             linkeGrenze = 10;
             untereGrenze = 10;
             zoomMin = -20;
-            zoomMax = -999;
+            zoomMax = -230;
 
         }
         if (Utilitys.GetMouseWorldPosition(new Vector2(0,0)).x < linkeGrenze)

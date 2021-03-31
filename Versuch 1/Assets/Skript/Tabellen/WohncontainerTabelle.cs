@@ -10,12 +10,13 @@ public class WohncontainerTabelle : MonoBehaviour
 
     public GameObject Tabelle;
     public GameObject wohnendeTabelle;
+    public GameObject ueberschriftzeile;
     public GameObject alleTabelle;
 
     public GameObject prefabTabelle;
 
     public GameObject scrollContent;
-
+    public List<GameObject> zeilenListe= new List<GameObject>();
     
     public void wohnendeAstroTabelleAn()
     {
@@ -26,14 +27,22 @@ public class WohncontainerTabelle : MonoBehaviour
         Tabelle.SetActive(true);
         wohnendeTabelle.SetActive(true);
         wohnendeAstro = true;
-
-        for(int i =0; i< GebaeudeAnzeige.gebaeude.GetComponent<Wohncontainer>().bewohner.Count;i++)
+        int i = 0;
+        foreach(Mensch mensch in GebaeudeAnzeige.gebaeude.GetComponent<Wohncontainer>().bewohner)
         {
             GameObject zeile = Instantiate(prefabTabelle,wohnendeTabelle.transform);
-            Vector3 pos =  wohnendeTabelle.transform.GetChild(0).position;
-            pos += new Vector3(0, -20, 0);
-            Debug.Log(pos + " " + (pos + new Vector3(0, -20, 0)));
-            zeile.GetComponent<RectTransform>().transform.Translate(pos);
+            Vector3 pos =  ueberschriftzeile.transform.localPosition;
+            pos +=(i+1)* new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y+4, 0);            
+            zeile.transform.localPosition = pos;
+            zeilenListe.Add(zeile);
+
+            Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, mensch.containerNummer);
+            Utilitys.TextInTMP(zeile.transform.GetChild(1).gameObject, mensch.name);
+            Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, mensch.geburtstag);
+            Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, mensch.aufgabe);
+            Utilitys.TextInTMP(zeile.transform.GetChild(4).gameObject, mensch.anreisegebuehr);
+
+            i++;
         }
     }
     public void wohnendeAstroTabelleAus()
@@ -45,27 +54,70 @@ public class WohncontainerTabelle : MonoBehaviour
         Tabelle.SetActive(false);
         wohnendeTabelle.SetActive(false);
         wohnendeAstro = false;
-    }
 
-    public void Update()
-    {
-       if (wohnendeAstro)
+        foreach(GameObject zeile in zeilenListe)
         {
-            //anzeigenWohnendeAstro();
+            Destroy(zeile);
         }
     }
 
-    private void anzeigenWohnendeAstro()
+    public void alleAstroTabelleAn()
     {
-        int i = 2;
-        foreach (Mensch mensch in GebaeudeAnzeige.gebaeude.GetComponent<Wohncontainer>().bewohner)
+        Time.timeScale = 0;
+        PauseMenu.SpielIstPausiert = true;
+        KameraKontroller.aktiviert = false;
+
+        Tabelle.SetActive(true);
+        alleTabelle.SetActive(true);
+        alleAstro = true;
+        int size = 0;
+        foreach(Wohncontainer wohn in Testing.wohncontainer)
         {
-            Utilitys.TextInTMP(wohnendeTabelle.transform.GetChild(i).transform.GetChild(0).gameObject, mensch.containerNummer);
-            Utilitys.TextInTMP(wohnendeTabelle.transform.GetChild(i).transform.GetChild(1).gameObject, mensch.name);
-            Utilitys.TextInTMP(wohnendeTabelle.transform.GetChild(i).transform.GetChild(2).gameObject, mensch.geburtstag);
-            Utilitys.TextInTMP(wohnendeTabelle.transform.GetChild(i).transform.GetChild(3).gameObject, mensch.aufgabe);
-            Utilitys.TextInTMP(wohnendeTabelle.transform.GetChild(i).transform.GetChild(4).gameObject, mensch.anreisegebuehr);
-            i++;
+            size += wohn.bewohner.Count;
+        }
+
+
+        scrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(ueberschriftzeile.GetComponent<RectTransform>().sizeDelta.x, ueberschriftzeile.GetComponent<RectTransform>().sizeDelta.y * size);
+        prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
+        
+        int i = 0;
+        foreach (Wohncontainer wohn in Testing.wohncontainer)
+        {
+
+            foreach (Mensch mensch in wohn.bewohner)
+            {
+                scrollContent.transform.position.Set(0, 0, 0);
+                GameObject zeile = Instantiate(prefabTabelle, scrollContent.transform);
+                Vector3 pos =i * new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y+4 , 0);
+                zeile.transform.localPosition = pos;
+                zeilenListe.Add(zeile);
+
+                Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, mensch.containerNummer);
+                Utilitys.TextInTMP(zeile.transform.GetChild(1).gameObject, mensch.name);
+                Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, mensch.geburtstag);
+                Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, mensch.aufgabe);
+                Utilitys.TextInTMP(zeile.transform.GetChild(4).gameObject, mensch.anreisegebuehr);
+
+                i++;
+            }
+        }
+
+        prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+
+    }
+    public void alleAstroTabelleAus()
+    {
+        Time.timeScale = 1;
+        PauseMenu.SpielIstPausiert = false;
+        KameraKontroller.aktiviert = true;
+
+        Tabelle.SetActive(false);
+        alleTabelle.SetActive(false);
+        alleAstro = false;
+
+        foreach (GameObject zeile in zeilenListe)
+        {
+            Destroy(zeile);
         }
     }
 }

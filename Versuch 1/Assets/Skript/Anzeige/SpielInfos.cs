@@ -23,7 +23,8 @@ public class SpielInfos : MonoBehaviour
     public float currenttime;
     public static int erdenTag;
     public static int marsTag;
-
+    public float lasttime;
+    public float pausedtime;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +46,7 @@ public class SpielInfos : MonoBehaviour
 
         if (!PauseMenu.SpielIstPausiert)
         {
-            currenttime = Time.time;
+            currenttime = Time.time-pausedtime;
             float neuSoltag = Mathf.RoundToInt(currenttime / 10.274f ) + 1; // +1 da es keinen Tag 0  gibt/ Marstag = 1,02748 * Erdtag --> 20* 1,02748
             if (neuSoltag % 5 == 0 && marsTag != neuSoltag)
             {
@@ -54,7 +55,13 @@ public class SpielInfos : MonoBehaviour
 
             marsTag = Mathf.RoundToInt(neuSoltag);
             erdenTag = Mathf.RoundToInt(currenttime / 10 ) + 1;
+            lasttime = currenttime;
         }
+        else
+        {
+            pausedtime = Time.time - lasttime;
+        }
+        
         
 
         Utilitys.TextInTMP(sol, marsTag);

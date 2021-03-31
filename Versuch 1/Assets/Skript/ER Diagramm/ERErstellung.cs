@@ -26,6 +26,8 @@ public class ERErstellung : MonoBehaviour
     public Texture entity;
     public Texture schwachEntity;
 
+    public GameObject leisteRechts;
+    public GameObject leisteBottom;
 
     // Start is called before the first frame update
     // zuerst leer
@@ -80,7 +82,8 @@ public class ERErstellung : MonoBehaviour
             }
             
             selectedGameObjekt.transform.position = Utilitys.GetMouseWorldPosition(new Vector3(Screen.width / 4, Screen.height / 4, 0));
-            
+            selectedGameObjekt.GetComponent<ERObjekt>().leisteBottom = leisteBottom;
+            selectedGameObjekt.GetComponent<ERObjekt>().leisteRechts = leisteRechts;
             
             if (selectedGameObjekt.CompareTag("Attribut") && lastselected.CompareTag("Entitaet"))
             {
