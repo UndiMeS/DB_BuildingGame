@@ -21,14 +21,14 @@ public class Testing : MonoBehaviour
     public static int objektGebaut;
     public static GameObject gebautesObjekt;
 
-    public static int geld = 800;
+    public static int geld = 10000;//800
 
 
     public static int umsatz = 0;
 
     public static int forscher=100;
     public static int feldarbeiter =100;
-    public static int tierpfleger = 0;
+    public static int tierpfleger = 100;
     public static int tiere =0;
 
     public static int summeMenschen = 0;
@@ -46,7 +46,7 @@ public class Testing : MonoBehaviour
     public static List<Weide> weiden = new List<Weide>();
     public static List<Stallcontainer> stallcontainer = new List<Stallcontainer>();
     public static List<GameObject> gebauedeListe = new List<GameObject>();
-
+    public static List<Tiere> tier = new List<Tiere>();
 
     // Start is called before the first frame update
     void Start()

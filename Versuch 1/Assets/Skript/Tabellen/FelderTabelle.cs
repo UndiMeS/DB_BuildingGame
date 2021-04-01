@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class FelderTabelle : MonoBehaviour
 {
-    public bool alleFelder = false;
-
     public GameObject Tabelle;
-    public GameObject ueberschriftzeile;
     public GameObject alleTabelle;
 
     public GameObject prefabTabelle;
@@ -23,10 +20,9 @@ public class FelderTabelle : MonoBehaviour
 
         Tabelle.SetActive(true);
         alleTabelle.SetActive(true);
-        alleFelder = true;
-
+     
         int size = Testing.felder.Count;
-        scrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(ueberschriftzeile.GetComponent<RectTransform>().sizeDelta.x, ueberschriftzeile.GetComponent<RectTransform>().sizeDelta.y * size);
+        scrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(prefabTabelle.GetComponent<RectTransform>().sizeDelta.x, prefabTabelle.GetComponent<RectTransform>().sizeDelta.y * size);
         prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
 
         int i = 0;
@@ -59,8 +55,7 @@ public class FelderTabelle : MonoBehaviour
 
         Tabelle.SetActive(false);
         alleTabelle.SetActive(false);
-        alleFelder = false;
-
+       
         foreach (GameObject zeile in zeilenListe)
         {
             Destroy(zeile);

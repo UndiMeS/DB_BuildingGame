@@ -19,7 +19,7 @@ public class Forschung : MonoBehaviour
 
     private TMPro.TMP_Dropdown dropdown;
 
-    private List<Projekt> projekte;
+    public List<Projekt> projekte;
     private Projekt selectedProj;
 
     private string aktuellesMerkmal = "";

@@ -18,6 +18,8 @@ public class Stallcontainer : MonoBehaviour
     public int x;
     public int y;
 
+    public List<Tiere> tiere = new List<Tiere>();
+
     public void Start()
     {
         if (containernummer == 0)

@@ -80,6 +80,14 @@ public class SaveLoad : MonoBehaviour
         }
         json = json.Remove(json.Length - 1) + "]";
         File.WriteAllText(Application.dataPath + "/SaveState/Menschen.json", json);
+
+        json = "[";
+        foreach (Tiere obj in Testing.tier)
+        {
+            json += JsonUtility.ToJson(obj) + ",";
+        }
+        json = json.Remove(json.Length - 1) + "]";
+        File.WriteAllText(Application.dataPath + "/SaveState/Tiere.json", json);
     }
 
     public void laden()
@@ -96,7 +104,47 @@ public class SaveLoad : MonoBehaviour
         weideLaden();
         stallLaden();
         menschenLaden();
+        tiereLaden();
         GebaeudeAnzeige.forschungsauswahl = false;
+    }
+
+    private void tiereLaden()
+    {
+        int nr = 0;
+        string name = "";
+        string art = "";
+        int kosten = 0;
+
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/Menschen.json");
+        string[] split = json.Split(':');
+        for (int i = 1; i < split.Length; i++)
+        {
+            string[] tmp = split[i].Split(',');
+            if ((i - 1) % 4== 0)
+            {
+                nr = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 4 == 1)
+            {
+                name = tmp[0].Split('"')[1];
+            }
+            else if ((i - 1) % 4 == 2)
+            {
+                art = tmp[0].Split('"')[1];
+            }
+                        else if ((i - 1) % 4 == 3)
+            {
+                if (i + 1 == split.Length)
+                {
+                    kosten = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
+                }
+                else
+                {
+                    kosten = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
+                }
+                new Tiere(nr, name,  art, kosten);
+            }
+        }
     }
 
     private void menschenLaden()

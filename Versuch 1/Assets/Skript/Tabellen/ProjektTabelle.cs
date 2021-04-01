@@ -8,15 +8,15 @@ public class ProjektTabelle : MonoBehaviour
 
     public GameObject Tabelle;
     public GameObject stationsprojekteTabelle;
-    public GameObject ueberschriftzeile;
     public GameObject alleProjekteTabelle;
 
     public GameObject prefabTabelle;
 
-    public GameObject scrollContent;
+    public GameObject alleScrollContent;
+    public GameObject stationScrollContent;
     public List<GameObject> zeilenListe = new List<GameObject>();
 
-    public void wohnendeAstroTabelleAn()
+    public void stationsProjekteTabelleAn()
     {
         Time.timeScale = 0;
         PauseMenu.SpielIstPausiert = true;
@@ -25,25 +25,36 @@ public class ProjektTabelle : MonoBehaviour
         Tabelle.SetActive(true);
         stationsprojekteTabelle.SetActive(true);
         stationsprojekte = true;
+
+        int size = GebaeudeAnzeige.gebaeude.GetComponent<Forschung>().projekte.Count;
+        
+        stationScrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(prefabTabelle.GetComponent<RectTransform>().sizeDelta.x, prefabTabelle.GetComponent<RectTransform>().sizeDelta.y * size);
+        prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
+
         int i = 0;
-        foreach (Mensch mensch in GebaeudeAnzeige.gebaeude.GetComponent<Wohncontainer>().bewohner)
-        {
-            GameObject zeile = Instantiate(prefabTabelle, stationsprojekteTabelle.transform);
-            Vector3 pos = ueberschriftzeile.transform.localPosition;
-            pos += (i + 1) * new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y + 4, 0);
-            zeile.transform.localPosition = pos;
-            zeilenListe.Add(zeile);
+                    foreach (Projekt projekt in GebaeudeAnzeige.gebaeude.GetComponent<Forschung>().projekte)
+            {
+                stationScrollContent.transform.position.Set(0, 0, 0);
+                GameObject zeile = Instantiate(prefabTabelle, stationScrollContent.transform);
+                Vector3 pos = i * new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y + 4, 0);
+                zeile.transform.localPosition = pos;
+                zeilenListe.Add(zeile);
 
-            Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, mensch.containerNummer);
-            Utilitys.TextInTMP(zeile.transform.GetChild(1).gameObject, mensch.name);
-            Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, mensch.geburtstag);
-            Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, mensch.aufgabe);
-            Utilitys.TextInTMP(zeile.transform.GetChild(4).gameObject, mensch.anreisegebuehr);
+                Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, projekt.stationsnummer);
+                Utilitys.TextInTMP(zeile.transform.GetChild(1).gameObject, projekt.merkmal);
+                Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, projekt.stufe);
+                Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, projekt.kosten);
+                Utilitys.TextInTMP(zeile.transform.GetChild(4).gameObject, projekt.forscheranzahl);
+                Utilitys.TextInTMP(zeile.transform.GetChild(5).gameObject, projekt.verbesserungsfaktor);
 
-            i++;
+                i++;
+            
         }
+
+        prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+
     }
-    public void wohnendeAstroTabelleAus()
+    public void stationsProjekteTabelleAus()
     {
         Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;
@@ -59,7 +70,7 @@ public class ProjektTabelle : MonoBehaviour
         }
     }
 
-    public void alleAstroTabelleAn()
+    public void alleProjekteTabelleAn()
     {
         Time.timeScale = 0;
         PauseMenu.SpielIstPausiert = true;
@@ -69,32 +80,33 @@ public class ProjektTabelle : MonoBehaviour
         alleProjekteTabelle.SetActive(true);
         alleProjekte = true;
         int size = 0;
-        foreach (Wohncontainer wohn in Testing.wohncontainer)
+        foreach (Forschung station in Testing.forschungsstationen)
         {
-            size += wohn.bewohner.Count;
+            size += station.projekte.Count;
         }
 
 
-        scrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(ueberschriftzeile.GetComponent<RectTransform>().sizeDelta.x, ueberschriftzeile.GetComponent<RectTransform>().sizeDelta.y * size);
+        alleScrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(prefabTabelle.GetComponent<RectTransform>().sizeDelta.x, prefabTabelle.GetComponent<RectTransform>().sizeDelta.y * size);
         prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
 
         int i = 0;
-        foreach (Wohncontainer wohn in Testing.wohncontainer)
+        foreach (Forschung station in Testing.forschungsstationen)
         {
 
-            foreach (Mensch mensch in wohn.bewohner)
+            foreach (Projekt projekt in station.projekte)
             {
-                scrollContent.transform.position.Set(0, 0, 0);
-                GameObject zeile = Instantiate(prefabTabelle, scrollContent.transform);
+                alleScrollContent.transform.position.Set(0, 0, 0);
+                GameObject zeile = Instantiate(prefabTabelle, alleScrollContent.transform);
                 Vector3 pos = i * new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y + 4, 0);
                 zeile.transform.localPosition = pos;
                 zeilenListe.Add(zeile);
 
-                Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, mensch.containerNummer);
-                Utilitys.TextInTMP(zeile.transform.GetChild(1).gameObject, mensch.name);
-                Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, mensch.geburtstag);
-                Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, mensch.aufgabe);
-                Utilitys.TextInTMP(zeile.transform.GetChild(4).gameObject, mensch.anreisegebuehr);
+                Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, projekt.stationsnummer);
+                Utilitys.TextInTMP(zeile.transform.GetChild(1).gameObject, projekt.merkmal);
+                Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, projekt.stufe);
+                Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, projekt.kosten);
+                Utilitys.TextInTMP(zeile.transform.GetChild(4).gameObject, projekt.forscheranzahl);
+                Utilitys.TextInTMP(zeile.transform.GetChild(5).gameObject, projekt.verbesserungsfaktor);
 
                 i++;
             }
@@ -103,7 +115,7 @@ public class ProjektTabelle : MonoBehaviour
         prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
 
     }
-    public void alleAstroTabelleAus()
+    public void alleProjekteTabelleAus()
     {
         Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;

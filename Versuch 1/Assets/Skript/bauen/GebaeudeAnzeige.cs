@@ -238,7 +238,7 @@ public class GebaeudeAnzeige : MonoBehaviour
             gebaeude.GetComponent<Wohncontainer>().bewohner.Add(temp);
         }
     }
-     public void Tiere()
+     public void Tiere(int welchesTier)
     {
         if (Testing.geld < tierkosten)
         {
@@ -251,6 +251,19 @@ public class GebaeudeAnzeige : MonoBehaviour
             Testing.tiere++;
             Testing.geld -= tierkosten;
             Testing.summeTiere++;
+            string art = "";
+            if (welchesTier == 0)
+            {
+                 art = "Kuh";
+            }
+            else if(welchesTier == 1)
+            {
+                 art = "Schwein";
+            }else {
+                 art = "Schaf";
+            }
+            Tiere temp = new Tiere(art, gebaeude.GetComponent<Stallcontainer>().containernummer);
+            gebaeude.GetComponent<Stallcontainer>().tiere.Add(temp);
         }
     }
 
