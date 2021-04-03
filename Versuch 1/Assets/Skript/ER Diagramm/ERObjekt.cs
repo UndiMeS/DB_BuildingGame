@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 
 /*Prefab der Objekte im ERD besitzten das Skript
@@ -21,6 +22,8 @@ public class ERObjekt : MonoBehaviour
     public GameObject leisteBottom;
     public GameObject leisteRechts;
 
+    public Canvas canvas;
+
     public void Start()
     {
         rectTransform = gameObject.GetComponent<RectTransform>();
@@ -29,11 +32,12 @@ public class ERObjekt : MonoBehaviour
 
     }
 
+   
     private void Update()
     {       
         changeSprite(ERErstellung.selectedGameObjekt.Equals(gameObject));
         
-        if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition) && ERErstellung.testAufGleicherPosition(Utilitys.GetMouseWorldPosition(Input.mousePosition)).Equals(gameObject))
+        if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition)&& ERErstellung.testAufGleicherPosition(Input.mousePosition).Equals(gameObject))
         //wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
         {
   
@@ -44,9 +48,16 @@ public class ERObjekt : MonoBehaviour
             if (!selected) //wenn neu selected, dann wird Objekt zu aktuellen ER-Objekt
             {
                 //setzt Pivot des Objektes auf die Position der Maus
-                float pivotX = (Utilitys.GetMouseWorldPosition(Input.mousePosition).x - gameObject.transform.position.x) * (1 / width) + rectTransform.pivot.x;
-                float pivotY = (Utilitys.GetMouseWorldPosition(Input.mousePosition).y - gameObject.transform.position.y) * (1 / height) + rectTransform.pivot.y;
+                
+                Vector3[] v= new Vector3[4];
+                rectTransform.GetWorldCorners(v);
+
+                Debug.Log(Utilitys.GetMouseWorldPosition(Input.mousePosition) + " " + gameObject.transform.position + " " +v[0]+" "+v[2]);
+
+                float pivotX =rectTransform.pivot.x* (Utilitys.GetMouseWorldPosition(Input.mousePosition).x-v[0].x)/(gameObject.transform.position.x-v[0].x);
+                float pivotY = rectTransform.pivot.y * (Utilitys.GetMouseWorldPosition(Input.mousePosition).y - v[0].y) / (gameObject.transform.position.y - v[0].y);
                 rectTransform.pivot = new Vector2(pivotX, pivotY);
+                Debug.Log(rectTransform.pivot);
                 ERErstellung.changeSelectedGameobjekt(gameObject);
             }
             selected = true;
@@ -60,10 +71,10 @@ public class ERObjekt : MonoBehaviour
             selected = false;
             KameraKontroller.aktiviert = true;
             //setzt Pivot zurueck in die Mitte, wenn Maus losgelassen wird
-            float x = (0.5f - rectTransform.pivot.x) * width + gameObject.transform.position.x;
+            /*float x = (0.5f - rectTransform.pivot.x) * width + gameObject.transform.position.x;
             float y = (0.5f - rectTransform.pivot.y) * height + gameObject.transform.position.y;
             gameObject.transform.position = new Vector2(x, y);
-            gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+            gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);*/
 
 
         }

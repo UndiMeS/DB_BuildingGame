@@ -13,7 +13,7 @@ public class ERErstellung : MonoBehaviour
 
     public GameObject linie;
     public GameObject linienOrdner;
-    public GameObject erModellflaeche;
+    public Canvas erModellflaeche;
 
     public static GameObject entitaet;
     public static GameObject attribut;
@@ -71,6 +71,7 @@ public class ERErstellung : MonoBehaviour
         }
         else //erzeugt neues Objekt und markiert es
         {
+            temp.GetComponent<ERObjekt>().canvas = erModellflaeche;
             modellObjekte.Add(temp);
             changeSelectedGameobjekt(temp);
             selectedGameObjekt.transform.SetParent(erModellflaeche.transform);
@@ -116,9 +117,15 @@ public class ERErstellung : MonoBehaviour
             
             lastselected.GetComponent<ERObjekt>().selected = false;
             lastselected.GetComponent<ERObjekt>().changeSprite(false);
+            Debug.Log(selectedGameObjekt.name + " " + lastselected.name);
+        }
+        else
+        {
+            Debug.Log(selectedGameObjekt.name);
         }
         changeOberflaeche();
 
+        
     }
 
   
@@ -161,6 +168,7 @@ public class ERErstellung : MonoBehaviour
     {
         foreach (GameObject objekt in modellObjekte)
         {
+            Debug.Log(objekt.name);
             if (checkMausIn(pos, objekt))
             {
                 return objekt;
@@ -171,10 +179,12 @@ public class ERErstellung : MonoBehaviour
 
     private static bool checkMausIn(Vector3 mousePosition, GameObject objekt)
     {
-        Vector3 position = objekt.transform.position;
+        /*Vector3 position = objekt.transform.position;
         int abstandX = (int)Math.Abs(mousePosition.x - position.x);
         int abstandY = (int)Math.Abs(mousePosition.y - position.y);
         bool drin = abstandX < objekt.GetComponent<RectTransform>().sizeDelta.x / 2 && abstandY < objekt.GetComponent<RectTransform>().sizeDelta.y / 2;
+        */
+        bool drin = RectTransformUtility.RectangleContainsScreenPoint(objekt.GetComponent<RectTransform>(), mousePosition, Camera.main);
         return drin;
     }
 

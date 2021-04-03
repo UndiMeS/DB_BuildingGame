@@ -54,9 +54,9 @@ public class Testing : MonoBehaviour
         grid = new Gitter(weite, hoehe, zellengroesse);
 
         //Hintergrund und Camera
-        boden.transform.Translate(weite / 2 * zellengroesse , hoehe / 2 * zellengroesse , 1);
-        boden.transform.localScale += new Vector3(weite +20 , 1, hoehe+20 );
-        boden.transform.Rotate(90f, 180f, 0);
+        boden.transform.localPosition = new Vector3(82, 8, -82);
+        boden.transform.localScale = new Vector3(150,150,2);
+        boden.transform.localRotation = Quaternion.Euler(42, 222, -148);
         FehlerAnzeige.fehlertext = "";
 
         ObjektBewegung.erstellfenster = erstellfenster;
