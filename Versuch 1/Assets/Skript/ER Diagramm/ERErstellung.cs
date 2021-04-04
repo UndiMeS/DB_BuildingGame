@@ -117,12 +117,8 @@ public class ERErstellung : MonoBehaviour
             
             lastselected.GetComponent<ERObjekt>().selected = false;
             lastselected.GetComponent<ERObjekt>().changeSprite(false);
-            Debug.Log(selectedGameObjekt.name + " " + lastselected.name);
-        }
-        else
-        {
-            Debug.Log(selectedGameObjekt.name);
-        }
+       }
+        
         changeOberflaeche();
 
         
@@ -168,7 +164,6 @@ public class ERErstellung : MonoBehaviour
     {
         foreach (GameObject objekt in modellObjekte)
         {
-            Debug.Log(objekt.name);
             if (checkMausIn(pos, objekt))
             {
                 return objekt;

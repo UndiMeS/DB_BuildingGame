@@ -52,12 +52,9 @@ public class ERObjekt : MonoBehaviour
                 Vector3[] v= new Vector3[4];
                 rectTransform.GetWorldCorners(v);
 
-                Debug.Log(Utilitys.GetMouseWorldPosition(Input.mousePosition) + " " + gameObject.transform.position + " " +v[0]+" "+v[2]);
-
                 float pivotX =rectTransform.pivot.x* (Utilitys.GetMouseWorldPosition(Input.mousePosition).x-v[0].x)/(gameObject.transform.position.x-v[0].x);
                 float pivotY = rectTransform.pivot.y * (Utilitys.GetMouseWorldPosition(Input.mousePosition).y - v[0].y) / (gameObject.transform.position.y - v[0].y);
                 rectTransform.pivot = new Vector2(pivotX, pivotY);
-                Debug.Log(rectTransform.pivot);
                 ERErstellung.changeSelectedGameobjekt(gameObject);
             }
             selected = true;
@@ -71,10 +68,13 @@ public class ERObjekt : MonoBehaviour
             selected = false;
             KameraKontroller.aktiviert = true;
             //setzt Pivot zurueck in die Mitte, wenn Maus losgelassen wird
-            /*float x = (0.5f - rectTransform.pivot.x) * width + gameObject.transform.position.x;
-            float y = (0.5f - rectTransform.pivot.y) * height + gameObject.transform.position.y;
+            Vector3[] v = new Vector3[4];
+            rectTransform.GetWorldCorners(v);
+
+            float x = v[0].x+(gameObject.transform.position.x-v[0].x)/(2* rectTransform.pivot.x);
+            float y = v[0].y + (gameObject.transform.position.y - v[0].y) / (2 * rectTransform.pivot.y);
             gameObject.transform.position = new Vector2(x, y);
-            gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);*/
+            gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
 
 
         }

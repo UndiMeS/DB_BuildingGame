@@ -15,12 +15,17 @@ public class toogleEingabe : MonoBehaviour
     
     void Start()
     {
-        toggleGroupInstance =  GetComponent<ToggleGroup> ();
-        Debug.Log ("ausgewählt"+ currentSelection.name);
-        
+        toggleGroupInstance =  GetComponent<ToggleGroup> ();    
         toggleOff();
     }
- //zurücksetzten aller Toggles
+
+    public void init()
+    {
+        toggleGroupInstance = GetComponent<ToggleGroup>();
+        toggleOff();
+    }
+    
+    //zurücksetzten aller Toggles
     public void toggleOff (){
         var toggles = toggleGroupInstance.GetComponentsInChildren<Toggle> ();
         for (int i = 0; i < 4; i++){

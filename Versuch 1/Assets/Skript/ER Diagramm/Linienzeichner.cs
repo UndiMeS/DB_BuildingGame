@@ -13,11 +13,16 @@ public class Linienzeichner : MonoBehaviour
     private int breite=3;
     public bool zeichnen=false;
 
+    private LineRenderer lineRenderer;
+    private float counter;
+    private float distance;
+
+
     // Start is called before the first frame update
     void Start()
     {
        rect = gameObject.GetComponent<RectTransform>();
-       
+        lineRenderer = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
@@ -31,9 +36,8 @@ public class Linienzeichner : MonoBehaviour
         changeName();
         if (zeichnen && objekt1!=null&&objekt2!=null)
         {
-            pos1 = objekt1.transform.position;
-            pos2 = objekt2.transform.position;
-
+            pos1 = objekt1.transform.localPosition;
+            pos2 = objekt2.transform.localPosition;
             berechneLinie();
         }
     }
@@ -48,16 +52,15 @@ public class Linienzeichner : MonoBehaviour
 
     private void berechneLinie()
     {
-        rect.sizeDelta = new Vector2(2*(pos2 - pos1).magnitude, breite);
-        gameObject.transform.position = pos1;
-
-        double winkel = Vector3.Angle(pos2-pos1,Vector3.right);
+        gameObject.transform.position = objekt1.transform.position;
+        rect.sizeDelta = new Vector2((pos2 - pos1).magnitude, breite);
+     
+        double winkel = Vector3.Angle(objekt2.transform.position - objekt1.transform.position, Vector3.right);
         gameObject.transform.rotation = Quaternion.Euler(0, 0, (float)winkel);
         if (pos2.y < pos1.y)
         {
-            gameObject.transform.rotation = Quaternion.Euler(-180f, 0, (float) winkel);
+           gameObject.transform.rotation = Quaternion.Euler(0, 0,-(float) winkel);
         }
-
 
     }
 

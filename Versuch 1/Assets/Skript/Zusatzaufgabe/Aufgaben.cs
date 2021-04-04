@@ -5,21 +5,60 @@ using UnityEngine.UI;
 
 public class Aufgaben : MonoBehaviour
 {
-    
+    public Sprite[] aufgabenListe = new Sprite[23];
+    public string[] correct ;
+    public int[] level ;
 
-    /*public static Texture[] aufgabenListe = new Texture[23];
-    public static int[] correct = new int[aufgabenListe.Length];
-    public static int[] level = new int[aufgabenListe.Length];
+    private int welcheAufgabe = 0;
 
-    public bool check(){
+    public toogleEingabe toogle;
+    public GameObject exitKnopf;
+    public GameObject RichitgFalschAnzeige;
 
-        return false;
+    public void Start()
+    {
+        correct = new string[aufgabenListe.Length];
+        correct[0] = "B";
+        //correct={"B",....}
+        level = new int[aufgabenListe.Length]; //?
     }
 
 
-public void geldGeben(){
+    public void check(){
+        if (toogle.currentSelection.name.Equals(correct[welcheAufgabe]))
+        {
+            Utilitys.TextInTMP(RichitgFalschAnzeige, "Richtig !");
+
+            welcheAufgabe++;
+            geldGeben();
+            exitKnopf.SetActive(true);
+        }
+        else
+        {
+            Utilitys.TextInTMP(RichitgFalschAnzeige, "Falsch !");
+            Invoke("clearAnzeige", 8);
+        }
+    }
+
+    public void clearAnzeige()
+    {
+        Utilitys.TextInTMP(RichitgFalschAnzeige, " ");
+    }
+
+    public void openAufgabe()
+    {
+        toogle.init();
+        toogle.toggleOff();
+        gameObject.GetComponent<Image>().sprite = aufgabenListe[welcheAufgabe];
+        exitKnopf.SetActive(false);
+        clearAnzeige();
+        
+    }
+
+
+    public void geldGeben(){
         
         Testing.geld += 100;
     }
-*/
+
 }

@@ -21,22 +21,27 @@ public class Testing : MonoBehaviour
     public static int objektGebaut;
     public static GameObject gebautesObjekt;
 
-    public static int geld = 10000;//800
+    public static int geld = 800;//800
 
 
     public static int umsatz = 0;
 
-    public static int forscher=100;
-    public static int feldarbeiter =100;
-    public static int tierpfleger = 100;
+    public static int forscher=0;
+    public static int feldarbeiter =0;
+    public static int tierpfleger = 0;
     public static int tiere =0;
 
     public static int summeMenschen = 0;
     public static int summeTiere = 0;
     public static int summeForschungen = 0;
 
+    private bool zuvorNichtAn;
+
     public GameObject erstellfenster;
     public GameObject infofesnter;
+
+    public PauseMenu pausemenu;
+    public GameObject zusatz;
 
     public static List<Wohncontainer> wohncontainer = new List<Wohncontainer>();
     public static List<Mensch> menschen = new List<Mensch>();
@@ -51,6 +56,7 @@ public class Testing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         grid = new Gitter(weite, hoehe, zellengroesse);
 
         //Hintergrund und Camera
@@ -69,11 +75,23 @@ public class Testing : MonoBehaviour
             speichermenue.GetComponent<SaveLoad>().laden();
         }
 
-     }
+    }
 
-  
+    private void Update()
+    {
+        if (geld < 25 && zuvorNichtAn)
+        {
+            pausemenu.ObjectAnzeigen(zusatz);
+            zusatz.GetComponent<Aufgaben>().openAufgabe();
+            zuvorNichtAn = false;
+        }
+        else if(geld>=25)
+        {
+            zuvorNichtAn = true;
+        }
+    }
 
-  
+
 
 
 

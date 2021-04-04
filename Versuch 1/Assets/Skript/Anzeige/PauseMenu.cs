@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject kameraKontroller;
     public GameObject canvas;
 
+
     // Update is called once per frame
     void Update()
     {
@@ -26,6 +27,7 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+              
     }
 
     public void Weiterspielen()
