@@ -22,7 +22,6 @@ public class Linienzeichner : MonoBehaviour
     void Start()
     {
        rect = gameObject.GetComponent<RectTransform>();
-        lineRenderer = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame

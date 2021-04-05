@@ -46,8 +46,14 @@ public class KameraKontroller : MonoBehaviour
         {
             testPos = newPosition;
             HandleMouseInput();     //speichert Daten des Touch Inputs in newPosition und newZoom
-            HandleMovementInput();  //speichert Daten der Tastaur in newPosition und newZoom
+            //HandleMovementInput();  //speichert Daten der Tastaur in newPosition und newZoom
             prevaktiviert = true;   // im Moment wo pausiert sollen Daten nicht weiter verarbeittet werden
+
+            Grenze();// Grenzen der Karte
+
+            //Verschiebung der KameraVerankerung und Kamera 
+            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementTime);
+            cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.deltaTime * movementTime);
         }
         else
         {
@@ -167,11 +173,7 @@ public class KameraKontroller : MonoBehaviour
         {
             newZoom -= zoomAmount;
         }*/
-        Grenze();// Grenzen der Karte
-               
-        //Verschiebung der KameraVerankerung und Kamera 
-        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementTime);
-        cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.deltaTime * movementTime);
+        
     }
 
     private void Grenze()
