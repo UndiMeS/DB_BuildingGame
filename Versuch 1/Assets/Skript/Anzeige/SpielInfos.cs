@@ -20,11 +20,11 @@ public class SpielInfos : MonoBehaviour
 
 
 
-    public float currenttime;
+    public static float currenttime;
     public static int erdenTag;
     public static int marsTag;
-    public float lasttime;
-    public float pausedtime;
+    public static float lasttime;
+    public static float pausedtime;
 
     // Start is called before the first frame update
     void Start()
@@ -57,9 +57,11 @@ public class SpielInfos : MonoBehaviour
             erdenTag = Mathf.RoundToInt(currenttime / 10 ) + 1;
             lasttime = currenttime;
         }
-        else
+        else if(PauseMenu.ERon)
         {
-            pausedtime = Time.time - lasttime;
+            Debug.Log("*");
+            pausedtime = Time.time-currenttime;
+
         }
         
         

@@ -64,7 +64,6 @@ public class ObjektBewegung : MonoBehaviour
                 FehlerAnzeige.fehlertext = "Objekt konnte nicht gesetzt werden!";
                 int x, y;
                 Testing.grid.GetXY(transform.position, out x, out y);
-                deleteGebaeudeKlasse();
                 Testing.objektGebaut = 0;
                 KameraKontroller.aktiviert = true;
                 PanelKnopf.gebautetsGebaeude = null;
@@ -78,7 +77,6 @@ public class ObjektBewegung : MonoBehaviour
             int x, y;
             Testing.grid.GetXY(transform.position, out x, out y);
             Testing.grid.SetWert(transform.position, 0, null);
-            deleteGebaeudeKlasse();
             Testing.objektGebaut = 0;
             KameraKontroller.aktiviert = true;
             PanelKnopf.gebautetsGebaeude = null;

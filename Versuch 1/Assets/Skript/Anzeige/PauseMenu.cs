@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool SpielIstPausiert= false;
+    public static bool ERon = false;
 
     public GameObject PauseMenuUI;
     public GameObject kameraKontroller;
@@ -77,13 +78,14 @@ public class PauseMenu : MonoBehaviour
 
     public void SwitchToER()
     {
- 
+        ERon = true;
         SpielIstPausiert = true;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(1);
     }
 
     public void SwitchToBaumenue()
     {
+        ERon = false;
         SpielIstPausiert = false;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(0);
     }
