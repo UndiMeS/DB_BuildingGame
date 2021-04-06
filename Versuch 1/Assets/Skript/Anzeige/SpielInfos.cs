@@ -44,7 +44,7 @@ public class SpielInfos : MonoBehaviour
         Utilitys.TextInTMP(umsatz, Testing.umsatz);
 
 
-        if (!PauseMenu.SpielIstPausiert)
+        if (!PauseMenu.SpielIstPausiert&&!PauseMenu.ERon)
         {
             currenttime = Time.time-pausedtime;
             float neuSoltag = Mathf.RoundToInt(currenttime / 10.274f ) + 1; // +1 da es keinen Tag 0  gibt/ Marstag = 1,02748 * Erdtag --> 20* 1,02748
@@ -59,13 +59,8 @@ public class SpielInfos : MonoBehaviour
         }
         else if(PauseMenu.ERon)
         {
-            Debug.Log("*");
             pausedtime = Time.time-currenttime;
-
-        }
-        
-        
-
+        }  
         Utilitys.TextInTMP(sol, marsTag);
         Utilitys.TextInTMP(erde, erdenTag);
 

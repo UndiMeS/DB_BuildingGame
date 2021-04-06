@@ -79,14 +79,14 @@ public class PauseMenu : MonoBehaviour
     public void SwitchToER()
     {
         ERon = true;
-        SpielIstPausiert = true;
+        //SpielIstPausiert = true;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(1);
     }
 
     public void SwitchToBaumenue()
     {
         ERon = false;
-        SpielIstPausiert = false;
+        //SpielIstPausiert = false;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(0);
     }
 
