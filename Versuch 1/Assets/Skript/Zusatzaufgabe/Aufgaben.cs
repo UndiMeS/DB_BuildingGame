@@ -17,14 +17,18 @@ public class Aufgaben : MonoBehaviour
     public GameObject RichitgFalschAnzeige;
     public GameObject fenster;
     public GameObject checkButton;
+
     public GameObject transparent;
     public GameObject richtigHacken;
+    public GameObject falschKreuz;
 
 
     public void Start()
     {
         transparent.SetActive(false);
         richtigHacken.SetActive(false);
+        falschKreuz.SetActive(false);
+        
         correct = new string[aufgabenListe.Length];
         correct[0] = "C";
         correct[1] = "D";
@@ -108,6 +112,7 @@ public class Aufgaben : MonoBehaviour
             //Invoke("clearAnzeige", 4);
             exitKnopf.SetActive(true);
             checkButton.SetActive(false);
+            falschKreuz.SetActive(true);
 
             welcheAufgabe++;
             //Invoke("closeFenster", 8);
@@ -135,6 +140,7 @@ public class Aufgaben : MonoBehaviour
         checkButton.SetActive(true);
         transparent.SetActive(false);
         richtigHacken.SetActive(false);
+        falschKreuz.SetActive(false);
         
     }
 
