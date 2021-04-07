@@ -21,7 +21,7 @@ public class Aufgaben : MonoBehaviour
     {
         correct = new string[aufgabenListe.Length];
         correct[0] = "C";
-        correct[1] = "C";
+        correct[1] = "D";
         correct[2] = "C";
         correct[3] = "A";
         correct[4] = "B";
