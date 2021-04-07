@@ -62,18 +62,18 @@ public class Aufgaben : MonoBehaviour
             exitKnopf.SetActive(true);
             checkButton.SetActive(false);
     
-            Invoke("closeFenster", 2);
+            //Invoke("closeFenster", 2);
         }
         else
         {
             string ausgabe = "Falsch! Richtig ist " + correct[welcheAufgabe];
             Utilitys.TextInTMP(RichitgFalschAnzeige, ausgabe);
-            //Invoke("clearAnzeige", 4);
+            Invoke("clearAnzeige", 4);
             exitKnopf.SetActive(true);
             checkButton.SetActive(false);
 
             welcheAufgabe++;
-            Invoke("closeFenster", 8);
+            //Invoke("closeFenster", 8);
         }
     }
 
