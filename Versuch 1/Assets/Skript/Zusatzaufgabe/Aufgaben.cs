@@ -18,19 +18,24 @@ public class Aufgaben : MonoBehaviour
     public GameObject fenster;
     public GameObject checkButton;
 
-    public GameObject transparent;
     public GameObject richtigHacken;
     public GameObject falschKreuz;
 
     public GameObject zusatzButton;
     public GameObject zusatzButton_transparent;
 
+    public GameObject hinweisFenster;
+    public GameObject hinweisButton;
+    public GameObject exitKnopfHinweis;
+
+
 
     public void Start()
     {
-        transparent.SetActive(false);
         richtigHacken.SetActive(false);
         falschKreuz.SetActive(false);
+        hinweisFenster.SetActive(false);
+        hinweisButton.SetActive(false);
         
         correct = new string[aufgabenListe.Length];
         correct[0] = "C";
@@ -96,46 +101,47 @@ public class Aufgaben : MonoBehaviour
     public void check(){
         if (toogle.currentSelection.name.Equals(correct[welcheAufgabe]))
         {
-            //Utilitys.TextInTMP(RichitgFalschAnzeige, "Richtig !");
-
             welcheAufgabe++;
             geldGeben();
             richtigHacken.SetActive(true);
             exitKnopf.SetActive(true);
+            exitKnopfHinweis.SetActive(false);
             checkButton.SetActive(false);
 
             zusatzButton.SetActive(false);
             zusatzButton_transparent.SetActive(true);
-    
-            //Invoke("closeFenster", 2);
         }
         else
         {
-            //string ausgabe = "Falsch! Richtig ist " + correct[welcheAufgabe];
-            transparent.SetActive(true);
-            string ausgabe = feedback[welcheAufgabe];
-            Utilitys.TextInTMP(RichitgFalschAnzeige, ausgabe);
-            //Invoke("clearAnzeige", 4);
             exitKnopf.SetActive(true);
             checkButton.SetActive(false);
+            hinweisButton.SetActive(true);
             falschKreuz.SetActive(true);
-
             zusatzButton.SetActive(false);
             zusatzButton_transparent.SetActive(true);
-
             welcheAufgabe++;
-            //Invoke("closeFenster", 8);
         }
+    }
+
+    public void hinweis()
+    {
+        hinweisFenster.SetActive(true);
+        checkButton.SetActive(false);
+        string ausgabe = feedback[welcheAufgabe - 1];//da im else Zweig in check schon auf nächste Aufgabe gezeigt wird
+        Utilitys.TextInTMP(RichitgFalschAnzeige, ausgabe);
+        exitKnopfHinweis.SetActive(true);
+    }
+
+    public void exitHinweis()
+    {
+        hinweisFenster.SetActive(false);
+        exitKnopfHinweis.SetActive(false);
+        clearAnzeige();
     }
 
     public void clearAnzeige()
     {
         Utilitys.TextInTMP(RichitgFalschAnzeige, " ");
-    }
-
-    public void closeFenster()
-    {
-        fenster.SetActive(false);
     }
 
 
@@ -145,12 +151,12 @@ public class Aufgaben : MonoBehaviour
         toogle.toggleOff();
         gameObject.GetComponent<Image>().sprite = aufgabenListe[welcheAufgabe];
         exitKnopf.SetActive(false);
+        exitKnopfHinweis.SetActive(false);
         clearAnzeige();
         checkButton.SetActive(true);
-        transparent.SetActive(false);
         richtigHacken.SetActive(false);
         falschKreuz.SetActive(false);
-        
+        hinweisButton.SetActive(false);
     }
 
 
