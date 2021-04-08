@@ -22,6 +22,9 @@ public class Aufgaben : MonoBehaviour
     public GameObject richtigHacken;
     public GameObject falschKreuz;
 
+    public GameObject zusatzButton;
+    public GameObject zusatzButton_transparent;
+
 
     public void Start()
     {
@@ -100,6 +103,9 @@ public class Aufgaben : MonoBehaviour
             richtigHacken.SetActive(true);
             exitKnopf.SetActive(true);
             checkButton.SetActive(false);
+
+            zusatzButton.SetActive(false);
+            zusatzButton_transparent.SetActive(true);
     
             //Invoke("closeFenster", 2);
         }
@@ -113,6 +119,9 @@ public class Aufgaben : MonoBehaviour
             exitKnopf.SetActive(true);
             checkButton.SetActive(false);
             falschKreuz.SetActive(true);
+
+            zusatzButton.SetActive(false);
+            zusatzButton_transparent.SetActive(true);
 
             welcheAufgabe++;
             //Invoke("closeFenster", 8);

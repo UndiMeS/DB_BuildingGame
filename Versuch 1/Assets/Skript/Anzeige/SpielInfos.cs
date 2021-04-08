@@ -26,6 +26,10 @@ public class SpielInfos : MonoBehaviour
     public static float lasttime;
     public static float pausedtime;
 
+    //Buttons um Zusatzaufgabefenster zeitabhängig anzeigen zu lassen
+    public GameObject zusatzButton; 
+    public GameObject zusatzButton_transparent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +55,10 @@ public class SpielInfos : MonoBehaviour
             if (neuSoltag % 5 == 0 && marsTag != neuSoltag)
             {
                 Testing.geld += Testing.umsatz;
+            }else if (neuSoltag % 3 == 0 && marsTag != neuSoltag) //alle 3 Tage eine neue Zusatzaufgabe
+            {
+                zusatzButton.SetActive(true);
+                zusatzButton_transparent.SetActive(false);
             }
 
             marsTag = Mathf.RoundToInt(neuSoltag);
