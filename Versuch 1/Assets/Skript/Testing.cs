@@ -61,7 +61,7 @@ public class Testing : MonoBehaviour
 
         //Hintergrund und Camera
         boden.transform.localPosition = new Vector3(82, 8, -82);
-        boden.transform.localScale = new Vector3(150,150,2);
+        boden.transform.localScale = new Vector3(150,150,1);
         boden.transform.localRotation = Quaternion.Euler(42, 222, -148);
         FehlerAnzeige.fehlertext = "";
 
