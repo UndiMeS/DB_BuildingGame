@@ -2,9 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.UIElements;
-using UnityEngine.EventSystems;
+
 
 //Bewgung der Gebaeude
 public class ObjektBewegung : MonoBehaviour

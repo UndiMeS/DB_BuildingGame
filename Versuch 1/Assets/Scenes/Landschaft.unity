@@ -38994,6 +38994,9 @@ MonoBehaviour:
   linie: {fileID: 7522486218302427998, guid: 4329b69ee7c51364f95bd8e085357311, type: 3}
   linienOrdner: {fileID: 1863335423}
   erModellflaeche: {fileID: 1232103454}
+  entitaetOberflaeche: {fileID: 582859470}
+  attributOberflaeche: {fileID: 1410964697}
+  beziehOberflaeche: {fileID: 1326066184}
   entity: {fileID: 2800000, guid: 367174c82285efb43a7d91630bf1f0e0, type: 3}
   schwachEntity: {fileID: 2800000, guid: b0d31c55d580e524fab06eb3511fe0bf, type: 3}
   leisteRechts: {fileID: 1277503}
@@ -42414,6 +42417,7 @@ GameObject:
   - component: {fileID: 1493995337}
   - component: {fileID: 1493995336}
   - component: {fileID: 1493995339}
+  - component: {fileID: 1493995340}
   m_Layer: 5
   m_Name: speichern
   m_TagString: Untagged
@@ -42559,6 +42563,23 @@ MonoBehaviour:
     type: 3}
   dropDownProjekt: {fileID: 1662200853}
   merkmalGO: {fileID: 223974226}
+  saveLoadER: {fileID: 1493995340}
+--- !u!114 &1493995340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493995334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f37460e4ac9fb54399dbd2036dd5b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityPrefab: {fileID: 1141620032127629371, guid: 116b02e25de6b164d82ef7d06c3c2bc6,
+    type: 3}
+  erCanvas: {fileID: 1232103450}
+  eRErstellung: {fileID: 1321532784}
 --- !u!1 &1499629333
 GameObject:
   m_ObjectHideFlags: 0
@@ -49959,6 +49980,8 @@ GameObject:
   - component: {fileID: 1754395181}
   - component: {fileID: 1754395180}
   - component: {fileID: 1754395179}
+  - component: {fileID: 1754395183}
+  - component: {fileID: 1754395182}
   m_Layer: 5
   m_Name: speichern
   m_TagString: Untagged
@@ -50029,7 +50052,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1754395180}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1754395183}
+        m_TargetAssemblyTypeName: SaveLoad, Assembly-CSharp
+        m_MethodName: speichern
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1754395180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50068,6 +50103,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754395177}
   m_CullTransparentMesh: 0
+--- !u!114 &1754395182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754395177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f37460e4ac9fb54399dbd2036dd5b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityPrefab: {fileID: 1141620032127629371, guid: 116b02e25de6b164d82ef7d06c3c2bc6,
+    type: 3}
+  erCanvas: {fileID: 1232103450}
+  eRErstellung: {fileID: 1321532784}
+--- !u!114 &1754395183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754395177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf17bf9f8610ec42a425b2cb2380f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wohncontainerPrefab: {fileID: 7623706309240562829, guid: 370112c12831dd4459477a90cb68cee4,
+    type: 3}
+  feldPrefab: {fileID: 2349848642799645956, guid: 7c2d5c99bda9ac44ea45a7f6177fabcf,
+    type: 3}
+  forschungPrefab: {fileID: 483445705780078254, guid: 5d70876d5403d5a4f8f34b7d1915d5d0,
+    type: 3}
+  weidePrefab: {fileID: 483445705780078254, guid: 5c014438010fbc541b5f844b92332b6d,
+    type: 3}
+  stallPrefab: {fileID: 6480939531429702549, guid: 7c2d830dfe18aac41a05d9d3acc66e73,
+    type: 3}
+  dropDownProjekt: {fileID: 1662200853}
+  merkmalGO: {fileID: 223974226}
+  saveLoadER: {fileID: 1754395182}
 --- !u!1 &1756822244
 GameObject:
   m_ObjectHideFlags: 0

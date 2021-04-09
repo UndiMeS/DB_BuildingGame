@@ -22,6 +22,7 @@ public class ERMenue : MonoBehaviour
     }
    public void LadeMenu()
     {
+        ERErstellung.modellObjekte.RemoveRange(0, ERErstellung.modellObjekte.Count);
         SceneManager.LoadScene(0);
     }
 

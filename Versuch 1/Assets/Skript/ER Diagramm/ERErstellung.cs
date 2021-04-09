@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 using System;
@@ -19,9 +18,9 @@ public class ERErstellung : MonoBehaviour
     public static GameObject attribut;
     public static GameObject beziehung;
 
-    public static GameObject entitaetOberflaeche;
-    public static GameObject attributOberflaeche;
-    public static GameObject beziehOberflaeche;
+    public  GameObject entitaetOberflaeche;
+    public  GameObject attributOberflaeche;
+    public  GameObject beziehOberflaeche;
 
     public Texture entity;
     public Texture schwachEntity;
@@ -35,10 +34,6 @@ public class ERErstellung : MonoBehaviour
     {
         lastselected = null;
         selectedGameObjekt = null;
-
-        entitaetOberflaeche = gameObject.transform.GetChild(1).gameObject;
-        attributOberflaeche = gameObject.transform.GetChild(2).gameObject;
-        beziehOberflaeche = gameObject.transform.GetChild(3).gameObject;
     }
 
 
@@ -117,11 +112,7 @@ public class ERErstellung : MonoBehaviour
             
             lastselected.GetComponent<ERObjekt>().selected = false;
             lastselected.GetComponent<ERObjekt>().changeSprite(false);
-       }
-        
-        changeOberflaeche();
-
-        
+       }        
     }
 
   
@@ -185,9 +176,10 @@ public class ERErstellung : MonoBehaviour
 
 
 
-    private static void changeOberflaeche()
+    public void Update()
     {
-        if (selectedGameObjekt.CompareTag("Entitaet")){
+        if (selectedGameObjekt == null) { }
+        else if (selectedGameObjekt.CompareTag("Entitaet")){
             entitaetOberflaeche.SetActive(true);
             attributOberflaeche.SetActive(false);
             beziehOberflaeche.SetActive(false);

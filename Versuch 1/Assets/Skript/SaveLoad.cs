@@ -18,6 +18,7 @@ public class SaveLoad : MonoBehaviour
     public TMPro.TMP_Dropdown dropDownProjekt;
     public GameObject merkmalGO;
 
+    public SaveLoadER saveLoadER;
 
     public void speichern()
     {
@@ -88,6 +89,8 @@ public class SaveLoad : MonoBehaviour
         }
         json = json.Remove(json.Length - 1) + "]";
         File.WriteAllText(Application.dataPath + "/SaveState/Tiere.json", json);
+
+        saveLoadER.speichern();
     }
 
     public void laden()
@@ -106,6 +109,8 @@ public class SaveLoad : MonoBehaviour
         menschenLaden();
         tiereLaden();
         GebaeudeAnzeige.forschungsauswahl = false;
+
+        saveLoadER.laden();
     }
 
     private void tiereLaden()

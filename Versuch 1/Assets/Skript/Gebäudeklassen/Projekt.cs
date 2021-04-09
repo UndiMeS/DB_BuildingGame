@@ -24,6 +24,7 @@ public class Projekt
         kosten = preis;
         Testing.geld -= kosten;
         Testing.summeForschungen++;
+        Debug.Log("*");
         Testing.forschungsprojekte.Add(this);
 
     }
@@ -40,6 +41,7 @@ public class Projekt
         forscheranzahl = forscher;
         kosten = preis;
         verbesserungsfaktor = faktor;
+        Debug.Log("?");
         Testing.forschungsprojekte.Add(this);
         if (GebaeudeAnzeige.projektMerkmalStufen[merkmalInt] < stufe+1)
         {

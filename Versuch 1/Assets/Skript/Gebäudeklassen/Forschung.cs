@@ -386,7 +386,6 @@ public class Forschung : MonoBehaviour
                 FehlerAnzeige.fehlertext = "Fehler!";
             }
         }
-        projekte.Add(selectedProj);
     }
 
 

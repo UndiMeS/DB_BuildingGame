@@ -33,6 +33,7 @@ public class Beziehung : MonoBehaviour
         linienOrdner = gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject;
         kardText1=gameObject.transform.GetChild(1).gameObject;
         kardText2 = gameObject.transform.GetChild(2).gameObject;
+        
     }
 
     // Update is called once per frame
@@ -42,6 +43,10 @@ public class Beziehung : MonoBehaviour
         Utilitys.TextInTMP(kardText2, kard2);
         if (objekt1 != null)
         {
+            if (!objekt1.GetComponent<Entitaet>().beziehungen.Contains(gameObject))
+            {
+                objekt1.GetComponent<Entitaet>().beziehungen.Add(gameObject);
+            }
             positionOfKardinalitaet(kardText1, objekt1);
             kardText1.SetActive(true);
         }
@@ -52,6 +57,10 @@ public class Beziehung : MonoBehaviour
         }
         if (objekt2 != null)
         {
+            if (!objekt2.GetComponent<Entitaet>().beziehungen.Contains(gameObject))
+            {
+                objekt2.GetComponent<Entitaet>().beziehungen.Add(gameObject);
+            }
             positionOfKardinalitaet(kardText2, objekt2);
             kardText2.SetActive(true);
         }

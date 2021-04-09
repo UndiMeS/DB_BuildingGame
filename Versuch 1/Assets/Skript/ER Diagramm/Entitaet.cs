@@ -14,5 +14,4 @@ public class Entitaet : MonoBehaviour
     public List<GameObject> beziehungen;
     public int[] kard = new int[56];
 
-
 }

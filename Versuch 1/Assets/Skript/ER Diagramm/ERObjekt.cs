@@ -34,8 +34,11 @@ public class ERObjekt : MonoBehaviour
 
    
     private void Update()
-    {       
-        changeSprite(ERErstellung.selectedGameObjekt.Equals(gameObject));
+    {
+        if (ERErstellung.selectedGameObjekt != null)
+        {
+            changeSprite(ERErstellung.selectedGameObjekt.Equals(gameObject));
+        }
         
         if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition)&& ERErstellung.testAufGleicherPosition(Input.mousePosition).Equals(gameObject))
         //wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
