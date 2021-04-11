@@ -19,6 +19,7 @@ public class SaveLoadER : MonoBehaviour
 
     public void laden()
     {
+        erCanvas.transform.position = Vector3.zero;
         ladeEntity();
     }
 
@@ -33,7 +34,7 @@ public class SaveLoadER : MonoBehaviour
             GameObject entity= ERErstellung.selectedGameObjekt ;
             entity.name = eigenschaften[0];
             
-            entity.transform.localPosition = new Vector3(float.Parse(eigenschaften[1]), float.Parse(eigenschaften[2]), float.Parse(eigenschaften[3]));
+            entity.transform.localPosition = new Vector3(float.Parse(eigenschaften[1]), float.Parse(eigenschaften[3]), float.Parse(eigenschaften[5]));
             if(eigenschaften[4].Equals("true"))
             {
                 entity.GetComponent<Entitaet>().schwach = true;
