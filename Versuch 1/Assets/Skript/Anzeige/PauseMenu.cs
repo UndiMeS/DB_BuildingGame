@@ -12,6 +12,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauseMenuUI;
     public GameObject kameraKontroller;
     public GameObject canvas;
+    public GameObject hilfeFenster;
+    public GameObject hilfeZurückButton;
+    public GameObject hilfeGebaeudeinfo;
+    public GameObject hilfeButtondestroyer;
+    public GameObject hilfeTexte;
 
 
     // Update is called once per frame
@@ -34,6 +39,11 @@ public class PauseMenu : MonoBehaviour
     public void Weiterspielen()
     {
         PauseMenuUI.SetActive(false);
+        hilfeFenster.SetActive(false);
+        hilfeZurückButton.SetActive(false);
+        hilfeGebaeudeinfo.SetActive(false);
+        hilfeButtondestroyer.SetActive(false);
+        hilfeTexte.SetActive(false);
         SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
     }
@@ -57,6 +67,18 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Beendet!");
         Application.Quit();
+    }
+    public void Hilfe()
+    {
+        PauseMenuUI.SetActive(false);
+        SpielIstPausiert = true;
+        KameraKontroller.aktiviert = false;
+        hilfeFenster.SetActive(true);
+        hilfeZurückButton.SetActive(true);
+        hilfeGebaeudeinfo.SetActive(true);
+        hilfeButtondestroyer.SetActive(true);
+        hilfeTexte.SetActive(true);
+
     }
 
     public void ObjectAnzeigen (GameObject objekt)
