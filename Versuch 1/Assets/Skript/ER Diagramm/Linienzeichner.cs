@@ -22,6 +22,11 @@ public class Linienzeichner : MonoBehaviour
     void Start()
     {
        rect = gameObject.GetComponent<RectTransform>();
+        lineRenderer = gameObject.GetComponent<LineRenderer>();
+        lineRenderer.endWidth = 0.1f;
+        lineRenderer.startWidth = 0.1f;
+        
+        lineRenderer.sortingOrder = 0;
     }
 
     // Update is called once per frame
@@ -35,9 +40,12 @@ public class Linienzeichner : MonoBehaviour
         changeName();
         if (zeichnen && objekt1!=null&&objekt2!=null)
         {
-            pos1 = objekt1.transform.localPosition;
-            pos2 = objekt2.transform.localPosition;
-            berechneLinie();
+                   
+            pos1 = objekt1.transform.position;
+            pos2 = objekt2.transform.position;
+            lineRenderer.SetPosition(0, pos1);
+            lineRenderer.SetPosition(1, pos2 );
+            //berechneLinie(); //localposition
         }
     }
 
