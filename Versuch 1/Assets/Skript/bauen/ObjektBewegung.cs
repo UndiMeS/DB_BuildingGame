@@ -18,6 +18,7 @@ public class ObjektBewegung : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GebaeudeInfoBauen.wertFest = 0;
         selected = true;
         Testing.gebautesObjekt = gameObject;
     }
@@ -59,8 +60,12 @@ public class ObjektBewegung : MonoBehaviour
             }
             else
             {
-                selected = false;
-                FehlerAnzeige.fehlertext = "Objekt konnte nicht gesetzt werden!";
+                if(FehlerAnzeige.fehlertext.Equals(""))
+                {
+                    FehlerAnzeige.fehlertext = "An dieser Stelle befindt sich schon ein Gebäude!";
+                }
+
+                selected = false;                
                 int x, y;
                 Testing.grid.GetXY(transform.position, out x, out y);
                 Testing.objektGebaut = 0;
@@ -103,6 +108,8 @@ public class ObjektBewegung : MonoBehaviour
         {
             if (Testing.geld < Wohncontainer.preis)
             {
+                GebaeudeInfoBauen.wertFest = 1;
+                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld";
                 return false;
             }
             else
@@ -115,6 +122,9 @@ public class ObjektBewegung : MonoBehaviour
         {
             if (Testing.geld < Feld.preis)
             {
+                GebaeudeInfoBauen.wertFest = 2;
+
+                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld";
                 return false;
             }
             else
@@ -127,6 +137,9 @@ public class ObjektBewegung : MonoBehaviour
         {
             if (Testing.geld < Forschung.preis)
             {
+                GebaeudeInfoBauen.wertFest = 3;
+
+                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld";
                 return false;
             }
             else
@@ -139,6 +152,9 @@ public class ObjektBewegung : MonoBehaviour
         {
             if (Testing.geld < Weide.preis)
             {
+                GebaeudeInfoBauen.wertFest = 4;
+
+                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld";
                 return false;
             }
             else
@@ -151,6 +167,9 @@ public class ObjektBewegung : MonoBehaviour
         {
             if (Testing.geld < Stallcontainer.preis)
             {
+                GebaeudeInfoBauen.wertFest =5;
+
+                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld";
                 return false;
             }
             else

@@ -12,6 +12,8 @@ public class GebaeudeInfoBauen : MonoBehaviour
     public GameObject forschungsTabelle;
     public GameObject weidenTabelle;
 
+    public static int wertFest=0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,15 @@ public class GebaeudeInfoBauen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int wert = Testing.objektGebaut;
+        int wert = 0;
+        if (wertFest == 0)
+        {
+             wert = Testing.objektGebaut;
+        }
+        else
+        {
+            wert = wertFest;
+        }
         int i = 1;
             foreach (GameObject anzeige in anzeigen)
             {

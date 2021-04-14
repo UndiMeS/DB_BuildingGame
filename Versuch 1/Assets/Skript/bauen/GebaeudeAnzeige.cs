@@ -42,6 +42,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     public static int[] maxStufen;
 
     public static bool childOn = false;
+    public static bool allesAus = false;
 
     public GameObject merkmalGO;
 
@@ -59,6 +60,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)&& !PauseMenu.SpielIstPausiert)
         {
+            GebaeudeInfoBauen.wertFest = 0;
             if ( Testing.objektGebaut==0 && outBox(Input.mousePosition))
             {
                 Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);
@@ -69,15 +71,19 @@ public class GebaeudeAnzeige : MonoBehaviour
         }
         if (!ObjektBewegung.selected && Testing.gebautesObjekt != null)
         {
+            GebaeudeInfoBauen.wertFest = 0;
             wert = Testing.objektGebaut;
             gebaeude = Testing.grid.GetGebaeude(Testing.gebautesObjekt.transform.position);
             Testing.gebautesObjekt = null;
             Testing.objektGebaut = 0;
         }
-        if (ObjektBewegung.selected)
+        if (ObjektBewegung.selected || GebaeudeInfoBauen.wertFest != 0||allesAus)
         {
             wert = 0;
         }
+
+       
+        
         int i = 1;
         foreach (GameObject anzeige in anzeigen)
         {

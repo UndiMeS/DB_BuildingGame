@@ -46,18 +46,22 @@ public class PauseMenu : MonoBehaviour
         hilfeTexte.SetActive(false);
         SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
+        GebaeudeAnzeige.allesAus = true;
     }
 
     public void WeiterspielenER()
     {
         PauseMenuUI.SetActive(false);
         KameraKontroller.aktiviert = false;
+        GebaeudeAnzeige.allesAus = false;
     }
     void Pause()
     {
         PauseMenuUI.SetActive(true);
         SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
+        GebaeudeInfoBauen.wertFest = 0;
+        GebaeudeAnzeige.allesAus = true;
     }
     public void LadeMenu()
     {
@@ -78,7 +82,7 @@ public class PauseMenu : MonoBehaviour
         hilfeGebaeudeinfo.SetActive(true);
         hilfeButtondestroyer.SetActive(true);
         hilfeTexte.SetActive(true);
-
+        GebaeudeAnzeige.allesAus = true;
     }
 
     public void ObjectAnzeigen (GameObject objekt)
@@ -89,12 +93,15 @@ public class PauseMenu : MonoBehaviour
             SpielIstPausiert = false;
             KameraKontroller.aktiviert = true;
             
+            GebaeudeAnzeige.allesAus = false;
         }
         else
         {
             objekt.SetActive(true);
             SpielIstPausiert = true;
             KameraKontroller.aktiviert = false;
+            GebaeudeInfoBauen.wertFest = 0;
+            GebaeudeAnzeige.allesAus = true;
         }
     }
 
@@ -103,6 +110,7 @@ public class PauseMenu : MonoBehaviour
         ERon = true;
         //SpielIstPausiert = true;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(1);
+        GebaeudeInfoBauen.wertFest = 0;
     }
 
     public void SwitchToBaumenue()
@@ -110,6 +118,7 @@ public class PauseMenu : MonoBehaviour
         ERon = false;
         //SpielIstPausiert = false;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(0);
+
     }
 
     public void AllesAusblenden()
