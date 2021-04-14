@@ -61,7 +61,11 @@ public class SaveLoadER : MonoBehaviour
                 {
                     GameObject beziehung = objekt.GetComponent<Entitaet>().schwacheBeziehung;
                     beziehungen.Add(beziehung);
-                    ausgabe += beziehung.GetComponent<Beziehung>().objekt1.name + "," + beziehung.GetComponent<Beziehung>().kard1 + "," + beziehung.GetComponent<Beziehung>().objekt2.name + "," + beziehung.GetComponent<Beziehung>().kard2 + "," + true + ",";
+                    ausgabe += beziehung.GetComponent<Beziehung>().objekt1.name + ",";
+                    ausgabe += beziehung.GetComponent<Beziehung>().kard1 + ",";
+                    ausgabe += beziehung.GetComponent<Beziehung>().objekt2.name + ",";
+                    ausgabe += beziehung.GetComponent<Beziehung>().kard2 + ",";
+                    ausgabe += true + ",";
                     ausgabe += beziehung.transform.localPosition.x + "," + beziehung.transform.localPosition.y + "," + beziehung.transform.localPosition.z + ";";
                 }
                 foreach (GameObject beziehung in objekt.GetComponent<Entitaet>().beziehungen)
@@ -69,7 +73,11 @@ public class SaveLoadER : MonoBehaviour
                     if (!beziehungen.Contains(beziehung))
                     {
                         beziehungen.Add(beziehung);
-                        ausgabe += beziehung.GetComponent<Beziehung>().objekt1.name + "," + beziehung.GetComponent<Beziehung>().kard1 + "," + beziehung.GetComponent<Beziehung>().objekt2.name + "," + beziehung.GetComponent<Beziehung>().kard2 + "," + false + ",";
+                        ausgabe += beziehung.GetComponent<Beziehung>().objekt1.name + ",";
+                        ausgabe += beziehung.GetComponent<Beziehung>().kard1 + ",";
+                        ausgabe += beziehung.GetComponent<Beziehung>().objekt2.name + ",";
+                        ausgabe += beziehung.GetComponent<Beziehung>().kard2 + ",";
+                        ausgabe+= false + ",";
                         ausgabe += beziehung.transform.localPosition.x + "," + beziehung.transform.localPosition.y + "," + beziehung.transform.localPosition.z + ";";
                     }
                 }
@@ -88,7 +96,12 @@ public class SaveLoadER : MonoBehaviour
             {
                 foreach (GameObject attribut in objekt.GetComponent<Entitaet>().attribute)
                 {
-                    ausgabe += objekt.name+","+ attribut.name + "," + attribut.transform.localPosition.x + "," + attribut.transform.localPosition.y + "," + attribut.transform.localPosition.z +","+ objekt.GetComponent<Entitaet>().primaerschluessel.Contains(attribut) + ";";
+                    ausgabe += objekt.name + ",";
+                    ausgabe += attribut.name + ",";
+                    ausgabe += attribut.transform.localPosition.x + ",";
+                    ausgabe += attribut.transform.localPosition.y + ",";
+                    ausgabe += attribut.transform.localPosition.z + ",";
+                    ausgabe+= objekt.GetComponent<Entitaet>().primaerschluessel.Contains(attribut) + ";";
                 }
                
             }
@@ -105,7 +118,10 @@ public class SaveLoadER : MonoBehaviour
         {
             if (objekt.CompareTag("Entitaet"))
             {
-                ausgabe += objekt.name + "," + objekt.transform.localPosition.x + "," + objekt.transform.localPosition.y + "," + objekt.transform.localPosition.z + ",";
+                ausgabe += objekt.name + ",";
+                ausgabe += objekt.transform.localPosition.x + ",";
+                ausgabe += objekt.transform.localPosition.y + ",";
+                ausgabe+= objekt.transform.localPosition.z + ",";
                 ausgabe += objekt.GetComponent<Entitaet>().schwach + ";";                
             }
         }
