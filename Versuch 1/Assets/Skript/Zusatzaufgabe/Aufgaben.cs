@@ -28,9 +28,13 @@ public class Aufgaben : MonoBehaviour
 
     public GameObject hinweisFenster;
     public GameObject hinweisButton;
+    public GameObject lösungsButton;
     public GameObject exitKnopfHinweis;
+    public GameObject zweiteChance;
+    public GameObject toggleKiller;
 
-    int temp = 0;
+    private int temp = 0;
+    private int cheat_temp = 0;
 
     public void Start()
     {
@@ -96,9 +100,10 @@ public class Aufgaben : MonoBehaviour
         feedback[25] = "Das war leider falsch! Die falsche Aussage ist A, da mehrere Rechnungen am selben Datum ausgestellt werden können. Das Rechnungsdatum ist somit nicht eindeutig und damit kein Primärschlüssel.";
 
         secondchance = new string[aufgabenListe.Length];
-        secondchance[0] = "sdbflshdflhsdifhisdhflsdhfljhdsfsljdkfhskdhf sdfjsjidfhkslkjdflkhskdjfklshdfksjdlkfjksdkjflkhskdfjlsdf skdfksdjfhkjsdhflkhskdjfhkjsdhfkjdshfjkshfsdkfhksdhfksjdhfksjdhf";
-        secondchance[1] = "ggggggggg";
-        secondchance[2] = "dfdfdfdfsdfsdfsdfsdfsdf";
+        secondchance[0] = "In wie viele Klassen gehst du persönlich an deiner Schule?";
+        secondchance[1] = "Unterrichtet an deiner Schule nur eine Lehrkraft Informatik? Und hat diese auch andere Fächer, die sie unterrichtet?";
+        secondchance[2] = "Kleine Kinos haben ggf. nur ein Saal und größere? Und kann den derselbe (nicht der gleiche) Raum an verschiedenen Orte gleichzeitig exitieren?";
+        //ab hier weiter die Rückmeldungen ändern.
         secondchance[3] = "Ein Mensch kann nicht mit mehr als einem anderen Menschen verheiratet sein. Richtig ist daher 1 : 1.";
         secondchance[4] = "Das war falsch. Die Kardinalität der Relation zwischen A und B ist 1 : n.";
         secondchance[5] = "Nein. Die Kardinalität der Relation zwischen A und B ist 1 : 1.";
@@ -122,7 +127,6 @@ public class Aufgaben : MonoBehaviour
         secondchance[23] = "Nicht ganz. Jede Rechnung wird einer Kundennummer zugeordnet, hat eine eindeutige Rechnungsnummer, ein Datum und einen Betrag.";
         secondchance[24] = "Leider falsch! Die Attribute Rechnungsbetrag, Rechnungsdatum, Artikelnummer und Kundennummer können mehrfach vorkommen. Die Rechnungsnummer lässt jede Rechnung eindeutig ermitteln.";
         secondchance[25] = "Das war leider falsch! Die falsche Aussage ist A, da mehrere Rechnungen am selben Datum ausgestellt werden können. Das Rechnungsdatum ist somit nicht eindeutig und damit kein Primärschlüssel.";
-    
     }
 
 
@@ -132,6 +136,7 @@ public class Aufgaben : MonoBehaviour
             falschKreuz.SetActive(false);
             hinweisButton.SetActive(false);
             temp++;
+            cheat_temp = 0;
             geldGeben(temp);
             welcheAufgabe++;
             richtigHacken.SetActive(true);
@@ -145,9 +150,18 @@ public class Aufgaben : MonoBehaviour
         {   
             temp++;
             if(temp == 2){
+                cheat_temp = 0;
                 checkButton.SetActive(false);
+                toggleKiller.SetActive(true);
+                hinweisButton.SetActive(false);
+                lösungsButton.SetActive(true);
             }else{
+                cheat_temp = 1;
                 checkButton.SetActive(true);
+                zweiteChance.SetActive(true);
+                toggleKiller.SetActive(true);
+                hinweisButton.SetActive(true);
+                Invoke("SecondChanceAnzeigen", 1);
             }
             if(temp == 2)
             {
@@ -156,7 +170,7 @@ public class Aufgaben : MonoBehaviour
                 zusatzButton_transparent.SetActive(true);
                 welcheAufgabe++;
             }
-            hinweisButton.SetActive(true);
+            
             falschKreuz.SetActive(true);
 
         }
@@ -200,7 +214,16 @@ public class Aufgaben : MonoBehaviour
 
     public void openAufgabe()
     {
-        temp = 0;
+        if(cheat_temp == 1){
+            temp = 1;
+            hinweisButton.SetActive(true);
+            falschKreuz.SetActive(true);
+        }else{
+            temp = 0;
+            hinweisButton.SetActive(false);
+            falschKreuz.SetActive(false);
+        }
+        toggleKiller.SetActive(false);
         toogle.init();
         toogle.toggleOff();
         gameObject.GetComponent<Image>().sprite = aufgabenListe[welcheAufgabe];
@@ -208,17 +231,36 @@ public class Aufgaben : MonoBehaviour
         clearAnzeige();
         checkButton.SetActive(true);
         richtigHacken.SetActive(false);
-        falschKreuz.SetActive(false);
-        hinweisButton.SetActive(false);
+        
+        
     }
 
 
     public void geldGeben(int versuch){
-        if(versuch == 10){
+        if(versuch == 1){
+            //1. Versuch richtig
             Testing.geld += 100;
         }else{
+            //2. Versuch richtig
             Testing.geld += 50;
         }
     }
+    public void SecondChanceAnzeigen()
+    {
+        zweiteChance.SetActive(false);
+        toggleKiller.SetActive(false);
+    }
 
+    public void LösungsButton()
+    {
+        lösungsButton.SetActive(false);
+    }
+
+    /*
+    *Cheatbut: Wenn man die erste toggle Wahl macht, dann mittels Zusatzbutton rechts die Anzeige verlässt und wieder öffnet, erhält man erneut die erste Chance!
+    */
+    public void Cheatbug()
+    {
+        
+    }
 }
