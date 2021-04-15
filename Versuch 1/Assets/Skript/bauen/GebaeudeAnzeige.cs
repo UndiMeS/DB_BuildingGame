@@ -58,6 +58,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(allesAus);
         if (Input.GetMouseButtonDown(0)&& !PauseMenu.SpielIstPausiert)
         {
             GebaeudeInfoBauen.wertFest = 0;

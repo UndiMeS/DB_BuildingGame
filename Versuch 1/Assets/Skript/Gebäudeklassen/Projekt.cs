@@ -24,7 +24,6 @@ public class Projekt
         kosten = preis;
         Testing.geld -= kosten;
         Testing.summeForschungen++;
-        Debug.Log("*");
         Testing.forschungsprojekte.Add(this);
 
     }

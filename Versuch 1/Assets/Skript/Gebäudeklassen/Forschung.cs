@@ -52,9 +52,9 @@ public class Forschung : MonoBehaviour
         Utilitys.TextInTMP(tabelle.transform.GetChild(2).gameObject, spezialisierung);
     }
 
-    public void ausgabeProjekt(GameObject tabelle, GameObject merkmalsNameGO)
+    public void ausgabeProjekt(GameObject tabelle, GameObject merkmalGO)
     {
-        merkmalsanzeige = merkmalsNameGO;
+        merkmalsanzeige = merkmalGO;
         Utilitys.TextInTMP(tabelle.transform.GetChild(5).gameObject, anzahlProjekte);
         Utilitys.TextInTMP(tabelle.transform.GetChild(6).gameObject, maxAnzahlProjekte);
 
@@ -65,7 +65,7 @@ public class Forschung : MonoBehaviour
             Utilitys.TextInTMP(tabelle.transform.GetChild(2).gameObject, selectedProj.kosten);
             Utilitys.TextInTMP(tabelle.transform.GetChild(3).gameObject, selectedProj.forscheranzahl);
             Utilitys.TextInTMP(tabelle.transform.GetChild(4).gameObject, selectedProj.verbesserungsfaktor);
-        }
+            }
         else 
         {
             Utilitys.TextInTMP(tabelle.transform.GetChild(1).gameObject, "");
@@ -74,7 +74,8 @@ public class Forschung : MonoBehaviour
             Utilitys.TextInTMP(tabelle.transform.GetChild(4).gameObject, "");
         }
         refreshDropdown();
-        Utilitys.TextInTMP(merkmalsNameGO, "Projekt für <i>" + aktuellesMerkmal + "</i> anlegen.");
+        Utilitys.TextInTMP(merkmalGO.transform.GetChild(0).gameObject, "Projekt für <i>" + aktuellesMerkmal + "</i> anlegen.");
+        Utilitys.TextInTMP(merkmalGO.transform.GetChild(1).gameObject, "(" + (GebaeudeAnzeige.projektMerkmalStufen[merkmal] - 1) + "/" + GebaeudeAnzeige.maxStufen[merkmal] + ")");
 
 
     }
@@ -146,13 +147,13 @@ public class Forschung : MonoBehaviour
             if (opt == 0)
             {
                 merkmal = 0;
-                Utilitys.TextInTMP(merkmalsanzeige, "Projekt für <i>Baukosten</i> anlegen");
+                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Baukosten</i> anlegen");
                 aktuellesMerkmal = "Baukosten";
             }
             else if (opt == 1)
             {
                 merkmal = 1;
-                Utilitys.TextInTMP(merkmalsanzeige, "Projekt für <i>Bettenanzahl</i> anlegen");
+                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Bettenanzahl</i> anlegen");
                 aktuellesMerkmal = "Bettenanzahl";
             }
         }
@@ -161,19 +162,19 @@ public class Forschung : MonoBehaviour
             if (opt == 0)
             {
                 merkmal = 2;
-                Utilitys.TextInTMP(merkmalsanzeige, "Projekt für <i>Baukosten</i> anlegen");
+                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Baukosten</i> anlegen");
                 aktuellesMerkmal = "Baukosten";
             }
             else if (opt == 1)
             {
                 merkmal = 3;
-                Utilitys.TextInTMP(merkmalsanzeige, "Projekt für <i>Arbeiterzahl</i> anlegen");
+                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Arbeiterzahl</i> anlegen");
                 aktuellesMerkmal = "Arbeiterzahl";
             }
             else if (opt == 2)
             {
                 merkmal = 4;
-                Utilitys.TextInTMP(merkmalsanzeige, "Projekt für <i>Ertrag</i> anlegen");
+                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Ertrag</i> anlegen");
                 aktuellesMerkmal = "Ertrag";
             }
         }
@@ -182,25 +183,25 @@ public class Forschung : MonoBehaviour
             if (opt == 0)
             {
                 merkmal = 5;
-                Utilitys.TextInTMP(merkmalsanzeige, "Projekt für <i>Baukosten</i> anlegen");
+                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Baukosten</i> anlegen");
                 aktuellesMerkmal = "Baukosten";
             }
             else if (opt == 1)
             {
                 merkmal = 6;
-                Utilitys.TextInTMP(merkmalsanzeige, "Projekt für <i>Arbeiterzahl</i> anlegen");
+                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Arbeiterzahl</i> anlegen");
                 aktuellesMerkmal = "Arbeiterzahl";
             }
             else if (opt == 2)
             {
                 merkmal = 7;
-                Utilitys.TextInTMP(merkmalsanzeige, "Projekt für <i>Ertrag</i> anlegen");
+                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Ertrag</i> anlegen");
                 aktuellesMerkmal = "Ertrag";
             }
             else if (opt == 3)
             {
                 merkmal = 8;
-                Utilitys.TextInTMP(merkmalsanzeige, "Projekt für <i>Tieranzahl</i> anlegen");
+                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Tieranzahl</i> anlegen");
                 aktuellesMerkmal = "Tieranzahl";
             }
         }
@@ -209,14 +210,14 @@ public class Forschung : MonoBehaviour
             if (opt == 0)
             {
                 merkmal = 9;
-                Utilitys.TextInTMP(merkmalsanzeige, "Projekt für <i>Baukosten</i> anlegen");
+                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Baukosten</i> anlegen");
                 aktuellesMerkmal = "Baukosten";
 
             }
             else if (opt == 1)
             {
                 merkmal = 10;
-                Utilitys.TextInTMP(merkmalsanzeige, "Projekt für <i>Gehegezahl</i> anlegen");
+                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Gehegezahl</i> anlegen");
                 aktuellesMerkmal = "Gehegezahl";
             }
         }

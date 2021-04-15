@@ -46,7 +46,7 @@ public class PauseMenu : MonoBehaviour
         hilfeTexte.SetActive(false);
         SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
-        GebaeudeAnzeige.allesAus = true;
+        GebaeudeAnzeige.allesAus = false;
     }
 
     public void WeiterspielenER()
@@ -82,7 +82,6 @@ public class PauseMenu : MonoBehaviour
         hilfeGebaeudeinfo.SetActive(true);
         hilfeButtondestroyer.SetActive(true);
         hilfeTexte.SetActive(true);
-        GebaeudeAnzeige.allesAus = true;
     }
 
     public void ObjectAnzeigen (GameObject objekt)

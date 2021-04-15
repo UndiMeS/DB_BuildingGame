@@ -23,6 +23,7 @@ public class GebaeudeInfoBauen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         int wert = 0;
         if (wertFest == 0)
         {
