@@ -28,15 +28,10 @@ public class Aufgaben : MonoBehaviour
     public GameObject hinweisButton;
     public GameObject exitKnopfHinweis;
 
-
-
     public void Start()
     {
-        richtigHacken.SetActive(false);
-        falschKreuz.SetActive(false);
-        hinweisFenster.SetActive(false);
-        hinweisButton.SetActive(false);
-        
+        //hinweisFenster.SetActive(false); 
+
         correct = new string[aufgabenListe.Length];
         correct[0] = "C";
         correct[1] = "D";
@@ -126,6 +121,7 @@ public class Aufgaben : MonoBehaviour
     public void hinweis()
     {
         hinweisFenster.SetActive(true);
+        fenster.SetActive(false);
         checkButton.SetActive(false);
         string ausgabe = feedback[welcheAufgabe - 1];//da im else Zweig in check schon auf nächste Aufgabe gezeigt wird
         Utilitys.TextInTMP(RichitgFalschAnzeige, ausgabe);
@@ -135,6 +131,7 @@ public class Aufgaben : MonoBehaviour
     public void exitHinweis()
     {
         hinweisFenster.SetActive(false);
+        fenster.SetActive(true);
         exitKnopfHinweis.SetActive(false);
         clearAnzeige();
     }
