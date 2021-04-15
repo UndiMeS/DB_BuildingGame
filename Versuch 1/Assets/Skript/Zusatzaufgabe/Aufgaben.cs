@@ -8,6 +8,8 @@ public class Aufgaben : MonoBehaviour
     public Sprite[] aufgabenListe = new Sprite[23];
     public string[] correct ;
     public string[] feedback;
+
+    public string[] secondchance;
     public int[] level ;
 
     private int welcheAufgabe = 0;
@@ -27,6 +29,8 @@ public class Aufgaben : MonoBehaviour
     public GameObject hinweisFenster;
     public GameObject hinweisButton;
     public GameObject exitKnopfHinweis;
+
+    int temp = 0;
 
     public void Start()
     {
@@ -90,16 +94,47 @@ public class Aufgaben : MonoBehaviour
         feedback[23] = "Nicht ganz. Jede Rechnung wird einer Kundennummer zugeordnet, hat eine eindeutige Rechnungsnummer, ein Datum und einen Betrag.";
         feedback[24] = "Leider falsch! Die Attribute Rechnungsbetrag, Rechnungsdatum, Artikelnummer und Kundennummer können mehrfach vorkommen. Die Rechnungsnummer lässt jede Rechnung eindeutig ermitteln.";
         feedback[25] = "Das war leider falsch! Die falsche Aussage ist A, da mehrere Rechnungen am selben Datum ausgestellt werden können. Das Rechnungsdatum ist somit nicht eindeutig und damit kein Primärschlüssel.";
+
+        secondchance = new string[aufgabenListe.Length];
+        secondchance[0] = "sdbflshdflhsdifhisdhflsdhfljhdsfsljdkfhskdhf sdfjsjidfhkslkjdflkhskdjfklshdfksjdlkfjksdkjflkhskdfjlsdf skdfksdjfhkjsdhflkhskdjfhkjsdhfkjdshfjkshfsdkfhksdhfksjdhfksjdhf";
+        secondchance[1] = "ggggggggg";
+        secondchance[2] = "dfdfdfdfsdfsdfsdfsdfsdf";
+        secondchance[3] = "Ein Mensch kann nicht mit mehr als einem anderen Menschen verheiratet sein. Richtig ist daher 1 : 1.";
+        secondchance[4] = "Das war falsch. Die Kardinalität der Relation zwischen A und B ist 1 : n.";
+        secondchance[5] = "Nein. Die Kardinalität der Relation zwischen A und B ist 1 : 1.";
+        secondchance[6] = "Kann dasselbe Auto in mehreren Straßen gleichzeitig parken? Nein. Jedoch hat eine Straße Platz für mehrere Autos. Richtig wäre daher n : 1.";
+        secondchance[7] = "Richtig wäre n : m. Zum Beispiel lief Harry Potter gleichzeitig in mehreren Kinos. Und jedes Kino hat gleichzeitig verschiedene Filme im Programm.";
+        secondchance[8] = "Richtig wäre n : m. Man kann ja auch mehrere Hobbys besitzen und diese auch mit anderen zusammen ausüben.";
+        secondchance[9] = "Nicht ganz! Jedes Auto hat immer genau einen Halter, wobei dieser auch mehrere Autos besitzen kann. Und mehrere Nutzer können das Auto fahren und ein Nutzer hat auch die Möglichkeit mehrere Autos zu fahren.";
+        secondchance[10] = "Nicht ganz! Jeder Mensch besitzt eine eindeutige Personalausweisnummer. Diese ist der Primärschlüssel. Auch Handynummern sind meistens eindeutig einem Menschen zugeordnet. Jedoch muss dann auch jeder Mensch eine Nummer besitzen!";
+        secondchance[11] = "Leider nein. Die Schlüsselattribute sind Name und Erscheinungsdatum. Die anderen Varianten sind nicht eindeutig.";
+        secondchance[12] = "Ein Autor kann gleichzeitig auch mehrere Bücher veröffentlichen oder verschiedene Autoren den gleichen Namen nutzen. Richtig sind alle drei Attribute zusammen.";
+        secondchance[13] = "Die ISBN ist der Primärschlüssel. Zwar können auch Autor, Name und Erscheinungsdatum ein Buch eindeutig zuordnen, jedoch suchen wir immer eine minimale Menge von Attributen.";
+        secondchance[14] = "Leider nein. An einer Schule können auch zum Beispiel zwei Annas mit Geschlecht weiblich in Klasse 10 vorkommen. Die E-Mail ist jedoch eindeutig.";
+        secondchance[15] = "Fast! Die Adresse des Kunden ist laut Text nicht hinterlegt (A falsch) und ein Kunde kann mehr als ein Artikel kaufen (B falsch). Jeder Kunde kann über die Kundennummer eindeutig zugeordnet werden. Name ist daher kein Schlüsselattribut (D falsch). Richtig wäre daher C.";
+        secondchance[16] = "Fast! Ohne Patienten können Zähne nicht existieren. Die Entitymenge Patient ist daher schwach (B falsch). Ein Zahn kann nicht mehreren Patienten zugeordnet werden (C falsch). Zwischen Patient und Zahn ist die Kardinalität 1 : n, und damit wäre A richtig. ";
+        secondchance[17] = "Falsch! Ein Klassenzimmer kann leider nicht in der Luft schweben. Es benötigt ein Schulgebäude, um existieren zu können uns ist daher schwach.";
+        secondchance[18] = "Das ist nicht korrekt! Artikel werden in Zeitschriften abgedruckt. Ohne diese können wir Artikel nicht lesen. Artikel ist daher eine schwache Entitymenge.";
+        secondchance[19] = "Leider nein. Zwar wird auf dem Monitor ohne Computer nichts angezeigt, jedoch ist ein Monitor ein eigener Gegenstand. Keine Entitymenge muss als schwach gekennzeichnet werden.";
+        secondchance[20] = "Das ist nicht ganz richtig! Die Attribute von „Artikel“ stehen im Tabellenkopf. Korrekt wäre D.";
+        secondchance[21] = "Leider nein. Richtig wäre Adresse, Name und Kundennummer. Letztere ist der Primärschlüssel. Rechnungsdatum ist ein Attribut der Entitymenge „Rechnung“.";
+        secondchance[22] = "Stell dir vor du kaufst in dem Shop ein. Du kannst gleichzeitig mehrere Artikel kaufen und dafür eine Rechnung erhalten. Ein anderer Käufer könnte jedoch auch die gleichen Artikel kaufen. Richtig wäre daher n : m.";
+        secondchance[23] = "Nicht ganz. Jede Rechnung wird einer Kundennummer zugeordnet, hat eine eindeutige Rechnungsnummer, ein Datum und einen Betrag.";
+        secondchance[24] = "Leider falsch! Die Attribute Rechnungsbetrag, Rechnungsdatum, Artikelnummer und Kundennummer können mehrfach vorkommen. Die Rechnungsnummer lässt jede Rechnung eindeutig ermitteln.";
+        secondchance[25] = "Das war leider falsch! Die falsche Aussage ist A, da mehrere Rechnungen am selben Datum ausgestellt werden können. Das Rechnungsdatum ist somit nicht eindeutig und damit kein Primärschlüssel.";
+    
     }
 
 
     public void check(){
         if (toogle.currentSelection.name.Equals(correct[welcheAufgabe]))
         {
+            falschKreuz.SetActive(false);
+            hinweisButton.SetActive(false);
+            temp++;
+            geldGeben(temp);
             welcheAufgabe++;
-            geldGeben();
             richtigHacken.SetActive(true);
-            exitKnopf.SetActive(true);
             exitKnopfHinweis.SetActive(false);
             checkButton.SetActive(false);
 
@@ -107,15 +142,25 @@ public class Aufgaben : MonoBehaviour
             zusatzButton_transparent.SetActive(true);
         }
         else
-        {
-            exitKnopf.SetActive(true);
-            checkButton.SetActive(false);
+        {   
+            temp++;
+            if(temp == 2){
+                checkButton.SetActive(false);
+            }else{
+                checkButton.SetActive(true);
+            }
+            if(temp == 2)
+            {
+                checkButton.SetActive(false);
+                zusatzButton.SetActive(false);
+                zusatzButton_transparent.SetActive(true);
+                welcheAufgabe++;
+            }
             hinweisButton.SetActive(true);
             falschKreuz.SetActive(true);
-            zusatzButton.SetActive(false);
-            zusatzButton_transparent.SetActive(true);
-            welcheAufgabe++;
+
         }
+        
     }
 
     public void hinweis()
@@ -123,7 +168,13 @@ public class Aufgaben : MonoBehaviour
         hinweisFenster.SetActive(true);
         fenster.SetActive(false);
         checkButton.SetActive(false);
-        string ausgabe = feedback[welcheAufgabe - 1];//da im else Zweig in check schon auf nächste Aufgabe gezeigt wird
+        string ausgabe;
+        if (temp == 2){
+            ausgabe = feedback[welcheAufgabe - 1];//da im else Zweig in check schon auf nächste Aufgabe gezeigt wird
+        }else{
+            ausgabe = secondchance[welcheAufgabe];
+        }
+        
         Utilitys.TextInTMP(RichitgFalschAnzeige, ausgabe);
         exitKnopfHinweis.SetActive(true);
     }
@@ -133,6 +184,11 @@ public class Aufgaben : MonoBehaviour
         hinweisFenster.SetActive(false);
         fenster.SetActive(true);
         exitKnopfHinweis.SetActive(false);
+        if(temp == 2){
+            checkButton.SetActive(false);
+        }else{
+            checkButton.SetActive(true);
+        }
         clearAnzeige();
     }
 
@@ -144,10 +200,10 @@ public class Aufgaben : MonoBehaviour
 
     public void openAufgabe()
     {
+        temp = 0;
         toogle.init();
         toogle.toggleOff();
         gameObject.GetComponent<Image>().sprite = aufgabenListe[welcheAufgabe];
-        exitKnopf.SetActive(false);
         exitKnopfHinweis.SetActive(false);
         clearAnzeige();
         checkButton.SetActive(true);
@@ -157,9 +213,12 @@ public class Aufgaben : MonoBehaviour
     }
 
 
-    public void geldGeben(){
-        
-        Testing.geld += 100;
+    public void geldGeben(int versuch){
+        if(versuch == 10){
+            Testing.geld += 100;
+        }else{
+            Testing.geld += 50;
+        }
     }
 
 }
