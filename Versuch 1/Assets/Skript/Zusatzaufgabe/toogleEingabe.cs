@@ -6,8 +6,7 @@ using System.Linq;
 
 public class toogleEingabe : MonoBehaviour
 {
-    ToggleGroup toggleGroupInstance;
-
+    public ToggleGroup toggleGroupInstance;
     //Gibt den Namen des ausgewählten Toogles aus mit currentSelection.name
     public Toggle currentSelection{
         get{return toggleGroupInstance.ActiveToggles ().FirstOrDefault ();}
@@ -30,6 +29,32 @@ public class toogleEingabe : MonoBehaviour
         var toggles = toggleGroupInstance.GetComponentsInChildren<Toggle> ();
         for (int i = 0; i < 4; i++){
             toggles [i].isOn = false;
+        }
+    }
+
+    public void toggleColor (Color c, Toggle t){
+        var toggles = toggleGroupInstance.GetComponentsInChildren<Toggle> ();
+        ColorBlock cb = t.colors;
+        cb.normalColor = c;
+        t.colors = cb;
+    }
+    public void toggleRed (){
+        //Color c = new Color(192,57,43);
+        var toggles = toggleGroupInstance.GetComponentsInChildren<Toggle> ();
+        for (int i = 0; i < 4; i++){
+            
+            ColorBlock cb = toggles [i].colors;
+            cb.normalColor = new Color(0.753f, 0.224f, 0.169f);
+            toggles [i].colors = cb;
+        }
+    }
+    public void toggleWhite (){
+        var toggles = toggleGroupInstance.GetComponentsInChildren<Toggle> ();
+        for (int i = 0; i < 4; i++){
+            
+            ColorBlock cb = toggles [i].colors;
+            cb.normalColor = Color.white;
+            toggles [i].colors = cb;
         }
     }
 }

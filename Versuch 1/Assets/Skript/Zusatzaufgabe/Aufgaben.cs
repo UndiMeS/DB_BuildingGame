@@ -17,6 +17,7 @@ public class Aufgaben : MonoBehaviour
     public toogleEingabe toogle;
     public GameObject exitKnopf;
     public GameObject RichitgFalschAnzeige;
+    public GameObject RichitgFalschAnzeigeSecondChance;
     public GameObject fenster;
     public GameObject checkButton;
 
@@ -32,13 +33,17 @@ public class Aufgaben : MonoBehaviour
     public GameObject exitKnopfHinweis;
     public GameObject zweiteChance;
     public GameObject toggleKiller;
+    public GameObject toggleKiller2;
+    public GameObject secondChanceScreen;
+    public GameObject exitKnopfSecondChance;
 
     private int temp = 0;
     private int cheat_temp = 0;
 
     public void Start()
     {
-        //hinweisFenster.SetActive(false); 
+    
+        //Richtige Antworten
 
         correct = new string[aufgabenListe.Length];
         correct[0] = "C";
@@ -68,8 +73,10 @@ public class Aufgaben : MonoBehaviour
         correct[24] = "D";
         correct[25] = "D";
         
-        //correct={"B",....}
+  
         level = new int[aufgabenListe.Length]; //?
+
+        //Lösungstexte zu Aufgaben
 
         feedback = new string[aufgabenListe.Length];
         feedback[0] = "Nicht ganz! Richtig wäre n : 1. Zum Beispiel kann Jona nicht gleichzeitig in Klasse 9 und 10 sein. Jedoch könnten 25 Schüler gemeinsam in Klasse 9 gehen.";
@@ -99,10 +106,12 @@ public class Aufgaben : MonoBehaviour
         feedback[24] = "Leider falsch! Die Attribute Rechnungsbetrag, Rechnungsdatum, Artikelnummer und Kundennummer können mehrfach vorkommen. Die Rechnungsnummer lässt jede Rechnung eindeutig ermitteln.";
         feedback[25] = "Das war leider falsch! Die falsche Aussage ist A, da mehrere Rechnungen am selben Datum ausgestellt werden können. Das Rechnungsdatum ist somit nicht eindeutig und damit kein Primärschlüssel.";
 
+        //Hinweis Texte für die zweite Chance
+
         secondchance = new string[aufgabenListe.Length];
         secondchance[0] = "In wie viele Klassen gehst du persönlich an deiner Schule?";
         secondchance[1] = "Unterrichtet an deiner Schule nur eine Lehrkraft Informatik? Und hat diese auch andere Fächer, die sie unterrichtet?";
-        secondchance[2] = "Kleine Kinos haben ggf. nur ein Saal und größere? Und kann den derselbe (nicht der gleiche) Raum an verschiedenen Orte gleichzeitig exitieren?";
+        secondchance[2] = "Kleine Kinos haben ggf. nur ein Saal und größere? Und kann denn derselbe (nicht der gleiche) Raum an verschiedenen Orte gleichzeitig exitieren?";
         //ab hier weiter die Rückmeldungen ändern.
         secondchance[3] = "Ein Mensch kann nicht mit mehr als einem anderen Menschen verheiratet sein. Richtig ist daher 1 : 1.";
         secondchance[4] = "Das war falsch. Die Kardinalität der Relation zwischen A und B ist 1 : n.";
@@ -128,71 +137,94 @@ public class Aufgaben : MonoBehaviour
         secondchance[24] = "Leider falsch! Die Attribute Rechnungsbetrag, Rechnungsdatum, Artikelnummer und Kundennummer können mehrfach vorkommen. Die Rechnungsnummer lässt jede Rechnung eindeutig ermitteln.";
         secondchance[25] = "Das war leider falsch! Die falsche Aussage ist A, da mehrere Rechnungen am selben Datum ausgestellt werden können. Das Rechnungsdatum ist somit nicht eindeutig und damit kein Primärschlüssel.";
     }
-
-
+    /*
+    *Prüfen der Eingabe und drücken auf Button
+    */
     public void check(){
-        if (toogle.currentSelection.name.Equals(correct[welcheAufgabe]))
+        //keine Eingabe
+        if(toogle.toggleGroupInstance.AnyTogglesOn() == false)
         {
-            falschKreuz.SetActive(false);
-            hinweisButton.SetActive(false);
-            temp++;
-            cheat_temp = 0;
-            geldGeben(temp);
-            welcheAufgabe++;
-            richtigHacken.SetActive(true);
-            exitKnopfHinweis.SetActive(false);
-            checkButton.SetActive(false);
-
-            zusatzButton.SetActive(false);
-            zusatzButton_transparent.SetActive(true);
-        }
-        else
-        {   
-            temp++;
-            if(temp == 2){
-                cheat_temp = 0;
-                checkButton.SetActive(false);
-                toggleKiller.SetActive(true);
-                hinweisButton.SetActive(false);
-                lösungsButton.SetActive(true);
-            }else{
-                cheat_temp = 1;
-                checkButton.SetActive(true);
-                zweiteChance.SetActive(true);
-                toggleKiller.SetActive(true);
-                hinweisButton.SetActive(true);
-                Invoke("SecondChanceAnzeigen", 1);
-            }
-            if(temp == 2)
+           toogle.toggleRed();
+           Invoke("toggleFarbe",1);
+        }else{
+            //Richtige Eingabe
+            if (toogle.currentSelection.name.Equals(correct[welcheAufgabe]))
             {
+                toogle.toggleColor(Color.green, toogle.currentSelection);
+                Invoke("toggleFarbe",3);
+                toggleKiller2.SetActive(true);
+                falschKreuz.SetActive(false);
+                hinweisButton.SetActive(false);
+                temp++;
+                cheat_temp = 0; //cheat_temp verhindet, dass man das Zusatzmenü komplett verlässt und dann wieder bei 1. Chance startet
+                geldGeben(temp);
+                welcheAufgabe++;
+                richtigHacken.SetActive(true);
+                exitKnopfHinweis.SetActive(false);
                 checkButton.SetActive(false);
+
                 zusatzButton.SetActive(false);
                 zusatzButton_transparent.SetActive(true);
-                welcheAufgabe++;
             }
-            
-            falschKreuz.SetActive(true);
+            //falsche Eingabe
+            else
+            {   
+                
+                temp++;//temp zählt die Chancen (temp == 2 dann keine Chance mehr!)
+                falschKreuz.SetActive(true);
+                toogle.toggleColor(Color.red, toogle.currentSelection);
+                Invoke("toggleFarbe",3);
+                //zweite chance bereits gehabt
+                if(temp == 2){
+                    cheat_temp = 0;
+                    checkButton.SetActive(false);
+                    toggleKiller.SetActive(true);
+                    hinweisButton.SetActive(false);
+                    lösungsButton.SetActive(true);
+                    checkButton.SetActive(false);
+                    zusatzButton.SetActive(false);
+                    zusatzButton_transparent.SetActive(true);
+                    welcheAufgabe++;
 
+                //zweite Chance noch möglich
+                }else{
+                    cheat_temp = 1;
+                    checkButton.SetActive(true);
+                    zweiteChance.SetActive(true);
+                    toggleKiller.SetActive(true);
+                    hinweisButton.SetActive(true);
+                    Invoke("SecondChanceAnzeigen", 1);
+                }
+            }
         }
-        
     }
 
+    /*
+    *Ausgabe des Hinweises und der Lösung
+    */
     public void hinweis()
     {
-        hinweisFenster.SetActive(true);
-        fenster.SetActive(false);
         checkButton.SetActive(false);
         string ausgabe;
+        //Ausgabe der Lösung
         if (temp == 2){
+            hinweisFenster.SetActive(true);
+            fenster.SetActive(false);
             ausgabe = feedback[welcheAufgabe - 1];//da im else Zweig in check schon auf nächste Aufgabe gezeigt wird
+            Utilitys.TextInTMP(RichitgFalschAnzeige, ausgabe);
+            exitKnopfHinweis.SetActive(true);
+        //Ausgabe des Hinweises
         }else{
+            secondChanceScreen.SetActive(true);
             ausgabe = secondchance[welcheAufgabe];
+            Utilitys.TextInTMP(RichitgFalschAnzeigeSecondChance, ausgabe);
+            exitKnopfSecondChance.SetActive(true);
+            exitKnopf.SetActive(false);
         }
-        
-        Utilitys.TextInTMP(RichitgFalschAnzeige, ausgabe);
-        exitKnopfHinweis.SetActive(true);
     }
-
+    /*
+    *Exit Button des Lösungsfensters
+    */
     public void exitHinweis()
     {
         hinweisFenster.SetActive(false);
@@ -205,15 +237,30 @@ public class Aufgaben : MonoBehaviour
         }
         clearAnzeige();
     }
-
+   /*
+    *Exit Button des Hinweisfensters
+    */
+    public void exitsecondChanceScreen()
+    {
+        secondChanceScreen.SetActive(false);
+        exitKnopfSecondChance.SetActive(false);
+        clearAnzeige();
+        checkButton.SetActive(true);
+        exitKnopf.SetActive(true);
+    }
+    /*
+    *Textausgabe zurücksetzten
+    */
     public void clearAnzeige()
     {
         Utilitys.TextInTMP(RichitgFalschAnzeige, " ");
     }
-
-
+    /*
+    *Bei Klick auf Zusatzaufgabenbutton rechts neue Aufgabe laden
+    */
     public void openAufgabe()
     {
+        //Prüfen, ob noch eine zweite Chance aus vorheriger Aufgabe da ist
         if(cheat_temp == 1){
             temp = 1;
             hinweisButton.SetActive(true);
@@ -223,7 +270,9 @@ public class Aufgaben : MonoBehaviour
             hinweisButton.SetActive(false);
             falschKreuz.SetActive(false);
         }
+        //Laden aller nötigen Komponenten
         toggleKiller.SetActive(false);
+        toggleKiller2.SetActive(false);
         toogle.init();
         toogle.toggleOff();
         gameObject.GetComponent<Image>().sprite = aufgabenListe[welcheAufgabe];
@@ -231,11 +280,15 @@ public class Aufgaben : MonoBehaviour
         clearAnzeige();
         checkButton.SetActive(true);
         richtigHacken.SetActive(false);
+        secondChanceScreen.SetActive(false);
+        exitKnopfSecondChance.SetActive(false);
         
         
     }
 
-
+   /*
+    *Betrag auszahlen
+    */
     public void geldGeben(int versuch){
         if(versuch == 1){
             //1. Versuch richtig
@@ -245,22 +298,26 @@ public class Aufgaben : MonoBehaviour
             Testing.geld += 50;
         }
     }
+    /*
+    *Hinweisfenster anzeigen
+    */
     public void SecondChanceAnzeigen()
     {
         zweiteChance.SetActive(false);
         toggleKiller.SetActive(false);
     }
-
+    /*
+    *Methode, um den Lösungsbutton anzuzeigen
+    */
     public void LösungsButton()
     {
         lösungsButton.SetActive(false);
     }
-
     /*
-    *Cheatbut: Wenn man die erste toggle Wahl macht, dann mittels Zusatzbutton rechts die Anzeige verlässt und wieder öffnet, erhält man erneut die erste Chance!
+    *Methode für Invoke Farbwechsel
     */
-    public void Cheatbug()
+    public void toggleFarbe()
     {
-        
+        toogle.toggleWhite();
     }
 }

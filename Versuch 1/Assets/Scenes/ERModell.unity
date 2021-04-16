@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1631,7 +1631,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 905bb0119908acb4f90e9b6045628490, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eefdad5e0cc08ed429377f1e5bd649ff, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4162,8 +4162,13 @@ MonoBehaviour:
   linie: {fileID: 7522486218302427998, guid: 4329b69ee7c51364f95bd8e085357311, type: 3}
   linienOrdner: {fileID: 551644702}
   erModellflaeche: {fileID: 1094916475}
+  entitaetOberflaeche: {fileID: 0}
+  attributOberflaeche: {fileID: 0}
+  beziehOberflaeche: {fileID: 0}
   entity: {fileID: 2800000, guid: 367174c82285efb43a7d91630bf1f0e0, type: 3}
   schwachEntity: {fileID: 2800000, guid: b0d31c55d580e524fab06eb3511fe0bf, type: 3}
+  leisteRechts: {fileID: 0}
+  leisteBottom: {fileID: 0}
 --- !u!114 &707811220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9646,6 +9651,11 @@ MonoBehaviour:
   PauseMenuUI: {fileID: 1848433870}
   kameraKontroller: {fileID: 0}
   canvas: {fileID: 1702459221}
+  hilfeFenster: {fileID: 0}
+  "hilfeZur\xFCckButton": {fileID: 0}
+  hilfeGebaeudeinfo: {fileID: 0}
+  hilfeButtondestroyer: {fileID: 0}
+  hilfeTexte: {fileID: 0}
 --- !u!1 &1850973727
 GameObject:
   m_ObjectHideFlags: 0
