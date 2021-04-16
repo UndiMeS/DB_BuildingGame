@@ -112,30 +112,29 @@ public class Aufgaben : MonoBehaviour
         secondchance[0] = "In wie viele Klassen gehst du persönlich an deiner Schule?";
         secondchance[1] = "Unterrichtet an deiner Schule nur eine Lehrkraft Informatik? Und hat diese auch andere Fächer, die sie unterrichtet?";
         secondchance[2] = "Kleine Kinos haben ggf. nur ein Saal und größere? Und kann denn derselbe (nicht der gleiche) Raum an verschiedenen Orte gleichzeitig exitieren?";
-        //ab hier weiter die Rückmeldungen ändern.
-        secondchance[3] = "Ein Mensch kann nicht mit mehr als einem anderen Menschen verheiratet sein. Richtig ist daher 1 : 1.";
-        secondchance[4] = "Das war falsch. Die Kardinalität der Relation zwischen A und B ist 1 : n.";
-        secondchance[5] = "Nein. Die Kardinalität der Relation zwischen A und B ist 1 : 1.";
-        secondchance[6] = "Kann dasselbe Auto in mehreren Straßen gleichzeitig parken? Nein. Jedoch hat eine Straße Platz für mehrere Autos. Richtig wäre daher n : 1.";
-        secondchance[7] = "Richtig wäre n : m. Zum Beispiel lief Harry Potter gleichzeitig in mehreren Kinos. Und jedes Kino hat gleichzeitig verschiedene Filme im Programm.";
-        secondchance[8] = "Richtig wäre n : m. Man kann ja auch mehrere Hobbys besitzen und diese auch mit anderen zusammen ausüben.";
-        secondchance[9] = "Nicht ganz! Jedes Auto hat immer genau einen Halter, wobei dieser auch mehrere Autos besitzen kann. Und mehrere Nutzer können das Auto fahren und ein Nutzer hat auch die Möglichkeit mehrere Autos zu fahren.";
-        secondchance[10] = "Nicht ganz! Jeder Mensch besitzt eine eindeutige Personalausweisnummer. Diese ist der Primärschlüssel. Auch Handynummern sind meistens eindeutig einem Menschen zugeordnet. Jedoch muss dann auch jeder Mensch eine Nummer besitzen!";
-        secondchance[11] = "Leider nein. Die Schlüsselattribute sind Name und Erscheinungsdatum. Die anderen Varianten sind nicht eindeutig.";
-        secondchance[12] = "Ein Autor kann gleichzeitig auch mehrere Bücher veröffentlichen oder verschiedene Autoren den gleichen Namen nutzen. Richtig sind alle drei Attribute zusammen.";
-        secondchance[13] = "Die ISBN ist der Primärschlüssel. Zwar können auch Autor, Name und Erscheinungsdatum ein Buch eindeutig zuordnen, jedoch suchen wir immer eine minimale Menge von Attributen.";
-        secondchance[14] = "Leider nein. An einer Schule können auch zum Beispiel zwei Annas mit Geschlecht weiblich in Klasse 10 vorkommen. Die E-Mail ist jedoch eindeutig.";
-        secondchance[15] = "Fast! Die Adresse des Kunden ist laut Text nicht hinterlegt (A falsch) und ein Kunde kann mehr als ein Artikel kaufen (B falsch). Jeder Kunde kann über die Kundennummer eindeutig zugeordnet werden. Name ist daher kein Schlüsselattribut (D falsch). Richtig wäre daher C.";
-        secondchance[16] = "Fast! Ohne Patienten können Zähne nicht existieren. Die Entitymenge Patient ist daher schwach (B falsch). Ein Zahn kann nicht mehreren Patienten zugeordnet werden (C falsch). Zwischen Patient und Zahn ist die Kardinalität 1 : n, und damit wäre A richtig. ";
-        secondchance[17] = "Falsch! Ein Klassenzimmer kann leider nicht in der Luft schweben. Es benötigt ein Schulgebäude, um existieren zu können uns ist daher schwach.";
-        secondchance[18] = "Das ist nicht korrekt! Artikel werden in Zeitschriften abgedruckt. Ohne diese können wir Artikel nicht lesen. Artikel ist daher eine schwache Entitymenge.";
-        secondchance[19] = "Leider nein. Zwar wird auf dem Monitor ohne Computer nichts angezeigt, jedoch ist ein Monitor ein eigener Gegenstand. Keine Entitymenge muss als schwach gekennzeichnet werden.";
-        secondchance[20] = "Das ist nicht ganz richtig! Die Attribute von „Artikel“ stehen im Tabellenkopf. Korrekt wäre D.";
-        secondchance[21] = "Leider nein. Richtig wäre Adresse, Name und Kundennummer. Letztere ist der Primärschlüssel. Rechnungsdatum ist ein Attribut der Entitymenge „Rechnung“.";
-        secondchance[22] = "Stell dir vor du kaufst in dem Shop ein. Du kannst gleichzeitig mehrere Artikel kaufen und dafür eine Rechnung erhalten. Ein anderer Käufer könnte jedoch auch die gleichen Artikel kaufen. Richtig wäre daher n : m.";
-        secondchance[23] = "Nicht ganz. Jede Rechnung wird einer Kundennummer zugeordnet, hat eine eindeutige Rechnungsnummer, ein Datum und einen Betrag.";
-        secondchance[24] = "Leider falsch! Die Attribute Rechnungsbetrag, Rechnungsdatum, Artikelnummer und Kundennummer können mehrfach vorkommen. Die Rechnungsnummer lässt jede Rechnung eindeutig ermitteln.";
-        secondchance[25] = "Das war leider falsch! Die falsche Aussage ist A, da mehrere Rechnungen am selben Datum ausgestellt werden können. Das Rechnungsdatum ist somit nicht eindeutig und damit kein Primärschlüssel.";
+        secondchance[3] = "Wie viele Menschen in eurem Umfeld sind denn mit mehr als einer Person verheiratet?";
+        secondchance[4] = "Schlüsselwörter wie „nur“ oder „genau eine“ geben den Hinweis auf die Kardinalität 1.";
+        secondchance[5] = "Denke an den Hinweis der vorherigen Aufgabe!";
+        secondchance[6] = "Nehmen wir an man darf in einer Straße parken. Frage dich, wie viele Autos könnten in einer Straße Parken? Und in wie vielen Straßen kann dasselbe Auto gleichzeitig parken?";
+        secondchance[7] = "Zeigt ein Kino mit mehreren Sälen nur einen Film?";
+        secondchance[8] = "Hast du Freundinnen und Freunde, die das gleiche Hobby ausüben wie du?";
+        secondchance[9] = "Maxime hat bspw. in seiner Garage einen Caprio und einen Kleinbus. Am Wochenende verleiht er diese häufig an seine Freunde.";
+        secondchance[10] = "Eine vierköpfige Familie hat eine Adresse. Gibt es eigentlich auch Menschen ohne Handy?";
+        secondchance[11] = "Es gibt Filme, die haben den gleichen Namen. Es gibt Hauptdarsteller, die drehen an zwei Filmen gleichzeitig mit.";
+        secondchance[12] = "Es ist zwar selten, jedoch kommt es vor, dass zwei Bücher mit gleichen Namen zu selben zeit veröffentlicht werden. ";
+        secondchance[13] = "Laut Wikipedia ist die die Internationale Standartbuchnummer (ISBN) “eine Nummer zur eindeutigen Kennzeichnung von Büchern [...]“.";
+        secondchance[14] = "Hast du schon einmal davon gehört, dass in einer Klasse zwei Schüler oder Schülerinnen den gleichen Namen haben?";
+        secondchance[15] = "Achte auf die Primärschlüssel der Entitymenge und die Kardinalität.";
+        secondchance[16] = "Teilen zwei Patienten sich dieselben Zähne? Und können Zähne überhaupt ohne Menschen/Patienten „existieren“?";
+        secondchance[17] = "Was geschieht mit dem Klassenzimmer, wenn das Schulgebäude abgerissen wird?";
+        secondchance[18] = "Was geschieht, wenn du die Zeitschrift in den Müll wirfst?";
+        secondchance[19] = "Was geschieht mit dem Monitor, wenn du den Computer herunterfährst oder dir einen neuen zulegst?";
+        secondchance[20] = "Welcher Bereich auf der Rechnung beschreibt die gekauften Artikel? Dort stehen die Attribute!";
+        secondchance[21] = "Es gibt auch eine Entitymenge „Rechnung“. Achte auf ALLE Attribute der Entitymenge „Kunde“.";
+        secondchance[22] = "Hast du schon einmal Artikel in einem Sportgeschäft gekauft und eine Rechnung/Quittung erhalten? Wie viele waren das? Waren die Artikel auch nach deinem Kauf noch im Laden auf Lager?";
+        secondchance[23] = "Tipp: Ein Kunde kauft an einem gewissen Tag in dem Geschäft ein und bezahlt einen bestimmten Preis. Und wir benötigen noch einen Primärschlüssel!";
+        secondchance[24] = "An einem Tag werden in dem Sporthaus 300 Rechnungen ausgestellt. Welche Attributwerte könnten doppelt vorkommen?";
+        secondchance[25] = "Das ist die letzte Aufgabe! Alle Antwortmöglichkeiten wurden in vorherigen Aufgaben thematisiert! Versuche es nochmal!";
     }
     /*
     *Prüfen der Eingabe und drücken auf Button
