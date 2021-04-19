@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Aufgaben : MonoBehaviour
 {
-    public Sprite[] aufgabenListe = new Sprite[23];
+    public Sprite[] aufgabenListe = new Sprite[25];
+    public Sprite[] loesungsListe = new Sprite[25];
     public string[] correct ;
     public string[] feedback;
 
@@ -207,11 +208,13 @@ public class Aufgaben : MonoBehaviour
         string ausgabe;
         //Ausgabe der Lösung
         if (temp == 2){
+            hinweisFenster.GetComponent<Image>().sprite = loesungsListe[welcheAufgabe-1];
             hinweisFenster.SetActive(true);
             fenster.SetActive(false);
-            ausgabe = feedback[welcheAufgabe - 1];//da im else Zweig in check schon auf nächste Aufgabe gezeigt wird
-            Utilitys.TextInTMP(RichitgFalschAnzeige, ausgabe);
             exitKnopfHinweis.SetActive(true);
+            //ausgabe = feedback[welcheAufgabe - 1];//da im else Zweig in check schon auf nächste Aufgabe gezeigt wird
+            //Utilitys.TextInTMP(RichitgFalschAnzeige, ausgabe);
+
         //Ausgabe des Hinweises
         }else{
             secondChanceScreen.SetActive(true);
