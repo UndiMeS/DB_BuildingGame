@@ -5,14 +5,61 @@ using UnityEngine;
 
 public class ERAufgabe : MonoBehaviour
 {
-    private string[] aufgabe= { "Um den Mars zu besiedeln, müssen Astronauten eingeflogen werden. Damit diese auf dem Planeten leben können, werden <mark=#eb4034aa> Wohncontainer </mark>benötigt. Dafür wird die Entitymenge Wohncontainer angelegt. Alle Wohncontainer haben gemeinsame Eigenschaften, die Attribute. Sie haben bestimmte <mark=#71eb2f80> Baukosten </mark>eine genaue<mark=#71eb2f80> Bettenzahl</mark>, die die Menge an beherbergbaren Astronauten ausdrückt und ein Attribut für noch <mark=#71eb2f80>freie Betten</mark>. Jeder Container hat in der Siedlung eine eindeutige<mark=#71eb2f80> Containernummer</mark>, der Primärschlüssel." };
-    private string[] listeEnity = { "Wohncontainer" };
-    private string[][] wohncontainer = { new string[] { "1", "Kosten", "Baukosten" }, new string[] { "2", "Containernummer" }, new string[] { "3", "Bettenzahl", "Bettenanzahl", "Betten" }, new string[] { "4", "freie Betten", "freieBetten" } };
+    private string[] aufgabe= { "Um den Mars zu besiedeln, mï¿½ssen Astronauten eingeflogen werden. Damit diese auf dem Planeten leben kï¿½nnen, werden <mark=#eb4034aa> Wohncontainer </mark>benï¿½tigt. Dafï¿½r wird die Entitymenge Wohncontainer angelegt. Alle Wohncontainer haben gemeinsame Eigenschaften, die Attribute. Sie haben bestimmte <mark=#71eb2f80> Baukosten </mark>eine genaue<mark=#71eb2f80> Bettenzahl</mark>, die die Menge an beherbergbaren Astronauten ausdrï¿½ckt und ein Attribut fï¿½r noch <mark=#71eb2f80>freie Betten</mark>. Jeder Container hat in der Siedlung eine eindeutige<mark=#71eb2f80> Containernummer</mark>, der Primï¿½rschlï¿½ssel." };
+    private string[] listeEntity = { "Wohncontainer" };
+    private string[][] wohncontainer = {
+                                        new string[] { "1", "Kosten", "Baukosten", "Preis", "Baupreis", "â‚¬" }, 
+                                        new string[] { "2", "Containernummer", "CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer", "ID", "id", "Id" }, 
+                                        new string[] { "3", "Bettenzahl", "Bettenanzahl", "Betten", "KapazitÃ¤t" }, 
+                                        new string[] { "4", "freie Betten", "freieBetten", "Betten frei" } 
+                                        };
+    private string[][] astronaut = {    
+                                        new string[] { "AnreisegebÃ¼hr", "Kosten", "GebÃ¼hren", "Reisekosten", "Preis" }, 
+                                        new string[] { "Aufgabe", "Beruf", "Job", "Art"}, 
+                                        new string[] { "Name", "Namen"}, 
+                                        new string[] { "Geburtsdatum", "Geburtstag", "Datum"} 
+                                    };
+    private string[][] feldspaehre = {  
+                                        new string[] { "Kosten", "Baukosten", "Preis", "Baupreis", "â‚¬" }, 
+                                        new string[] { "Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Feldarbeiter", "Anzahl"}, 
+                                        new string[] { "Ertrag", "Gewinn", "Gehalt"}, 
+                                        new string[] { "Feldnummer", "FNR", "fnr", "FNr", "FNR.", "Fnr.", "FNr.", "Feldnr.", "Nummer", "ID", "id", "Id" } 
+                                    };
+    private string[][] weidespaehre = { 
+                                        new string[] { "Kosten", "Baukosten", "Preis", "Baupreis", "â‚¬" }, 
+                                        new string[] { "Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Weidenarbeiter", "Weidearbeiter", "Anzahl"}, 
+                                        new string[] { "Ertrag", "Gewinn", "Gehalt"}, 
+                                        new string[] { "Weidennummer", "Weidenummer", "WNR", "wnr", "WNr", "WNR.", "Wnr.", "WNr.", "Weidenr.","Weidenr.", "Nummer", "ID", "id", "Id" },
+                                        new string[] { "Tierzahl", "Tiere", "Tieranzahl", "Anzahl Tiere", "AnzahlTiere"} 
+                                    };
+    private string[][] nutztier = {     
+                                        new string[] { "Name", "Namen" }, 
+                                        new string[] { "AnreisegebÃ¼hr", "Kosten", "GebÃ¼hren", "Reisekosten", "Preis", "Transportkosten", "Transportpreis" }, 
+                                        new string[] { "Art", "Gattung", "Tierart"}, 
+                                    };
+    private string[][] stallcontainer = {
+                                        new string[] {"Kosten", "Baukosten", "Preis", "Baupreis", "â‚¬", "Containerkosten" }, 
+                                        new string[] {"Containernummer", "CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer", "ID", "id", "Id", "Stallnummer", "SNR","Stallnr.", "snr", "SNr", "SNR.", "snr.", "SNr.", "Containernr."}, 
+                                        new string[] {"Gehegezahl", "Gehegeanzahl", "Gehege", "KapazitÃ¤t" }, 
+                                        new string[] {"freie Gehege", "freieGehege", "Gehege frei" } 
+                                        };
+    private string[][] forschungsstation ={
+                                        new string[] {"Kosten", "Baukosten", "Preis", "Baupreis", "â‚¬", "Stationskosten" }, 
+                                        new string[] {"Stationsnummer", "SNR", "snr", "SNr", "SNR.", "snr.", "SNr.", "Stationsnr.", "Nummer", "ID", "id", "Id"}, 
+                                        new string[] {"Spezialisierung", "Gebiet", "Typ", "Bereich"}, 
+                                        };
+    private string[][] forschungsprojekt = { 
+                                        new string[] { "Kosten", "Baukosten", "Preis", "Baupreis", "â‚¬", "Projektkosten", "Forschungskosten" }, 
+                                        new string[] { "Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Forschungsarbeiter", "Forschungsastronauten", "Anzahl"}, 
+                                        new string[] { "Verbesserungsfaktor", "Gewinn", "Faktor", "Verbesserung"}, 
+                                        new string[] { "Stufe", "Forschungsstufe", "Level", "LvL", "Forschungslevel"},
+                                        new string[] { "Merkmal", "Forschungsmerkmal", "Attribut", "Forschungsattribut", "Projektmerkmal"} 
+                                    };
     private string[][][] listeAttribute = new string[1][][];
     private int[][] primarschluessel = {new int[]{0,1,0,0} };
 
     private int[] entitysRichtig = { 1, 0 };
-    private int[] attributeRichtig = { 5, 0 }; //++ pro Primärschlüssel
+    private int[] attributeRichtig = { 5, 0 }; //++ pro Primï¿½rschlï¿½ssel
     private int[] beziehungenRichtig = { 0, 0 };
 
     private int[] entitysHat;
@@ -46,7 +93,7 @@ public class ERAufgabe : MonoBehaviour
 
         string fertig="";
         int indexEntity = 0;
-        foreach(string entityName in listeEnity)
+        foreach(string entityName in listeEntity)
         {
 
             foreach(GameObject entity in ERErstellung.modellObjekte)
