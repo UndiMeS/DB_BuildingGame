@@ -7,11 +7,14 @@ public class WohncontainerTabelle : MonoBehaviour
     public GameObject Tabelle;
     public GameObject wohnendeTabelle;
     public GameObject alleTabelle;
+    public GameObject wohncontainerTabelle;
 
     public GameObject prefabTabelle;
+    public GameObject wohnprefab;
 
     public GameObject alleScrollContent;
     public GameObject bewohnerScrollContent;
+    public GameObject wohnScrollContent;
     public List<GameObject> zeilenListe = new List<GameObject>();
 
     public void wohnendeAstroTabelleAn()
@@ -123,11 +126,59 @@ public class WohncontainerTabelle : MonoBehaviour
     {
         alleAstroTabelleAus();
         wohnendeAstroTabelleAus();
+        wohnTabelleAus();
         gameObject.GetComponent<FelderTabelle>().alleFelderTabelleAus();
         gameObject.GetComponent<ProjektTabelle>().alleProjekteTabelleAus();
         gameObject.GetComponent<ProjektTabelle>().stationsProjekteTabelleAus();
         gameObject.GetComponent<TierTabelle>().alleTiereTabelleAus();
         gameObject.GetComponent<TierTabelle>().wohnendeTiereTabelleAus();
         gameObject.GetComponent<WeidenTabelle>().alleWeidenTabelleAus();
+        gameObject.GetComponent<TierTabelle>().stallTiereTabelleAus();
+    }
+
+    public void wohnTabelleAn()
+    {
+        Time.timeScale = 0;
+        PauseMenu.SpielIstPausiert = true;
+        KameraKontroller.aktiviert = false;
+
+        Tabelle.SetActive(true);
+        wohncontainerTabelle.SetActive(true);
+        int size = Testing.wohncontainer.Count;
+        wohnScrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(prefabTabelle.GetComponent<RectTransform>().sizeDelta.x, prefabTabelle.GetComponent<RectTransform>().sizeDelta.y * size);
+        wohnprefab.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
+
+        int i = 0;
+
+        foreach (Wohncontainer container in Testing.wohncontainer)
+        {
+            wohnScrollContent.transform.position.Set(0, 0, 0);
+            GameObject zeile = Instantiate(wohnprefab, wohnScrollContent.transform);
+            Vector3 pos = i * new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y + 4, 0);
+            zeile.transform.localPosition = pos;
+            zeilenListe.Add(zeile);
+
+            Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, container.containernummer);
+            Utilitys.TextInTMP(zeile.transform.GetChild(1).gameObject, container.baukosten);
+            Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, container.bettenanzahl);
+            Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, container.freieBetten);
+            i++;
+
+        }
+        wohnprefab.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+    }
+    public void wohnTabelleAus()
+    {
+        Time.timeScale = 1;
+        PauseMenu.SpielIstPausiert = false;
+        KameraKontroller.aktiviert = true;
+
+        Tabelle.SetActive(false);
+        wohncontainerTabelle.SetActive(false);
+
+        foreach (GameObject zeile in zeilenListe)
+        {
+            Destroy(zeile);
+        }
     }
 }

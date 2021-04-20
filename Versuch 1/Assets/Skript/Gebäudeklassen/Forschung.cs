@@ -9,6 +9,7 @@ public class Forschung : MonoBehaviour
     private int spezInt;
     public int anzahlProjekte = 0;
     public int maxAnzahlProjekte = 3;
+    public int projektkosten=100;
 
     public static int nummerZaehler = 1;
     public static int chef = 1;
@@ -52,7 +53,7 @@ public class Forschung : MonoBehaviour
         Utilitys.TextInTMP(tabelle.transform.GetChild(2).gameObject, spezialisierung);
     }
 
-    public void ausgabeProjekt(GameObject tabelle, GameObject merkmalGO)
+    public void ausgabeProjekt(GameObject tabelle, GameObject merkmalGO,  GameObject verbsserungGO)
     {
         merkmalsanzeige = merkmalGO;
         Utilitys.TextInTMP(tabelle.transform.GetChild(5).gameObject, anzahlProjekte);
@@ -74,10 +75,16 @@ public class Forschung : MonoBehaviour
             Utilitys.TextInTMP(tabelle.transform.GetChild(4).gameObject, "");
         }
         refreshDropdown();
-        Utilitys.TextInTMP(merkmalGO.transform.GetChild(0).gameObject, "Projekt für <i>" + aktuellesMerkmal + "</i> anlegen.");
-        Utilitys.TextInTMP(merkmalGO.transform.GetChild(1).gameObject, "(" + (GebaeudeAnzeige.projektMerkmalStufen[merkmal] - 1) + "/" + GebaeudeAnzeige.maxStufen[merkmal] + ")");
-
-
+        Utilitys.TextInTMP(merkmalGO.transform.GetChild(0).gameObject, "Projekt <i>" + aktuellesMerkmal + "</i> anlegen. (" + (GebaeudeAnzeige.projektMerkmalStufen[merkmal] - 1) + "/" + GebaeudeAnzeige.maxStufen[merkmal] + ")");
+        Utilitys.TextInTMP(merkmalGO.transform.GetChild(1).gameObject, projektkosten);
+        if (projektkosten == 50)
+        {
+            verbsserungGO.SetActive(false);
+        }
+        else
+        {
+            verbsserungGO.SetActive(true);
+        }
     }
 
     public void verbesserung(TMPro.TMP_Dropdown ddm, GameObject aktuellesmerkmal)
@@ -147,13 +154,11 @@ public class Forschung : MonoBehaviour
             if (opt == 0)
             {
                 merkmal = 0;
-                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Baukosten</i> anlegen");
                 aktuellesMerkmal = "Baukosten";
             }
             else if (opt == 1)
             {
                 merkmal = 1;
-                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Bettenanzahl</i> anlegen");
                 aktuellesMerkmal = "Bettenanzahl";
             }
         }
@@ -162,19 +167,16 @@ public class Forschung : MonoBehaviour
             if (opt == 0)
             {
                 merkmal = 2;
-                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Baukosten</i> anlegen");
                 aktuellesMerkmal = "Baukosten";
             }
             else if (opt == 1)
             {
                 merkmal = 3;
-                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Arbeiterzahl</i> anlegen");
                 aktuellesMerkmal = "Arbeiterzahl";
             }
             else if (opt == 2)
             {
                 merkmal = 4;
-                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Ertrag</i> anlegen");
                 aktuellesMerkmal = "Ertrag";
             }
         }
@@ -183,25 +185,21 @@ public class Forschung : MonoBehaviour
             if (opt == 0)
             {
                 merkmal = 5;
-                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Baukosten</i> anlegen");
                 aktuellesMerkmal = "Baukosten";
             }
             else if (opt == 1)
             {
                 merkmal = 6;
-                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Arbeiterzahl</i> anlegen");
                 aktuellesMerkmal = "Arbeiterzahl";
             }
             else if (opt == 2)
             {
                 merkmal = 7;
-                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Ertrag</i> anlegen");
                 aktuellesMerkmal = "Ertrag";
             }
             else if (opt == 3)
             {
                 merkmal = 8;
-                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Tieranzahl</i> anlegen");
                 aktuellesMerkmal = "Tieranzahl";
             }
         }
@@ -210,19 +208,17 @@ public class Forschung : MonoBehaviour
             if (opt == 0)
             {
                 merkmal = 9;
-                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Baukosten</i> anlegen");
                 aktuellesMerkmal = "Baukosten";
 
             }
             else if (opt == 1)
             {
                 merkmal = 10;
-                Utilitys.TextInTMP(merkmalsanzeige.transform.GetChild(0).gameObject, "Projekt für <i>Gehegezahl</i> anlegen");
                 aktuellesMerkmal = "Gehegezahl";
             }
         }
         selectedProj = null;
-        
+
         foreach (Projekt pro in projekte)
         {
             if (pro.merkmalInt == merkmal && pro.stufe == GebaeudeAnzeige.projektMerkmalStufen[merkmal]-1)
@@ -244,7 +240,7 @@ public class Forschung : MonoBehaviour
             return;
         }
         anzahlProjekte++;
-        selectedProj = new Projekt(stationsnummer);
+        selectedProj = new Projekt(stationsnummer,projektkosten);
         projekte.Add(selectedProj);
 
         if (spezInt == 1)
@@ -405,7 +401,7 @@ public class Forschung : MonoBehaviour
         outy = y;
     }
 
-    public void setAll(int nr, string spez, int anzProj, int maxAnz, int xNeu, int yNeu, TMPro.TMP_Dropdown ddm, GameObject merkmalGO)
+    public void setAll(int nr, string spez, int anzProj, int maxAnz, int xNeu, int yNeu, TMPro.TMP_Dropdown ddm, GameObject merkmalGO, int prokosten)
     {
         Testing.forschungsstationen.Add(this);
 
@@ -413,6 +409,7 @@ public class Forschung : MonoBehaviour
         nummerZaehler = nr;
         spezialisierung = spez;
         baukosten = preis;
+        projektkosten = prokosten;
 
         anzahlProjekte = anzProj;
         maxAnzahlProjekte = maxAnz;

@@ -45,6 +45,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     public static bool allesAus = false;
 
     public GameObject merkmalGO;
+    public GameObject KostenVerbessernGO;
 
     // Start is called before the first frame update
     void Start()
@@ -58,8 +59,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(allesAus);
-        if (Input.GetMouseButtonDown(0)&& !PauseMenu.SpielIstPausiert)
+       if (Input.GetMouseButtonDown(0)&& !PauseMenu.SpielIstPausiert)
         {
             GebaeudeInfoBauen.wertFest = 0;
             if ( Testing.objektGebaut==0 && outBox(Input.mousePosition))
@@ -173,7 +173,7 @@ public class GebaeudeAnzeige : MonoBehaviour
                 spezialisierungsIcon.GetComponent<Image>().sprite = stall;
             }
 
-            gebaeude.GetComponent<Forschung>().ausgabeProjekt(projektTabelle, merkmalGO);
+            gebaeude.GetComponent<Forschung>().ausgabeProjekt(projektTabelle, merkmalGO, KostenVerbessernGO);
         }
     }
 
@@ -309,13 +309,13 @@ public class GebaeudeAnzeige : MonoBehaviour
     }
     public void erstelleProjekt()
     {
-        if (gebaeude.GetComponent<Forschung>().maxAnzahlProjekte > gebaeude.GetComponent<Forschung>().anzahlProjekte&& Testing.forscher >= Projekt.forscher&&Testing.geld>=Projekt.preis)
+        if (gebaeude.GetComponent<Forschung>().maxAnzahlProjekte > gebaeude.GetComponent<Forschung>().anzahlProjekte&& Testing.forscher >= Projekt.forscher&&Testing.geld>= gebaeude.GetComponent<Forschung>().projektkosten )
         {
             gebaeude.GetComponent<Forschung>().createProjekt();
         }
         else
         {
-            if (Testing.geld< Projekt.preis)
+            if (Testing.geld< gebaeude.GetComponent<Forschung>().projektkosten )
             {
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld.";
             }
@@ -343,6 +343,17 @@ public class GebaeudeAnzeige : MonoBehaviour
     {
         FehlerAnzeige.fehlertext = "Wähle eine Spezialisierung der Forschungsstation fest.";
         staticSpezialisierungsauswahl.SetActive(true);
+    }
+
+    public void stationverbessern(int preis)
+    {
+        if (gebaeude.GetComponent<Forschung>().projektkosten == 100)
+        {
+            gebaeude.GetComponent<Forschung>().projektkosten = 50;
+            Testing.geld -= preis;
+            new Projekt(gebaeude.GetComponent<Forschung>().stationsnummer, "Projektkosten", 11, 1, 200, 0, 0.5f, 0);
+        }
+        KostenVerbessernGO.SetActive(false); 
     }
 
 }

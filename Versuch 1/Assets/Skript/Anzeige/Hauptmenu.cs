@@ -22,10 +22,9 @@ public class Hauptmenu : MonoBehaviour
 
     public void SwitchToBaumenue()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;
-        KameraKontroller.hintergrund = 0;
     }
 
     public void Laden()

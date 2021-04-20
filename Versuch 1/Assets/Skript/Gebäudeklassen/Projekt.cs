@@ -16,9 +16,10 @@ public class Projekt
     public float verbesserungsfaktor=0.1f;
     public int pos;
 
-    public Projekt(int nr)
+    public Projekt(int nr, int preis)
     {
         stationsnummer= nr;
+        
         forscheranzahl = forscher;
         Testing.forscher -= forscher;
         kosten = preis;
@@ -35,14 +36,12 @@ public class Projekt
         merkmalInt = merkInt;
         stufe = st;
         preis = kost;
-        forscher = forAnz;
         pos = p;
-        forscheranzahl = forscher;
+        forscheranzahl = forAnz;
         kosten = preis;
         verbesserungsfaktor = faktor;
-        Debug.Log("?");
         Testing.forschungsprojekte.Add(this);
-        if (GebaeudeAnzeige.projektMerkmalStufen[merkmalInt] < stufe+1)
+        if (merkmalInt!=11 && GebaeudeAnzeige.projektMerkmalStufen[merkmalInt] < stufe+1)
         {
             GebaeudeAnzeige.projektMerkmalStufen[merkmalInt] = stufe+1;
         }

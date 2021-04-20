@@ -120,7 +120,7 @@ public class SaveLoad : MonoBehaviour
         string art = "";
         int kosten = 0;
 
-        string json = File.ReadAllText(Application.dataPath + "/SaveState/Menschen.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/Tiere.json");
         string[] split = json.Split(':');
         for (int i = 1; i < split.Length; i++)
         {
@@ -245,6 +245,10 @@ public class SaveLoad : MonoBehaviour
                 else
                 {
                     faktor = 0.9f;
+                }
+                if (merkmalInt == 11)
+                {
+                    faktor = 0.5f;
                 }
 
             }
@@ -449,6 +453,7 @@ public class SaveLoad : MonoBehaviour
         String spez = "";
         int anzProj = 0;
         int maxAnz = 0;
+        int projektkosten = 0;
         int x = 0;
         int y = 0;
 
@@ -457,27 +462,31 @@ public class SaveLoad : MonoBehaviour
         for (int i = 1; i < split.Length; i++)
         {
             string[] tmp = split[i].Split(',');
-            if ((i - 1) % 6 == 0)
+            if ((i - 1) % 7 == 0)
             {
                 nr = int.Parse(tmp[0]);
             }
-            else if ((i - 1) % 6 == 1)
+            else if ((i - 1) % 7 == 1)
             {
                 spez = tmp[0].Split('"')[1];
             }
-            else if ((i - 1) % 6 == 2)
+            else if ((i - 1) % 7 == 2)
             {
                 anzProj = int.Parse(tmp[0]);
             }
-            else if ((i - 1) % 6 == 3)
+            else if ((i - 1) % 7 == 3)
             {
                 maxAnz = int.Parse(tmp[0]);
             }
-            else if ((i - 1) % 6 == 4)
+            else if ((i - 1) % 7 == 4)
+            {
+                projektkosten = int.Parse(tmp[0]);
+            }
+            else if ((i - 1) % 7 == 5)
             {
                 x = int.Parse(tmp[0]);
             }
-            else if ((i - 1) % 6 == 5)
+            else if ((i - 1) % 7 == 6)
             {
                 if (i + 1 == split.Length)
                 {
@@ -489,7 +498,7 @@ public class SaveLoad : MonoBehaviour
                 }
                 GameObject geb = Instantiate(forschungPrefab, transform);
                 geb.AddComponent<Forschung>();
-                geb.GetComponent<Forschung>().setAll(nr, spez, anzProj, maxAnz, x, y, dropDownProjekt, merkmalGO);
+                geb.GetComponent<Forschung>().setAll(nr, spez, anzProj, maxAnz, x, y, dropDownProjekt, merkmalGO, projektkosten);
               
                 Destroy(geb.GetComponent<ObjektBewegung>());
                 geb.transform.parent = null;

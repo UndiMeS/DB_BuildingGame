@@ -36,7 +36,6 @@ public class Mensch
         {
             if (wohn.containernummer == containerNummer)
             {
-                Debug.Log("!");
                 wohn.bewohner.Add(this);
             }
         }
