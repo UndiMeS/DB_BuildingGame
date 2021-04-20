@@ -7,6 +7,8 @@ public class ERAufgabe : MonoBehaviour
 {
     private string[] aufgabe= { "Um den Mars zu besiedeln, m�ssen Astronauten eingeflogen werden. Damit diese auf dem Planeten leben k�nnen, werden <mark=#eb4034aa> Wohncontainer </mark>ben�tigt. Daf�r wird die Entitymenge Wohncontainer angelegt. Alle Wohncontainer haben gemeinsame Eigenschaften, die Attribute. Sie haben bestimmte <mark=#71eb2f80> Baukosten </mark>eine genaue<mark=#71eb2f80> Bettenzahl</mark>, die die Menge an beherbergbaren Astronauten ausdr�ckt und ein Attribut f�r noch <mark=#71eb2f80>freie Betten</mark>. Jeder Container hat in der Siedlung eine eindeutige<mark=#71eb2f80> Containernummer</mark>, der Prim�rschl�ssel." };
     private string[] listeEntity = { "Wohncontainer" };
+    
+    //Attribute
     private string[][] wohncontainer = {
                                         new string[] { "1", "Kosten", "Baukosten", "Preis", "Baupreis", "€" }, 
                                         new string[] { "2", "Containernummer", "CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer", "ID", "id", "Id" }, 
@@ -55,6 +57,21 @@ public class ERAufgabe : MonoBehaviour
                                         new string[] { "Stufe", "Forschungsstufe", "Level", "LvL", "Forschungslevel"},
                                         new string[] { "Merkmal", "Forschungsmerkmal", "Attribut", "Forschungsattribut", "Projektmerkmal"} 
                                     };
+    
+    //Relationen
+    private string[] astronaut_forschungsstation = {"verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für"};
+    private string[] astronaut_wohncontainer = {"wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt"};
+    private string[] astronaut_forschungsprojekt = {"forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht"};
+    private string[] astronaut_fedlsphaere = {"arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften"};
+    private string[] astronaut_weidesphaere = {"arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften"};
+    private string[] stallcontainer_nutztier = {"wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "schläftIn", "PlatzFür"};
+    private string[] weidesphaere_nutztier = {"arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften", "grasenAuf", "grasen auf", "helfenAuf", "helfen auf"};
+    private string[] forschungsprojekt_wohncontainer = {"verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern"};
+    private string[] forschungsprojekt_feldsphaere = {"verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern"};
+    private string[] forschungsprojekt_weidesphaere = {"verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern"};
+    private string[] forschungsprojekt_forschungsprojekt = {"verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern"};
+    private string[] forschungsprojekt_forschungsstation = {"organsisiert", "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für"};
+
     private string[][][] listeAttribute = new string[1][][];
     private int[][] primarschluessel = {new int[]{0,1,0,0} };
 
