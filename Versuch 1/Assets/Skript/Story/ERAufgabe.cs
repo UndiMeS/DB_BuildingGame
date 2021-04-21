@@ -86,7 +86,8 @@ public class ERAufgabe : MonoBehaviour
     public GameObject dasIstSchonFertig;
     public GameObject aufgabenText;
     public PauseMenu pauseMenu;
- 
+
+    public List<GameObject> checkliste;
 
     // Start is called before the first frame update
     void Start()
