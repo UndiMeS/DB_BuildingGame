@@ -41,12 +41,53 @@ public class Linienzeichner : MonoBehaviour
         if (zeichnen && objekt1!=null&&objekt2!=null)
         {
                    
-            pos1 = objekt1.transform.position;
-            pos2 = objekt2.transform.position;
+            
+            pos1pos2Bestimmen();
+
             lineRenderer.SetPosition(0, pos1);
             lineRenderer.SetPosition(1, pos2 );
             //berechneLinie(); //localposition
         }
+    }
+
+    private void pos1pos2Bestimmen()
+    {
+        Vector3[] v1 = new Vector3[4];
+        Vector3[] v2 = new Vector3[4];
+        objekt1.GetComponent<RectTransform>().GetWorldCorners(v1);
+        objekt2.GetComponent<RectTransform>().GetWorldCorners(v2);
+
+        pos1 = objekt1.transform.position;
+        pos2 = objekt2.transform.position;
+        float difX = Math.Abs( pos1.x - pos2.x);
+        float difY = Math.Abs(pos1.y - pos2.y);
+        if (difX > difY)
+        {
+            if (pos1.x > pos2.x)
+            {
+                pos1 =(v1[0]+v1[1])/2;
+                pos2 = (v2[2] + v2[3]) / 2;
+            }
+            else
+            {
+                pos1 = (v1[2] + v1[3]) / 2;
+                pos2 = (v2[0] + v2[1]) / 2;
+            }
+        }
+        else
+        {
+            if (pos1.y > pos2.y)
+            {
+                pos1 = (v1[0] + v1[3]) / 2;
+                pos2 = (v2[1] + v2[2]) / 2;
+            }
+            else
+            {
+                pos1 = (v1[1] + v1[2]) / 2;
+                pos2 = (v2[0] + v2[3]) / 2;
+            }
+        }
+        
     }
 
     private void changeName()

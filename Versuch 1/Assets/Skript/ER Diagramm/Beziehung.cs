@@ -89,16 +89,15 @@ public class Beziehung : MonoBehaviour
       
         double winkel = Vector3.Angle(pos2-pos1,Vector3.right);
 
-        double fac = 15 * Math.Abs(2*Math.Cos(winkel / 180 * Math.PI) )+ 10; //abhaenig von Größe ER objekt!!!
-        kardtext.transform.position = pos1 + (float)fac * Vector3.Normalize(pos2 - pos1);
+        kardtext.transform.position = pos1 +  Vector3.Normalize(pos2 - pos1);
 
         if (45 < winkel && winkel < 135 || 225 < winkel && 305 > winkel)
         {
-            kardtext.transform.position += new Vector3(5, 0, 0);
+            kardtext.transform.localPosition += new Vector3(10, 0, 0);
         }
         else
         {
-            kardtext.transform.position += new Vector3(0,5, 0);
+            kardtext.transform.localPosition += new Vector3(0,10, 0);
         }
     }
 

@@ -228,6 +228,7 @@ public class Aufgaben : MonoBehaviour
     */
     public void openAufgabe()
     {
+        
         //Prüfen, ob noch eine zweite Chance aus vorheriger Aufgabe da ist
         if(cheat_temp == 1){
             temp = 1;
