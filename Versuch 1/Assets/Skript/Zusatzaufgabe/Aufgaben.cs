@@ -21,7 +21,7 @@ public class Aufgaben : MonoBehaviour
     public GameObject checkButton;
 
     public GameObject richtigHacken;
-    public GameObject falschKreuz;
+    //public GameObject falschKreuz;
 
     public GameObject zusatzButton;
     public GameObject zusatzButton_transparent;
@@ -121,7 +121,7 @@ public class Aufgaben : MonoBehaviour
                 toogle.toggleColor(Color.green, toogle.currentSelection);
                 Invoke("toggleFarbe",3);
                 toggleKiller2.SetActive(true);
-                falschKreuz.SetActive(false);
+                //falschKreuz.SetActive(false);
                 hinweisButton.SetActive(false);
                 temp++;
                 cheat_temp = 0; //cheat_temp verhindet, dass man das Zusatzmenü komplett verlässt und dann wieder bei 1. Chance startet
@@ -139,7 +139,7 @@ public class Aufgaben : MonoBehaviour
             {   
                 
                 temp++;//temp zählt die Chancen (temp == 2 dann keine Chance mehr!)
-                falschKreuz.SetActive(true);
+               //falschKreuz.SetActive(true);
                 toogle.toggleColor(Color.red, toogle.currentSelection);
                 Invoke("toggleFarbe",3);
                 //zweite chance bereits gehabt
@@ -161,7 +161,7 @@ public class Aufgaben : MonoBehaviour
                     zweiteChance.SetActive(true);
                     toggleKiller.SetActive(true);
                     hinweisButton.SetActive(true);
-                    Invoke("SecondChanceAnzeigen", 1);
+                    Invoke("SecondChanceAnzeigen", 2);
                 }
             }
         }
@@ -172,13 +172,13 @@ public class Aufgaben : MonoBehaviour
     */
     public void hinweis()
     {
-        checkButton.SetActive(false);
         string ausgabe;
         //Ausgabe der Lösung
         if (temp == 2){
             hinweisFenster.GetComponent<Image>().sprite = loesungsListe[welcheAufgabe-1];
             hinweisFenster.SetActive(true);
             fenster.SetActive(false);
+            lösungsButton.SetActive(false);
             exitKnopfHinweis.SetActive(true);
 
         //Ausgabe des Hinweises
@@ -188,6 +188,7 @@ public class Aufgaben : MonoBehaviour
             Utilitys.TextInTMP(RichitgFalschAnzeigeSecondChance, ausgabe);
             exitKnopfSecondChance.SetActive(true);
             exitKnopf.SetActive(false);
+            toggleKiller.SetActive(true);
         }
     }
     /*
@@ -196,6 +197,7 @@ public class Aufgaben : MonoBehaviour
     public void exitHinweis()
     {
         hinweisFenster.SetActive(false);
+        lösungsButton.SetActive(true);
         fenster.SetActive(true);
         exitKnopfHinweis.SetActive(false);
         if(temp == 2){
@@ -213,8 +215,9 @@ public class Aufgaben : MonoBehaviour
         secondChanceScreen.SetActive(false);
         exitKnopfSecondChance.SetActive(false);
         clearAnzeige();
-        checkButton.SetActive(true);
         exitKnopf.SetActive(true);
+        toggleKiller.SetActive(false);
+
     }
     /*
     *Textausgabe zurücksetzten
@@ -233,13 +236,15 @@ public class Aufgaben : MonoBehaviour
         if(cheat_temp == 1){
             temp = 1;
             hinweisButton.SetActive(true);
-            falschKreuz.SetActive(true);
+            //falschKreuz.SetActive(true);
         }else{
             temp = 0;
             hinweisButton.SetActive(false);
-            falschKreuz.SetActive(false);
+            //falschKreuz.SetActive(false);
         }
         //Laden aller nötigen Komponenten
+        
+        zweiteChance.SetActive(false);
         toggleKiller.SetActive(false);
         toggleKiller2.SetActive(false);
         toogle.init();
@@ -251,6 +256,7 @@ public class Aufgaben : MonoBehaviour
         richtigHacken.SetActive(false);
         secondChanceScreen.SetActive(false);
         exitKnopfSecondChance.SetActive(false);
+        toogle.toggleWhite();
         
         
     }
