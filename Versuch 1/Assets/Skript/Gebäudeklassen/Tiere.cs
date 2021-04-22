@@ -7,7 +7,7 @@ public class Tiere
     public int stallnummer;
     public string tiername;
     public string art;
-    public int transportkosten = 10;
+    public int transportkosten = 5;
 
 
     public Tiere(string artName, int nr)

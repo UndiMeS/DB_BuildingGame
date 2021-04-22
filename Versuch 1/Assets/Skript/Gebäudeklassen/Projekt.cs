@@ -70,7 +70,7 @@ public class Projekt
             stufe = stufeNeu;
             alterWert++;
             neuerWert = alterWert;
-            verbesserungsfaktor=1.1f;
+            verbesserungsfaktor=1.25f;
         }
         else if(alterWert <= 10)
         {

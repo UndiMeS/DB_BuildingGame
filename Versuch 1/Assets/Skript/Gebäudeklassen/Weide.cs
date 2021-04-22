@@ -11,10 +11,10 @@ public class Weide : MonoBehaviour
     public int tiere;
 
     public static int nummerZaehler = 1;
-    public static int preis = 80;
+    public static int preis = 100;
     public static int arbeiterzahl =3;
-    public static int neuErtrag = 10;
-    public static int tierAnzahl = 3;
+    public static int neuErtrag = 50;
+    public static int tierAnzahl = 4;
 
     public int x;
     public int y;

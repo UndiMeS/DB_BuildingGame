@@ -35,6 +35,7 @@ public class Aufgaben : MonoBehaviour
     public GameObject toggleKiller2;
     public GameObject secondChanceScreen;
     public GameObject exitKnopfSecondChance;
+    public GameObject geldanzeige;
 
     private int temp = 0;
     private int cheat_temp = 0;
@@ -141,7 +142,7 @@ public class Aufgaben : MonoBehaviour
                 temp++;//temp zählt die Chancen (temp == 2 dann keine Chance mehr!)
                //falschKreuz.SetActive(true);
                 toogle.toggleColor(Color.red, toogle.currentSelection);
-                Invoke("toggleFarbe",3);
+                Invoke("toggleFarbe",2);
                 //zweite chance bereits gehabt
                 if(temp == 2){
                     cheat_temp = 0;
@@ -245,6 +246,7 @@ public class Aufgaben : MonoBehaviour
         //Laden aller nötigen Komponenten
         
         zweiteChance.SetActive(false);
+        geldanzeige.SetActive(false);
         toggleKiller.SetActive(false);
         toggleKiller2.SetActive(false);
         toogle.init();
@@ -265,13 +267,18 @@ public class Aufgaben : MonoBehaviour
     *Betrag auszahlen
     */
     public void geldGeben(int versuch){
+        string ausgabe;
+        geldanzeige.SetActive(true);
         if(versuch == 1){
             //1. Versuch richtig
-            Testing.geld += 100;
+            Testing.geld += 150;
+            ausgabe = "+ 150";
         }else{
             //2. Versuch richtig
-            Testing.geld += 50;
+            Testing.geld += 40;
+            ausgabe = "+ 40";
         }
+        Utilitys.TextInTMP(geldanzeige, ausgabe);
     }
     /*
     *Hinweisfenster anzeigen
