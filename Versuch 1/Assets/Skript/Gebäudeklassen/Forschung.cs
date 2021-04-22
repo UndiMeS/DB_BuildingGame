@@ -234,7 +234,7 @@ public class Forschung : MonoBehaviour
         {
             FehlerAnzeige.fehlertext = "An dieser Station können keine neuen Projekte gestartet werden.";
             return;
-        }if(GebaeudeAnzeige.maxStufen[merkmal]  == GebaeudeAnzeige.projektMerkmalStufen[merkmal])
+        }if(GebaeudeAnzeige.maxStufen[merkmal]  == (GebaeudeAnzeige.projektMerkmalStufen[merkmal]-1)) //-1 da sonst z.B. 9/10 als Ende endsteht
         {
             FehlerAnzeige.fehlertext = "Maximale Stufe des Merkmals erreicht.";
             return;
