@@ -121,6 +121,12 @@ public class ERErstellung : MonoBehaviour
     {
         if (selectedGameObjekt != null)
         {
+            if (ERAufgabe.gespeicherteObjekte.Contains(selectedGameObjekt))
+            {
+                FehlerAnzeige.fehlertext = "Objekt kann nicht mehr gelöscht werden.";
+                return;
+            }
+
             modellObjekte.Remove(selectedGameObjekt);
             if (selectedGameObjekt.CompareTag("Entitaet")&&selectedGameObjekt.GetComponent<Entitaet>().schwach)
             {

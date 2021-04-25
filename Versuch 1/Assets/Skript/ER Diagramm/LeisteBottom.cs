@@ -93,6 +93,12 @@ public class LeisteBottom : MonoBehaviour
         {
             return;
         }
+        if (ERAufgabe.gespeicherteObjekte.Contains(ERErstellung.selectedGameObjekt))
+        {
+            schwEntKnopf.isOn = ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwach;
+            FehlerAnzeige.fehlertext = "Kann nicht verändert werden.";
+            return;
+        }
         if (state)
         {
             ERErstellung.selectedGameObjekt.GetComponent<ERObjekt>().originalSprite = schwacheEntitaet;
@@ -115,6 +121,7 @@ public class LeisteBottom : MonoBehaviour
         dropdownSE.GetComponent<TMPro.TMP_Dropdown>().RefreshShownValue();
         GameObject entity = null;
         int z = 0;
+        int vater = -1;
         foreach (GameObject obj in ERErstellung.modellObjekte)
         {
             if (obj.CompareTag("Entitaet"))
@@ -123,8 +130,26 @@ public class LeisteBottom : MonoBehaviour
                 {
                     entity = obj;
                 }
+                
+                if (ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().vaterEntitaet.Equals(obj))
+                {
+                    vater = z;
+                }
                 z++;
             }
+        }
+        if (ERAufgabe.gespeicherteObjekte.Contains(ERErstellung.selectedGameObjekt))
+        {
+            if (vater != -1)
+            {
+                dropdownSE.GetComponent<TMPro.TMP_Dropdown>().value = vater;
+            }
+            else
+            {
+                Debug.Log("Bug");
+            }
+            FehlerAnzeige.fehlertext = "Kann nicht verändert werden.";
+            return;
         }
         if (entity != null && !entity.Equals(ERErstellung.selectedGameObjekt))
         {
@@ -165,6 +190,7 @@ public class LeisteBottom : MonoBehaviour
     {
         int entnummer = -1;
         int z = 0;
+        int partner = -1;
         foreach (GameObject obj in ERErstellung.modellObjekte)
         {
             if (obj.CompareTag("Entitaet"))
@@ -175,6 +201,26 @@ public class LeisteBottom : MonoBehaviour
                 }
                 z++;
             }
+        }
+        if (ERAufgabe.gespeicherteObjekte.Contains(ERErstellung.selectedGameObjekt))
+        {
+            if (partner != -1)
+            {
+                if (einsOderZwei == 1)
+                {
+                    objekt1.GetComponent<TMPro.TMP_Dropdown>().value = partner;
+                }
+                else
+                {
+                    objekt2.GetComponent<TMPro.TMP_Dropdown>().value = partner;
+                }
+            }
+            else
+            {
+                Debug.Log("Bug");
+            }
+            FehlerAnzeige.fehlertext = "Kann nicht verändert werden.";
+            return;
         }
         if (einsOderZwei == 1&&entnummer!=-1)
         {
@@ -191,13 +237,21 @@ public class LeisteBottom : MonoBehaviour
         {
             return;
         }
+        if (ERAufgabe.gespeicherteObjekte.Contains(ERErstellung.selectedGameObjekt))
+        {
+            primKnopf.isOn = ERErstellung.selectedGameObjekt.GetComponent<Attribut>().primaerschluessel;
+            FehlerAnzeige.fehlertext = "Kann nicht verändert werden.";
+            return;
+        }
         if (state)
         {
             ERErstellung.selectedGameObjekt.transform.parent.GetComponent<Entitaet>().primaerschluessel.Add(ERErstellung.selectedGameObjekt);
+            ERErstellung.selectedGameObjekt.GetComponent<Attribut>().primaerschluessel = state;
             ERErstellung.selectedGameObjekt.transform.GetChild(0).GetChild(2).transform.GetComponent<TMPro.TextMeshProUGUI>().fontStyle = TMPro.FontStyles.Underline;
         }
         else
         {
+            ERErstellung.selectedGameObjekt.GetComponent<Attribut>().primaerschluessel = state;
             ERErstellung.selectedGameObjekt.transform.GetChild(0).GetChild(2).transform.GetComponent<TMPro.TextMeshProUGUI>().fontStyle = TMPro.FontStyles.Normal;
             ERErstellung.selectedGameObjekt.transform.parent.GetComponent<Entitaet>().primaerschluessel.Remove(ERErstellung.selectedGameObjekt);
         }
