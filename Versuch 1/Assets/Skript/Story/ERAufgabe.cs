@@ -8,7 +8,7 @@ public class ERAufgabe : MonoBehaviour
     private string[] aufgabe = { "Um den Mars zu besiedeln, m�ssen Astronauten eingeflogen werden. Damit diese auf dem Planeten leben k�nnen, werden <mark=#eb4034aa> Wohncontainer </mark>ben�tigt. Daf�r wird die Entitymenge Wohncontainer angelegt. Alle Wohncontainer haben gemeinsame Eigenschaften, die Attribute. Sie haben bestimmte <mark=#71eb2f80> Baukosten </mark>eine genaue<mark=#71eb2f80> Bettenzahl</mark>, die die Menge an beherbergbaren Astronauten ausdr�ckt und ein Attribut f�r noch <mark=#71eb2f80>freie Betten</mark>. Jeder Container hat in der Siedlung eine eindeutige<mark=#71eb2f80> Containernummer</mark>, der Prim�rschl�ssel." ,
                                 "Astronauten wohnen in (wohntIn) Wohncontainer. Jeder Astronaut ist genau einem Container zugeordnet und teilt sich diesen mit anderen (n:1). Wichtig ist, dass nur Astronauten eingeflogen werden können, wenn ausreichend Wohncontainer existieren (schwache Entitymenge). Alle Astronauten haben einen Namen und ein Geburtstag, worüber man sie eindeutig bestimmen kann. Für die Anreise fallen bestimmt Anreisegebühren an und jeder hat eine bestimmte Aufgabe in der Siedlung.",
                                 "Eine Möglichkeit Erträge zu erzielen sind Feldsphären in denen Nahrung angebaut wird. Diese haben bestimmte Baukosten, eine genaue Arbeiterzahl und einen Ertrag, den du alle 5 Sol erhältst. Mehrere Astronauten arbeiten in einer Feldsphäre, wobei ein Astronaut nicht auf mehreren Feldsphären gleichzeitig arbeiten kann"};
-    private string[][] listeEntity = { new string[] { "Wohncontainer" }, new string[] {"Astronaut" }, new string[] { "Feldsphäre" } };
+    private string[][] listeEntity = { new string[] { "Wohncontainer" }, new string[] { "Astronaut" }, new string[] { "Feldsphäre" } };
 
     //Attribute
     private string[][] wohncontainer = {
@@ -18,10 +18,10 @@ public class ERAufgabe : MonoBehaviour
                                         new string[] { "4", "freie Betten", "freieBetten", "Betten frei" }
                                         };
     private string[][] astronaut = {
-                                        new string[] { "Anreisegebühr", "Kosten", "Gebühren", "Reisekosten", "Preis" },
-                                        new string[] { "Aufgabe", "Beruf", "Job", "Art"},
-                                        new string[] { "Name", "Namen"},
-                                        new string[] { "Geburtsdatum", "Geburtstag", "Datum"}
+                                        new string[] { "1","Anreisegebühr", "Kosten", "Gebühren", "Reisekosten", "Preis" },
+                                        new string[] { "2","Aufgabe", "Beruf", "Job", "Art"},
+                                        new string[] { "3", "Name", "Namen"},
+                                        new string[] { "4", "Geburtsdatum", "Geburtstag", "Datum"}
                                     };
     private string[][] feldspaehre = {
                                         new string[] { "Kosten", "Baukosten", "Preis", "Baupreis", "€" },
@@ -62,7 +62,7 @@ public class ERAufgabe : MonoBehaviour
 
     //Relationen
     private string[] astronaut_forschungsstation = { "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
-    private string[] astronaut_wohncontainer = {  "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt" };
+    private string[] astronaut_wohncontainer = { "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt" };
     private string[] astronaut_forschungsprojekt = { "forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };
     private string[] astronaut_fedlsphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
     private string[] astronaut_weidesphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
@@ -77,17 +77,16 @@ public class ERAufgabe : MonoBehaviour
     private string[] astronaut_wohncontainer_Eig = { "Wohncontainer", "Astronaut", "1", "n", "1" };
     private string[] astronaut_fedlsphaere_Eig = { "Feldsphäre", "Astronaut", "0", "n", "1" };
 
-
     private string[][][][] listeAttribute = new string[3][][][]; //[Level][Entity][Attribnut][Namen]
-    private int[][][] primarschluessel = { new int[][] { new int[] { 0, 1, 0, 0 } }, new int[][] { new int[] { 0, 0, 1, 1 } } , new int[][] { new int[] { 0, 0, 0, 1 } } };// Reihenfolge von Attributen 0 kein Ps, 1 PS
+    private int[][][] primarschluessel = { new int[][] { new int[] { 0, 1, 0, 0 } }, new int[][] { new int[] { 0, 0, 1, 1 } }, new int[][] { new int[] { 0, 0, 0, 1 } } };// Reihenfolge von Attributen 0 kein Ps, 1 PS
     public string[][][] listeBeziehungen = new string[3][][]; //[Level][Beziehung][Namen]
     public string[][][] listeBeziehungsEigenschaften = new string[3][][];
 
-    private int[] entitysRichtig = { 1, 1,1 };
-    private int[] attributeRichtig = { 4, 4 ,4};
-    private int[] primaerschluesselRichtig = { 1, 2,1 };
-    private int[] beziehungenRichtig = { 0, 1 ,1};
-    private int[] kardRichtig = { 0, 2,2 };
+    private int[] entitysRichtig = { 1, 1, 1 };
+    private int[] attributeRichtig = { 4, 4, 4 };
+    private int[] primaerschluesselRichtig = { 1, 2, 1 };
+    private int[] beziehungenRichtig = { 0, 1, 1 };
+    private int[] kardRichtig = { 0, 2, 2 };
 
     private int[] entitysHat;
     private int[] attributeHat;
@@ -95,9 +94,10 @@ public class ERAufgabe : MonoBehaviour
     private int[] beziehungenHat;
     private int[] kardHat;
 
+    private int[] anzahlObjekte = { 5, 6, 6 };
+
     public GameObject dasIstSchonFertig;
     public GameObject aufgabenText;
-    public PauseMenu pauseMenu;
 
     public List<GameObject> checkliste;
 
@@ -112,7 +112,7 @@ public class ERAufgabe : MonoBehaviour
 
         listeBeziehungen[0] = new string[0][];
         listeBeziehungen[1] = new string[][] { astronaut_wohncontainer };
-        listeBeziehungen[2] = new string[][] { astronaut_fedlsphaere};
+        listeBeziehungen[2] = new string[][] { astronaut_fedlsphaere };
 
 
         listeBeziehungsEigenschaften[0] = new string[0][];
@@ -138,7 +138,6 @@ public class ERAufgabe : MonoBehaviour
         beziehungenHat = new int[beziehungenRichtig.Length];
         kardHat = new int[kardRichtig.Length];
 
-        string fertig = "";
         int indexEntity = 0;
         foreach (string entityName in listeEntity[Story.level])
         {
@@ -148,8 +147,7 @@ public class ERAufgabe : MonoBehaviour
                 if (entity.name.Equals(entityName))
                 {
                     entitysHat[Story.level]++;
-                    fertig += entityName + ": ";
-                    fertig = checkAttribute(indexEntity, entity, fertig);
+                    checkAttribute(indexEntity, entity);
 
                 }
             }
@@ -165,33 +163,41 @@ public class ERAufgabe : MonoBehaviour
                 if (!gespeicherteObjekte.Contains(obj))
                 {
                     gespeicherteObjekte.Add(obj);
+                    obj.transform.GetChild(1).gameObject.SetActive(false);
+                    obj.transform.GetChild(0).gameObject.SetActive(true);
+                    Utilitys.TextInTMP(obj.transform.GetChild(0).gameObject, obj.name);
+                    if (obj.CompareTag("Attribut")&&obj.GetComponent<Attribut>().primaerschluessel)
+                    {
+                        obj.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().fontStyle = TMPro.FontStyles.Underline;
+                    }
                 }
             }
             Story.level++;
         }
 
-        //Utilitys.TextInTMP(dasIstSchonFertig, fertig);
     }
 
     private void checkBeziehung()
     {
-        for (int i =0; i < listeBeziehungen[Story.level].Length; i++)
+        for (int i = 0; i < listeBeziehungen[Story.level].Length; i++)
         {
             bool allesDa = true;
             foreach (GameObject obj in ERErstellung.modellObjekte)
             {
-                
-                if (obj.CompareTag("Beziehung"))
+
+                if (obj.CompareTag("Beziehung") && !gespeicherteObjekte.Contains(obj))
                 {
                     string nameAnderesEnitity = "";
                     int einsoderZwei = 0;
-                    
+
                     //Entitäten und Kardinalität prüfen
-                    if (obj.GetComponent<Beziehung>().objekt1!= null&&listeBeziehungsEigenschaften[Story.level][i][0].Equals(obj.GetComponent<Beziehung>().objekt1.name))
+                    if (obj.GetComponent<Beziehung>().objekt1 != null && listeBeziehungsEigenschaften[Story.level][i][0].Equals(obj.GetComponent<Beziehung>().objekt1.name))
                     {
-                        if (obj.GetComponent<Beziehung>().objekt2 != null ) {
-                            nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt2.name; }
-                        if (checkKard(obj,1,i))
+                        if (obj.GetComponent<Beziehung>().objekt2 != null)
+                        {
+                            nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt2.name;
+                        }
+                        if (checkKard(obj, 1, i))
                         {
                             einsoderZwei = 2;
                             kardHat[Story.level]++;
@@ -209,13 +215,13 @@ public class ERAufgabe : MonoBehaviour
                             kardHat[Story.level]++;
                         }
                     }
-                    if (listeBeziehungsEigenschaften[Story.level][i][1].Equals(nameAnderesEnitity)){
+                    if (listeBeziehungsEigenschaften[Story.level][i][1].Equals(nameAnderesEnitity))
+                    {
                         allesDa &= true;
                         if (checkKard(obj, einsoderZwei, i))
                         {
                             kardHat[Story.level]++;
                         }
-                        Debug.Log("Hurra");
                     }
                     else
                     {
@@ -257,7 +263,7 @@ public class ERAufgabe : MonoBehaviour
                 }
             }
         }
-        
+
     }
 
     private bool checkKard(GameObject obj, int einsOderZwei, int i)
@@ -284,57 +290,73 @@ public class ERAufgabe : MonoBehaviour
         }
         bool ausgabe = true;
         int i = Story.level;
-            ausgabe &= entitysHat[i] == entitysRichtig[i];
-            if (entitysHat[i] == entitysRichtig[i])
+        ausgabe &= entitysHat[i] == entitysRichtig[i];
+        if (entitysHat[i] == entitysRichtig[i])
+        {
+            checkliste[0].SetActive(true);
+        }
+        else
+        {
+            checkliste[0].SetActive(false);
+        }
+        ausgabe &= attributeHat[i] == attributeRichtig[i];
+        if (attributeHat[i] == attributeRichtig[i])
+        {
+            checkliste[1].SetActive(true);
+        }
+        else
+        {
+            checkliste[1].SetActive(false);
+        }
+        ausgabe &= primaerschluesselHat[i] == primaerschluesselRichtig[i];
+        if (primaerschluesselHat[i] == primaerschluesselRichtig[i])
+        {
+            checkliste[2].SetActive(true);
+        }
+        else
+        {
+            checkliste[2].SetActive(false);
+        }
+        ausgabe &= beziehungenRichtig[i] == beziehungenHat[i];
+        if (beziehungenRichtig[i] == beziehungenHat[i])
+        {
+            checkliste[3].SetActive(true);
+        }
+        else
+        {
+            checkliste[3].SetActive(false);
+        }
+        ausgabe &= kardHat[i] == kardRichtig[i];
+        if (kardRichtig[i] == kardHat[i])
+        {
+            checkliste[4].SetActive(true);
+        }
+        else
+        {
+            checkliste[4].SetActive(false);
+        }
+        int count = 0;
+        foreach (GameObject obj in ERErstellung.modellObjekte)
+        {
+            if (!gespeicherteObjekte.Contains(obj))
             {
-                checkliste[0].SetActive(true);
+                count++;
             }
-            else
-            {
-                checkliste[0].SetActive(false);
-            }
-            ausgabe &= attributeHat[i] == attributeRichtig[i];
-            if (attributeHat[i] == attributeRichtig[i])
-            {
-                checkliste[1].SetActive(true);
-            }
-            else
-            {
-                checkliste[1].SetActive(false);
-            }
-            ausgabe &= primaerschluesselHat[i] == primaerschluesselRichtig[i];
-            if (primaerschluesselHat[i] == primaerschluesselRichtig[i])
-            {
-                checkliste[2].SetActive(true);
-            }
-            else
-            {
-                checkliste[2].SetActive(false);
-            }
-            ausgabe &= beziehungenRichtig[i] == beziehungenHat[i];
-            if (beziehungenRichtig[i] == beziehungenHat[i])
-            {
-                checkliste[3].SetActive(true);
-            }
-            else
-            {
-                checkliste[3].SetActive(false);
-            }
-            ausgabe &= kardHat[i] == kardRichtig[i];
-            if (kardRichtig[i] == kardHat[i])
-            {
-                checkliste[4].SetActive(true);
-            }
-            else
-            {
-                checkliste[4].SetActive(false);
-            }
-        
+        }
+        if (count == anzahlObjekte[Story.level])
+        {
+            ausgabe &= true;
+        }
+        else
+        {
+            ausgabe &= false;
+        }
+
 
         return ausgabe;
     }
 
-    private string checkAttribute(int indexEntity, GameObject entity, string fertig)
+    private void checkAttribute(int indexEntity, GameObject entity)
     {
         int indexattribute = 0;
         foreach (string[] attributNamesMoeglichkeiten in listeAttribute[Story.level][indexEntity])
@@ -346,11 +368,10 @@ public class ERAufgabe : MonoBehaviour
                     if (attribut.name.Equals(attributName))
                     {
                         attributeHat[Story.level]++;
-                        fertig += attribut.name + " ";
                         if (primarschluessel[Story.level][indexEntity][indexattribute] == 1 && entity.GetComponent<Entitaet>().primaerschluessel.Contains(attribut))
                         {
                             primaerschluesselHat[Story.level]++;
-                            fertig += "-PS ";
+
                         }
                     }
                 }
@@ -358,7 +379,7 @@ public class ERAufgabe : MonoBehaviour
             indexattribute++;
         }
 
-        return fertig;
+
     }
 
 

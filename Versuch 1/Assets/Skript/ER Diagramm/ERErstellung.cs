@@ -58,7 +58,7 @@ public class ERErstellung : MonoBehaviour
             FehlerAnzeige.fehlertext = "Wähle zuerst die Entität aus zu der das Attribute gehören soll.";
             Destroy(temp);
         }
-        if (temp.CompareTag("Attribut") && !selectedGameObjekt.CompareTag("Entitaet") )
+        if (temp.CompareTag("Attribut") && selectedGameObjekt!= null &&!selectedGameObjekt.CompareTag("Entitaet") )
         {
             Destroy(temp.GetComponent<ERObjekt>());
             FehlerAnzeige.fehlertext = "Wähle zuerst die Entität aus zu der das Attribute gehören soll.";
@@ -133,7 +133,16 @@ public class ERErstellung : MonoBehaviour
                 modellObjekte.Remove(selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung);
                 Destroy(selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung);
             }
-            for(int i =0; i< selectedGameObjekt.transform.childCount; i++)
+            if (selectedGameObjekt.CompareTag("Attribut")){
+                foreach (GameObject obj in modellObjekte)
+                {
+                    if (obj.CompareTag("Entitaet"))
+                    {
+                        obj.GetComponent<Entitaet>().attributloeschen(selectedGameObjekt);
+                    }
+                }
+            }
+            for (int i =0; i< selectedGameObjekt.transform.childCount; i++)
             {
                 modellObjekte.Remove(selectedGameObjekt.transform.GetChild(i).gameObject);
             }            
@@ -144,15 +153,16 @@ public class ERErstellung : MonoBehaviour
             {
                 selectedGameObjekt = null;
             }
-            else if (!selectedGameObjekt.Equals(lastselected))//standardfall
-            {
-                selectedGameObjekt = lastselected;
-                changeSelectedGameobjekt(lastselected);
-            }
+            
             else if (selectedGameObjekt.Equals(lastselected))//wenn man 2 Objekte hintereinander loescht und als 2. Objekt vorher ausgewaehlt hat
             {
                 selectedGameObjekt = null;
                 lastselected = null;
+            }
+            else 
+            {
+                selectedGameObjekt = lastselected;
+                changeSelectedGameobjekt(lastselected);
             }
         }
     }

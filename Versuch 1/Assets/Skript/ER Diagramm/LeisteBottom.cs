@@ -21,7 +21,7 @@ public class LeisteBottom : MonoBehaviour
     public static TMPro.TMP_Dropdown objekt1;
     public static TMPro.TMP_Dropdown objekt2;
     public  TMPro.TMP_Dropdown kard1;
-    public  TMPro.TMP_Dropdown kard2;
+    public TMPro.TMP_Dropdown kard2;
     public Toggle primKnopf;
 
     public void Start()
@@ -104,6 +104,13 @@ public class LeisteBottom : MonoBehaviour
             ERErstellung.selectedGameObjekt.GetComponent<ERObjekt>().originalSprite = schwacheEntitaet;
             ERErstellung.selectedGameObjekt.GetComponent<ERObjekt>().selectedSprite = selecSchwacheEntitaet;
             ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwach = true;
+
+            if (ERErstellung.modellObjekte.IndexOf(ERErstellung.selectedGameObjekt) != 0||ERErstellung.modellObjekte.Count>1)
+            {
+                dropdownSE.GetComponent<TMPro.TMP_Dropdown>().RefreshShownValue();
+                SchwacheEntitaetAuswahl(0);
+            }
+            
 
         }
         else
@@ -247,12 +254,12 @@ public class LeisteBottom : MonoBehaviour
         {
             ERErstellung.selectedGameObjekt.transform.parent.GetComponent<Entitaet>().primaerschluessel.Add(ERErstellung.selectedGameObjekt);
             ERErstellung.selectedGameObjekt.GetComponent<Attribut>().primaerschluessel = state;
-            ERErstellung.selectedGameObjekt.transform.GetChild(0).GetChild(2).transform.GetComponent<TMPro.TextMeshProUGUI>().fontStyle = TMPro.FontStyles.Underline;
+            ERErstellung.selectedGameObjekt.transform.GetChild(1).GetChild(2).transform.GetComponent<TMPro.TextMeshProUGUI>().fontStyle = TMPro.FontStyles.Underline;
         }
         else
         {
             ERErstellung.selectedGameObjekt.GetComponent<Attribut>().primaerschluessel = state;
-            ERErstellung.selectedGameObjekt.transform.GetChild(0).GetChild(2).transform.GetComponent<TMPro.TextMeshProUGUI>().fontStyle = TMPro.FontStyles.Normal;
+            ERErstellung.selectedGameObjekt.transform.GetChild(1).GetChild(2).transform.GetComponent<TMPro.TextMeshProUGUI>().fontStyle = TMPro.FontStyles.Normal;
             ERErstellung.selectedGameObjekt.transform.parent.GetComponent<Entitaet>().primaerschluessel.Remove(ERErstellung.selectedGameObjekt);
         }
     }

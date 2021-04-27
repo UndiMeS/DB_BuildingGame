@@ -8,9 +8,9 @@ public class Beziehung : MonoBehaviour
     public GameObject objekt1 =null;
     public GameObject objekt2=null;
 
-    public string kard1="";
+    public string kard1="1";
     private GameObject kardText1;
-    public string kard2 = "";
+    public string kard2 = "1";
     private GameObject kardText2;
 
     private GameObject linie1;
@@ -31,14 +31,17 @@ public class Beziehung : MonoBehaviour
     void Start()
     {
         linienOrdner = gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject;
-        kardText1=gameObject.transform.GetChild(1).gameObject;
-        kardText2 = gameObject.transform.GetChild(2).gameObject;
-        
+        kard1 = "1";
+            kard2 = "1";
+        kardText1 = gameObject.transform.GetChild(2).gameObject;
+        kardText2 = gameObject.transform.GetChild(3).gameObject;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         Utilitys.TextInTMP(kardText1, kard1);
         Utilitys.TextInTMP(kardText2, kard2);
         if (objekt1 != null)
@@ -48,12 +51,10 @@ public class Beziehung : MonoBehaviour
                 objekt1.GetComponent<Entitaet>().beziehungen.Add(gameObject);
             }
             positionOfKardinalitaet(kardText1, objekt1);
-            kardText1.SetActive(true);
         }
         else
         {
             schwach = false;
-            kardText1.SetActive(false);
         }
         if (objekt2 != null)
         {
@@ -62,12 +63,10 @@ public class Beziehung : MonoBehaviour
                 objekt2.GetComponent<Entitaet>().beziehungen.Add(gameObject);
             }
             positionOfKardinalitaet(kardText2, objekt2);
-            kardText2.SetActive(true);
         }
         else
         {
             schwach = false;
-            kardText2.SetActive(false);
         }
 
         if (schwach)

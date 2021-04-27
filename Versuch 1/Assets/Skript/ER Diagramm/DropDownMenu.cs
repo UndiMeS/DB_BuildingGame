@@ -30,7 +30,10 @@ public class DropDownMenu : MonoBehaviour
             {
                 if (obj.CompareTag("Entitaet"))
                 {
-                    menu.options.Add(new TMPro.TMP_Dropdown.OptionData(obj.name));
+                    if (!(obj.GetComponent<Entitaet>().schwach&&obj.Equals(ERErstellung.selectedGameObjekt)))
+                    {
+                        menu.options.Add(new TMPro.TMP_Dropdown.OptionData(obj.name));
+                    }
                 }
             }
             
@@ -40,12 +43,25 @@ public class DropDownMenu : MonoBehaviour
 
     public void eingabeDropDown(int option)
     {
-        
-        ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().welcheEntity(einsOderZwei, option);
+        if (!ERAufgabe.gespeicherteObjekte.Contains(ERErstellung.selectedGameObjekt))
+        {
+            ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().welcheEntity(einsOderZwei, option);
+        }
+        else
+        {
+            FehlerAnzeige.fehlertext = "Kann nicht mehr verändert werden.";
+        }
     }
 
     public void kardinalitaetSetzen(int option)
     {
-        ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().kardinalitaet(einsOderZwei, option);
+        if (!ERAufgabe.gespeicherteObjekte.Contains(ERErstellung.selectedGameObjekt))
+        {
+            ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().kardinalitaet(einsOderZwei, option);
+        }
+        else
+        {
+            FehlerAnzeige.fehlertext = "Kann nicht mehr verändert werden.";
+        }
     }
 }
