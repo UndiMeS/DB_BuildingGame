@@ -17,6 +17,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject hilfeGebaeudeinfo;
     public GameObject hilfeButtondestroyer;
     public GameObject hilfeTexte;
+    public GameObject Aufgabenfenster;
+    public GameObject Checkliste;
 
 
     // Update is called once per frame
@@ -54,6 +56,10 @@ public class PauseMenu : MonoBehaviour
         PauseMenuUI.SetActive(false);
         KameraKontroller.aktiviert = false;
         GebaeudeAnzeige.allesAus = false;
+        hilfeButtondestroyer.SetActive(false);
+        hilfeTexte.SetActive(false);
+        hilfeZurückButton.SetActive(false);
+        hilfeFenster.SetActive(false);
     }
     void Pause()
     {
@@ -82,6 +88,19 @@ public class PauseMenu : MonoBehaviour
         hilfeGebaeudeinfo.SetActive(true);
         hilfeButtondestroyer.SetActive(true);
         hilfeTexte.SetActive(true);
+    }
+    public void HilfeER()
+    {
+        PauseMenuUI.SetActive(false);
+        SpielIstPausiert = true;
+        KameraKontroller.aktiviert = false;
+        hilfeFenster.SetActive(true);
+        hilfeZurückButton.SetActive(true);
+        
+        hilfeButtondestroyer.SetActive(true);
+        hilfeTexte.SetActive(true);
+        Aufgabenfenster.SetActive(false);
+        Checkliste.SetActive(false);
     }
 
     public void ObjectAnzeigen (GameObject objekt)
