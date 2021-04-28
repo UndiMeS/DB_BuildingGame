@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class ERAufgabe : MonoBehaviour
 {
+//Aufgabentext je LvL    
     private string[] aufgabe = { "Um den Mars zu besiedeln, m�ssen Astronauten eingeflogen werden. Damit diese auf dem Planeten leben k�nnen, werden <mark=#eb4034aa> Wohncontainer </mark>ben�tigt. Daf�r wird die Entitymenge Wohncontainer angelegt. Alle Wohncontainer haben gemeinsame Eigenschaften, die Attribute. Sie haben bestimmte <mark=#71eb2f80> Baukosten </mark>eine genaue<mark=#71eb2f80> Bettenzahl</mark>, die die Menge an beherbergbaren Astronauten ausdr�ckt und ein Attribut f�r noch <mark=#71eb2f80>freie Betten</mark>. Jeder Container hat in der Siedlung eine eindeutige<mark=#71eb2f80> Containernummer</mark>, der Prim�rschl�ssel." ,
                                 "Astronauten wohnen in (wohntIn) Wohncontainer. Jeder Astronaut ist genau einem Container zugeordnet und teilt sich diesen mit anderen (n:1). Wichtig ist, dass nur Astronauten eingeflogen werden können, wenn ausreichend Wohncontainer existieren (schwache Entitymenge). Alle Astronauten haben einen Namen und ein Geburtstag, worüber man sie eindeutig bestimmen kann. Für die Anreise fallen bestimmt Anreisegebühren an und jeder hat eine bestimmte Aufgabe in der Siedlung.",
                                 "Eine Möglichkeit Erträge zu erzielen sind Feldsphären in denen Nahrung angebaut wird. Diese haben bestimmte Baukosten, eine genaue Arbeiterzahl und einen Ertrag, den du alle 5 Sol erhältst. Mehrere Astronauten arbeiten in einer Feldsphäre, wobei ein Astronaut nicht auf mehreren Feldsphären gleichzeitig arbeiten kann"};
-    private string[][] listeEntity = { new string[] { "Wohncontainer" }, new string[] { "Astronaut" }, new string[] { "Feldsphäre" } };
+
+//Welche EM je Level
+   private string[][] listeEntity = { new string[] { "Wohncontainer" }, new string[] { "Astronaut" }, new string[] { "Feldsphäre" } };
 
     //Attribute
     private string[][] wohncontainer = {
@@ -60,7 +63,7 @@ public class ERAufgabe : MonoBehaviour
                                         new string[] { "Merkmal", "Forschungsmerkmal", "Attribut", "Forschungsattribut", "Projektmerkmal"}
                                     };
 
-    //Relationen
+//Relationen
     private string[] astronaut_forschungsstation = { "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
     private string[] astronaut_wohncontainer = { "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt" };
     private string[] astronaut_forschungsprojekt = { "forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };
@@ -74,19 +77,30 @@ public class ERAufgabe : MonoBehaviour
     private string[] forschungsprojekt_forschungsprojekt = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
     private string[] forschungsprojekt_forschungsstation = { "organsisiert", "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
 
+
+//Schwache EM, Kardi links, Kardi rechts
     private string[] astronaut_wohncontainer_Eig = { "Wohncontainer", "Astronaut", "1", "n", "1" };
-    private string[] astronaut_fedlsphaere_Eig = { "Feldsphäre", "Astronaut", "0", "n", "1" };
+    private string[] astronaut_feldsphaere_Eig = { "Feldsphäre", "Astronaut", "0", "n", "1" };
 
     private string[][][][] listeAttribute = new string[3][][][]; //[Level][Entity][Attribnut][Namen]
-    private int[][][] primarschluessel = { new int[][] { new int[] { 0, 1, 0, 0 } }, new int[][] { new int[] { 0, 0, 1, 1 } }, new int[][] { new int[] { 0, 0, 0, 1 } } };// Reihenfolge von Attributen 0 kein Ps, 1 PS
+
+//PS Attribut mit 1 setzten
+    private int[][][] primarschluessel = {  new int[][] { new int[] { 0, 1, 0, 0 } },
+                                            new int[][] { new int[] { 0, 0, 1, 1 } }, 
+                                            new int[][] { new int[] { 0, 0, 0, 1 } },
+                                            new int[][] { new int[] { 0, 0, 0, 1 }, new int[]{} } 
+                                            
+                                            
+                                            };// Reihenfolge von Attributen 0 kein Ps, 1 PS
     public string[][][] listeBeziehungen = new string[3][][]; //[Level][Beziehung][Namen]
     public string[][][] listeBeziehungsEigenschaften = new string[3][][];
 
+//Anzahl der Elemente pro Level
     private int[] entitysRichtig = { 1, 1, 1 };
     private int[] attributeRichtig = { 4, 4, 4 };
     private int[] primaerschluesselRichtig = { 1, 2, 1 };
     private int[] beziehungenRichtig = { 0, 1, 1 };
-    private int[] kardRichtig = { 0, 2, 2 };
+    private int[] kardRichtig = { 0, 2, 2 }; //2 pro Relation
 
     private int[] entitysHat;
     private int[] attributeHat;
@@ -94,6 +108,7 @@ public class ERAufgabe : MonoBehaviour
     private int[] beziehungenHat;
     private int[] kardHat;
 
+//Anzahl der Objekte die im LvL sind
     private int[] anzahlObjekte = { 5, 6, 6 };
 
     public GameObject dasIstSchonFertig;
@@ -106,6 +121,7 @@ public class ERAufgabe : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    //je Level eine Zeile der Listen mit passenden Variablennamen    
         listeAttribute[0] = new string[][][] { wohncontainer };
         listeAttribute[1] = new string[][][] { astronaut };
         listeAttribute[2] = new string[][][] { feldspaehre };
@@ -117,7 +133,7 @@ public class ERAufgabe : MonoBehaviour
 
         listeBeziehungsEigenschaften[0] = new string[0][];
         listeBeziehungsEigenschaften[1] = new string[][] { astronaut_wohncontainer_Eig };
-        listeBeziehungsEigenschaften[2] = new string[][] { astronaut_fedlsphaere_Eig };
+        listeBeziehungsEigenschaften[2] = new string[][] { astronaut_feldsphaere_Eig };
 
         gespeicherteObjekte = new List<GameObject>();
         Utilitys.TextInTMP(dasIstSchonFertig, "");
@@ -128,6 +144,8 @@ public class ERAufgabe : MonoBehaviour
     {
         Utilitys.TextInTMP(aufgabenText, aufgabe[Story.level]);
         checkObjekte();
+
+//if story.level == 0 active
     }
 
     private void checkObjekte()
@@ -174,7 +192,6 @@ public class ERAufgabe : MonoBehaviour
             }
             Story.level++;
         }
-
     }
 
     private void checkBeziehung()
