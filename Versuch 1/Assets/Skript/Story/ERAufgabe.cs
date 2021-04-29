@@ -45,40 +45,40 @@ public class ERAufgabe : MonoBehaviour
                                         new string[] { "4", "Geburtsdatum", "Geburtstag", "Datum"}
                                     };
     private string[][] feldspaehre = {
-                                        new string[] { "Kosten", "Baukosten", "Preis", "Baupreis", "€" },
-                                        new string[] { "Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Feldarbeiter", "Anzahl"},
-                                        new string[] { "Ertrag", "Gewinn", "Gehalt"},
-                                        new string[] { "Feldnummer", "FNR", "fnr", "FNr", "FNR.", "Fnr.", "FNr.", "Feldnr.", "Nummer", "ID", "id", "Id" }
+                                        new string[] { "1","Kosten", "Baukosten", "Preis", "Baupreis", "€" },
+                                        new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Feldarbeiter", "Anzahl"},
+                                        new string[] { "3","Ertrag", "Gewinn", "Gehalt"},
+                                        new string[] { "4", "Feldnummer", "FNR", "fnr", "FNr", "FNR.", "Fnr.", "FNr.", "Feldnr.", "Nummer", "ID", "id", "Id" }
                                     };
     private string[][] weidespaehre = {
-                                        new string[] { "Kosten", "Baukosten", "Preis", "Baupreis", "€" },
-                                        new string[] { "Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Weidenarbeiter", "Weidearbeiter", "Anzahl"},
-                                        new string[] { "Ertrag", "Gewinn", "Gehalt"},
-                                        new string[] { "Weidennummer", "Weidenummer", "WNR", "wnr", "WNr", "WNR.", "Wnr.", "WNr.", "Weidenr.","Weidenr.", "Nummer", "ID", "id", "Id" },
-                                        new string[] { "Tierzahl", "Tiere", "Tieranzahl", "Anzahl Tiere", "AnzahlTiere"}
+                                        new string[] { "1","Kosten", "Baukosten", "Preis", "Baupreis", "€" },
+                                        new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Weidenarbeiter", "Weidearbeiter", "Anzahl"},
+                                        new string[] { "3","Ertrag", "Gewinn", "Gehalt"},
+                                        new string[] { "4","Weidennummer", "Weidenummer", "WNR", "wnr", "WNr", "WNR.", "Wnr.", "WNr.", "Weidenr.","Weidenr.", "Nummer", "ID", "id", "Id" },
+                                        new string[] { "5","Tierzahl", "Tiere", "Tieranzahl", "Anzahl Tiere", "AnzahlTiere"}
                                     };
     private string[][] nutztier = {
-                                        new string[] { "Name", "Namen" },
-                                        new string[] { "Anreisegebühr", "Kosten", "Gebühren", "Reisekosten", "Preis", "Transportkosten", "Transportpreis" },
-                                        new string[] { "Art", "Gattung", "Tierart"},
+                                        new string[] { "1","Name", "Namen" },
+                                        new string[] { "2","Anreisegebühr", "Kosten", "Gebühren", "Reisekosten", "Preis", "Transportkosten", "Transportpreis" },
+                                        new string[] { "3","Art", "Gattung", "Tierart"},
                                     };
     private string[][] stallcontainer = {
-                                        new string[] {"Kosten", "Baukosten", "Preis", "Baupreis", "€", "Containerkosten" },
-                                        new string[] {"Containernummer", "CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer", "ID", "id", "Id", "Stallnummer", "SNR","Stallnr.", "snr", "SNr", "SNR.", "snr.", "SNr.", "Containernr."},
-                                        new string[] {"Gehegezahl", "Gehegeanzahl", "Gehege", "Kapazität" },
-                                        new string[] {"freie Gehege", "freieGehege", "Gehege frei" }
+                                        new string[] {"1","Kosten", "Baukosten", "Preis", "Baupreis", "€", "Containerkosten" },
+                                        new string[] {"2","Containernummer", "CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer", "ID", "id", "Id", "Stallnummer", "SNR","Stallnr.", "snr", "SNr", "SNR.", "snr.", "SNr.", "Containernr."},
+                                        new string[] {"3","Gehegezahl", "Gehegeanzahl", "Gehege", "Kapazität" },
+                                        new string[] {"4","freie Gehege", "freieGehege", "Gehege frei" }
                                         };
     private string[][] forschungsstation ={
-                                        new string[] {"Kosten", "Baukosten", "Preis", "Baupreis", "€", "Stationskosten" },
-                                        new string[] {"Stationsnummer", "SNR", "snr", "SNr", "SNR.", "snr.", "SNr.", "Stationsnr.", "Nummer", "ID", "id", "Id"},
-                                        new string[] {"Spezialisierung", "Gebiet", "Typ", "Bereich"},
+                                        new string[] {"1","Kosten", "Baukosten", "Preis", "Baupreis", "€", "Stationskosten" },
+                                        new string[] {"2","Stationsnummer", "SNR", "snr", "SNr", "SNR.", "snr.", "SNr.", "Stationsnr.", "Nummer", "ID", "id", "Id"},
+                                        new string[] {"3","Spezialisierung", "Gebiet", "Typ", "Bereich"},
                                         };
     private string[][] forschungsprojekt = {
-                                        new string[] { "Kosten", "Baukosten", "Preis", "Baupreis", "€", "Projektkosten", "Forschungskosten" },
-                                        new string[] { "Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Forschungsarbeiter", "Forschungsastronauten", "Anzahl"},
-                                        new string[] { "Verbesserungsfaktor", "Gewinn", "Faktor", "Verbesserung"},
-                                        new string[] { "Stufe", "Forschungsstufe", "Level", "LvL", "Forschungslevel"},
-                                        new string[] { "Merkmal", "Forschungsmerkmal", "Attribut", "Forschungsattribut", "Projektmerkmal"}
+                                        new string[] { "1","Kosten", "Baukosten", "Preis", "Baupreis", "€", "Projektkosten", "Forschungskosten" },
+                                        new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Forschungsarbeiter", "Forschungsastronauten", "Anzahl"},
+                                        new string[] { "3","Verbesserungsfaktor", "Gewinn", "Faktor", "Verbesserung"},
+                                        new string[] { "4","Stufe", "Forschungsstufe", "Level", "LvL", "Forschungslevel"},
+                                        new string[] { "5","Merkmal", "Forschungsmerkmal", "Attribut", "Forschungsattribut", "Projektmerkmal"}
                                     };
 
     //Relationen
@@ -89,7 +89,7 @@ public class ERAufgabe : MonoBehaviour
     private string[] astronaut_forschungsstation_Eig = { "Astronaut", "Forschungsstation", "0", "1", "1" };
 
     private string[] wohncontainer_astronaut = { "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt" };
-    private string[] wohncontainer_astronaut_Eig = { "Wohncontainer", "Astronaut", "1", "1", "n" };
+    private string[] wohncontainer_astronaut_Eig = { "Wohncontainer", "Astronaut", "1", "n", "1" };
     
     private string[] astronaut_forschungsprojekt = { "forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };
     private string[] astronaut_forschungsprojekt_Eig = { "Astronaut", "Forschungsprojekt", "0", "n", "1" };
@@ -127,18 +127,18 @@ public class ERAufgabe : MonoBehaviour
                      /*LvL 0*/            new int[][] { new int[] { 0, 1, 0, 0 } },
                      /*LvL 1*/            new int[][] { new int[] { 0, 0, 1, 1 } }, 
                      /*LvL 2*/            new int[][] { new int[] { 0, 0, 0, 1 } },
-                     /*LvL 3*/            new int[][] { new int[] { 0, 1, 0, 0 } },
+                     /*LvL 3*/            new int[][] { new int[] { 0, 1, 0, 0 } },                
                      /*LvL 4*/            new int[][] { new int[] { 0, 0, 0, 1, 1 } },
                      /*LvL 5*/            new int[0][],
                      /*LvL 6*/            new int[][] { new int[] { 1, 0, 1 }, new int[]{0, 1, 0, 0} },
                      /*LvL 7*/            new int[][] { new int[] { 0, 0, 0, 1, 0 } },         
                                         };
 
-    private string[][][][] listeAttribute = new string[][][][]; //[Level][Entity][Attribnut][Namen]
-    public string[][][] listeBeziehungen = new string[3][][]; //[Level][Beziehung][Namen]
-    public string[][][] listeBeziehungsEigenschaften = new string[3][][];
+    private string[][][][] listeAttribute = new string[8][][][]; //[Level][Entity][Attribnut][Namen]
+    public string[][][] listeBeziehungen = new string[8][][]; //[Level][Beziehung][Namen]
+    public string[][][] listeBeziehungsEigenschaften = new string[8][][];
 
-    //Anzahl der Elemente pro Level          lvl{ 0, 1, 2, 3, 4, 5, 6, 7 }
+    //Anzahl der Elemente pro Level      lvl{ 0, 1, 2, 3, 4, 5, 6, 7 }
     private int[] entitysRichtig =          { 1, 1, 1, 1, 1, 0, 2, 1 };
     private int[] attributeRichtig =        { 4, 4, 4, 3, 5, 0, 7, 5 };
     private int[] primaerschluesselRichtig= { 1, 2, 1, 1, 2, 0, 3, 1 };
@@ -160,7 +160,7 @@ public class ERAufgabe : MonoBehaviour
     public static List<GameObject> gespeicherteObjekte;
     public GameObject checkboxOhneRelation;
     public GameObject checkboxOhneEntity;
-    
+
     // Start is called before the first frame update
     void Start()
     {    
@@ -179,7 +179,7 @@ public class ERAufgabe : MonoBehaviour
     // Level 3
         listeAttribute[3] = new string[][][] { forschungsstation };
         listeBeziehungen[3] = new string[][] { astronaut_forschungsstation };
-        listeBeziehungsEigenschaften[3] = new string[][] { astronaut_forschungsprojekt_Eig};
+        listeBeziehungsEigenschaften[3] = new string[][] { astronaut_forschungsstation_Eig};
     // Level 4
         listeAttribute[4] = new string[][][] { forschungsprojekt };
         listeBeziehungen[4] = new string[][] { astronaut_forschungsprojekt, forschungsstation_forschungsprojekt };
@@ -210,10 +210,19 @@ public class ERAufgabe : MonoBehaviour
         //Checkbox für Level 0 anpassen
         if (Story.level == 0){
             checkboxOhneRelation.SetActive(true);
+            checkliste[3].SetActive(false);
+            checkliste[4].SetActive(false);
+        }else{
+            checkboxOhneRelation.SetActive(false);
         }
         //Checkbox für Level 5 anpassen
-        if (Story.level == 0){
+        if (Story.level == 5){
             checkboxOhneEntity.SetActive(true);
+            checkliste[0].SetActive(false);
+            checkliste[1].SetActive(false);
+            checkliste[2].SetActive(false);
+        }else{
+            checkboxOhneEntity.SetActive(false);
         }
     }
 
