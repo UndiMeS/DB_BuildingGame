@@ -5,15 +5,33 @@ using UnityEngine;
 
 public class ERAufgabe : MonoBehaviour
 {
-//Aufgabentext je LvL    
-    private string[] aufgabe = { "Um den Mars zu besiedeln, m�ssen Astronauten eingeflogen werden. Damit diese auf dem Planeten leben k�nnen, werden <mark=#eb4034aa> Wohncontainer </mark>ben�tigt. Daf�r wird die Entitymenge Wohncontainer angelegt. Alle Wohncontainer haben gemeinsame Eigenschaften, die Attribute. Sie haben bestimmte <mark=#71eb2f80> Baukosten </mark>eine genaue<mark=#71eb2f80> Bettenzahl</mark>, die die Menge an beherbergbaren Astronauten ausdr�ckt und ein Attribut f�r noch <mark=#71eb2f80>freie Betten</mark>. Jeder Container hat in der Siedlung eine eindeutige<mark=#71eb2f80> Containernummer</mark>, der Prim�rschl�ssel." ,
-                                "Astronauten wohnen in (wohntIn) Wohncontainer. Jeder Astronaut ist genau einem Container zugeordnet und teilt sich diesen mit anderen (n:1). Wichtig ist, dass nur Astronauten eingeflogen werden können, wenn ausreichend Wohncontainer existieren (schwache Entitymenge). Alle Astronauten haben einen Namen und ein Geburtstag, worüber man sie eindeutig bestimmen kann. Für die Anreise fallen bestimmt Anreisegebühren an und jeder hat eine bestimmte Aufgabe in der Siedlung.",
-                                "Eine Möglichkeit Erträge zu erzielen sind Feldsphären in denen Nahrung angebaut wird. Diese haben bestimmte Baukosten, eine genaue Arbeiterzahl und einen Ertrag, den du alle 5 Sol erhältst. Mehrere Astronauten arbeiten in einer Feldsphäre, wobei ein Astronaut nicht auf mehreren Feldsphären gleichzeitig arbeiten kann"};
+    //Aufgabentext je LvL    
+    private string[] aufgabe = { 
+                    /*LvL 0*/  "Um den Mars zu besiedeln, müssen Astronauten eingeflogen werden. Damit diese auf dem Planeten leben können, werden Wohncontainer benötigt. Dafür wird die Entitymenge Wohncontainer angelegt. Alle Wohncontainer haben gemeinsame Eigenschaften, die Attribute. Sie haben bestimmte Baukosten eine genaue Bettenzahl, die die Menge an beherbergbaren Astronauten ausdrückt und ein Attribut für noch freie Betten. Jeder Container hat in der Siedlung eine eindeutige Containernummer, der Primärschlüssel." ,
+                    /*LvL 1*/  "Astronauten wohnen in (wohntIn) Wohncontainer. Jeder Astronaut ist genau einem Container zugeordnet und teilt sich diesen mit anderen (n:1). Wichtig ist, dass nur Astronauten eingeflogen werden können, wenn ausreichend Wohncontainer existieren (schwache Entitymenge). Alle Astronauten haben einen Namen und ein Geburtstag, worüber man sie eindeutig bestimmen kann. Für die Anreise fallen bestimmt Anreisegebühren an und jeder hat eine bestimmte Aufgabe in der Siedlung.",
+                    /*LvL 2*/  "Eine Möglichkeit Erträge zu erzielen sind Feldsphären in denen Nahrung angebaut wird. Diese haben bestimmte Baukosten, eine genaue Arbeiterzahl und einen Ertrag, den du alle 5 Sol erhältst. Mehrere Astronauten arbeiten in einer Feldsphäre, wobei ein Astronaut nicht auf mehreren Feldsphären gleichzeitig arbeiten kann.",
+                    /*LvL 3*/  "Die Siedlung dient vor allem der Forschung, um Sphären und Wohncontainer zu verbessern. Dafür werden Forschungsstationen gebaut. Eine Forschungsstation hat eine eindeutige Stationsnummer, Baukosten und eine bestimmte Spezialisierung. Diese gibt an, für welchen Objekttyp in der Forschungsstation geforscht wird. Für eine Forschungsstation ist genau ein Astronaut verantwortlich.",
+                    /*LvL 4*/  "Verbesserungen werden durch Forschungsprojekte erreicht. Attribute von Sphären und Wohncontainer können X mal erforscht und so mehrfach verbessert werden. Ein Forschungsprojekt hat somit ein bestimmtes Forschungsmerkmal und eine Forschungsstufe. Darüber kann ein Forschungsprojekt eindeutig ermittelt werden. Jedes Forschungsprojekt erzielt einen Verbesserungsfaktor und benötigt eine bestimmte Arbeiterzahl. Forschungsprojekte können nur angelegt werden, wenn die passende Forschungsstation bereits existiert. Eine Forschungsstation organisiert mehrere Forschungsprojekte. Mehrere Astronauten können in einem Forschungsprojekt forschen, jedoch kann ein Astronaut nur an einem Projekt forschen.",
+                    /*LvL 5*/  "Bislang können in der Siedlung Wohncontainer und Feldsphären erbaut werden. Forschungsprojekte verbessern die Forschungsmerkmale immer für alle zukünftig gebauten Objekte. Ein Forschungsprojekt verbessert daher mehrere Wohncontainer und Feldsphären. Zugleich können mehrere Projekte an einer Feldsphäre, bzw. Wohncontainer forschen. Neben der Verbesserung von Containern und Sphären kann einmalig ein Forschungsprojekt durchgeführt werden, dass an neuen Methoden forscht und so für alle zukünftigen Forschungsprojekte der jeweiligen Station die Projektkosten verbessert. Diese Möglichkeit betrifft jede errichtete Forschungsstation.",
+                    /*LvL 6*/  "Eine weitere Möglichkeit Erträge zu erzielen sind Weidesphären. Dafür werden zunächst Nutztiere und Stallcontainer benötigt. Um ein Nutztier einfliegen zu lassen, müssen vorher Stallcontainer existieren. Ein Stallcontainer hat Baukosten, eine Containernummer, eine Gehegezahl und eine Anzahl der noch freien Gehege. Mehrere Nutztiere wohnen in einem Stallcontainer. Diese haben Transportkosten, einen Namen und eine Art. Jedes Nutztier kann eindeutig über Name und Art identifiziert werden.",
+                    /*LvL 7*/  "Um Erträge zu erhalten arbeiten mehrere Nutztiere auf einer Weidesphäre. Diese hat eine eindeutige Weidenummer, einen Ertrag, eine Tieranzahl und eine Arbeiterzahl, die sie benötigt. Somit arbeiten mehrere Astronauten in einer Weidesphäre, jedoch wie bei Feldsphären arbeitet ein Astronaut nur in einer Weidesphäre. Wie bei Feldsphären, werden zukünftig erbaute Weidesphären von einem Forschungsprojekt verbessert und mehrere Projekte können eine Weidesphäre verbessern.",
+                                
+                    /*LvL Ziel*/   //ZIELAUFGABE FEHLT NOCH
+                                };
 
-//Welche EM je Level
-   private string[][] listeEntity = { new string[] { "Wohncontainer" }, new string[] { "Astronaut" }, new string[] { "Feldsphäre" } };
+    //Welche EM je Level
+   private string[][] listeEntity = {   
+                                        new string[] { "Wohncontainer" },               /*LvL 0*/
+                                        new string[] { "Astronaut" },                   /*LvL 1*/
+                                        new string[] { "Feldsphäre" },                  /*LvL 2*/
+                                        new string[] { "Forschungsstation" },           /*LvL 3*/
+                                        new string[] { "Forschungsprojekt" },           /*LvL 4*/
+                                        new string[] {  },                              /*LvL 5*/
+                                        new string[] { "Nutztier", "Stallcontainer" },  /*LvL 6*/
+                                        new string[] { "Weidesphäre" },                 /*LvL 7*/   
+                                    };    
 
-    //Attribute
+    //Welche Attribute je EM
     private string[][] wohncontainer = {
                                         new string[] { "1", "Kosten", "Baukosten", "Preis", "Baupreis", "€" },
                                         new string[] { "2", "Containernummer", "CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer", "ID", "id", "Id","Cnr" },
@@ -63,44 +81,69 @@ public class ERAufgabe : MonoBehaviour
                                         new string[] { "Merkmal", "Forschungsmerkmal", "Attribut", "Forschungsattribut", "Projektmerkmal"}
                                     };
 
-//Relationen
+    //Relationen
+    //EM1_EM2 = {Realtionsnamensvarianten}#
+    //EM1_EM2_Eig = {EM1, EM2, EM2_schwach(1 ja), Kard1, Kard2}
+
     private string[] astronaut_forschungsstation = { "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
-    private string[] astronaut_wohncontainer = { "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt" };
+    private string[] astronaut_forschungsstation_Eig = { "Astronaut", "Forschungsstation", "0", "1", "1" };
+
+    private string[] wohncontainer_astronaut = { "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt" };
+    private string[] wohncontainer_astronaut_Eig = { "Wohncontainer", "Astronaut", "1", "1", "n" };
+    
     private string[] astronaut_forschungsprojekt = { "forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };
-    private string[] astronaut_fedlsphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
-    private string[] astronaut_weidesphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
-    private string[] stallcontainer_nutztier = { "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "schläftIn", "PlatzFür" };
-    private string[] weidesphaere_nutztier = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften", "grasenAuf", "grasen auf", "helfenAuf", "helfen auf" };
-    private string[] forschungsprojekt_wohncontainer = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
-    private string[] forschungsprojekt_feldsphaere = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
-    private string[] forschungsprojekt_weidesphaere = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
-    private string[] forschungsprojekt_forschungsprojekt = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
-    private string[] forschungsprojekt_forschungsstation = { "organsisiert", "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
-
-
-//Schwache EM, Kardi links, Kardi rechts
-    private string[] astronaut_wohncontainer_Eig = { "Wohncontainer", "Astronaut", "1", "n", "1" };
+    private string[] astronaut_forschungsprojekt_Eig = { "Astronaut", "Forschungsprojekt", "0", "n", "1" };
+    
+    private string[] astronaut_feldsphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
     private string[] astronaut_feldsphaere_Eig = { "Feldsphäre", "Astronaut", "0", "n", "1" };
 
-    private string[][][][] listeAttribute = new string[3][][][]; //[Level][Entity][Attribnut][Namen]
+    private string[] astronaut_weidesphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
+    private string[] astronaut_weidesphaere_Eig = { "Astronaut", "Weidesphäre", "0", "n", "1" };
 
-//PS Attribut mit 1 setzten
-    private int[][][] primarschluessel = {  new int[][] { new int[] { 0, 1, 0, 0 } },
-                                            new int[][] { new int[] { 0, 0, 1, 1 } }, 
-                                            new int[][] { new int[] { 0, 0, 0, 1 } },
-                                            new int[][] { new int[] { 0, 0, 0, 1 }, new int[]{} } 
-                                            
-                                            
-                                            };// Reihenfolge von Attributen 0 kein Ps, 1 PS
+    private string[] stallcontainer_nutztier = { "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "schläftIn", "PlatzFür" };
+    private string[] stallcontainer_nutztier_Eig = { "Stallcontainer", "Nutztier", "1", "1", "n" };
+    
+    private string[] weidesphaere_nutztier = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften", "grasenAuf", "grasen auf", "helfenAuf", "helfen auf" };
+    private string[] weidesphaere_nutztier_Eig = { "Weidesphäre", "Nutztier", "0", "1", "n" };
+
+    private string[] forschungsprojekt_wohncontainer = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
+    private string[] forschungsprojekt_wohncontainer_Eig = { "Forschungsprojekt", "Wohncontainer", "0", "n", "m" };
+    
+    private string[] forschungsprojekt_feldsphaere = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
+    private string[] forschungsprojekt_feldsphaere_Eig = { "Forschungsprojekt", "Feldsphäre", "0", "n", "m" };
+
+    private string[] forschungsprojekt_weidesphaere = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
+    private string[] forschungsprojekt_weidesphaere_Eig = { "Forschungsprojekt", "Weidesphäre", "0", "n", "m" };
+    
+    private string[] forschungsprojekt_forschungsprojekt = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern", "MethodenVerbessern", "verbessertMethodenVon", "verbessertMethoden" };
+    private string[] forschungsprojekt_forschungsprojekt_Eig = { "Forschungsprojekt", "Forschungsprojekt", "0", "1", "n" };
+
+    private string[] forschungsstation_forschungsprojekt = { "organsisiert", "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
+    private string[] forschungsstation_forschungsprojekt_Eig = { "Forschungsstation", "Forschungsprojekt", "1", "1", "n" };
+
+    //PS Attribut mit 1 setzten für das jeweilige Level
+    // Reihenfolge von Attributen 0 kein Ps, 1 PS
+    private int[][][] primarschluessel = {  
+                     /*LvL 0*/            new int[][] { new int[] { 0, 1, 0, 0 } },
+                     /*LvL 1*/            new int[][] { new int[] { 0, 0, 1, 1 } }, 
+                     /*LvL 2*/            new int[][] { new int[] { 0, 0, 0, 1 } },
+                     /*LvL 3*/            new int[][] { new int[] { 0, 1, 0, 0 } },
+                     /*LvL 4*/            new int[][] { new int[] { 0, 0, 0, 1, 1 } },
+                     /*LvL 5*/            new int[0][],
+                     /*LvL 6*/            new int[][] { new int[] { 1, 0, 1 }, new int[]{0, 1, 0, 0} },
+                     /*LvL 7*/            new int[][] { new int[] { 0, 0, 0, 1, 0 } },         
+                                        };
+
+    private string[][][][] listeAttribute = new string[][][][]; //[Level][Entity][Attribnut][Namen]
     public string[][][] listeBeziehungen = new string[3][][]; //[Level][Beziehung][Namen]
     public string[][][] listeBeziehungsEigenschaften = new string[3][][];
 
-//Anzahl der Elemente pro Level
-    private int[] entitysRichtig = { 1, 1, 1 };
-    private int[] attributeRichtig = { 4, 4, 4 };
-    private int[] primaerschluesselRichtig = { 1, 2, 1 };
-    private int[] beziehungenRichtig = { 0, 1, 1 };
-    private int[] kardRichtig = { 0, 2, 2 }; //2 pro Relation
+    //Anzahl der Elemente pro Level          lvl{ 0, 1, 2, 3, 4, 5, 6, 7 }
+    private int[] entitysRichtig =          { 1, 1, 1, 1, 1, 0, 2, 1 };
+    private int[] attributeRichtig =        { 4, 4, 4, 3, 5, 0, 7, 5 };
+    private int[] primaerschluesselRichtig= { 1, 2, 1, 1, 2, 0, 3, 1 };
+    private int[] beziehungenRichtig =      { 0, 1, 1, 1, 2, 3, 1, 3 };
+    private int[] kardRichtig =             { 0, 2, 2, 2, 4, 6, 2, 6 }; //2 pro Relation
 
     private int[] entitysHat;
     private int[] attributeHat;
@@ -108,32 +151,51 @@ public class ERAufgabe : MonoBehaviour
     private int[] beziehungenHat;
     private int[] kardHat;
 
-//Anzahl der Objekte die im LvL sind
-    private int[] anzahlObjekte = { 5, 6, 6 };
+    //Anzahl der Objekte, die im LvL sind (#EM + #Attribute + #Relationen)
+    private int[] anzahlObjekte = { 5, 6, 6, 5, 8, 3, 10, 9 };
 
     public GameObject dasIstSchonFertig;
     public GameObject aufgabenText;
-
     public List<GameObject> checkliste;
-
     public static List<GameObject> gespeicherteObjekte;
-
+    public GameObject checkboxOhneRelation;
+    public GameObject checkboxOhneEntity;
+    
     // Start is called before the first frame update
     void Start()
-    {
-    //je Level eine Zeile der Listen mit passenden Variablennamen    
+    {    
+    // Level 0
         listeAttribute[0] = new string[][][] { wohncontainer };
-        listeAttribute[1] = new string[][][] { astronaut };
-        listeAttribute[2] = new string[][][] { feldspaehre };
-
         listeBeziehungen[0] = new string[0][];
-        listeBeziehungen[1] = new string[][] { astronaut_wohncontainer };
-        listeBeziehungen[2] = new string[][] { astronaut_fedlsphaere };
-
-
         listeBeziehungsEigenschaften[0] = new string[0][];
-        listeBeziehungsEigenschaften[1] = new string[][] { astronaut_wohncontainer_Eig };
+    // Level 1
+        listeAttribute[1] = new string[][][] { astronaut };
+        listeBeziehungen[1] = new string[][] { wohncontainer_astronaut };
+        listeBeziehungsEigenschaften[1] = new string[][] { wohncontainer_astronaut_Eig };
+    // Level 2
+        listeAttribute[2] = new string[][][] { feldspaehre };
+        listeBeziehungen[2] = new string[][] { astronaut_feldsphaere };
         listeBeziehungsEigenschaften[2] = new string[][] { astronaut_feldsphaere_Eig };
+    // Level 3
+        listeAttribute[3] = new string[][][] { forschungsstation };
+        listeBeziehungen[3] = new string[][] { astronaut_forschungsstation };
+        listeBeziehungsEigenschaften[3] = new string[][] { astronaut_forschungsprojekt_Eig};
+    // Level 4
+        listeAttribute[4] = new string[][][] { forschungsprojekt };
+        listeBeziehungen[4] = new string[][] { astronaut_forschungsprojekt, forschungsstation_forschungsprojekt };
+        listeBeziehungsEigenschaften[4] = new string[][] { astronaut_forschungsprojekt_Eig, forschungsstation_forschungsprojekt_Eig};
+    // Level 5
+        listeAttribute[5] = new string[0][][];
+        listeBeziehungen[5] = new string[][] { forschungsprojekt_feldsphaere, forschungsprojekt_wohncontainer, forschungsstation_forschungsprojekt };
+        listeBeziehungsEigenschaften[5] = new string[][] {forschungsprojekt_feldsphaere_Eig, forschungsprojekt_wohncontainer_Eig, forschungsstation_forschungsprojekt};
+    // Level 6
+        listeAttribute[6] = new string[][][] { nutztier, stallcontainer };
+        listeBeziehungen[6] = new string[][] { stallcontainer_nutztier };
+        listeBeziehungsEigenschaften[6] = new string[][] {stallcontainer_nutztier_Eig};  
+    // Level 7
+        listeAttribute[7] = new string[][][] { weidespaehre };
+        listeBeziehungen[7] = new string[][] { forschungsprojekt_weidesphaere, weidesphaere_nutztier, astronaut_weidesphaere };
+        listeBeziehungsEigenschaften[7] = new string[][] {forschungsprojekt_weidesphaere_Eig, weidesphaere_nutztier_Eig, astronaut_weidesphaere_Eig};
 
         gespeicherteObjekte = new List<GameObject>();
         Utilitys.TextInTMP(dasIstSchonFertig, "");
@@ -145,7 +207,14 @@ public class ERAufgabe : MonoBehaviour
         Utilitys.TextInTMP(aufgabenText, aufgabe[Story.level]);
         checkObjekte();
 
-//if story.level == 0 active
+        //Checkbox für Level 0 anpassen
+        if (Story.level == 0){
+            checkboxOhneRelation.SetActive(true);
+        }
+        //Checkbox für Level 5 anpassen
+        if (Story.level == 0){
+            checkboxOhneEntity.SetActive(true);
+        }
     }
 
     private void checkObjekte()
