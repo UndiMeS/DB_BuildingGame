@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using Random = System.Random;
 
 public class ERErstellung : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class ERErstellung : MonoBehaviour
 
     public GameObject leisteRechts;
     public GameObject leisteBottom;
+    public static bool schwach=false;
 
     // Start is called before the first frame update
     // zuerst leer
@@ -34,6 +36,7 @@ public class ERErstellung : MonoBehaviour
     {
         lastselected = null;
         selectedGameObjekt = null;
+        modellObjekte.Clear();
     }
 
 
@@ -48,9 +51,8 @@ public class ERErstellung : MonoBehaviour
         }
 
         GameObject temp = Instantiate(prefab, transform);
-        temp.transform.position=Utilitys.GetMouseWorldPosition(new Vector3(Screen.width / 4, Screen.height / 4, 0));
 
-        
+
         //nur wenn vorhergehendes Objekt Entity kann Attribut erzeugt werden
         if (temp.CompareTag("Attribut") && modellObjekte.Count == 0)
         {
@@ -58,7 +60,7 @@ public class ERErstellung : MonoBehaviour
             FehlerAnzeige.fehlertext = "Wähle zuerst die Entität aus zu der das Attribute gehören soll.";
             Destroy(temp);
         }
-        if (temp.CompareTag("Attribut") && selectedGameObjekt!= null &&!selectedGameObjekt.CompareTag("Entitaet") )
+        else if (temp.CompareTag("Attribut") && selectedGameObjekt!= null &&!selectedGameObjekt.CompareTag("Entitaet") )
         {
             Destroy(temp.GetComponent<ERObjekt>());
             FehlerAnzeige.fehlertext = "Wähle zuerst die Entität aus zu der das Attribute gehören soll.";
@@ -76,8 +78,9 @@ public class ERErstellung : MonoBehaviour
                 lastselected.GetComponent<Entitaet>().attribute.Add(selectedGameObjekt);
 
             }
-            
-            selectedGameObjekt.transform.position = Utilitys.GetMouseWorldPosition(new Vector3(Screen.width / 4, Screen.height / 4, 0));
+
+            Random rand = new Random();
+            temp.transform.position = Utilitys.GetMouseWorldPosition(new Vector3(rand.Next(Screen.width / 10, 9 * Screen.width / 10), rand.Next(Screen.height / 6, 5 * Screen.height / 6), 0));
             selectedGameObjekt.GetComponent<ERObjekt>().leisteBottom = leisteBottom;
             selectedGameObjekt.GetComponent<ERObjekt>().leisteRechts = leisteRechts;
             
@@ -85,16 +88,22 @@ public class ERErstellung : MonoBehaviour
             {
                zeichneLinie();
             }
+            if (selectedGameObjekt.CompareTag("Beziehung")&&!schwach)
+            {
+                selectedGameObjekt.GetComponent<Beziehung>().erstelleBeziehung();
+            }
         }
     }
 
-    private void zeichneLinie()
+    private GameObject zeichneLinie()
     {
         GameObject templinie = Instantiate(linie, transform);
 
         templinie.GetComponent<Linienzeichner>().setzeGameObjekte(lastselected, selectedGameObjekt);
         templinie.GetComponent<Linienzeichner>().zeichnen = true;
         templinie.transform.SetParent(linienOrdner.transform);
+
+        return templinie;
     }
 
     
@@ -209,6 +218,6 @@ public class ERErstellung : MonoBehaviour
             attributOberflaeche.SetActive(false);
             beziehOberflaeche.SetActive(true);
         }
-       
+
     }
 }
