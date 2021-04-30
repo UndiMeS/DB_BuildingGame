@@ -13,8 +13,8 @@ public class Beziehung : MonoBehaviour
     public string kard2 = "1";
     private GameObject kardText2;
 
-    private GameObject linie1;
-    private GameObject linie2;
+    public GameObject linie1;
+    public GameObject linie2;
 
     public GameObject linie;
     public GameObject linienOrdner;
@@ -30,7 +30,6 @@ public class Beziehung : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        linienOrdner = gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject;
         kardText1 = gameObject.transform.GetChild(2).gameObject;
         kardText2 = gameObject.transform.GetChild(3).gameObject;
 
@@ -41,18 +40,17 @@ public class Beziehung : MonoBehaviour
             kard2 = "1";
         }
 
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
         Utilitys.TextInTMP(kardText1, kard1);
         Utilitys.TextInTMP(kardText2, kard2);
         if (objekt1 != null)
         {
-            positionOfKardinalitaet(kardText1, objekt1);
+            positionOfKardinalitaet(kardText1, objekt1, objekt1.Equals(objekt2));
             kardText1.SetActive(true);
         }
         else
@@ -62,7 +60,7 @@ public class Beziehung : MonoBehaviour
 
         if (objekt2 != null)
         {
-            positionOfKardinalitaet(kardText2, objekt2);
+            positionOfKardinalitaet(kardText2, objekt2, objekt1.Equals(objekt2));
             kardText2.SetActive(true);
         }
         else
@@ -70,6 +68,15 @@ public class Beziehung : MonoBehaviour
             kardText2.SetActive(false);
         }
 
+        if (objekt1.Equals(objekt2))
+        {
+            linie1.GetComponent<Linienzeichner>().setposition = 1;
+            linie2.GetComponent<Linienzeichner>().setposition = 2;
+        }
+        else
+        {
+            linie1.GetComponent<Linienzeichner>().setposition = 0;
+        }
 
 
         if (schwach)
@@ -83,6 +90,19 @@ public class Beziehung : MonoBehaviour
             gameObject.GetComponent<ERObjekt>().originalSprite = Original;
         }
     }
+    public void setLinienordner(GameObject lO)
+    {
+        linienOrdner = lO;
+
+        if (objekt1 != null)
+        {
+            zeichneLinie(objekt1);
+        }
+        if (objekt2 != null)
+        {
+            zeichneLinie(objekt2);
+        }
+    }
 
     public void erstelleBeziehung()
     {
@@ -90,7 +110,7 @@ public class Beziehung : MonoBehaviour
         welcheEntity(2, 0);
     }
 
-    private void positionOfKardinalitaet(GameObject kardtext, GameObject objekt)   //GRÖßE VON EROBJEKT /2
+    private void positionOfKardinalitaet(GameObject kardtext, GameObject objekt, bool offset)   //GRÖßE VON EROBJEKT /2
     {
         Vector3 pos2 = objekt.transform.position;
         Vector3 pos1 = gameObject.transform.position;
@@ -102,11 +122,21 @@ public class Beziehung : MonoBehaviour
         if (45 < winkel && winkel < 135 || 225 < winkel && 305 > winkel)
         {
             kardtext.transform.localPosition += new Vector3(10, 0, 0);
+            if (offset && kardtext.Equals(kardText1))
+            {
+                kardtext.transform.localPosition += new Vector3(50, 0, 0);
+            }
         }
         else
         {
             kardtext.transform.localPosition += new Vector3(0, 10, 0);
+            if (offset && kardtext.Equals(kardText1))
+            {
+                kardtext.transform.localPosition += new Vector3(0, 50, 0);
+            }
         }
+        
+
     }
 
     public void welcheEntity(int einsOderZwei, int option)
@@ -137,7 +167,7 @@ public class Beziehung : MonoBehaviour
                     entity = obj;
                     break;
                 }
-                
+
             }
         }
         if (schwach && einsOderZwei == 2)
@@ -159,7 +189,7 @@ public class Beziehung : MonoBehaviour
             linie2 = zeichneLinie(objekt2);
         }
         else if (!entity.Equals(objekt1) && einsOderZwei == 1)
-        {            
+        {
             if (objekt1 != null)
             {
                 Destroy(linie1.GetComponent<Linienzeichner>());
@@ -188,13 +218,16 @@ public class Beziehung : MonoBehaviour
 
     private GameObject zeichneLinie(GameObject obj)
     {
-        GameObject templinie = Instantiate(linie, transform);
+        if (linienOrdner != null)
+        {
+            GameObject templinie = Instantiate(linie, transform);
 
-        templinie.GetComponent<Linienzeichner>().setzeGameObjekte(obj, gameObject);
-        templinie.GetComponent<Linienzeichner>().zeichnen = true;
-        templinie.transform.SetParent(linienOrdner.transform);
+            templinie.GetComponent<Linienzeichner>().setzeGameObjekte(obj, gameObject);
+            templinie.GetComponent<Linienzeichner>().zeichnen = true;
+            templinie.transform.SetParent(linienOrdner.transform);
 
-        return templinie;
+            return templinie;
+        }return null;
     }
 
     public void kardinalitaet(int einoderzwei, int option)

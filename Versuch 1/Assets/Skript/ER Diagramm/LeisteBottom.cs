@@ -36,7 +36,7 @@ public class LeisteBottom : MonoBehaviour
     {
         if (ERErstellung.selectedGameObjekt!=null&&ERErstellung.selectedGameObjekt.CompareTag("Entitaet"))
         {
-            firsttime = false;
+            firsttime = true;
             if (ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwach)
             {
                 schwEntKnopf.isOn=true;
@@ -50,7 +50,7 @@ public class LeisteBottom : MonoBehaviour
         }
         if (ERErstellung.selectedGameObjekt != null && ERErstellung.selectedGameObjekt.CompareTag("Attribut"))
         {
-            firsttime = false;
+            firsttime = true;
             if (ERErstellung.selectedGameObjekt.transform.parent.GetComponent<Entitaet>().primaerschluessel.Contains(ERErstellung.selectedGameObjekt))
             {
                 primKnopf.isOn = true;
@@ -83,7 +83,6 @@ public class LeisteBottom : MonoBehaviour
             }
             if (firsttime)
             {
-                Debug.Log(entityZuNummer(ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().objekt1)+" "+ entityZuNummer(ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().objekt2));
                 objekt1.value = entityZuNummer(ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().objekt1);
                 objekt2.value = entityZuNummer(ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().objekt2);
                 firsttime = false;
@@ -181,7 +180,7 @@ public class LeisteBottom : MonoBehaviour
                 
 
             }
-            bez.GetComponent<Beziehung>().schwach = true;
+
             bez = ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung;
             ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().vaterEntitaet = entity;            
             ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung = ERErstellung.lastselected;
@@ -206,10 +205,16 @@ public class LeisteBottom : MonoBehaviour
         {
             if (obj.CompareTag("Entitaet"))
             {
+                if (obj == null)
+                {
+                    ERErstellung.modellObjekte.Remove(obj);
+                    return entityZuNummer(ent);
+                }
                 if (ent.Equals(obj))
                 {
                     return z;
-                }                
+                }
+                z++;
             }
         }
         return -1;

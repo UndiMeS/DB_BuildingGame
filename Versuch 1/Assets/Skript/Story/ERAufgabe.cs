@@ -237,14 +237,12 @@ public class ERAufgabe : MonoBehaviour
         int indexEntity = 0;
         foreach (string entityName in listeEntity[Story.level])
         {
-
             foreach (GameObject entity in ERErstellung.modellObjekte)
             {
                 if (entity.name.Equals(entityName))
                 {
                     entitysHat[Story.level]++;
                     checkAttribute(indexEntity, entity);
-
                 }
             }
             checkBeziehung();
@@ -285,11 +283,17 @@ public class ERAufgabe : MonoBehaviour
                     string nameAnderesEnitity = "";
                     int einsoderZwei = 0;
 
+                    GameObject ob1=null;
+                    GameObject ob2 = null;
+                    GameObject ob12 = null;
+
                     //Entitäten und Kardinalität prüfen
                     if (obj.GetComponent<Beziehung>().objekt1 != null && listeBeziehungsEigenschaften[Story.level][i][0].Equals(obj.GetComponent<Beziehung>().objekt1.name))
                     {
                         if (obj.GetComponent<Beziehung>().objekt2 != null)
                         {
+                            ob1 = obj.GetComponent<Beziehung>().objekt1;
+                            ob12 = obj.GetComponent<Beziehung>().objekt2;
                             nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt2.name;
                         }
                         if (checkKard(obj, 1, i))
@@ -302,6 +306,8 @@ public class ERAufgabe : MonoBehaviour
                     {
                         if (obj.GetComponent<Beziehung>().objekt1 != null)
                         {
+                            ob2 = obj.GetComponent<Beziehung>().objekt2;
+                            ob12 = obj.GetComponent<Beziehung>().objekt1;
                             nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt1.name;
                         }
                         if (checkKard(obj, 2, i))
@@ -317,9 +323,11 @@ public class ERAufgabe : MonoBehaviour
                         {
                             kardHat[Story.level]++;
                         }
+                        
                     }
                     else
                     {
+                        ob12 = null;
                         allesDa &= false;
                     }
                     //name prüfen
@@ -339,9 +347,13 @@ public class ERAufgabe : MonoBehaviour
                     }
 
                     //schwache Entity
-                    if (obj.GetComponent<Beziehung>().schwach && listeBeziehungsEigenschaften[Story.level][i][2].Equals("1"))
+                    if (obj.GetComponent<Beziehung>().schwach && listeBeziehungsEigenschaften[Story.level][i][2].Equals("1") )
                     {
-                        allesDa &= true;
+                        if(ob2!=null || (ob1!=null && ob12 != null)){
+                            allesDa &= true;
+                        }
+                        else { allesDa &= false; }
+            
                     }
                     else if (!obj.GetComponent<Beziehung>().schwach && listeBeziehungsEigenschaften[Story.level][i][2].Equals("0"))
                     {
@@ -356,7 +368,7 @@ public class ERAufgabe : MonoBehaviour
                         beziehungenHat[Story.level]++;
                     }
                 }
-            }
+            }  
         }
 
     }
@@ -454,6 +466,7 @@ public class ERAufgabe : MonoBehaviour
     private void checkAttribute(int indexEntity, GameObject entity)
     {
         int indexattribute = 0;
+        bool schonGefunden = false;
         foreach (string[] attributNamesMoeglichkeiten in listeAttribute[Story.level][indexEntity])
         {
             foreach (GameObject attribut in entity.GetComponent<Entitaet>().attribute)
@@ -466,12 +479,23 @@ public class ERAufgabe : MonoBehaviour
                         if (primarschluessel[Story.level][indexEntity][indexattribute] == 1 && entity.GetComponent<Entitaet>().primaerschluessel.Contains(attribut))
                         {
                             primaerschluesselHat[Story.level]++;
-
+                            
                         }
+                        schonGefunden = true;
+                        break;
+                        
                     }
                 }
+              
+                if (schonGefunden)
+                {
+                    schonGefunden = false;
+                    break;
+                }
+            
             }
             indexattribute++;
+
         }
 
 

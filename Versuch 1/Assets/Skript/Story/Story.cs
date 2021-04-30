@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Story : MonoBehaviour
 {
-    public static int level;
+    public static int level=6;
 
 
 }

@@ -51,7 +51,10 @@ public class ERErstellung : MonoBehaviour
         }
 
         GameObject temp = Instantiate(prefab, transform);
-
+        if (temp.CompareTag("Beziehung"))
+        {
+            temp.GetComponent<Beziehung>().setLinienordner(linienOrdner);
+        }
 
         //nur wenn vorhergehendes Objekt Entity kann Attribut erzeugt werden
         if (temp.CompareTag("Attribut") && modellObjekte.Count == 0)
@@ -148,6 +151,20 @@ public class ERErstellung : MonoBehaviour
                     if (obj.CompareTag("Entitaet"))
                     {
                         obj.GetComponent<Entitaet>().attributloeschen(selectedGameObjekt);
+                    }
+                }
+            }
+            if (selectedGameObjekt.CompareTag("Entitaet"))
+            {
+                foreach(GameObject bez in selectedGameObjekt.GetComponent<Entitaet>().beziehungen)
+                {
+                    if (bez.GetComponent<Beziehung>().objekt1.Equals(selectedGameObjekt))
+                    {
+                        bez.GetComponent<Beziehung>().objekt1 = null;
+                    }
+                    if(bez.GetComponent<Beziehung>().objekt2.Equals(selectedGameObjekt))
+                    {
+                        bez.GetComponent<Beziehung>().objekt2 = null;
                     }
                 }
             }
