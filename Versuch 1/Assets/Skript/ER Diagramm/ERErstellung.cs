@@ -154,6 +154,20 @@ public class ERErstellung : MonoBehaviour
                     }
                 }
             }
+            if (selectedGameObjekt.CompareTag("Beziehung") && selectedGameObjekt.GetComponent<Beziehung>().schwach)
+            {
+                GameObject temp = selectedGameObjekt;
+                selectedGameObjekt = temp.GetComponent<Beziehung>().objekt1;
+                leisteBottom.GetComponent<LeisteBottom>().SchwacheEntitaet(false);
+                selectedGameObjekt = temp;
+                selectedGameObjekt.GetComponent<Beziehung>().objekt1.GetComponent<Entitaet>().vaterEntitaet = null;
+                selectedGameObjekt.GetComponent<Beziehung>().objekt1.GetComponent<Entitaet>().schwacheBeziehung = null;
+                
+            }
+            if (selectedGameObjekt.CompareTag("Beziehung")){
+                selectedGameObjekt.GetComponent<Beziehung>().objekt1.GetComponent<Entitaet>().beziehungen.Remove(selectedGameObjekt);
+                selectedGameObjekt.GetComponent<Beziehung>().objekt2.GetComponent<Entitaet>().beziehungen.Remove(selectedGameObjekt);
+            }
             if (selectedGameObjekt.CompareTag("Entitaet"))
             {
                 foreach(GameObject bez in selectedGameObjekt.GetComponent<Entitaet>().beziehungen)

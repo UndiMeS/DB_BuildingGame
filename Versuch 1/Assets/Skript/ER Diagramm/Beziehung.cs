@@ -209,7 +209,7 @@ public class Beziehung : MonoBehaviour
                 objekt2.GetComponent<Entitaet>().beziehungen.Remove(gameObject);
             }
             objekt2 = entity;
-            objekt2.GetComponent<Entitaet>().beziehungen.Remove(gameObject);
+            objekt2.GetComponent<Entitaet>().beziehungen.Add(gameObject);
             linie2 = zeichneLinie(objekt2);
         }
     }

@@ -295,11 +295,13 @@ public class ERAufgabe : MonoBehaviour
                             ob1 = obj.GetComponent<Beziehung>().objekt1;
                             ob12 = obj.GetComponent<Beziehung>().objekt2;
                             nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt2.name;
+                            Debug.Log("Objekt1");
                         }
                         if (checkKard(obj, 1, i))
                         {
                             einsoderZwei = 2;
                             kardHat[Story.level]++;
+                            Debug.Log("Kard1");
                         }
                     }
                     else if (obj.GetComponent<Beziehung>().objekt2 != null && listeBeziehungsEigenschaften[Story.level][i][0].Equals(obj.GetComponent<Beziehung>().objekt2.name))
@@ -309,19 +311,23 @@ public class ERAufgabe : MonoBehaviour
                             ob2 = obj.GetComponent<Beziehung>().objekt2;
                             ob12 = obj.GetComponent<Beziehung>().objekt1;
                             nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt1.name;
+                            Debug.Log("Objekt2");
                         }
                         if (checkKard(obj, 2, i))
                         {
                             einsoderZwei = 1;
                             kardHat[Story.level]++;
+                            Debug.Log("Kard2");
                         }
                     }
                     if (listeBeziehungsEigenschaften[Story.level][i][1].Equals(nameAnderesEnitity))
                     {
                         allesDa &= true;
+                        Debug.Log("Objekt12");
                         if (checkKard(obj, einsoderZwei, i))
                         {
                             kardHat[Story.level]++;
+                            Debug.Log("Kard12");
                         }
                         
                     }
@@ -338,6 +344,7 @@ public class ERAufgabe : MonoBehaviour
                         {
                             allesDa &= true;
                             temp = false;
+                            Debug.Log("name");
                             break;
                         }
                     }
@@ -349,8 +356,15 @@ public class ERAufgabe : MonoBehaviour
                     //schwache Entity
                     if (obj.GetComponent<Beziehung>().schwach && listeBeziehungsEigenschaften[Story.level][i][2].Equals("1") )
                     {
-                        if(ob2!=null || (ob1!=null && ob12 != null)){
+                        if(ob2!=null &&ob2.GetComponent<Entitaet>().schwach){
+                            
                             allesDa &= true;
+                            Debug.Log("schwach");
+                            
+                        }else if(ob1 != null &&ob2==null&& ob12 != null && ob12.GetComponent<Entitaet>().schwach)
+                        {
+                            allesDa &= true;
+                            Debug.Log("schwach");
                         }
                         else { allesDa &= false; }
             
@@ -358,6 +372,7 @@ public class ERAufgabe : MonoBehaviour
                     else if (!obj.GetComponent<Beziehung>().schwach && listeBeziehungsEigenschaften[Story.level][i][2].Equals("0"))
                     {
                         allesDa &= true;
+                        Debug.Log("schwach");
                     }
                     else
                     {

@@ -24,40 +24,38 @@ public class LeisteBottom : MonoBehaviour
     public TMPro.TMP_Dropdown kard2;
     public Toggle primKnopf;
 
-    private bool firsttime =true;
     public void Start()
     {
        leiste_bottom = gameObject;
        objekt1= bezEinstellung.transform.GetChild(1).gameObject.GetComponent<TMPro.TMP_Dropdown>();
        objekt2= bezEinstellung.transform.GetChild(4).gameObject.GetComponent<TMPro.TMP_Dropdown>();
+        Debug.Log(objekt1.name + " " + objekt2.name);
     }
 
     public void Update()
     {
         if (ERErstellung.selectedGameObjekt!=null&&ERErstellung.selectedGameObjekt.CompareTag("Entitaet"))
         {
-            firsttime = true;
             if (ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwach)
             {
-                schwEntKnopf.isOn=true;
+                schwEntKnopf.SetIsOnWithoutNotify(true);
                 dropdownSE.SetActive(true);
             }
             else
-            {                
-                schwEntKnopf.isOn = false;
+            {
+                schwEntKnopf.SetIsOnWithoutNotify(false) ;
                 dropdownSE.SetActive(false);
             }
         }
         if (ERErstellung.selectedGameObjekt != null && ERErstellung.selectedGameObjekt.CompareTag("Attribut"))
         {
-            firsttime = true;
             if (ERErstellung.selectedGameObjekt.transform.parent.GetComponent<Entitaet>().primaerschluessel.Contains(ERErstellung.selectedGameObjekt))
             {
-                primKnopf.isOn = true;
+                primKnopf.SetIsOnWithoutNotify(true);
             }
             else
             {
-                primKnopf.isOn = false;
+                primKnopf.SetIsOnWithoutNotify(false);
             }
         }
         if (ERErstellung.selectedGameObjekt != null && ERErstellung.selectedGameObjekt.CompareTag("Beziehung"))
@@ -81,12 +79,19 @@ public class LeisteBottom : MonoBehaviour
             {
                 kard1.value = 1;
             }
-            if (firsttime)
-            {
-                objekt1.value = entityZuNummer(ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().objekt1);
-                objekt2.value = entityZuNummer(ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().objekt2);
-                firsttime = false;
-            }
+                            if (entityZuNummer(ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().objekt1) != -1)
+                {
+                    objekt1.SetValueWithoutNotify( entityZuNummer(ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().objekt1));
+                }
+
+                if (entityZuNummer(ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().objekt2) != -1)
+                {
+                    objekt2.SetValueWithoutNotify( entityZuNummer(ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().objekt2));
+                }
+                
+                
+                
+             
             
         }
 
@@ -106,6 +111,15 @@ public class LeisteBottom : MonoBehaviour
         }
         if (state)
         {
+            foreach(GameObject bez in ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().beziehungen)
+            {
+                if (bez.GetComponent<Beziehung>().schwach)
+                {
+                    schwEntKnopf.isOn = false;
+                    FehlerAnzeige.fehlertext = "Das ist nicht möglich";
+                    return;
+                }
+            }
             ERErstellung.selectedGameObjekt.GetComponent<ERObjekt>().originalSprite = schwacheEntitaet;
             ERErstellung.selectedGameObjekt.GetComponent<ERObjekt>().selectedSprite = selecSchwacheEntitaet;
             dropdownSE.GetComponent<TMPro.TMP_Dropdown>().RefreshShownValue();
@@ -140,7 +154,7 @@ public class LeisteBottom : MonoBehaviour
                     entity = obj;
                 }
                 
-                if (ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().vaterEntitaet.Equals(obj))
+                if (ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().vaterEntitaet!= null &&ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().vaterEntitaet.Equals(obj))
                 {
                     vater = z;
                 }
@@ -169,25 +183,41 @@ public class LeisteBottom : MonoBehaviour
             if (ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().vaterEntitaet == null)
             {
                 gameObject.GetComponent<ERErstellung>().erstelleObjekt(prefabBez);
+                bez = ERErstellung.selectedGameObjekt;
+                Debug.Log(bez.name);
                 ERErstellung.schwach = true;
                 ERErstellung.changeSelectedGameobjekt(ERErstellung.lastselected);
                 ERErstellung.schwach = false;
-                bez = ERErstellung.lastselected;
+                
                 
                 bez.GetComponent<Beziehung>().welcheEntity(1, entityZuNummer(ERErstellung.selectedGameObjekt));
                 bez.GetComponent<Beziehung>().schwach = true;
-                ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung = ERErstellung.lastselected;
+                ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung = bez;
                 
 
             }
+            
 
             bez = ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung;
+            if(bez.CompareTag("Entitaet"))
+            {
+                Debug.Log("*");
+            }
+
             ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().vaterEntitaet = entity;            
             ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung = ERErstellung.lastselected;
-            bez.GetComponent<Beziehung>().welcheEntity(2, option);
-            bez.GetComponent<Beziehung>().objekt1 = ERErstellung.selectedGameObjekt;
-            bez.GetComponent<Beziehung>().objekt2 = entity;
-
+            
+            if (bez.GetComponent<Beziehung>() != null)
+            {
+                bez.GetComponent<Beziehung>().welcheEntity(2, option);
+                bez.GetComponent<Beziehung>().objekt1 = ERErstellung.selectedGameObjekt;
+                bez.GetComponent<Beziehung>().objekt2 = entity;
+                
+            }
+            else
+            {
+                Debug.Log(bez.name);
+            }
            
 
         }
@@ -198,9 +228,12 @@ public class LeisteBottom : MonoBehaviour
     }
 
     private int entityZuNummer(GameObject ent)
-    {
-       
+    {       
         int z = 0;
+        if (ent == null)
+        {
+            return -1;
+        }
         foreach (GameObject obj in ERErstellung.modellObjekte)
         {
             if (obj.CompareTag("Entitaet"))
