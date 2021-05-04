@@ -119,7 +119,7 @@ public class ERAufgabe : MonoBehaviour
     private string[] forschungsprojekt_forschungsprojekt_Eig = { "Forschungsprojekt", "Forschungsprojekt", "0", "1", "n" };
 
     private string[] forschungsstation_forschungsprojekt = { "organisiert", "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
-    private string[] forschungsstation_forschungsprojekt_Eig = { "Forschungsstation", "Forschungsprojekt", "1", "n", "1" };
+    private string[] forschungsstation_forschungsprojekt_Eig = { "Forschungsstation", "Forschungsprojekt", "1", "1", "n" };
 
     //PS Attribut mit 1 setzten für das jeweilige Level
     // Reihenfolge von Attributen 0 kein Ps, 1 PS
@@ -139,11 +139,11 @@ public class ERAufgabe : MonoBehaviour
     public string[][][] listeBeziehungsEigenschaften = new string[8][][];
 
     //Anzahl der Elemente pro Level      lvl{ 0, 1, 2, 3, 4, 5, 6, 7 }
-    private int[] entitysRichtig = { 1, 1, 1, 1, 1, 0, 2, 1 };
-    private int[] attributeRichtig = { 0, 0, 0, 0, 0, 0, 0, 0 };//{ 4, 4, 4, 3, 5, 0, 7, 5 };
-    private int[] primaerschluesselRichtig = { 0, 0, 0, 0, 0, 0, 0, 0 };//{ 1, 2, 1, 1, 2, 0, 3, 1 };
-    private int[] beziehungenRichtig = { 0, 1, 1, 1, 2, 3, 1, 3 };
-    private int[] kardRichtig = { 0, 2, 2, 2, 4, 6, 2, 6 }; //2 pro Relation
+    private int[] entitysRichtig =          { 1, 1, 1, 1, 1, 0, 2, 1 };
+    private int[] attributeRichtig =        { 0, 0, 0, 0, 0, 0, 0, 0 };//{ 4, 4, 4, 3, 5, 0, 7, 5 };
+    private int[] primaerschluesselRichtig ={ 0, 0, 0, 0, 0, 0, 0, 0 };//{ 1, 2, 1, 1, 2, 0, 3, 1 };
+    private int[] beziehungenRichtig =      { 0, 1, 1, 1, 2, 3, 1, 3 };
+    private int[] kardRichtig =             { 0, 2, 2, 2, 4, 6, 2, 6 }; //2 pro Relation
 
     private int[] entitysHat;
     private int[] attributeHat;
@@ -404,10 +404,12 @@ public class ERAufgabe : MonoBehaviour
                         beziehungenHat[Story.level]++;
                         break;
                     }
+                    /*
                     else
                     {
                         kardHat[Story.level]--;
                     }
+                    */
                 }
             }
         }
