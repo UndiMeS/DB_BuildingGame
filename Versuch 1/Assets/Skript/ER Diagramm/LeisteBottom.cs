@@ -29,7 +29,7 @@ public class LeisteBottom : MonoBehaviour
        leiste_bottom = gameObject;
        objekt1= bezEinstellung.transform.GetChild(1).gameObject.GetComponent<TMPro.TMP_Dropdown>();
        objekt2= bezEinstellung.transform.GetChild(4).gameObject.GetComponent<TMPro.TMP_Dropdown>();
-        Debug.Log(objekt1.name + " " + objekt2.name);
+
     }
 
     public void Update()
@@ -40,6 +40,7 @@ public class LeisteBottom : MonoBehaviour
             {
                 schwEntKnopf.SetIsOnWithoutNotify(true);
                 dropdownSE.SetActive(true);
+                objekt1.SetValueWithoutNotify(schwachEntityZuNummer(ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().vaterEntitaet));
             }
             else
             {
@@ -113,6 +114,12 @@ public class LeisteBottom : MonoBehaviour
         {
             foreach(GameObject bez in ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().beziehungen)
             {
+                if (bez == null)
+                {
+                    ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().beziehungen.Remove(bez);
+                    SchwacheEntitaet(true);
+                    return;
+                }
                 if (bez.GetComponent<Beziehung>().schwach)
                 {
                     schwEntKnopf.isOn = false;
@@ -132,6 +139,8 @@ public class LeisteBottom : MonoBehaviour
             ERErstellung.selectedGameObjekt.GetComponent<ERObjekt>().originalSprite = entitaet;
             ERErstellung.selectedGameObjekt.GetComponent<ERObjekt>().selectedSprite = selecEntitaet;
             ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwach = false;
+            ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().beziehungen.Remove(ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung);
+            ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung.GetComponent<Beziehung>().objekt2.GetComponent<Entitaet>().beziehungen.Remove(ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung);
             Destroy(ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung);
             ERErstellung.modellObjekte.Remove(ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung);
             ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().vaterEntitaet = null;
@@ -184,13 +193,14 @@ public class LeisteBottom : MonoBehaviour
             {
                 gameObject.GetComponent<ERErstellung>().erstelleObjekt(prefabBez);
                 bez = ERErstellung.selectedGameObjekt;
-                Debug.Log(bez.name);
                 ERErstellung.schwach = true;
                 ERErstellung.changeSelectedGameobjekt(ERErstellung.lastselected);
                 ERErstellung.schwach = false;
-                
-                
-                bez.GetComponent<Beziehung>().welcheEntity(1, entityZuNummer(ERErstellung.selectedGameObjekt));
+
+
+                ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwach = false;
+                bez.GetComponent<Beziehung>().welcheEntity(1, entityZuNummer(ERErstellung.selectedGameObjekt), false) ;
+                ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwach = true;
                 bez.GetComponent<Beziehung>().schwach = true;
                 ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung = bez;
                 
@@ -199,17 +209,13 @@ public class LeisteBottom : MonoBehaviour
             
 
             bez = ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung;
-            if(bez.CompareTag("Entitaet"))
-            {
-                Debug.Log("*");
-            }
-
+            
             ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().vaterEntitaet = entity;            
             ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung = ERErstellung.lastselected;
             
             if (bez.GetComponent<Beziehung>() != null)
             {
-                bez.GetComponent<Beziehung>().welcheEntity(2, option);
+                bez.GetComponent<Beziehung>().welcheEntity(2, option,true);
                 bez.GetComponent<Beziehung>().objekt1 = ERErstellung.selectedGameObjekt;
                 bez.GetComponent<Beziehung>().objekt2 = entity;
                 
@@ -226,7 +232,35 @@ public class LeisteBottom : MonoBehaviour
             FehlerAnzeige.fehlertext = "Es kann keine schwache Entität zu sich selber erstellt werden";
         }
     }
-
+    private int schwachEntityZuNummer(GameObject ent)
+    {
+        int z = 0;
+        if (ent == null)
+        {
+            return -1;
+        }
+        foreach (GameObject obj in ERErstellung.modellObjekte)
+        {
+            if (obj.CompareTag("Entitaet"))
+            {
+                if (ent.GetComponent<Entitaet>().schwach && ERErstellung.selectedGameObjekt.Equals(obj))
+                {
+                    z--;
+                }
+                if (obj == null)
+                {
+                    ERErstellung.modellObjekte.Remove(obj);
+                    return entityZuNummer(ent);
+                }
+                if (ent.Equals(obj))
+                {
+                    return z;
+                }
+                z++;
+            }
+        }
+        return -1;
+    }
     private int entityZuNummer(GameObject ent)
     {       
         int z = 0;

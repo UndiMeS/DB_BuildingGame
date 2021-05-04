@@ -106,8 +106,8 @@ public class Beziehung : MonoBehaviour
 
     public void erstelleBeziehung()
     {
-        welcheEntity(1, 0);
-        welcheEntity(2, 0);
+        welcheEntity(1, 0,false);
+        welcheEntity(2, 0,false);
     }
 
     private void positionOfKardinalitaet(GameObject kardtext, GameObject objekt, bool offset)   //GRÖßE VON EROBJEKT /2
@@ -139,7 +139,7 @@ public class Beziehung : MonoBehaviour
 
     }
 
-    public void welcheEntity(int einsOderZwei, int option)
+    public void welcheEntity(int einsOderZwei, int option, bool schwachKommen)
     {
         Start();
         if (option == -1)
@@ -157,7 +157,7 @@ public class Beziehung : MonoBehaviour
         {
             if (obj.CompareTag("Entitaet"))
             {
-                if (schwach && obj.Equals(objekt1)) { }
+                if (schwachKommen && obj.Equals(objekt1)) { }
                 else
                 {
                     z++;

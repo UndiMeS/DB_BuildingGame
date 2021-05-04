@@ -92,16 +92,16 @@ public class ERAufgabe : MonoBehaviour
     private string[] wohncontainer_astronaut_Eig = { "Wohncontainer", "Astronaut", "1", "n", "1" };
     
     private string[] astronaut_forschungsprojekt = { "forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };
-    private string[] astronaut_forschungsprojekt_Eig = { "Astronaut", "Forschungsprojekt", "0", "n", "1" };
+    private string[] astronaut_forschungsprojekt_Eig = { "Astronaut", "Forschungsprojekt", "0", "1", "n" };
     
     private string[] astronaut_feldsphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
-    private string[] astronaut_feldsphaere_Eig = { "Feldsphäre", "Astronaut", "0", "n", "1" };
+    private string[] astronaut_feldsphaere_Eig = { "Feldsphäre", "Astronaut", "0", "1", "n" };
 
     private string[] astronaut_weidesphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
     private string[] astronaut_weidesphaere_Eig = { "Astronaut", "Weidesphäre", "0", "n", "1" };
 
     private string[] stallcontainer_nutztier = { "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "schläftIn", "PlatzFür" };
-    private string[] stallcontainer_nutztier_Eig = { "Stallcontainer", "Nutztier", "1", "1", "n" };
+    private string[] stallcontainer_nutztier_Eig = { "Stallcontainer", "Nutztier", "1", "n", "1" };
     
     private string[] weidesphaere_nutztier = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften", "grasenAuf", "grasen auf", "helfenAuf", "helfen auf" };
     private string[] weidesphaere_nutztier_Eig = { "Weidesphäre", "Nutztier", "0", "1", "n" };
@@ -118,8 +118,8 @@ public class ERAufgabe : MonoBehaviour
     private string[] forschungsprojekt_forschungsprojekt = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern", "MethodenVerbessern", "verbessertMethodenVon", "verbessertMethoden" };
     private string[] forschungsprojekt_forschungsprojekt_Eig = { "Forschungsprojekt", "Forschungsprojekt", "0", "1", "n" };
 
-    private string[] forschungsstation_forschungsprojekt = { "organsisiert", "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
-    private string[] forschungsstation_forschungsprojekt_Eig = { "Forschungsstation", "Forschungsprojekt", "1", "1", "n" };
+    private string[] forschungsstation_forschungsprojekt = { "organisiert", "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
+    private string[] forschungsstation_forschungsprojekt_Eig = { "Forschungsstation", "Forschungsprojekt", "1", "n", "1" };
 
     //PS Attribut mit 1 setzten für das jeweilige Level
     // Reihenfolge von Attributen 0 kein Ps, 1 PS
@@ -186,8 +186,8 @@ public class ERAufgabe : MonoBehaviour
         listeBeziehungsEigenschaften[4] = new string[][] { astronaut_forschungsprojekt_Eig, forschungsstation_forschungsprojekt_Eig};
     // Level 5
         listeAttribute[5] = new string[0][][];
-        listeBeziehungen[5] = new string[][] { forschungsprojekt_feldsphaere, forschungsprojekt_wohncontainer, forschungsstation_forschungsprojekt };
-        listeBeziehungsEigenschaften[5] = new string[][] {forschungsprojekt_feldsphaere_Eig, forschungsprojekt_wohncontainer_Eig, forschungsstation_forschungsprojekt};
+        listeBeziehungen[5] = new string[][] { forschungsprojekt_feldsphaere, forschungsprojekt_wohncontainer, forschungsprojekt_forschungsprojekt };
+        listeBeziehungsEigenschaften[5] = new string[][] {forschungsprojekt_feldsphaere_Eig, forschungsprojekt_wohncontainer_Eig, forschungsprojekt_forschungsprojekt_Eig};
     // Level 6
         listeAttribute[6] = new string[][][] { nutztier, stallcontainer };
         listeBeziehungen[6] = new string[][] { stallcontainer_nutztier };
@@ -235,6 +235,7 @@ public class ERAufgabe : MonoBehaviour
         kardHat = new int[kardRichtig.Length];
 
         int indexEntity = 0;
+        checkBeziehung();
         foreach (string entityName in listeEntity[Story.level])
         {
             foreach (GameObject entity in ERErstellung.modellObjekte)
@@ -245,7 +246,7 @@ public class ERAufgabe : MonoBehaviour
                     checkAttribute(indexEntity, entity);
                 }
             }
-            checkBeziehung();
+            
             indexEntity++;
         }
 
@@ -272,14 +273,17 @@ public class ERAufgabe : MonoBehaviour
 
     private void checkBeziehung()
     {
+        
+        List<GameObject> erfolgreichbetrachtet = new List<GameObject>();
         for (int i = 0; i < listeBeziehungen[Story.level].Length; i++)
         {
-            bool allesDa = true;
+            
             foreach (GameObject obj in ERErstellung.modellObjekte)
             {
-
-                if (obj.CompareTag("Beziehung") && !gespeicherteObjekte.Contains(obj))
+                bool allesDa = true;
+                if (obj.CompareTag("Beziehung") && !gespeicherteObjekte.Contains(obj)&&!erfolgreichbetrachtet.Contains(obj))
                 {
+
                     string nameAnderesEnitity = "";
                     int einsoderZwei = 0;
 
@@ -295,13 +299,11 @@ public class ERAufgabe : MonoBehaviour
                             ob1 = obj.GetComponent<Beziehung>().objekt1;
                             ob12 = obj.GetComponent<Beziehung>().objekt2;
                             nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt2.name;
-                            Debug.Log("Objekt1");
                         }
                         if (checkKard(obj, 1, i))
                         {
                             einsoderZwei = 2;
                             kardHat[Story.level]++;
-                            Debug.Log("Kard1");
                         }
                     }
                     else if (obj.GetComponent<Beziehung>().objekt2 != null && listeBeziehungsEigenschaften[Story.level][i][0].Equals(obj.GetComponent<Beziehung>().objekt2.name))
@@ -311,23 +313,19 @@ public class ERAufgabe : MonoBehaviour
                             ob2 = obj.GetComponent<Beziehung>().objekt2;
                             ob12 = obj.GetComponent<Beziehung>().objekt1;
                             nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt1.name;
-                            Debug.Log("Objekt2");
                         }
                         if (checkKard(obj, 2, i))
                         {
                             einsoderZwei = 1;
                             kardHat[Story.level]++;
-                            Debug.Log("Kard2");
                         }
                     }
                     if (listeBeziehungsEigenschaften[Story.level][i][1].Equals(nameAnderesEnitity))
                     {
                         allesDa &= true;
-                        Debug.Log("Objekt12");
                         if (checkKard(obj, einsoderZwei, i))
                         {
                             kardHat[Story.level]++;
-                            Debug.Log("Kard12");
                         }
                         
                     }
@@ -344,7 +342,6 @@ public class ERAufgabe : MonoBehaviour
                         {
                             allesDa &= true;
                             temp = false;
-                            Debug.Log("name");
                             break;
                         }
                     }
@@ -356,15 +353,10 @@ public class ERAufgabe : MonoBehaviour
                     //schwache Entity
                     if (obj.GetComponent<Beziehung>().schwach && listeBeziehungsEigenschaften[Story.level][i][2].Equals("1") )
                     {
-                        if(ob2!=null &&ob2.GetComponent<Entitaet>().schwach){
+                        if(ob12!=null &&ob12.GetComponent<Entitaet>().schwach){
                             
                             allesDa &= true;
-                            Debug.Log("schwach");
                             
-                        }else if(ob1 != null &&ob2==null&& ob12 != null && ob12.GetComponent<Entitaet>().schwach)
-                        {
-                            allesDa &= true;
-                            Debug.Log("schwach");
                         }
                         else { allesDa &= false; }
             
@@ -372,7 +364,6 @@ public class ERAufgabe : MonoBehaviour
                     else if (!obj.GetComponent<Beziehung>().schwach && listeBeziehungsEigenschaften[Story.level][i][2].Equals("0"))
                     {
                         allesDa &= true;
-                        Debug.Log("schwach");
                     }
                     else
                     {
@@ -380,7 +371,13 @@ public class ERAufgabe : MonoBehaviour
                     }
                     if (allesDa)
                     {
+                        erfolgreichbetrachtet.Add(obj);
                         beziehungenHat[Story.level]++;
+                        break;
+                    }
+                    else
+                    {
+                        kardHat[Story.level]--;
                     }
                 }
             }  

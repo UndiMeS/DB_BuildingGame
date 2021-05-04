@@ -10,12 +10,10 @@ public class Linienzeichner : MonoBehaviour
     public Vector3 pos1;
     private Vector3 pos2;
     private RectTransform rect;
-    private int breite=3;
     public bool zeichnen=false;
 
     private LineRenderer lineRenderer;
-    private float counter;
-    private float distance;
+
 
     public int setposition=0;
 

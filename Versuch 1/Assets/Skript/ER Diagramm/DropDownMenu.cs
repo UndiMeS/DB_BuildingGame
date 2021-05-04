@@ -45,7 +45,7 @@ public class DropDownMenu : MonoBehaviour
     {
         if (!ERAufgabe.gespeicherteObjekte.Contains(ERErstellung.selectedGameObjekt))
         {
-            ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().welcheEntity(einsOderZwei, option);
+            ERErstellung.selectedGameObjekt.GetComponent<Beziehung>().welcheEntity(einsOderZwei, option, false);
         }
         else
         {
