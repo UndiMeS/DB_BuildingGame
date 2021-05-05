@@ -259,6 +259,7 @@ public class ERAufgabe : MonoBehaviour
         if (checkAllesRichtig())
         {
             FehlerAnzeige.fehlertext = "Du hast alles richtig gemacht!";
+            Story.lvl[Story.level] = true;
             foreach (GameObject obj in ERErstellung.modellObjekte)
             {
                 if (!gespeicherteObjekte.Contains(obj))
