@@ -63,7 +63,7 @@ public class ERErstellung : MonoBehaviour
             FehlerAnzeige.fehlertext = "Wähle zuerst die Entität aus zu der das Attribute gehören soll.";
             Destroy(temp);
         }
-        else if (temp.CompareTag("Attribut") && selectedGameObjekt!= null &&!selectedGameObjekt.CompareTag("Entitaet") )
+        else if (temp.CompareTag("Attribut") && selectedGameObjekt!= null &&(!selectedGameObjekt.CompareTag("Entitaet") &&!selectedGameObjekt.CompareTag("Attribut")))
         {
             Destroy(temp.GetComponent<ERObjekt>());
             FehlerAnzeige.fehlertext = "Wähle zuerst die Entität aus zu der das Attribute gehören soll.";
@@ -75,11 +75,20 @@ public class ERErstellung : MonoBehaviour
             modellObjekte.Add(temp);
             changeSelectedGameobjekt(temp);
             selectedGameObjekt.transform.SetParent(erModellflaeche.transform);
-            if (selectedGameObjekt.CompareTag("Attribut"))
+            if (selectedGameObjekt.CompareTag("Attribut") && lastselected.CompareTag("Entitaet"))
             {
                 selectedGameObjekt.transform.SetParent(lastselected.transform);
+                zeichneLinie(lastselected, selectedGameObjekt);
                 lastselected.GetComponent<Entitaet>().attribute.Add(selectedGameObjekt);
-
+                selectedGameObjekt.GetComponent<Attribut>().vater = lastselected;
+            }
+            else if (selectedGameObjekt.CompareTag("Attribut") && lastselected.CompareTag("Attribut"))
+            {
+                GameObject vater = lastselected.GetComponent<Attribut>().vater;
+                vater.GetComponent<Entitaet>().attribute.Add(selectedGameObjekt);
+                zeichneLinie(selectedGameObjekt, vater);
+                selectedGameObjekt.transform.SetParent(vater.transform);
+                selectedGameObjekt.GetComponent<Attribut>().vater = vater;
             }
 
             Random rand = new Random();
@@ -87,10 +96,7 @@ public class ERErstellung : MonoBehaviour
             selectedGameObjekt.GetComponent<ERObjekt>().leisteBottom = leisteBottom;
             selectedGameObjekt.GetComponent<ERObjekt>().leisteRechts = leisteRechts;
             
-            if (selectedGameObjekt.CompareTag("Attribut") && lastselected.CompareTag("Entitaet"))
-            {
-               zeichneLinie();
-            }
+            
             if (selectedGameObjekt.CompareTag("Beziehung")&&!schwach)
             {
                 selectedGameObjekt.GetComponent<Beziehung>().erstelleBeziehung();
@@ -98,11 +104,11 @@ public class ERErstellung : MonoBehaviour
         }
     }
 
-    private GameObject zeichneLinie()
+    private GameObject zeichneLinie(GameObject last, GameObject select)
     {
         GameObject templinie = Instantiate(linie, transform);
 
-        templinie.GetComponent<Linienzeichner>().setzeGameObjekte(lastselected, selectedGameObjekt);
+        templinie.GetComponent<Linienzeichner>().setzeGameObjekte(last, select);
         templinie.GetComponent<Linienzeichner>().zeichnen = true;
         templinie.transform.SetParent(linienOrdner.transform);
 

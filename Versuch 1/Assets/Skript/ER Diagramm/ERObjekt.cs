@@ -24,12 +24,14 @@ public class ERObjekt : MonoBehaviour
 
     public Canvas canvas;
 
+    public TMPro.TMP_InputField inputfield;
+
     public void Start()
     {
         rectTransform = gameObject.GetComponent<RectTransform>();
         width = rectTransform.sizeDelta.x;
         height = rectTransform.sizeDelta.y;
-
+        inputfield.ActivateInputField();
     }
 
    

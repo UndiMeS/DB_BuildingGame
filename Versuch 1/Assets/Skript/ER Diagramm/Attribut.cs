@@ -5,4 +5,5 @@ using UnityEngine;
 public class Attribut : MonoBehaviour
 {
     public bool primaerschluessel;
+    public GameObject vater;
 }

@@ -92,7 +92,7 @@ public class ERAufgabe : MonoBehaviour
     private string[] wohncontainer_astronaut_Eig = { "Wohncontainer", "Astronaut", "1", "n", "1" };
 
     private string[] astronaut_forschungsprojekt = { "forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };
-    private string[] astronaut_forschungsprojekt_Eig = { "Astronaut", "Forschungsprojekt", "0", "1", "n" };
+    private string[] astronaut_forschungsprojekt_Eig = { "Astronaut", "Forschungsprojekt", "0", "n", "1" };
 
     private string[] astronaut_feldsphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
     private string[] astronaut_feldsphaere_Eig = { "Feldsphäre", "Astronaut", "0", "n", "1" };
@@ -104,7 +104,7 @@ public class ERAufgabe : MonoBehaviour
     private string[] stallcontainer_nutztier_Eig = { "Stallcontainer", "Nutztier", "1", "n", "1" };
 
     private string[] weidesphaere_nutztier = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften", "grasenAuf", "grasen auf", "helfenAuf", "helfen auf" };
-    private string[] weidesphaere_nutztier_Eig = { "Weidesphäre", "Nutztier", "0", "1", "n" };
+    private string[] weidesphaere_nutztier_Eig = { "Weidesphäre", "Nutztier", "0", "n", "1" };
 
     private string[] forschungsprojekt_wohncontainer = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
     private string[] forschungsprojekt_wohncontainer_Eig = { "Forschungsprojekt", "Wohncontainer", "0", "n", "m" };
@@ -119,7 +119,7 @@ public class ERAufgabe : MonoBehaviour
     private string[] forschungsprojekt_forschungsprojekt_Eig = { "Forschungsprojekt", "Forschungsprojekt", "0", "1", "n" };
 
     private string[] forschungsstation_forschungsprojekt = { "organisiert", "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
-    private string[] forschungsstation_forschungsprojekt_Eig = { "Forschungsstation", "Forschungsprojekt", "1", "1", "n" };
+    private string[] forschungsstation_forschungsprojekt_Eig = { "Forschungsstation", "Forschungsprojekt", "1", "n", "1" };
 
     //PS Attribut mit 1 setzten für das jeweilige Level
     // Reihenfolge von Attributen 0 kein Ps, 1 PS
@@ -290,10 +290,6 @@ public class ERAufgabe : MonoBehaviour
                 bool kardinalitaeten = true;
                 if (obj.CompareTag("Beziehung") && !gespeicherteObjekte.Contains(obj) && !erfolgreichbetrachtet.Contains(obj))
                 {
-                    if (Story.level == 4)
-                    {
-                        Debug.Log(".");
-                    }
                     string nameAnderesEnitity = "";
                     int einsoderZwei = 0;
 
@@ -345,6 +341,11 @@ public class ERAufgabe : MonoBehaviour
                         {
                             kardinalitaeten &= true;
                         }
+                        else if((ob1!=null && ob1.Equals(ob12) || ob2 != null && ob2.Equals(ob12) )&& Story.level==5){
+                            forschungsprojekt_forschungsprojekt_Eig[3] = "n";
+                            forschungsprojekt_forschungsprojekt_Eig[4] = "1";
+                            kardinalitaeten = !checkKard(obj, 1, i) && !checkKard(obj, 2, i);
+                        }
                         else
                         {
                             kardinalitaeten &= false;
@@ -357,10 +358,9 @@ public class ERAufgabe : MonoBehaviour
                         allesDa &= false;
                         kardinalitaeten &= false;
                     }
-
                     if (kardinalitaeten)
                     {
-                        kardHat[Story.level] = +2;
+                        kardHat[Story.level] += 2;
                     }
                     //name prüfen
                     bool temp = true;
@@ -404,12 +404,7 @@ public class ERAufgabe : MonoBehaviour
                         beziehungenHat[Story.level]++;
                         break;
                     }
-                    /*
-                    else
-                    {
-                        kardHat[Story.level]--;
-                    }
-                    */
+                    
                 }
             }
         }

@@ -50,7 +50,7 @@ public class LeisteBottom : MonoBehaviour
         }
         if (ERErstellung.selectedGameObjekt != null && ERErstellung.selectedGameObjekt.CompareTag("Attribut"))
         {
-            if (ERErstellung.selectedGameObjekt.transform.parent.GetComponent<Entitaet>().primaerschluessel.Contains(ERErstellung.selectedGameObjekt))
+            if (ERErstellung.selectedGameObjekt.GetComponent<Attribut>().primaerschluessel)
             {
                 primKnopf.SetIsOnWithoutNotify(true);
             }
@@ -108,6 +108,19 @@ public class LeisteBottom : MonoBehaviour
         {
             schwEntKnopf.isOn = ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwach;
             FehlerAnzeige.fehlertext = "Kann nicht verändert werden.";
+            return;
+        }int anz =0;
+        foreach(GameObject ent in ERErstellung.modellObjekte)
+        {
+            if (ent.CompareTag("Entitaet"))
+            {
+                anz++;
+            }
+        }
+        if (anz < 2)
+        {
+            SchwacheEntitaet(false);
+            FehlerAnzeige.fehlertext = "Man braucht mindestens 2 Entitäten.";
             return;
         }
         if (state)
