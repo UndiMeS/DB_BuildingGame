@@ -293,6 +293,7 @@ public class ERAufgabe : MonoBehaviour
                 {
                     string nameAnderesEnitity = "";
                     int einsoderZwei = 0;
+                    int dreiodervier = 0;
 
                     GameObject ob1 = null;
                     GameObject ob2 = null;
@@ -307,9 +308,10 @@ public class ERAufgabe : MonoBehaviour
                             ob12 = obj.GetComponent<Beziehung>().objekt2;
                             nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt2.name;
                         }
-                        if (checkKard(obj, 1, i))
+                        if (checkKard(obj, 1, i, 3))
                         {
                             einsoderZwei = 2;
+                            dreiodervier = 4;
                             kardinalitaeten &= true;
                         }
                         else
@@ -325,9 +327,10 @@ public class ERAufgabe : MonoBehaviour
                             ob12 = obj.GetComponent<Beziehung>().objekt1;
                             nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt1.name;
                         }
-                        if (checkKard(obj, 2, i))
+                        if (checkKard(obj, 2, i, 4))
                         {
                             einsoderZwei = 1;
+                            dreiodervier = 3;
                             kardinalitaeten &= true;
                         }
                         else
@@ -338,14 +341,14 @@ public class ERAufgabe : MonoBehaviour
                     if (listeBeziehungsEigenschaften[Story.level][i][1].Equals(nameAnderesEnitity))
                     {
                         allesDa &= true;
-                        if (checkKard(obj, einsoderZwei, i))
+                        if (checkKard(obj, einsoderZwei, i, dreiodervier))
                         {
                             kardinalitaeten &= true;
                         }
                         else if((ob1!=null && ob1.Equals(ob12) || ob2 != null && ob2.Equals(ob12) )&& Story.level==5){
                             forschungsprojekt_forschungsprojekt_Eig[3] = "n";
                             forschungsprojekt_forschungsprojekt_Eig[4] = "1";
-                            kardinalitaeten = !checkKard(obj, 1, i) && !checkKard(obj, 2, i);
+                            //kardinalitaeten = !checkKard(obj, 1, i) && !checkKard(obj, 2, i);
                         }
                         else
                         {
@@ -412,19 +415,19 @@ public class ERAufgabe : MonoBehaviour
 
     }
 
-    private bool checkKard(GameObject obj, int einsOderZwei, int i)
+    private bool checkKard(GameObject obj, int einsOderZwei, int i, int dreiOdervier)
     {
         if (einsOderZwei == 1)
         {
-            return obj.GetComponent<Beziehung>().kard1.Equals(listeBeziehungsEigenschaften[Story.level][i][3])
+            return obj.GetComponent<Beziehung>().kard1.Equals(listeBeziehungsEigenschaften[Story.level][i][dreiOdervier])
                 || ((obj.GetComponent<Beziehung>().kard1.Equals("n") || obj.GetComponent<Beziehung>().kard1.Equals("m"))
-                && (listeBeziehungsEigenschaften[Story.level][i][3].Equals("n") || listeBeziehungsEigenschaften[Story.level][i][3].Equals("m")));
+                && (listeBeziehungsEigenschaften[Story.level][i][dreiOdervier].Equals("n") || listeBeziehungsEigenschaften[Story.level][i][dreiOdervier].Equals("m")));
         }
         else
         {
-            return obj.GetComponent<Beziehung>().kard2.Equals(listeBeziehungsEigenschaften[Story.level][i][4])
+            return obj.GetComponent<Beziehung>().kard2.Equals(listeBeziehungsEigenschaften[Story.level][i][dreiOdervier])
                || ((obj.GetComponent<Beziehung>().kard2.Equals("n") || obj.GetComponent<Beziehung>().kard2.Equals("m"))
-               && (listeBeziehungsEigenschaften[Story.level][i][4].Equals("n") || listeBeziehungsEigenschaften[Story.level][i][4].Equals("m")));
+               && (listeBeziehungsEigenschaften[Story.level][i][dreiOdervier].Equals("n") || listeBeziehungsEigenschaften[Story.level][i][dreiOdervier].Equals("m")));
         }
     }
 

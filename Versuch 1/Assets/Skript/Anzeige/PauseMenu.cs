@@ -19,6 +19,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject hilfeTexte;
     public GameObject Aufgabenfenster;
     public GameObject Checkliste;
+    public GameObject baumenuTransparent;
 
 
     // Update is called once per frame
@@ -49,6 +50,7 @@ public class PauseMenu : MonoBehaviour
         SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
         GebaeudeAnzeige.allesAus = false;
+        baumenuTransparent.SetActive(true);
     }
 
     public void WeiterspielenER()
@@ -88,6 +90,8 @@ public class PauseMenu : MonoBehaviour
         hilfeGebaeudeinfo.SetActive(true);
         hilfeButtondestroyer.SetActive(true);
         hilfeTexte.SetActive(true);
+        baumenuTransparent.SetActive(false);
+
     }
     public void HilfeER()
     {
