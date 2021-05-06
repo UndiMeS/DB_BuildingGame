@@ -9,7 +9,26 @@ public class Story : MonoBehaviour
     public GameObject level0;
     public GameObject level1;
 
+    //Level 0 Objekte
+    public GameObject transparentWohncontainer;
 
+    //Level 1 Objecte
+    public GameObject buttonForscher;// = GetComponent<Button>();
+    public GameObject buttonFeld;
+    public GameObject buttonWeide;
+    public GameObject buttonAlleAstronauten;
+    public GameObject buttonWohnendeAstronauten;
+
+    /*
+        public GameObject o;
+        o = GetComponent<Button>();
+        o.interactable = false;
+    */
+
+    void Start()
+    {
+        transparentWohncontainer.SetActive(true);
+    }
     void Update()
     {
         if (lvl[0])
