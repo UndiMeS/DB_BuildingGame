@@ -162,6 +162,18 @@ public class PauseMenu : MonoBehaviour
     {
         canvas.SetActive(true);
     }
+
+    public void animationMission(GameObject mission)
+    {
+        Animator animator = mission.GetComponent<Animator>();
+        if(animator!= null)
+        {
+            bool isOpen = animator.GetBool("open");
+
+            animator.SetBool("open", !isOpen);
+        }
+    }
+
 }
 
 

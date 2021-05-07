@@ -28,7 +28,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     private int menschkosten = 10;
     private int tierkosten = 10;
 
-    public static bool forschungsauswahl = false;
+    //public static int forschungsauswahl = 0; //0 keine forschungsauswahl aktuell, 1..n = Stationsnummer
 
     public TMP_Dropdown Forschungsmerkmal;
 
@@ -125,15 +125,9 @@ public class GebaeudeAnzeige : MonoBehaviour
         }
         if (Testing.laden)
         {
-            forschungsauswahl = false;
+           // forschungsauswahl = 0;
         }
-        if (forschungsauswahl)
-        {
-            foreach (GameObject anzeige in anzeigen)
-            {
-                    anzeige.SetActive(false);
-            }
-        }
+        
 
         
     }
@@ -154,7 +148,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     }
     private void Forschung(GameObject gebaeude)
     {
-        if (!forschungsauswahl)
+        if (!gebaeude.GetComponent<Forschung>().spezialisierung.Equals(""))
         {
             gebaeude.GetComponent<Forschung>().ausgabeStation(forschungsTabelle);
             if (gebaeude.GetComponent<Forschung>().spezialisierung.Equals("Wohncontainer"))
@@ -174,6 +168,11 @@ public class GebaeudeAnzeige : MonoBehaviour
             }
 
             gebaeude.GetComponent<Forschung>().ausgabeProjekt(projektTabelle, merkmalGO, KostenVerbessernGO);
+        }
+        else
+        {
+            spezialisierungsauswahl.SetActive(true);
+            anzeigen[2].SetActive(false);
         }
     }
 
@@ -276,14 +275,8 @@ public class GebaeudeAnzeige : MonoBehaviour
 
     public void Spezialisierung(string spezialisierung)
     {
-        foreach (GameObject fors in Testing.gebauedeListe)
-        {
-            gebaeude = fors;
-        }wert = 3;    
         gebaeude.GetComponent<Forschung>().spezialisierung = spezialisierung;
         spezialisierungsauswahl.SetActive(false);
-        forschungsauswahl = false;
-        
 
         if (spezialisierung.Equals("Wohncontainer"))
         {

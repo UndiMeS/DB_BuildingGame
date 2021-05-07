@@ -20,6 +20,11 @@ public class ERObjekt : MonoBehaviour
 
     public GameObject leisteBottom;
     public GameObject leisteRechts;
+    public GameObject checkliste;
+    public GameObject aufgabe;
+    public GameObject dd1;
+    public GameObject dd2;
+    public GameObject dd3;
 
     public Canvas canvas;
 
@@ -41,7 +46,7 @@ public class ERObjekt : MonoBehaviour
             changeSprite(ERErstellung.selectedGameObjekt.Equals(gameObject));
         }
 
-        if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition) && ERErstellung.testAufGleicherPosition(Input.mousePosition) != null && ERErstellung.testAufGleicherPosition(Input.mousePosition).Equals(gameObject))
+        if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition)&&dropdownclose() && ERErstellung.testAufGleicherPosition(Input.mousePosition) != null && ERErstellung.testAufGleicherPosition(Input.mousePosition).Equals(gameObject))
         //wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
         {
 
@@ -88,9 +93,26 @@ public class ERObjekt : MonoBehaviour
 
     }
 
+    private bool dropdownclose()
+    {
+        bool closed = false;
+        closed =closed || dd1.GetComponent<TMPro.TMP_Dropdown>().IsExpanded;
+        closed = closed || dd2.GetComponent<TMPro.TMP_Dropdown>().IsExpanded;
+        closed = closed || dd3.GetComponent<TMPro.TMP_Dropdown>().IsExpanded;
+        return !closed;
+    }
+
     private bool inBox()
     {
         bool drin = RectTransformUtility.RectangleContainsScreenPoint(leisteBottom.GetComponent<RectTransform>(), Input.mousePosition, Camera.main);
+        if (checkliste.activeSelf)
+        {
+            drin = drin || RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), Input.mousePosition, Camera.main);
+        }
+        if (aufgabe.activeSelf)
+        {
+            drin = drin || RectTransformUtility.RectangleContainsScreenPoint(aufgabe.GetComponent<RectTransform>(), Input.mousePosition, Camera.main);
+        }
         drin = drin || RectTransformUtility.RectangleContainsScreenPoint(leisteRechts.GetComponent<RectTransform>(), Input.mousePosition, Camera.main);
         return drin;
     }

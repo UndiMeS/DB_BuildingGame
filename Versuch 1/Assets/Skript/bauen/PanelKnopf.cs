@@ -73,11 +73,8 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
     public void testenObBedingungenErfuellt()
     {
-        if (GebaeudeAnzeige.forschungsauswahl)
-        {
-            FehlerAnzeige.fehlertext = "Wähle zuerst eine Spezialisierung des Forschungsprojektes aus!";
-            return;
-        }
+        
+
         if (gebaeudeNummer == 2)
         {
             if (Feld.arbeiterzahl > Testing.feldarbeiter)

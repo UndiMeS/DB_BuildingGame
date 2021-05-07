@@ -5,7 +5,7 @@ public class Forschung : MonoBehaviour
 {
     public int stationsnummer=0;
     private int baukosten;
-    public string spezialisierung;
+    public string spezialisierung="";
     private int spezInt;
     public int anzahlProjekte = 0;
     public int maxAnzahlProjekte = 3;
@@ -37,7 +37,7 @@ public class Forschung : MonoBehaviour
             baukosten = preis;
             Testing.geld -= preis;
             Testing.forscher -= chef;
-            GebaeudeAnzeige.forschungsauswahl = true;
+            //GebaeudeAnzeige.forschungsauswahl = stationsnummer;
             projekte = new List<Projekt>();
 
             Testing.forschungsstationen.Add(this);
@@ -419,7 +419,7 @@ public class Forschung : MonoBehaviour
         projekte = new List<Projekt>();
         verbesserung(ddm, merkmalGO);
 
-        GebaeudeAnzeige.forschungsauswahl = false;
+        //GebaeudeAnzeige.forschungsauswahl = 0;
 
         
     }

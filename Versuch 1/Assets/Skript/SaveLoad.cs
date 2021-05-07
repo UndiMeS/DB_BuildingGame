@@ -108,7 +108,7 @@ public class SaveLoad : MonoBehaviour
         stallLaden();
         menschenLaden();
         tiereLaden();
-        GebaeudeAnzeige.forschungsauswahl = false;
+        //GebaeudeAnzeige.forschungsauswahl = 0;
 
         saveLoadER.laden();
     }
@@ -509,7 +509,7 @@ public class SaveLoad : MonoBehaviour
                 Testing.gebauedeListe.Add(geb);
             }
         }
-        GebaeudeAnzeige.forschungsauswahl = false;
+        //GebaeudeAnzeige.forschungsauswahl = 0;
     }
     private void wohncontainerLaden()
     {

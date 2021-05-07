@@ -33,6 +33,11 @@ public class ERErstellung : MonoBehaviour
     public GameObject aufgabentext;
     public GameObject checkliste;
 
+    public GameObject ddSchwach;
+    public GameObject dd1;
+    public GameObject dd2;
+
+
     // Start is called before the first frame update
     // zuerst leer
     void Start()
@@ -52,13 +57,18 @@ public class ERErstellung : MonoBehaviour
         {
             selectedGameObjekt.GetComponent<ERObjekt>().selected = false;//bei ERObjekt auswahl aufloesen
         }
+        if (prefab.CompareTag("Beziehung") && modellObjekte.Count == 0)
+        {
+            FehlerAnzeige.fehlertext = "Erstelle zuerst einen Entität.";
+            return;
+        }
 
         GameObject temp = Instantiate(prefab, transform);
         if (temp.CompareTag("Beziehung"))
         {
             temp.GetComponent<Beziehung>().setLinienordner(linienOrdner);
         }
-
+        
         //nur wenn vorhergehendes Objekt Entity kann Attribut erzeugt werden
         if (temp.CompareTag("Attribut") && modellObjekte.Count == 0)
         {
@@ -97,8 +107,13 @@ public class ERErstellung : MonoBehaviour
             setRandomPosition(selectedGameObjekt);
             selectedGameObjekt.GetComponent<ERObjekt>().leisteBottom = leisteBottom;
             selectedGameObjekt.GetComponent<ERObjekt>().leisteRechts = leisteRechts;
-            
-            
+            selectedGameObjekt.GetComponent<ERObjekt>().aufgabe = aufgabentext;
+            selectedGameObjekt.GetComponent<ERObjekt>().checkliste = checkliste;
+            selectedGameObjekt.GetComponent<ERObjekt>().dd1 = dd1;
+            selectedGameObjekt.GetComponent<ERObjekt>().dd2 = dd2;
+            selectedGameObjekt.GetComponent<ERObjekt>().dd3 = ddSchwach;
+
+
             if (selectedGameObjekt.CompareTag("Beziehung")&&!schwach)
             {
                 selectedGameObjekt.GetComponent<Beziehung>().erstelleBeziehung();
@@ -234,10 +249,8 @@ public class ERErstellung : MonoBehaviour
 
     public static GameObject testAufGleicherPosition(Vector3 pos)
     {
-        Debug.Log(modellObjekte.Count);
         foreach (GameObject objekt in modellObjekte)
-        {
-            
+        {            
             if (checkMausIn(pos, objekt))
             {
                 return objekt;

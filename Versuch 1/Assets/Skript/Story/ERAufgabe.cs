@@ -523,6 +523,10 @@ public class ERAufgabe : MonoBehaviour
         if (count == anzahlObjekte[Story.level])
         {
             ausgabe &= true;
+        }else if(count > anzahlObjekte[Story.level])
+        {
+            FehlerAnzeige.fehlertext = "Es sind zu viele Objekte.";
+            ausgabe &= false;
         }
         else
         {

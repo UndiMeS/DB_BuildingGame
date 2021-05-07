@@ -192,7 +192,7 @@ public class ObjektBewegung : MonoBehaviour
         }
         else if (Testing.objektGebaut == 3)
         {
-            GebaeudeAnzeige.forschungsauswahl = false;
+            //GebaeudeAnzeige.forschungsauswahl = 0;
             Testing.forscher++;
             Forschung.nummerZaehler--;
         }

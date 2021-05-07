@@ -100,7 +100,7 @@ public class LeisteBottom : MonoBehaviour
 
     public void SchwacheEntitaet(bool state)
     {
-        if (ERErstellung.selectedGameObjekt == null)
+        if (ERErstellung.selectedGameObjekt == null||ERErstellung.modellObjekte.Count==1)
         {
             return;
         }
@@ -109,23 +109,25 @@ public class LeisteBottom : MonoBehaviour
             schwEntKnopf.isOn = ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwach;
             FehlerAnzeige.fehlertext = "Kann nicht verändert werden.";
             return;
-        }int anz =0;
-        foreach(GameObject ent in ERErstellung.modellObjekte)
-        {
-            if (ent.CompareTag("Entitaet"))
-            {
-                anz++;
-            }
-        }
-        if (anz < 2)
-        {
-            SchwacheEntitaet(false);
-            FehlerAnzeige.fehlertext = "Man braucht mindestens 2 Entitäten.";
-            return;
         }
         if (state)
         {
-            foreach(GameObject bez in ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().beziehungen)
+            int anz = 0;
+            foreach (GameObject ent in ERErstellung.modellObjekte)
+            {
+                if (ent.CompareTag("Entitaet"))
+                {
+                    anz++;
+                }
+            }
+            if (anz < 2)
+            {
+                
+                FehlerAnzeige.fehlertext = "Man braucht mindestens 2 Entitäten.";
+                schwEntKnopf.SetIsOnWithoutNotify(false);
+                return;
+            }
+            foreach (GameObject bez in ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().beziehungen)
             {
                 if (bez == null)
                 {
