@@ -14,7 +14,6 @@ public class ERObjekt : MonoBehaviour
     public bool selected = false;
     private RectTransform rectTransform;
 
-    public bool schreibenSelected = false;
 
     public Sprite selectedSprite;
     public Sprite originalSprite;
@@ -41,11 +40,11 @@ public class ERObjekt : MonoBehaviour
         {
             changeSprite(ERErstellung.selectedGameObjekt.Equals(gameObject));
         }
-        
-        if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition)&& ERErstellung.testAufGleicherPosition(Input.mousePosition).Equals(gameObject))
+
+        if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition) && ERErstellung.testAufGleicherPosition(Input.mousePosition) != null && ERErstellung.testAufGleicherPosition(Input.mousePosition).Equals(gameObject))
         //wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
         {
-  
+
             if (inBox())
             {
                 return;
@@ -53,11 +52,11 @@ public class ERObjekt : MonoBehaviour
             if (!selected) //wenn neu selected, dann wird Objekt zu aktuellen ER-Objekt
             {
                 //setzt Pivot des Objektes auf die Position der Maus
-                
-                Vector3[] v= new Vector3[4];
+
+                Vector3[] v = new Vector3[4];
                 rectTransform.GetWorldCorners(v);
 
-                float pivotX =rectTransform.pivot.x* (Utilitys.GetMouseWorldPosition(Input.mousePosition).x-v[0].x)/(gameObject.transform.position.x-v[0].x);
+                float pivotX = rectTransform.pivot.x * (Utilitys.GetMouseWorldPosition(Input.mousePosition).x - v[0].x) / (gameObject.transform.position.x - v[0].x);
                 float pivotY = rectTransform.pivot.y * (Utilitys.GetMouseWorldPosition(Input.mousePosition).y - v[0].y) / (gameObject.transform.position.y - v[0].y);
                 rectTransform.pivot = new Vector2(pivotX, pivotY);
                 ERErstellung.changeSelectedGameobjekt(gameObject);
@@ -65,7 +64,6 @@ public class ERObjekt : MonoBehaviour
             selected = true;
             moveSelected = true;
             KameraKontroller.aktiviert = false;
-            schreibenSelected = false;
         }
         if (Input.GetMouseButtonUp(0))
         {
@@ -80,8 +78,6 @@ public class ERObjekt : MonoBehaviour
             float y = v[0].y + (gameObject.transform.position.y - v[0].y) / (2 * rectTransform.pivot.y);
             gameObject.transform.position = new Vector2(x, y);
             gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
-
-
         }
         if (moveSelected)//bewegen des Objekts
         {
@@ -96,15 +92,6 @@ public class ERObjekt : MonoBehaviour
     {
         bool drin = RectTransformUtility.RectangleContainsScreenPoint(leisteBottom.GetComponent<RectTransform>(), Input.mousePosition, Camera.main);
         drin = drin || RectTransformUtility.RectangleContainsScreenPoint(leisteRechts.GetComponent<RectTransform>(), Input.mousePosition, Camera.main);
-        /*Vector3[] v = new Vector3[4];
-        leisteBottom.GetComponent<RectTransform>().GetLocalCorners(v);
-        Debug.Log(Input.mousePosition+" y:" + v[0].x);
-        bool drin = Input.mousePosition.y < v[2].y;
-        leisteRechts.GetComponent<RectTransform>().GetLocalCorners(v);
-        Debug.Log("x:"+v[0].x);
-        Debug.Log(drin + " " + (Input.mousePosition.x > v[0].x));
-        drin =drin || Input.mousePosition.x > v[0].x;*/
-
         return drin;
     }
 
@@ -119,12 +106,7 @@ public class ERObjekt : MonoBehaviour
             gameObject.GetComponent<Image>().sprite = originalSprite;
         }
     }
-
-    public void ChangeSchreibenselected()
-    {
-        selected = false;
-        schreibenSelected = true;
-    }
+    
 
 
     //Begrenzung der Bewegung des Objektes
@@ -145,17 +127,6 @@ public class ERObjekt : MonoBehaviour
     //Überprüft ob der Mausklick auf dem Objket ist
     private bool checkMausIn(Vector3 mousePosition)
     {
-        /*Vector3[] v = new Vector3[4];
-        gameObject.GetComponent<RectTransform>().GetWorldCorners(v);
-        
-        gameObject.GetComponent<RectTransform>().GetLocalCorners(v);*/
-
-        /*mousePosition = Utilitys.GetMouseWorldPosition(mousePosition);
-        Vector3 position = gameObject.transform.position;
-        int abstandX = (int)Math.Abs(mousePosition.x - position.x);
-        int abstandY = (int)Math.Abs(mousePosition.y - position.y);
-        bool drin = abstandX < width / 2 && abstandY < height / 2;*/
-
         bool drin = RectTransformUtility.RectangleContainsScreenPoint(gameObject.GetComponent<RectTransform>(), Input.mousePosition, Camera.main);
         return drin;
     }

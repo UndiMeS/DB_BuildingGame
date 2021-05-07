@@ -47,7 +47,15 @@ public class Beziehung : MonoBehaviour
     void Update()
     {
         Utilitys.TextInTMP(kardText1, kard1);
-        Utilitys.TextInTMP(kardText2, kard2);
+        if (kard2.Equals("n"))
+        {
+            Utilitys.TextInTMP(kardText2, "m");
+        }
+        else
+        {
+            Utilitys.TextInTMP(kardText2, kard2);
+        }
+            
         if (objekt1 != null)
         {
             positionOfKardinalitaet(kardText1, objekt1, objekt1.Equals(objekt2));
@@ -244,7 +252,7 @@ public class Beziehung : MonoBehaviour
             }
             else
             {
-                kard2 = "m";
+                kard2 = "n";
             }
             kardText2.SetActive(true);
 

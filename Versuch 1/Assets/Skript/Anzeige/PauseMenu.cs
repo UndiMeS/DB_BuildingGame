@@ -56,12 +56,13 @@ public class PauseMenu : MonoBehaviour
     public void WeiterspielenER()
     {
         PauseMenuUI.SetActive(false);
-        KameraKontroller.aktiviert = false;
+        KameraKontroller.aktiviert = true;
         GebaeudeAnzeige.allesAus = false;
         hilfeButtondestroyer.SetActive(false);
         hilfeTexte.SetActive(false);
         hilfeZurückButton.SetActive(false);
         hilfeFenster.SetActive(false);
+        Time.timeScale = 1;
     }
     void Pause()
     {
@@ -96,11 +97,10 @@ public class PauseMenu : MonoBehaviour
     public void HilfeER()
     {
         PauseMenuUI.SetActive(false);
-        SpielIstPausiert = true;
-        KameraKontroller.aktiviert = false;
-        hilfeFenster.SetActive(true);
-        hilfeZurückButton.SetActive(true);
         
+
+        hilfeFenster.SetActive(true);
+        hilfeZurückButton.SetActive(true);        
         hilfeButtondestroyer.SetActive(true);
         hilfeTexte.SetActive(true);
         Aufgabenfenster.SetActive(false);
@@ -113,9 +113,9 @@ public class PauseMenu : MonoBehaviour
         {
             objekt.SetActive(false);
             SpielIstPausiert = false;
-            KameraKontroller.aktiviert = true;
-            
+            KameraKontroller.aktiviert = true;            
             GebaeudeAnzeige.allesAus = false;
+            Time.timeScale = 1;
         }
         else
         {
@@ -124,6 +124,7 @@ public class PauseMenu : MonoBehaviour
             KameraKontroller.aktiviert = false;
             GebaeudeInfoBauen.wertFest = 0;
             GebaeudeAnzeige.allesAus = true;
+            Time.timeScale = 0;
         }
     }
 

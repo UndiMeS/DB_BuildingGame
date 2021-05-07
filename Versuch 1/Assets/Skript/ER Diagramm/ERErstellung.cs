@@ -30,6 +30,9 @@ public class ERErstellung : MonoBehaviour
     public GameObject leisteBottom;
     public static bool schwach=false;
 
+    public GameObject aufgabentext;
+    public GameObject checkliste;
+
     // Start is called before the first frame update
     // zuerst leer
     void Start()
@@ -91,8 +94,7 @@ public class ERErstellung : MonoBehaviour
                 selectedGameObjekt.GetComponent<Attribut>().vater = vater;
             }
 
-            Random rand = new Random();
-            temp.transform.position = Utilitys.GetMouseWorldPosition(new Vector3(rand.Next(Screen.width / 10, 9 * Screen.width / 10), rand.Next(Screen.height / 6, 5 * Screen.height / 6), 0));
+            setRandomPosition(selectedGameObjekt);
             selectedGameObjekt.GetComponent<ERObjekt>().leisteBottom = leisteBottom;
             selectedGameObjekt.GetComponent<ERObjekt>().leisteRechts = leisteRechts;
             
@@ -102,6 +104,23 @@ public class ERErstellung : MonoBehaviour
                 selectedGameObjekt.GetComponent<Beziehung>().erstelleBeziehung();
             }
         }
+    }
+
+    private void setRandomPosition(GameObject gameObject)
+    {
+        Random rand = new Random();
+        Vector3 pos= new Vector3();
+        bool ausserhalb = true;
+        while (ausserhalb) {
+            pos = new Vector3(rand.Next(Screen.width / 10, 9 * Screen.width / 10), rand.Next(Screen.height / 6, 5 * Screen.height / 6), 0);
+            if (!RectTransformUtility.RectangleContainsScreenPoint(aufgabentext.GetComponent<RectTransform>(), pos, Camera.main)
+                && !RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), pos, Camera.main))
+            {
+                ausserhalb = false;
+            }
+                }
+        gameObject.transform.position = Utilitys.GetMouseWorldPosition(pos);
+
     }
 
     private GameObject zeichneLinie(GameObject last, GameObject select)
@@ -215,8 +234,10 @@ public class ERErstellung : MonoBehaviour
 
     public static GameObject testAufGleicherPosition(Vector3 pos)
     {
+        Debug.Log(modellObjekte.Count);
         foreach (GameObject objekt in modellObjekte)
         {
+            
             if (checkMausIn(pos, objekt))
             {
                 return objekt;

@@ -92,13 +92,13 @@ public class ERAufgabe : MonoBehaviour
     private string[] wohncontainer_astronaut_Eig = { "Wohncontainer", "Astronaut", "1", "n", "1" };
 
     private string[] astronaut_forschungsprojekt = { "forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };
-    private string[] astronaut_forschungsprojekt_Eig = { "Astronaut", "Forschungsprojekt", "0", "n", "1" };
+    private string[] astronaut_forschungsprojekt_Eig = { "Astronaut", "Forschungsprojekt", "0", "1", "n" };
 
     private string[] astronaut_feldsphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
-    private string[] astronaut_feldsphaere_Eig = { "Feldsphäre", "Astronaut", "0", "n", "1" };
+    private string[] astronaut_feldsphaere_Eig = { "Astronaut", "Feldsphäre", "0", "1", "n" };
 
     private string[] astronaut_weidesphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
-    private string[] astronaut_weidesphaere_Eig = { "Astronaut", "Weidesphäre", "0", "n", "1" };
+    private string[] astronaut_weidesphaere_Eig = { "Astronaut", "Weidesphäre", "0", "1", "n" };
 
     private string[] stallcontainer_nutztier = { "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "schläftIn", "PlatzFür" };
     private string[] stallcontainer_nutztier_Eig = { "Stallcontainer", "Nutztier", "1", "n", "1" };
@@ -107,13 +107,13 @@ public class ERAufgabe : MonoBehaviour
     private string[] weidesphaere_nutztier_Eig = { "Weidesphäre", "Nutztier", "0", "n", "1" };
 
     private string[] forschungsprojekt_wohncontainer = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
-    private string[] forschungsprojekt_wohncontainer_Eig = { "Forschungsprojekt", "Wohncontainer", "0", "n", "m" };
+    private string[] forschungsprojekt_wohncontainer_Eig = { "Forschungsprojekt", "Wohncontainer", "0", "n", "n" };
 
     private string[] forschungsprojekt_feldsphaere = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
-    private string[] forschungsprojekt_feldsphaere_Eig = { "Forschungsprojekt", "Feldsphäre", "0", "n", "m" };
+    private string[] forschungsprojekt_feldsphaere_Eig = { "Forschungsprojekt", "Feldsphäre", "0", "n", "n" };
 
     private string[] forschungsprojekt_weidesphaere = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
-    private string[] forschungsprojekt_weidesphaere_Eig = { "Forschungsprojekt", "Weidesphäre", "0", "n", "m" };
+    private string[] forschungsprojekt_weidesphaere_Eig = { "Forschungsprojekt", "Weidesphäre", "0", "n", "n" };
 
     private string[] forschungsprojekt_forschungsprojekt = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern", "MethodenVerbessern", "verbessertMethodenVon", "verbessertMethoden" };
     private string[] forschungsprojekt_forschungsprojekt_Eig = { "Forschungsprojekt", "Forschungsprojekt", "0", "1", "n" };
@@ -204,9 +204,15 @@ public class ERAufgabe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Utilitys.TextInTMP(aufgabenText, aufgabe[Story.level]);
-        checkObjekte();
-
+        if (Story.level < 8)
+        {
+            Utilitys.TextInTMP(aufgabenText, aufgabe[Story.level]);
+            checkObjekte();
+        }
+        else
+        {
+            FehlerAnzeige.fehlertext = "Du hast es geschafft.";
+        }
         //Checkbox für Level 0 anpassen
         if (Story.level == 0)
         {
@@ -300,6 +306,7 @@ public class ERAufgabe : MonoBehaviour
                     GameObject ob12 = null;
 
                     //Entitäten und Kardinalität prüfen
+                    Debug.Log((obj.GetComponent<Beziehung>().objekt1 != null) + " " + (listeBeziehungsEigenschaften[Story.level][i][0].Equals(obj.GetComponent<Beziehung>().objekt1.name)));
                     if (obj.GetComponent<Beziehung>().objekt1 != null && listeBeziehungsEigenschaften[Story.level][i][0].Equals(obj.GetComponent<Beziehung>().objekt1.name))
                     {
                         if (obj.GetComponent<Beziehung>().objekt2 != null)
@@ -308,10 +315,10 @@ public class ERAufgabe : MonoBehaviour
                             ob12 = obj.GetComponent<Beziehung>().objekt2;
                             nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt2.name;
                         }
-                        if (checkKard(obj, 1, i, 3))
+                        if (checkKard(obj, 1, i, 4))
                         {
                             einsoderZwei = 2;
-                            dreiodervier = 4;
+                            dreiodervier = 3;
                             kardinalitaeten &= true;
                         }
                         else
@@ -338,6 +345,10 @@ public class ERAufgabe : MonoBehaviour
                             kardinalitaeten &= false;
                         }
                     }
+                    if (i == 2)
+                    {
+                        Debug.Log("1");
+                    }
                     if (listeBeziehungsEigenschaften[Story.level][i][1].Equals(nameAnderesEnitity))
                     {
                         allesDa &= true;
@@ -346,9 +357,17 @@ public class ERAufgabe : MonoBehaviour
                             kardinalitaeten &= true;
                         }
                         else if((ob1!=null && ob1.Equals(ob12) || ob2 != null && ob2.Equals(ob12) )&& Story.level==5){
-                            forschungsprojekt_forschungsprojekt_Eig[3] = "n";
-                            forschungsprojekt_forschungsprojekt_Eig[4] = "1";
-                            //kardinalitaeten = !checkKard(obj, 1, i) && !checkKard(obj, 2, i);
+                            if(obj.GetComponent<Beziehung>().kard1.Equals("1")&& obj.GetComponent<Beziehung>().kard2.Equals("n"))
+                            {
+                                kardinalitaeten = true;
+                            }else if (obj.GetComponent<Beziehung>().kard2.Equals("1") && obj.GetComponent<Beziehung>().kard1.Equals("n"))
+                            {
+                                kardinalitaeten = true;
+                            }
+                            else
+                            {
+                                kardinalitaeten = false;
+                            }
                         }
                         else
                         {
@@ -417,17 +436,26 @@ public class ERAufgabe : MonoBehaviour
 
     private bool checkKard(GameObject obj, int einsOderZwei, int i, int dreiOdervier)
     {
+        string kard = "";
         if (einsOderZwei == 1)
         {
-            return obj.GetComponent<Beziehung>().kard1.Equals(listeBeziehungsEigenschaften[Story.level][i][dreiOdervier])
-                || ((obj.GetComponent<Beziehung>().kard1.Equals("n") || obj.GetComponent<Beziehung>().kard1.Equals("m"))
-                && (listeBeziehungsEigenschaften[Story.level][i][dreiOdervier].Equals("n") || listeBeziehungsEigenschaften[Story.level][i][dreiOdervier].Equals("m")));
+             kard= obj.GetComponent<Beziehung>().kard1;       
         }
         else
         {
-            return obj.GetComponent<Beziehung>().kard2.Equals(listeBeziehungsEigenschaften[Story.level][i][dreiOdervier])
-               || ((obj.GetComponent<Beziehung>().kard2.Equals("n") || obj.GetComponent<Beziehung>().kard2.Equals("m"))
-               && (listeBeziehungsEigenschaften[Story.level][i][dreiOdervier].Equals("n") || listeBeziehungsEigenschaften[Story.level][i][dreiOdervier].Equals("m")));
+            kard = obj.GetComponent<Beziehung>().kard2;
+        }
+
+        if (kard.Equals(listeBeziehungsEigenschaften[Story.level][i][dreiOdervier]))
+        {
+            
+            return true;
+        }
+        
+        else
+        {
+            
+            return false;
         }
     }
 
