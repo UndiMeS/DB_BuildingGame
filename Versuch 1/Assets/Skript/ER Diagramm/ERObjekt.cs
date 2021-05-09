@@ -46,7 +46,7 @@ public class ERObjekt : MonoBehaviour
             changeSprite(ERErstellung.selectedGameObjekt.Equals(gameObject));
         }
 
-        if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition)&&dropdownclose() && ERErstellung.testAufGleicherPosition(Input.mousePosition) != null && ERErstellung.testAufGleicherPosition(Input.mousePosition).Equals(gameObject))
+        if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition)&&dropdownclose() && ERErstellung.testAufGleicherPosition(Input.mousePosition) != null && ERErstellung.testAufGleicherPosition(Input.mousePosition).Equals(gameObject)&& !PauseMenu.SpielIstPausiert)
         //wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
         {
 

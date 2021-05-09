@@ -306,7 +306,6 @@ public class ERAufgabe : MonoBehaviour
                     GameObject ob12 = null;
 
                     //Entitäten und Kardinalität prüfen
-                    Debug.Log((obj.GetComponent<Beziehung>().objekt1 != null) + " " + (listeBeziehungsEigenschaften[Story.level][i][0].Equals(obj.GetComponent<Beziehung>().objekt1.name)));
                     if (obj.GetComponent<Beziehung>().objekt1 != null && listeBeziehungsEigenschaften[Story.level][i][0].Equals(obj.GetComponent<Beziehung>().objekt1.name))
                     {
                         if (obj.GetComponent<Beziehung>().objekt2 != null)

@@ -112,20 +112,16 @@ public class SaveLoadER : MonoBehaviour
 
     public void saveEntity()
     {
-        string ausgabe = "";
-        
-        foreach (GameObject objekt in ERErstellung.modellObjekte)
+        string json = "[";
+        foreach (GameObject ent in ERErstellung.modellObjekte)
         {
-            if (objekt.CompareTag("Entitaet"))
+            if (ent.CompareTag("Entitaet"))
             {
-                ausgabe += objekt.name + ",";
-                ausgabe += objekt.transform.localPosition.x + ",";
-                ausgabe += objekt.transform.localPosition.y + ",";
-                ausgabe+= objekt.transform.localPosition.z + ",";
-                ausgabe += objekt.GetComponent<Entitaet>().schwach + ";";                
+                json += JsonUtility.ToJson(ent.GetComponent<Entitaet>()) + ",";
             }
+            
         }
-
-        File.WriteAllText(Application.dataPath + "/SaveState/Entity.json", ausgabe);
+        json = json.Remove(json.Length - 1) + "]";
+        File.WriteAllText(Application.dataPath + "/SaveState/Entity.json", json);
     }
 }

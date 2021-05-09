@@ -5,12 +5,18 @@ using UnityEngine;
 
 public class Beziehung : MonoBehaviour
 {
+    public string beziehungsName;
+    public string instanceID;
+
     public GameObject objekt1 = null;
     public GameObject objekt2 = null;
 
     public string kard1 = "1";
-    private GameObject kardText1;
     public string kard2 = "1";
+
+    public bool schwach = false;
+
+    private GameObject kardText1;
     private GameObject kardText2;
 
     public GameObject linie1;
@@ -23,8 +29,6 @@ public class Beziehung : MonoBehaviour
     public Sprite schwachOriginal;
     public Sprite Selected;
     public Sprite Original;
-
-    public bool schwach = false;
 
     private bool firsttime = true;
     // Start is called before the first frame update
@@ -40,12 +44,13 @@ public class Beziehung : MonoBehaviour
             kard2 = "1";
         }
 
-
+        instanceID = gameObject.GetInstanceID().ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
+        beziehungsName = gameObject.name;
         Utilitys.TextInTMP(kardText1, kard1);
         if (kard2.Equals("n"))
         {

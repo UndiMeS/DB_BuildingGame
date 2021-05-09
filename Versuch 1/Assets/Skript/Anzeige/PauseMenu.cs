@@ -36,6 +36,7 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+        
               
     }
 
@@ -63,6 +64,7 @@ public class PauseMenu : MonoBehaviour
         hilfeZurückButton.SetActive(false);
         hilfeFenster.SetActive(false);
         Time.timeScale = 1;
+
     }
     void Pause()
     {
@@ -102,7 +104,7 @@ public class PauseMenu : MonoBehaviour
         hilfeFenster.SetActive(true);
         hilfeZurückButton.SetActive(true);        
         hilfeButtondestroyer.SetActive(true);
-        hilfeTexte.SetActive(true);
+        ObjectAnzeigen(hilfeTexte);
         Aufgabenfenster.SetActive(false);
         Checkliste.SetActive(false);
     }
@@ -126,6 +128,7 @@ public class PauseMenu : MonoBehaviour
             GebaeudeAnzeige.allesAus = true;
             Time.timeScale = 0;
         }
+
     }
 
     public void SwitchToER()
