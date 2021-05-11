@@ -13,7 +13,7 @@ using UnityEngine.UI;
 public class Story : MonoBehaviour
 {
     //Startlevel für ER-Editor
-    public static int level=0;
+    public static int level=7;
 
     //Array zum Prüfen, ob LvL im ER erreicht ist
     public static bool[] lvl = new bool[] {false,false,false,false,false,false,false,false};
@@ -55,6 +55,10 @@ public class Story : MonoBehaviour
     Button bVerbessern;
     public GameObject buttonNeuesProjekt;
     Button bNeuesProjekt;
+    public GameObject buttonWohncontainerForschen;
+    Button bWohncontainerForschen;
+    public GameObject buttonFeldForschen;
+    Button bFeldForschen;
 
     //Level 6 Objecte
     public GameObject transparentStallcontainer;
@@ -71,6 +75,15 @@ public class Story : MonoBehaviour
 
     //Level 7 Objecte
     public GameObject transparentWeide;
+    public GameObject buttonWeideForschen;
+    Button bWeideForschen;
+    public GameObject erBaumenue;
+    public GameObject checklistButton;
+    public GameObject aufgabeButton;
+    public GameObject checklist;
+    public GameObject aufgabe;    
+    public GameObject buttonHilfeER;
+    Button bHilfeER;
 
 
     void Start()
@@ -78,7 +91,7 @@ public class Story : MonoBehaviour
         //Freischaltbare Objekte auf aus/false setzten (Transparente auf true)
 
         //folgendes auskommentieren, um sofort auf alles zugriff zu haben.
-        //allesOff(); 
+        allesOff(); 
     }   
     void Update()
     {
@@ -124,6 +137,10 @@ public class Story : MonoBehaviour
         bVerbessern.interactable = false;
         bNeuesProjekt = buttonNeuesProjekt.GetComponent<Button>();
         bNeuesProjekt.interactable = false;
+        bWohncontainerForschen = buttonWohncontainerForschen.GetComponent<Button>();
+        bWohncontainerForschen.interactable = false;
+        bFeldForschen = buttonFeldForschen.GetComponent<Button>();
+        bFeldForschen.interactable = false;        
 
         //Level 6
         transparentStallcontainer.SetActive(true);
@@ -140,6 +157,11 @@ public class Story : MonoBehaviour
 
         //Level 7
         transparentWeide.SetActive(true);
+        bWeideForschen = buttonWeideForschen.GetComponent<Button>();
+        bWeideForschen.interactable = false;   
+        erBaumenue.SetActive(true);        
+        bHilfeER = buttonHilfeER.GetComponent<Button>();
+        bHilfeER.interactable = true; 
 
     }
 
@@ -183,6 +205,8 @@ public class Story : MonoBehaviour
             Debug.Log("Level 5 korrekt");
             bVerbessern.interactable = true;
             bNeuesProjekt.interactable = true;
+            bWohncontainerForschen.interactable = true;
+            bFeldForschen.interactable = true;
         }
         if(lvl[6])
         {
@@ -198,6 +222,14 @@ public class Story : MonoBehaviour
         {
             Debug.Log("Level 7 korrekt");
             transparentWeide.SetActive(false);
+            bWeideForschen.interactable = true; 
+            erBaumenue.SetActive(false);
+            aufgabe.SetActive(false);
+            aufgabeButton.SetActive(false);
+            checklist.SetActive(false);
+            checklistButton.SetActive(false);
+            bHilfeER.interactable = false; 
+
 
         }
     }
