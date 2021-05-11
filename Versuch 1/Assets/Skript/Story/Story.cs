@@ -13,7 +13,10 @@ using UnityEngine.UI;
 public class Story : MonoBehaviour
 {
     //Startlevel für ER-Editor
-    public static int level=7;
+    public static int level=0;
+
+    //ER-Level-Anzeige an Buttonleiste rechts
+    public GameObject buttonKreisLevel;
 
     //Array zum Prüfen, ob LvL im ER erreicht ist
     public static bool[] lvl = new bool[] {false,false,false,false,false,false,false,false};
@@ -97,6 +100,9 @@ public class Story : MonoBehaviour
     {
         //Prüfe auf erfüllte Level
         checkLevel();
+
+        //Setzte ButtonlebelAnzeige
+        Utilitys.TextInTMP(buttonKreisLevel, Story.level);
     }
 
     public void allesOff()
