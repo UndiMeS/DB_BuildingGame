@@ -171,6 +171,9 @@ public class ERAufgabe : MonoBehaviour
     public GameObject checkboxButton;
     public GameObject bottomLeiste;
 
+    public GameObject kreisHacken;
+    public GameObject kreisKreuz;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -226,6 +229,8 @@ public class ERAufgabe : MonoBehaviour
                 checkbox.SetActive(true);
                 aufgabeButton.SetActive(true);
                 checkboxButton.SetActive(true);
+                kreisHacken.SetActive(false);
+                kreisKreuz.SetActive(true);
 
                 checkObjekte();
             //Ist die Mission noch nciht erfüllt, bleibt alles verdeckt.
@@ -300,6 +305,8 @@ public class ERAufgabe : MonoBehaviour
             checkbox.SetActive(false);
             aufgabeButton.SetActive(false);
             checkboxButton.SetActive(false);
+            //kreisHacken.SetActive(true);
+            //kreisKreuz.SetActive(false); 
             
             FehlerAnzeige.fehlertext = "Du hast alles richtig gemacht!";
             Story.lvl[Story.level] = true; //Markiere Level als erfüllt
@@ -307,6 +314,8 @@ public class ERAufgabe : MonoBehaviour
             //ER bleibt ja bei dem Level stehen, wo Mission bearbeitet werden kann. Ist Mission erfolgreich (missionCheck = true), dann geht es weiter.
             if((Story.level == 1|| Story.level == 2 || Story.level == 5 || Story.level == 6 ) && missionCheck == true){
                 missionCheck = false;
+                kreisHacken.SetActive(true);
+                kreisKreuz.SetActive(false);
             }
 
 

@@ -18,6 +18,8 @@ public class Mission : MonoBehaviour
 //Hacken und Kreuz an Buttonleiste rechts
     public GameObject masterHacken;
     public GameObject masterKreuz;
+    public GameObject ERkreisHacken;
+    public GameObject ERkreisKreuz;
 
 //Hacken in Missionsfenster an Teilzielen
     public GameObject hacken1;
@@ -103,11 +105,8 @@ public class Mission : MonoBehaviour
         //Level 0
         if(setLevel() == 0){
             if(Testing.feldarbeiter == System.Convert.ToInt32(mission[0][5]) || Testing.forscher == System.Convert.ToInt32(mission[0][5]) || Testing.tierpfleger == System.Convert.ToInt32(mission[0][5])){
-                Debug.Log("Easy");
                 hacken1.SetActive(true);
-                masterKreuz.SetActive(false);
-                masterHacken.SetActive(true);
-                ERAufgabe.missionCheck = true;
+                HackenKreuz();
             }
         //Level 1    
         }else if(setLevel() == 1){
@@ -115,28 +114,32 @@ public class Mission : MonoBehaviour
                 masterKreuz.SetActive(true);
                 masterHacken.SetActive(false);
            if(Testing.umsatz >= System.Convert.ToInt32(mission[1][5])){
-                Debug.Log("Easy");
                 hacken1.SetActive(true);
                 x = 1;
             }
             if(Testing.feldarbeiter == System.Convert.ToInt32(mission[1][6])){
-                Debug.Log("Easy");
                 hacken2.SetActive(true);
                 y = 1; 
             }
             if(x==1 && y==1){
-                masterKreuz.SetActive(false);
-                masterHacken.SetActive(true);
-                ERAufgabe.missionCheck = true;
+                HackenKreuz();
             }
         //Level 2     
         }else if(setLevel() == 2){
                 hacken1.SetActive(false);
-                masterKreuz.SetActive(true);
-                masterHacken.SetActive(false);
-
-                //ERAufgabe.missionCheck = true;  
+                hacken2.SetActive(false);
+  
         }
+    }
+
+    //Hilfsmethode die bei efolgreicher Mission sich um Hacken/Kreuz kümmert
+    private void HackenKreuz()
+    {
+        masterKreuz.SetActive(false);
+        masterHacken.SetActive(true);
+        ERAufgabe.missionCheck = true;
+        ERkreisHacken.SetActive(false);
+        ERkreisKreuz.SetActive(true);
     }
 
 }

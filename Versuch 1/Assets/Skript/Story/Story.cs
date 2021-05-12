@@ -104,7 +104,7 @@ public class Story : MonoBehaviour
         checkLevel();
 
         //Setzte ButtonlebelAnzeige
-        Utilitys.TextInTMP(buttonKreisLevel, Story.level);
+        //Utilitys.TextInTMP(buttonKreisLevel, Story.level);
     }
 
     public void allesOff()
