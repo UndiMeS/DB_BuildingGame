@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Mission : MonoBehaviour
 {
+//Hilfsvariablen
+    int x = 0;
+    int y = 0;
+
+//Missionsfenster Objekte
     public GameObject missionText;
     public GameObject teilZiel1;
     public GameObject teilZiel2;
@@ -16,11 +21,14 @@ public class Mission : MonoBehaviour
 
 //Hacken in Missionsfenster an Teilzielen
     public GameObject hacken1;
-    
+    public GameObject hacken2;
+    public GameObject hacken3;
+    public GameObject hacken4;
 
-    private string[][] mission = {                 // "Missionstext", TZ1, TZ2, TZ3, TZ4, Ziel für TZ1, Ziel für TZ2, Ziel für TZ3, Ziel für TZ4
-                                        new string[] { "Wir brauchen Astronauten!", "Fliege 8 Astronauten ein", "aus", "aus", "aus", "8", "2", "3", "4" },
-                                        new string[] { "Mission 1", "Teilziel 11", "Teilziel 21", "Teilziel 31", "Teilziel 41", "1", "2", "3", "4" },
+//Missionstexte für Fenster
+    private string[][] mission = {                  // "Missionstext", TZ1, TZ2, TZ3, TZ4, Ziel für TZ1, Ziel für TZ2, Ziel für TZ3, Ziel für TZ4
+                                        new string[] { "Wir brauchen Astronauten!", "Fliege 1 Astronauten ein.", "aus", "aus", "aus", "1", " ", " ", " " },
+                                        new string[] { "Wir brauchen Erträge! Du kannst nun Feldsphären errichten. Dafür werden jedoch auch Feldastronauten benötigt.", "Erreiche einen Ertrag von 50.", "Fliege 8 Feldastronauten ein.", "aus", "aus", "50", "8", " ", " " },
                                         new string[] { "Mission 2", "Teilziel 12", "Teilziel 22", "Teilziel 32", "Teilziel 42", "1", "2", "3", "4" },
                                         new string[] { "Mission 3", "Teilziel 13", "Teilziel 23", "Teilziel 33", "Teilziel 43", "1", "2", "3", "4" },
                                         new string[] { "Mission 4", "Teilziel 14", "Teilziel 24", "Teilziel 34", "Teilziel 44", "1", "2", "3", "4" },
@@ -34,23 +42,13 @@ public class Mission : MonoBehaviour
         masterKreuz.SetActive(true);
         masterHacken.SetActive(false);
     }
-
     // Update is called once per frame
     void Update()
     {
         //Gib alle Texte der Mission aus.
         setMission(setLevel());
 
-        //Level 1 Test
-        if(setLevel() == 0){
-            if(Testing.feldarbeiter == System.Convert.ToInt32(mission[0][5])){
-                Debug.Log("Easy");
-                hacken1.SetActive(true);
-                masterKreuz.SetActive(false);
-                masterHacken.SetActive(true);
-            }
-        }
-
+        checkMission();
     }
 
     //Schreibe Missionstexte ins Fenster. Bei "aus" blende Teilziel aus
@@ -61,21 +59,25 @@ public class Mission : MonoBehaviour
         if(mission[lvl][1]=="aus"){
             teilZiel1.SetActive(false);
         }else{
+            teilZiel1.SetActive(true);
             Utilitys.TextInTMP(teilZiel1, mission[lvl][1]);
         }
         if(mission[lvl][2]=="aus"){
             teilZiel2.SetActive(false);           
         }else{
+            teilZiel2.SetActive(true);
             Utilitys.TextInTMP(teilZiel2, mission[lvl][2]);        
         }
         if(mission[lvl][3]=="aus"){
             teilZiel3.SetActive(false);
         }else{
+            teilZiel3.SetActive(true);
             Utilitys.TextInTMP(teilZiel3, mission[lvl][3]);
         }
         if(mission[lvl][4]=="aus"){
             teilZiel4.SetActive(false);
         }else{
+            teilZiel4.SetActive(true);
             Utilitys.TextInTMP(teilZiel4, mission[lvl][4]);
         }
     }
@@ -84,11 +86,52 @@ public class Mission : MonoBehaviour
     public int setLevel()
     {
         if(Story.level == 0 || Story.level == 1|| Story.level == 2){
-            return 0;
-        }else if(Story.level == 2){
-            return 1;
-        }else{
-            return 10;
+            return 0; //X Astronauten einfliegen
+        }else if(Story.level == 3){
+            return 1; //Ertrag auf X setzten
+        }else if(Story.level == 4|| Story.level == 5|| Story.level == 6){
+            return 2; //Verbessern von Containern und Feldern
+        }else if(Story.level == 7){
+            return 3; //X Nutztiere einfliegen
+        }else {
+            return 4; //X Feldarbeiter und Ertrag
+        }
+    }
+
+    public void checkMission()
+    {
+        //Level 1
+        if(setLevel() == 0){
+            if(Testing.feldarbeiter == System.Convert.ToInt32(mission[0][5]) || Testing.forscher == System.Convert.ToInt32(mission[0][5]) || Testing.tierpfleger == System.Convert.ToInt32(mission[0][5])){
+                Debug.Log("Easy");
+                hacken1.SetActive(true);
+                masterKreuz.SetActive(false);
+                masterHacken.SetActive(true);
+            }
+        //Level 2    
+        }else if(setLevel() == 1){
+                hacken1.SetActive(false);
+                masterKreuz.SetActive(true);
+                masterHacken.SetActive(false);
+           if(Testing.umsatz >= System.Convert.ToInt32(mission[1][5])){
+                Debug.Log("Easy");
+                hacken1.SetActive(true);
+                x = 1;
+            }
+            if(Testing.feldarbeiter == System.Convert.ToInt32(mission[1][6])){
+                Debug.Log("Easy");
+                hacken2.SetActive(true);
+                y = 1; 
+            }
+            if(x==1 && y==1){
+                masterKreuz.SetActive(false);
+                masterHacken.SetActive(true);
+            }
+             
+        }else if(setLevel() == 2){
+                hacken1.SetActive(false);
+                masterKreuz.SetActive(true);
+                masterHacken.SetActive(false);  
         }
     }
 
