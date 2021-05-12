@@ -80,7 +80,7 @@ public class Testing : MonoBehaviour
     {
         if (geld < 25 && zuvorNichtAn)
         {
-            pausemenu.ObjectAnzeigen(zusatz);
+            pausemenu.ObjectAnzeigenTimeStop(zusatz);
             zusatz.GetComponent<Aufgaben>().openAufgabe();
             zuvorNichtAn = false;
         }

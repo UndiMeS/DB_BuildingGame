@@ -104,7 +104,7 @@ public class Mission : MonoBehaviour
     {
         //Level 0
         if(setLevel() == 0){
-            if(Testing.feldarbeiter == System.Convert.ToInt32(mission[0][5]) || Testing.forscher == System.Convert.ToInt32(mission[0][5]) || Testing.tierpfleger == System.Convert.ToInt32(mission[0][5])){
+            if(Testing.summeMenschen == System.Convert.ToInt32(mission[0][5])){
                 hacken1.SetActive(true);
                 HackenKreuz();
             }

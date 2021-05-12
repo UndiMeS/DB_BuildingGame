@@ -113,11 +113,28 @@ public class ERErstellung : MonoBehaviour
             selectedGameObjekt.GetComponent<ERObjekt>().dd2 = dd2;
             selectedGameObjekt.GetComponent<ERObjekt>().dd3 = ddSchwach;
 
+            nameGeben();
 
             if (selectedGameObjekt.CompareTag("Beziehung")&&!schwach)
             {
                 selectedGameObjekt.GetComponent<Beziehung>().erstelleBeziehung();
             }
+        }
+    }
+
+    private void nameGeben()
+    {
+        if (selectedGameObjekt.CompareTag("Entitaet"))
+        {
+            selectedGameObjekt.name = "neue Entität";
+        }
+        else if (selectedGameObjekt.CompareTag("Attribut"))
+        {
+            selectedGameObjekt.name = "neues Attribut";
+        }
+        else if (selectedGameObjekt.CompareTag("Beziehung"))
+        {
+            selectedGameObjekt.name = "neue Beziehung";
         }
     }
 

@@ -29,14 +29,16 @@ public class KameraKontroller : MonoBehaviour
 
     private Vector3 testPos;
 
+    public RectTransform aufgabentext;
+
     // Start is called before the first frame update
     void Start()
     {
         transform.position = newPosition;
         newZoom = cameraTransform.localPosition;
 
-        oldPos = new Vector3(370, 205, 0); //für ER-Modell; Mars: (60,-10,5);
-        oldZoom = new Vector3(0, 50, -100); // für ER-Modell; Mars: (0,-40,-140);
+        oldPos = new Vector3(370, 200, 0); //für ER-Modell; Mars: (60,-10,5);
+        oldZoom = new Vector3(0, 50, -40); // für ER-Modell; Mars: (0,-40,-140);
     }
 
     // Update is called once per frame
@@ -113,6 +115,10 @@ public class KameraKontroller : MonoBehaviour
     //Touch Input
     private void HandleMouseInput()
     {
+        if (!RectTransformUtility.RectangleContainsScreenPoint(aufgabentext, Input.mousePosition, Camera.main))
+        {
+
+
             if (Input.mouseScrollDelta.y != 0)      //Mausrad
             {
                 newZoom += Input.mouseScrollDelta.y * zoomAmount * 10;
@@ -144,6 +150,7 @@ public class KameraKontroller : MonoBehaviour
                 dragCurrentPosition = Utilitys.GetMouseWorldPosition(Input.mousePosition);
                 newPosition = transform.position + dragStartPosition - dragCurrentPosition; //start-aktuelle Position des ziehens  (wie viel gezogen) addiert auf aktuelle position
             }
+        }
     }
 
 

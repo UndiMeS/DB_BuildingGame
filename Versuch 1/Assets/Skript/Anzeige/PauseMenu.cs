@@ -21,6 +21,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject Checkliste;
     public GameObject baumenuTransparent;
 
+    public GameObject mission;
+
 
     // Update is called once per frame
     void Update()
@@ -76,6 +78,7 @@ public class PauseMenu : MonoBehaviour
         KameraKontroller.aktiviert = false;
         GebaeudeInfoBauen.wertFest = 0;
         GebaeudeAnzeige.allesAus = true;
+        
     }
     public void LadeMenu()
     {
@@ -107,12 +110,12 @@ public class PauseMenu : MonoBehaviour
         hilfeFenster.SetActive(true);
         hilfeZurückButton.SetActive(true);        
         hilfeButtondestroyer.SetActive(true);
-        ObjectAnzeigen(hilfeTexte);
+        ObjectAnzeigenTimeStop(hilfeTexte);
         Aufgabenfenster.SetActive(false);
         Checkliste.SetActive(false);
     }
 
-    public void ObjectAnzeigen (GameObject objekt)
+    public void ObjectAnzeigenTimeStop (GameObject objekt)
     {
         if (objekt.activeSelf)
         {
@@ -134,12 +137,37 @@ public class PauseMenu : MonoBehaviour
 
     }
 
+    public void ObjectAnzeigenNotStop(GameObject objekt)
+    {
+        if (objekt.activeSelf)
+        {
+            objekt.SetActive(false);
+            SpielIstPausiert = false;
+            KameraKontroller.aktiviert = true;
+            GebaeudeAnzeige.allesAus = false;
+        }
+        else
+        {
+            objekt.SetActive(true);
+            SpielIstPausiert = true;
+            KameraKontroller.aktiviert = false;
+            GebaeudeInfoBauen.wertFest = 0;
+            GebaeudeAnzeige.allesAus = true;
+        }
+
+    }
+
     public void SwitchToER()
     {
+        mission.transform.localPosition = new Vector3(16, 726, 0);
+        Animator animator = mission.GetComponent<Animator>();
+        animator.enabled = false;
+
         ERon = true;
         //SpielIstPausiert = true;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(1);
         GebaeudeInfoBauen.wertFest = 0;
+        
     }
 
     public void SwitchToBaumenue()
@@ -147,7 +175,9 @@ public class PauseMenu : MonoBehaviour
         ERon = false;
         //SpielIstPausiert = false;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(0);
-
+        mission.transform.localPosition = new Vector3(16, 726, 0);
+        Animator animator = mission.GetComponent<Animator>();
+        animator.enabled = true;
     }
 
     public void AllesAusblenden()
@@ -169,7 +199,7 @@ public class PauseMenu : MonoBehaviour
         canvas.SetActive(true);
     }
 
-    public void animationMission(GameObject mission)
+    public void animationMission()
     {
         Animator animator = mission.GetComponent<Animator>();
         if(animator!= null)

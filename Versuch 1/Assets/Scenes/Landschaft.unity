@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9301,7 +9301,7 @@ RectTransform:
   - {fileID: 976858713}
   - {fileID: 2030428961}
   m_Father: {fileID: 1731972393}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12886,7 +12886,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 821967011}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: ObjectAnzeigen
+        m_MethodName: ObjectAnzeigenTimeStop
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 821967009}
@@ -25036,7 +25036,7 @@ RectTransform:
   - {fileID: 590765561}
   - {fileID: 1848306970}
   m_Father: {fileID: 1731972393}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -27049,6 +27049,7 @@ MonoBehaviour:
   Aufgabenfenster: {fileID: 0}
   Checkliste: {fileID: 0}
   baumenuTransparent: {fileID: 0}
+  mission: {fileID: 0}
 --- !u!222 &608227085
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28885,6 +28886,7 @@ MonoBehaviour:
   erModell: {fileID: 1909574202}
   oldPos: {x: 50, y: 200, z: 0}
   oldZoom: {x: 0, y: 50, z: -60}
+  aufgabentext: {fileID: 1508547998}
 --- !u!1 &648295050
 GameObject:
   m_ObjectHideFlags: 0
@@ -30474,8 +30476,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.0001831, y: -451}
-  m_SizeDelta: {x: 2000.9998, y: 81.37877}
+  m_AnchoredPosition: {x: -400.16, y: -451}
+  m_SizeDelta: {x: 1198.68, y: 81.38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &672276452
 MonoBehaviour:
@@ -30520,7 +30522,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281022912
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -36499,6 +36501,7 @@ MonoBehaviour:
   Aufgabenfenster: {fileID: 1508547997}
   Checkliste: {fileID: 629954372}
   baumenuTransparent: {fileID: 0}
+  mission: {fileID: 1733310776}
 --- !u!1 &822745092
 GameObject:
   m_ObjectHideFlags: 0
@@ -36708,8 +36711,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 821967011}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: AllesAusblenden
         m_Mode: 1
         m_Arguments:
@@ -43983,7 +43986,7 @@ MonoBehaviour:
         m_CallState: 1
       - m_Target: {fileID: 821967011}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: ObjectAnzeigen
+        m_MethodName: ObjectAnzeigenTimeStop
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 503711322}
@@ -45869,7 +45872,7 @@ RectTransform:
   - {fileID: 1596613946}
   - {fileID: 1279214337}
   m_Father: {fileID: 1731972393}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -45937,6 +45940,7 @@ MonoBehaviour:
   Aufgabenfenster: {fileID: 0}
   Checkliste: {fileID: 0}
   baumenuTransparent: {fileID: 1840935811}
+  mission: {fileID: 1733310776}
 --- !u!1 &1007809526
 GameObject:
   m_ObjectHideFlags: 0
@@ -56544,7 +56548,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 821967011}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: ObjectAnzeigen
+        m_MethodName: ObjectAnzeigenNotStop
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 629954372}
@@ -77644,11 +77648,11 @@ RectTransform:
   - {fileID: 1246403230}
   - {fileID: 1012312030}
   - {fileID: 2088245684}
+  - {fileID: 1733310777}
   - {fileID: 1005837853}
   - {fileID: 2030115635}
   - {fileID: 199388793}
   - {fileID: 559843061}
-  - {fileID: 1733310777}
   - {fileID: 886913272}
   - {fileID: 1189131367}
   - {fileID: 1862635349}
@@ -77773,7 +77777,7 @@ RectTransform:
   - {fileID: 1584715902}
   - {fileID: 64560822}
   m_Father: {fileID: 1731972393}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -79810,7 +79814,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1949946898}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: LadeMenu
         m_Mode: 1
@@ -85241,7 +85245,7 @@ GameObject:
   - component: {fileID: 1905278433}
   - component: {fileID: 1905278432}
   m_Layer: 5
-  m_Name: Aufgabe
+  m_Name: Mission
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85327,23 +85331,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1005837856}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: ObjectAnzeigen
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1733310776}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 0
-      - m_Target: {fileID: 1005837856}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: animationMission
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1733310776}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -86801,7 +86793,6 @@ GameObject:
   - component: {fileID: 1949946901}
   - component: {fileID: 1949946900}
   - component: {fileID: 1949946899}
-  - component: {fileID: 1949946898}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -86838,20 +86829,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1949946898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949946896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ded97a779abb6241826971c92243a03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aufgabe: {fileID: 1508547997}
-  optionsmenue: {fileID: 0}
 --- !u!114 &1949946899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90687,7 +90664,7 @@ RectTransform:
   - {fileID: 978777358}
   - {fileID: 729266550}
   m_Father: {fileID: 1731972393}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -94890,6 +94867,7 @@ GameObject:
   - component: {fileID: 2107687205}
   - component: {fileID: 2107687204}
   - component: {fileID: 2107687203}
+  - component: {fileID: 2107687206}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -94960,8 +94938,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1949946898}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 2107687206}
+        m_TargetAssemblyTypeName: ERMenue, Assembly-CSharp
         m_MethodName: aufgabeAnzeigen
         m_Mode: 1
         m_Arguments:
@@ -95010,6 +94988,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107687201}
   m_CullTransparentMesh: 0
+--- !u!114 &2107687206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107687201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ded97a779abb6241826971c92243a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aufgabe: {fileID: 1508547997}
+  optionsmenue: {fileID: 0}
 --- !u!1 &2108409764
 GameObject:
   m_ObjectHideFlags: 0
@@ -95169,7 +95161,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1005837856}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: ObjectAnzeigen
+        m_MethodName: ObjectAnzeigenTimeStop
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1747838147}

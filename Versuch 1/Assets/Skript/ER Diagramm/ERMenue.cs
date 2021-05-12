@@ -11,6 +11,7 @@ public class ERMenue : MonoBehaviour
 
     public void aufgabeAnzeigen()
     {
+        Debug.Log("?");
         if (aufgabe.activeSelf)
         {
             aufgabe.SetActive(false);
