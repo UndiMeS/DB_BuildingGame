@@ -45,7 +45,10 @@ public class PauseMenu : MonoBehaviour
         PauseMenuUI.SetActive(false);
         hilfeFenster.SetActive(false);
         hilfeZurückButton.SetActive(false);
-        hilfeGebaeudeinfo.SetActive(false);
+        if (hilfeGebaeudeinfo != null)
+        {
+            hilfeGebaeudeinfo.SetActive(false);
+        }
         hilfeButtondestroyer.SetActive(false);
         hilfeTexte.SetActive(false);
         SpielIstPausiert = false;

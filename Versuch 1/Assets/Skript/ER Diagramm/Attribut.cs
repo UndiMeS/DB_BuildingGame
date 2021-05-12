@@ -8,6 +8,8 @@ public class Attribut : MonoBehaviour
     public string instanceID;
     public bool primaerschluessel;
     public GameObject vater;
+    public float x;
+    public float y;
 
     public void Start()
     {
@@ -17,5 +19,7 @@ public class Attribut : MonoBehaviour
     private void Update()
     {
         attributName = gameObject.name;
+        x = gameObject.transform.position.x;
+        y = gameObject.transform.position.y;
     }
 }

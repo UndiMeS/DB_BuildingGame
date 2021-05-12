@@ -565,6 +565,8 @@ public class SaveLoad : MonoBehaviour
                 Testing.grid.SetWert(x, y, 1, geb);
                 geb.GetComponent<Wohncontainer>().setAll(nr, kosten, bettenAnz, freieBetten, x, y);
             }
+
+            //List<LoadedWohncontainer> wohncontainerListe= JsonUtility.FromJson<LoadedWohncontainer>(json);
         }
     }
 
@@ -615,5 +617,15 @@ public class SaveLoad : MonoBehaviour
             SpielInfos.marsTag = marsTag;
             SpielInfos.erdenTag = erdenTag;
     }
+    }
+
+    public class LoadedWohncontainer
+    {
+        public int nr;
+        public int kosten ;
+        public int bettenAnz;
+        public int freieBetten;
+        public int x ;
+        public int y;
     }
 }

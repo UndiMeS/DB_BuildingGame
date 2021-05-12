@@ -6,9 +6,10 @@ using UnityEngine;
 
 public class SaveLoadER : MonoBehaviour
 {
-    public GameObject entityPrefab;
+
     public GameObject erCanvas;
     public ERErstellung eRErstellung;
+    public GameObject prefabEntity;
 
    public void speichern()
     {
@@ -26,88 +27,108 @@ public class SaveLoadER : MonoBehaviour
     private void ladeEntity()
     {
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Entity.json");
-        string[] splitEntitys = json.Split(';');
-        for(int i =0; i<splitEntitys.Length-1;i++)
+        json = json.Remove(0, 1);
+        json = json.Remove(json.Length - 1);
+        foreach(string str in json.Split(','))
         {
-            string[] eigenschaften = splitEntitys[i].Split(',');
-            eRErstellung.erstelleObjekt(entityPrefab);
-            GameObject entity= ERErstellung.selectedGameObjekt ;
-            entity.name = eigenschaften[0];
-            
-            entity.transform.localPosition = new Vector3(float.Parse(eigenschaften[1]), float.Parse(eigenschaften[3]), float.Parse(eigenschaften[5]));
-            if(eigenschaften[4].Equals("true"))
-            {
-                entity.GetComponent<Entitaet>().schwach = true;
-            }
-            else
-            {
-                entity.GetComponent<Entitaet>().schwach = false;
-            }
-            
+            eRErstellung.erstelleObjekt(prefabEntity);
+            Entitaet tmp = JsonUtility.FromJson<Entitaet>(str);
+            ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().setWerte(tmp);
+            ERErstellung.selectedGameObjekt.transform.position = new Vector3(tmp.x, tmp.y, 0);
         }
+        
+       
+            
+            
+            /*string name = "";
+        bool schwach = false;
+        int instanceID = 0;
+        int vaterID;
+        int schwacheBezID;
+        List<int> attributID= new List<int>();
+        List<int> primaerschluesselID= new List<int>();
+        List<int> beziehungsID= new List<int>();
+        int x;
+        int y;
 
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/Entity.json");
+        
+        string[] split = json.Split(':');
+        for (int i = 1; i < split.Length; i++)
+        {
+            string[] tmp = split[i].Split(',');
+            if ((i - 1) % 10 == 0)
+            {
+                name = tmp[0];
+            }else if ((i - 1) % 10 == 1)
+            {
+                schwach =bool.Parse( tmp[1]);
+            }
+            else if ((i - 1) % 10 == 2)
+            {
+                instanceID = int.Parse(tmp[2]);
+            }
+            else if ((i - 1) % 10 == 3)
+            {
+                string[] temp= tmp[3].Split(':');
+                vaterID = int.Parse(temp[1]);
+            }
+            else if ((i - 1) % 10 == 4)
+            {
+                string[] temp = tmp[4].Split(':');
+                schwacheBezID = int.Parse(temp[1]);
+            }
+            else if ((i - 1) % 10 == 5)
+            {
+                string[] temp = tmp[5].Split(':');
+                for (int k =1; k < temp.Length; k =+ 2)
+                {
+                    attributID.Add( int.Parse(temp[k]));
+                }                
+            }
+            else if ((i - 1) % 10 == 6)
+            {
+                string[] temp = tmp[6].Split(':');
+                
+                for (int k = 1; k < temp.Length; k = +2)
+                {
+                    primaerschluesselID.Add(int.Parse(temp[k]));
+                }
+            }*/
+
+
+        //nr = int.Parse(tmp[0]);
+        //}
     }
 
     private void saveBeziehung()
     {
-        string ausgabe = "";
-        List<GameObject> beziehungen= new List<GameObject>();
-
-        foreach (GameObject objekt in ERErstellung.modellObjekte)
+        string json = "[";
+        foreach (GameObject ent in ERErstellung.modellObjekte)
         {
-            if (objekt.CompareTag("Entitaet"))
+            if (ent.CompareTag("Beziehung"))
             {
-                if (objekt.GetComponent<Entitaet>().schwach)
-                {
-                    GameObject beziehung = objekt.GetComponent<Entitaet>().schwacheBeziehung;
-                    beziehungen.Add(beziehung);
-                    ausgabe += beziehung.GetComponent<Beziehung>().objekt1.name + ",";
-                    ausgabe += beziehung.GetComponent<Beziehung>().kard1 + ",";
-                    ausgabe += beziehung.GetComponent<Beziehung>().objekt2.name + ",";
-                    ausgabe += beziehung.GetComponent<Beziehung>().kard2 + ",";
-                    ausgabe += true + ",";
-                    ausgabe += beziehung.transform.localPosition.x + "," + beziehung.transform.localPosition.y + "," + beziehung.transform.localPosition.z + ";";
-                }
-                foreach (GameObject beziehung in objekt.GetComponent<Entitaet>().beziehungen)
-                {
-                    if (!beziehungen.Contains(beziehung))
-                    {
-                        beziehungen.Add(beziehung);
-                        ausgabe += beziehung.GetComponent<Beziehung>().objekt1.name + ",";
-                        ausgabe += beziehung.GetComponent<Beziehung>().kard1 + ",";
-                        ausgabe += beziehung.GetComponent<Beziehung>().objekt2.name + ",";
-                        ausgabe += beziehung.GetComponent<Beziehung>().kard2 + ",";
-                        ausgabe+= false + ",";
-                        ausgabe += beziehung.transform.localPosition.x + "," + beziehung.transform.localPosition.y + "," + beziehung.transform.localPosition.z + ";";
-                    }
-                }
+                json += JsonUtility.ToJson(ent.GetComponent<Beziehung>()) + ",";
             }
+
         }
-        File.WriteAllText(Application.dataPath + "/SaveState/Beziehungen.json", ausgabe);
+        json = json.Remove(json.Length - 1) + "]";
+        File.WriteAllText(Application.dataPath + "/SaveState/Beziehungen.json", json);
     }
 
     private void saveAttribute()
     {
-        string ausgabe = "";
-
-        foreach (GameObject objekt in ERErstellung.modellObjekte)
+        string json = "[";
+        foreach (GameObject ent in ERErstellung.modellObjekte)
         {
-            if (objekt.CompareTag("Entitaet"))
+            if (ent.CompareTag("Attribut"))
             {
-                foreach (GameObject attribut in objekt.GetComponent<Entitaet>().attribute)
-                {
-                    ausgabe += objekt.name + ",";
-                    ausgabe += attribut.name + ",";
-                    ausgabe += attribut.transform.localPosition.x + ",";
-                    ausgabe += attribut.transform.localPosition.y + ",";
-                    ausgabe += attribut.transform.localPosition.z + ",";
-                    ausgabe+= objekt.GetComponent<Entitaet>().primaerschluessel.Contains(attribut) + ";";
-                }
-               
+                json += JsonUtility.ToJson(ent.GetComponent<Attribut>()) + ",";
             }
-        }
 
-        File.WriteAllText(Application.dataPath + "/SaveState/Attribut.json", ausgabe);
+        }
+        json = json.Remove(json.Length - 1) + "]";
+        File.WriteAllText(Application.dataPath + "/SaveState/Attribut.json", json);
     }
 
     public void saveEntity()
@@ -123,5 +144,28 @@ public class SaveLoadER : MonoBehaviour
         }
         json = json.Remove(json.Length - 1) + "]";
         File.WriteAllText(Application.dataPath + "/SaveState/Entity.json", json);
+    }
+    class LoadedEntitys
+    {
+        public List<LoadedEntity> liste;
+    }
+    class LoadedEntity
+    {
+        string name;
+        bool schwach;
+        int instanceID;
+        int vaterID;
+        int schwacheBezID;
+        List<int> attributID = new List<int>();
+        List<int> primaerschluesselID = new List<int>();
+        List<int> beziehungsID = new List<int>();
+        int x;
+        int y;
+
+        public void set(ERErstellung eRErstellung, GameObject prefabEntity)
+        {
+            eRErstellung.erstelleObjekt(prefabEntity);
+            ERErstellung.selectedGameObjekt.transform.position = new Vector3(x, y, 0);
+        }
     }
 }

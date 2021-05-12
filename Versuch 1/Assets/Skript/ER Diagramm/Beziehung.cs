@@ -16,6 +16,9 @@ public class Beziehung : MonoBehaviour
 
     public bool schwach = false;
 
+    public float x;
+    public float y;
+
     private GameObject kardText1;
     private GameObject kardText2;
 
@@ -51,6 +54,9 @@ public class Beziehung : MonoBehaviour
     void Update()
     {
         beziehungsName = gameObject.name;
+        x = gameObject.transform.position.x;
+        y = gameObject.transform.position.y;
+
         Utilitys.TextInTMP(kardText1, kard1);
         if (kard2.Equals("n"))
         {
