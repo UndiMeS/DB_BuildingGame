@@ -75,6 +75,8 @@ public class Story : MonoBehaviour
     Button bAlleTiere;
     public GameObject buttonWohnendeTiere; 
     Button bWohnendeTiere;
+    public GameObject buttonStallForschen;
+    Button bStallForschen;
 
     //Level 7 Objecte
     public GameObject transparentWeide;
@@ -160,6 +162,8 @@ public class Story : MonoBehaviour
         bAlleTiere.interactable = false;
         bWohnendeTiere = buttonWohnendeTiere.GetComponent<Button>();
         bWohnendeTiere.interactable = false;
+        bStallForschen = buttonStallForschen.GetComponent<Button>();
+        bStallForschen.interactable = false;
 
         //Level 7
         transparentWeide.SetActive(true);
@@ -223,6 +227,7 @@ public class Story : MonoBehaviour
             bSchaaf.interactable = true;
             bAlleTiere.interactable = true;
             bWohnendeTiere.interactable = true;
+            bStallForschen.interactable = true;
         }
         if(lvl[7])
         {

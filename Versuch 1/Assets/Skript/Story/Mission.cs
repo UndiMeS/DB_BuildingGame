@@ -47,7 +47,7 @@ public class Mission : MonoBehaviour
     {
         //Gib alle Texte der Mission aus.
         setMission(setLevel());
-
+        //Prüfe ob Mission von Level erfolgreich ist
         checkMission();
     }
 
@@ -100,15 +100,16 @@ public class Mission : MonoBehaviour
 
     public void checkMission()
     {
-        //Level 1
+        //Level 0
         if(setLevel() == 0){
             if(Testing.feldarbeiter == System.Convert.ToInt32(mission[0][5]) || Testing.forscher == System.Convert.ToInt32(mission[0][5]) || Testing.tierpfleger == System.Convert.ToInt32(mission[0][5])){
                 Debug.Log("Easy");
                 hacken1.SetActive(true);
                 masterKreuz.SetActive(false);
                 masterHacken.SetActive(true);
+                ERAufgabe.missionCheck = true;
             }
-        //Level 2    
+        //Level 1    
         }else if(setLevel() == 1){
                 hacken1.SetActive(false);
                 masterKreuz.SetActive(true);
@@ -126,12 +127,15 @@ public class Mission : MonoBehaviour
             if(x==1 && y==1){
                 masterKreuz.SetActive(false);
                 masterHacken.SetActive(true);
+                ERAufgabe.missionCheck = true;
             }
-             
+        //Level 2     
         }else if(setLevel() == 2){
                 hacken1.SetActive(false);
                 masterKreuz.SetActive(true);
-                masterHacken.SetActive(false);  
+                masterHacken.SetActive(false);
+
+                //ERAufgabe.missionCheck = true;  
         }
     }
 

@@ -67265,10 +67265,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f37460e4ac9fb54399dbd2036dd5b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityPrefab: {fileID: 1141620032127629371, guid: 116b02e25de6b164d82ef7d06c3c2bc6,
-    type: 3}
   erCanvas: {fileID: 1232103450}
   eRErstellung: {fileID: 1321532784}
+  prefabEntity: {fileID: 0}
 --- !u!1 &1495835515
 GameObject:
   m_ObjectHideFlags: 0
@@ -71399,6 +71398,7 @@ GameObject:
   - component: {fileID: 1584715902}
   - component: {fileID: 1584715904}
   - component: {fileID: 1584715903}
+  - component: {fileID: 1584715905}
   m_Layer: 5
   m_Name: Missionstext
   m_TagString: Untagged
@@ -71528,6 +71528,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584715901}
   m_CullTransparentMesh: 1
+--- !u!114 &1584715905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584715901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21256c5b62f346f18640dad779911e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowCharacters: 0
+  ShowWords: 0
+  ShowLinks: 0
+  ShowLines: 0
+  ShowMeshBounds: 0
+  ShowTextBounds: 0
+  ObjectStats: 'Characters: 352   Words: 58   Spaces: 57   Sprites: 0   Links: 0
+
+    Lines:
+    6   Pages: 1'
+  m_TextComponent: {fileID: 1584715903}
 --- !u!1 &1586511977
 GameObject:
   m_ObjectHideFlags: 0
@@ -77642,6 +77665,9 @@ MonoBehaviour:
   masterHacken: {fileID: 899928000}
   masterKreuz: {fileID: 1386540501}
   hacken1: {fileID: 1354960531}
+  hacken2: {fileID: 401174080}
+  hacken3: {fileID: 700626141}
+  hacken4: {fileID: 1837982168}
 --- !u!1 &1733489364
 GameObject:
   m_ObjectHideFlags: 0
@@ -78698,10 +78724,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f37460e4ac9fb54399dbd2036dd5b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityPrefab: {fileID: 1141620032127629371, guid: 116b02e25de6b164d82ef7d06c3c2bc6,
-    type: 3}
   erCanvas: {fileID: 1232103450}
   eRErstellung: {fileID: 1321532784}
+  prefabEntity: {fileID: 0}
 --- !u!114 &1754395183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83678,7 +83703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1877193171
 RectTransform:
   m_ObjectHideFlags: 0

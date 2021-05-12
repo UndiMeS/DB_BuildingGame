@@ -13,7 +13,7 @@ public class ERAufgabe : MonoBehaviour
                     /*LvL 3*/  "Die Siedlung dient vor allem der Forschung, um Sphären und Wohncontainer zu verbessern. Dafür werden Forschungsstationen gebaut. Eine Forschungsstation hat eine eindeutige Stationsnummer, Baukosten und eine bestimmte Spezialisierung. Diese gibt an, für welchen Objekttyp in der Forschungsstation geforscht wird. Für eine Forschungsstation ist genau ein Astronaut verantwortlich.",
                     /*LvL 4*/  "Verbesserungen werden durch Forschungsprojekte erreicht. Attribute von Sphären und Wohncontainer können X mal erforscht und so mehrfach verbessert werden. Ein Forschungsprojekt hat somit ein bestimmtes Forschungsmerkmal und eine Forschungsstufe. Darüber kann ein Forschungsprojekt eindeutig ermittelt werden. Jedes Forschungsprojekt erzielt einen Verbesserungsfaktor, benötigt eine bestimmte Arbeiterzahl und Projektkosten. Forschungsprojekte können nur angelegt werden, wenn die passende Forschungsstation bereits existiert. Eine Forschungsstation organisiert mehrere Forschungsprojekte. Mehrere Astronauten können in einem Forschungsprojekt forschen, jedoch kann ein Astronaut nur an einem Projekt forschen.",
                     /*LvL 5*/  "Bislang können in der Siedlung Wohncontainer und Feldsphären erbaut werden. Forschungsprojekte verbessern die Forschungsmerkmale immer für alle zukünftig gebauten Objekte. Ein Forschungsprojekt verbessert daher mehrere Wohncontainer und Feldsphären. Zugleich können mehrere Projekte an einer Feldsphäre, bzw. Wohncontainer forschen. Neben der Verbesserung von Containern und Sphären kann einmalig ein Forschungsprojekt durchgeführt werden, dass an neuen Methoden forscht und so für alle zukünftigen Forschungsprojekte der jeweiligen Station die Projektkosten verbessert. Diese Möglichkeit betrifft jede errichtete Forschungsstation.",
-                    /*LvL 6*/  "Eine weitere Möglichkeit Erträge zu erzielen sind Weidesphären. Dafür werden zunächst Nutztiere und Stallcontainer benötigt. Um ein Nutztier einfliegen zu lassen, müssen vorher Stallcontainer existieren. Ein Stallcontainer hat Baukosten, eine Containernummer, eine Gehegezahl und eine Anzahl der noch freien Gehege. Mehrere Nutztiere wohnen in einem Stallcontainer. Diese haben Transportkosten, einen Namen und eine Art. Jedes Nutztier kann eindeutig über Name und Art identifiziert werden.",
+                    /*LvL 6*/  "Eine weitere Möglichkeit Erträge zu erzielen sind Weidesphären. Dafür werden zunächst Nutztiere und Stallcontainer benötigt. Um ein Nutztier einfliegen zu lassen, müssen vorher Stallcontainer existieren. Ein Stallcontainer hat Baukosten, eine Containernummer, eine Gehegezahl und eine Anzahl der noch freien Gehege. Stallcontainer werden exakt wie Wohncontainer durch Forschungsprojekte verbessert. Mehrere Nutztiere wohnen in einem Stallcontainer. Diese haben Transportkosten, einen Namen und eine Art. Jedes Nutztier kann eindeutig über Name und Art identifiziert werden.",
                     /*LvL 7*/  "Um Erträge zu erhalten arbeiten mehrere Nutztiere auf einer Weidesphäre. Diese hat eine eindeutige Weidenummer, einen Ertrag, eine Tieranzahl und eine Arbeiterzahl, die sie benötigt. Somit arbeiten mehrere Astronauten in einer Weidesphäre, jedoch wie bei Feldsphären arbeitet ein Astronaut nur in einer Weidesphäre. Wie bei Feldsphären, werden zukünftig erbaute Weidesphären von einem Forschungsprojekt verbessert und mehrere Projekte können eine Weidesphäre verbessern.",
                                 
                     /*LvL Ziel*/   //ZIELAUFGABE FEHLT NOCH
@@ -112,6 +112,9 @@ public class ERAufgabe : MonoBehaviour
     private string[] forschungsprojekt_feldsphaere = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
     private string[] forschungsprojekt_feldsphaere_Eig = { "Forschungsprojekt", "Feldsphäre", "0", "n", "n" };
 
+    private string[] forschungsprojekt_stallcontainer = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
+    private string[] forschungsprojekt_stallcontainer_Eig = { "Forschungsprojekt", "Stallcontainer", "0", "n", "n" };
+
     private string[] forschungsprojekt_weidesphaere = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
     private string[] forschungsprojekt_weidesphaere_Eig = { "Forschungsprojekt", "Weidesphäre", "0", "n", "n" };
 
@@ -143,7 +146,7 @@ public class ERAufgabe : MonoBehaviour
     private int[] attributeRichtig =        { 0, 0, 0, 0, 0, 0, 0, 0 };//{ 4, 4, 4, 3, 5, 0, 7, 5 };
     private int[] primaerschluesselRichtig ={ 0, 0, 0, 0, 0, 0, 0, 0 };//{ 1, 2, 1, 1, 2, 0, 3, 1 };
     private int[] beziehungenRichtig =      { 0, 1, 1, 1, 2, 3, 1, 3 };
-    private int[] kardRichtig =             { 0, 2, 2, 2, 4, 6, 2, 6 }; //2 pro Relation
+    private int[] kardRichtig =             { 0, 2, 2, 2, 4, 6, 4, 6 }; //2 pro Relation
 
     private int[] entitysHat;
     private int[] attributeHat;
@@ -160,6 +163,13 @@ public class ERAufgabe : MonoBehaviour
     public static List<GameObject> gespeicherteObjekte;
     public GameObject checkboxOhneRelation;
     public GameObject checkboxOhneEntity;
+
+    public static bool missionCheck = true;
+    public GameObject aufgabenFenster;
+    public GameObject aufgabeButton;
+    public GameObject checkbox;
+    public GameObject checkboxButton;
+    public GameObject bottomLeiste;
 
     // Start is called before the first frame update
     void Start()
@@ -190,8 +200,8 @@ public class ERAufgabe : MonoBehaviour
         listeBeziehungsEigenschaften[5] = new string[][] { forschungsprojekt_feldsphaere_Eig, forschungsprojekt_wohncontainer_Eig, forschungsprojekt_forschungsprojekt_Eig };
         // Level 6
         listeAttribute[6] = new string[][][] { nutztier, stallcontainer };
-        listeBeziehungen[6] = new string[][] { stallcontainer_nutztier };
-        listeBeziehungsEigenschaften[6] = new string[][] { stallcontainer_nutztier_Eig };
+        listeBeziehungen[6] = new string[][] { stallcontainer_nutztier, forschungsprojekt_stallcontainer};
+        listeBeziehungsEigenschaften[6] = new string[][] { stallcontainer_nutztier_Eig,forschungsprojekt_stallcontainer_Eig };
         // Level 7
         listeAttribute[7] = new string[][][] { weidespaehre };
         listeBeziehungen[7] = new string[][] { forschungsprojekt_weidesphaere, weidesphaere_nutztier, astronaut_weidesphaere };
@@ -207,7 +217,27 @@ public class ERAufgabe : MonoBehaviour
         if (Story.level < 8)
         {
             Utilitys.TextInTMP(aufgabenText, aufgabe[Story.level]);
-            checkObjekte();
+
+            //wenn die Mission erfolgreich absolviert wurde, kann wieder im ER gebastelt werden und es wird chckObjekte() ausgeführt
+            if(missionCheck)
+            {
+                bottomLeiste.SetActive(true);
+                aufgabenFenster.SetActive(true);
+                checkbox.SetActive(true);
+                aufgabeButton.SetActive(true);
+                checkboxButton.SetActive(true);
+
+                checkObjekte();
+            //Ist die Mission noch nciht erfüllt, bleibt alles verdeckt.
+            }else
+            {
+                bottomLeiste.SetActive(false);
+                aufgabenFenster.SetActive(false);
+                checkbox.SetActive(false);
+                aufgabeButton.SetActive(false);
+                checkboxButton.SetActive(false);
+            }
+                
         }
         else
         {
@@ -264,8 +294,22 @@ public class ERAufgabe : MonoBehaviour
 
         if (checkAllesRichtig())
         {
+            //wenn alles richtig ist wird default alles auf aus gesetzt (in Update wird es aber wieder auf true gesetzt, wenn missioncheck == true ist)
+            bottomLeiste.SetActive(false);
+            aufgabenFenster.SetActive(false);
+            checkbox.SetActive(false);
+            aufgabeButton.SetActive(false);
+            checkboxButton.SetActive(false);
+            
             FehlerAnzeige.fehlertext = "Du hast alles richtig gemacht!";
             Story.lvl[Story.level] = true; //Markiere Level als erfüllt
+            
+            //ER bleibt ja bei dem Level stehen, wo Mission bearbeitet werden kann. Ist Mission erfolgreich (missionCheck = true), dann geht es weiter.
+            if((Story.level == 1|| Story.level == 2 || Story.level == 5 || Story.level == 6 ) && missionCheck == true){
+                missionCheck = false;
+            }
+
+
             foreach (GameObject obj in ERErstellung.modellObjekte)
             {
                 if (!gespeicherteObjekte.Contains(obj))
@@ -286,7 +330,6 @@ public class ERAufgabe : MonoBehaviour
 
     private void checkBeziehung()
     {
-
         List<GameObject> erfolgreichbetrachtet = new List<GameObject>();
         for (int i = 0; i < listeBeziehungen[Story.level].Length; i++)
         {
