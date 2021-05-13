@@ -46,7 +46,6 @@ public class Mission : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        checkMission();
         masterKreuz.SetActive(true);
         masterHacken.SetActive(false);
     }
@@ -57,7 +56,8 @@ public class Mission : MonoBehaviour
         //Gib alle Texte der Mission aus.
         setMission(setLevel());
         //Prüfe ob Mission von Level erfolgreich ist
-        
+        checkMission();
+
     }
 
     //Schreibe Missionstexte ins Fenster. Bei "aus" blende Teilziel aus
@@ -114,8 +114,7 @@ public class Mission : MonoBehaviour
             if(Testing.forscher == System.Convert.ToInt32(mission[0][5])|| Testing.feldarbeiter == System.Convert.ToInt32(mission[0][5])|| Testing.tierpfleger == System.Convert.ToInt32(mission[0][5]))
             {
                 hacken1.SetActive(true);
-                HackenKreuz();
-                popUpKreis(ERkreis);
+                KreuzHacken();
             }
             else
             {
@@ -135,7 +134,7 @@ public class Mission : MonoBehaviour
                 y = 1; 
             }
             if(x==1 && y==1){
-                HackenKreuz();
+                KreuzHacken();
             }
             else
             {
@@ -160,13 +159,14 @@ public class Mission : MonoBehaviour
     }
 
     //Hilfsmethode die bei efolgreicher Mission sich um Hacken/Kreuz kümmert
-    private void HackenKreuz()
+    private void KreuzHacken()
     {
         masterKreuz.SetActive(false);
         masterHacken.SetActive(true);
         ERAufgabe.missionCheck = true;
         ERkreisHacken.SetActive(false);
         ERkreisKreuz.SetActive(true);
+        popUpKreis(ERkreis);
     }
 
 }
