@@ -159,10 +159,6 @@ public class PauseMenu : MonoBehaviour
 
     public void SwitchToER()
     {
-        mission.transform.localPosition = new Vector3(16, 726, 0);
-        Animator animator = mission.GetComponent<Animator>();
-        animator.enabled = false;
-
         ERon = true;
         //SpielIstPausiert = true;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(1);
@@ -176,9 +172,7 @@ public class PauseMenu : MonoBehaviour
         //SpielIstPausiert = false;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(0);
         mission.transform.localPosition = new Vector3(16, 726, 0);
-        Animator animator = mission.GetComponent<Animator>();
-        animator.enabled = true;
-    }
+            }
 
     public void AllesAusblenden()
     {
@@ -201,13 +195,17 @@ public class PauseMenu : MonoBehaviour
 
     public void animationMission()
     {
-        Animator animator = mission.GetComponent<Animator>();
-        if(animator!= null)
+        LeanTween.cancel(mission);
+        if (mission.transform.localPosition.y > 600)
         {
-            bool isOpen = animator.GetBool("open");
-
-            animator.SetBool("open", !isOpen);
+            Debug.Log("down");
+            LeanTween.moveLocalY(mission, 140, 2);
         }
+        else
+        {
+            LeanTween.moveLocalY(mission, 760, 2);
+        }
+        
     }
 
 }

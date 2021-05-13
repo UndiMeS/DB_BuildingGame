@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,10 @@ public class Mission : MonoBehaviour
     public GameObject hacken3;
     public GameObject hacken4;
 
+    //Kreise
+    public GameObject ERkreis;
+    private bool firstTime=true;//nur beim ersten mal PopUp
+
 //Missionstexte für Fenster
     private string[][] mission = {                  // "Missionstext", TZ1, TZ2, TZ3, TZ4, Ziel für TZ1, Ziel für TZ2, Ziel für TZ3, Ziel für TZ4
                                         new string[] { "Wir brauchen Astronauten!", "Fliege 1 Astronauten ein.", "aus", "aus", "aus", "1", " ", " ", " " },
@@ -41,16 +46,18 @@ public class Mission : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        checkMission();
         masterKreuz.SetActive(true);
         masterHacken.SetActive(false);
     }
     // Update is called once per frame
     void Update()
     {
+        
         //Gib alle Texte der Mission aus.
         setMission(setLevel());
         //Prüfe ob Mission von Level erfolgreich ist
-        checkMission();
+        
     }
 
     //Schreibe Missionstexte ins Fenster. Bei "aus" blende Teilziel aus
@@ -104,9 +111,15 @@ public class Mission : MonoBehaviour
     {
         //Level 0
         if(setLevel() == 0){
-            if(Testing.summeMenschen == System.Convert.ToInt32(mission[0][5])){
+            if(Testing.forscher == System.Convert.ToInt32(mission[0][5])|| Testing.feldarbeiter == System.Convert.ToInt32(mission[0][5])|| Testing.tierpfleger == System.Convert.ToInt32(mission[0][5]))
+            {
                 hacken1.SetActive(true);
                 HackenKreuz();
+                popUpKreis(ERkreis);
+            }
+            else
+            {
+                firstTime = true;
             }
         //Level 1    
         }else if(setLevel() == 1){
@@ -124,12 +137,26 @@ public class Mission : MonoBehaviour
             if(x==1 && y==1){
                 HackenKreuz();
             }
-        //Level 2     
-        }else if(setLevel() == 2){
+            else
+            {
+                firstTime = true;
+            }
+            //Level 2     
+        }
+        else if(setLevel() == 2){
                 hacken1.SetActive(false);
                 hacken2.SetActive(false);
   
         }
+    }
+
+    private void popUpKreis(GameObject kreis)
+    {
+        if (firstTime)
+        {
+            LeanTween.scale(kreis,new Vector3(2 , 2),5).setEasePunch();
+        }
+        firstTime = false;
     }
 
     //Hilfsmethode die bei efolgreicher Mission sich um Hacken/Kreuz kümmert

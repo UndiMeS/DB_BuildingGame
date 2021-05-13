@@ -4,7 +4,7 @@ using UnityEngine;
 public class Forschung : MonoBehaviour
 {
     public int stationsnummer=0;
-    private int baukosten;
+    public int baukosten;
     public string spezialisierung="";
     private int spezInt;
     public int anzahlProjekte = 0;
@@ -92,7 +92,7 @@ public class Forschung : MonoBehaviour
         merkmalsanzeige = aktuellesmerkmal;
         dropdown = ddm;
         List<string> listeMerkmale = new List<string>();
-        if (spezialisierung.Equals("Wohncontainer"))
+        if (spezialisierung.Equals("W"))
         {
             listeMerkmale = new List<string> { "Baukosten", "Bettenanzahl" };
             maxAnzahlProjekte = 5;

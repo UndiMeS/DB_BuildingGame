@@ -3,6 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/* erstetzte Wörter:
+    W = Wohncontainer
+    A = Astronaut
+    F = Feldspähre
+    S = Forschungsstation
+    P = Forschungsprojekt
+*/
 public class ERAufgabe : MonoBehaviour
 {
     //Aufgabentext je LvL    
@@ -21,11 +29,11 @@ public class ERAufgabe : MonoBehaviour
 
     //Welche EM je Level
     private string[][] listeEntity = {
-                                        new string[] { "Wohncontainer" },               /*LvL 0*/
-                                        new string[] { "Astronaut" },                   /*LvL 1*/
-                                        new string[] { "Feldsphäre" },                  /*LvL 2*/
-                                        new string[] { "Forschungsstation" },           /*LvL 3*/
-                                        new string[] { "Forschungsprojekt" },           /*LvL 4*/
+                                        new string[] { "W" },               /*LvL 0*/
+                                        new string[] { "A" },                   /*LvL 1*/
+                                        new string[] { "F" },                  /*LvL 2*/
+                                        new string[] { "S" },           /*LvL 3*/
+                                        new string[] { "P" },           /*LvL 4*/
                                         new string[] {  },                              /*LvL 5*/
                                         new string[] { "Nutztier", "Stallcontainer" },  /*LvL 6*/
                                         new string[] { "Weidesphäre" },                 /*LvL 7*/   
@@ -86,19 +94,19 @@ public class ERAufgabe : MonoBehaviour
     //EM1_EM2_Eig = {EM1, EM2, EM2_schwach(1 ja), Kard1, Kard2}
 
     private string[] astronaut_forschungsstation = { "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
-    private string[] astronaut_forschungsstation_Eig = { "Astronaut", "Forschungsstation", "0", "1", "1" };
+    private string[] astronaut_forschungsstation_Eig = { "A", "S", "0", "1", "1" };
 
     private string[] wohncontainer_astronaut = { "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt" };
-    private string[] wohncontainer_astronaut_Eig = { "Wohncontainer", "Astronaut", "1", "n", "1" };
+    private string[] wohncontainer_astronaut_Eig = { "W", "A", "1", "n", "1" };
 
     private string[] astronaut_forschungsprojekt = { "forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };
-    private string[] astronaut_forschungsprojekt_Eig = { "Astronaut", "Forschungsprojekt", "0", "1", "n" };
+    private string[] astronaut_forschungsprojekt_Eig = { "A", "P", "0", "1", "n" };
 
     private string[] astronaut_feldsphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
-    private string[] astronaut_feldsphaere_Eig = { "Astronaut", "Feldsphäre", "0", "1", "n" };
+    private string[] astronaut_feldsphaere_Eig = { "A", "F", "0", "1", "n" };
 
     private string[] astronaut_weidesphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
-    private string[] astronaut_weidesphaere_Eig = { "Astronaut", "Weidesphäre", "0", "1", "n" };
+    private string[] astronaut_weidesphaere_Eig = { "A", "Weidesphäre", "0", "1", "n" };
 
     private string[] stallcontainer_nutztier = { "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "schläftIn", "PlatzFür" };
     private string[] stallcontainer_nutztier_Eig = { "Stallcontainer", "Nutztier", "1", "n", "1" };
@@ -107,22 +115,22 @@ public class ERAufgabe : MonoBehaviour
     private string[] weidesphaere_nutztier_Eig = { "Weidesphäre", "Nutztier", "0", "n", "1" };
 
     private string[] forschungsprojekt_wohncontainer = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
-    private string[] forschungsprojekt_wohncontainer_Eig = { "Forschungsprojekt", "Wohncontainer", "0", "n", "n" };
+    private string[] forschungsprojekt_wohncontainer_Eig = { "P", "W", "0", "n", "n" };
 
     private string[] forschungsprojekt_feldsphaere = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
-    private string[] forschungsprojekt_feldsphaere_Eig = { "Forschungsprojekt", "Feldsphäre", "0", "n", "n" };
+    private string[] forschungsprojekt_feldsphaere_Eig = { "P", "F", "0", "n", "n" };
 
     private string[] forschungsprojekt_stallcontainer = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
-    private string[] forschungsprojekt_stallcontainer_Eig = { "Forschungsprojekt", "Stallcontainer", "0", "n", "n" };
+    private string[] forschungsprojekt_stallcontainer_Eig = { "P", "Stallcontainer", "0", "n", "n" };
 
     private string[] forschungsprojekt_weidesphaere = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
-    private string[] forschungsprojekt_weidesphaere_Eig = { "Forschungsprojekt", "Weidesphäre", "0", "n", "n" };
+    private string[] forschungsprojekt_weidesphaere_Eig = { "P", "Weidesphäre", "0", "n", "n" };
 
     private string[] forschungsprojekt_forschungsprojekt = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern", "MethodenVerbessern", "verbessertMethodenVon", "verbessertMethoden" };
-    private string[] forschungsprojekt_forschungsprojekt_Eig = { "Forschungsprojekt", "Forschungsprojekt", "0", "1", "n" };
+    private string[] forschungsprojekt_forschungsprojekt_Eig = { "P", "P", "0", "1", "n" };
 
     private string[] forschungsstation_forschungsprojekt = { "organisiert", "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
-    private string[] forschungsstation_forschungsprojekt_Eig = { "Forschungsstation", "Forschungsprojekt", "1", "n", "1" };
+    private string[] forschungsstation_forschungsprojekt_Eig = { "S", "P", "1", "n", "1" };
 
     //PS Attribut mit 1 setzten für das jeweilige Level
     // Reihenfolge von Attributen 0 kein Ps, 1 PS

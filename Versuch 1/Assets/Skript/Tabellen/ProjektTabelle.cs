@@ -9,11 +9,15 @@ public class ProjektTabelle : MonoBehaviour
     public GameObject Tabelle;
     public GameObject stationsprojekteTabelle;
     public GameObject alleProjekteTabelle;
+    public GameObject stationenTabelle;
 
     public GameObject prefabTabelle;
+    public GameObject prefabStation;
 
     public GameObject alleScrollContent;
     public GameObject stationScrollContent;
+    public GameObject forsstationScrollContent;
+
     public List<GameObject> zeilenListe = new List<GameObject>();
 
     public void stationsProjekteTabelleAn()
@@ -124,6 +128,51 @@ public class ProjektTabelle : MonoBehaviour
         Tabelle.SetActive(false);
         alleProjekteTabelle.SetActive(false);
         alleProjekte = false;
+
+        foreach (GameObject zeile in zeilenListe)
+        {
+            Destroy(zeile);
+        }
+    }
+
+    public void stationTabelleAn()
+    {
+        Time.timeScale = 0;
+        PauseMenu.SpielIstPausiert = true;
+        KameraKontroller.aktiviert = false;
+
+        Tabelle.SetActive(true);
+        stationenTabelle.SetActive(true);
+        int size = Testing.wohncontainer.Count;
+        forsstationScrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(prefabTabelle.GetComponent<RectTransform>().sizeDelta.x, prefabTabelle.GetComponent<RectTransform>().sizeDelta.y * size);
+        prefabStation.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
+
+        int i = 0;
+
+        foreach (Forschung container in Testing.forschungsstationen)
+        {
+            forsstationScrollContent.transform.position.Set(0, 0, 0);
+            GameObject zeile = Instantiate(prefabStation, forsstationScrollContent.transform);
+            Vector3 pos = i * new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y + 4, 0);
+            zeile.transform.localPosition = pos;
+            zeilenListe.Add(zeile);
+
+            Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, container.stationsnummer);
+            Utilitys.TextInTMP(zeile.transform.GetChild(1).gameObject, container.baukosten);
+            Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, container.spezialisierung);
+            i++;
+
+        }
+        prefabStation.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+    }
+    public void stationTabelleAus()
+    {
+        Time.timeScale = 1;
+        PauseMenu.SpielIstPausiert = false;
+        KameraKontroller.aktiviert = true;
+
+        Tabelle.SetActive(false);
+        stationenTabelle.SetActive(false);
 
         foreach (GameObject zeile in zeilenListe)
         {

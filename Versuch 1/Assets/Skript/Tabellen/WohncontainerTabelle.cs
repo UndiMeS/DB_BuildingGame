@@ -130,6 +130,7 @@ public class WohncontainerTabelle : MonoBehaviour
         gameObject.GetComponent<FelderTabelle>().alleFelderTabelleAus();
         gameObject.GetComponent<ProjektTabelle>().alleProjekteTabelleAus();
         gameObject.GetComponent<ProjektTabelle>().stationsProjekteTabelleAus();
+        gameObject.GetComponent<ProjektTabelle>().stationTabelleAus();
         gameObject.GetComponent<TierTabelle>().alleTiereTabelleAus();
         gameObject.GetComponent<TierTabelle>().wohnendeTiereTabelleAus();
         gameObject.GetComponent<WeidenTabelle>().alleWeidenTabelleAus();
