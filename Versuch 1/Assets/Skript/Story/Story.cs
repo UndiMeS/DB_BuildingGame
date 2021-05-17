@@ -96,7 +96,9 @@ public class Story : MonoBehaviour
         //Freischaltbare Objekte auf aus/false setzten (Transparente auf true)
 
         //folgendes auskommentieren, um sofort auf alles zugriff zu haben.
-        allesOff(); 
+
+        //XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        //allesOff(); 
     }   
     void Update()
     {
