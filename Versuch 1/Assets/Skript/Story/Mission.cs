@@ -14,6 +14,10 @@ public class Mission : MonoBehaviour
     int temp_bettenzahl_lvl2 = 0;
     int temp_ertrag_lvl2 = 0;
     int temp_arbeiterzahl_lvl2 = 0;
+    int temp_arbeiterzahl_lvl4 = 0;
+    int temp_tierzahl_lvl4 = 0;
+    int temp_baukosten_lvl4 = 0;
+    int temp_anzahl_lvl4 = 0;
 
 //Missionsfenster Objekte
     public GameObject missionText;
@@ -43,21 +47,15 @@ public class Mission : MonoBehaviour
                                         new string[] { "Um eine Siedlung zu gründen, müssen Astronauten eingeflogen werden. Dafür müssen jedoch Wohncontainer erichtet werden.", "Fliege 2 belibigen Astronauten ein.", "aus", "aus", "aus", "2", " ", " ", " " },
                                         new string[] { "Du kannst nun Feldsphären errichten, die in regelmäßigen Abständen Erträge erwirtschaften. Dafür werden jedoch Feldastronauten benötigt.", "Erreiche einen Ertrag von 50.", "Fliege 8 Feldastronauten ein.", "aus", "aus", "50", "8", " ", " " },
                                         new string[] { "Wir können nun mit dem Forschen beginnen. Erforsche je eine Verbesserung der Baukosten und Bettenzahl von Wohncontainern und Arbeiterzahl und Ertrag von Feldsphären. Denk daran, dass es sich lohnen könnte auch die Methoden der Forschungsstationen zu verbessern. ", "Verbessere die Baukosten von Wohncontainern.", "Verbessere die Bettenzahl von Wohncontainern", "Verbessere den Ertrag von Feldsphären.", "Verbessere die Arbeiterzahl von Feldsphären.", "", "", "", "" },
-                                        new string[] { "Mission 3", "Teilziel 13", "Teilziel 23", "Teilziel 33", "Teilziel 43", "1", "2", "3", "4" },
-                                        new string[] { "Mission 4", "Teilziel 14", "Teilziel 24", "Teilziel 34", "Teilziel 44", "1", "2", "3", "4" },
-                                        new string[] { "Mission 5", "Teilziel 15", "Teilziel 25", "Teilziel 35", "Teilziel 45", "1", "2", "3", "4" },
-                                        new string[] { "Mission 6", "Teilziel 16", "Teilziel 26", "Teilziel 36", "Teilziel 46", "1", "2", "3", "4" },
-                                        new string[] { "Mission 7", "Teilziel 17", "Teilziel 27", "Teilziel 37", "Teilziel 47", "1", "2", "3", "4" }
+                                        new string[] { "Neben Feldsphären können bald auch Weidesphären errichtet werden. Darin werden Tiere bewirtschaftet. Diese leben in Stallcontainern.", "Fliege 8 Tiere ein.", "aus", "aus", "aus", "8", "", "", "" },
+                                        new string[] { "Nun können auch Weidesphären konstruiert werden, um Erträge zu erwirtschaften. Verbessere deinen regelmäßigen Ertrag durch den Bau von Weidesphären und forsche an deren Verbesserung.", "Erbaue 3 Weidesphären.", "Verbessere die Baukosten von Weidesphären.", "Verbessere die Tieranzahl von Weidesphären.", "Verbessere die Arbeiterzahl von Weidesphären.", "3", "", "", "" },
+                                        new string[] { "Mission 5", "Teilziel 15", "Teilziel 25", "Teilziel 35", "Teilziel 45", "1", "2", "3", "4" }
                                         };
     // Start is called before the first frame update
     void Start()
     {
         masterKreuz.SetActive(true);
-        masterHacken.SetActive(false);
-        zwischenziel1 = 0;
-        zwischenziel2 = 0;
-        zwischenziel3 = 0;
-        zwischenziel4 = 0; 
+        masterHacken.SetActive(false); 
     }
     // Update is called once per frame
     void Update()
@@ -65,14 +63,11 @@ public class Mission : MonoBehaviour
         
     //Gib alle Texte der Mission aus.
         setMission(setLevel());
-        //setMission(2);
-
+        //setMission(4);
 
     //Prüfe ob Mission von Level erfolgreich ist
         checkMission(setLevel());
-        //checkMission(2);
-        //Debug.Log(temp_ertrag_lvl2);
-        //Debug.Log(Feld.neuErtrag);
+        //checkMission(4);
     }
 
     //Schreibe Missionstexte ins Fenster. Bei "aus" blende Teilziel aus
@@ -118,15 +113,15 @@ public class Mission : MonoBehaviour
         }else if(Story.level == 7){
             return 3; //X Nutztiere einfliegen
         }else {
-            return 4; //X Weidearbeiter und Ertrag
+            return 4; //X Weidearbeiter und Ertrag und Verbesserung
         }
     }
 
     public void checkMission(int level)
     {
-        //Level 0
+    //Level 0
         if(level == 0){
-            if(Testing.forscher == System.Convert.ToInt32(mission[0][5])|| Testing.feldarbeiter == System.Convert.ToInt32(mission[0][5])|| Testing.tierpfleger == System.Convert.ToInt32(mission[0][5]))
+            if((Testing.forscher + Testing.feldarbeiter + Testing.tierpfleger) == System.Convert.ToInt32(mission[0][5]))
             {
                 hacken1.SetActive(true);
                 KreuzHacken();
@@ -135,11 +130,9 @@ public class Mission : MonoBehaviour
             {
                 firstTime = true;
             }
-        //Level 1    
+    //Level 1    
         }else if(level == 1){
                 hacken1.SetActive(false);
-                masterKreuz.SetActive(true);
-                masterHacken.SetActive(false);
            if(Testing.umsatz >= System.Convert.ToInt32(mission[1][5])){
                 hacken1.SetActive(true);
                 zwischenziel1 = 1;
@@ -155,9 +148,8 @@ public class Mission : MonoBehaviour
             {
                 firstTime = true;
             }
-            //Level 2     
-        }
-        else if(level == 2){
+    //Level 2     
+        }else if(level == 2){
                 hacken1.SetActive(false);
                 hacken2.SetActive(false);
                 hacken3.SetActive(false);
@@ -183,6 +175,56 @@ public class Mission : MonoBehaviour
                 zwischenziel3 = 1;
             }
             if(Feld.arbeiterzahl < temp_arbeiterzahl_lvl2){
+                hacken4.SetActive(true);
+                zwischenziel4 = 1; 
+            }
+            if(zwischenziel1==1 && zwischenziel2==1 && zwischenziel3==1 && zwischenziel4==1){
+                KreuzHacken();
+            }
+            else
+            {
+                firstTime = true;
+            }
+    //Level 3     
+        }else if(level == 3){
+                hacken1.SetActive(false);
+           if(Testing.tiere >= System.Convert.ToInt32(mission[3][5])){
+                hacken1.SetActive(true);
+                zwischenziel1 = 1;
+            }
+            if(zwischenziel1==1){
+                KreuzHacken();
+            }
+            else
+            {
+                firstTime = true;
+            }
+    //Level 4     
+        }else if(level == 4){
+                hacken1.SetActive(false);
+                hacken2.SetActive(false);
+                hacken3.SetActive(false);
+                hacken4.SetActive(false);
+                if(temp_anzahl_lvl4 == 0 && temp_arbeiterzahl_lvl4 == 0 && temp_baukosten_lvl4 == 0 && temp_tierzahl_lvl4 == 0)
+                {
+                    temp_arbeiterzahl_lvl4 = Weide.arbeiterzahl;
+                    temp_baukosten_lvl4 = Weide.preis;
+                    temp_tierzahl_lvl4 = Weide.tierAnzahl;
+                    temp_anzahl_lvl4 = Testing.weiden.Count;
+                }
+           if(Testing.weiden.Count >= temp_anzahl_lvl4 + System.Convert.ToInt32(mission[4][5])){
+                hacken1.SetActive(true);
+                zwischenziel1 = 1;
+            }
+            if(Weide.preis < temp_baukosten_lvl4){
+                hacken2.SetActive(true);
+                zwischenziel2 = 1; 
+            }
+            if(Weide.tierAnzahl < temp_tierzahl_lvl4){
+                hacken3.SetActive(true);
+                zwischenziel3 = 1;
+            }
+            if(Weide.arbeiterzahl < temp_arbeiterzahl_lvl4){
                 hacken4.SetActive(true);
                 zwischenziel4 = 1; 
             }

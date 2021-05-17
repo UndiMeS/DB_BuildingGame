@@ -92,7 +92,7 @@ public class Forschung : MonoBehaviour
         merkmalsanzeige = aktuellesmerkmal;
         dropdown = ddm;
         List<string> listeMerkmale = new List<string>();
-        if (spezialisierung.Equals("W"))
+        if (spezialisierung.Equals("Wohncontainer")) //hier
         {
             listeMerkmale = new List<string> { "Baukosten", "Bettenanzahl" };
             maxAnzahlProjekte = 5;
@@ -323,7 +323,7 @@ public class Forschung : MonoBehaviour
                 selectedProj.SetMerkmal("Arbeiterzahl");
                 merkmal = 6;
                 selectedProj.merkmalInt = merkmal;
-                selectedProj.pos = 2;
+                selectedProj.pos = 0;
                 Weide.arbeiterzahl = selectedProj.neuerWert(Weide.arbeiterzahl, GebaeudeAnzeige.projektMerkmalStufen[6]);
                 GebaeudeAnzeige.projektMerkmalStufen[6]++;
                 

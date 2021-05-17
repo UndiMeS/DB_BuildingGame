@@ -181,6 +181,8 @@ public class ERAufgabe : MonoBehaviour
 
     public GameObject kreisHacken;
     public GameObject kreisKreuz;
+    public GameObject missionHacken;
+    public GameObject missionKreuz;
 
     // Start is called before the first frame update
     void Start()
@@ -324,6 +326,9 @@ public class ERAufgabe : MonoBehaviour
                 missionCheck = false;
                 kreisHacken.SetActive(true);
                 kreisKreuz.SetActive(false);
+                missionKreuz.SetActive(true);
+                missionHacken.SetActive(false);
+
             }
 
 
