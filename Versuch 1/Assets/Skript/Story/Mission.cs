@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Mission : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class Mission : MonoBehaviour
     int temp_tierzahl_lvl4 = 0;
     int temp_baukosten_lvl4 = 0;
     int temp_anzahl_lvl4 = 0;
+//Texteingaben für Missionen
+    public Text lvl1_text;
+    public GameObject textInput;
 
 //Missionsfenster Objekte
     public GameObject missionText;
@@ -44,7 +48,7 @@ public class Mission : MonoBehaviour
 
 //Missionstexte für Fenster
     private string[][] mission = {                  // "Missionstext", TZ1, TZ2, TZ3, TZ4, Ziel für TZ1, Ziel für TZ2, Ziel für TZ3, Ziel für TZ4
-                                        new string[] { "Um eine Siedlung zu gründen, müssen Astronauten eingeflogen werden. Dafür müssen jedoch Wohncontainer erichtet werden.", "Fliege 2 belibigen Astronauten ein.", "aus", "aus", "aus", "2", " ", " ", " " },
+                                        new string[] { "Um eine Siedlung zu gründen, müssen Astronauten eingeflogen werden. Dafür müssen jedoch Wohncontainer erichtet werden. Gib weiterhin den Namen des ersten Astronauten ein.", "Fliege 2 belibigen Astronauten ein.", "Input", "aus", "aus", "2", " ", " ", " " },
                                         new string[] { "Du kannst nun Feldsphären errichten, die in regelmäßigen Abständen Erträge erwirtschaften. Dafür werden jedoch Feldastronauten benötigt.", "Erreiche einen Ertrag von 50.", "Fliege 8 Feldastronauten ein.", "aus", "aus", "50", "8", " ", " " },
                                         new string[] { "Wir können nun mit dem Forschen beginnen. Erforsche je eine Verbesserung der Baukosten und Bettenzahl von Wohncontainern und Arbeiterzahl und Ertrag von Feldsphären. Denk daran, dass es sich lohnen könnte auch die Methoden der Forschungsstationen zu verbessern. ", "Verbessere die Baukosten von Wohncontainern.", "Verbessere die Bettenzahl von Wohncontainern", "Verbessere den Ertrag von Feldsphären.", "Verbessere die Arbeiterzahl von Feldsphären.", "", "", "", "" },
                                         new string[] { "Neben Feldsphären können bald auch Weidesphären errichtet werden. Darin werden Tiere bewirtschaftet. Diese leben in Stallcontainern.", "Fliege 8 Tiere ein.", "aus", "aus", "aus", "8", "", "", "" },
@@ -68,8 +72,8 @@ public class Mission : MonoBehaviour
     //Prüfe ob Mission von Level erfolgreich ist
         checkMission(setLevel());
         //checkMission(4);
-    }
 
+    }
     //Schreibe Missionstexte ins Fenster. Bei "aus" blende Teilziel aus
     public void setMission(int lvl)
     {
@@ -121,9 +125,21 @@ public class Mission : MonoBehaviour
     {
     //Level 0
         if(level == 0){
+            if(Testing.forscher + Testing.feldarbeiter + Testing.tierpfleger > 0)
+            {
+                if(lvl1_text.text == Testing.menschen[0].name)
+                {
+                    hacken2.SetActive(true);
+                    zwischenziel1 = 1;
+                }
+            }
+                
             if((Testing.forscher + Testing.feldarbeiter + Testing.tierpfleger) == System.Convert.ToInt32(mission[0][5]))
             {
                 hacken1.SetActive(true);
+                zwischenziel2 = 1;
+            }
+            if(zwischenziel1==1 && zwischenziel2==1){
                 KreuzHacken();
             }
             else
@@ -133,6 +149,8 @@ public class Mission : MonoBehaviour
     //Level 1    
         }else if(level == 1){
                 hacken1.SetActive(false);
+                textInput.SetActive(false);
+
            if(Testing.umsatz >= System.Convert.ToInt32(mission[1][5])){
                 hacken1.SetActive(true);
                 zwischenziel1 = 1;
