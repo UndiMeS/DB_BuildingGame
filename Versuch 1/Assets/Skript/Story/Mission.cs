@@ -10,7 +10,8 @@ public class Mission : MonoBehaviour
     int zwischenziel1 = 0;
     int zwischenziel2 = 0;
     int zwischenziel3 = 0;
-    int zwischenziel4 = 0;    
+    int zwischenziel4 = 0; 
+    int temp_feldarbeiter_lvl1 = 0;   
     int temp_baukosten_lvl2 = 0;
     int temp_bettenzahl_lvl2 = 0;
     int temp_ertrag_lvl2 = 0;
@@ -125,23 +126,22 @@ public class Mission : MonoBehaviour
     public void checkMission(int level)
     {
     //Level 0
-        if(level == 0){
+        if(level == 0){ 
+            if((Testing.forscher + Testing.feldarbeiter + Testing.tierpfleger) == System.Convert.ToInt32(mission[0][5]))
+            {
+                hacken1.SetActive(true);
+                zwischenziel1 = 1;
+            }
             if(Testing.forscher + Testing.feldarbeiter + Testing.tierpfleger > 0)
             {
                 if(lvl1_text.text == Testing.menschen[0].name)
                 {
                     hacken2.SetActive(true);
                     textInput.GetComponent<InputField>().interactable = false;
-                    zwischenziel1 = 1;
+                    zwischenziel2 = 1;
                 }
             }
-                
-            if((Testing.forscher + Testing.feldarbeiter + Testing.tierpfleger) == System.Convert.ToInt32(mission[0][5]))
-            {
-                hacken1.SetActive(true);
-                zwischenziel2 = 1;
-            }
-            if(zwischenziel1==1 && zwischenziel2==1){
+            if(zwischenziel1 == 1 && zwischenziel2 == 1){
                 KreuzHacken();
             }
             else
@@ -150,19 +150,23 @@ public class Mission : MonoBehaviour
             }
     //Level 1    
         }else if(level == 1){
-                hacken1.SetActive(false);
                 hacken2.SetActive(false);
+                hacken1.SetActive(false);
                 textInput.SetActive(false);
 
-           if(Testing.umsatz >= System.Convert.ToInt32(mission[1][5])){
+            if(Testing.umsatz >= System.Convert.ToInt32(mission[1][5])){
                 hacken1.SetActive(true);
                 zwischenziel1 = 1;
             }
-            if(Testing.feldarbeiter >= System.Convert.ToInt32(mission[1][6])){
+            if(Testing.feldarbeiter >= System.Convert.ToInt32(mission[1][6]) || temp_feldarbeiter_lvl1 >= System.Convert.ToInt32(mission[1][6])){
                 hacken2.SetActive(true);
                 zwischenziel2 = 1; 
+                if(temp_feldarbeiter_lvl1 == 0)
+                {
+                    temp_feldarbeiter_lvl1 = Testing.feldarbeiter;
+                }
             }
-            if(zwischenziel1==1 && zwischenziel2==1){
+            if(zwischenziel1 == 1 && zwischenziel2 == 1){
                 KreuzHacken();
             }
             else
