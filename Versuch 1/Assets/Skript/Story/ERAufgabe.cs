@@ -184,6 +184,8 @@ public class ERAufgabe : MonoBehaviour
     public GameObject missionHacken;
     public GameObject missionKreuz;
 
+    private bool firsttime=true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -235,14 +237,18 @@ public class ERAufgabe : MonoBehaviour
             if(missionCheck)
             {
                 bottomLeiste.SetActive(true);
-                aufgabenFenster.SetActive(true);
-                checkbox.SetActive(true);
+                
                 aufgabeButton.SetActive(true);
                 checkboxButton.SetActive(true);
                 kreisHacken.SetActive(false);
                 kreisKreuz.SetActive(true);
-
+                if (firsttime)
+                {
+                    aufgabenFenster.SetActive(true);
+                    checkbox.SetActive(true);
+                }
                 checkObjekte();
+                firsttime=false;
             //Ist die Mission noch nciht erfüllt, bleibt alles verdeckt.
             }else
             {
@@ -251,8 +257,9 @@ public class ERAufgabe : MonoBehaviour
                 checkbox.SetActive(false);
                 aufgabeButton.SetActive(false);
                 checkboxButton.SetActive(false);
+                firsttime = true;
             }
-                
+            
         }
         else
         {

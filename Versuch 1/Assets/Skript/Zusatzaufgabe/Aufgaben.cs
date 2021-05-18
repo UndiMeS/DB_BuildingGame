@@ -162,6 +162,7 @@ public class Aufgaben : MonoBehaviour
                     zweiteChance.SetActive(true);
                     toggleKiller.SetActive(true);
                     hinweisButton.SetActive(true);
+                    Debug.Log("!");
                     Invoke("SecondChanceAnzeigen", 2);
                 }
             }
@@ -285,6 +286,7 @@ public class Aufgaben : MonoBehaviour
     */
     public void SecondChanceAnzeigen()
     {
+        Debug.Log("?");
         zweiteChance.SetActive(false);
         toggleKiller.SetActive(false);
     }

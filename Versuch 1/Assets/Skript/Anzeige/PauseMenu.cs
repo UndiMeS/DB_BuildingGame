@@ -198,7 +198,6 @@ public class PauseMenu : MonoBehaviour
         LeanTween.cancel(mission);
         if (mission.transform.localPosition.y > 600)
         {
-            Debug.Log("down");
             LeanTween.moveLocalY(mission, 140, 2);
         }
         else
