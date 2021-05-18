@@ -22,6 +22,7 @@ public class Mission : MonoBehaviour
 //Texteingaben für Missionen
     public Text lvl1_text;
     public GameObject textInput;
+    InputField t;
 
 //Missionsfenster Objekte
     public GameObject missionText;
@@ -48,10 +49,10 @@ public class Mission : MonoBehaviour
 
 //Missionstexte für Fenster
     private string[][] mission = {                  // "Missionstext", TZ1, TZ2, TZ3, TZ4, Ziel für TZ1, Ziel für TZ2, Ziel für TZ3, Ziel für TZ4
-                                        new string[] { "Um eine Siedlung zu gründen, müssen Astronauten eingeflogen werden. Dafür müssen jedoch Wohncontainer erichtet werden. Gib weiterhin den Namen des ersten Astronauten ein.", "Fliege 2 belibigen Astronauten ein.", "Input", "aus", "aus", "2", " ", " ", " " },
+                                        new string[] { "Um eine Siedlung zu gründen, müssen Astronauten eingeflogen werden. Dafür müssen jedoch Wohncontainer erichtet werden. Gib weiterhin den Namen des ersten Astronauten ein.", "Fliege 2 belibigen Astronauten ein.", "Gib den Namen des 1. Astronauten der Siedlung an.", "aus", "aus", "2", " ", " ", " " },
                                         new string[] { "Du kannst nun Feldsphären errichten, die in regelmäßigen Abständen Erträge erwirtschaften. Dafür werden jedoch Feldastronauten benötigt.", "Erreiche einen Ertrag von 50.", "Fliege 8 Feldastronauten ein.", "aus", "aus", "50", "8", " ", " " },
                                         new string[] { "Wir können nun mit dem Forschen beginnen. Erforsche je eine Verbesserung der Baukosten und Bettenzahl von Wohncontainern und Arbeiterzahl und Ertrag von Feldsphären. Denk daran, dass es sich lohnen könnte auch die Methoden der Forschungsstationen zu verbessern. ", "Verbessere die Baukosten von Wohncontainern.", "Verbessere die Bettenzahl von Wohncontainern", "Verbessere den Ertrag von Feldsphären.", "Verbessere die Arbeiterzahl von Feldsphären.", "", "", "", "" },
-                                        new string[] { "Neben Feldsphären können bald auch Weidesphären errichtet werden. Darin werden Tiere bewirtschaftet. Diese leben in Stallcontainern.", "Fliege 8 Tiere ein.", "aus", "aus", "aus", "8", "", "", "" },
+                                        new string[] { "Neben Feldsphären können bald auch Weidesphären errichtet werden. Darin werden Tiere bewirtschaftet. Diese leben in Stallcontainern.", "Fliege 8 Tiere ein.", "Gib den Namen des 1. Tier der Seidlung an.", "aus", "aus", "8", "", "", "" },
                                         new string[] { "Nun können auch Weidesphären konstruiert werden, um Erträge zu erwirtschaften. Verbessere deinen regelmäßigen Ertrag durch den Bau von Weidesphären und forsche an deren Verbesserung.", "Erbaue 3 Weidesphären.", "Verbessere die Baukosten von Weidesphären.", "Verbessere die Tieranzahl von Weidesphären.", "Verbessere die Arbeiterzahl von Weidesphären.", "3", "", "", "" },
                                         new string[] { "Mission 5", "Teilziel 15", "Teilziel 25", "Teilziel 35", "Teilziel 45", "1", "2", "3", "4" }
                                         };
@@ -67,11 +68,11 @@ public class Mission : MonoBehaviour
         
     //Gib alle Texte der Mission aus.
         setMission(setLevel());
-        //setMission(4);
+        //setMission(3);
 
     //Prüfe ob Mission von Level erfolgreich ist
         checkMission(setLevel());
-        //checkMission(4);
+        //checkMission(3);
 
     }
     //Schreibe Missionstexte ins Fenster. Bei "aus" blende Teilziel aus
@@ -130,6 +131,7 @@ public class Mission : MonoBehaviour
                 if(lvl1_text.text == Testing.menschen[0].name)
                 {
                     hacken2.SetActive(true);
+                    textInput.GetComponent<InputField>().interactable = false;
                     zwischenziel1 = 1;
                 }
             }
@@ -149,6 +151,7 @@ public class Mission : MonoBehaviour
     //Level 1    
         }else if(level == 1){
                 hacken1.SetActive(false);
+                hacken2.SetActive(false);
                 textInput.SetActive(false);
 
            if(Testing.umsatz >= System.Convert.ToInt32(mission[1][5])){
@@ -205,12 +208,23 @@ public class Mission : MonoBehaviour
             }
     //Level 3     
         }else if(level == 3){
-                hacken1.SetActive(false);
-           if(Testing.tiere >= System.Convert.ToInt32(mission[3][5])){
+            hacken1.SetActive(false);
+            hacken2.SetActive(false);
+            textInput.SetActive(true);
+            if(Testing.tiere > 0)
+            {
+                if(lvl1_text.text == Testing.tier[0].tiername)
+                {
+                    hacken2.SetActive(true);
+                    textInput.GetComponent<InputField>().interactable = false;
+                    zwischenziel1 = 1;
+                }
+            }else {lvl1_text.text = "";}
+            if(Testing.tiere >= System.Convert.ToInt32(mission[3][5])){
                 hacken1.SetActive(true);
-                zwischenziel1 = 1;
+                zwischenziel2 = 1;
             }
-            if(zwischenziel1==1){
+            if(zwischenziel1 == 1 && zwischenziel2 == 1){
                 KreuzHacken();
             }
             else
