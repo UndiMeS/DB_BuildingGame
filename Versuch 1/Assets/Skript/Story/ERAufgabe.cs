@@ -236,8 +236,7 @@ public class ERAufgabe : MonoBehaviour
             //wenn die Mission erfolgreich absolviert wurde, kann wieder im ER gebastelt werden und es wird chckObjekte() ausgeführt
             if(missionCheck)
             {
-                bottomLeiste.SetActive(true);
-                
+                bottomLeiste.SetActive(true);                
                 aufgabeButton.SetActive(true);
                 checkboxButton.SetActive(true);
                 kreisHacken.SetActive(false);
@@ -318,13 +317,12 @@ public class ERAufgabe : MonoBehaviour
         {
             //wenn alles richtig ist wird default alles auf aus gesetzt (in Update wird es aber wieder auf true gesetzt, wenn missioncheck == true ist)
             bottomLeiste.SetActive(false);
-            aufgabenFenster.SetActive(false);
-            checkbox.SetActive(false);
+            //aufgabenFenster.SetActive(false);
+            //checkbox.SetActive(false);
             aufgabeButton.SetActive(false);
             checkboxButton.SetActive(false);
             //kreisHacken.SetActive(true);
             //kreisKreuz.SetActive(false); 
-            
             FehlerAnzeige.fehlertext = "Du hast alles richtig gemacht!";
             Story.lvl[Story.level] = true; //Markiere Level als erfüllt
             
