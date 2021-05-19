@@ -196,13 +196,14 @@ public class PauseMenu : MonoBehaviour
     public void animationMission()
     {
         LeanTween.cancel(mission);
-        if (mission.transform.localPosition.y > 600)
+        if (mission.transform.localPosition.y == 330)
         {
-            LeanTween.moveLocalY(mission, 140, 0.5f);
+            LeanTween.moveLocalY(mission, 760, 0.3f);
+        }else if(mission.transform.localPosition.y ==140||(SpielIstPausiert&& mission.transform.localPosition.y == 760)){
+            LeanTween.moveLocalY(mission, 330, 0.3f);
         }
-        else
-        {
-            LeanTween.moveLocalY(mission, 760, 0.5f);
+        else{
+            LeanTween.moveLocalY(mission, 140, 0.3f);
         }
         
     }

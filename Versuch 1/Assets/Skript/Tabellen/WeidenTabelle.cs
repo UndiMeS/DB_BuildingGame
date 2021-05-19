@@ -14,7 +14,6 @@ public class WeidenTabelle : MonoBehaviour
 
     public void alleWeidenTabelleAn()
     {
-        Time.timeScale = 0;
         PauseMenu.SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
 
@@ -50,7 +49,6 @@ public class WeidenTabelle : MonoBehaviour
     }
     public void alleWeidenTabelleAus()
     {
-        Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
 

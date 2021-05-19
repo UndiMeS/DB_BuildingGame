@@ -14,7 +14,6 @@ public class FelderTabelle : MonoBehaviour
 
     public void alleFelderTabelleAn()
     {
-        Time.timeScale = 0;
         PauseMenu.SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
 
@@ -49,7 +48,6 @@ public class FelderTabelle : MonoBehaviour
     }
     public void alleFelderTabelleAus()
     {
-        Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
 

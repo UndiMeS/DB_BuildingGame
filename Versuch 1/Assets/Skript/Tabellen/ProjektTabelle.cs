@@ -22,7 +22,6 @@ public class ProjektTabelle : MonoBehaviour
 
     public void stationsProjekteTabelleAn()
     {
-        Time.timeScale = 0;
         PauseMenu.SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
 
@@ -60,7 +59,6 @@ public class ProjektTabelle : MonoBehaviour
     }
     public void stationsProjekteTabelleAus()
     {
-        Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
 
@@ -76,7 +74,6 @@ public class ProjektTabelle : MonoBehaviour
 
     public void alleProjekteTabelleAn()
     {
-        Time.timeScale = 0;
         PauseMenu.SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
 
@@ -121,7 +118,6 @@ public class ProjektTabelle : MonoBehaviour
     }
     public void alleProjekteTabelleAus()
     {
-        Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
 
@@ -137,7 +133,6 @@ public class ProjektTabelle : MonoBehaviour
 
     public void stationTabelleAn()
     {
-        Time.timeScale = 0;
         PauseMenu.SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
 
@@ -167,7 +162,6 @@ public class ProjektTabelle : MonoBehaviour
     }
     public void stationTabelleAus()
     {
-        Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
 

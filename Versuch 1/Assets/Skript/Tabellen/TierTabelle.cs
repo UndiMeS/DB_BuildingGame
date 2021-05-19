@@ -19,7 +19,6 @@ public class TierTabelle : MonoBehaviour
 
     public void wohnendeTiereTabelleAn()
     {
-        Time.timeScale = 0;
         PauseMenu.SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
 
@@ -51,7 +50,6 @@ public class TierTabelle : MonoBehaviour
     }
     public void wohnendeTiereTabelleAus()
     {
-        Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
 
@@ -66,7 +64,6 @@ public class TierTabelle : MonoBehaviour
 
     public void alleTiereTabelleAn()
     {
-        Time.timeScale = 0;
         PauseMenu.SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
 
@@ -107,7 +104,6 @@ public class TierTabelle : MonoBehaviour
     }
     public void alleTiereTabelleAus()
     {
-        Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
 
@@ -122,7 +118,6 @@ public class TierTabelle : MonoBehaviour
 
     public void stallTabelleAn()
     {
-        Time.timeScale = 0;
         PauseMenu.SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
 
@@ -154,7 +149,6 @@ public class TierTabelle : MonoBehaviour
     }
     public void stallTiereTabelleAus()
     {
-        Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
 

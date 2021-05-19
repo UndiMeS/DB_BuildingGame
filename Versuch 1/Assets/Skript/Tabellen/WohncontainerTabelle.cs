@@ -17,9 +17,19 @@ public class WohncontainerTabelle : MonoBehaviour
     public GameObject wohnScrollContent;
     public List<GameObject> zeilenListe = new List<GameObject>();
 
+    public GameObject mission;
+    public GameObject gebaeudeAnzeige;
+
+    public void TabellenAn()
+    {
+        if (mission.transform.localPosition.y<150) {
+            mission.transform.localPosition= new Vector3(16, 330,0); }
+        gebaeudeAnzeige.SetActive(false);
+    }
+
     public void wohnendeAstroTabelleAn()
     {
-        Time.timeScale = 0;
+        
         PauseMenu.SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
 
@@ -52,7 +62,6 @@ public class WohncontainerTabelle : MonoBehaviour
     }
     public void wohnendeAstroTabelleAus()
     {
-        Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
 
@@ -67,8 +76,7 @@ public class WohncontainerTabelle : MonoBehaviour
 
     public void alleAstroTabelleAn()
     {
-        Time.timeScale = 0;
-        PauseMenu.SpielIstPausiert = true;
+       PauseMenu.SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
 
         Tabelle.SetActive(true);
@@ -109,7 +117,7 @@ public class WohncontainerTabelle : MonoBehaviour
     }
     public void alleAstroTabelleAus()
     {
-        Time.timeScale = 1;
+        
         PauseMenu.SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
 
@@ -135,11 +143,11 @@ public class WohncontainerTabelle : MonoBehaviour
         gameObject.GetComponent<TierTabelle>().wohnendeTiereTabelleAus();
         gameObject.GetComponent<WeidenTabelle>().alleWeidenTabelleAus();
         gameObject.GetComponent<TierTabelle>().stallTiereTabelleAus();
+        gebaeudeAnzeige.SetActive(true);
     }
 
     public void wohnTabelleAn()
     {
-        Time.timeScale = 0;
         PauseMenu.SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
 
@@ -170,7 +178,6 @@ public class WohncontainerTabelle : MonoBehaviour
     }
     public void wohnTabelleAus()
     {
-        Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
 

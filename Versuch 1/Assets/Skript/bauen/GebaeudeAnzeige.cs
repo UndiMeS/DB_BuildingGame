@@ -46,6 +46,7 @@ public class GebaeudeAnzeige : MonoBehaviour
 
     public GameObject merkmalGO;
     public GameObject KostenVerbessernGO;
+    public GameObject buttonRechts;
 
     // Start is called before the first frame update
     void Start()
@@ -134,7 +135,9 @@ public class GebaeudeAnzeige : MonoBehaviour
 
     private bool outBox(Vector3 mousePosition)
     {
-        if (childOn) { return !RectTransformUtility.RectangleContainsScreenPoint(ObjektBewegung.infoAnzeige.GetComponent<RectTransform>(),mousePosition,Camera.main); }
+        if (childOn) { return !(RectTransformUtility.RectangleContainsScreenPoint(ObjektBewegung.infoAnzeige.GetComponent<RectTransform>(),mousePosition,Camera.main) ||
+                RectTransformUtility.RectangleContainsScreenPoint(buttonRechts.GetComponent<RectTransform>(), mousePosition, Camera.main) );
+        }
         else { return true; }
     }
 
