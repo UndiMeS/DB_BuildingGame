@@ -96,12 +96,12 @@ public class Story : MonoBehaviour
         //Freischaltbare Objekte auf aus/false setzten (Transparente auf true)
 
         //folgendes auskommentieren, um sofort auf alles zugriff zu haben.
-       //allesOff(); 
+       allesOff(); 
     }   
     void Update()
     {
         //Prüfe auf erfüllte Level
-        //checkLevel();
+        checkLevel();
 
         //Setzte ButtonlebelAnzeige
         //Utilitys.TextInTMP(buttonKreisLevel, Story.level);
