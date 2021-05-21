@@ -209,7 +209,7 @@ public class GebaeudeAnzeige : MonoBehaviour
             Testing.forscher++;
             Testing.geld -= menschkosten;
             Testing.summeMenschen++;
-            Mensch temp = new Mensch("Forscher", gebaeude.GetComponent<Wohncontainer>().containernummer);
+            Mensch temp = new Mensch("Forschung", gebaeude.GetComponent<Wohncontainer>().containernummer);
             gebaeude.GetComponent<Wohncontainer>().bewohner.Add(temp);
         }        
     }
@@ -226,7 +226,7 @@ public class GebaeudeAnzeige : MonoBehaviour
             Testing.feldarbeiter++;
             Testing.geld -= menschkosten;
             Testing.summeMenschen++;
-            Mensch temp = new Mensch("Bauer", gebaeude.GetComponent<Wohncontainer>().containernummer);
+            Mensch temp = new Mensch("Feld", gebaeude.GetComponent<Wohncontainer>().containernummer);
             gebaeude.GetComponent<Wohncontainer>().bewohner.Add(temp);
         }
     }
@@ -243,7 +243,7 @@ public class GebaeudeAnzeige : MonoBehaviour
             Testing.tierpfleger++;
             Testing.geld -= menschkosten;
             Testing.summeMenschen++;
-            Mensch temp = new Mensch("Tierpfleger", gebaeude.GetComponent<Wohncontainer>().containernummer);
+            Mensch temp = new Mensch("Weide", gebaeude.GetComponent<Wohncontainer>().containernummer);
             gebaeude.GetComponent<Wohncontainer>().bewohner.Add(temp);
         }
     }
