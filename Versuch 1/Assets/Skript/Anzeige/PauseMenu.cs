@@ -82,6 +82,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void LadeMenu()
     {
+        Testing.resetAll();
         SceneManager.LoadScene(0);
     }
     public void BeendeSpiel()

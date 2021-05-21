@@ -91,7 +91,27 @@ public class Testing : MonoBehaviour
     }
 
 
+    public static void resetAll()
+    {
+        geld = 800;
+        umsatz = 0;
+        forscher = 0;
+        feldarbeiter = 0;
+        tiere = 0;
+        tierpfleger = 0;
+        summeForschungen = 0;
+        summeMenschen = 0;
+        summeTiere = 0;
 
+        wohncontainer.Clear();
+        Wohncontainer.resetStatics();
+        menschen.Clear();
+        felder.Clear();
+        Feld.resetStatics();
+        forschungsstationen.Clear();
+        Forschung.resetStatics();
+        forschungsprojekte.Clear();
+    }
 
 
 

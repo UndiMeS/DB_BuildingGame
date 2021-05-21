@@ -28,7 +28,7 @@ public class Projekt
         Testing.forschungsprojekte.Add(this);
 
     }
-
+    //für Projekt was Forschungsstation verbessert
     public Projekt(int nr, string merk, int merkInt, int st, int kost, int forAnz,float faktor, int p)
     {
         stationsnummer = nr;
