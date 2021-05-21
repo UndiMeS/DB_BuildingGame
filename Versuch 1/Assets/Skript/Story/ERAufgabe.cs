@@ -153,7 +153,7 @@ public class ERAufgabe : MonoBehaviour
     private int[] entitysRichtig =          { 1, 1, 1, 1, 1, 0, 2, 1 };
     private int[] attributeRichtig =        { 0, 0, 0, 0, 0, 0, 0, 0 };//{ 4, 4, 4, 3, 5, 0, 7, 5 };
     private int[] primaerschluesselRichtig ={ 0, 0, 0, 0, 0, 0, 0, 0 };//{ 1, 2, 1, 1, 2, 0, 3, 1 };
-    private int[] beziehungenRichtig =      { 0, 1, 1, 1, 2, 3, 1, 3 };
+    private int[] beziehungenRichtig =      { 0, 1, 1, 1, 2, 3, 2, 3 };
     private int[] kardRichtig =             { 0, 2, 2, 2, 4, 6, 4, 6 }; //2 pro Relation
 
     private int[] entitysHat;
@@ -163,7 +163,7 @@ public class ERAufgabe : MonoBehaviour
     private int[] kardHat;
 
     //Anzahl der Objekte, die im LvL sind (#EM + #Attribute + #Relationen)
-    private int[] anzahlObjekte = { 1, 2, 2, 2, 3, 3, 3, 4 }; //{ 5, 6, 6, 5, 8, 3, 10, 9 };
+    private int[] anzahlObjekte = { 1, 2, 2, 2, 3, 3, 4, 4 }; //{ 5, 6, 6, 5, 8, 3, 11, 9 };
 
     public GameObject dasIstSchonFertig;
     public GameObject aufgabenText;
@@ -327,7 +327,7 @@ public class ERAufgabe : MonoBehaviour
             Story.lvl[Story.level] = true; //Markiere Level als erfüllt
             
             //ER bleibt ja bei dem Level stehen, wo Mission bearbeitet werden kann. Ist Mission erfolgreich (missionCheck = true), dann geht es weiter.
-            if((Story.level == 1|| Story.level == 2 || Story.level == 5 || Story.level == 6 ) && missionCheck == true){
+            if((Story.level == 1|| Story.level == 2 || Story.level == 5 || Story.level == 6 || Story.level == 7 ) && missionCheck == true){
                 missionCheck = false;
                 kreisHacken.SetActive(true);
                 kreisKreuz.SetActive(false);

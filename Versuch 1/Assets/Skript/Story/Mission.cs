@@ -20,6 +20,7 @@ public class Mission : MonoBehaviour
     int temp_tierzahl_lvl4 = 0;
     int temp_baukosten_lvl4 = 0;
     int temp_anzahl_lvl4 = 0;
+    bool finale = false;
 //Texteingaben für Missionen
     public Text lvl1_text;
     public GameObject textInput;
@@ -55,7 +56,7 @@ public class Mission : MonoBehaviour
                                         new string[] { "Wir können nun mit dem Forschen beginnen. Erforsche je eine Verbesserung der Baukosten und Bettenzahl von Wohncontainern und Arbeiterzahl und Ertrag von Feldsphären. Denk daran, dass es sich lohnen könnte auch die Methoden der Forschungsstationen zu verbessern. ", "Verbessere die Baukosten von Wohncontainern.", "Verbessere die Bettenzahl von Wohncontainern", "Verbessere den Ertrag von Feldsphären.", "Verbessere die Arbeiterzahl von Feldsphären.", "", "", "", "" },
                                         new string[] { "Neben Feldsphären können bald auch Weidesphären errichtet werden. Darin werden Tiere bewirtschaftet. Diese leben in Stallcontainern.", "Fliege 8 Tiere ein.", "Gib den Namen des 1. Tier der Seidlung an.", "aus", "aus", "8", "", "", "" },
                                         new string[] { "Nun können auch Weidesphären konstruiert werden, um Erträge zu erwirtschaften. Verbessere deinen regelmäßigen Ertrag durch den Bau von Weidesphären und forsche an deren Verbesserung.", "Erbaue 3 Weidesphären.", "Verbessere die Baukosten von Weidesphären.", "Verbessere die Tieranzahl von Weidesphären.", "Verbessere die Arbeiterzahl von Weidesphären.", "3", "", "", "" },
-                                        new string[] { "Mission 5", "Teilziel 15", "Teilziel 25", "Teilziel 35", "Teilziel 45", "1", "2", "3", "4" }
+                                        new string[] { "Du hast es geschafft! Die Grundversorgung der ersten Marsseidlung ist aufgebaut und das ER-Diagramm, als Gerüst für die Datenbank, wurde erstellt. Nun ist es an der Zeit mehr zu forschen, um die Grundsteine für zukünftige Missionen auf dem Mars zu legen. Investiere daher in mehr Forschungsprojekt und erweitere die Bevölkerung deiner Siedlung.", "Erweitere deine Siedlungsbevölkerung auf 50 Astronauten.", "Forsche in der Siedlung an 15 Projekten.", "aus", "aus", "50", "15", "", "" }
                                         };
     // Start is called before the first frame update
     void Start()
@@ -110,17 +111,23 @@ public class Mission : MonoBehaviour
     //Setzte das Level für die Mission in Abhängigkeit vom Story Level. Manchmal sind mehrere Storylevel in einem Missionslevel
     public int setLevel()
     {
-        if(Story.level == 0 || Story.level == 1|| Story.level == 2){
-            return 0; //X Astronauten einfliegen
-        }else if(Story.level == 3){
-            return 1; //Ertrag auf X setzten
-        }else if(Story.level == 4|| Story.level == 5|| Story.level == 6){
-            return 2; //Verbessern von Containern und Feldern
-        }else if(Story.level == 7){
-            return 3; //X Nutztiere einfliegen
-        }else {
-            return 4; //X Weidearbeiter und Ertrag und Verbesserung
+        if(finale){
+            return 5;
+        }else
+        {
+            if(Story.level == 0 || Story.level == 1|| Story.level == 2){
+                return 0; //X Astronauten einfliegen
+            }else if(Story.level == 3){
+                return 1; //Ertrag auf X setzten
+            }else if(Story.level == 4|| Story.level == 5|| Story.level == 6){
+                return 2; //Verbessern von Containern und Feldern
+            }else if(Story.level == 7){
+                return 3; //X Nutztiere einfliegen
+            }else {
+                return 4; //X Weidearbeiter und Ertrag und Verbesserung
+            }
         }
+        
     }
 
     public void checkMission(int level)
@@ -215,6 +222,8 @@ public class Mission : MonoBehaviour
             hacken1.SetActive(false);
             hacken2.SetActive(false);
             textInput.SetActive(true);
+            textInput.GetComponent<InputField>().interactable = true;
+            textInput.GetComponent<InputField>().text = "";
             if(Testing.tiere > 0)
             {
                 if(lvl1_text.text == Testing.tier[0].tiername)
@@ -241,6 +250,7 @@ public class Mission : MonoBehaviour
                 hacken2.SetActive(false);
                 hacken3.SetActive(false);
                 hacken4.SetActive(false);
+                textInput.SetActive(false);
                 if(temp_anzahl_lvl4 == 0 && temp_arbeiterzahl_lvl4 == 0 && temp_baukosten_lvl4 == 0 && temp_tierzahl_lvl4 == 0)
                 {
                     temp_arbeiterzahl_lvl4 = Weide.arbeiterzahl;
@@ -266,6 +276,31 @@ public class Mission : MonoBehaviour
             }
             if(zwischenziel1==1 && zwischenziel2==1 && zwischenziel3==1 && zwischenziel4==1){
                 KreuzHacken();
+                finale = true;
+            }
+            else
+            {
+                firstTime = true;
+            }
+        }else if (level == 5)
+        {
+            hacken1.SetActive(false);
+            hacken2.SetActive(false);
+            hacken3.SetActive(false);
+            hacken4.SetActive(false);
+            if(Testing.summeMenschen >= System.Convert.ToInt32(mission[5][5]))
+            {
+                hacken1.SetActive(true);
+                zwischenziel1 = 1;
+            }
+            if(Testing.summeForschungen >= System.Convert.ToInt32(mission[5][6]))
+            {
+                hacken2.SetActive(true);
+                zwischenziel2 = 1; 
+            }
+            if(zwischenziel1==1 && zwischenziel2==1){
+                KreuzHacken();
+
             }
             else
             {
@@ -298,4 +333,8 @@ public class Mission : MonoBehaviour
         zwischenziel4 = 0;
     }
 
+    public void FinaleAnzeige()
+    {
+        Debug.Log("Du hast gewonnen!");
+    }
 }
