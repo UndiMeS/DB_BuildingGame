@@ -1,15 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Feld : MonoBehaviour
-{   
+{
     public int feldnummer;
     public int baukosten;
     public int arbeiter;
     public int ertrag;
 
-    public static int neuErtrag = 30;
+    public static int neuErtrag = 30; //unten auch
     public static int nummerZaehler = 1100;
     public static int preis = 70;
     public static int arbeiterzahl = 4;
@@ -28,9 +29,17 @@ public class Feld : MonoBehaviour
             Testing.feldarbeiter -= arbeiter;
             ertrag = neuErtrag;
             Testing.umsatz += ertrag;
+            Testing.felder.Add(this);
+            Testing.gebauedeListe.Add(gameObject);
         }
-        Testing.felder.Add(this);
-        Testing.gebauedeListe.Add(gameObject);
+        if (nummerZaehler < feldnummer)
+        {
+            nummerZaehler = feldnummer + 1;
+            neuErtrag = ertrag;
+            arbeiterzahl = arbeiter;
+            preis = baukosten;
+        }
+
     }
 
     public void ausgabe(GameObject tabelle)
@@ -42,21 +51,17 @@ public class Feld : MonoBehaviour
         Utilitys.TextInTMP(tabelle.transform.GetChild(3).gameObject, ertrag);
     }
 
-    public void SetXY(int neuX,int neuY)
+    public void SetXY(int neuX, int neuY)
     {
         x = neuX;
         y = neuY;
     }
 
-    public void setAll(int nr, int kosten, int arb, int ert, int xNeu, int yNeu)
+    internal static void resetStatics()
     {
-        feldnummer = nr;
-        nummerZaehler = nr;
-        baukosten = kosten;
-        arbeiter = arb;
-        ertrag = ert;
-        x = xNeu;
-        y = yNeu;
-
+        neuErtrag = 30; //unten auch
+        nummerZaehler = 1100;
+        preis = 70;
+        arbeiterzahl = 4;
     }
 }

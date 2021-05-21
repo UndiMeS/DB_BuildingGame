@@ -81,7 +81,7 @@ public class GebaeudeAnzeige : MonoBehaviour
         }
         if (ObjektBewegung.selected || GebaeudeInfoBauen.wertFest != 0||allesAus)
         {
-            wert = 0;
+           wert = 0;
         }
 
        

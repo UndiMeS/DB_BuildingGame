@@ -1,17 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Forschung : MonoBehaviour
 {
-    public int stationsnummer=0;
+    public int stationsnummer = 0;
     public int baukosten;
-    public string spezialisierung="";
+    public string spezialisierung = "";
     private int spezInt;
     public int anzahlProjekte = 0;
     public int maxAnzahlProjekte = 3;
-    public int projektkosten=100;
+    public int projektkosten = 100;
 
-    public static int nummerZaehler = 1;
+    public static int nummerZaehler = 1; //unten auch
     public static int chef = 1;
     public static int preis = 100;
 
@@ -25,7 +26,7 @@ public class Forschung : MonoBehaviour
 
     private string aktuellesMerkmal = "";
     private int merkmal;
-    private int option=0; 
+    private int option = 0;
     private GameObject merkmalsanzeige;
 
     public void Start()
@@ -43,9 +44,14 @@ public class Forschung : MonoBehaviour
             Testing.forschungsstationen.Add(this);
             Testing.gebauedeListe.Add(gameObject);
         }
+        if (nummerZaehler < stationsnummer)
+        {
+            nummerZaehler = stationsnummer + 1;
+            preis = baukosten;
+        }
     }
 
-    
+
     public void ausgabeStation(GameObject tabelle)
     {
         Utilitys.TextInTMP(tabelle.transform.GetChild(0).gameObject, stationsnummer);
@@ -53,7 +59,7 @@ public class Forschung : MonoBehaviour
         Utilitys.TextInTMP(tabelle.transform.GetChild(2).gameObject, spezialisierung);
     }
 
-    public void ausgabeProjekt(GameObject tabelle, GameObject merkmalGO,  GameObject verbsserungGO)
+    public void ausgabeProjekt(GameObject tabelle, GameObject merkmalGO, GameObject verbsserungGO)
     {
         merkmalsanzeige = merkmalGO;
         Utilitys.TextInTMP(tabelle.transform.GetChild(5).gameObject, anzahlProjekte);
@@ -66,8 +72,8 @@ public class Forschung : MonoBehaviour
             Utilitys.TextInTMP(tabelle.transform.GetChild(2).gameObject, selectedProj.kosten);
             Utilitys.TextInTMP(tabelle.transform.GetChild(3).gameObject, selectedProj.forscheranzahl);
             Utilitys.TextInTMP(tabelle.transform.GetChild(4).gameObject, selectedProj.verbesserungsfaktor);
-            }
-        else 
+        }
+        else
         {
             Utilitys.TextInTMP(tabelle.transform.GetChild(1).gameObject, "");
             Utilitys.TextInTMP(tabelle.transform.GetChild(2).gameObject, "");
@@ -86,6 +92,8 @@ public class Forschung : MonoBehaviour
             verbsserungGO.SetActive(true);
         }
     }
+
+
 
     public void verbesserung(TMPro.TMP_Dropdown ddm, GameObject aktuellesmerkmal)
     {
@@ -221,26 +229,40 @@ public class Forschung : MonoBehaviour
 
         foreach (Projekt pro in projekte)
         {
-            if (pro.merkmalInt == merkmal && pro.stufe == GebaeudeAnzeige.projektMerkmalStufen[merkmal]-1)
+            if (pro.merkmalInt == merkmal && pro.stufe == GebaeudeAnzeige.projektMerkmalStufen[merkmal] - 1)
             {
                 selectedProj = pro;
             }
         }
-   }
+    }
+    //beim laden wird selectedProjekt gesetzt
+    internal void setProjekt()
+    {
+
+        if (projekte.Count != 0)
+        {
+            Debug.Log(projekte[0].merkmal + " " + dropdown.options[0].text);
+            if (projekte[0].merkmal == dropdown.options[0].text)
+            {
+                selectedProj = projekte[0];
+            }
+        }
+    }
 
     public void createProjekt()
     {
-        if (anzahlProjekte == maxAnzahlProjekte )
+        if (anzahlProjekte == maxAnzahlProjekte)
         {
             FehlerAnzeige.fehlertext = "An dieser Station können keine neuen Projekte gestartet werden.";
             return;
-        }if(GebaeudeAnzeige.maxStufen[merkmal]  == (GebaeudeAnzeige.projektMerkmalStufen[merkmal]-1)) //-1 da sonst z.B. 9/10 als Ende endsteht
+        }
+        if (GebaeudeAnzeige.maxStufen[merkmal] == (GebaeudeAnzeige.projektMerkmalStufen[merkmal] - 1)) //-1 da sonst z.B. 9/10 als Ende endsteht
         {
             FehlerAnzeige.fehlertext = "Maximale Stufe des Merkmals erreicht.";
             return;
         }
         anzahlProjekte++;
-        selectedProj = new Projekt(stationsnummer,projektkosten);
+        selectedProj = new Projekt(stationsnummer, projektkosten);
         projekte.Add(selectedProj);
 
         if (spezInt == 1)
@@ -253,14 +275,14 @@ public class Forschung : MonoBehaviour
                 selectedProj.pos = 0;
                 Wohncontainer.preis = selectedProj.neuerWert(Wohncontainer.preis, GebaeudeAnzeige.projektMerkmalStufen[0]);
                 GebaeudeAnzeige.projektMerkmalStufen[0]++;
-                
+
             }
             else if (option == 1)
             {
                 merkmal = 1;
                 selectedProj.SetMerkmal("Bettenanzahl");
                 selectedProj.merkmalInt = merkmal;
-                selectedProj.pos =2;
+                selectedProj.pos = 2;
                 Wohncontainer.betten = selectedProj.neuerWert(Wohncontainer.betten, GebaeudeAnzeige.projektMerkmalStufen[1]);
                 GebaeudeAnzeige.projektMerkmalStufen[1]++;
             }
@@ -279,17 +301,17 @@ public class Forschung : MonoBehaviour
                 selectedProj.pos = 0;
                 Feld.preis = selectedProj.neuerWert(Feld.preis, GebaeudeAnzeige.projektMerkmalStufen[2]);
                 GebaeudeAnzeige.projektMerkmalStufen[2]++;
-                
+
             }
             else if (option == 1)
             {
                 selectedProj.SetMerkmal("Arbeiterzahl");
-                merkmal = 3; 
+                merkmal = 3;
                 selectedProj.merkmalInt = merkmal;
                 selectedProj.pos = 0;
                 Feld.arbeiterzahl = selectedProj.neuerWert(Feld.arbeiterzahl, GebaeudeAnzeige.projektMerkmalStufen[3]);
                 GebaeudeAnzeige.projektMerkmalStufen[3]++;
-                
+
             }
             else if (option == 2)
             {
@@ -299,7 +321,7 @@ public class Forschung : MonoBehaviour
                 selectedProj.pos = 2;
                 Feld.neuErtrag = selectedProj.neuerWert(Feld.neuErtrag, GebaeudeAnzeige.projektMerkmalStufen[4]);
                 GebaeudeAnzeige.projektMerkmalStufen[4]++;
-                
+
             }
             else
             {
@@ -316,7 +338,7 @@ public class Forschung : MonoBehaviour
                 selectedProj.pos = 0;
                 Weide.preis = selectedProj.neuerWert(Weide.preis, GebaeudeAnzeige.projektMerkmalStufen[5]);
                 GebaeudeAnzeige.projektMerkmalStufen[5]++;
-                
+
             }
             else if (option == 1)
             {
@@ -326,7 +348,7 @@ public class Forschung : MonoBehaviour
                 selectedProj.pos = 0;
                 Weide.arbeiterzahl = selectedProj.neuerWert(Weide.arbeiterzahl, GebaeudeAnzeige.projektMerkmalStufen[6]);
                 GebaeudeAnzeige.projektMerkmalStufen[6]++;
-                
+
             }
             else if (option == 2)
             {
@@ -336,7 +358,7 @@ public class Forschung : MonoBehaviour
                 selectedProj.pos = 2;
                 Weide.neuErtrag = selectedProj.neuerWert(Weide.neuErtrag, GebaeudeAnzeige.projektMerkmalStufen[7]);
                 GebaeudeAnzeige.projektMerkmalStufen[7]++;
-                
+
             }
             else if (option == 3)
             {
@@ -346,7 +368,7 @@ public class Forschung : MonoBehaviour
                 selectedProj.pos = 0;
                 Weide.tierAnzahl = selectedProj.neuerWert(Weide.tierAnzahl, GebaeudeAnzeige.projektMerkmalStufen[8]);
                 GebaeudeAnzeige.projektMerkmalStufen[8]++;
-                
+
             }
             else
             {
@@ -359,24 +381,24 @@ public class Forschung : MonoBehaviour
             {
                 selectedProj.SetMerkmal("Baukosten");
 
-                merkmal = 9; 
+                merkmal = 9;
                 selectedProj.merkmalInt = merkmal;
                 selectedProj.pos = 0;
                 Stallcontainer.preis = selectedProj.neuerWert(Stallcontainer.preis, GebaeudeAnzeige.projektMerkmalStufen[9]);
                 GebaeudeAnzeige.projektMerkmalStufen[9]++;
-                
+
 
             }
             else if (option == 1)
             {
                 selectedProj.SetMerkmal("Gehegezahl");
 
-                merkmal = 10; 
+                merkmal = 10;
                 selectedProj.merkmalInt = merkmal;
                 selectedProj.pos = 2;
                 Stallcontainer.gehege = selectedProj.neuerWert(Stallcontainer.gehege, GebaeudeAnzeige.projektMerkmalStufen[10]);
                 GebaeudeAnzeige.projektMerkmalStufen[10]++;
-                
+
             }
             else
             {
@@ -388,7 +410,7 @@ public class Forschung : MonoBehaviour
 
     public void addProjekt(Projekt pro)
     {
-       projekte.Add(pro);
+        projekte.Add(pro);
     }
     public void SetXY(int neuX, int neuY)
     {
@@ -401,26 +423,10 @@ public class Forschung : MonoBehaviour
         outy = y;
     }
 
-    public void setAll(int nr, string spez, int anzProj, int maxAnz, int xNeu, int yNeu, TMPro.TMP_Dropdown ddm, GameObject merkmalGO, int prokosten)
+    internal static void resetStatics()
     {
-        Testing.forschungsstationen.Add(this);
-
-        stationsnummer = nr;
-        nummerZaehler = nr;
-        spezialisierung = spez;
-        baukosten = preis;
-        projektkosten = prokosten;
-
-        anzahlProjekte = anzProj;
-        maxAnzahlProjekte = maxAnz;
-        x = xNeu;
-        y = yNeu;
-
-        projekte = new List<Projekt>();
-        verbesserung(ddm, merkmalGO);
-
-        //GebaeudeAnzeige.forschungsauswahl = 0;
-
-        
+        nummerZaehler = 1; //unten auch
+        chef = 1;
+        preis = 100;
     }
 }

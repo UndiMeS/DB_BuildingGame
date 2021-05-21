@@ -109,7 +109,7 @@ public class Gitter
     {
         int x, y;
         GetXY(weltposition, out x, out y);
-        if (gridArray[x, y] == 0)
+        if (x<weite&&y<hoehe&&gridArray[x, y] == 0)
         {
             return true;
         }

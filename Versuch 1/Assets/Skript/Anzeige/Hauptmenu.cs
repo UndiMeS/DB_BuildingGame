@@ -7,9 +7,7 @@ public class Hauptmenu : MonoBehaviour
 {
     public void StartSpiel()
     {
-        Time.timeScale = 1;
-        PauseMenu.SpielIstPausiert = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+       SwitchToBaumenue();
     }
 
     public void SpielBeenden()
@@ -25,6 +23,8 @@ public class Hauptmenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1;
         PauseMenu.SpielIstPausiert = false;
+        KameraKontroller.aktiviert = true;
+        GebaeudeAnzeige.allesAus = false;
     }
 
     public void Laden()

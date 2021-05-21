@@ -7,7 +7,7 @@ using System;
 
 public class SaveLoad : MonoBehaviour
 {
-    public PlayerData playerData;
+    private PlayerData playerData;
 
     public GameObject wohncontainerPrefab;
     public GameObject feldPrefab;
@@ -25,13 +25,13 @@ public class SaveLoad : MonoBehaviour
         playerData = new PlayerData();
         string json = JsonUtility.ToJson(playerData);
         File.WriteAllText(Application.dataPath + "/SaveState/saveFile.json", json);
-
+         
         json = "[";
         foreach (Wohncontainer wohn in Testing.wohncontainer)
         {
-            json +=JsonUtility.ToJson(wohn)+",";
+            json += JsonUtility.ToJson(wohn) + ",";
         }
-        json = json.Remove(json.Length - 1)+"]";
+        json = json.Remove(json.Length - 1) + "]";
         File.WriteAllText(Application.dataPath + "/SaveState/Wohncontainer.json", json);
 
         json = "[";
@@ -104,13 +104,13 @@ public class SaveLoad : MonoBehaviour
         feldLaden();
         forschungLaden();
         projekteLaden();
-        weideLaden();
-        stallLaden();
-        menschenLaden();
-        tiereLaden();
-        //GebaeudeAnzeige.forschungsauswahl = 0;
-
-        saveLoadER.laden();
+        //weideLaden();
+        //stallLaden();
+        //menschenLaden();
+        //tiereLaden();
+        
+        ObjektBewegung.selected = false;
+        //saveLoadER.laden();
     }
 
     private void tiereLaden()
@@ -198,71 +198,24 @@ public class SaveLoad : MonoBehaviour
 
     private void projekteLaden()
     {
-        int nr = 0;
-        string merkmal = "";
-        int merkmalInt = 0;
-        int stufe = 0;
-        int kosten = 0;
-        int forscherAnz = 0;
-        float faktor = 0;
-        int pos = 0;
-
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Forschungsprojekte.json");
-        string[] split = json.Split(':');
-        for (int i = 1; i < split.Length; i++)
+        json = json.Remove(json.Length - 1);//] löschen
+        string[] split = json.Split('}');
+        for (int i = 0; i < split.Length - 1; i++)
         {
-            string[] tmp = split[i].Split(',');
-            if ((i - 1) % 8 == 0)
+            Projekt projekt= JsonUtility.FromJson<Projekt>(split[i].Remove(0, 1) + "}");//entfernt ,
+            Testing.forschungsprojekte.Add(projekt);
+            if (projekt.merkmalInt != 11 && GebaeudeAnzeige.projektMerkmalStufen[projekt.merkmalInt] < projekt.stufe + 1)
             {
-                nr = int.Parse(tmp[0]);
+                GebaeudeAnzeige.projektMerkmalStufen[projekt.merkmalInt] = projekt.stufe + 1;
             }
-            else if ((i - 1) % 8 == 1)
+            foreach (Forschung fors in Testing.forschungsstationen)
             {
-                merkmal = tmp[0].Split('"')[1];
-            }
-            else if ((i - 1) % 8== 2)
-            {
-                merkmalInt = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 8 == 3)
-            {
-                stufe = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 8 == 4)
-            {
-                kosten = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 8 == 5)
-            {
-                forscherAnz = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 8 == 6)
-            {
-                if (float.Parse(tmp[0]) < 4E+15)
+                if (fors.stationsnummer == projekt.stationsnummer)
                 {
-                    faktor = 1.1f;
+                    fors.addProjekt(projekt);
                 }
-                else
-                {
-                    faktor = 0.9f;
-                }
-                if (merkmalInt == 11)
-                {
-                    faktor = 0.5f;
-                }
-
-            }
-            else if ((i - 1) % 8 == 7)
-            {
-                if (i + 1 == split.Length)
-                {
-                    pos = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
-                }
-                else
-                {
-                    pos = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
-                }
-                new Projekt(nr,merkmal, merkmalInt,stufe, kosten,forscherAnz,faktor,pos);
+                fors.setProjekt();
             }
         }
     }
@@ -391,186 +344,75 @@ public class SaveLoad : MonoBehaviour
     }
     private void feldLaden()
     {
-        int nr = 0;
-        int kosten = 0;
-        int arbeiter = 0;
-        int ertrag = 0;
-        int x = 0;
-        int y = 0;
-
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Feldsphaere.json");
-        string[] split = json.Split(':');
-        for (int i = 1; i < split.Length; i++)
+        json = json.Remove(json.Length - 1);//[] löschen
+        string[] split = json.Split('}');
+        for (int i = 0; i < split.Length - 1; i++)
         {
-            string[] tmp = split[i].Split(',');
-            if ((i - 1) % 6 == 0)
-            {
-                nr = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 6 == 1)
-            {
-                kosten = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 6 == 2)
-            {
-                arbeiter = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 6 == 3)
-            {
-                ertrag = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 6 == 4)
-            {
-                x = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 6 == 5)
-            {
-                if (i + 1 == split.Length)
-                {
-                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
-                }
-                else
-                {
-                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
-                }
+            GameObject geb = Instantiate(feldPrefab, transform);
+            Feld feld = geb.AddComponent<Feld>();
+            JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", feld);//entfernt ,
 
-                GameObject geb = Instantiate(feldPrefab, transform);
-                Testing.gebauedeListe.Add(geb);
-                Destroy(geb.GetComponent<ObjektBewegung>());
-                geb.AddComponent<Feld>();
-                geb.transform.parent = null;
-                geb.transform.localScale = new Vector3(1, 1, 1);
-                geb.transform.rotation = Quaternion.Euler(0, 0, 0);
-                geb.transform.position = Testing.grid.GetWorldPosition(x, y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
-                Testing.grid.SetWert(x, y,2, geb);
-                geb.GetComponent<Feld>().setAll(nr, kosten, arbeiter, ertrag, x, y);
-            }
+            Destroy(geb.GetComponent<ObjektBewegung>());
+            geb.transform.parent = null;
+            geb.transform.localScale = new Vector3(1, 1, 1);
+            geb.transform.rotation = Quaternion.Euler(0,0,0);
+            geb.transform.position = Testing.grid.GetWorldPosition(feld.x, feld.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
+            Testing.grid.SetWert(feld.x, feld.y,2, geb);
+
+            Testing.felder.Add(feld);
+            Testing.gebauedeListe.Add(geb);
         }
     }
     private void forschungLaden()
     {
-        int nr = 0;
-        String spez = "";
-        int anzProj = 0;
-        int maxAnz = 0;
-        int projektkosten = 0;
-        int x = 0;
-        int y = 0;
-
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Forschungsstation.json");
-        string[] split = json.Split(':');
-        for (int i = 1; i < split.Length; i++)
+        json = json.Remove(json.Length - 1);//[] löschen
+        string[] split = json.Split('}');
+        for (int i = 0; i < split.Length - 1; i++)
         {
-            string[] tmp = split[i].Split(',');
-            if ((i - 1) % 7 == 0)
-            {
-                nr = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 7 == 1)
-            {
-                spez = tmp[0].Split('"')[1];
-            }
-            else if ((i - 1) % 7 == 2)
-            {
-                anzProj = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 7 == 3)
-            {
-                maxAnz = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 7 == 4)
-            {
-                projektkosten = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 7 == 5)
-            {
-                x = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 7 == 6)
-            {
-                if (i + 1 == split.Length)
-                {
-                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
-                }
-                else
-                {
-                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
-                }
-                GameObject geb = Instantiate(forschungPrefab, transform);
-                geb.AddComponent<Forschung>();
-                geb.GetComponent<Forschung>().setAll(nr, spez, anzProj, maxAnz, x, y, dropDownProjekt, merkmalGO, projektkosten);
-              
-                Destroy(geb.GetComponent<ObjektBewegung>());
-                geb.transform.parent = null;
-                geb.transform.localScale = new Vector3(1, 1, 1);
-                geb.transform.rotation = Quaternion.Euler(0, 0, 0);
-                geb.transform.position = Testing.grid.GetWorldPosition(x, y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
-                Testing.grid.SetWert(x, y, 3, geb);
-                Testing.gebauedeListe.Add(geb);
-            }
+            GameObject geb = Instantiate(forschungPrefab, transform);
+            Forschung fos = geb.AddComponent<Forschung>();
+            JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", fos);//entfernt ,
+
+            Destroy(geb.GetComponent<ObjektBewegung>());
+            geb.transform.parent = null;
+            geb.transform.localScale = new Vector3(1, 1, 1);
+            geb.transform.rotation = Quaternion.Euler(0, 0, 0);
+            geb.transform.position = Testing.grid.GetWorldPosition(fos.x, fos.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
+            Testing.grid.SetWert(fos.x, fos.y, 3, geb);
+
+            Testing.forschungsstationen.Add(fos);
+            Testing.gebauedeListe.Add(geb);
+
+            fos.projekte = new List<Projekt>();
+            fos.verbesserung(dropDownProjekt, merkmalGO);
         }
-        //GebaeudeAnzeige.forschungsauswahl = 0;
     }
     private void wohncontainerLaden()
     {
-        int nr=0;
-        int kosten = 0;
-        int bettenAnz = 0;
-        int freieBetten = 0;
-        int x = 0;
-        int y = 0;
-
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Wohncontainer.json");
-        string[] split=json.Split(':');
-        for(int i =1; i < split.Length; i++)
+        json = json.Remove(json.Length - 1);//[] löschen
+        string[] split = json.Split('}');
+        for (int i= 0;i < split.Length-1;i ++)
         {
-            string[] tmp = split[i].Split(',');
-            if ((i - 1) % 6 == 0)
-            {
-                nr = int.Parse(tmp[0]);
-            }else if((i - 1) %6 == 1)
-            {
-                kosten = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 6 == 2)
-            {
-                bettenAnz = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 6 == 3)
-            {
-                freieBetten = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 6 == 4)
-            {
-                x = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 6 == 5)
-            {
-                if (i + 1 == split.Length)
-                {
-                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
-                }
-                else
-                {
-                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
-                }
-                GameObject geb = Instantiate(wohncontainerPrefab, transform);
-                geb.AddComponent<Wohncontainer>();
-                Testing.gebauedeListe.Add(geb);
-                Destroy( geb.GetComponent<ObjektBewegung>());
-                geb.transform.parent = null;
-                geb.transform.localScale= new Vector3(1, 1, 1);
-                geb.transform.rotation = Quaternion.Euler(0,0,0);
-                geb.transform.position= Testing.grid.GetWorldPosition(x, y)+new Vector3(Testing.zellengroesse/2,Testing.zellengroesse/2,0);
-                Testing.grid.SetWert(x, y, 1, geb);
-                geb.GetComponent<Wohncontainer>().setAll(nr, kosten, bettenAnz, freieBetten, x, y);
-            }
+            GameObject geb = Instantiate(wohncontainerPrefab, transform);
+            Wohncontainer wohn = geb.AddComponent<Wohncontainer>();
+            JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", wohn);//entfernt ,
 
-            //List<LoadedWohncontainer> wohncontainerListe= JsonUtility.FromJson<LoadedWohncontainer>(json);
+            Destroy(geb.GetComponent<ObjektBewegung>());
+            geb.transform.parent = null;
+            geb.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+            geb.transform.rotation = Quaternion.Euler(0, 0, 0);
+            geb.transform.position = Testing.grid.GetWorldPosition(wohn.x, wohn.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
+            Testing.grid.SetWert(wohn.x, wohn.y, 1, geb);
+
+            Testing.wohncontainer.Add(wohn);
+            Testing.gebauedeListe.Add(geb);
         }
     }
 
-    public class PlayerData
+    private class PlayerData
     {
         public int geld = Testing.geld;
         public int umsatz = Testing.umsatz;
@@ -586,7 +428,7 @@ public class SaveLoad : MonoBehaviour
         public int erdenTag = SpielInfos.erdenTag;
     }
 
-    public class LoadedPlayerData
+    private class LoadedPlayerData
     {
         public int geld;
         public int umsatz;
@@ -619,13 +461,5 @@ public class SaveLoad : MonoBehaviour
     }
     }
 
-    public class LoadedWohncontainer
-    {
-        public int nr;
-        public int kosten ;
-        public int bettenAnz;
-        public int freieBetten;
-        public int x ;
-        public int y;
-    }
+    
 }
