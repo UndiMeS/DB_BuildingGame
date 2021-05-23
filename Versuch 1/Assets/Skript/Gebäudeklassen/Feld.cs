@@ -32,13 +32,7 @@ public class Feld : MonoBehaviour
             Testing.felder.Add(this);
             Testing.gebauedeListe.Add(gameObject);
         }
-        if (nummerZaehler < feldnummer)
-        {
-            nummerZaehler = feldnummer + 1;
-            neuErtrag = ertrag;
-            arbeiterzahl = arbeiter;
-            preis = baukosten;
-        }
+        
 
     }
 

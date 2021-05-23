@@ -34,9 +34,12 @@ public class Weide : MonoBehaviour
             Testing.umsatz += ertrag;
             tiere = tierAnzahl;
             Testing.tiere -= tiere;
+
+            Testing.weiden.Add(this);
+            Testing.gebauedeListe.Add(gameObject);
         }
-        Testing.weiden.Add(this);
-        Testing.gebauedeListe.Add(gameObject);
+        
+
     }
 
     public void ausgabe(GameObject tabelle)

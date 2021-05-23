@@ -30,9 +30,10 @@ public class Stallcontainer : MonoBehaviour
             Testing.geld -= preis;
             gehegezahl = gehege;
             freieGehege = gehegezahl;
+            Testing.stallcontainer.Add(this);
+            Testing.gebauedeListe.Add(gameObject);
         }
-        Testing.stallcontainer.Add(this);
-        Testing.gebauedeListe.Add(gameObject);
+        
     }
 
     public void ausgabe(GameObject tabelle)

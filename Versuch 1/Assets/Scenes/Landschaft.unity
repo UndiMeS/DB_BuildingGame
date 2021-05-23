@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -69565,6 +69565,7 @@ MonoBehaviour:
   dropDownProjekt: {fileID: 1662200853}
   merkmalGO: {fileID: 223974226}
   saveLoadER: {fileID: 1493995340}
+  gebauedeOrdner: {fileID: 725775541}
 --- !u!114 &1493995340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69579,7 +69580,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   erCanvas: {fileID: 1232103450}
   eRErstellung: {fileID: 1321532784}
-  prefabEntity: {fileID: 0}
+  prefabEntity: {fileID: 1141620032127629371, guid: 116b02e25de6b164d82ef7d06c3c2bc6,
+    type: 3}
+  erModell: {fileID: 1232103450}
+  leisteRechts: {fileID: 1277503}
+  leisteBottom: {fileID: 1321532782}
+  aufgabentext: {fileID: 1508547997}
+  checkliste: {fileID: 629954372}
+  ddSchwach: {fileID: 314966741}
+  dd1: {fileID: 2138949200}
+  dd2: {fileID: 1967986360}
 --- !u!1 &1495835515
 GameObject:
   m_ObjectHideFlags: 0
@@ -81289,6 +81299,14 @@ MonoBehaviour:
   erCanvas: {fileID: 1232103450}
   eRErstellung: {fileID: 1321532784}
   prefabEntity: {fileID: 0}
+  erModell: {fileID: 0}
+  leisteRechts: {fileID: 0}
+  leisteBottom: {fileID: 0}
+  aufgabentext: {fileID: 0}
+  checkliste: {fileID: 0}
+  ddSchwach: {fileID: 0}
+  dd1: {fileID: 0}
+  dd2: {fileID: 0}
 --- !u!114 &1754395183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81314,6 +81332,7 @@ MonoBehaviour:
   dropDownProjekt: {fileID: 1662200853}
   merkmalGO: {fileID: 223974226}
   saveLoadER: {fileID: 1754395182}
+  gebauedeOrdner: {fileID: 0}
 --- !u!1 &1754656784
 GameObject:
   m_ObjectHideFlags: 0

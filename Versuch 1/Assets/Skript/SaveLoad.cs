@@ -19,13 +19,18 @@ public class SaveLoad : MonoBehaviour
     public GameObject merkmalGO;
 
     public SaveLoadER saveLoadER;
+    public GameObject gebauedeOrdner;
 
     public void speichern()
     {
         playerData = new PlayerData();
         string json = JsonUtility.ToJson(playerData);
         File.WriteAllText(Application.dataPath + "/SaveState/saveFile.json", json);
-         
+
+        StaticWerte staticWerte = new StaticWerte();
+        json = JsonUtility.ToJson(staticWerte);
+        File.WriteAllText(Application.dataPath + "/SaveState/staticsGebaeude.json", json);
+
         json = "[";
         foreach (Wohncontainer wohn in Testing.wohncontainer)
         {
@@ -95,103 +100,62 @@ public class SaveLoad : MonoBehaviour
 
     public void laden()
     {
-     
+
         string json = File.ReadAllText(Application.dataPath + "/SaveState/saveFile.json");
         LoadedPlayerData loadedplayerData = JsonUtility.FromJson<LoadedPlayerData>(json);
         loadedplayerData.setData();
+
+        json = File.ReadAllText(Application.dataPath + "/SaveState/staticsGebaeude.json");
+        LoadedStaticWerte loadedstaticWerte = JsonUtility.FromJson<LoadedStaticWerte>(json);
+        loadedstaticWerte.setData();
 
         wohncontainerLaden();
         feldLaden();
         forschungLaden();
         projekteLaden();
-        //weideLaden();
-        //stallLaden();
-        //menschenLaden();
-        //tiereLaden();
-        
+        weideLaden();
+        stallLaden();
+        menschenLaden();
+        tiereLaden();
+
         ObjektBewegung.selected = false;
-        //saveLoadER.laden();
+        saveLoadER.laden();
     }
 
     private void tiereLaden()
     {
-        int nr = 0;
-        string name = "";
-        string art = "";
-        int kosten = 0;
-
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Tiere.json");
-        string[] split = json.Split(':');
-        for (int i = 1; i < split.Length; i++)
+        json = json.Remove(json.Length - 1);//] löschen
+        string[] split = json.Split('}');
+        for (int i = 0; i < split.Length - 1; i++)
         {
-            string[] tmp = split[i].Split(',');
-            if ((i - 1) % 4== 0)
+            Tiere tier = JsonUtility.FromJson<Tiere>(split[i].Remove(0, 1) + "}");//entfernt ,
+            Testing.tier.Add(tier);
+            foreach (Stallcontainer stall in Testing.stallcontainer)
             {
-                nr = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 4 == 1)
-            {
-                name = tmp[0].Split('"')[1];
-            }
-            else if ((i - 1) % 4 == 2)
-            {
-                art = tmp[0].Split('"')[1];
-            }
-                        else if ((i - 1) % 4 == 3)
-            {
-                if (i + 1 == split.Length)
+                if (stall.containernummer == tier.stallnummer)
                 {
-                    kosten = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
+                    stall.tiere.Add(tier);
                 }
-                else
-                {
-                    kosten = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
-                }
-                new Tiere(nr, name,  art, kosten);
             }
         }
     }
 
     private void menschenLaden()
     {
-        int gebuehr = 0;
-        string bday = "";
-        string name = "";
-        string aufgabe = "";
-        int nr = 0;
-
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Menschen.json");
-        string[] split = json.Split(':');
-        for (int i = 1; i < split.Length; i++)
+        json = json.Remove(json.Length - 1);//] löschen
+        string[] split = json.Split('}');
+        for (int i = 0; i < split.Length - 1; i++)
         {
-            string[] tmp = split[i].Split(',');
-            if ((i - 1) % 5 == 0)
+            Mensch mensch = JsonUtility.FromJson<Mensch>(split[i].Remove(0, 1) + "}");//entfernt ,
+            Testing.menschen.Add(mensch);
+            foreach (Wohncontainer wohn in Testing.wohncontainer)
             {
-                gebuehr = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 5 == 1)
-            {
-                bday = tmp[0].Split('"')[1];
-            }
-            else if ((i - 1) % 5 == 2)
-            {
-                name = tmp[0].Split('"')[1];
-            }
-            else if ((i - 1) % 5 == 3)
-            {
-                aufgabe = tmp[0].Split('"')[1];
-            }
-            else if ((i - 1) % 5==4)
-            {
-                if (i + 1 == split.Length)
+                if (wohn.containernummer == mensch.containerNummer)
                 {
-                    nr = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
+                    wohn.bewohner.Add(mensch);
                 }
-                else
-                {
-                    nr = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
-                }
-                new Mensch(gebuehr, bday, name, aufgabe, nr);
             }
         }
     }
@@ -203,7 +167,7 @@ public class SaveLoad : MonoBehaviour
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
         {
-            Projekt projekt= JsonUtility.FromJson<Projekt>(split[i].Remove(0, 1) + "}");//entfernt ,
+            Projekt projekt = JsonUtility.FromJson<Projekt>(split[i].Remove(0, 1) + "}");//entfernt ,
             Testing.forschungsprojekte.Add(projekt);
             if (projekt.merkmalInt != 11 && GebaeudeAnzeige.projektMerkmalStufen[projekt.merkmalInt] < projekt.stufe + 1)
             {
@@ -221,125 +185,44 @@ public class SaveLoad : MonoBehaviour
     }
     private void stallLaden()
     {
-        int nr = 0;
-        int gehege = 0;
-        int kosten = 0;
-        int freiGeh = 0;
-        int x = 0;
-        int y = 0;
-
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Stallcontainer.json");
-        string[] split = json.Split(':');
-        for (int i = 1; i < split.Length; i++)
+        json = json.Remove(json.Length - 1);//[] löschen
+        string[] split = json.Split('}');
+        for (int i = 0; i < split.Length - 1; i++)
         {
-            string[] tmp = split[i].Split(',');
-            if ((i - 1) % 6 == 0)
-            {
-                nr = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 6 == 1)
-            {
-                gehege = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 6 == 2)
-            {
-                kosten = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 6 == 3)
-            {
-                freiGeh = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 6 == 4)
-            {
-                x = int.Parse(tmp[0]);
-            }
-            else if ((i - 1) % 6 == 5)
-            {
-                if (i + 1 == split.Length)
-                {
-                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
-                }
-                else
-                {
-                    y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
-                }
+            GameObject geb = Instantiate(feldPrefab, gebauedeOrdner.transform);
+            Stallcontainer stall = geb.AddComponent<Stallcontainer>();
+            JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", stall);//entfernt ,
 
-                GameObject geb = Instantiate(stallPrefab, transform);
-                Testing.gebauedeListe.Add(geb);
-                Destroy(geb.GetComponent<ObjektBewegung>());
-                geb.AddComponent<Stallcontainer>();
-                geb.transform.parent = null;
-                geb.transform.localScale = new Vector3(10, 10, 1);
-                geb.transform.rotation = Quaternion.Euler(0, 0, 0);
-                geb.transform.position = Testing.grid.GetWorldPosition(x, y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
-                Testing.grid.SetWert(x, y, 5, geb);
-                geb.GetComponent<Stallcontainer>().setAll(nr, gehege, kosten, freiGeh, x, y);
-            }
+            Destroy(geb.GetComponent<ObjektBewegung>());
+            geb.transform.localScale = new Vector3(1, 1, 1);
+            geb.transform.rotation = Quaternion.Euler(0, 0, 0);
+            geb.transform.position = Testing.grid.GetWorldPosition(stall.x, stall.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
+            Testing.grid.SetWert(stall.x, stall.y, 5, geb);
+
+            Testing.stallcontainer.Add(stall);
+            Testing.gebauedeListe.Add(geb);
         }
     }
     private void weideLaden()
     {
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/Weidesphaere.json");
+        json = json.Remove(json.Length - 1);//[] löschen
+        string[] split = json.Split('}');
+        for (int i = 0; i < split.Length - 1; i++)
         {
-            int nr = 0;
-            int kosten = 0;
-            int arbeiter = 0;
-            int ertrag = 0;
-            int tiere = 0;
-            int x = 0;
-            int y = 0;
+            GameObject geb = Instantiate(weidePrefab, gebauedeOrdner.transform);
+            Weide weide = geb.AddComponent<Weide>();
+            JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", weide);//entfernt ,
 
-            string json = File.ReadAllText(Application.dataPath + "/SaveState/Weidesphaere.json");
-            string[] split = json.Split(':');
-            for (int i = 1; i < split.Length; i++)
-            {
-                string[] tmp = split[i].Split(',');
-                if ((i - 1) % 7 == 0)
-                {
-                    nr = int.Parse(tmp[0]);
-                }
-                else if ((i - 1) % 7 == 1)
-                {
-                    kosten = int.Parse(tmp[0]);
-                }
-                else if ((i - 1) % 7 == 2)
-                {
-                    arbeiter = int.Parse(tmp[0]);
-                }
-                else if ((i - 1) % 7 == 3)
-                {
-                    ertrag = int.Parse(tmp[0]);
-                }
-                else if ((i - 1) % 7 == 4)
-                {
-                    tiere = int.Parse(tmp[0]);
-                }
-                else if ((i - 1) % 7 == 5)
-                {
-                    x = int.Parse(tmp[0]);
-                }
-                else if ((i - 1) % 7 == 6)
-                {
-                    if (i + 1 == split.Length)
-                    {
-                        y = int.Parse(tmp[0].Remove(tmp[0].Length - 2));
-                    }
-                    else
-                    {
-                        y = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
-                    }
+            Destroy(geb.GetComponent<ObjektBewegung>());
+            geb.transform.localScale = new Vector3(1, 1, 1);
+            geb.transform.rotation = Quaternion.Euler(0, 0, 0);
+            geb.transform.position = Testing.grid.GetWorldPosition(weide.x, weide.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
+            Testing.grid.SetWert(weide.x, weide.y, 4, geb);
 
-                    GameObject geb = Instantiate(weidePrefab, transform);
-                    Testing.gebauedeListe.Add(geb);
-                    geb.AddComponent<Weide>();
-                    Destroy(geb.GetComponent<ObjektBewegung>());
-                    geb.transform.parent = null;
-                    geb.transform.localScale = new Vector3(1, 1, 1);
-                    geb.transform.rotation = Quaternion.Euler(0, 0, 0);
-                    geb.transform.position = Testing.grid.GetWorldPosition(x, y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
-                    Testing.grid.SetWert(x, y, 4, geb);
-                    geb.GetComponent<Weide>().setAll(nr, kosten, arbeiter, ertrag,tiere, x, y);
-                }
-            }
+            Testing.weiden.Add(weide);
+            Testing.gebauedeListe.Add(geb);
         }
     }
     private void feldLaden()
@@ -349,16 +232,15 @@ public class SaveLoad : MonoBehaviour
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
         {
-            GameObject geb = Instantiate(feldPrefab, transform);
+            GameObject geb = Instantiate(feldPrefab, gebauedeOrdner.transform);
             Feld feld = geb.AddComponent<Feld>();
             JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", feld);//entfernt ,
 
             Destroy(geb.GetComponent<ObjektBewegung>());
-            geb.transform.parent = null;
             geb.transform.localScale = new Vector3(1, 1, 1);
-            geb.transform.rotation = Quaternion.Euler(0,0,0);
+            geb.transform.rotation = Quaternion.Euler(0, 0, 0);
             geb.transform.position = Testing.grid.GetWorldPosition(feld.x, feld.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
-            Testing.grid.SetWert(feld.x, feld.y,2, geb);
+            Testing.grid.SetWert(feld.x, feld.y, 2, geb);
 
             Testing.felder.Add(feld);
             Testing.gebauedeListe.Add(geb);
@@ -371,12 +253,11 @@ public class SaveLoad : MonoBehaviour
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
         {
-            GameObject geb = Instantiate(forschungPrefab, transform);
+            GameObject geb = Instantiate(forschungPrefab, gebauedeOrdner.transform);
             Forschung fos = geb.AddComponent<Forschung>();
             JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", fos);//entfernt ,
 
             Destroy(geb.GetComponent<ObjektBewegung>());
-            geb.transform.parent = null;
             geb.transform.localScale = new Vector3(1, 1, 1);
             geb.transform.rotation = Quaternion.Euler(0, 0, 0);
             geb.transform.position = Testing.grid.GetWorldPosition(fos.x, fos.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
@@ -394,14 +275,13 @@ public class SaveLoad : MonoBehaviour
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Wohncontainer.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
-        for (int i= 0;i < split.Length-1;i ++)
+        for (int i = 0; i < split.Length - 1; i++)
         {
-            GameObject geb = Instantiate(wohncontainerPrefab, transform);
+            GameObject geb = Instantiate(wohncontainerPrefab, gebauedeOrdner.transform);
             Wohncontainer wohn = geb.AddComponent<Wohncontainer>();
             JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", wohn);//entfernt ,
 
             Destroy(geb.GetComponent<ObjektBewegung>());
-            geb.transform.parent = null;
             geb.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
             geb.transform.rotation = Quaternion.Euler(0, 0, 0);
             geb.transform.position = Testing.grid.GetWorldPosition(wohn.x, wohn.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
@@ -435,12 +315,12 @@ public class SaveLoad : MonoBehaviour
         public int forscher;
         public int tierpfleger;
         public int feldarbeiter;
-        public int tiere ;
-        public int summeMenschen ;
-        public int summeTiere ;
+        public int tiere;
+        public int summeMenschen;
+        public int summeTiere;
         public int summeForschungen;
 
-        public int marsTag ;
+        public int marsTag;
         public int erdenTag;
 
         public void setData()
@@ -449,17 +329,87 @@ public class SaveLoad : MonoBehaviour
             Testing.umsatz = umsatz;
 
             Testing.forscher = forscher;
-            Testing.tierpfleger =tierpfleger;
+            Testing.tierpfleger = tierpfleger;
             Testing.feldarbeiter = feldarbeiter;
-            Testing.tiere =tiere;
-            Testing.summeMenschen =summeMenschen;
-            Testing.summeTiere =summeTiere;
+            Testing.tiere = tiere;
+            Testing.summeMenschen = summeMenschen;
+            Testing.summeTiere = summeTiere;
             Testing.summeForschungen = summeForschungen;
 
             SpielInfos.marsTag = marsTag;
             SpielInfos.erdenTag = erdenTag;
-    }
+        }
     }
 
-    
+    private class StaticWerte
+    {
+        public int WnummerZaehler = Wohncontainer.nummerZaehler;
+        public int Wbetten = Wohncontainer.betten;
+        public int Wpreis = Wohncontainer.preis;
+
+        public int FEneuErtrag = Feld.neuErtrag;
+        public int FEnummerZaehler = Feld.nummerZaehler;
+        public int FEpreis = Feld.preis;
+        public int FEarbeiterzahl = Feld.arbeiterzahl;
+
+        public int FOnummerZaehler = Forschung.nummerZaehler;
+
+        public int WEnummerZaehler = Weide.nummerZaehler;
+        public int WEpreis = Weide.preis;
+        public int WEarbeiterzahl = Weide.arbeiterzahl;
+        public int WEneuErtrag = Weide.neuErtrag;
+        public int WEtierAnzahl = Weide.tierAnzahl;
+
+        public int SnummerZaehler = Stallcontainer.nummerZaehler;
+        public int Spreis = Stallcontainer.preis;
+        public int Sgehege = Stallcontainer.gehege;
+    }
+    private class LoadedStaticWerte
+    {
+        public int WnummerZaehler;
+        public int Wbetten;
+        public int Wpreis;
+
+        public int FEneuErtrag;
+        public int FEnummerZaehler;
+        public int FEpreis;
+        public int FEarbeiterzahl;
+
+        public int FOnummerZaehler;
+
+        public int WEnummerZaehler;
+        public int WEpreis;
+        public int WEarbeiterzahl;
+        public int WEneuErtrag;
+        public int WEtierAnzahl;
+
+        public int SnummerZaehler;
+        public int Spreis;
+        public int Sgehege;
+
+        public void setData()
+        {
+            Wohncontainer.nummerZaehler = WnummerZaehler;
+            Wohncontainer.betten = Wbetten;
+            Wohncontainer.preis = Wpreis;
+
+            Feld.neuErtrag = FEneuErtrag;
+            Feld.nummerZaehler = FEnummerZaehler;
+            Feld.preis = FEpreis;
+            Feld.arbeiterzahl = FEarbeiterzahl;
+
+            Forschung.nummerZaehler = FOnummerZaehler;
+
+            Weide.nummerZaehler = WEnummerZaehler;
+            Weide.preis = WEpreis;
+            Weide.arbeiterzahl = WEarbeiterzahl;
+            Weide.neuErtrag = WEneuErtrag;
+            Weide.tierAnzahl = WEtierAnzahl;
+
+            Stallcontainer.nummerZaehler = SnummerZaehler;
+            Stallcontainer.preis = Spreis;
+            Stallcontainer.gehege = Sgehege;
+
+        }
+    }
 }

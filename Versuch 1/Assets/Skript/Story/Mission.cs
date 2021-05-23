@@ -141,7 +141,7 @@ public class Mission : MonoBehaviour
             }
             if(Testing.forscher + Testing.feldarbeiter + Testing.tierpfleger > 0)
             {
-                if(lvl1_text.text == Testing.menschen[0].name)
+                if(Testing.menschen.Count>0&&lvl1_text.text == Testing.menschen[0].name)
                 {
                     hacken2.SetActive(true);
                     textInput.GetComponent<InputField>().interactable = false;

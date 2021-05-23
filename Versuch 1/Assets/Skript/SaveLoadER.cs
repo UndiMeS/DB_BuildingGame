@@ -11,7 +11,18 @@ public class SaveLoadER : MonoBehaviour
     public ERErstellung eRErstellung;
     public GameObject prefabEntity;
 
-   public void speichern()
+    public GameObject erModell;
+    public GameObject leisteRechts;
+    public GameObject leisteBottom;
+    public GameObject aufgabentext;
+    public GameObject checkliste;
+
+    public GameObject ddSchwach;
+    public GameObject dd1;
+    public GameObject dd2;
+
+
+    public void speichern()
     {
         saveEntity();
         saveAttribute();
@@ -27,79 +38,27 @@ public class SaveLoadER : MonoBehaviour
     private void ladeEntity()
     {
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Entity.json");
-        json = json.Remove(0, 1);
-        json = json.Remove(json.Length - 1);
-        foreach(string str in json.Split(','))
+        json = json.Remove(json.Length - 1);//] löschen
+        string[] split = json.Split('}');
+        for (int i = 0; i < split.Length - 1; i++)
         {
-            eRErstellung.erstelleObjekt(prefabEntity);
-            Entitaet tmp = JsonUtility.FromJson<Entitaet>(str);
-            ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().setWerte(tmp);
-            ERErstellung.selectedGameObjekt.transform.position = new Vector3(tmp.x, tmp.y, 0);
+            GameObject game = Instantiate(prefabEntity, erModell.transform);
+            ERErstellung.selectedGameObjekt = game;
+            JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", game.GetComponent<Entitaet>());//entfernt ,       
+            game.GetComponent<ERObjekt>().canvas = erModell.GetComponent<Canvas>();
+            ERErstellung.modellObjekte.Add(game);
+            ERErstellung.changeSelectedGameobjekt(game);
+            game.GetComponent<ERObjekt>().leisteBottom = leisteBottom;
+            game.GetComponent<ERObjekt>().leisteRechts = leisteRechts;
+            game.GetComponent<ERObjekt>().aufgabe = aufgabentext;
+            game.GetComponent<ERObjekt>().checkliste = checkliste;
+            game.GetComponent<ERObjekt>().dd1 = dd1;
+            game.GetComponent<ERObjekt>().dd2 = dd2;
+            game.GetComponent<ERObjekt>().dd3 = ddSchwach;
+
+            game.transform.position = new Vector3(game.GetComponent<Entitaet>().x, game.GetComponent<Entitaet>().y);
         }
-        
-       
-            
-            
-            /*string name = "";
-        bool schwach = false;
-        int instanceID = 0;
-        int vaterID;
-        int schwacheBezID;
-        List<int> attributID= new List<int>();
-        List<int> primaerschluesselID= new List<int>();
-        List<int> beziehungsID= new List<int>();
-        int x;
-        int y;
-
-        string json = File.ReadAllText(Application.dataPath + "/SaveState/Entity.json");
-        
-        string[] split = json.Split(':');
-        for (int i = 1; i < split.Length; i++)
-        {
-            string[] tmp = split[i].Split(',');
-            if ((i - 1) % 10 == 0)
-            {
-                name = tmp[0];
-            }else if ((i - 1) % 10 == 1)
-            {
-                schwach =bool.Parse( tmp[1]);
-            }
-            else if ((i - 1) % 10 == 2)
-            {
-                instanceID = int.Parse(tmp[2]);
-            }
-            else if ((i - 1) % 10 == 3)
-            {
-                string[] temp= tmp[3].Split(':');
-                vaterID = int.Parse(temp[1]);
-            }
-            else if ((i - 1) % 10 == 4)
-            {
-                string[] temp = tmp[4].Split(':');
-                schwacheBezID = int.Parse(temp[1]);
-            }
-            else if ((i - 1) % 10 == 5)
-            {
-                string[] temp = tmp[5].Split(':');
-                for (int k =1; k < temp.Length; k =+ 2)
-                {
-                    attributID.Add( int.Parse(temp[k]));
-                }                
-            }
-            else if ((i - 1) % 10 == 6)
-            {
-                string[] temp = tmp[6].Split(':');
-                
-                for (int k = 1; k < temp.Length; k = +2)
-                {
-                    primaerschluesselID.Add(int.Parse(temp[k]));
-                }
-            }*/
-
-
-        //nr = int.Parse(tmp[0]);
-        //}
-    }
+        }
 
     private void saveBeziehung()
     {
@@ -145,27 +104,5 @@ public class SaveLoadER : MonoBehaviour
         json = json.Remove(json.Length - 1) + "]";
         File.WriteAllText(Application.dataPath + "/SaveState/Entity.json", json);
     }
-    class LoadedEntitys
-    {
-        public List<LoadedEntity> liste;
-    }
-    class LoadedEntity
-    {
-        string name;
-        bool schwach;
-        int instanceID;
-        int vaterID;
-        int schwacheBezID;
-        List<int> attributID = new List<int>();
-        List<int> primaerschluesselID = new List<int>();
-        List<int> beziehungsID = new List<int>();
-        int x;
-        int y;
-
-        public void set(ERErstellung eRErstellung, GameObject prefabEntity)
-        {
-            eRErstellung.erstelleObjekt(prefabEntity);
-            ERErstellung.selectedGameObjekt.transform.position = new Vector3(x, y, 0);
-        }
-    }
+    
 }

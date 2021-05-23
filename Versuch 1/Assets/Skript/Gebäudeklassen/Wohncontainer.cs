@@ -33,12 +33,7 @@ public class Wohncontainer : MonoBehaviour
             Testing.wohncontainer.Add(this);
             Testing.gebauedeListe.Add(gameObject);
         }
-        if (nummerZaehler < containernummer)
-        {
-            nummerZaehler = containernummer + 1;
-            betten = bettenanzahl;
-            preis = baukosten;
-        }
+        
 
 
     }

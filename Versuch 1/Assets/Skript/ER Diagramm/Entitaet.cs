@@ -34,20 +34,4 @@ public class Entitaet : MonoBehaviour
         attribute.Remove(selectedGameObjekt);
         primaerschluessel.Remove(selectedGameObjekt);
     }
-
-    internal void setWerte(Entitaet otherEnt)
-    {
-       entitaetsName= otherEnt.entitaetsName;
-     schwach= otherEnt.schwach;
-      instanceID=otherEnt.instanceID;
-
-    vaterEntitaet=otherEnt.vaterEntitaet;
-    schwacheBeziehung=otherEnt.schwacheBeziehung;
-    attribute=otherEnt.attribute;
-    primaerschluessel=otherEnt.primaerschluessel;
-     beziehungen=otherEnt.beziehungen;
-
-     x=otherEnt.x;
-    y=otherEnt.y;
-}
 }

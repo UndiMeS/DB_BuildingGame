@@ -191,7 +191,7 @@ public class OldSaveLoad : MonoBehaviour
                 {
                     nr = int.Parse(tmp[0].Remove(tmp[0].Length - 1));
                 }
-                new Mensch(gebuehr, bday, name, aufgabe, nr);
+                //new Mensch(gebuehr, bday, name, aufgabe, nr);
             }
         }
     }
