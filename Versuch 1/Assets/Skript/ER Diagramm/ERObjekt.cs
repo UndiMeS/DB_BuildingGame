@@ -46,10 +46,14 @@ public class ERObjekt : MonoBehaviour
             changeSprite(ERErstellung.selectedGameObjekt.Equals(gameObject));
         }
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log(checkMausIn(Input.mousePosition) + " " + dropdownclose() +" "+ !PauseMenu.SpielIstPausiert);
+        }
         if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition)&&dropdownclose() && ERErstellung.testAufGleicherPosition(Input.mousePosition) != null && ERErstellung.testAufGleicherPosition(Input.mousePosition).Equals(gameObject)&& !PauseMenu.SpielIstPausiert)
         //wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
         {
-
+            
             if (inBox())
             {
                 return;
@@ -95,10 +99,11 @@ public class ERObjekt : MonoBehaviour
 
     private bool dropdownclose()
     {
+        TMPro.TMP_Dropdown temp;
         bool closed = false;
-        closed =closed || dd1.GetComponent<TMPro.TMP_Dropdown>().IsExpanded;
-        closed = closed || dd2.GetComponent<TMPro.TMP_Dropdown>().IsExpanded;
-        closed = closed || dd3.GetComponent<TMPro.TMP_Dropdown>().IsExpanded;
+        closed =closed || (dd1.TryGetComponent(out temp)&&dd1.GetComponent<TMPro.TMP_Dropdown>().IsExpanded);
+        closed = closed || (dd2.TryGetComponent(out temp) && dd2.GetComponent<TMPro.TMP_Dropdown>().IsExpanded);
+        closed = closed || (dd3.TryGetComponent(out temp) && dd3.GetComponent<TMPro.TMP_Dropdown>().IsExpanded);
         return !closed;
     }
 
