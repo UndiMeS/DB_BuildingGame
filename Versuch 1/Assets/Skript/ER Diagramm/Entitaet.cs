@@ -56,6 +56,7 @@ public class Entitaet : MonoBehaviour
     public void setWerte(LoadedEntity ent)
     {
         entitaetsName = ent.entitaetsName;
+        gameObject.name = entitaetsName;
         schwach = ent.schwach;
         instanceID = ent.instanceID;
         vaterEntitaetID = ent.vaterEntitaetID;

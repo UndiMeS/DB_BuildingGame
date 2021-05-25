@@ -40,13 +40,12 @@ public class ERErstellung : MonoBehaviour
 
     // Start is called before the first frame update
     // zuerst leer
-    void Start()
+    void Awake()
     {
         lastselected = null;
         selectedGameObjekt = null;
         modellObjekte.Clear();
     }
-
 
     /* wenn auf die 3 Tasten gedrueckt wird, wird das Objekt erstellt
     prefab istdas ER-Objekt (Entity, Attribut, Beziehung)*/
@@ -155,7 +154,7 @@ public class ERErstellung : MonoBehaviour
 
     }
 
-    private GameObject zeichneLinie(GameObject last, GameObject select)
+    public GameObject zeichneLinie(GameObject last, GameObject select)
     {
         GameObject templinie = Instantiate(linie, transform);
 
@@ -175,10 +174,10 @@ public class ERErstellung : MonoBehaviour
         lastselected = selectedGameObjekt;
         selectedGameObjekt = newSelected;
         selectedGameObjekt.GetComponent<ERObjekt>().changeSprite(true);
+        selectedGameObjekt.GetComponent<ERObjekt>().selected = true;
 
         if (lastselected != null&& modellObjekte.Count!=1&& !lastselected.Equals(selectedGameObjekt))
-        {
-            
+        {           
             lastselected.GetComponent<ERObjekt>().selected = false;
             lastselected.GetComponent<ERObjekt>().changeSprite(false);
        }        
@@ -291,6 +290,7 @@ public class ERErstellung : MonoBehaviour
 
     public void Update()
     {
+
         if (selectedGameObjekt == null) { }
         else if (selectedGameObjekt.CompareTag("Entitaet")){
             entitaetOberflaeche.SetActive(true);

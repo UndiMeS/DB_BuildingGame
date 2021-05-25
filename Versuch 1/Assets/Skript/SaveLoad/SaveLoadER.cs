@@ -6,47 +6,176 @@ using UnityEngine;
 
 public class SaveLoadER : MonoBehaviour
 {
+    public GameObject prefabEntity;
+    public GameObject prefabAttribut;
+    public GameObject prefabBeziehung;
 
     public GameObject erCanvas;
     public ERErstellung eRErstellung;
-    public GameObject prefabEntity;
-
     public GameObject erModell;
     public GameObject leisteRechts;
     public GameObject leisteBottom;
     public GameObject aufgabentext;
     public GameObject checkliste;
-
     public GameObject ddSchwach;
     public GameObject dd1;
     public GameObject dd2;
 
+    public KameraKontroller kamerakontroller;
+
+    public Sprite schwachEntSelected;
+    public Sprite schwachEnt;
+    public Sprite schwachBezSelected;
+    public Sprite schwachBez;
 
     public void speichern()
     {
         saveEntity();
         saveAttribute();
-        saveBeziehung();       
+        saveBeziehung();
     }
 
     public void laden()
     {
         erCanvas.transform.position = Vector3.zero;
+        kamerakontroller.changeHintergrund(1);
         ladeEntity();
+        ladeAttribute();
+        ladeBeziehungen();
+
+        kamerakontroller.changeHintergrund(0);
+
+        foreach (GameObject ent in ERErstellung.modellObjekte)
+        {
+            if (ent.CompareTag("Entitaet"))
+            {
+                ent.GetComponent<Entitaet>().instanceID = ent.GetInstanceID();
+            }
+            if (ent.CompareTag("Attribut"))
+            {
+                ent.GetComponent<Attribut>().instanceID = ent.GetInstanceID();
+            }
+            if (ent.CompareTag("Beziehung"))
+            {
+                ent.GetComponent<Beziehung>().instanceID = ent.GetInstanceID();
+            }
+        }
+    }
+
+    private void ladeBeziehungen()
+    {
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/Beziehungen.json");
+        json = json.Remove(json.Length - 1);//] löschen
+
+        string[] split = json.Split('{');
+        for (int i = 1; i < split.Length - 1; i++)
+        {
+            if (split[i].StartsWith("\"beziehungsName"))
+            {
+                Debug.Log("{" + split[i].Substring(0, split[i].Length - 11) + "}");
+                LoadedBeziehung bez = JsonUtility.FromJson<LoadedBeziehung>("{" + split[i].Substring(0, split[i].Length - 11) + "}");//entfernt objekt1:
+                GameObject game = Instantiate(prefabBeziehung, erModell.transform);
+
+                game.GetComponent<Beziehung>().setWerte(bez);
+                foreach (GameObject ent in ERErstellung.modellObjekte)
+                {
+                    if (ent.CompareTag("Entitaet") && ent.GetComponent<Entitaet>().instanceID == game.GetComponent<Beziehung>().objekt1ID)
+                    {
+                        game.GetComponent<Beziehung>().linie1 = eRErstellung.zeichneLinie(ent, game);
+                        game.GetComponent<Beziehung>().objekt1 = ent;
+                        ent.GetComponent<Entitaet>().beziehungen.Add(game);
+                        if (game.GetComponent<Beziehung>().schwach)
+                        {
+                            ent.GetComponent<Entitaet>().schwacheBeziehung = ERErstellung.selectedGameObjekt;
+                        }
+                    }
+                    if (ent.CompareTag("Entitaet") && ent.GetComponent<Entitaet>().instanceID == game.GetComponent<Beziehung>().objekt2ID)
+                    {
+                        game.GetComponent<Beziehung>().linie2 = eRErstellung.zeichneLinie(ent, game);
+                        game.GetComponent<Beziehung>().objekt2 = ent;
+                        ent.GetComponent<Entitaet>().beziehungen.Add(game);
+                    }
+                }
+
+                game.GetComponent<ERObjekt>().canvas = erModell.GetComponent<Canvas>();
+                ERErstellung.modellObjekte.Add(game);
+                ERErstellung.changeSelectedGameobjekt(game);
+                game.GetComponent<ERObjekt>().leisteBottom = leisteBottom;
+                game.GetComponent<ERObjekt>().leisteRechts = leisteRechts;
+                game.GetComponent<ERObjekt>().aufgabe = aufgabentext;
+                game.GetComponent<ERObjekt>().checkliste = checkliste;
+                game.GetComponent<ERObjekt>().dd1 = dd1;
+                game.GetComponent<ERObjekt>().dd2 = dd2;
+                game.GetComponent<ERObjekt>().dd3 = ddSchwach;
+
+                game.transform.localScale = new Vector3(0.015f, 0.015f, 0.015f);
+                game.transform.position = new Vector3(game.GetComponent<Beziehung>().x, game.GetComponent<Beziehung>().y);
+
+                game.GetComponent<TMPro.TMP_InputField>().text = game.GetComponent<Beziehung>().name;
+            }
+        }
+    }
+
+    private void ladeAttribute()
+    {
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/Attribut.json");
+        json = json.Remove(json.Length - 1);//] löschen
+
+        string[] split = json.Split('{');
+        for (int i = 1; i < split.Length - 1; i++)
+        {
+            if (split[i].StartsWith("\"attributName"))
+            {
+                LoadedAttribut attribut = JsonUtility.FromJson<LoadedAttribut>("{" + split[i].Substring(0, split[i].Length - 9) + "}");//entfernt vater:
+                GameObject game = Instantiate(prefabAttribut, erModell.transform);
+
+                game.GetComponent<Attribut>().setWerte(attribut);
+                foreach (GameObject ent in ERErstellung.modellObjekte)
+                {
+                    if (ent.CompareTag("Entitaet") && ent.GetComponent<Entitaet>().instanceID == game.GetComponent<Attribut>().vaterID)
+                    {
+                        game.transform.SetParent(ent.transform);
+                        eRErstellung.zeichneLinie(ent, game);
+                        ent.GetComponent<Entitaet>().attribute.Add(game);
+                        if (game.GetComponent<Attribut>().primaerschluessel)
+                        {
+                            ent.GetComponent<Entitaet>().primaerschluessel.Add(ERErstellung.selectedGameObjekt);
+                            game.transform.GetChild(1).GetChild(2).transform.GetComponent<TMPro.TextMeshProUGUI>().fontStyle = TMPro.FontStyles.Underline;
+                        }
+                    }
+                }
+
+                game.GetComponent<ERObjekt>().canvas = erModell.GetComponent<Canvas>();
+                ERErstellung.modellObjekte.Add(game);
+                ERErstellung.changeSelectedGameobjekt(game);
+                game.GetComponent<ERObjekt>().leisteBottom = leisteBottom;
+                game.GetComponent<ERObjekt>().leisteRechts = leisteRechts;
+                game.GetComponent<ERObjekt>().aufgabe = aufgabentext;
+                game.GetComponent<ERObjekt>().checkliste = checkliste;
+                game.GetComponent<ERObjekt>().dd1 = dd1;
+                game.GetComponent<ERObjekt>().dd2 = dd2;
+                game.GetComponent<ERObjekt>().dd3 = ddSchwach;
+
+                game.transform.localScale = new Vector3(1, 1, 1);
+                game.transform.position = new Vector3(game.GetComponent<Attribut>().x, game.GetComponent<Attribut>().y);
+
+                game.GetComponent<TMPro.TMP_InputField>().text = game.GetComponent<Attribut>().name;
+            }
+        }
     }
 
     private void ladeEntity()
     {
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Entity.json");
         json = json.Remove(json.Length - 1);//] löschen
-        
+
         string[] split = json.Split('{');
         for (int i = 1; i < split.Length - 1; i++)
         {
-            if (split[i].StartsWith("\"entitaetsName")){
+            if (split[i].StartsWith("\"entitaetsName"))
+            {
                 GameObject game = Instantiate(prefabEntity, erModell.transform);
-                ERErstellung.selectedGameObjekt = game;
-                LoadedEntity ent = JsonUtility.FromJson<LoadedEntity>("{" + split[i].Substring(0, split[i].Length - 17) + "}");//entfernt ,
+                LoadedEntity ent = JsonUtility.FromJson<LoadedEntity>("{" + split[i].Substring(0, split[i].Length - 17) + "}");//17="vaterentitaet"
                 game.GetComponent<Entitaet>().setWerte(ent);
                 game.GetComponent<ERObjekt>().canvas = erModell.GetComponent<Canvas>();
                 ERErstellung.modellObjekte.Add(game);
@@ -59,12 +188,19 @@ public class SaveLoadER : MonoBehaviour
                 game.GetComponent<ERObjekt>().dd2 = dd2;
                 game.GetComponent<ERObjekt>().dd3 = ddSchwach;
 
-                game.transform.position = new Vector3(game.GetComponent<Entitaet>().x, game.GetComponent<Entitaet>().y);
-                game.transform.localScale = new Vector3(0.015f, 0.015f, 0.015f);
-            }
+                if (game.GetComponent<Entitaet>().schwach)
+                {
+                    game.GetComponent<ERObjekt>().originalSprite = schwachEnt;
+                    game.GetComponent<ERObjekt>().selectedSprite = schwachEntSelected;
+                }
 
+                game.transform.localScale = new Vector3(0.015f, 0.015f, 0.015f);
+                game.transform.position = new Vector3(game.GetComponent<Entitaet>().x, game.GetComponent<Entitaet>().y);
+
+                game.GetComponent<TMPro.TMP_InputField>().text = game.GetComponent<Entitaet>().name;
+            }
         }
-        }
+    }
 
     private void saveBeziehung()
     {
@@ -105,12 +241,12 @@ public class SaveLoadER : MonoBehaviour
             {
                 json += JsonUtility.ToJson(ent.GetComponent<Entitaet>()) + ",";
             }
-            
+
         }
         json = json.Remove(json.Length - 1) + "]";
         File.WriteAllText(Application.dataPath + "/SaveState/Entity.json", json);
     }
-    
 
-    
+
+
 }

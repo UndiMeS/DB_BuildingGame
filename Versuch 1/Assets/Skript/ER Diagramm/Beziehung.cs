@@ -6,10 +6,10 @@ using UnityEngine;
 public class Beziehung : MonoBehaviour
 {
     public string beziehungsName;
-    public string instanceID;
+    public int instanceID;
 
-    public GameObject objekt1 = null;
-    public GameObject objekt2 = null;
+    public int objekt1ID;
+    public int objekt2ID;
 
     public string kard1 = "1";
     public string kard2 = "1";
@@ -18,6 +18,9 @@ public class Beziehung : MonoBehaviour
 
     public float x;
     public float y;
+
+    public GameObject objekt1 = null;
+    public GameObject objekt2 = null;
 
     private GameObject kardText1;
     private GameObject kardText2;
@@ -47,7 +50,7 @@ public class Beziehung : MonoBehaviour
             kard2 = "1";
         }
 
-        instanceID = gameObject.GetInstanceID().ToString();
+        instanceID = gameObject.GetInstanceID();
     }
 
     // Update is called once per frame
@@ -56,6 +59,8 @@ public class Beziehung : MonoBehaviour
         beziehungsName = gameObject.name;
         x = gameObject.transform.position.x;
         y = gameObject.transform.position.y;
+        objekt1ID = objekt1.GetInstanceID();
+        objekt2ID = objekt2.GetInstanceID();
 
         Utilitys.TextInTMP(kardText1, kard1);
         if (kard2.Equals("n"))
@@ -66,7 +71,7 @@ public class Beziehung : MonoBehaviour
         {
             Utilitys.TextInTMP(kardText2, kard2);
         }
-            
+
         if (objekt1 != null)
         {
             positionOfKardinalitaet(kardText1, objekt1, objekt1.Equals(objekt2));
@@ -109,6 +114,22 @@ public class Beziehung : MonoBehaviour
             gameObject.GetComponent<ERObjekt>().originalSprite = Original;
         }
     }
+
+    internal void setWerte(LoadedBeziehung bez)
+    {
+        firsttime = false;
+        beziehungsName = bez.beziehungsName;
+        gameObject.name = bez.beziehungsName;
+        instanceID = bez.instanceID;
+        objekt1ID = bez.objekt1ID;
+        objekt2ID = bez.objekt2ID;
+        kard1 = bez.kard1;
+        kard2 = bez.kard2;
+        schwach = bez.schwach;
+        x = bez.x;
+        y = bez.y;
+    }
+
     public void setLinienordner(GameObject lO)
     {
         linienOrdner = lO;
@@ -125,8 +146,8 @@ public class Beziehung : MonoBehaviour
 
     public void erstelleBeziehung()
     {
-        welcheEntity(1, 0,false);
-        welcheEntity(2, 0,false);
+        welcheEntity(1, 0, false);
+        welcheEntity(2, 0, false);
     }
 
     private void positionOfKardinalitaet(GameObject kardtext, GameObject objekt, bool offset)   //GRÖßE VON EROBJEKT /2
@@ -154,7 +175,7 @@ public class Beziehung : MonoBehaviour
                 kardtext.transform.localPosition += new Vector3(0, 50, 0);
             }
         }
-        
+
 
     }
 
@@ -246,7 +267,8 @@ public class Beziehung : MonoBehaviour
             templinie.transform.SetParent(linienOrdner.transform);
 
             return templinie;
-        }return null;
+        }
+        return null;
     }
 
     public void kardinalitaet(int einoderzwei, int option)
