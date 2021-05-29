@@ -160,7 +160,7 @@ public class Mission : MonoBehaviour
                 hacken2.SetActive(false);
                 hacken1.SetActive(false);
                 textInput.SetActive(false);
-
+                textInput.GetComponent<InputField>().text = "";
             if(Testing.umsatz >= System.Convert.ToInt32(mission[1][5])){
                 hacken1.SetActive(true);
                 zwischenziel1 = 1;
@@ -223,7 +223,6 @@ public class Mission : MonoBehaviour
             hacken2.SetActive(false);
             textInput.SetActive(true);
             textInput.GetComponent<InputField>().interactable = true;
-            textInput.GetComponent<InputField>().text = "";
             if(Testing.tiere > 0)
             {
                 if(lvl1_text.text == Testing.tier[0].tiername)

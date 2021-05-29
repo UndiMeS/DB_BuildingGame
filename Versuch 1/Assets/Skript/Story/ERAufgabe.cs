@@ -324,7 +324,10 @@ public class ERAufgabe : MonoBehaviour
             //kreisHacken.SetActive(true);
             //kreisKreuz.SetActive(false); 
             FehlerAnzeige.fehlertext = "Du hast alles richtig gemacht!";
-            Story.lvl[Story.level] = true; //Markiere Level als erfüllt
+            
+
+            //Nächste Zeile bleibt auskommentiert, da jetzt in Story NUR in abhängigkeit vom level das Array gesetzt wird für die Mission
+            //Story.lvl[Story.level] = true; //Markiere Level als erfüllt
             
             //ER bleibt ja bei dem Level stehen, wo Mission bearbeitet werden kann. Ist Mission erfolgreich (missionCheck = true), dann geht es weiter.
             if((Story.level == 1|| Story.level == 2 || Story.level == 5 || Story.level == 6 || Story.level == 7 ) && missionCheck == true){

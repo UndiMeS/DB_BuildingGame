@@ -96,15 +96,30 @@ public class Story : MonoBehaviour
         //Freischaltbare Objekte auf aus/false setzten (Transparente auf true)
 
         //folgendes auskommentieren, um sofort auf alles zugriff zu haben.
-       //allesOff(); 
+       allesOff();
+
+       if(level > 0){
+            for(int i = 0; i <= level; i++){
+                lvl[i] = true;
+            }
+        }
+        checkLevel();
     }   
     void Update()
     {
         //Prüfe auf erfüllte Level
-        //checkLevel();
+        checkLevel();             //falls beim Speichern/Laden nicht alle passenden Objekte true/false gesetzt werden, dann einfach eine for-Loop um checklevel mit i=0, ixx, i<=level
 
         //Setzte ButtonlebelAnzeige
-        //Utilitys.TextInTMP(buttonKreisLevel, Story.level);
+        Utilitys.TextInTMP(buttonKreisLevel, Story.level);
+        
+        
+        if(level > 0){
+            for(int i = 0; i <= level; i++){
+                lvl[i] = true;
+            }
+        }
+        
     }
 
     public void allesOff()

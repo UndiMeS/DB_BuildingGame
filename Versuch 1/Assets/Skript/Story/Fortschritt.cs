@@ -37,34 +37,98 @@ public class Fortschritt : MonoBehaviour
         }else if(Story.level == 1)
         {
             hacken_0.SetActive(true);
+            transparent_0.SetActive(false);
             transparent_1.SetActive(false);
         }else if(Story.level == 2)
         {
             hacken_1.SetActive(true);
+            hacken_0.SetActive(true);
+            transparent_0.SetActive(false);
+            transparent_1.SetActive(false);
             transparent_2.SetActive(false);
         }else if(Story.level == 3)
         {   
             hacken_2.SetActive(true);
+            hacken_1.SetActive(true);
+            hacken_0.SetActive(true);
+            transparent_0.SetActive(false);
+            transparent_1.SetActive(false);
+            transparent_2.SetActive(false);
             transparent_3.SetActive(false);
         }else if(Story.level == 4)
         {
             hacken_3.SetActive(true);
+            hacken_2.SetActive(true);
+            hacken_1.SetActive(true);
+            hacken_0.SetActive(true);
+            transparent_0.SetActive(false);
+            transparent_1.SetActive(false);
+            transparent_2.SetActive(false);
+            transparent_3.SetActive(false);
             transparent_4.SetActive(false);
         }else if(Story.level == 5)
         {   
             hacken_4.SetActive(true);
+            hacken_3.SetActive(true);
+            hacken_2.SetActive(true);
+            hacken_1.SetActive(true);
+            hacken_0.SetActive(true);
+            transparent_0.SetActive(false);
+            transparent_1.SetActive(false);
+            transparent_2.SetActive(false);
+            transparent_3.SetActive(false);
+            transparent_4.SetActive(false);
             transparent_5.SetActive(false);
         }else if(Story.level == 6)
         {   
             hacken_5.SetActive(true);
+            hacken_4.SetActive(true);
+            hacken_3.SetActive(true);
+            hacken_2.SetActive(true);
+            hacken_1.SetActive(true);
+            hacken_0.SetActive(true);
+            transparent_0.SetActive(false);
+            transparent_1.SetActive(false);
+            transparent_2.SetActive(false);
+            transparent_3.SetActive(false);
+            transparent_4.SetActive(false);
+            transparent_5.SetActive(false);
             transparent_6.SetActive(false);
         }else if(Story.level == 7)
         {
             hacken_6.SetActive(true);
+            hacken_5.SetActive(true);
+            hacken_4.SetActive(true);
+            hacken_3.SetActive(true);
+            hacken_2.SetActive(true);
+            hacken_1.SetActive(true);
+            hacken_0.SetActive(true);
+            transparent_0.SetActive(false);
+            transparent_1.SetActive(false);
+            transparent_2.SetActive(false);
+            transparent_3.SetActive(false);
+            transparent_4.SetActive(false);
+            transparent_5.SetActive(false);
+            transparent_6.SetActive(false);
             transparent_7.SetActive(false);
         }else
         {
             hacken_7.SetActive(true);
+            hacken_6.SetActive(true);
+            hacken_5.SetActive(true);
+            hacken_4.SetActive(true);
+            hacken_3.SetActive(true);
+            hacken_2.SetActive(true);
+            hacken_1.SetActive(true);
+            hacken_0.SetActive(true);
+            transparent_0.SetActive(false);
+            transparent_1.SetActive(false);
+            transparent_2.SetActive(false);
+            transparent_3.SetActive(false);
+            transparent_4.SetActive(false);
+            transparent_5.SetActive(false);
+            transparent_6.SetActive(false);
+            transparent_7.SetActive(false);
         }
     }
 }
