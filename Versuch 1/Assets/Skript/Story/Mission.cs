@@ -21,7 +21,10 @@ public class Mission : MonoBehaviour
     int temp_baukosten_lvl4 = 0;
     int temp_anzahl_lvl4 = 0;
     bool finale = false;
-//Texteingaben für Missionen
+    public static bool mission1 = false;
+    public static bool mission3 = false;
+
+    //Texteingaben für Missionen
     public Text lvl1_text;
     public GameObject textInput;
     InputField t;
@@ -68,11 +71,11 @@ public class Mission : MonoBehaviour
     void Update()
     {
         
-    //Gib alle Texte der Mission aus.
+        //Gib alle Texte der Mission aus.
         setMission(setLevel());
         //setMission(3);
 
-    //Prüfe ob Mission von Level erfolgreich ist
+        //Prüfe ob Mission von Level erfolgreich ist
         checkMission(setLevel());
         //checkMission(3);
 
@@ -141,7 +144,7 @@ public class Mission : MonoBehaviour
             }
             if(Testing.forscher + Testing.feldarbeiter + Testing.tierpfleger > 0)
             {
-                if(Testing.menschen.Count>0&&lvl1_text.text == Testing.menschen[0].name)
+                if(mission1|| Testing.menschen.Count>0 && lvl1_text.text == Testing.menschen[0].name)
                 {
                     hacken2.SetActive(true);
                     textInput.GetComponent<InputField>().interactable = false;
@@ -150,6 +153,7 @@ public class Mission : MonoBehaviour
             }
             if(zwischenziel1 == 1 && zwischenziel2 == 1){
                 KreuzHacken();
+                mission1 = true;
             }
             else
             {
@@ -225,8 +229,9 @@ public class Mission : MonoBehaviour
             textInput.GetComponent<InputField>().interactable = true;
             if(Testing.tiere > 0)
             {
-                if(lvl1_text.text == Testing.tier[0].tiername)
+                if(mission3 || lvl1_text.text == Testing.tier[0].tiername)
                 {
+                    mission3 = true;
                     hacken2.SetActive(true);
                     textInput.GetComponent<InputField>().interactable = false;
                     zwischenziel1 = 1;

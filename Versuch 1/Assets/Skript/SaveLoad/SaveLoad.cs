@@ -308,6 +308,10 @@ public class SaveLoad : MonoBehaviour
 
         public int marsTag = SpielInfos.marsTag;
         public int erdenTag = SpielInfos.erdenTag;
+
+        public int level = Story.level;
+        public bool mission1 = Mission.mission1;
+        public bool mission3 = Mission.mission3;
     }
 
     private class LoadedPlayerData
@@ -325,6 +329,10 @@ public class SaveLoad : MonoBehaviour
         public int marsTag;
         public int erdenTag;
 
+        public int level;
+        public bool mission1;
+        public bool mission3;
+
         public void setData()
         {
             Testing.geld = geld;
@@ -340,6 +348,10 @@ public class SaveLoad : MonoBehaviour
 
             SpielInfos.marsTag = marsTag;
             SpielInfos.erdenTag = erdenTag;
+
+            Story.level = level;
+            Mission.mission1 = mission1;
+            Mission.mission3 = mission3;
         }
     }
 
@@ -366,8 +378,6 @@ public class SaveLoad : MonoBehaviour
         public int Spreis = Stallcontainer.preis;
         public int Sgehege = Stallcontainer.gehege;
 
-        public int level = Story.level;
-        public bool[] lvl = Story.lvl;
     }
     private class LoadedStaticWerte
     {
@@ -392,9 +402,8 @@ public class SaveLoad : MonoBehaviour
         public int Spreis;
         public int Sgehege;
 
-        public int level;
+        
 
-        public bool[] lvl;
         public void setData()
         {
             Wohncontainer.nummerZaehler = WnummerZaehler;
@@ -418,8 +427,7 @@ public class SaveLoad : MonoBehaviour
             Stallcontainer.preis = Spreis;
             Stallcontainer.gehege = Sgehege;
 
-            Story.level = level;
-            Story.lvl = lvl;
+            
         }
     }
 }
