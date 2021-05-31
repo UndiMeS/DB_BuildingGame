@@ -33,17 +33,22 @@ public class SaveLoadER : MonoBehaviour
         saveEntity();
         saveAttribute();
         saveBeziehung();
+        saveFertigeObjekte();
     }
 
     public void laden()
     {
-        erCanvas.transform.position = Vector3.zero;
+        //erCanvas.transform.position = Vector3.zero;
         kamerakontroller.changeHintergrund(1);
         ladeEntity();
         ladeAttribute();
         ladeBeziehungen();
 
         kamerakontroller.changeHintergrund(0);
+
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/fertigeObjekte.json");
+        FertigeObjekte fertige = JsonUtility.FromJson<FertigeObjekte>(json);
+        fertige.setData();
 
         foreach (GameObject ent in ERErstellung.modellObjekte)
         {
@@ -72,7 +77,6 @@ public class SaveLoadER : MonoBehaviour
         {
             if (split[i].StartsWith("\"beziehungsName"))
             {
-                Debug.Log("{" + split[i].Substring(0, split[i].Length - 11) + "}");
                 LoadedBeziehung bez = JsonUtility.FromJson<LoadedBeziehung>("{" + split[i].Substring(0, split[i].Length - 11) + "}");//entfernt objekt1:
                 GameObject game = Instantiate(prefabBeziehung, erModell.transform);
 
@@ -166,6 +170,8 @@ public class SaveLoadER : MonoBehaviour
 
     private void ladeEntity()
     {
+        ERErstellung.modellObjekte.Clear();
+
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Entity.json");
         json = json.Remove(json.Length - 1);//] löschen
 
@@ -247,6 +253,45 @@ public class SaveLoadER : MonoBehaviour
         File.WriteAllText(Application.dataPath + "/SaveState/Entity.json", json);
     }
 
+    private void saveFertigeObjekte()
+    {
+        FertigeObjekte fertigObjekte = new FertigeObjekte();
+        fertigObjekte.instanceIDsErstellen();
+        string json = JsonUtility.ToJson(fertigObjekte);
+        File.WriteAllText(Application.dataPath + "/SaveState/fertigeObjekte.json", json);
+    }
 
+    private class FertigeObjekte
+    {
+        public List<int> fertigeInstanceID;
+
+        public void instanceIDsErstellen()
+        {
+            fertigeInstanceID = new List<int>();
+            if (ERAufgabe.gespeicherteObjekte != null) { 
+            foreach (GameObject game in ERAufgabe.gespeicherteObjekte)
+            {
+               
+                    fertigeInstanceID.Add(game.GetInstanceID());
+               
+            }
+            }
+        }
+
+        public void setData()
+        {
+           foreach(GameObject game in ERErstellung.modellObjekte)
+            {
+                if(game!= null &&(game.CompareTag("Entitaet")&& fertigeInstanceID.Contains(game.GetComponent<Entitaet>().instanceID)
+                    || game.CompareTag("Attribut") && fertigeInstanceID.Contains(game.GetComponent<Attribut>().instanceID)
+                    || game.CompareTag("Beziehung") && fertigeInstanceID.Contains(game.GetComponent<Beziehung>().instanceID)))
+                {
+                    ERAufgabe.gespeicherteObjekte.Add(game);
+                }
+                
+            }
+            ERAufgabe.gespeicherteObjekteAus();
+        }
+    }
 
 }

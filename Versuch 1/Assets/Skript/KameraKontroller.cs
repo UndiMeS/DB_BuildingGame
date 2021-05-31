@@ -32,8 +32,10 @@ public class KameraKontroller : MonoBehaviour
     public RectTransform aufgabentext;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        aktiviert = true;
+        hintergrund = 0;
         transform.position = newPosition;
         newZoom = cameraTransform.localPosition;
 

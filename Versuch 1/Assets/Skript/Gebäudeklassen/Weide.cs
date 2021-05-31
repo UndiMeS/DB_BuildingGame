@@ -6,13 +6,13 @@ public class Weide : MonoBehaviour
 {
     public int weidennummer;
     public int baukosten;
-    public int arbeiter ;
+    public int arbeiter;
     public int ertrag;
     public int tiere;
 
     public static int nummerZaehler = 1;
     public static int preis = 100;
-    public static int arbeiterzahl =3;
+    public static int arbeiterzahl = 3;
     public static int neuErtrag = 50;
     public static int tierAnzahl = 4;
 
@@ -38,7 +38,7 @@ public class Weide : MonoBehaviour
             Testing.weiden.Add(this);
             Testing.gebauedeListe.Add(gameObject);
         }
-        
+
 
     }
 
@@ -67,5 +67,13 @@ public class Weide : MonoBehaviour
         tiere = tier;
         x = xNeu;
         y = yNeu;
+    }
+    internal static void resetStatics()
+    {
+        nummerZaehler = 1;
+        preis = 100;
+        arbeiterzahl = 3;
+        neuErtrag = 50;
+        tierAnzahl = 4;
     }
 }

@@ -5625,7 +5625,6 @@ GameObject:
   - component: {fileID: 137159582}
   - component: {fileID: 137159585}
   - component: {fileID: 137159584}
-  - component: {fileID: 137159583}
   m_Layer: 5
   m_Name: pro Sol
   m_TagString: Untagged
@@ -5652,18 +5651,6 @@ RectTransform:
   m_AnchoredPosition: {x: 390.0381, y: -38.000202}
   m_SizeDelta: {x: 86.798355, y: 22.57203}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &137159583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 137159581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3741f361978a75f4b881f63a6a841db2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &137159584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11405,7 +11392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &243676921
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34108,7 +34095,6 @@ GameObject:
   - component: {fileID: 737499476}
   - component: {fileID: 737499479}
   - component: {fileID: 737499478}
-  - component: {fileID: 737499477}
   m_Layer: 5
   m_Name: Geld
   m_TagString: Untagged
@@ -34135,18 +34121,6 @@ RectTransform:
   m_AnchoredPosition: {x: 144.448, y: -26.080101}
   m_SizeDelta: {x: 125.68614, y: 22.57203}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &737499477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 737499475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3741f361978a75f4b881f63a6a841db2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &737499478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35837,7 +35811,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 801743221}
-  - component: {fileID: 801743220}
   m_Layer: 0
   m_Name: Story
   m_TagString: Untagged
@@ -35845,51 +35818,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &801743220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801743219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4836ad1e902274242aadfc3504d79743, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonKreisLevel: {fileID: 0}
-  transparentWohncontainer: {fileID: 0}
-  buttonForscher: {fileID: 0}
-  buttonFeld: {fileID: 0}
-  buttonWeide: {fileID: 0}
-  buttonAlleAstronauten: {fileID: 0}
-  buttonWohnendeAstronauten: {fileID: 0}
-  transparentFeld: {fileID: 0}
-  transparentForschungsstation: {fileID: 0}
-  projektFeld: {fileID: 0}
-  projektFeld_bauen: {fileID: 0}
-  buttonAlleProjekte: {fileID: 0}
-  buttonStationsprojekte: {fileID: 0}
-  buttonHilfe: {fileID: 0}
-  buttonProjektVerbessern: {fileID: 0}
-  buttonNeuesProjekt: {fileID: 0}
-  buttonWohncontainerForschen: {fileID: 0}
-  buttonFeldForschen: {fileID: 0}
-  transparentStallcontainer: {fileID: 0}
-  buttonKuh: {fileID: 0}
-  buttonSchwein: {fileID: 0}
-  buttonSchaaf: {fileID: 0}
-  buttonAlleTiere: {fileID: 0}
-  buttonWohnendeTiere: {fileID: 0}
-  buttonStallForschen: {fileID: 0}
-  transparentWeide: {fileID: 0}
-  buttonWeideForschen: {fileID: 0}
-  erBaumenue: {fileID: 0}
-  checklistButton: {fileID: 0}
-  aufgabeButton: {fileID: 0}
-  checklist: {fileID: 0}
-  aufgabe: {fileID: 0}
-  buttonHilfeER: {fileID: 0}
 --- !u!4 &801743221
 Transform:
   m_ObjectHideFlags: 0
@@ -36975,7 +36903,7 @@ LightingSettings:
   m_PrefabAsset: {fileID: 0}
   m_Name: Settings.lighting
   serializedVersion: 3
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_EnableBakedLightmaps: 1
   m_EnableRealtimeLightmaps: 0
   m_RealtimeEnvironmentLighting: 1
@@ -47296,7 +47224,7 @@ RectTransform:
   - {fileID: 1596613946}
   - {fileID: 1279214337}
   m_Father: {fileID: 1731972393}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -57567,7 +57495,7 @@ RectTransform:
   - {fileID: 373089643}
   - {fileID: 359977251}
   m_Father: {fileID: 1731972393}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -59817,7 +59745,6 @@ GameObject:
   - component: {fileID: 1284963818}
   - component: {fileID: 1284963821}
   - component: {fileID: 1284963820}
-  - component: {fileID: 1284963819}
   m_Layer: 5
   m_Name: ErdenTag
   m_TagString: Untagged
@@ -59844,18 +59771,6 @@ RectTransform:
   m_AnchoredPosition: {x: 254.23804, y: -75.11697}
   m_SizeDelta: {x: 86.798355, y: 22.57203}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1284963819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284963817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3741f361978a75f4b881f63a6a841db2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1284963820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65044,7 +64959,6 @@ GameObject:
   - component: {fileID: 1388235023}
   - component: {fileID: 1388235026}
   - component: {fileID: 1388235025}
-  - component: {fileID: 1388235024}
   m_Layer: 5
   m_Name: Sol
   m_TagString: Untagged
@@ -65071,18 +64985,6 @@ RectTransform:
   m_AnchoredPosition: {x: 186.03699, y: -75.11697}
   m_SizeDelta: {x: 86.798355, y: 22.57203}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1388235024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388235022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3741f361978a75f4b881f63a6a841db2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1388235025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69419,6 +69321,7 @@ GameObject:
   - component: {fileID: 1493995336}
   - component: {fileID: 1493995339}
   - component: {fileID: 1493995340}
+  - component: {fileID: 1493995341}
   m_Layer: 5
   m_Name: speichern
   m_TagString: Untagged
@@ -69565,6 +69468,7 @@ MonoBehaviour:
   dropDownProjekt: {fileID: 1662200853}
   merkmalGO: {fileID: 223974226}
   saveLoadER: {fileID: 1493995340}
+  saveLoadBeziehungen: {fileID: 1493995341}
   gebauedeOrdner: {fileID: 725775541}
 --- !u!114 &1493995340
 MonoBehaviour:
@@ -69599,6 +69503,18 @@ MonoBehaviour:
   schwachEnt: {fileID: 21300000, guid: 170001f73eb248a41a6661815a5823bc, type: 3}
   schwachBezSelected: {fileID: 21300000, guid: a01052f6e2c56d1499b2b13c9964366c, type: 3}
   schwachBez: {fileID: 21300000, guid: c7a0fc6a779aff1409899ee637eab7bf, type: 3}
+--- !u!114 &1493995341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493995334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1a3ef7d4959e14bb821978523ba7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1495835515
 GameObject:
   m_ObjectHideFlags: 0
@@ -79196,7 +79112,6 @@ GameObject:
   - component: {fileID: 1721500366}
   - component: {fileID: 1721500369}
   - component: {fileID: 1721500368}
-  - component: {fileID: 1721500367}
   m_Layer: 5
   m_Name: Umsatz
   m_TagString: Untagged
@@ -79223,18 +79138,6 @@ RectTransform:
   m_AnchoredPosition: {x: 305.698, y: -26.080101}
   m_SizeDelta: {x: 86.798355, y: 22.57203}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1721500367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1721500365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3741f361978a75f4b881f63a6a841db2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1721500368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80006,9 +79909,9 @@ RectTransform:
   - {fileID: 1733310777}
   - {fileID: 886913272}
   - {fileID: 199388793}
+  - {fileID: 1840935812}
   - {fileID: 1005837853}
   - {fileID: 1243619668}
-  - {fileID: 1840935812}
   m_Father: {fileID: 608227082}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -81348,6 +81251,7 @@ MonoBehaviour:
   dropDownProjekt: {fileID: 1662200853}
   merkmalGO: {fileID: 223974226}
   saveLoadER: {fileID: 1754395182}
+  saveLoadBeziehungen: {fileID: 0}
   gebauedeOrdner: {fileID: 0}
 --- !u!1 &1754656784
 GameObject:
@@ -85243,7 +85147,7 @@ RectTransform:
   - {fileID: 14098801}
   - {fileID: 1368973594}
   m_Father: {fileID: 1731972393}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

@@ -17,7 +17,7 @@ public class GebaeudeInfoBauen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        wertFest =0;
     }
 
     // Update is called once per frame

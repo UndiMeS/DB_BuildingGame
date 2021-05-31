@@ -9,7 +9,7 @@ public class ERErstellung : MonoBehaviour
 {
     public static GameObject selectedGameObjekt;
     public static GameObject lastselected;
-    public static ArrayList modellObjekte = new ArrayList(); //Liste an Objekten in ERD, vielleicht fuer spaeter
+    public static List<GameObject> modellObjekte = new List<GameObject>(); //Liste an Objekten in ERD, vielleicht fuer spaeter
 
     public GameObject linie;
     public GameObject linienOrdner;
@@ -44,8 +44,10 @@ public class ERErstellung : MonoBehaviour
     {
         lastselected = null;
         selectedGameObjekt = null;
+        schwach = false;
         modellObjekte.Clear();
     }
+    
 
     /* wenn auf die 3 Tasten gedrueckt wird, wird das Objekt erstellt
     prefab istdas ER-Objekt (Entity, Attribut, Beziehung)*/
@@ -308,4 +310,6 @@ public class ERErstellung : MonoBehaviour
         }
 
     }
+
+    
 }

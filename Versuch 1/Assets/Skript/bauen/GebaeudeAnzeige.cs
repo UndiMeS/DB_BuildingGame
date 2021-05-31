@@ -57,13 +57,24 @@ public class GebaeudeAnzeige : MonoBehaviour
 
     }
 
+    void OnSceneLoaded()
+    {
+        Start();
+        gebaeude = null;
+        wert = 0;
+        projektMerkmalStufen = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+        childOn = false;
+        allesAus = false;
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-       if (Input.GetMouseButtonDown(0)&& !PauseMenu.SpielIstPausiert)
+        if (Input.GetMouseButtonDown(0) && !PauseMenu.SpielIstPausiert)
         {
             GebaeudeInfoBauen.wertFest = 0;
-            if ( Testing.objektGebaut==0 && outBox(Input.mousePosition))
+            if (Testing.objektGebaut == 0 && outBox(Input.mousePosition))
             {
                 Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);
                 cursorPos.z = 2f;
@@ -79,19 +90,19 @@ public class GebaeudeAnzeige : MonoBehaviour
             Testing.gebautesObjekt = null;
             Testing.objektGebaut = 0;
         }
-        if (ObjektBewegung.selected || GebaeudeInfoBauen.wertFest != 0||allesAus)
+        if (ObjektBewegung.selected || GebaeudeInfoBauen.wertFest != 0 || allesAus)
         {
-           wert = 0;
+            wert = 0;
         }
 
-       
-        
+
+
         int i = 1;
         foreach (GameObject anzeige in anzeigen)
         {
             if (i != wert)
             {
-               
+
                 anzeige.SetActive(false);
             }
             else
@@ -126,17 +137,19 @@ public class GebaeudeAnzeige : MonoBehaviour
         }
         if (Testing.laden)
         {
-           // forschungsauswahl = 0;
+            // forschungsauswahl = 0;
         }
-        
 
-        
+
+
     }
 
     private bool outBox(Vector3 mousePosition)
     {
-        if (childOn) { return !(RectTransformUtility.RectangleContainsScreenPoint(ObjektBewegung.infoAnzeige.GetComponent<RectTransform>(),mousePosition,Camera.main) ||
-                RectTransformUtility.RectangleContainsScreenPoint(buttonRechts.GetComponent<RectTransform>(), mousePosition, Camera.main) );
+        if (childOn)
+        {
+            return !(RectTransformUtility.RectangleContainsScreenPoint(ObjektBewegung.infoAnzeige.GetComponent<RectTransform>(), mousePosition, Camera.main) ||
+     RectTransformUtility.RectangleContainsScreenPoint(buttonRechts.GetComponent<RectTransform>(), mousePosition, Camera.main));
         }
         else { return true; }
     }
@@ -157,7 +170,8 @@ public class GebaeudeAnzeige : MonoBehaviour
             if (gebaeude.GetComponent<Forschung>().spezialisierung.Equals("Wohncontainer"))
             {
                 spezialisierungsIcon.GetComponent<Image>().sprite = wohn;
-            }else if (gebaeude.GetComponent<Forschung>().spezialisierung.Equals("Feldsphäre"))
+            }
+            else if (gebaeude.GetComponent<Forschung>().spezialisierung.Equals("Feldsphäre"))
             {
                 spezialisierungsIcon.GetComponent<Image>().sprite = feld;
             }
@@ -182,14 +196,14 @@ public class GebaeudeAnzeige : MonoBehaviour
     private void Stall(GameObject gebaeude)
     {
         gebaeude.GetComponent<Stallcontainer>().ausgabe(stallTabelle);
-    }   
+    }
 
-    
+
     private void Weide(GameObject gebaeude)
     {
         gebaeude.GetComponent<Weide>().ausgabe(weidenTabelle);
     }
-   
+
 
     private void Nichts()
     {
@@ -203,7 +217,7 @@ public class GebaeudeAnzeige : MonoBehaviour
             FehlerAnzeige.fehlertext = "Zu wenig Geld.";
             return;
         }
-        if(gebaeude.GetComponent<Wohncontainer>().freieBetten!= 0)
+        if (gebaeude.GetComponent<Wohncontainer>().freieBetten != 0)
         {
             gebaeude.GetComponent<Wohncontainer>().freieBetten--;
             Testing.forscher++;
@@ -211,7 +225,7 @@ public class GebaeudeAnzeige : MonoBehaviour
             Testing.summeMenschen++;
             Mensch temp = new Mensch("Forschung", gebaeude.GetComponent<Wohncontainer>().containernummer);
             gebaeude.GetComponent<Wohncontainer>().bewohner.Add(temp);
-        }        
+        }
     }
     public void Feldarbeiter()
     {
@@ -247,7 +261,7 @@ public class GebaeudeAnzeige : MonoBehaviour
             gebaeude.GetComponent<Wohncontainer>().bewohner.Add(temp);
         }
     }
-     public void Tiere(int welchesTier)
+    public void Tiere(int welchesTier)
     {
         if (Testing.geld < tierkosten)
         {
@@ -263,13 +277,15 @@ public class GebaeudeAnzeige : MonoBehaviour
             string art = "";
             if (welchesTier == 0)
             {
-                 art = "Kuh";
+                art = "Kuh";
             }
-            else if(welchesTier == 1)
+            else if (welchesTier == 1)
             {
-                 art = "Schwein";
-            }else {
-                 art = "Schaf";
+                art = "Schwein";
+            }
+            else
+            {
+                art = "Schaf";
             }
             Tiere temp = new Tiere(art, gebaeude.GetComponent<Stallcontainer>().containernummer);
             gebaeude.GetComponent<Stallcontainer>().tiere.Add(temp);
@@ -286,14 +302,15 @@ public class GebaeudeAnzeige : MonoBehaviour
             gebaeude.GetComponent<Forschung>().spezialisierung = "Wohncontainer";
             spezialisierungsIcon.GetComponent<Image>().sprite = wohn;
 
-        }else if (spezialisierung.Equals("Feldsphäre"))
+        }
+        else if (spezialisierung.Equals("Feldsphäre"))
         {
-            gebaeude.GetComponent<Forschung>().spezialisierung= "Feldsphäre";
+            gebaeude.GetComponent<Forschung>().spezialisierung = "Feldsphäre";
             spezialisierungsIcon.GetComponent<Image>().sprite = feld;
         }
         else if (spezialisierung.Equals("Weidesphäre"))
         {
-            gebaeude.GetComponent<Forschung>().spezialisierung= "Weidesphäre";
+            gebaeude.GetComponent<Forschung>().spezialisierung = "Weidesphäre";
             spezialisierungsIcon.GetComponent<Image>().sprite = weide;
         }
         else if (spezialisierung.Equals("Stallcontainer"))
@@ -305,13 +322,13 @@ public class GebaeudeAnzeige : MonoBehaviour
     }
     public void erstelleProjekt()
     {
-        if (gebaeude.GetComponent<Forschung>().maxAnzahlProjekte > gebaeude.GetComponent<Forschung>().anzahlProjekte&& Testing.forscher >= Projekt.forscher&&Testing.geld>= gebaeude.GetComponent<Forschung>().projektkosten )
+        if (gebaeude.GetComponent<Forschung>().maxAnzahlProjekte > gebaeude.GetComponent<Forschung>().anzahlProjekte && Testing.forscher >= Projekt.forscher && Testing.geld >= gebaeude.GetComponent<Forschung>().projektkosten)
         {
             gebaeude.GetComponent<Forschung>().createProjekt();
         }
         else
         {
-            if (Testing.geld< gebaeude.GetComponent<Forschung>().projektkosten )
+            if (Testing.geld < gebaeude.GetComponent<Forschung>().projektkosten)
             {
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld.";
             }
@@ -323,11 +340,11 @@ public class GebaeudeAnzeige : MonoBehaviour
             {
                 FehlerAnzeige.fehlertext = "Du kannst hier keine neuen Projekte mehr erzeugen.";
             }
-            
-            
+
+
         }
-        
-        
+
+
     }
 
     public void projektMerkmal(int option)
@@ -349,7 +366,7 @@ public class GebaeudeAnzeige : MonoBehaviour
             Testing.geld -= preis;
             new Projekt(gebaeude.GetComponent<Forschung>().stationsnummer, "Projektkosten", 11, 1, 200, 0, 0.5f, 0);
         }
-        KostenVerbessernGO.SetActive(false); 
+        KostenVerbessernGO.SetActive(false);
     }
 
 }

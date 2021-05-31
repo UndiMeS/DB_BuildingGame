@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Stallcontainer : MonoBehaviour
 {
-   
+
 
     public int containernummer;
     public int gehegezahl;
@@ -33,7 +33,7 @@ public class Stallcontainer : MonoBehaviour
             Testing.stallcontainer.Add(this);
             Testing.gebauedeListe.Add(gameObject);
         }
-        
+
     }
 
     public void ausgabe(GameObject tabelle)
@@ -59,5 +59,12 @@ public class Stallcontainer : MonoBehaviour
         x = xNeu;
         y = yNeu;
 
+    }
+
+    internal static void resetStatics()
+    {
+        nummerZaehler = 1;
+        preis = 90;
+        gehege = 5;
     }
 }

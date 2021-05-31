@@ -66,7 +66,7 @@ public class Testing : MonoBehaviour
 
         ObjektBewegung.erstellfenster = erstellfenster;
         ObjektBewegung.infoAnzeige = infofesnter;
-        
+        objektGebaut = 0;
 
         if (laden)
         {
@@ -111,6 +111,21 @@ public class Testing : MonoBehaviour
         forschungsstationen.Clear();
         Forschung.resetStatics();
         forschungsprojekte.Clear();
+        weiden.Clear();
+        Weide.resetStatics();
+        stallcontainer.Clear();
+        Stallcontainer.resetStatics();
+        gebauedeListe.Clear();
+        for(int i=0;i<ERErstellung.modellObjekte.Count;)
+        {
+            GameObject temp= ERErstellung.modellObjekte[0];
+            ERErstellung.modellObjekte.Remove(temp);
+            Destroy(temp);
+        }
+        if (ERAufgabe.gespeicherteObjekte != null)
+        {
+            ERAufgabe.gespeicherteObjekte.Clear();
+        }
     }
 
 

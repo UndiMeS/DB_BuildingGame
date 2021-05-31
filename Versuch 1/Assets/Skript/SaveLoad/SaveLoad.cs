@@ -19,6 +19,7 @@ public class SaveLoad : MonoBehaviour
     public GameObject merkmalGO;
 
     public SaveLoadER saveLoadER;
+    public SaveLoadBeziehungen saveLoadBeziehungen;
     public GameObject gebauedeOrdner;
 
     public void speichern()
@@ -37,7 +38,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(wohn) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/Wohncontainer.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Wohncontainer.json", json);
 
         json = "[";
         foreach (Feld feld in Testing.felder)
@@ -45,7 +46,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(feld) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/Feldsphaere.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Feldsphaere.json", json);
 
         json = "[";
         foreach (Forschung obj in Testing.forschungsstationen)
@@ -53,7 +54,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/Forschungsstation.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Forschungsstation.json", json);
 
         json = "[";
         foreach (Projekt obj in Testing.forschungsprojekte)
@@ -61,7 +62,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/Forschungsprojekte.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Forschungsprojekte.json", json);
 
         json = "[";
         foreach (Weide obj in Testing.weiden)
@@ -69,7 +70,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/Weidesphaere.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Weidesphaere.json", json);
 
         json = "[";
         foreach (Stallcontainer obj in Testing.stallcontainer)
@@ -77,7 +78,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/Stallcontainer.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Stallcontainer.json", json);
 
         json = "[";
         foreach (Mensch obj in Testing.menschen)
@@ -85,7 +86,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/Menschen.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Menschen.json", json);
 
         json = "[";
         foreach (Tiere obj in Testing.tier)
@@ -93,9 +94,10 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/Tiere.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Tiere.json", json);
 
         saveLoadER.speichern();
+        saveLoadBeziehungen.speichern();
     }
 
     public void laden()
@@ -124,7 +126,7 @@ public class SaveLoad : MonoBehaviour
 
     private void tiereLaden()
     {
-        string json = File.ReadAllText(Application.dataPath + "/SaveState/Tiere.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Tiere.json");
         json = json.Remove(json.Length - 1);//] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -143,7 +145,7 @@ public class SaveLoad : MonoBehaviour
 
     private void menschenLaden()
     {
-        string json = File.ReadAllText(Application.dataPath + "/SaveState/Menschen.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Menschen.json");
         json = json.Remove(json.Length - 1);//] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -162,7 +164,7 @@ public class SaveLoad : MonoBehaviour
 
     private void projekteLaden()
     {
-        string json = File.ReadAllText(Application.dataPath + "/SaveState/Forschungsprojekte.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Forschungsprojekte.json");
         json = json.Remove(json.Length - 1);//] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -185,7 +187,7 @@ public class SaveLoad : MonoBehaviour
     }
     private void stallLaden()
     {
-        string json = File.ReadAllText(Application.dataPath + "/SaveState/Stallcontainer.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Stallcontainer.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -206,7 +208,7 @@ public class SaveLoad : MonoBehaviour
     }
     private void weideLaden()
     {
-        string json = File.ReadAllText(Application.dataPath + "/SaveState/Weidesphaere.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Weidesphaere.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -227,7 +229,7 @@ public class SaveLoad : MonoBehaviour
     }
     private void feldLaden()
     {
-        string json = File.ReadAllText(Application.dataPath + "/SaveState/Feldsphaere.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Feldsphaere.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -248,7 +250,7 @@ public class SaveLoad : MonoBehaviour
     }
     private void forschungLaden()
     {
-        string json = File.ReadAllText(Application.dataPath + "/SaveState/Forschungsstation.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Forschungsstation.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -272,7 +274,7 @@ public class SaveLoad : MonoBehaviour
     }
     private void wohncontainerLaden()
     {
-        string json = File.ReadAllText(Application.dataPath + "/SaveState/Wohncontainer.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Wohncontainer.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -363,6 +365,9 @@ public class SaveLoad : MonoBehaviour
         public int SnummerZaehler = Stallcontainer.nummerZaehler;
         public int Spreis = Stallcontainer.preis;
         public int Sgehege = Stallcontainer.gehege;
+
+        public int level = Story.level;
+        public bool[] lvl = Story.lvl;
     }
     private class LoadedStaticWerte
     {
@@ -387,6 +392,9 @@ public class SaveLoad : MonoBehaviour
         public int Spreis;
         public int Sgehege;
 
+        public int level;
+
+        public bool[] lvl;
         public void setData()
         {
             Wohncontainer.nummerZaehler = WnummerZaehler;
@@ -410,6 +418,8 @@ public class SaveLoad : MonoBehaviour
             Stallcontainer.preis = Spreis;
             Stallcontainer.gehege = Sgehege;
 
+            Story.level = level;
+            Story.lvl = lvl;
         }
     }
 }

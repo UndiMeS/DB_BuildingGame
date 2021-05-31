@@ -187,7 +187,7 @@ public class ERAufgabe : MonoBehaviour
     private bool firsttime=true;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // Level 0
         listeAttribute[0] = new string[][][] { wohncontainer };
@@ -224,6 +224,8 @@ public class ERAufgabe : MonoBehaviour
 
         gespeicherteObjekte = new List<GameObject>();
         Utilitys.TextInTMP(dasIstSchonFertig, "");
+
+        gespeicherteObjekteAus();
     }
 
     // Update is called once per frame
@@ -646,7 +648,19 @@ public class ERAufgabe : MonoBehaviour
 
 
     }
-
+    public static void gespeicherteObjekteAus()
+    {
+        foreach (GameObject game in ERAufgabe.gespeicherteObjekte)
+        {
+            game.transform.GetChild(1).gameObject.SetActive(false);
+            game.transform.GetChild(0).gameObject.SetActive(true);
+            Utilitys.TextInTMP(game.transform.GetChild(0).gameObject, game.name);
+            if (game.CompareTag("Attribut") && game.GetComponent<Attribut>().primaerschluessel)
+            {
+                game.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().fontStyle = TMPro.FontStyles.Underline;
+            }
+        }
+    }
 
 
 }

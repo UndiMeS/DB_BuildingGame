@@ -91,7 +91,7 @@ public class Story : MonoBehaviour
     Button bHilfeER;
 
 
-    void Start()
+    void Awake()
     {
         //Freischaltbare Objekte auf aus/false setzten (Transparente auf true)
 

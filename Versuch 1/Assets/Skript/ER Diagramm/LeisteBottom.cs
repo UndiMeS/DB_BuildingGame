@@ -24,7 +24,7 @@ public class LeisteBottom : MonoBehaviour
     public TMPro.TMP_Dropdown kard2;
     public Toggle primKnopf;
 
-    public void Start()
+    public void Awake()
     {
        leiste_bottom = gameObject;
        objekt1= bezEinstellung.transform.GetChild(1).gameObject.GetComponent<TMPro.TMP_Dropdown>();
