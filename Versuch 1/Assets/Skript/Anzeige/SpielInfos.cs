@@ -26,6 +26,9 @@ public class SpielInfos : MonoBehaviour
     public static float lasttime;
     public static float pausedtime;
 
+    public static int neueZusatzaufgabe = 3;
+    public static int neuerUmsatz = 5;
+
     //Buttons um Zusatzaufgabefenster zeitabhängig anzeigen zu lassen
     public GameObject zusatzButton; 
     public GameObject zusatzButton_transparent;
@@ -52,10 +55,10 @@ public class SpielInfos : MonoBehaviour
         {
             currenttime = Time.time-pausedtime;
             float neuSoltag = Mathf.RoundToInt(currenttime / 10.274f ) + 1; // +1 da es keinen Tag 0  gibt/ Marstag = 1,02748 * Erdtag --> 20* 1,02748
-            if (neuSoltag % 5 == 0 && marsTag != neuSoltag)
+            if (neuSoltag % neuerUmsatz == 0 && marsTag != neuSoltag)
             {
                 Testing.geld += Testing.umsatz;
-            }else if (neuSoltag % 3 == 0 && marsTag != neuSoltag) //alle 3 Tage eine neue Zusatzaufgabe
+            }else if (neuSoltag % neueZusatzaufgabe == 0 && marsTag != neuSoltag) //alle 3 Tage eine neue Zusatzaufgabe
             {
                 zusatzButton.SetActive(true);
                 zusatzButton_transparent.SetActive(false);

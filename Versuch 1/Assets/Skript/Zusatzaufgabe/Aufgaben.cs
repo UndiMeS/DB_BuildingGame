@@ -37,6 +37,9 @@ public class Aufgaben : MonoBehaviour
     public GameObject exitKnopfSecondChance;
     public GameObject geldanzeige;
 
+    public static int gewinn = 150;
+    public static int gewinn2C = 40;
+
     private int temp = 0;
     private int cheat_temp = 0;
 
@@ -271,12 +274,12 @@ public class Aufgaben : MonoBehaviour
         geldanzeige.SetActive(true);
         if(versuch == 1){
             //1. Versuch richtig
-            Testing.geld += 150;
-            ausgabe = "+ 150";
+            Testing.geld += gewinn;
+            ausgabe = "+ " + gewinn.ToString();
         }else{
             //2. Versuch richtig
-            Testing.geld += 40;
-            ausgabe = "+ 40";
+            Testing.geld += gewinn2C;
+            ausgabe = "+ " + gewinn2C.ToString();
         }
         Utilitys.TextInTMP(geldanzeige, ausgabe);
     }

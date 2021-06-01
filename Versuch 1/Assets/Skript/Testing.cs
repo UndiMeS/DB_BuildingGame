@@ -56,6 +56,7 @@ public class Testing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Spielwerte.Werte();
         grid = new Gitter(weite, hoehe, zellengroesse);
 
         //Hintergrund und Camera
