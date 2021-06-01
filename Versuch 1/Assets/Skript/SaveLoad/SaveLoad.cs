@@ -312,6 +312,9 @@ public class SaveLoad : MonoBehaviour
         public int level = Story.level;
         public bool mission1 = Mission.mission1;
         public bool mission3 = Mission.mission3;
+        public bool[] lvl = Story.lvl;
+        public bool[] missionsLevel = Mission.missionsLevel;
+        public bool[][] missionsTeilLevel = Mission.missionsTeilLevel;
     }
 
     private class LoadedPlayerData
@@ -332,6 +335,9 @@ public class SaveLoad : MonoBehaviour
         public int level;
         public bool mission1;
         public bool mission3;
+        public bool[] lvl;
+        public bool[] missionsLevel;
+        public bool[][] missionsTeilLevel = {new bool[2], new bool[2], new bool[4], new bool[2], new bool[4], new bool[2]};
 
         public void setData()
         {
@@ -352,6 +358,9 @@ public class SaveLoad : MonoBehaviour
             Story.level = level;
             Mission.mission1 = mission1;
             Mission.mission3 = mission3;
+            Story.lvl = lvl;
+            Mission.missionsLevel = missionsLevel;
+            Mission.missionsTeilLevel = missionsTeilLevel;
         }
     }
 

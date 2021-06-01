@@ -89,37 +89,21 @@ public class Story : MonoBehaviour
     public GameObject aufgabe;    
     public GameObject buttonHilfeER;
     Button bHilfeER;
+    public GameObject titelER;
 
 
     void Awake()
     {
-        //Freischaltbare Objekte auf aus/false setzten (Transparente auf true)
-
         //folgendes auskommentieren, um sofort auf alles zugriff zu haben.
-       allesOff();
-
-       if(level > 0){
-            for(int i = 0; i <= level; i++){
-                lvl[i] = true;
-            }
-        }
+        allesOff();
         checkLevel();
     }   
     void Update()
     {
         //Prüfe auf erfüllte Level
-        checkLevel();             //falls beim Speichern/Laden nicht alle passenden Objekte true/false gesetzt werden, dann einfach eine for-Loop um checklevel mit i=0, ixx, i<=level
-
+        checkLevel(); 
         //Setzte ButtonlebelAnzeige
         Utilitys.TextInTMP(buttonKreisLevel, Story.level);
-        
-        
-        if(level > 0){
-            for(int i = 0; i <= level; i++){
-                lvl[i] = true;
-            }
-        }
-        
     }
 
     public void allesOff()
@@ -255,6 +239,7 @@ public class Story : MonoBehaviour
             checklist.SetActive(false);
             checklistButton.SetActive(false);
             bHilfeER.interactable = false; 
+            Utilitys.TextInTMP(titelER, "Deine Marssiedlung");
 
 
         }
