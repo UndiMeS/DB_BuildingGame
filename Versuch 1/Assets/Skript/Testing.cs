@@ -127,6 +127,11 @@ public class Testing : MonoBehaviour
         {
             ERAufgabe.gespeicherteObjekte.Clear();
         }
+
+
+        Mission.missionsLevel = new bool[] { false, false, false, false, false, false };
+        Story.lvl = new bool[] { false, false, false, false, false, false, false, false };
+        Story.level = 0;
     }
 
 

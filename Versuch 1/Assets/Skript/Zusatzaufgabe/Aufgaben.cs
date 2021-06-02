@@ -11,7 +11,7 @@ public class Aufgaben : MonoBehaviour
     public string[] secondchance;
     public int[] level ;
 
-    private int welcheAufgabe = 0;
+    public static int welcheAufgabe = 0;
 
     public toogleEingabe toogle;
     public GameObject exitKnopf;
