@@ -10,12 +10,19 @@ public class Mission : MonoBehaviour
     public static bool[] missionsLevel = new bool[] {false,false,false,false,false,false};
 
     //Je Teilziel ein Bool
-    public static bool[][] missionsTeilLevel = {new bool[] {false,false},
+    /*public static bool[][] missionsTeilLevel = {new bool[] {false,false},
                                                 new bool[] {false,false},
                                                 new bool[] {false,false,false,false},
                                                 new bool[] {false,false},
                                                 new bool[] {false,false,false,false},
-                                                new bool[] {false,false}};
+                                                new bool[] {false,false}};*/
+
+    public static bool[] missionsTeilLevel0 = new bool[] {false,false};
+    public static bool[] missionsTeilLevel1 = new bool[] {false,false};
+    public static bool[] missionsTeilLevel2 = new bool[] {false,false,false,false};
+    public static bool[] missionsTeilLevel3 = new bool[] {false,false};
+    public static bool[] missionsTeilLevel4 = new bool[] {false,false,false,false};
+    public static bool[] missionsTeilLevel5 = new bool[] {false,false};
 //Hilfsvariablen
     int zwischenziel1 = 0;
     int zwischenziel2 = 0;
@@ -90,8 +97,10 @@ public class Mission : MonoBehaviour
         //checkMission(3);
 
 
-        if(missionsTeilLevel[1][1]){
+        if(ERAufgabe.missionCheck == false){
             Debug.Log("hihi");
+            ERkreisHacken.SetActive(true);
+            ERkreisKreuz.SetActive(false);
         }
 
     }
@@ -161,20 +170,20 @@ public class Mission : MonoBehaviour
                 }else{ 
 
                     //missionTeilLevel[X][X] checkt ob Teilzeil bereits fertig war
-                    if(missionsTeilLevel[0][0] || Testing.forscher + Testing.feldarbeiter + Testing.tierpfleger == System.Convert.ToInt32(mission[0][5]))
+                    if(missionsTeilLevel0[0] || Testing.forscher + Testing.feldarbeiter + Testing.tierpfleger == System.Convert.ToInt32(mission[0][5]))
                     {
                         hacken1.SetActive(true);
                         zwischenziel1 = 1;
-                        missionsTeilLevel[0][0] = true;
+                        missionsTeilLevel0[0] = true;
                     }
                     if(Testing.forscher + Testing.feldarbeiter + Testing.tierpfleger > 0)
                     {
-                        if(missionsTeilLevel[0][1]||mission1|| Testing.menschen.Count>0 && lvl1_text.text == Testing.menschen[0].name)
+                        if(missionsTeilLevel0[1]||mission1|| Testing.menschen.Count>0 && lvl1_text.text == Testing.menschen[0].name)
                         {
                             hacken2.SetActive(true);
                             textInput.GetComponent<InputField>().interactable = false;
                             zwischenziel2 = 1;
-                            missionsTeilLevel[0][1] = true;
+                            missionsTeilLevel0[1] = true;
                         }
                     }
                     if(zwischenziel1 == 1 && zwischenziel2 == 1){
@@ -199,22 +208,22 @@ public class Mission : MonoBehaviour
                     hacken2.SetActive(true);
                     KreuzHacken();
                 }else{
-                    if(missionsTeilLevel[1][0] || Testing.umsatz >= System.Convert.ToInt32(mission[1][5])){
+                    if(missionsTeilLevel1[0] || Testing.umsatz >= System.Convert.ToInt32(mission[1][5])){
                         hacken1.SetActive(true);
                         zwischenziel1 = 1;
-                        missionsTeilLevel[1][0] = true;
+                        missionsTeilLevel1[0] = true;
                     }
-                    if(temp_feldarbeiter_lvl1 == 0 && missionsTeilLevel[1][1] == false)
+                    if(temp_feldarbeiter_lvl1 == 0 && missionsTeilLevel1[1] == false)
                         {
                             temp_feldarbeiter_lvl1 = Testing.feldarbeiter;
                         }
-                    if(missionsTeilLevel[1][1]  == true){
+                    if(missionsTeilLevel1[1]  == true){
                         hacken2.SetActive(true);
                         zwischenziel2 = 1; 
                     }else if (zwischenziel1 == 1 || Testing.feldarbeiter >= System.Convert.ToInt32(mission[1][6]) || temp_feldarbeiter_lvl1 >= System.Convert.ToInt32(mission[1][6])){
                         hacken2.SetActive(true);
                         zwischenziel2 = 1; 
-                        missionsTeilLevel[1][1] = true;
+                        missionsTeilLevel1[1] = true;
                         
                     }
                     if(zwischenziel1 == 1 && zwischenziel2 == 1){
@@ -249,25 +258,25 @@ public class Mission : MonoBehaviour
                         temp_arbeiterzahl_lvl2 = Feld.arbeiterzahl;
                     }
                     if(
-                        missionsTeilLevel[2][0] || Wohncontainer.preis < temp_baukosten_lvl2){
+                        missionsTeilLevel2[0] || Wohncontainer.preis < temp_baukosten_lvl2){
                         hacken1.SetActive(true);
                         zwischenziel1 = 1;
-                        missionsTeilLevel[2][0] = true;
+                        missionsTeilLevel2[0] = true;
                     }
-                    if(missionsTeilLevel[2][1] || Wohncontainer.betten > temp_bettenzahl_lvl2){
+                    if(missionsTeilLevel2[1] || Wohncontainer.betten > temp_bettenzahl_lvl2){
                         hacken2.SetActive(true);
                         zwischenziel2 = 1;
-                        missionsTeilLevel[2][1] = true; 
+                        missionsTeilLevel2[1] = true; 
                     }
-                    if(missionsTeilLevel[2][2] || Feld.neuErtrag > temp_ertrag_lvl2){
+                    if(missionsTeilLevel2[2] || Feld.neuErtrag > temp_ertrag_lvl2){
                         hacken3.SetActive(true);
                         zwischenziel3 = 1;
-                        missionsTeilLevel[2][2] = true;
+                        missionsTeilLevel2[2] = true;
                     }
-                    if(missionsTeilLevel[2][3] || Feld.arbeiterzahl < temp_arbeiterzahl_lvl2){
+                    if(missionsTeilLevel2[3] || Feld.arbeiterzahl < temp_arbeiterzahl_lvl2){
                         hacken4.SetActive(true);
                         zwischenziel4 = 1; 
-                        missionsTeilLevel[2][3] = true;
+                        missionsTeilLevel2[3] = true;
                     }
                     if(zwischenziel1==1 && zwischenziel2==1 && zwischenziel3==1 && zwischenziel4==1){
                         KreuzHacken();
@@ -292,19 +301,19 @@ public class Mission : MonoBehaviour
             }else{
                 if(Testing.tiere > 0)
                 {
-                    if(missionsTeilLevel[3][0] || mission3 || lvl1_text.text == Testing.tier[0].tiername)
+                    if(missionsTeilLevel3[0] || mission3 || lvl1_text.text == Testing.tier[0].tiername)
                     {
                         mission3 = true;
                         hacken2.SetActive(true);
                         textInput.GetComponent<InputField>().interactable = false;
                         zwischenziel1 = 1;
-                        missionsTeilLevel[3][0] = true;
+                        missionsTeilLevel3[0] = true;
                     }
                 }else {lvl1_text.text = "";}
-                if(missionsTeilLevel[3][1] || Testing.tiere >= System.Convert.ToInt32(mission[3][5])){
+                if(missionsTeilLevel3[1] || Testing.tiere >= System.Convert.ToInt32(mission[3][5])){
                     hacken1.SetActive(true);
                     zwischenziel2 = 1;
-                    missionsTeilLevel[3][1] = true;
+                    missionsTeilLevel3[1] = true;
                 }
                 if(zwischenziel1 == 1 && zwischenziel2 == 1){
                     KreuzHacken();
@@ -337,25 +346,25 @@ public class Mission : MonoBehaviour
                             temp_tierzahl_lvl4 = Weide.tierAnzahl;
                             temp_anzahl_lvl4 = Testing.weiden.Count;
                         }
-                        if(missionsTeilLevel[4][0] || Testing.weiden.Count >= temp_anzahl_lvl4 + System.Convert.ToInt32(mission[4][5])){
+                        if(missionsTeilLevel4[0] || Testing.weiden.Count >= temp_anzahl_lvl4 + System.Convert.ToInt32(mission[4][5])){
                             hacken1.SetActive(true);
                             zwischenziel1 = 1;
-                            missionsTeilLevel[4][0] = true;
+                            missionsTeilLevel4[0] = true;
                         }
-                        if(missionsTeilLevel[4][1] || Weide.preis < temp_baukosten_lvl4){
+                        if(missionsTeilLevel4[1] || Weide.preis < temp_baukosten_lvl4){
                             hacken2.SetActive(true);
                             zwischenziel2 = 1; 
-                            missionsTeilLevel[4][1] = true;
+                            missionsTeilLevel4[1] = true;
                         }
-                        if(missionsTeilLevel[4][2] || Weide.tierAnzahl < temp_tierzahl_lvl4){
+                        if(missionsTeilLevel4[2] || Weide.tierAnzahl < temp_tierzahl_lvl4){
                             hacken3.SetActive(true);
                             zwischenziel3 = 1;
-                            missionsTeilLevel[4][2] = true;
+                            missionsTeilLevel4[2] = true;
                         }
-                        if(missionsTeilLevel[4][3] || Weide.arbeiterzahl < temp_arbeiterzahl_lvl4){
+                        if(missionsTeilLevel4[3] || Weide.arbeiterzahl < temp_arbeiterzahl_lvl4){
                             hacken4.SetActive(true);
                             zwischenziel4 = 1; 
-                            missionsTeilLevel[4][3] = true;
+                            missionsTeilLevel4[3] = true;
                         }
                         if(zwischenziel1==1 && zwischenziel2==1 && zwischenziel3==1 && zwischenziel4==1){
                             KreuzHacken();
@@ -379,17 +388,17 @@ public class Mission : MonoBehaviour
                 hacken2.SetActive(true);
                 KreuzHacken();
             }else{
-                if(missionsTeilLevel[5][01] || Testing.summeMenschen >= System.Convert.ToInt32(mission[5][5]))
+                if(missionsTeilLevel5[0] || Testing.summeMenschen >= System.Convert.ToInt32(mission[5][5]))
                 {
                     hacken1.SetActive(true);
                     zwischenziel1 = 1;
-                    missionsTeilLevel[5][0] = true;
+                    missionsTeilLevel5[0] = true;
                 }
-                if(missionsTeilLevel[5][1] || Testing.summeForschungen >= System.Convert.ToInt32(mission[5][6]))
+                if(missionsTeilLevel5[1] || Testing.summeForschungen >= System.Convert.ToInt32(mission[5][6]))
                 {
                     hacken2.SetActive(true);
                     zwischenziel2 = 1; 
-                    missionsTeilLevel[5][1] = true;
+                    missionsTeilLevel5[1] = true;
                 }
                 if(zwischenziel1==1 && zwischenziel2==1){
                     KreuzHacken();

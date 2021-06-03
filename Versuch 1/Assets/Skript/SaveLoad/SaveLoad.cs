@@ -319,7 +319,16 @@ public class SaveLoad : MonoBehaviour
         public bool mission3 = Mission.mission3;
         public bool[] lvl = Story.lvl;
         public bool[] missionsLevel = Mission.missionsLevel;
-        public bool[][] missionsTeilLevel = Mission.missionsTeilLevel;
+
+        public bool [] missionsTeilLevel0 = Mission.missionsTeilLevel0;
+        public bool [] missionsTeilLevel1 = Mission.missionsTeilLevel1;
+        public bool [] missionsTeilLevel2 = Mission.missionsTeilLevel2;
+        public bool [] missionsTeilLevel3 = Mission.missionsTeilLevel3;
+        public bool [] missionsTeilLevel4 = Mission.missionsTeilLevel4;
+        public bool [] missionsTeilLevel5 = Mission.missionsTeilLevel5;
+
+        public bool missionCheck = ERAufgabe.missionCheck;
+        
 
         public int welcheZusatzaufgabe = Aufgaben.welcheAufgabe;
     }
@@ -344,9 +353,18 @@ public class SaveLoad : MonoBehaviour
         public bool mission3;
         public bool[] lvl;
         public bool[] missionsLevel;
-        public bool[][] missionsTeilLevel = {new bool[2], new bool[2], new bool[4], new bool[2], new bool[4], new bool[2]};
+
+        public bool [] missionsTeilLevel0;
+        public bool [] missionsTeilLevel1;
+        public bool [] missionsTeilLevel2;
+        public bool [] missionsTeilLevel3;
+        public bool [] missionsTeilLevel4;
+        public bool [] missionsTeilLevel5;
+
+        public bool missionCheck;
 
         public int welcheZusatzaufgabe;
+
         public void setData()
         {
             Testing.geld = geld;
@@ -368,7 +386,17 @@ public class SaveLoad : MonoBehaviour
             Mission.mission3 = mission3;
             Story.lvl = lvl;
             Mission.missionsLevel = missionsLevel;
-            Mission.missionsTeilLevel = missionsTeilLevel;
+
+            Mission.missionsTeilLevel0 = missionsTeilLevel0;
+            Mission.missionsTeilLevel1 = missionsTeilLevel1;
+            Mission.missionsTeilLevel2 = missionsTeilLevel2;
+            Mission.missionsTeilLevel3 = missionsTeilLevel3;
+            Mission.missionsTeilLevel4 = missionsTeilLevel4;
+            Mission.missionsTeilLevel5 = missionsTeilLevel5;
+
+            ERAufgabe.missionCheck = missionCheck;
+            
+            
             Aufgaben.welcheAufgabe = welcheZusatzaufgabe;
         }
     }
