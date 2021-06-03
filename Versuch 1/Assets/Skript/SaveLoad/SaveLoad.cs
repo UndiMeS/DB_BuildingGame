@@ -330,7 +330,7 @@ public class SaveLoad : MonoBehaviour
         public bool missionCheck = ERAufgabe.missionCheck;
         
 
-        public int welcheZusatzaufgabe = Aufgaben.welcheAufgabe;
+        public int welcheZusatzaufgabe = Aufgaben.welcheAufgabe +1;
     }
 
     private class LoadedPlayerData

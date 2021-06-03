@@ -82,7 +82,8 @@ public class Mission : MonoBehaviour
     void Start()
     {
         masterKreuz.SetActive(true);
-        masterHacken.SetActive(false);         
+        masterHacken.SetActive(false);  
+        textInput.SetActive(false);       
     }
     // Update is called once per frame
     void Update()
@@ -161,6 +162,7 @@ public class Mission : MonoBehaviour
     {
     //Level 0
         if(level == 0){
+            textInput.SetActive(true);
 
                 //Zuerst wird gecheckt, ob ganzes Level bereits fertig war
                 if(missionsLevel[0]){
