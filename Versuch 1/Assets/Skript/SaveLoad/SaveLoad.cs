@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 
@@ -22,20 +23,23 @@ public class SaveLoad : MonoBehaviour
     public SaveLoadBeziehungen saveLoadBeziehungen;
     public GameObject gebauedeOrdner;
 
+    public InputField missionsEingabe;
+
     public void speichern()
     {
-        if(!Directory.Exists(Application.persistentDataPath + "/SaveState/"))
+        //üüberall Application.persistentDataPath
+        if(!Directory.Exists(Application.dataPath + "/SaveState/"))
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/SaveState/");
-            Directory.CreateDirectory(Application.persistentDataPath + "/SaveState/DB/");
+            Directory.CreateDirectory(Application.dataPath + "/SaveState/DB/");
         }
         playerData = new PlayerData();
         string json = JsonUtility.ToJson(playerData);
-        File.WriteAllText(Application.persistentDataPath + "/SaveState/saveFile.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/saveFile.json", json);
 
         StaticWerte staticWerte = new StaticWerte();
         json = JsonUtility.ToJson(staticWerte);
-        File.WriteAllText(Application.persistentDataPath + "/SaveState/staticsGebaeude.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/staticsGebaeude.json", json);
 
         json = "[";
         foreach (Wohncontainer wohn in Testing.wohncontainer)
@@ -43,7 +47,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(wohn) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.persistentDataPath + "/SaveState/DB/Wohncontainer.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Wohncontainer.json", json);
 
         json = "[";
         foreach (Feld feld in Testing.felder)
@@ -51,7 +55,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(feld) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.persistentDataPath + "/SaveState/DB/Feldsphaere.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Feldsphaere.json", json);
 
         json = "[";
         foreach (Forschung obj in Testing.forschungsstationen)
@@ -59,7 +63,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.persistentDataPath + "/SaveState/DB/Forschungsstation.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Forschungsstation.json", json);
 
         json = "[";
         foreach (Projekt obj in Testing.forschungsprojekte)
@@ -67,7 +71,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.persistentDataPath + "/SaveState/DB/Forschungsprojekte.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Forschungsprojekte.json", json);
 
         json = "[";
         foreach (Weide obj in Testing.weiden)
@@ -75,7 +79,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.persistentDataPath + "/SaveState/DB/Weidesphaere.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Weidesphaere.json", json);
 
         json = "[";
         foreach (Stallcontainer obj in Testing.stallcontainer)
@@ -83,7 +87,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.persistentDataPath + "/SaveState/DB/Stallcontainer.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Stallcontainer.json", json);
 
         json = "[";
         foreach (Mensch obj in Testing.menschen)
@@ -91,7 +95,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.persistentDataPath + "/SaveState/DB/Menschen.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Menschen.json", json);
 
         json = "[";
         foreach (Tiere obj in Testing.tier)
@@ -99,7 +103,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.persistentDataPath + "/SaveState/DB/Tiere.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Tiere.json", json);
 
         saveLoadER.speichern();
         //saveLoadBeziehungen.speichern();
@@ -108,13 +112,17 @@ public class SaveLoad : MonoBehaviour
     public void laden()
     {
 
-        string json = File.ReadAllText(Application.persistentDataPath + "/SaveState/saveFile.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/saveFile.json");
         LoadedPlayerData loadedplayerData = JsonUtility.FromJson<LoadedPlayerData>(json);
         loadedplayerData.setData();
 
-        json = File.ReadAllText(Application.persistentDataPath + "/SaveState/staticsGebaeude.json");
+        
+
+        json = File.ReadAllText(Application.dataPath + "/SaveState/staticsGebaeude.json");
         LoadedStaticWerte loadedstaticWerte = JsonUtility.FromJson<LoadedStaticWerte>(json);
         loadedstaticWerte.setData();
+
+        
 
         wohncontainerLaden();
         feldLaden();
@@ -125,13 +133,18 @@ public class SaveLoad : MonoBehaviour
         menschenLaden();
         tiereLaden();
 
+        if (loadedplayerData.missionsTeilLevel0[1] && loadedplayerData.level <3)
+        {
+            missionsEingabe.text= Testing.menschen[0].name;
+        }
+
         ObjektBewegung.selected = false;
         saveLoadER.laden();
     }
 
     private void tiereLaden()
     {
-        string json = File.ReadAllText(Application.persistentDataPath + "/SaveState/DB/Tiere.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Tiere.json");
         json = json.Remove(json.Length - 1);//] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -150,7 +163,7 @@ public class SaveLoad : MonoBehaviour
 
     private void menschenLaden()
     {
-        string json = File.ReadAllText(Application.persistentDataPath + "/SaveState/DB/Menschen.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Menschen.json");
         json = json.Remove(json.Length - 1);//] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -169,7 +182,7 @@ public class SaveLoad : MonoBehaviour
 
     private void projekteLaden()
     {
-        string json = File.ReadAllText(Application.persistentDataPath + "/SaveState/DB/Forschungsprojekte.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Forschungsprojekte.json");
         json = json.Remove(json.Length - 1);//] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -192,7 +205,7 @@ public class SaveLoad : MonoBehaviour
     }
     private void stallLaden()
     {
-        string json = File.ReadAllText(Application.persistentDataPath + "/SaveState/DB/Stallcontainer.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Stallcontainer.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -213,7 +226,7 @@ public class SaveLoad : MonoBehaviour
     }
     private void weideLaden()
     {
-        string json = File.ReadAllText(Application.persistentDataPath + "/SaveState/DB/Weidesphaere.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Weidesphaere.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -234,7 +247,7 @@ public class SaveLoad : MonoBehaviour
     }
     private void feldLaden()
     {
-        string json = File.ReadAllText(Application.persistentDataPath + "/SaveState/DB/Feldsphaere.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Feldsphaere.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -255,7 +268,7 @@ public class SaveLoad : MonoBehaviour
     }
     private void forschungLaden()
     {
-        string json = File.ReadAllText(Application.persistentDataPath + "/SaveState/DB/Forschungsstation.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Forschungsstation.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -279,7 +292,7 @@ public class SaveLoad : MonoBehaviour
     }
     private void wohncontainerLaden()
     {
-        string json = File.ReadAllText(Application.persistentDataPath + "/SaveState/DB/Wohncontainer.json");
+        string json = File.ReadAllText(Application.dataPath + "/SaveState/DB/Wohncontainer.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -290,7 +303,7 @@ public class SaveLoad : MonoBehaviour
 
             Destroy(geb.GetComponent<ObjektBewegung>());
             geb.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-            geb.transform.rotation = Quaternion.Euler(0, 0, 0);
+            geb.transform.rotation = Quaternion.Euler(0, 0, -180);
             geb.transform.position = Testing.grid.GetWorldPosition(wohn.x, wohn.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
             Testing.grid.SetWert(wohn.x, wohn.y, 1, geb);
 

@@ -234,7 +234,7 @@ public class SaveLoadER : MonoBehaviour
 
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.persistentDataPath + "/SaveState/Attribut.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/Attribut.json", json);
     }
 
     private void saveEntity()

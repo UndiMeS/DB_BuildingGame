@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -28213,6 +28213,7 @@ GameObject:
   - component: {fileID: 616779709}
   - component: {fileID: 616779708}
   - component: {fileID: 616779710}
+  - component: {fileID: 616779711}
   m_Layer: 5
   m_Name: Aufgabentext
   m_TagString: Untagged
@@ -28356,7 +28357,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_VerticalFit: 0
+--- !u!114 &616779711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616779706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdcc3f31b925e884fb31b4cdcb064630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &625460756
 GameObject:
   m_ObjectHideFlags: 0
@@ -69470,6 +69483,7 @@ MonoBehaviour:
   saveLoadER: {fileID: 1493995340}
   saveLoadBeziehungen: {fileID: 1493995341}
   gebauedeOrdner: {fileID: 725775541}
+  missionsEingabe: {fileID: 336123934}
 --- !u!114 &1493995340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79755,6 +79769,7 @@ MonoBehaviour:
   kreisKreuz: {fileID: 1633488019}
   missionHacken: {fileID: 899928000}
   missionKreuz: {fileID: 1386540501}
+  ERAufgabenText: {fileID: 616779711}
 --- !u!114 &1730754995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81253,6 +81268,7 @@ MonoBehaviour:
   saveLoadER: {fileID: 1754395182}
   saveLoadBeziehungen: {fileID: 0}
   gebauedeOrdner: {fileID: 0}
+  missionsEingabe: {fileID: 0}
 --- !u!1 &1754656784
 GameObject:
   m_ObjectHideFlags: 0

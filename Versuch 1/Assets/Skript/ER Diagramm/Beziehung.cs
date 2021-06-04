@@ -157,7 +157,8 @@ public class Beziehung : MonoBehaviour
 
         double winkel = Vector3.Angle(pos2 - pos1, Vector3.right);
 
-        kardtext.transform.position = pos1 + Vector3.Normalize(pos2 - pos1);
+        kardtext.transform.position = pos1 + Vector3.Normalize(pos2 - pos1)  ;
+
 
         if (45 < winkel && winkel < 135 || 225 < winkel && 305 > winkel)
         {

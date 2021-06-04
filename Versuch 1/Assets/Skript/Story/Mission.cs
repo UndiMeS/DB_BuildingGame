@@ -99,7 +99,6 @@ public class Mission : MonoBehaviour
 
 
         if(ERAufgabe.missionCheck == false){
-            Debug.Log("hihi");
             ERkreisHacken.SetActive(true);
             ERkreisKreuz.SetActive(false);
         }
