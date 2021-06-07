@@ -7,7 +7,7 @@ public class Spielwerte : MonoBehaviour
 
     public static void Werte()
     {
-        Testing.geld = 800;
+        Testing.geld = 8000;
 
         Wohncontainer.betten = 5;
         Wohncontainer.preis = 50;

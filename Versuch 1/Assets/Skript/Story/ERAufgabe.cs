@@ -176,6 +176,10 @@ public class ERAufgabe : MonoBehaviour
 
     public ERAufgabenText ERAufgabenText;
 
+    //Audio
+    public GameObject lvl_true;
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -307,6 +311,10 @@ public class ERAufgabe : MonoBehaviour
 
         if (checkAllesRichtig())
         {
+            //Check Sound wenn alles richtig ist
+            AudioSource x = lvl_true.GetComponent<AudioSource>();
+            x.Play(0);
+            
             //wenn alles richtig ist wird default alles auf aus gesetzt (in Update wird es aber wieder auf true gesetzt, wenn missioncheck == true ist)
             bottomLeiste.SetActive(false);
             //aufgabenFenster.SetActive(false);

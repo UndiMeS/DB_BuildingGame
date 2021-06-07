@@ -41,6 +41,8 @@ public class Mission : MonoBehaviour
     public static bool mission1 = false;
     public static bool mission3 = false;
 
+    public GameObject sound;
+
     //Texteingaben für Missionen
     public Text lvl1_text;
     public GameObject textInput;
@@ -419,13 +421,17 @@ public class Mission : MonoBehaviour
         if (firstTime)
         {
             LeanTween.scale(kreis,new Vector3(2 , 2),5).setEasePunch();
+            
+            //Check Sound wenn PopUpKreis auf geht
+            AudioSource x = sound.GetComponent<AudioSource>();
+            x.Play(0);
         }
         firstTime = false;
     }
 
     //Hilfsmethode die bei efolgreicher Mission sich um Hacken/Kreuz kümmert
     private void KreuzHacken()
-    {
+    {   
         masterKreuz.SetActive(false);
         masterHacken.SetActive(true);
         ERAufgabe.missionCheck = true;
@@ -435,7 +441,7 @@ public class Mission : MonoBehaviour
         zwischenziel1 = 0;
         zwischenziel2 = 0;
         zwischenziel3 = 0;
-        zwischenziel4 = 0;
+        zwischenziel4 = 0;        
     }
 
     public void FinaleAnzeige()
