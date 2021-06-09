@@ -2218,6 +2218,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1424431047}
+        m_TargetAssemblyTypeName: startIntro, Assembly-CSharp
+        m_MethodName: setPlayed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1064902786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2290,7 +2302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.1000061, y: -0.10501099}
+  m_AnchoredPosition: {x: 0.10003662, y: -0.10501099}
   m_SizeDelta: {x: -343.99997, y: -192.38998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1065758624
@@ -2982,7 +2994,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 038f2918336248f439e541e51744f82f, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.59
   m_Pitch: 1
   Loop: 1
@@ -3149,6 +3161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1424431045}
   - component: {fileID: 1424431046}
+  - component: {fileID: 1424431047}
   m_Layer: 5
   m_Name: Hauptmenu
   m_TagString: Untagged
@@ -3195,6 +3208,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1f96a367f8b7542a5917d0632209fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1424431047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424431044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9b0d0f200c66434ebb83468cf359952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intro: {fileID: 57383173}
+  menu_song: {fileID: 1344683578}
 --- !u!1 &1474900633
 GameObject:
   m_ObjectHideFlags: 0
@@ -3726,6 +3753,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1344683582}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: set_playOnAwake
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1736782227
 MonoBehaviour:

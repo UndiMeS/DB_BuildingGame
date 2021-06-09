@@ -15,11 +15,11 @@ C:/Users/marcel/Desktop/UndiMeS_GIT/DB_BuildingGame/Versuch 1
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-63066
+49275
 Successfully changed project path to: C:/Users/marcel/Desktop/UndiMeS_GIT/DB_BuildingGame/Versuch 1
 C:/Users/marcel/Desktop/UndiMeS_GIT/DB_BuildingGame/Versuch 1
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 47.19 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 76.85 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.0f1 (c7b5465681fb)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/Resources/UnitySubsystems
@@ -36,1032 +36,88 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56452
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56696
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001841 seconds.
+Registered in 0.002774 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 58.08 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 92.99 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.130 seconds
+- Completed reload, in  1.561 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001205 seconds.
+Registered in 0.002444 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF3E1F0B0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file data-000001332035D060 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF2FAF020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file data-0000013320BE8010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF09BE040 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file data-000001332384E020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF1142E80 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-00000133224F1E20 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 58.87 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 64.14 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.952 seconds
+- Completed reload, in  1.048 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.84 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.86 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2826 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 125.6 MB.
-System memory in use after: 125.7 MB.
+System memory in use before: 125.7 MB.
+System memory in use after: 125.8 MB.
 
 Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 3274.
-Total: 3.740200 ms (FindLiveObjects: 0.572600 ms CreateObjectMapping: 0.206000 ms MarkObjects: 2.728400 ms  DeleteObjects: 0.231200 ms)
+Total: 4.488200 ms (FindLiveObjects: 0.532800 ms CreateObjectMapping: 0.245100 ms MarkObjects: 3.419500 ms  DeleteObjects: 0.287200 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Scenes/Landschaft.unity
-  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Landschaft.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c79b9e465e9819a68cc7b228a347ddba') in 0.027732 seconds
-  Import took 0.034521 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000344 seconds.
-  path: Assets/Scenes
-  artifactKey: Guid(aade3f93cbc96ae4b959e6e1e8785bce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes using Guid(aade3f93cbc96ae4b959e6e1e8785bce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a222f07ce5585ba34bd509d995199ab6') in 0.014932 seconds
-  Import took 0.021944 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 50.689288 seconds.
-  path: Assets/Audio/256455__deleted-user-4772965__mouse-click.wav
-  artifactKey: Guid(a635a90cdc6944043aa562cf3fe97f58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/256455__deleted-user-4772965__mouse-click.wav using Guid(a635a90cdc6944043aa562cf3fe97f58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c14c3e169aacfb5fa2e72592d78facc3') in 0.090897 seconds
-  Import took 0.096166 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000478 seconds.
-  path: Assets/Audio/450616__breviceps__8-bit-error.wav
-  artifactKey: Guid(87aa054535641cb4ba9b719a1661ae2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/450616__breviceps__8-bit-error.wav using Guid(87aa054535641cb4ba9b719a1661ae2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0da8f19da02944e2e2ef7d800953ade3') in 0.023379 seconds
-  Import took 0.029408 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000752 seconds.
-  path: Assets/Audio/456161__bwg2020__correct.wav
-  artifactKey: Guid(99ce773512616cf45a000a58d0bd55d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/456161__bwg2020__correct.wav using Guid(99ce773512616cf45a000a58d0bd55d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71e84d4cb2a6e53a5506b580a90d3fb3') in 0.035477 seconds
-  Import took 0.044501 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000552 seconds.
-  path: Assets/Audio/under-pressure-michael-kobrin-105bpm-3781.mp3
-  artifactKey: Guid(87295e84f2e94024ab354eea95813207) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/under-pressure-michael-kobrin-105bpm-3781.mp3 using Guid(87295e84f2e94024ab354eea95813207) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '631381c166edc4e7e4abc55f68db120f') in 0.035114 seconds
-  Import took 0.040336 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 14.421175 seconds.
-  path: Assets/Audio/Astronauten
-  artifactKey: Guid(46a440fa4baf3004498ff39bd5a7b851) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten using Guid(46a440fa4baf3004498ff39bd5a7b851) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd421248ae82493e48dca3d175267df0c') in 0.024011 seconds
-  Import took 0.032760 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.454052 seconds.
-  path: Assets/Audio/Astronauten/Feld
-  artifactKey: Guid(1bd997996fe774e4eabee6775c625adf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Feld using Guid(1bd997996fe774e4eabee6775c625adf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c24109b8be2df28fc2d36106a6370894') in 0.014873 seconds
-  Import took 0.026981 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.196678 seconds.
-  path: Assets/Audio/Astronauten/Feld/FEm1.mp3
-  artifactKey: Guid(0707871b86487844d9f034434f64e376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Feld/FEm1.mp3 using Guid(0707871b86487844d9f034434f64e376) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5819b662d9d4d215229cd17ea87544be') in 0.034608 seconds
-  Import took 0.039563 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000509 seconds.
-  path: Assets/Audio/Astronauten/Feld/FEw3.mp3
-  artifactKey: Guid(a94b051ad4b61104b8b63db62b5a7017) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Feld/FEw3.mp3 using Guid(a94b051ad4b61104b8b63db62b5a7017) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc4ce8e72bf416021e587b4eb1b5e74b') in 0.022449 seconds
-  Import took 0.027213 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000501 seconds.
-  path: Assets/Audio/Astronauten/Feld/FEm3.mp3
-  artifactKey: Guid(d91ec2ce656c78a4aaec5efe3a222ed5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Feld/FEm3.mp3 using Guid(d91ec2ce656c78a4aaec5efe3a222ed5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1a76fb3dcbd00426ad7a3324c36d6ca') in 0.037044 seconds
-  Import took 0.044077 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000996 seconds.
-  path: Assets/Audio/Astronauten/Feld/FEw2.mp3
-  artifactKey: Guid(d6430b13a0e14054893f1a10fab28eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Feld/FEw2.mp3 using Guid(d6430b13a0e14054893f1a10fab28eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e8c7dcbb25ea716ec5e551692416b64') in 0.035908 seconds
-  Import took 0.042360 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000691 seconds.
-  path: Assets/Audio/Astronauten/Feld/FEw1.mp3
-  artifactKey: Guid(371f969b845daac4f948d51a4f6214b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Feld/FEw1.mp3 using Guid(371f969b845daac4f948d51a4f6214b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c05dd5e269c77bb605955dfb2b36227e') in 0.042018 seconds
-  Import took 0.049212 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000559 seconds.
-  path: Assets/Audio/Astronauten/Feld/FEm4.mp3
-  artifactKey: Guid(c96d528808905e842b73abf5ed94ed2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Feld/FEm4.mp3 using Guid(c96d528808905e842b73abf5ed94ed2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07dda8a57b9e9d6c371bf991cd8d8f9b') in 0.029322 seconds
-  Import took 0.040687 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000992 seconds.
-  path: Assets/Audio/Astronauten/Feld/FEm2.mp3
-  artifactKey: Guid(6d983e7e137ffb54fa9bfc2745815d8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Feld/FEm2.mp3 using Guid(6d983e7e137ffb54fa9bfc2745815d8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c7277639bd82a11b1c8d19c3fb2babe') in 0.025351 seconds
-  Import took 0.034473 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000633 seconds.
-  path: Assets/Audio/Astronauten/Feld/FEm7.mp3
-  artifactKey: Guid(e00c194eb03305e45a054af74ae109e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Feld/FEm7.mp3 using Guid(e00c194eb03305e45a054af74ae109e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d5d2881fb41580f6c4c7a83aa5a20ca') in 0.034969 seconds
-  Import took 0.046255 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000609 seconds.
-  path: Assets/Audio/Astronauten/Feld/FEw6.mp3
-  artifactKey: Guid(c6731e4f7b791694f81f51301ba6d57c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Feld/FEw6.mp3 using Guid(c6731e4f7b791694f81f51301ba6d57c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd81f2dcd2b32b599eab3cb5ca283b4d0') in 0.022037 seconds
-  Import took 0.025862 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000523 seconds.
-  path: Assets/Audio/Astronauten/Feld/FEm6.mp3
-  artifactKey: Guid(a15b82af48237a043a8c0616c5d5860a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Feld/FEm6.mp3 using Guid(a15b82af48237a043a8c0616c5d5860a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '811de497291b65e45d3176ff5240bf39') in 0.020685 seconds
-  Import took 0.025061 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000533 seconds.
-  path: Assets/Audio/Astronauten/Feld/FEm5.mp3
-  artifactKey: Guid(5bab65b063294a44fb3484d83b917e22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Feld/FEm5.mp3 using Guid(5bab65b063294a44fb3484d83b917e22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7578ca00442aa1ec1bfe806a0314794') in 0.017377 seconds
-  Import took 0.021534 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001527 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF63C87F0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF7490B30 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF70A0790 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF09FA010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.964 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.44 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.5 MB.
-System memory in use after: 122.6 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3286.
-Total: 2.584700 ms (FindLiveObjects: 0.321400 ms CreateObjectMapping: 0.093600 ms MarkObjects: 2.050000 ms  DeleteObjects: 0.118400 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 7828.416205 seconds.
-  path: Assets/Audio/Astronauten/Forscher/Fm1.mp3
-  artifactKey: Guid(acb037127f416664593b757b03272bea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Forscher/Fm1.mp3 using Guid(acb037127f416664593b757b03272bea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bef33bf0b782872b176001218104dd56') in 0.065390 seconds
-  Import took 0.072621 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000597 seconds.
-  path: Assets/Audio/Astronauten/Forscher/Fw3.mp3
-  artifactKey: Guid(fc721163acd4f9e45bb7cd38847ed2c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Forscher/Fw3.mp3 using Guid(fc721163acd4f9e45bb7cd38847ed2c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24d9fdeaa048148037780714d300d820') in 0.022656 seconds
-  Import took 0.029496 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000570 seconds.
-  path: Assets/Audio/Astronauten/Forscher/Fm4.mp3
-  artifactKey: Guid(3a37124b00da71640971393aad136179) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Forscher/Fm4.mp3 using Guid(3a37124b00da71640971393aad136179) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50a7022738a4b4a74218d28d5c9e06a1') in 0.039162 seconds
-  Import took 0.047106 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000355 seconds.
-  path: Assets/Audio/Astronauten/Forscher/Fw2.mp3
-  artifactKey: Guid(e2aa5d2faabf4144b9e006abd522e400) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Forscher/Fw2.mp3 using Guid(e2aa5d2faabf4144b9e006abd522e400) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08c2550a0cf9825fe065c8d1c66d0338') in 0.033816 seconds
-  Import took 0.039034 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000433 seconds.
-  path: Assets/Audio/Astronauten/Forscher/Fw4.mp3
-  artifactKey: Guid(bd610deaead8f744fb5fbe298da27ce5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Forscher/Fw4.mp3 using Guid(bd610deaead8f744fb5fbe298da27ce5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e748937e4d94b7d673d9e21602951ac') in 0.026553 seconds
-  Import took 0.033079 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000495 seconds.
-  path: Assets/Audio/Astronauten/Forscher/Fm2.mp3
-  artifactKey: Guid(e20da3600b91b8540b2ba02c502ef7a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Forscher/Fm2.mp3 using Guid(e20da3600b91b8540b2ba02c502ef7a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f94595cbcf5f3edd8225fc43d004f097') in 0.027470 seconds
-  Import took 0.041957 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000603 seconds.
-  path: Assets/Audio/Astronauten/Forscher/Fm5.mp3
-  artifactKey: Guid(6d07a63fb652ceb4cb5d038b6d510659) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Forscher/Fm5.mp3 using Guid(6d07a63fb652ceb4cb5d038b6d510659) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26c6d3b6da4d5d759a6b0ca996a2fb75') in 0.033202 seconds
-  Import took 0.039639 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000450 seconds.
-  path: Assets/Audio/Astronauten/Forscher/Fm6.mp3
-  artifactKey: Guid(c4a75af6e30bd5f4a9c4601176670eeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Forscher/Fm6.mp3 using Guid(c4a75af6e30bd5f4a9c4601176670eeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b57569d39120d555c065fe61e3cfde0') in 0.026641 seconds
-  Import took 0.040477 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000741 seconds.
-  path: Assets/Audio/Astronauten/Forscher/Fm3.mp3
-  artifactKey: Guid(e69f9f5ad727f5745ab1ceb1cfac7ba9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Forscher/Fm3.mp3 using Guid(e69f9f5ad727f5745ab1ceb1cfac7ba9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11f55b82644c4731b88c2fea8132a804') in 0.026618 seconds
-  Import took 0.035053 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000431 seconds.
-  path: Assets/Audio/Astronauten/Forscher/Fm7.mp3
-  artifactKey: Guid(498286ba1e265284c919651d6d08b7ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Forscher/Fm7.mp3 using Guid(498286ba1e265284c919651d6d08b7ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4cb1752249cbc31bcec1207fed1a713') in 0.035913 seconds
-  Import took 0.043547 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000299 seconds.
-  path: Assets/Audio/Astronauten/Forscher/Fw1.mp3
-  artifactKey: Guid(e88d8468e653f5642a3294ee4e030640) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Forscher/Fw1.mp3 using Guid(e88d8468e653f5642a3294ee4e030640) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b6e97469ba0430ba65c4093110ed827') in 0.035517 seconds
-  Import took 0.043971 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002949 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF09E3DA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF73E8050 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF6E582A0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF70C9B80 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.49 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.938 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.48 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.6 MB.
-System memory in use after: 122.7 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3290.
-Total: 3.334000 ms (FindLiveObjects: 0.316500 ms CreateObjectMapping: 0.151400 ms MarkObjects: 2.714400 ms  DeleteObjects: 0.149600 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001492 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF715C2C0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF7707020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF5ABA020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF0581020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.49 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.875 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.6 MB.
-System memory in use after: 122.7 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3293.
-Total: 2.400500 ms (FindLiveObjects: 0.227700 ms CreateObjectMapping: 0.091500 ms MarkObjects: 1.938400 ms  DeleteObjects: 0.142000 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001287 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF6276B00 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF0EEC7B0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF63928B0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF7668020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.66 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.929 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.6 MB.
-System memory in use after: 122.7 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3296.
-Total: 2.561500 ms (FindLiveObjects: 0.366200 ms CreateObjectMapping: 0.113500 ms MarkObjects: 1.929500 ms  DeleteObjects: 0.150500 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001434 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF6629A40 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF4283030 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF0830DF0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF676A080 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.44 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.827 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.50 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.6 MB.
-System memory in use after: 122.7 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3299.
-Total: 2.191100 ms (FindLiveObjects: 0.283500 ms CreateObjectMapping: 0.134200 ms MarkObjects: 1.658300 ms  DeleteObjects: 0.113900 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001387 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF6D8FDE0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF73E0040 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF5ABA020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF36A9020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.48 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.944 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.41 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.6 MB.
-System memory in use after: 122.7 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3302.
-Total: 3.611100 ms (FindLiveObjects: 0.634000 ms CreateObjectMapping: 0.228900 ms MarkObjects: 2.619200 ms  DeleteObjects: 0.127800 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001322 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF114C970 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF3689010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF5ABA020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF7400080 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.46 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.431 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.40 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.6 MB.
-System memory in use after: 122.7 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3305.
-Total: 3.534300 ms (FindLiveObjects: 0.887200 ms CreateObjectMapping: 0.311700 ms MarkObjects: 2.172600 ms  DeleteObjects: 0.134700 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001382 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF6513880 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF2C9A010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF5ABA020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF7400080 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.850 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.44 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.6 MB.
-System memory in use after: 122.7 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3308.
-Total: 2.352300 ms (FindLiveObjects: 0.225100 ms CreateObjectMapping: 0.095600 ms MarkObjects: 1.909600 ms  DeleteObjects: 0.120600 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.003098 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF6C309C0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF3689010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF5F93DD0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF7668020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.421 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.20 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.6 MB.
-System memory in use after: 122.8 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3311.
-Total: 4.375800 ms (FindLiveObjects: 0.908500 ms CreateObjectMapping: 0.200500 ms MarkObjects: 2.648000 ms  DeleteObjects: 0.614100 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001813 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF60C0110 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF069CB40 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C18CAE020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF5A46010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.42 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.835 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.48 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.6 MB.
-System memory in use after: 122.8 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3314.
-Total: 1.968600 ms (FindLiveObjects: 0.202100 ms CreateObjectMapping: 0.080900 ms MarkObjects: 1.494600 ms  DeleteObjects: 0.190100 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 951.029514 seconds.
-  path: Assets/Audio/Astronauten/Weide
-  artifactKey: Guid(90711e3a49a45b84fb66f6a9be3d8582) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide using Guid(90711e3a49a45b84fb66f6a9be3d8582) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54082a06bde41175d86a4ede991c6c0d') in 0.025107 seconds
-  Import took 0.031260 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.064080 seconds.
-  path: Assets/Audio/Astronauten/Weide/Wm1.mp3
-  artifactKey: Guid(e407a3fe420413846aa2fc539a224e4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Wm1.mp3 using Guid(e407a3fe420413846aa2fc539a224e4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a58f5009b0ad390fcc1eaf69bd7693f3') in 0.062805 seconds
-  Import took 0.067425 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000384 seconds.
-  path: Assets/Audio/Astronauten/Weide/Ww4.mp3
-  artifactKey: Guid(fb6a53d3ec7ae924193b7f63239da80b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Ww4.mp3 using Guid(fb6a53d3ec7ae924193b7f63239da80b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4c255dddbfa2065aea059251b787801') in 0.019565 seconds
-  Import took 0.024813 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000309 seconds.
-  path: Assets/Audio/Astronauten/Weide/Wm2.mp3
-  artifactKey: Guid(839687142a7f54547a250284b5e343d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Wm2.mp3 using Guid(839687142a7f54547a250284b5e343d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9840fbf2fafbbc9324f1d1c1d205b21') in 0.021906 seconds
-  Import took 0.027779 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000344 seconds.
-  path: Assets/Audio/Astronauten/Weide/Ww2.mp3
-  artifactKey: Guid(77be3ba1354a6c34f8130b8fcb6f78a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Ww2.mp3 using Guid(77be3ba1354a6c34f8130b8fcb6f78a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ade607027e8f2513442db2745f72c12') in 0.049293 seconds
-  Import took 0.053566 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000243 seconds.
-  path: Assets/Audio/Astronauten/Weide/Ww3.mp3
-  artifactKey: Guid(dcf45a9c4c0f401428fa44ee793443f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Ww3.mp3 using Guid(dcf45a9c4c0f401428fa44ee793443f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e330f4b341a89f9fbdefb7ff528a1e7') in 0.049893 seconds
-  Import took 0.054970 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000248 seconds.
-  path: Assets/Audio/Astronauten/Weide/Ww5.mp3
-  artifactKey: Guid(68b5c7af5b2d6f74daf930b163aadc1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Ww5.mp3 using Guid(68b5c7af5b2d6f74daf930b163aadc1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '674b4247d843189963cefb704ee3de58') in 0.052226 seconds
-  Import took 0.056870 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000251 seconds.
-  path: Assets/Audio/Astronauten/Weide/Ww3.mp3
-  artifactKey: Guid(dcf45a9c4c0f401428fa44ee793443f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Ww3.mp3 using Guid(dcf45a9c4c0f401428fa44ee793443f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e330f4b341a89f9fbdefb7ff528a1e7') in 0.048350 seconds
-  Import took 0.052702 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000278 seconds.
-  path: Assets/Audio/Astronauten/Weide/Wm9.mp3
-  artifactKey: Guid(97b658529969a9f4fa7839c90eec53a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Wm9.mp3 using Guid(97b658529969a9f4fa7839c90eec53a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '917f7fdf11c909bdf63876fae3352af8') in 0.059275 seconds
-  Import took 0.063671 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000261 seconds.
-  path: Assets/Audio/Astronauten/Weide/Wm8.mp3
-  artifactKey: Guid(db64951668866494ebb3c5fee934eff4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Wm8.mp3 using Guid(db64951668866494ebb3c5fee934eff4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0bf5a75e7c6cfb5f4108344023be423c') in 0.048213 seconds
-  Import took 0.052576 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000259 seconds.
-  path: Assets/Audio/Astronauten/Weide/Ww8.mp3
-  artifactKey: Guid(0da57d3ca05754d49af40c3651f96f3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Ww8.mp3 using Guid(0da57d3ca05754d49af40c3651f96f3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac87c89301eb3d0b5c605098c4d06b47') in 0.044557 seconds
-  Import took 0.048878 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000235 seconds.
-  path: Assets/Audio/Astronauten/Weide/Wm8.mp3
-  artifactKey: Guid(db64951668866494ebb3c5fee934eff4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Wm8.mp3 using Guid(db64951668866494ebb3c5fee934eff4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0bf5a75e7c6cfb5f4108344023be423c') in 0.040771 seconds
-  Import took 0.045303 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000254 seconds.
-  path: Assets/Audio/Astronauten/Weide/Wm7.mp3
-  artifactKey: Guid(f03be3c8af4a7cb44b222dab413302f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Wm7.mp3 using Guid(f03be3c8af4a7cb44b222dab413302f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03186b41391937b212ab81cc46641071') in 0.047000 seconds
-  Import took 0.051390 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000242 seconds.
-  path: Assets/Audio/Astronauten/Weide/Ww7.mp3
-  artifactKey: Guid(5d3eec598495d1941a6b7d85de2a5d32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Ww7.mp3 using Guid(5d3eec598495d1941a6b7d85de2a5d32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31f5e5a7b9231482309002b61c14db1f') in 0.050862 seconds
-  Import took 0.055361 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000211 seconds.
-  path: Assets/Audio/Astronauten/Weide/Wm4.mp3
-  artifactKey: Guid(9edc7a25ad72d124293a79c8836c68e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Wm4.mp3 using Guid(9edc7a25ad72d124293a79c8836c68e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84c95438568f3968f38f5597b57445a1') in 0.045320 seconds
-  Import took 0.050138 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000262 seconds.
-  path: Assets/Audio/Astronauten/Weide/Wm6.mp3
-  artifactKey: Guid(fb0d8986fa3cc4949a1181e9d2880134) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Wm6.mp3 using Guid(fb0d8986fa3cc4949a1181e9d2880134) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e84aaba09dc21745db05246c8923f87') in 0.045992 seconds
-  Import took 0.050951 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000217 seconds.
-  path: Assets/Audio/Astronauten/Weide/Ww6.mp3
-  artifactKey: Guid(3e3dd8797a20ce24cbb1719c4242ce7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Ww6.mp3 using Guid(3e3dd8797a20ce24cbb1719c4242ce7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccfdd08ea27868d7efa34f37a57bbbc4') in 0.046493 seconds
-  Import took 0.051122 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000296 seconds.
-  path: Assets/Audio/Astronauten/Weide/Wm5.mp3
-  artifactKey: Guid(3eb47dbeef9824040bb93cdf489b84b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Wm5.mp3 using Guid(3eb47dbeef9824040bb93cdf489b84b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c8ddd3e965b832e80396ee896d49718') in 0.044803 seconds
-  Import took 0.049662 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000347 seconds.
-  path: Assets/Audio/Astronauten/Weide/Ww1.mp3
-  artifactKey: Guid(12fd64232b96f144a93d3171e30585e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Ww1.mp3 using Guid(12fd64232b96f144a93d3171e30585e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '047c2e5780c21eb9e9bc935b96bdfd54') in 0.045501 seconds
-  Import took 0.049960 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000376 seconds.
-  path: Assets/Audio/Astronauten/Weide/Wm3.mp3
-  artifactKey: Guid(b84555dcacd1ad9408669e272dec8489) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/Astronauten/Weide/Wm3.mp3 using Guid(b84555dcacd1ad9408669e272dec8489) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ae1e7101ad8be62855342d968bbb675') in 0.046559 seconds
-  Import took 0.051592 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001959 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF60C0110 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF3553010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C18CAE020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF5A46010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.42 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.770 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.7 MB.
-System memory in use after: 122.8 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3318.
-Total: 1.906700 ms (FindLiveObjects: 0.205900 ms CreateObjectMapping: 0.085700 ms MarkObjects: 1.496600 ms  DeleteObjects: 0.117500 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001246 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF60BDC90 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF3553010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C18CAE020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF1060020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.47 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.793 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.63 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.7 MB.
-System memory in use after: 122.8 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3321.
-Total: 2.990300 ms (FindLiveObjects: 0.259400 ms CreateObjectMapping: 0.088800 ms MarkObjects: 2.413100 ms  DeleteObjects: 0.226800 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001316 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF60C0110 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF3553010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C18CAE020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF1060020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.44 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.855 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.7 MB.
-System memory in use after: 122.8 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3324.
-Total: 3.123100 ms (FindLiveObjects: 0.555100 ms CreateObjectMapping: 0.215400 ms MarkObjects: 2.230200 ms  DeleteObjects: 0.121200 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001639 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF60BE120 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF3553010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C18CAE020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF1060020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.65 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.923 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.83 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.7 MB.
-System memory in use after: 122.8 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3327.
-Total: 2.026000 ms (FindLiveObjects: 0.231100 ms CreateObjectMapping: 0.090400 ms MarkObjects: 1.568700 ms  DeleteObjects: 0.134200 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001493 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF60BD800 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C18FF7010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C18CAE020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF1060020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.67 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.776 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.48 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.7 MB.
-System memory in use after: 122.8 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3330.
-Total: 4.350500 ms (FindLiveObjects: 0.647100 ms CreateObjectMapping: 0.319700 ms MarkObjects: 3.100300 ms  DeleteObjects: 0.280900 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 2014.146548 seconds.
   path: Assets/Scenes/Menu.unity
   artifactKey: Guid(7ffe6f34f57c25c439d14755fa0e550d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Menu.unity using Guid(7ffe6f34f57c25c439d14755fa0e550d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '389455f01524bd0f87e5c6cf5822776f') in 0.023997 seconds
-  Import took 0.029282 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001388 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF60BDC90 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C18E3E050 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C18CAE020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF1060020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.41 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.806 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.44 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.7 MB.
-System memory in use after: 122.8 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3333.
-Total: 7.223500 ms (FindLiveObjects: 0.925000 ms CreateObjectMapping: 0.174700 ms MarkObjects: 5.628500 ms  DeleteObjects: 0.493900 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001535 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF6871E70 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF0B5C040 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF537E030 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF1060020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.50 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.770 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.46 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.7 MB.
-System memory in use after: 122.8 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3336.
-Total: 2.382900 ms (FindLiveObjects: 0.304800 ms CreateObjectMapping: 0.216900 ms MarkObjects: 1.632400 ms  DeleteObjects: 0.227300 ms)
+Start importing Assets/Scenes/Menu.unity using Guid(7ffe6f34f57c25c439d14755fa0e550d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6aae407b7bb1313ff8010c58213b5682') in 0.040471 seconds
+  Import took 0.050914 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 345.263741 seconds.
-  path: Assets
-  artifactKey: Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets using Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42baae205c97e3337697759514652acd') in 0.019241 seconds
-  Import took 0.025995 seconds .
+  Time since last request: 0.000429 seconds.
+  path: Assets/Scenes/Landschaft.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Landschaft.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbf328d0e2d935181a4241dad55098f6') in 0.016680 seconds
+  Import took 0.025279 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 14.761911 seconds.
-  path: Assets/VideoPlayer.renderTexture
-  artifactKey: Guid(ececc1b1deee91e4f8bde48a7f44789c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VideoPlayer.renderTexture using Guid(ececc1b1deee91e4f8bde48a7f44789c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d3918b7145138e4395817d9ab008711') in 0.051386 seconds
-  Import took 0.055981 seconds .
+  Time since last request: 68.095602 seconds.
+  path: Assets/Skript/startIntro.cs
+  artifactKey: Guid(c9b0d0f200c66434ebb83468cf359952) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Skript/startIntro.cs using Guid(c9b0d0f200c66434ebb83468cf359952) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2a3fc72f9b27076a2b5d1dc23468c06') in 0.044987 seconds
+  Import took 0.053759 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001466 seconds.
+Registered in 0.002514 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF632D920 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file data-00000133266BAE40 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF5133020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file data-0000013320D19CF0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF64E2030 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file data-0000013326E77320 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF731F010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-00000133209CD730 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.46 ms, found 0 plugins.
@@ -1070,94 +126,318 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.034 seconds
+- Completed reload, in  1.054 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.64 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.5 MB.
+System memory in use after: 119.6 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3278.
+Total: 3.233700 ms (FindLiveObjects: 0.378700 ms CreateObjectMapping: 0.166400 ms MarkObjects: 2.484600 ms  DeleteObjects: 0.201700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004225 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-000001332645C070 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000133234E4020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000013325E5D020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000013320404A60 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.89 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.615 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.08 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.6 MB.
+System memory in use after: 119.7 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3281.
+Total: 6.922200 ms (FindLiveObjects: 0.708400 ms CreateObjectMapping: 0.380900 ms MarkObjects: 5.546200 ms  DeleteObjects: 0.280100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003314 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-00000133205CF2A0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000133234E4020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000013325E5D020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001332285FBD0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.04 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.256 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.82 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.6 MB.
+System memory in use after: 119.7 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3284.
+Total: 6.251600 ms (FindLiveObjects: 0.880100 ms CreateObjectMapping: 0.293400 ms MarkObjects: 4.794800 ms  DeleteObjects: 0.280900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001918 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-0000013326BA2700 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000133224CC010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000013357134030 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000013326E33310 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.95 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.313 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.68 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.6 MB.
+System memory in use after: 119.7 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3287.
+Total: 2.684100 ms (FindLiveObjects: 0.411600 ms CreateObjectMapping: 0.182900 ms MarkObjects: 1.905800 ms  DeleteObjects: 0.182200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002773 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-00000133260D2060 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000013324FAD020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000013357134030 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000133260FEE30 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.8 MB.
-System memory in use after: 122.9 MB.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.080 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.51 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.6 MB.
+System memory in use after: 119.7 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3342.
-Total: 2.256000 ms (FindLiveObjects: 0.282700 ms CreateObjectMapping: 0.115600 ms MarkObjects: 1.711600 ms  DeleteObjects: 0.144400 ms)
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3290.
+Total: 3.180900 ms (FindLiveObjects: 0.440300 ms CreateObjectMapping: 0.139300 ms MarkObjects: 2.419700 ms  DeleteObjects: 0.179400 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.003347 seconds.
+Registered in 0.002311 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF0BEEEB0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file data-0000013326B63190 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF0B5C040 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file data-0000013324FAD020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF5ABA020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file data-0000013357134030 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF731F010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-00000133260FEE30 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.95 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.98 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.924 seconds
+- Completed reload, in  1.462 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.91 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.70 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.8 MB.
-System memory in use after: 122.9 MB.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.6 MB.
+System memory in use after: 119.8 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3345.
-Total: 6.298800 ms (FindLiveObjects: 1.056400 ms CreateObjectMapping: 0.516700 ms MarkObjects: 4.376900 ms  DeleteObjects: 0.343800 ms)
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3293.
+Total: 2.634900 ms (FindLiveObjects: 0.502700 ms CreateObjectMapping: 0.227000 ms MarkObjects: 1.762400 ms  DeleteObjects: 0.141200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005630 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-00000133260123D0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000133270C9AA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000013323FA2020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000013325A9DAA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.90 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.599 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.73 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.7 MB.
+System memory in use after: 119.8 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3296.
+Total: 4.937400 ms (FindLiveObjects: 0.475500 ms CreateObjectMapping: 0.288500 ms MarkObjects: 3.926700 ms  DeleteObjects: 0.243900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002923 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-0000013322A4E980 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000133270C9AA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000013326048D10 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000013323045C20 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.78 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.564 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.7 MB.
+System memory in use after: 119.8 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3299.
+Total: 2.473700 ms (FindLiveObjects: 0.249200 ms CreateObjectMapping: 0.110100 ms MarkObjects: 1.965000 ms  DeleteObjects: 0.147500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003832 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-000001332041ABA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000133270C9AA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000013327A1A010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000013323045C20 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.61 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.235 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.21 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.7 MB.
+System memory in use after: 119.8 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3302.
+Total: 5.287800 ms (FindLiveObjects: 0.465400 ms CreateObjectMapping: 0.162000 ms MarkObjects: 4.373000 ms  DeleteObjects: 0.285100 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
 Registered in 0.002057 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF0BEEEB0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file data-0000013326108560 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C1920A060 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file data-00000133270C9AA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF5ABA020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file data-0000013326048D10 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF731F010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-0000013320B46020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.44 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.022 seconds
+- Completed reload, in  1.636 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.50 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.8 MB.
-System memory in use after: 122.9 MB.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.7 MB.
+System memory in use after: 119.8 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3348.
-Total: 2.208500 ms (FindLiveObjects: 0.262600 ms CreateObjectMapping: 0.109000 ms MarkObjects: 1.694300 ms  DeleteObjects: 0.141400 ms)
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3305.
+Total: 3.281500 ms (FindLiveObjects: 0.462300 ms CreateObjectMapping: 0.202100 ms MarkObjects: 2.403700 ms  DeleteObjects: 0.211500 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001811 seconds.
+Registered in 0.002770 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF62CC4E0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file data-0000013326577460 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF0B5C040 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file data-00000133270C9AA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF5ABA020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file data-00000133280200A0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF731F010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-0000013325A9DAA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.66 ms, found 0 plugins.
@@ -1166,278 +446,190 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.056 seconds
+- Completed reload, in  1.206 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.70 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.8 MB.
-System memory in use after: 122.9 MB.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.7 MB.
+System memory in use after: 119.8 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3351.
-Total: 2.127800 ms (FindLiveObjects: 0.249700 ms CreateObjectMapping: 0.100200 ms MarkObjects: 1.619900 ms  DeleteObjects: 0.156200 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 1241.315277 seconds.
-  path: Assets/VideoOutput.renderTexture
-  artifactKey: Guid(ececc1b1deee91e4f8bde48a7f44789c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/VideoOutput.renderTexture using Guid(ececc1b1deee91e4f8bde48a7f44789c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7fd602ca750bdf70f11031db95abd48') in 0.052672 seconds
-  Import took 0.058754 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.929675 seconds.
-  path: Assets/Audio
-  artifactKey: Guid(5a2e16dbb80cd9642860f06701d4e504) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio using Guid(5a2e16dbb80cd9642860f06701d4e504) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82c870663c5c7d21078f1d7271efda8d') in 0.012453 seconds
-  Import took 0.017071 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 9.666598 seconds.
-  path: Assets/Audio/epic-trailer-3676.mp3
-  artifactKey: Guid(038f2918336248f439e541e51744f82f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/epic-trailer-3676.mp3 using Guid(038f2918336248f439e541e51744f82f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37e3f5f02c4d6757483167ea33489c12') in 0.043993 seconds
-  Import took 0.049913 seconds .
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3308.
+Total: 3.419100 ms (FindLiveObjects: 0.327000 ms CreateObjectMapping: 0.145600 ms MarkObjects: 2.795700 ms  DeleteObjects: 0.148900 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.004050 seconds.
+Registered in 0.003580 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF0B562A0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file data-0000013320417050 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF4803010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file data-00000133270C9AA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C18CAE020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file data-0000013327A1A030 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C188AA020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-0000013325A9DAA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.76 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.89 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.408 seconds
+- Completed reload, in  2.088 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.08 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.8 MB.
-System memory in use after: 122.9 MB.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.7 MB.
+System memory in use after: 119.8 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3356.
-Total: 9.035500 ms (FindLiveObjects: 0.632100 ms CreateObjectMapping: 0.271500 ms MarkObjects: 7.072800 ms  DeleteObjects: 1.053800 ms)
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3311.
+Total: 5.198500 ms (FindLiveObjects: 0.276500 ms CreateObjectMapping: 0.110300 ms MarkObjects: 4.529900 ms  DeleteObjects: 0.278900 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001577 seconds.
+Registered in 0.002652 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF0672480 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file data-00000133266BAE40 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C195CC040 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file data-00000133270C9AA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF5ABA020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file data-0000013327A1A030 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF7A88020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-0000013325A9DAA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.81 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 1.20 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.078 seconds
+- Completed reload, in  2.123 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.45 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 1.21 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.8 MB.
-System memory in use after: 122.9 MB.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.7 MB.
+System memory in use after: 119.8 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3359.
-Total: 2.700300 ms (FindLiveObjects: 0.390200 ms CreateObjectMapping: 0.175500 ms MarkObjects: 1.983500 ms  DeleteObjects: 0.149300 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 599.412399 seconds.
-  path: Assets/IntroVideo.renderTexture
-  artifactKey: Guid(365822911b42900469a62330a5ea63a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/IntroVideo.renderTexture using Guid(365822911b42900469a62330a5ea63a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f54638ead934e44c2575179baac9369') in 0.063457 seconds
-  Import took 0.069374 seconds .
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3314.
+Total: 4.623800 ms (FindLiveObjects: 0.467200 ms CreateObjectMapping: 0.250400 ms MarkObjects: 3.704700 ms  DeleteObjects: 0.199100 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.005237 seconds.
+Registered in 0.002485 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF77F5880 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file data-00000133202A24E0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF4803010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file data-00000133270C9AA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF5ABA020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file data-0000013327A1A030 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C188AA020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-0000013325A9DAA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.35 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.68 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.733 seconds
+- Completed reload, in  1.242 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.96 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.75 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.8 MB.
-System memory in use after: 122.9 MB.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.7 MB.
+System memory in use after: 119.8 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3362.
-Total: 4.869800 ms (FindLiveObjects: 0.664500 ms CreateObjectMapping: 0.561100 ms MarkObjects: 3.355700 ms  DeleteObjects: 0.284500 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 529.110418 seconds.
-  path: Assets/IntroVideo.renderTexture
-  artifactKey: Guid(365822911b42900469a62330a5ea63a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/IntroVideo.renderTexture using Guid(365822911b42900469a62330a5ea63a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf2e89fa170953746ee6cce3774c08e4') in 0.043152 seconds
-  Import took 0.050761 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.397977 seconds.
-  path: Assets/Scenes/Landschaft.unity
-  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Landschaft.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2686986cbbfe1df994bb5f0c2959212f') in 0.010872 seconds
-  Import took 0.026060 seconds .
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3317.
+Total: 4.240300 ms (FindLiveObjects: 0.693300 ms CreateObjectMapping: 0.281900 ms MarkObjects: 3.054400 ms  DeleteObjects: 0.207300 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001643 seconds.
+Registered in 0.004324 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF61CF530 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file data-000001332637C290 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF3057020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file data-00000133270C9AA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF082D020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file data-0000013327A1A030 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF689B200 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-0000013325A9DAA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.92 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.931 seconds
+- Completed reload, in  2.213 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.67 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.88 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.8 MB.
-System memory in use after: 123.0 MB.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.7 MB.
+System memory in use after: 119.8 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3365.
-Total: 2.370900 ms (FindLiveObjects: 0.249300 ms CreateObjectMapping: 0.092300 ms MarkObjects: 1.868100 ms  DeleteObjects: 0.159700 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 341.752162 seconds.
-  path: Assets/Audio/450616__breviceps__8-bit-error 1.wav
-  artifactKey: Guid(36b7927b76e7aab40b39b393711b147e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/450616__breviceps__8-bit-error 1.wav using Guid(36b7927b76e7aab40b39b393711b147e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1573961a216669b8a398b9967a07f423') in 0.061320 seconds
-  Import took 0.068281 seconds .
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3320.
+Total: 5.274200 ms (FindLiveObjects: 0.488500 ms CreateObjectMapping: 0.164300 ms MarkObjects: 4.431100 ms  DeleteObjects: 0.188400 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.002592 seconds.
+Registered in 0.002228 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF671C900 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file data-0000013325D2D2C0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF4803010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file data-00000133270C9AA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF0ACB820 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file data-0000013327A1A030 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C18D86020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-0000013325A9DAA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.44 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.012 seconds
+- Completed reload, in  1.214 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.44 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.49 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.9 MB.
-System memory in use after: 123.0 MB.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.7 MB.
+System memory in use after: 119.8 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3369.
-Total: 2.272900 ms (FindLiveObjects: 0.230700 ms CreateObjectMapping: 0.098800 ms MarkObjects: 1.796000 ms  DeleteObjects: 0.145700 ms)
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3323.
+Total: 3.932500 ms (FindLiveObjects: 0.498700 ms CreateObjectMapping: 0.210800 ms MarkObjects: 3.024500 ms  DeleteObjects: 0.195400 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.002528 seconds.
+Registered in 0.002531 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF671A910 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file data-0000013322606BE0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF0B5C040 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file data-00000133270C9AA0 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C198A7430 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file data-0000013327A1A030 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF6FA6010 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.239 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.01 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.9 MB.
-System memory in use after: 123.0 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3372.
-Total: 3.892500 ms (FindLiveObjects: 0.297500 ms CreateObjectMapping: 0.114100 ms MarkObjects: 3.225600 ms  DeleteObjects: 0.252000 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001660 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-0000028BF77FCD40 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028C19D1C030 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF5ABA020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000028BF2CCC030 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-000001332298F020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.69 ms, found 0 plugins.
@@ -1446,28 +638,48 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.008 seconds
+- Completed reload, in  1.381 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.47 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.82 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2742 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.9 MB.
-System memory in use after: 123.0 MB.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.7 MB.
+System memory in use after: 119.8 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3375.
-Total: 3.211800 ms (FindLiveObjects: 0.331300 ms CreateObjectMapping: 0.119500 ms MarkObjects: 2.552800 ms  DeleteObjects: 0.206700 ms)
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3326.
+Total: 3.473000 ms (FindLiveObjects: 0.428800 ms CreateObjectMapping: 0.175300 ms MarkObjects: 2.661300 ms  DeleteObjects: 0.200800 ms)
 
 ========================================================================
 Received Prepare
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 2.52 ms, found 0 plugins.
+Registering precompiled user dll's ...
+Registered in 0.002870 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-0000013325FCDE20 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-0000013326AD8A20 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001332304F030 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Settings.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-00000133283D8020 doesn't match image C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 68.9 MB.
-System memory in use after: 69.0 MB.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.302 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.74 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.7 MB.
+System memory in use after: 119.8 MB.
 
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 3375.
-Total: 5.362700 ms (FindLiveObjects: 0.518400 ms CreateObjectMapping: 0.235900 ms MarkObjects: 4.353200 ms  DeleteObjects: 0.252600 ms)
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3329.
+Total: 2.967200 ms (FindLiveObjects: 0.267200 ms CreateObjectMapping: 0.107500 ms MarkObjects: 2.402500 ms  DeleteObjects: 0.188400 ms)
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
