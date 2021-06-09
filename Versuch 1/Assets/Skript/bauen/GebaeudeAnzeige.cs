@@ -51,6 +51,9 @@ public class GebaeudeAnzeige : MonoBehaviour
     public GameObject sound_kuh;
     public GameObject sound_schwein;
     public GameObject sound_schaaf;
+    public AudioSource[] sound_Forschen;
+    public AudioSource[] sound_Feld;
+    public AudioSource[] sound_Weide;
 
     // Start is called before the first frame update
     void Start()
@@ -223,6 +226,9 @@ public class GebaeudeAnzeige : MonoBehaviour
         }
         if (gebaeude.GetComponent<Wohncontainer>().freieBetten != 0)
         {
+            AudioSource forscherSound = sound_Forschen[UnityEngine.Random.Range(0, sound_Forschen.Length)].GetComponent<AudioSource>();
+            forscherSound.Play();
+            
             gebaeude.GetComponent<Wohncontainer>().freieBetten--;
             Testing.forscher++;
             Testing.geld -= menschkosten;
@@ -240,6 +246,9 @@ public class GebaeudeAnzeige : MonoBehaviour
         }
         if (gebaeude.GetComponent<Wohncontainer>().freieBetten != 0)
         {
+            AudioSource feldSound = sound_Feld[UnityEngine.Random.Range(0, sound_Feld.Length)].GetComponent<AudioSource>();
+            feldSound.Play();
+
             gebaeude.GetComponent<Wohncontainer>().freieBetten--;
             Testing.feldarbeiter++;
             Testing.geld -= menschkosten;
@@ -257,6 +266,9 @@ public class GebaeudeAnzeige : MonoBehaviour
         }
         if (gebaeude.GetComponent<Wohncontainer>().freieBetten != 0)
         {
+            AudioSource weideSound = sound_Weide[UnityEngine.Random.Range(0, sound_Weide.Length)].GetComponent<AudioSource>();
+            weideSound.Play();
+            
             gebaeude.GetComponent<Wohncontainer>().freieBetten--;
             Testing.tierpfleger++;
             Testing.geld -= menschkosten;

@@ -43,9 +43,11 @@ public class Aufgaben : MonoBehaviour
     private int temp = 0;
     private int cheat_temp = 0;
 
+    public GameObject sound_true;
+    public GameObject sound_false;
+
     public void Start()
     {
-    
         //Richtige Antworten
 
         correct = new string[aufgabenListe.Length];
@@ -84,7 +86,7 @@ public class Aufgaben : MonoBehaviour
         secondchance = new string[aufgabenListe.Length];
         secondchance[0] = "In wie viele Klassen gehst du persönlich an deiner Schule?";
         secondchance[1] = "Unterrichtet an deiner Schule nur eine Lehrkraft Informatik? Und hat diese auch andere Fächer, die sie unterrichtet?";
-        secondchance[2] = "Kleine Kinos haben ggf. nur ein Saal und größere? Und kann denn derselbe (nicht der gleiche) Raum an verschiedenen Orte gleichzeitig exitieren?";
+        secondchance[2] = "Kleine Kinos haben ggf. nur ein Saal, aber größere? Und kann denn derselbe (nicht der gleiche) Raum an verschiedenen Orten gleichzeitig exitieren?";
         secondchance[3] = "Wie viele Menschen in eurem Umfeld sind denn mit mehr als einer Person verheiratet?";
         secondchance[4] = "Schlüsselwörter wie „nur“ oder „genau eine“ geben den Hinweis auf die Kardinalität 1.";
         secondchance[5] = "Denke an den Hinweis der vorherigen Aufgabe!";
@@ -108,11 +110,19 @@ public class Aufgaben : MonoBehaviour
         secondchance[23] = "Tipp: Ein Kunde kauft an einem gewissen Tag in dem Geschäft ein und bezahlt einen bestimmten Preis. Und wir benötigen noch einen Primärschlüssel!";
         secondchance[24] = "An einem Tag werden in dem Sporthaus 300 Rechnungen ausgestellt. Welche Attributwerte könnten doppelt vorkommen?";
         secondchance[25] = "Das ist die letzte Aufgabe! Alle Antwortmöglichkeiten wurden in vorherigen Aufgaben thematisiert! Versuche es nochmal!";
+    
+    
+        
+    
     }
     /*
     *Prüfen der Eingabe und drücken auf Button
     */
     public void check(){
+        AudioSource soundTrue = sound_true.GetComponent<AudioSource>();
+        AudioSource soundFalse = sound_false.GetComponent<AudioSource>();
+
+
         //keine Eingabe
         if(toogle.toggleGroupInstance.AnyTogglesOn() == false)
         {
@@ -122,6 +132,7 @@ public class Aufgaben : MonoBehaviour
             //Richtige Eingabe
             if (toogle.currentSelection.name.Equals(correct[welcheAufgabe]))
             {
+                soundTrue.Play();
                 toogle.toggleColor(Color.green, toogle.currentSelection);
                 Invoke("toggleFarbe",3);
                 toggleKiller2.SetActive(true);
@@ -141,7 +152,7 @@ public class Aufgaben : MonoBehaviour
             //falsche Eingabe
             else
             {   
-                
+                soundFalse.Play();
                 temp++;//temp zählt die Chancen (temp == 2 dann keine Chance mehr!)
                //falschKreuz.SetActive(true);
                 toogle.toggleColor(Color.red, toogle.currentSelection);
