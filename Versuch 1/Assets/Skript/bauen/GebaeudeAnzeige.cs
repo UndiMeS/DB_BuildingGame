@@ -48,6 +48,10 @@ public class GebaeudeAnzeige : MonoBehaviour
     public GameObject KostenVerbessernGO;
     public GameObject buttonRechts;
 
+    public GameObject sound_kuh;
+    public GameObject sound_schwein;
+    public GameObject sound_schaaf;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -263,6 +267,9 @@ public class GebaeudeAnzeige : MonoBehaviour
     }
     public void Tiere(int welchesTier)
     {
+        AudioSource kuh = sound_kuh.GetComponent<AudioSource>();
+        AudioSource schaaf = sound_schaaf.GetComponent<AudioSource>();
+        AudioSource schwein = sound_schwein.GetComponent<AudioSource>();
         if (Testing.geld < tierkosten)
         {
             FehlerAnzeige.fehlertext = "Zu wenig Geld.";
@@ -278,14 +285,18 @@ public class GebaeudeAnzeige : MonoBehaviour
             if (welchesTier == 0)
             {
                 art = "Kuh";
+                kuh.Play(0);
+
             }
             else if (welchesTier == 1)
             {
                 art = "Schwein";
+                schwein.Play(0);
             }
             else
             {
                 art = "Schaf";
+                schaaf.Play(0);
             }
             Tiere temp = new Tiere(art, gebaeude.GetComponent<Stallcontainer>().containernummer);
             gebaeude.GetComponent<Stallcontainer>().tiere.Add(temp);
