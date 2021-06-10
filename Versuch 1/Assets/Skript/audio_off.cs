@@ -7,6 +7,8 @@ public class audio_off : MonoBehaviour
 {
     public GameObject on;
     public GameObject off;
+    public GameObject gameMusic;
+    private bool musicOn = true;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,21 @@ public class audio_off : MonoBehaviour
             AudioListener.volume = 0;
             on.SetActive(false);
             off.SetActive(true);
+        }
+    }
+
+    public void gameMusicOff()
+    {
+        if(musicOn){
+            musicOn = false;
+            gameMusic.SetActive(false);
+            on.SetActive(false);
+            off.SetActive(true);
+        }else{
+            musicOn = true;
+            gameMusic.SetActive(true);
+            on.SetActive(true);
+            off.SetActive(false);
         }
     }
 }
