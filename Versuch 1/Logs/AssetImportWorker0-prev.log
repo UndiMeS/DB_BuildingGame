@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.0f1 (c7b5465681fb) revision 13088070'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Home; OS build 19041.985; Version 2004; 64bit' Language: 'de' Physical Memory: 15272 MB
+OS: 'Windows 10 Home; OS build 19041.1052; Version 2004; 64bit' Language: 'de' Physical Memory: 15272 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
@@ -15,11 +15,11 @@ C:/Users/marce/Desktop/UndiMeS_git/DB_BuildingGame/Versuch 1
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-52693
+58453
 Successfully changed project path to: C:/Users/marce/Desktop/UndiMeS_git/DB_BuildingGame/Versuch 1
 C:/Users/marce/Desktop/UndiMeS_git/DB_BuildingGame/Versuch 1
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 86.75 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 75.36 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.0f1 (c7b5465681fb)
 [Subsystems] Discovering subsystems at path C:/use/unity/2020.3.0f1/Editor/Data/Resources/UnitySubsystems
@@ -36,315 +36,558 @@ Initialize mono
 Mono path[0] = 'C:/use/unity/2020.3.0f1/Editor/Data/Managed'
 Mono path[1] = 'C:/use/unity/2020.3.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/use/unity/2020.3.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56996
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56664
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/use/unity/2020.3.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.003294 seconds.
+Registered in 0.003744 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 58.41 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 70.94 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.370 seconds
+- Completed reload, in  2.635 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.002375 seconds.
+Registered in 0.002063 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-0000020DFAF4B600 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file data-000001CF8B15A230 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFBFC2190 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll
+Symbol file data-000001CF8A213C00 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFC171020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll
+Symbol file data-000001CF8B42A010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C00592020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file data-000001CF8B42A010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE184030 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file data-000001CF87C68060 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFC346A50 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file data-000001CF87C68060 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDD8E010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file data-000001CF8B43D420 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE128020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file data-000001CF89EC5020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE155A30 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file data-000001CF89EF2A30 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE9E8E30 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Searcher.Editor.dll
+Symbol file data-000001CF8B6E7050 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Searcher.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFEA2B890 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Utilities.dll
+Symbol file data-000001CF87F01560 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Utilities.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDD8E010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll
+Symbol file data-000001CF89D94430 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDD8E010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.dll
+Symbol file data-000001CF89D94430 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE184030 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file data-000001CF89E01C30 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE1DA630 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file data-000001CF8AF30E30 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Rider.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFC36B2D0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll
+Symbol file data-000001CF87E2F870 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDD8E010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file data-000001CF89D94430 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDAB0090 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Poly2Tri.dll
+Symbol file data-000001CF89891040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Poly2Tri.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C00921700 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.dll
+Symbol file data-000001CF89AC4010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFAF4B600 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.KdTree.dll
+Symbol file data-000001CF87CCD2B0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.KdTree.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE7C2010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll
+Symbol file data-000001CF89F7F010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDD8E010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll
+Symbol file data-000001CF89D94430 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE166E50 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll
+Symbol file data-000001CF8B15A230 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE9EAE40 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Stl.dll
+Symbol file data-000001CF8B588420 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Stl.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFBFC2380 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll
+Symbol file data-000001CF8A213630 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFC36B2D0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
+Symbol file data-000001CF87E2E870 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE59E020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file data-000001CF8A2E8010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFEA2E070 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll
+Symbol file data-000001CF87B63FF0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE59E020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll
+Symbol file data-000001CF89D9C440 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 76.56 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 64.69 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.390 seconds
+- Completed reload, in  1.331 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.69 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2827 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 124.4 MB.
+System memory in use before: 124.5 MB.
 System memory in use after: 124.5 MB.
 
 Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 3275.
-Total: 3.373100 ms (FindLiveObjects: 0.431900 ms CreateObjectMapping: 0.120900 ms MarkObjects: 2.602500 ms  DeleteObjects: 0.215900 ms)
+Total: 3.574900 ms (FindLiveObjects: 0.369000 ms CreateObjectMapping: 0.117000 ms MarkObjects: 2.863200 ms  DeleteObjects: 0.223600 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Scenes/Menu.unity
-  artifactKey: Guid(7ffe6f34f57c25c439d14755fa0e550d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Menu.unity using Guid(7ffe6f34f57c25c439d14755fa0e550d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '720033f10b120c430f5364269f772a59') in 0.017111 seconds
-  Import took 0.022906 seconds .
+  path: Assets/3D-Objekte/MarsPlantFarm_1.fbx
+  artifactKey: Guid(c9d8572ba9a436a43b514c5bf4163f98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/3D-Objekte/MarsPlantFarm_1.fbx using Guid(c9d8572ba9a436a43b514c5bf4163f98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32198102640cd9339af768839b2cb73b') in 0.319235 seconds
+  Import took 0.325299 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.359434 seconds.
-  path: Assets/Scenes/Menu.unity
-  artifactKey: Guid(7ffe6f34f57c25c439d14755fa0e550d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Menu.unity using Guid(7ffe6f34f57c25c439d14755fa0e550d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '720033f10b120c430f5364269f772a59') in 0.005934 seconds
-  Import took 0.014261 seconds .
-
-========================================================================
-Received Prepare
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 2.61 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 64.1 MB.
-System memory in use after: 64.2 MB.
-
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 3275.
-Total: 7.897100 ms (FindLiveObjects: 1.434600 ms CreateObjectMapping: 0.443400 ms MarkObjects: 5.773100 ms  DeleteObjects: 0.242500 ms)
+  Time since last request: 0.000375 seconds.
+  path: Assets/3D-Objekte/MarsSingleHouse_1.fbx
+  artifactKey: Guid(112ab428e4fe2a74da98484b8bf47419) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/3D-Objekte/MarsSingleHouse_1.fbx using Guid(112ab428e4fe2a74da98484b8bf47419) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f900d79f4e421f561a0a98534fa6536e') in 0.028050 seconds
+  Import took 0.035558 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 21.377829 seconds.
-  path: Assets/Audio/435779__anescient__loxfox.flac
-  artifactKey: Guid(02e3c23331a807c4fa0374a2c5db6c4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Audio/435779__anescient__loxfox.flac using Guid(02e3c23331a807c4fa0374a2c5db6c4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a910b82b758e3a19333db33b820be88') in 0.129998 seconds
-  Import took 0.136693 seconds .
+  Time since last request: 0.000513 seconds.
+  path: Assets/3D-Objekte/MarsGround.fbx
+  artifactKey: Guid(a562ac7f63e2d3443b7598e85fd1eb1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/3D-Objekte/MarsGround.fbx using Guid(a562ac7f63e2d3443b7598e85fd1eb1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f88829cde2277e56351967ccd66cb34') in 0.060857 seconds
+  Import took 0.066411 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 154.193709 seconds.
-  path: Assets/Scenes/Landschaft.unity
-  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Landschaft.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1787851308f52e36a5eceab298b9a985') in 0.005032 seconds
-  Import took 0.010995 seconds .
+  Time since last request: 0.000331 seconds.
+  path: Assets/3D-Objekte/MarsAnimalFarm_1.fbx
+  artifactKey: Guid(794f75040f4df584cb894785135549a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/3D-Objekte/MarsAnimalFarm_1.fbx using Guid(794f75040f4df584cb894785135549a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9287ac63240fc6023e6a9f0efd44d33f') in 0.036115 seconds
+  Import took 0.041674 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.002562 seconds.
+Registered in 0.002040 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-0000020DFAF4B600 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file data-000001CF89714C50 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFC253250 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll
+Symbol file data-000001CF8B37B080 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFC346A50 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll
+Symbol file data-000001CF897D6010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDCAA010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file data-000001CF87C60050 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDFAA240 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file data-000001CF87C4A040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDCAA010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file data-000001CF87C60050 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDCAA010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file data-000001CF87C60050 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDCD32E0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file data-000001CF89A2C020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDCAA010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file data-000001CF87C60050 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE9E8E30 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Searcher.Editor.dll
+Symbol file data-000001CF89DB3B40 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Searcher.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE0AF750 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Utilities.dll
+Symbol file data-000001CF89B336A0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Utilities.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C01B9F040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll
+Symbol file data-000001CF89626A20 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C00D2A010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.dll
+Symbol file data-000001CF8B42A010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDFAA240 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file data-000001CF89E7BA30 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFC6596A0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file data-000001CF87EF2BB0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Rider.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFEA2CA90 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll
+Symbol file data-000001CF8B37AC70 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C01B9F040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file data-000001CF8B142010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C01C17030 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Poly2Tri.dll
+Symbol file data-000001CF87FCF6B0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Poly2Tri.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C0091F440 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.dll
+Symbol file data-000001CF8B8FD020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFC574690 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.KdTree.dll
+Symbol file data-000001CF8A5ED060 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.KdTree.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE7C2010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll
+Symbol file data-000001CF87F5D1C0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C01B9F040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll
+Symbol file data-000001CF8CC70010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFC574690 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll
+Symbol file data-000001CF89714C50 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DD2F8FEB0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Stl.dll
+Symbol file data-000001CF8B588420 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Stl.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFC253060 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll
+Symbol file data-000001CF8B37BA30 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFEA2D090 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
+Symbol file data-000001CF8B37A070 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFC579F00 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file data-000001CF89DC9020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFC578C20 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll
+Symbol file data-000001CF8D3C7020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C01B9F040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll
+Symbol file data-000001CF8B142010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.229 seconds
+- Completed reload, in  1.196 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 121.3 MB.
-System memory in use after: 121.4 MB.
+System memory in use before: 121.7 MB.
+System memory in use after: 121.8 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3287.
-Total: 3.237500 ms (FindLiveObjects: 0.363600 ms CreateObjectMapping: 0.098000 ms MarkObjects: 2.599500 ms  DeleteObjects: 0.174900 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 57.856386 seconds.
-  path: Assets/Scenes/Menu.unity
-  artifactKey: Guid(7ffe6f34f57c25c439d14755fa0e550d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Menu.unity using Guid(7ffe6f34f57c25c439d14755fa0e550d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c079df72d8b6e1b1a6817789e1728f47') in 0.019356 seconds
-  Import took 0.025038 seconds .
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3321.
+Total: 3.286900 ms (FindLiveObjects: 0.339700 ms CreateObjectMapping: 0.073300 ms MarkObjects: 2.721400 ms  DeleteObjects: 0.150700 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.002740 seconds.
+Registered in 0.002087 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-0000020C001A3020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file data-000001CF89DB3B40 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C00BFC250 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll
+Symbol file data-000001CF89CFAB80 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C0051E010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll
+Symbol file data-000001CF897D6010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE436510 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file data-000001CF8CE08020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C00E6D010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file data-000001CF89824CB0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFBFE9460 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file data-000001CF8CE08020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE436510 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file data-000001CF8CE08020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDCD32E0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file data-000001CF8D103240 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDCAA010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file data-000001CF8CE08020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFE9E8E30 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Searcher.Editor.dll
+Symbol file data-000001CF89DB3B40 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Searcher.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C0227CEF0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Utilities.dll
+Symbol file data-000001CF87E35EA0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Utilities.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C01B9F040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll
+Symbol file data-000001CF8B142010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C022B70D0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.dll
+Symbol file data-000001CF8A2E8010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C00E6D010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file data-000001CF89E7BA30 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFC6596A0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file data-000001CF87C4A040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Rider.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFEA2D490 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll
+Symbol file data-000001CF8B379E70 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C01B9F040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file data-000001CF8C997270 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C001A3020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Poly2Tri.dll
+Symbol file data-000001CF87FCF6B0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Poly2Tri.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C0091F440 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.dll
+Symbol file data-000001CF8AC00080 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDAB20A0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.KdTree.dll
+Symbol file data-000001CF8A5ED060 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.KdTree.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFDFBC2A0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll
+Symbol file data-000001CF87F5D1C0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C01B9F040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll
+Symbol file data-000001CF8C997270 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C001A3020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll
+Symbol file data-000001CF8C78DC20 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C025C24C0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Stl.dll
+Symbol file data-000001CF8B588420 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Stl.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C00BFC630 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll
+Symbol file data-000001CF89CF9630 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFEA2DC90 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
+Symbol file data-000001CF8B379870 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020DFC579F00 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file data-000001CF89EC5020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C01A57180 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll
+Symbol file data-000001CF8C391060 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000020C01B9F040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll
+Symbol file data-000001CF8C997270 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.67 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.126 seconds
+- Completed reload, in  1.256 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.70 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 121.3 MB.
-System memory in use after: 121.5 MB.
+System memory in use before: 121.7 MB.
+System memory in use after: 121.8 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3290.
-Total: 2.938400 ms (FindLiveObjects: 0.356300 ms CreateObjectMapping: 0.092900 ms MarkObjects: 2.289700 ms  DeleteObjects: 0.198200 ms)
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3324.
+Total: 3.359000 ms (FindLiveObjects: 0.443000 ms CreateObjectMapping: 0.122600 ms MarkObjects: 2.626300 ms  DeleteObjects: 0.165200 ms)
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002810 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-000001CF89DB3B40 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B9E61E0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF897D6010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C6FA040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8BBBF020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C6FA040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C6FA040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8D103240 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8CBF2150 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF89DB3B40 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Searcher.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C38D4F0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Utilities.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C1B1020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8A2E8010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C028010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF87C4A040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B37A670 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C774010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8A5C5020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Poly2Tri.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B77F010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8BAAD190 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.KdTree.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B867020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C774010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8BA96C40 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B588420 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Stl.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B9E6D80 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B37A670 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF89EC5020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8A211050 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C774010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.206 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.51 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.7 MB.
+System memory in use after: 121.9 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3327.
+Total: 3.735300 ms (FindLiveObjects: 0.512300 ms CreateObjectMapping: 0.236100 ms MarkObjects: 2.810400 ms  DeleteObjects: 0.174900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 647.011254 seconds.
+  path: Assets/Prefabs/Haus 1.prefab
+  artifactKey: Guid(370112c12831dd4459477a90cb68cee4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Haus 1.prefab using Guid(370112c12831dd4459477a90cb68cee4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5f6fda36c232a23b31da701caefda1b') in 0.204075 seconds
+  Import took 0.212228 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000259 seconds.
+  path: Assets/Prefabs/Stall.prefab
+  artifactKey: Guid(7c2d830dfe18aac41a05d9d3acc66e73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Stall.prefab using Guid(7c2d830dfe18aac41a05d9d3acc66e73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce422586a3ccc07868f06febf81062fb') in 0.012877 seconds
+  Import took 0.018974 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004018 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-000001CF5EAEAB70 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF899B0430 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF897D6010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF88078020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8BAA9180 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF87F39010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF87F39010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8D103240 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8CBF2150 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF5EAEAB70 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Searcher.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF87B628D0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Utilities.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C1B1020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C698020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8BBA5040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF87C4A040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B379A70 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8A1F3050 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8BEA6030 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Poly2Tri.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B77F010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8A5ED060 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.KdTree.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B867020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8A1F3050 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF5EAEAB70 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF87C24FD0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Stl.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF899B0430 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B37A870 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF89EC5020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8A211050 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8A1F3050 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.47 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.626 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.88 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.8 MB.
+System memory in use after: 121.9 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 3331.
+Total: 5.618100 ms (FindLiveObjects: 1.017300 ms CreateObjectMapping: 0.352600 ms MarkObjects: 4.028300 ms  DeleteObjects: 0.216600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004549 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-000001CF8C657480 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B37B270 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF897D6010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF88078020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8BAA9180 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C678020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C678020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8AE41020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8CBF2150 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF89DB3B40 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Searcher.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF87ECCD60 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Utilities.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C1B1020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C698020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C487010 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF87C4A040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B37AC70 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF87E485E0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8AE91070 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Poly2Tri.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C0E9020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8D7CE040 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.KdTree.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B867020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF87E485E0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8C657480 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF89793730 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.ProBuilder.Stl.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B37BE10 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8B37A070 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF89EC5020 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF8D7CC670 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001CF87E485E0 doesn't match image C:\Users\marce\Desktop\UndiMeS_git\DB_BuildingGame\Versuch 1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.51 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.668 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.55 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2743 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.8 MB.
+System memory in use after: 121.9 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 3334.
+Total: 4.730700 ms (FindLiveObjects: 0.783800 ms CreateObjectMapping: 0.338400 ms MarkObjects: 3.348800 ms  DeleteObjects: 0.257400 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
