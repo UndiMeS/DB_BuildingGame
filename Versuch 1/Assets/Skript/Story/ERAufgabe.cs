@@ -335,7 +335,7 @@ public class ERAufgabe : MonoBehaviour
             }
 
             //ER bleibt ja bei dem Level stehen, wo Mission bearbeitet werden kann. Ist Mission erfolgreich (missionCheck = true), dann geht es weiter.
-            if((Story.level == 1|| Story.level == 2 || Story.level == 5 || Story.level == 6 || Story.level == 7 ) && missionCheck == true){
+            if((Story.level == 0 || Story.level == 1|| Story.level == 2 || Story.level == 3 || Story.level == 5 || Story.level == 6 || Story.level == 7 ) && missionCheck == true){
                 missionCheck = false;
                 kreisHacken.SetActive(true);
                 kreisKreuz.SetActive(false);

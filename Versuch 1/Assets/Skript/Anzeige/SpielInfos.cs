@@ -58,12 +58,15 @@ public class SpielInfos : MonoBehaviour
             if (neuSoltag % neuerUmsatz == 0 && marsTag != neuSoltag)
             {
                 Testing.geld += Testing.umsatz;
-            }else if (neuSoltag % neueZusatzaufgabe == 0 && marsTag != neuSoltag) //alle 3 Tage eine neue Zusatzaufgabe
+            }
+            /*
+            else if (neuSoltag % neueZusatzaufgabe == 0 && marsTag != neuSoltag) //alle 3 Tage eine neue Zusatzaufgabe
             {
                 zusatzButton.SetActive(true);
                 zusatzButton_transparent.SetActive(false);
             }
-
+            */
+            
             marsTag = Mathf.RoundToInt(neuSoltag);
             erdenTag = Mathf.RoundToInt(currenttime / 10 ) + 1;
             lasttime = currenttime;
