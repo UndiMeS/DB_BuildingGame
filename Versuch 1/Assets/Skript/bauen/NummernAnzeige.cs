@@ -9,11 +9,31 @@ public class NummernAnzeige : MonoBehaviour
     {
         string nummer ="";
         Wohncontainer wohn;
+        Feld feld;
+        Forschung fors;
+        Weide weide;
+        Stallcontainer stall;
         if (gameObject.TryGetComponent(out wohn))
         {
             nummer = wohn.containernummer.ToString();
         }
-        
+        if (gameObject.TryGetComponent(out feld))
+        {
+            nummer = feld.feldnummer.ToString();
+        }
+        if (gameObject.TryGetComponent(out fors))
+        {
+            nummer = fors.stationsnummer.ToString();
+        }
+        if (gameObject.TryGetComponent(out weide))
+        {
+            nummer = weide.weidennummer.ToString();
+        }
+        if (gameObject.TryGetComponent(out stall))
+        {
+            nummer = stall.containernummer.ToString();
+        }
+
 
         Utilitys.TextInTMP(text, nummer);
     }

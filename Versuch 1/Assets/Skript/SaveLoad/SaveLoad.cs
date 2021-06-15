@@ -95,7 +95,8 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/DB/Menschen.json", json);
+        File.WriteAllText(Application.dataPath + "/SaveState/DB/Astronauten" +
+            ".json", json);
 
         json = "[";
         foreach (Tiere obj in Testing.tier)
@@ -106,7 +107,7 @@ public class SaveLoad : MonoBehaviour
         File.WriteAllText(Application.dataPath + "/SaveState/DB/Tiere.json", json);
 
         saveLoadER.speichern();
-        //saveLoadBeziehungen.speichern();
+        saveLoadBeziehungen.speichern();
     }
 
     public void laden()
