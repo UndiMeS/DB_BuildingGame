@@ -15,6 +15,7 @@ public class Projekt
     public int forscheranzahl;
     public float verbesserungsfaktor=0.1f;
     public int pos;
+    public int verbesserterWert;
 
     public Projekt(int nr, int preis)
     {
@@ -85,6 +86,7 @@ public class Projekt
             verbesserungsfaktor =(1+(pos-1) * 0.1f);
             neuerWert = Mathf.RoundToInt(alterWert * verbesserungsfaktor);
         }
+        verbesserterWert = neuerWert;
         return neuerWert;
     }
 }

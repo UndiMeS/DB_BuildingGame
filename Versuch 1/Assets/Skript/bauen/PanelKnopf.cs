@@ -29,8 +29,6 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         Testing.objektGebaut = gebaeudeNummer;
         gebautetsGebaeude = Instantiate(gebaeude);
         gebautetsGebaeude.transform.SetParent(gebaeudeOrdner.transform);
-        Debug.Log("Hier");
-
     }
 
     // Update is called once per frame
