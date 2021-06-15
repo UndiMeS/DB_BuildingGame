@@ -13,7 +13,7 @@ public class Mission : MonoBehaviour
     public static bool[] missionsTeilLevel0 = new bool[] {false,false};
     public static bool[] missionsTeilLevel1 = new bool[] {false};
     public static bool[] missionsTeilLevel2 = new bool[] {false,false,false,false};
-    public static bool[] missionsTeilLevel3 = new bool[] {false,false};
+    public static bool[] missionsTeilLevel3 = new bool[] {false,false,false};
     public static bool[] missionsTeilLevel4 = new bool[] {false,false,false,false};
     public static bool[] missionsTeilLevel5 = new bool[] {false,false};
     public static bool[] missionsTeilLevel6 = new bool[] {false}; //Das ist für das 1. level
@@ -34,6 +34,7 @@ public class Mission : MonoBehaviour
     int temp_anzahl_lvl4 = 0;
     int temp_geld_lvl6 = 0;
     int temp_forscher_lvl7 = 0;
+    int temp_baukosten_lvl3 = 0;
     bool finale = false;
     public static bool mission1 = false;
     public static bool mission3 = false;
@@ -72,8 +73,8 @@ public class Mission : MonoBehaviour
     private string[][] mission = {                  // "Missionstext", TZ1, TZ2, TZ3, TZ4, Ziel für TZ1, Ziel für TZ2, Ziel für TZ3, Ziel für TZ4
                                         new string[] { "Um eine Siedlung zu gründen, müssen Astronauten eingeflogen werden. Gib weiterhin den Namen des ersten Astronauten ein.", "Fliege 5 belibige Astronauten ein.", "Gib den Namen des 1. Astronauten der Siedlung an.", "aus", "aus", "5", " ", " ", " " },
                                         new string[] { "Du kannst nun Feldsphären errichten, die in regelmäßigen Abständen Erträge erwirtschaften. Dafür werden jedoch Feldastronauten benötigt.", "Erreiche einen Ertrag von 200.", "aus", "aus", "aus", "200", "", " ", " " },
-                                        new string[] { "Wir können nun mit dem Forschen beginnen. Erforsche je eine Verbesserung der Baukosten und Bettenzahl von Wohncontainern und Arbeiterzahl und Ertrag von Feldsphären. Denk daran, dass es sich lohnen könnte auch die Methoden der Forschungsstationen zu verbessern. ", "Verbessere die Baukosten von Wohncontainern.", "Verbessere die Bettenzahl von Wohncontainern", "Verbessere den Ertrag von Feldsphären.", "Verbessere die Arbeiterzahl von Feldsphären.", "", "", "", "" },
-                                        new string[] { "Neben Feldsphären können bald auch Weidesphären errichtet werden. Darin werden Tiere bewirtschaftet. Diese leben in Stallcontainern.", "Fliege 8 Tiere ein.", "Gib den Namen des 1. Tier der Seidlung an.", "aus", "aus", "8", "", "", "" },
+                                        new string[] { "Wir können nun mit dem Forschen beginnen. Erforsche je eine Verbesserung der Baukosten und Bettenzahl von Wohncontainern und Arbeiterzahl und Ertrag von Feldsphären. Denk daran, dass es sich lohnen könnte auch die Methoden der Forschungsstationen zu verbessern. ", "Verbessere die Baukosten von Wohncontainern.", "Verbessere die Bettenzahl von Wohncontainern.", "Verbessere den Ertrag von Feldsphären.", "Verbessere die Arbeiterzahl von Feldsphären.", "", "", "", "" },
+                                        new string[] { "Neben Feldsphären können bald auch Weidesphären errichtet werden. Darin werden Tiere bewirtschaftet. Diese leben in Stallcontainern. Genau wie Wohncontainer, sollten auch diese mehr erforscht werden.", "Fliege 8 Tiere ein.", "Gib den Namen des 1. Tier der Seidlung an.", "aus", "Verbessere die Baukosten von Stallcontainern.", "8", "", "", "" },
                                         new string[] { "Nun können auch Weidesphären konstruiert werden, um Erträge zu erwirtschaften. Verbessere deinen regelmäßigen Ertrag durch den Bau von Weidesphären und forsche an deren Verbesserung.", "Erbaue 3 Weidesphären.", "Verbessere die Baukosten von Weidesphären.", "Verbessere die Tieranzahl von Weidesphären.", "Verbessere die Arbeiterzahl von Weidesphären.", "3", "", "", "" },
                                         new string[] { "Du hast es geschafft! Die Grundversorgung der ersten Marsseidlung ist aufgebaut und das ER-Diagramm, als Gerüst für die Datenbank, wurde erstellt. Nun ist es an der Zeit mehr zu forschen, um die Grundsteine für zukünftige Missionen auf dem Mars zu legen. Investiere daher in mehr Forschungsprojekt und erweitere die Bevölkerung deiner Siedlung.", "Erweitere deine Siedlungsbevölkerung auf 50 Astronauten.", "Forsche in der Siedlung an 15 Projekten.", "aus", "aus", "50", "15", "", "" },
                                         
@@ -373,7 +374,16 @@ public class Mission : MonoBehaviour
                     zwischenziel2 = 1;
                     missionsTeilLevel3[1] = true;
                 }
-                if(zwischenziel1 == 1 && zwischenziel2 == 1){
+                if(temp_baukosten_lvl3 == 0){
+                    temp_baukosten_lvl3 = Stallcontainer.preis;
+                }
+                if(temp_baukosten_lvl3 > Stallcontainer.preis){
+                    hacken4.SetActive(true);
+                    zwischenziel3 = 1;
+                    missionsTeilLevel3[2] = true;
+                }
+
+                if(zwischenziel1 == 1 && zwischenziel2 == 1 && zwischenziel3 == 1){
                     KreuzHacken();
                     missionsLevel[3] = true;
                 }
