@@ -13,7 +13,7 @@ using UnityEngine.UI;
 public class Story : MonoBehaviour
 {
     //Startlevel für ER-Editor
-    public static int level=3;
+    public static int level=0;
 
     //ER-Level-Anzeige an Buttonleiste rechts
     public GameObject buttonKreisLevel;
@@ -95,7 +95,7 @@ public class Story : MonoBehaviour
     void Awake()
     {
         //folgendes auskommentieren, um sofort auf alles zugriff zu haben.
-        //allesOff();
+        allesOff();
         checkLevel();
     }   
     void Update()
