@@ -12,7 +12,7 @@ public class Spielwerte : MonoBehaviour
         Wohncontainer.betten = 5;
         Wohncontainer.preis = 50;
 
-        Feld.neuErtrag = 30;
+        Feld.neuErtrag = 50;
         Feld.preis = 70;
         Feld.arbeiterzahl = 4; //am besten bei 4 belassen und anderes ändern
 
@@ -34,8 +34,8 @@ public class Spielwerte : MonoBehaviour
         Aufgaben.gewinn = 150; //Gewinn bei 1. Chance
         Aufgaben.gewinn2C = 40; //Gewinn bei 2. Chance
 
-        SpielInfos.neuerUmsatz = 5; //alle X Tage neuer Umsatz !!!!!!!!!!!!! Achtung: Text in Leiste Top muss händisch geändert werden!!!! 
-        SpielInfos.neueZusatzaufgabe = 3; //alle X Tage neue Zusatzaufgabe
+        SpielInfos.neuerUmsatz = 4; //alle X Tage neuer Umsatz !!!!!!!!!!!!! Achtung: Text in Leiste Top muss händisch geändert werden!!!! 
+        SpielInfos.neueZusatzaufgabe = 1; //alle X Tage neue Zusatzaufgabe
 
 
 
