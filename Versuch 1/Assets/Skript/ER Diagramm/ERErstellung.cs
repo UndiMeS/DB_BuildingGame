@@ -74,13 +74,13 @@ public class ERErstellung : MonoBehaviour
         if (temp.CompareTag("Attribut") && modellObjekte.Count == 0)
         {
             Destroy(temp.GetComponent<ERObjekt>());
-            FehlerAnzeige.fehlertext = "Wähle zuerst die Entität aus zu der das Attribute gehören soll.";
+            FehlerAnzeige.fehlertext = "Wähle zuerst die Entität aus, zu der das Attribute gehören soll.";
             Destroy(temp);
         }
         else if (temp.CompareTag("Attribut") && selectedGameObjekt!= null &&(!selectedGameObjekt.CompareTag("Entitaet") &&!selectedGameObjekt.CompareTag("Attribut")))
         {
             Destroy(temp.GetComponent<ERObjekt>());
-            FehlerAnzeige.fehlertext = "Wähle zuerst die Entität aus zu der das Attribute gehören soll.";
+            FehlerAnzeige.fehlertext = "Wähle zuerst die Entität aus, zu der das Attribute gehören soll.";
             Destroy(temp);
         }
         else //erzeugt neues Objekt und markiert es
@@ -279,11 +279,6 @@ public class ERErstellung : MonoBehaviour
 
     private static bool checkMausIn(Vector3 mousePosition, GameObject objekt)
     {
-        /*Vector3 position = objekt.transform.position;
-        int abstandX = (int)Math.Abs(mousePosition.x - position.x);
-        int abstandY = (int)Math.Abs(mousePosition.y - position.y);
-        bool drin = abstandX < objekt.GetComponent<RectTransform>().sizeDelta.x / 2 && abstandY < objekt.GetComponent<RectTransform>().sizeDelta.y / 2;
-        */
         bool drin = RectTransformUtility.RectangleContainsScreenPoint(objekt.GetComponent<RectTransform>(), mousePosition, Camera.main);
         return drin;
     }

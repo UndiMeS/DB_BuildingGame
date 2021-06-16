@@ -67,6 +67,7 @@ public class PauseMenu : MonoBehaviour
         hilfeTexte.SetActive(false);
         hilfeZurückButton.SetActive(false);
         hilfeFenster.SetActive(false);
+        SpielIstPausiert = false;
         Time.timeScale = 1;
 
     }
@@ -169,10 +170,10 @@ public class PauseMenu : MonoBehaviour
     public void SwitchToBaumenue()
     {
         ERon = false;
-        //SpielIstPausiert = false;
+        SpielIstPausiert = false;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(0);
         mission.transform.localPosition = new Vector3(16, 726, 0);
-            }
+    }
 
     public void AllesAusblenden()
     {

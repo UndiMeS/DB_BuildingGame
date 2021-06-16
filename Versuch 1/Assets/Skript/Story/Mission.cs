@@ -172,6 +172,7 @@ public class Mission : MonoBehaviour
             if(missionsLevel[6]){
                 hacken1.SetActive(true);
                 KreuzHacken();
+
             }else{ 
                 //missionTeilLevel checkt ob Teilzeil bereits fertig war
                 if(missionsTeilLevel6[0]){

@@ -41,25 +41,38 @@ public class Linienzeichner : MonoBehaviour
         {
             if (setposition==1)
             {
-                pos1 = objekt1.transform.position + Vector3.right;
-            }else if (setposition == 2)
+                //pos1 = objekt1.transform.position + Vector3.right;
+                pos1=getPosition(objekt1)+ Vector3.right;
+            }
+            else if (setposition == 2)
             {
-                pos1 = objekt1.transform.position - Vector3.right;
+                //pos1 = objekt1.transform.position - Vector3.right;
+                pos1 = getPosition(objekt1) - Vector3.right;
             }
             else
             {
-                pos1 = objekt1.transform.position;
+                //pos1 = objekt1.transform.position;
+                pos1 = getPosition(objekt1);
             }
-            
 
-            pos2 = objekt2.transform.position;
+
+            //pos2 = objekt2.transform.position;
+            pos2 = getPosition(objekt2);
             lineRenderer.SetPosition(0, pos1);
             lineRenderer.SetPosition(1, pos2 );
            
         }
     }
 
-   
+   private Vector3 getPosition(GameObject @object)
+    {
+        Vector3[] v = new Vector3[4];
+        @object.GetComponent<RectTransform>().GetWorldCorners(v);
+        float x = v[0].x + (@object.transform.position.x - v[0].x) / (2 * @object.GetComponent<RectTransform>().pivot.x);
+        float y = v[0].y + (@object.transform.position.y - v[0].y) / (2 * @object.GetComponent<RectTransform>().pivot.y);
+
+        return new Vector2(x, y);
+    }
 
     private void changeName()
     {
