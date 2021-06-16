@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Mensch 
 {
-    public int anreisegebuehr = 10;
+    public int anreisegebuehr = 20;
     public string geburtstag;
     public string name;
     public string aufgabe;

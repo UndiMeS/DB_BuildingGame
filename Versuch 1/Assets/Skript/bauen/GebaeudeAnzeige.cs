@@ -25,7 +25,7 @@ public class GebaeudeAnzeige : MonoBehaviour
 
     private int wert = 0;
 
-    private int menschkosten = 10;
+    private int menschkosten = 20;
     private int tierkosten = 10;
 
     //public static int forschungsauswahl = 0; //0 keine forschungsauswahl aktuell, 1..n = Stationsnummer
@@ -54,7 +54,8 @@ public class GebaeudeAnzeige : MonoBehaviour
     public AudioSource[] sound_Forschen;
     public AudioSource[] sound_Feld;
     public AudioSource[] sound_Weide;
-
+    public AudioSource sound_ProjektVerbesserung;
+    public AudioSource sound_neuesProjekt;
     // Start is called before the first frame update
     void Start()
     {
@@ -348,6 +349,8 @@ public class GebaeudeAnzeige : MonoBehaviour
         if (gebaeude.GetComponent<Forschung>().maxAnzahlProjekte > gebaeude.GetComponent<Forschung>().anzahlProjekte && Testing.forscher >= Projekt.forscher && Testing.geld >= gebaeude.GetComponent<Forschung>().projektkosten)
         {
             gebaeude.GetComponent<Forschung>().createProjekt();
+            AudioSource projektSound = sound_neuesProjekt.GetComponent<AudioSource>();
+            projektSound.Play();
         }
         else
         {
@@ -381,15 +384,25 @@ public class GebaeudeAnzeige : MonoBehaviour
         staticSpezialisierungsauswahl.SetActive(true);
     }
 
-    public void stationverbessern(int preis)
+    public void stationverbessern()
     {
-        if (gebaeude.GetComponent<Forschung>().projektkosten == 100)
+        if (gebaeude.GetComponent<Forschung>().projektkosten == Projekt.preis_spielstart)
         {
-            gebaeude.GetComponent<Forschung>().projektkosten = 50;
-            Testing.geld -= preis;
-            new Projekt(gebaeude.GetComponent<Forschung>().stationsnummer, "Projektkosten", 11, 1, 200, 0, 0.5f, 0);
+            
+            if (Testing.geld < Projekt.kosten_verbesserung)
+            {
+                FehlerAnzeige.fehlertext = "Zu wenig Geld.";
+                return;
+            }else{
+                Testing.geld -= Projekt.kosten_verbesserung;
+                float vf = (float) Projekt.preis_nach_verbesserung/Projekt.preis_spielstart;
+                new Projekt(gebaeude.GetComponent<Forschung>().stationsnummer, "Projektkosten", 11, 1, Projekt.kosten_verbesserung, 0, vf, 0);
+                gebaeude.GetComponent<Forschung>().projektkosten = Projekt.preis_nach_verbesserung;
+                KostenVerbessernGO.SetActive(false);
+                AudioSource verbesserungSound = sound_ProjektVerbesserung.GetComponent<AudioSource>();
+                verbesserungSound.Play();
+            }
         }
-        KostenVerbessernGO.SetActive(false);
+        
     }
-
 }

@@ -10,10 +10,10 @@ public class Spielwerte : MonoBehaviour
         Testing.geld = 400;
 
         Wohncontainer.betten = 5;
-        Wohncontainer.preis = 50;
+        Wohncontainer.preis = 80;
 
         Feld.neuErtrag = 50;
-        Feld.preis = 70;
+        Feld.preis = 80;
         Feld.arbeiterzahl = 4; //am besten bei 4 belassen und anderes ändern
 
         Weide.preis = 100;
@@ -24,17 +24,20 @@ public class Spielwerte : MonoBehaviour
         Stallcontainer.preis = 90;
         Stallcontainer.gehege = 5;
 
-        Forschung.preis = 100;
+        Forschung.preis = 200;
 
 //Preise für menschen und Tiere...??
 
         Projekt.preis = 100;
+        Projekt.preis_spielstart = Projekt.preis;
         Projekt.forscher = 3;
+        Projekt.preis_nach_verbesserung = 50; //Projektkosten nach Verbesserung der Kosten
+        Projekt.kosten_verbesserung = 200; //was kostet es, die Projektkosten zu verbessern
 
         Aufgaben.gewinn = 150; //Gewinn bei 1. Chance
-        Aufgaben.gewinn2C = 40; //Gewinn bei 2. Chance
+        Aufgaben.gewinn2C = 30; //Gewinn bei 2. Chance
 
-        SpielInfos.neuerUmsatz = 4; //alle X Tage neuer Umsatz !!!!!!!!!!!!! Achtung: Text in Leiste Top muss händisch geändert werden!!!! 
+        SpielInfos.neuerUmsatz = 3; //alle X Tage neuer Umsatz !!!!!!!!!!!!! Achtung: Text in Leiste Top muss händisch geändert werden!!!! 
         SpielInfos.neueZusatzaufgabe = 1; //alle X Tage neue Zusatzaufgabe
 
     }

@@ -9,6 +9,7 @@ public class Projekt
     public string merkmal="";
     public int merkmalInt=-1;
     public int stufe=1;
+    public static int preis_spielstart;
     public static int preis=100;
     public static int forscher=3;
     public int kosten;
@@ -16,6 +17,8 @@ public class Projekt
     public float verbesserungsfaktor=0.1f;
     public int pos;
     public int verbesserterWert;
+    public static int preis_nach_verbesserung = 50;
+    public static int kosten_verbesserung = 200;
 
     public Projekt(int nr, int preis)
     {
