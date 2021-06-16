@@ -253,8 +253,7 @@ public class ERAufgabe : MonoBehaviour
                 aufgabeButton.SetActive(false);
                 checkboxButton.SetActive(false);
                 firsttime = true;
-            }
-            
+            } 
         }
         else
         {
@@ -317,16 +316,9 @@ public class ERAufgabe : MonoBehaviour
             
             //wenn alles richtig ist wird default alles auf aus gesetzt (in Update wird es aber wieder auf true gesetzt, wenn missioncheck == true ist)
             bottomLeiste.SetActive(false);
-            //aufgabenFenster.SetActive(false);
-            //checkbox.SetActive(false);
             aufgabeButton.SetActive(false);
-            checkboxButton.SetActive(false);
-            //kreisHacken.SetActive(true);
-            //kreisKreuz.SetActive(false); 
+            checkboxButton.SetActive(false); 
             FehlerAnzeige.fehlertext = "Du hast alles richtig gemacht!";
-            
-
-            //Nächste Zeile bleibt auskommentiert, da jetzt in Story NUR in abhängigkeit vom level das Array gesetzt wird für die Mission
             Story.lvl[Story.level] = true; //Markiere Level als erfüllt
             
             if(missionCheck == false){
@@ -334,14 +326,13 @@ public class ERAufgabe : MonoBehaviour
                 kreisKreuz.SetActive(false);
             }
 
-            //ER bleibt ja bei dem Level stehen, wo Mission bearbeitet werden kann. Ist Mission erfolgreich (missionCheck = true), dann geht es weiter.
+            //ER bleibt bei dem Level stehen, wo Mission bearbeitet werden kann. Ist Mission erfolgreich (missionCheck = true), dann geht es weiter.
             if((Story.level == 0 || Story.level == 1|| Story.level == 2 || Story.level == 3 || Story.level == 5 || Story.level == 6 || Story.level == 7 ) && missionCheck == true){
                 missionCheck = false;
                 kreisHacken.SetActive(true);
                 kreisKreuz.SetActive(false);
                 missionKreuz.SetActive(true);
                 missionHacken.SetActive(false);
-
             }
 
 

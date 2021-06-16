@@ -15,9 +15,6 @@ public class Story : MonoBehaviour
     //Startlevel für ER-Editor
     public static int level=0;
 
-    //ER-Level-Anzeige an Buttonleiste rechts
-    public GameObject buttonKreisLevel;
-
     //Array zum Prüfen, ob LvL im ER erreicht ist
     public static bool[] lvl = new bool[] {false,false,false,false,false,false,false,false};
 
@@ -91,19 +88,17 @@ public class Story : MonoBehaviour
     Button bHilfeER;
     public GameObject titelER;
 
-
     void Awake()
     {
         //folgendes auskommentieren, um sofort auf alles zugriff zu haben.
-        //allesOff();
-        //checkLevel();
-    }   
+        allesOff();
+        checkLevel();
+    }  
+
     void Update()
     {
         //Prüfe auf erfüllte Level
         checkLevel(); 
-        //Setzte ButtonlebelAnzeige
-        Utilitys.TextInTMP(buttonKreisLevel, Story.level);
     }
 
     public void allesOff()
@@ -171,19 +166,18 @@ public class Story : MonoBehaviour
         erBaumenue.SetActive(true);        
         bHilfeER = buttonHilfeER.GetComponent<Button>();
         bHilfeER.interactable = true; 
-
     }
 
     public void checkLevel()
     {
         if (lvl[0])
         {
-            Debug.Log("Level 0 korrekt");
+            //Debug.Log("Level 0 korrekt");
             transparentWohncontainer.SetActive(false);    
         }
         if(lvl[1])
         {
-            Debug.Log("Level 1 korrekt");
+            //Debug.Log("Level 1 korrekt");
             bForscher.interactable = true;
             bFeld.interactable = true;
             bWeide.interactable = true;
@@ -192,17 +186,17 @@ public class Story : MonoBehaviour
         }
         if(lvl[2])
         {
-            Debug.Log("Level 2 korrekt");
+            //Debug.Log("Level 2 korrekt");
             transparentFeld.SetActive(false);
         }
         if(lvl[3])
         {
-            Debug.Log("Level 3 korrekt");
+            //Debug.Log("Level 3 korrekt");
             transparentForschungsstation.SetActive(false);
         }
         if(lvl[4])
         {
-            Debug.Log("Level 4 korrekt");
+            //Debug.Log("Level 4 korrekt");
             projektFeld.SetActive(true);
             projektFeld_bauen.SetActive(true);
             bAlleProjekte.interactable = true;
@@ -211,7 +205,7 @@ public class Story : MonoBehaviour
         }
         if(lvl[5])
         {
-            Debug.Log("Level 5 korrekt");
+            //Debug.Log("Level 5 korrekt");
             bVerbessern.interactable = true;
             bNeuesProjekt.interactable = true;
             bWohncontainerForschen.interactable = true;
@@ -219,7 +213,7 @@ public class Story : MonoBehaviour
         }
         if(lvl[6])
         {
-            Debug.Log("Level 6 korrekt");
+            //Debug.Log("Level 6 korrekt");
             transparentStallcontainer.SetActive(false);
             bKuh.interactable = true;
             bSchwein.interactable = true;
@@ -230,7 +224,7 @@ public class Story : MonoBehaviour
         }
         if(lvl[7])
         {
-            Debug.Log("Level 7 korrekt");
+            //Debug.Log("Level 7 korrekt");
             transparentWeide.SetActive(false);
             bWeideForschen.interactable = true; 
             erBaumenue.SetActive(false);
@@ -240,9 +234,6 @@ public class Story : MonoBehaviour
             checklistButton.SetActive(false);
             bHilfeER.interactable = false; 
             Utilitys.TextInTMP(titelER, "Deine Marssiedlung");
-
-
         }
     }
-
 }

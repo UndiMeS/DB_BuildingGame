@@ -16,14 +16,14 @@ public class Mission : MonoBehaviour
     public static bool[] missionsTeilLevel3 = new bool[] {false,false,false};
     public static bool[] missionsTeilLevel4 = new bool[] {false,false,false,false};
     public static bool[] missionsTeilLevel5 = new bool[] {false,false};
-    public static bool[] missionsTeilLevel6 = new bool[] {false}; //Das ist für das 1. level
-    public static bool[] missionsTeilLevel7 = new bool[] {false}; //Das ist für das 1. level
-//Hilfsvariablen
+    public static bool[] missionsTeilLevel6 = new bool[] {false}; //Das ist für das Level VOR Level 0
+    public static bool[] missionsTeilLevel7 = new bool[] {false}; //Das ist für das Level zwischen 2 und 3
+    
+    //Hilfsvariablen
     int zwischenziel1 = 0;
     int zwischenziel2 = 0;
     int zwischenziel3 = 0;
     int zwischenziel4 = 0; 
-    int temp_feldarbeiter_lvl1 = 0;   
     int temp_baukosten_lvl2 = 0;
     int temp_bettenzahl_lvl2 = 0;
     int temp_ertrag_lvl2 = 0;
@@ -46,20 +46,20 @@ public class Mission : MonoBehaviour
     public GameObject textInput;
     InputField t;
 
-//Missionsfenster Objekte
+    //Missionsfenster Objekte
     public GameObject missionText;
     public GameObject teilZiel1;
     public GameObject teilZiel2;
     public GameObject teilZiel3;
     public GameObject teilZiel4;
 
-//Hacken und Kreuz an Buttonleiste rechts
+    //Hacken und Kreuz an Buttonleiste rechts
     public GameObject masterHacken;
     public GameObject masterKreuz;
     public GameObject ERkreisHacken;
     public GameObject ERkreisKreuz;
 
-//Hacken in Missionsfenster an Teilzielen
+    //Hacken in Missionsfenster an Teilzielen
     public GameObject hacken1;
     public GameObject hacken2;
     public GameObject hacken3;
@@ -69,7 +69,7 @@ public class Mission : MonoBehaviour
     public GameObject ERkreis;
     private bool firstTime=true;//nur beim ersten mal PopUp
 
-//Missionstexte für Fenster
+    //Missionstexte für Fenster
     private string[][] mission = {                  // "Missionstext", TZ1, TZ2, TZ3, TZ4, Ziel für TZ1, Ziel für TZ2, Ziel für TZ3, Ziel für TZ4
                                         new string[] { "Um eine Siedlung zu gründen, müssen Astronauten eingeflogen werden. Gib weiterhin den Namen des ersten Astronauten ein.", "Fliege 5 belibige Astronauten ein.", "Gib den Namen des 1. Astronauten der Siedlung an.", "aus", "aus", "5", " ", " ", " " },
                                         new string[] { "Du kannst nun Feldsphären errichten, die in regelmäßigen Abständen Erträge erwirtschaften. Dafür werden jedoch Feldastronauten benötigt.", "Erreiche einen Ertrag von 200.", "aus", "aus", "aus", "200", "", " ", " " },
@@ -83,6 +83,7 @@ public class Mission : MonoBehaviour
                                         //Folgendes Level ist das Level zwischen 1 und 2. Da es nachträglich hinzukam, wurde es hintendran gehangen.
                                         new string[] { "Um Forschung auf dem Mars zu betreiben werden Forschungsstationen benötigt. Jeder Sphären- und Containertyp hat eine eigene Forschungsstationstypen.", "Errichte 1 Forschungsstation!", "aus", "aus", "aus", "", "", "", "" }
                                         };
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -93,7 +94,6 @@ public class Mission : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         //Gib alle Texte der Mission aus.
         setMission(setLevel());
         //setMission(3);
@@ -102,7 +102,7 @@ public class Mission : MonoBehaviour
         checkMission(setLevel());
         //checkMission(3);
 
-
+        //Bedingung, damit nach Speichern/Laden die richtigen Icons ausgegeben werden
         if(ERAufgabe.missionCheck == false){
             ERkreisHacken.SetActive(true);
             ERkreisKreuz.SetActive(false);
@@ -150,11 +150,11 @@ public class Mission : MonoBehaviour
             if(Story.level == 2){
                 return 0; //X Astronauten einfliegen
             }else if(Story.level == 0 || Story.level == 1){
-                return 6;
+                return 6; //Wohncontainer bauen
             }else if(Story.level == 3){
                 return 1; //Ertrag auf X setzten
             }else if(Story.level == 4|| Story.level == 5){
-                return 7;
+                return 7; //Forschungsstation bauen
             }else if(Story.level == 6){
                 return 2; //Verbessern von Containern und Feldern
             }else if(Story.level == 7){
@@ -163,39 +163,34 @@ public class Mission : MonoBehaviour
                 return 4; //X Weidearbeiter und Ertrag und Verbesserung
             }
         }
-        
     }
 
     public void checkMission(int level)
     {
     //Level vor 0
         if(level == 6){
-                if(missionsLevel[6]){
+            if(missionsLevel[6]){
+                hacken1.SetActive(true);
+                KreuzHacken();
+            }else{ 
+                //missionTeilLevel checkt ob Teilzeil bereits fertig war
+                if(missionsTeilLevel6[0]){
                     hacken1.SetActive(true);
-                    KreuzHacken();
-                }else{ 
-                    //missionTeilLevel checkt ob Teilzeil bereits fertig war
-                    if(missionsTeilLevel6[0])
-                    {
-                        hacken1.SetActive(true);
-                        zwischenziel1 = 1;
-                        missionsTeilLevel6[0] = true;
-                    }else {
-                        if(temp_geld_lvl6 < Testing.geld){
-                            temp_geld_lvl6 = Testing.geld;
-                        }
-                        if(temp_geld_lvl6 > Testing.geld){
-                            KreuzHacken();
-                            mission1 = true;
-                            missionsLevel[6] = true;
-                        }
-                        else
-                        {
-                            firstTime = true;
-                        }
+                    zwischenziel1 = 1;
+                    missionsTeilLevel6[0] = true;
+                }else{
+                    if(temp_geld_lvl6 < Testing.geld){
+                        temp_geld_lvl6 = Testing.geld;
                     }
-                }           
-    
+                    if(temp_geld_lvl6 > Testing.geld){
+                        KreuzHacken();
+                        mission1 = true;
+                        missionsLevel[6] = true;
+                    }else{
+                            firstTime = true;
+                    }
+                }
+            }           
     //Level 0
         }else if(level == 0){
             textInput.SetActive(true);
@@ -487,14 +482,14 @@ public class Mission : MonoBehaviour
         {
             LeanTween.scale(kreis,new Vector3(2 , 2),5).setEasePunch();
             
-            //Check Sound wenn PopUpKreis auf geht
+            //Check-Sound wenn PopUpKreis auf geht
             AudioSource x = sound.GetComponent<AudioSource>();
             x.Play(0);
         }
         firstTime = false;
     }
 
-    //Hilfsmethode die bei efolgreicher Mission sich um Hacken/Kreuz kümmert
+    //Hilfsmethode die bei erfolgreicher Mission sich um Hacken/Kreuz kümmert
     private void KreuzHacken()
     {   
         masterKreuz.SetActive(false);
