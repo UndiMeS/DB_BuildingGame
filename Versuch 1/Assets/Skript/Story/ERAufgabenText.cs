@@ -19,7 +19,8 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                                 
                     /*LvL Ziel*/   //ZIELAUFGABE FEHLT NOCH
                                 };
-    private List<int>[] entitys = {/*LvL 0*/ new List<int> { 17,23,26 },
+    private List<int>[] entitys = {
+                 /*LvL 0*/ new List<int> { 17,23,26 },
                  /*LvL 1*/ new List<int>{0,2,6,3,24,35},
                  /*LvL 2*/ new List<int>{6},
                  /*LvL 3*/ new List<int>{},
@@ -29,7 +30,8 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                  /*LvL 7*/ new List<int>{},
     };
 
-    private List<int>[] attribute = {/*LvL 0*/ new List<int> {35, 38,52,51,61 },
+    private List<int>[] attribute = {
+                /*LvL 0*/ new List<int> {35, 38,52,51,61 },
                  /*LvL 1*/ new List<int>{38,41,53,60},
                  /*LvL 2*/ new List<int>{15,18,21},
                  /*LvL 3*/ new List<int>{},
@@ -39,7 +41,8 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                  /*LvL 7*/ new List<int>{},
     };
 
-    private List<int>[] beziehungen = {/*LvL 0*/ new List<int> {  },
+    private List<int>[] beziehungen = {
+                 /*LvL 0*/ new List<int> {  },
                  /*LvL 1*/ new List<int>{3,1},
                  /*LvL 2*/ new List<int>{30},
                  /*LvL 3*/ new List<int>{},
@@ -49,7 +52,8 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                  /*LvL 7*/ new List<int>{},
     };
 
-    private List<int>[] kardinalitaet = {/*LvL 0*/ new List<int> {  },
+    private List<int>[] kardinalitaet = {
+                 /*LvL 0*/ new List<int> {  },
                  /*LvL 1*/ new List<int>{8,9,17},
                  /*LvL 2*/ new List<int>{28,32},
                  /*LvL 3*/ new List<int>{},
