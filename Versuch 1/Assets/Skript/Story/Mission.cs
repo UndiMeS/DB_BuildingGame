@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Mission : MonoBehaviour
 {
     //Je Missionslevel ein Bool
-    public static bool[] missionsLevel = new bool[] {false,false,false,false,false,false,false,false};
+    public static bool[] missionsLevel = new bool[] {false,false,false,false,false,false,false,false, false};
 
     //Je Teilziel ein Bool
     public static bool[] missionsTeilLevel0 = new bool[] {false,false};
@@ -17,7 +17,8 @@ public class Mission : MonoBehaviour
     public static bool[] missionsTeilLevel4 = new bool[] {false,false,false,false};
     public static bool[] missionsTeilLevel5 = new bool[] {false,false};
     public static bool[] missionsTeilLevel6 = new bool[] {false}; //Das ist für das Level VOR Level 0
-    public static bool[] missionsTeilLevel7 = new bool[] {false}; //Das ist für das Level zwischen 2 und 3
+    public static bool[] missionsTeilLevel7 = new bool[] {false}; //Das ist für das Level zwischen 1 und 2
+    public static bool[] missionsTeilLevel8 = new bool[] {false, false, false}; //Das ist für das Level zwischen 2 und 3
     
     //Hilfsvariablen
     int zwischenziel1 = 0;
@@ -35,6 +36,10 @@ public class Mission : MonoBehaviour
     int temp_geld_lvl6 = 0;
     int temp_forscher_lvl7 = 0;
     int temp_baukosten_lvl3 = 0;
+    int temp_baukosten_lvl8 = 0;
+    int temp_bettenzahl_lvl8 = 0;
+    int temp_ertrag_lvl8 = 0;
+
     bool finale = false;
     public static bool mission1 = false;
     public static bool mission3 = false;
@@ -73,7 +78,7 @@ public class Mission : MonoBehaviour
     private string[][] mission = {                  // "Missionstext", TZ1, TZ2, TZ3, TZ4, Ziel für TZ1, Ziel für TZ2, Ziel für TZ3, Ziel für TZ4
                                         new string[] { "Um eine Siedlung zu gründen, müssen Astronautinnen und Astronauten eingeflogen werden. Gib weiterhin den Namen des ersten Menschen in der Siedlung ein.\nHinweis: Du kannst dir alle Astronauten im Fenster eines beliebigen Wohncontainer anzeigen lassen!", "Fliege 5 beliebige Astronauten ein.", "Gib den Namen des 1. Menschen der Siedlung an.", "aus", "aus", "5", " ", " ", " " },
                                         new string[] { "Du kannst nun Feldsphären errichten, die in regelmäßigen Abständen Erträge erwirtschaften. Dafür werden jedoch Feldastronauten benötigt.", "Erreiche einen Ertrag von 200.", "aus", "aus", "aus", "200", "", " ", " " },
-                                        new string[] { "Wir können nun mit dem Forschen beginnen. Erforsche je eine Verbesserung der Baukosten und Bettenzahl von Wohncontainern und Arbeiterzahl und Ertrag von Feldsphären. Denk daran, dass es sich lohnen könnte auch die Methoden der Forschungsstationen zu verbessern. ", "Verbessere die Baukosten von Wohncontainern.", "Verbessere die Bettenzahl von Wohncontainern.", "Verbessere den Ertrag von Feldsphären.", "Verbessere die Arbeiterzahl von Feldsphären.", "", "", "", "" },
+                                        new string[] { "Wir können nun auch Feldsphären und Stationen verbessern. Erforsche je eine Verbesserung der Merkmale Baukosten, Arbeiterzahl und Ertrag von Feldsphären. Erforsche gleichzeitig neue Methoden in der Station mit Stationsnummer 2. ", "Verbessere die Baukosten von Feldsphären.", "Verbessere die Arbeiterzahl von Feldsphären.", "Verbessere den Ertrag von Feldsphären.", "Verbessere die Projektkosten von der Station mit SNr. 2.", "", "", "", "" },
                                         new string[] { "Neben Feldsphären können bald auch Weidesphären errichtet werden. Darin werden Tiere bewirtschaftet. Diese leben in Stallcontainern. Genau wie Wohncontainer, sollten auch diese mehr erforscht werden.", "Fliege 8 Tiere ein.", "Gib den Namen des 1. Tier der Seidlung an.", "aus", "Verbessere die Baukosten von Stallcontainern.", "8", "", "", "" },
                                         new string[] { "Nun können auch Weidesphären konstruiert werden, um Erträge zu erwirtschaften. Verbessere deinen regelmäßigen Ertrag durch den Bau von Weidesphären und forsche an deren Verbesserung.", "Erbaue 3 Weidesphären.", "Verbessere die Baukosten von Weidesphären.", "Verbessere die Tieranzahl von Weidesphären.", "Verbessere die Arbeiterzahl von Weidesphären.", "3", "", "", "" },
                                         new string[] { "Du hast es geschafft! Die Grundversorgung der ersten Marsseidlung ist aufgebaut und das ER-Diagramm, als Gerüst für die Datenbank, wurde erstellt. Nun ist es an der Zeit mehr zu forschen, um die Grundsteine für zukünftige Missionen auf dem Mars zu legen. Investiere daher in mehr Forschungsprojekt und erweitere die Bevölkerung deiner Siedlung.", "Erweitere deine Siedlungsbevölkerung auf 50 Astronauten.", "Forsche in der Siedlung an 15 Projekten.", "aus", "aus", "50", "15", "", "" },
@@ -81,7 +86,9 @@ public class Mission : MonoBehaviour
                                         //Folgendes Level ist das erste Level. Da es nachträglich hinzukam, wurde es hintendran gehangen.
                                         new string[] { "Damit Astronauten auf dem Mars leben können, werden Wohncontainer benötigt. Beginne deine Siedlung mit dem Bau dieser Wohncontainer.", "Errichte 1 Wohncontainer!", "aus", "aus", "aus", "", "", "", "" },
                                         //Folgendes Level ist das Level zwischen 1 und 2. Da es nachträglich hinzukam, wurde es hintendran gehangen.
-                                        new string[] { "Um Forschung auf dem Mars zu betreiben werden Forschungsstationen benötigt. Jeder Sphären- und Containertyp hat eine eigene Forschungsstationstypen.", "Errichte 1 Forschungsstation!", "aus", "aus", "aus", "", "", "", "" }
+                                        new string[] { "Um Forschung auf dem Mars zu betreiben werden Forschungsstationen benötigt. Jeder Sphären- und Containertyp hat eine eigene Forschungsstationstypen.", "Errichte 1 Forschungsstation!", "aus", "aus", "aus", "", "", "", "" },
+                                        //Folgendes Level ist das Level zwischen 2 und 3. Da es nachträglich hinzukam, wurde es hintendran gehangen.
+                                        new string[] { "Wir können nun mit ersten Forschungen beginnen und Wohncontainer verbessern. Erforsche mindestens eine Verbesserung der Baukosten und Bettenzahl von Wohncontainern. Steigere gleichzeitig deinen Ertrag, um die Forschung zu finanzieren!", "Verbessere die Baukosten von Wohncontainern.", "Verbessere die Bettenzahl von Wohncontainern.", "Erhöhe den Ertrag um 150.", "aus", "", "", "150", "" }
                                         };
     
     // Start is called before the first frame update
@@ -153,10 +160,12 @@ public class Mission : MonoBehaviour
                 return 6; //Wohncontainer bauen
             }else if(Story.level == 3){
                 return 1; //Ertrag auf X setzten
-            }else if(Story.level == 4|| Story.level == 5){
+            }else if(Story.level == 4){
                 return 7; //Forschungsstation bauen
+            }else if(Story.level == 5){
+                return 8; //Verbessern von Wohncontainern
             }else if(Story.level == 6){
-                return 2; //Verbessern von Containern und Feldern
+                return 2; //Verbessern von Feldern
             }else if(Story.level == 7){
                 return 3; //X Nutztiere einfliegen
             }else {
@@ -289,7 +298,52 @@ public class Mission : MonoBehaviour
                         }
                     }
                 }           
-    
+        //Level 8
+        }else if(level == 8){
+                hacken1.SetActive(false);
+                hacken2.SetActive(false);
+                hacken3.SetActive(false);
+                hacken4.SetActive(false);
+
+                if(missionsLevel[8]){
+                    hacken1.SetActive(true);
+                    hacken2.SetActive(true);
+                    hacken3.SetActive(true);
+                    hacken4.SetActive(true);
+                    KreuzHacken();
+                }else{
+
+                    if(temp_baukosten_lvl8 == 0 && temp_bettenzahl_lvl8 == 0)
+                    {
+                        temp_bettenzahl_lvl8 = Wohncontainer.betten;
+                        temp_baukosten_lvl8 = Wohncontainer.preis;
+                        temp_ertrag_lvl8 = Testing.umsatz;
+                    }
+                    if(
+                        missionsTeilLevel8[0] || Wohncontainer.preis < temp_baukosten_lvl8){
+                        hacken1.SetActive(true);
+                        zwischenziel1 = 1;
+                        missionsTeilLevel8[0] = true;
+                    }
+                    if(missionsTeilLevel8[1] || Wohncontainer.betten > temp_bettenzahl_lvl8){
+                        hacken2.SetActive(true);
+                        zwischenziel2 = 1;
+                        missionsTeilLevel8[1] = true; 
+                    }
+                    if(missionsTeilLevel8[2] || Testing.umsatz >= (temp_ertrag_lvl8 + System.Convert.ToInt32(mission[8][7]))){
+                        hacken3.SetActive(true);
+                        zwischenziel3 = 1;
+                        missionsTeilLevel8[2] = true;
+                    }
+                    if(zwischenziel1==1 && zwischenziel2==1 && zwischenziel3==1){
+                        KreuzHacken();
+                        missionsLevel[8] = true;
+                    }
+                    else
+                    {
+                        firstTime = true;
+                    }
+                }
     //Level 2
         }else if(level == 2){
                 hacken1.SetActive(false);
@@ -305,35 +359,38 @@ public class Mission : MonoBehaviour
                     KreuzHacken();
                 }else{
 
-                    if(temp_arbeiterzahl_lvl2 == 0 && temp_baukosten_lvl2 == 0 && temp_bettenzahl_lvl2 == 0 && temp_ertrag_lvl2 == 0)
+                    if(temp_arbeiterzahl_lvl2 == 0 && temp_baukosten_lvl2 == 0 && temp_ertrag_lvl2 == 0)
                     {
-                        temp_ertrag_lvl2 = Feld.neuErtrag;
-                        temp_bettenzahl_lvl2 = Wohncontainer.betten;
-                        temp_baukosten_lvl2 = Wohncontainer.preis;
+                        temp_baukosten_lvl2 = Feld.preis;
                         temp_arbeiterzahl_lvl2 = Feld.arbeiterzahl;
+                        temp_ertrag_lvl2 = Feld.neuErtrag;
                     }
-                    if(
-                        missionsTeilLevel2[0] || Wohncontainer.preis < temp_baukosten_lvl2){
+                    if(missionsTeilLevel2[0] || Feld.preis < temp_baukosten_lvl2){
                         hacken1.SetActive(true);
                         zwischenziel1 = 1;
                         missionsTeilLevel2[0] = true;
                     }
-                    if(missionsTeilLevel2[1] || Wohncontainer.betten > temp_bettenzahl_lvl2){
+                    if(missionsTeilLevel2[1] || Feld.arbeiterzahl < temp_arbeiterzahl_lvl2){
                         hacken2.SetActive(true);
-                        zwischenziel2 = 1;
-                        missionsTeilLevel2[1] = true; 
+                        zwischenziel2 = 1; 
+                        missionsTeilLevel2[1] = true;
                     }
                     if(missionsTeilLevel2[2] || Feld.neuErtrag > temp_ertrag_lvl2){
                         hacken3.SetActive(true);
                         zwischenziel3 = 1;
                         missionsTeilLevel2[2] = true;
                     }
-                    if(missionsTeilLevel2[3] || Feld.arbeiterzahl < temp_arbeiterzahl_lvl2){
+                    /*
+                    * Hier noch Prüfen, ob die Station mit SNr. 2 verbessert wurde.
+
+                    if(missionsTeilLevel2[3] || Testing.forschungsprojekte[1].kosten){
                         hacken4.SetActive(true);
                         zwischenziel4 = 1; 
                         missionsTeilLevel2[3] = true;
                     }
-                    if(zwischenziel1==1 && zwischenziel2==1 && zwischenziel3==1 && zwischenziel4==1){
+                    */
+                    
+                    if(zwischenziel1==1 && zwischenziel2==1 && zwischenziel3==1 /*  && zwischenziel4==1  */){
                         KreuzHacken();
                         missionsLevel[2] = true;
                     }

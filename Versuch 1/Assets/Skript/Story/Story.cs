@@ -98,7 +98,7 @@ public class Story : MonoBehaviour
     void Update()
     {
         //Prüfe auf erfüllte Level
-        //checkLevel(); 
+        checkLevel(); 
     }
 
     public void allesOff()
