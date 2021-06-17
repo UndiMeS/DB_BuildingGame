@@ -49,12 +49,12 @@ public class Story : MonoBehaviour
     Button bStationsprojekte;
     public GameObject buttonHilfe;
     Button bHilfe;
+    public GameObject buttonNeuesProjekt;
+    Button bNeuesProjekt;
 
     //Level 5 Objecte
     public GameObject buttonProjektVerbessern;
     Button bVerbessern;
-    public GameObject buttonNeuesProjekt;
-    Button bNeuesProjekt;
     public GameObject buttonWohncontainerForschen;
     Button bWohncontainerForschen;
     public GameObject buttonFeldForschen;
@@ -133,14 +133,14 @@ public class Story : MonoBehaviour
         bStationsprojekte.interactable = false;
         bHilfe = buttonHilfe.GetComponent<Button>();
         bHilfe.interactable = false;
+        bWohncontainerForschen = buttonWohncontainerForschen.GetComponent<Button>();
+        bWohncontainerForschen.interactable = false;
 
         //Level 5
         bVerbessern = buttonProjektVerbessern.GetComponent<Button>();
         bVerbessern.interactable = false;
         bNeuesProjekt = buttonNeuesProjekt.GetComponent<Button>();
         bNeuesProjekt.interactable = false;
-        bWohncontainerForschen = buttonWohncontainerForschen.GetComponent<Button>();
-        bWohncontainerForschen.interactable = false;
         bFeldForschen = buttonFeldForschen.GetComponent<Button>();
         bFeldForschen.interactable = false;        
 
@@ -202,13 +202,13 @@ public class Story : MonoBehaviour
             bAlleProjekte.interactable = true;
             bStationsprojekte.interactable = true;
             bHilfe.interactable = true;
+            bWohncontainerForschen.interactable = true;
+            bNeuesProjekt.interactable = true;
         }
         if(lvl[5])
         {
             //Debug.Log("Level 5 korrekt");
             bVerbessern.interactable = true;
-            bNeuesProjekt.interactable = true;
-            bWohncontainerForschen.interactable = true;
             bFeldForschen.interactable = true;
         }
         if(lvl[6])

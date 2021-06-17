@@ -333,6 +333,7 @@ public class ERAufgabe : MonoBehaviour
                 kreisKreuz.SetActive(false);
                 missionKreuz.SetActive(true);
                 missionHacken.SetActive(false);
+                Debug.Log("checkcheckcheck " +Story.level);
             }
 
 
