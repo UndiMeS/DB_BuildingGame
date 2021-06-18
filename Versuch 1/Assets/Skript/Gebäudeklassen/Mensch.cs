@@ -35,7 +35,7 @@ public class Mensch
     private string randomGeburtstag()
     {        
         var rand = new System.Random();
-        string bday = rand.Next(1, 28) + "." + rand.Next(1, 12) +"."+ rand.Next(1970, 2015);
+        string bday = rand.Next(1, 28) + "." + rand.Next(1, 12) +"."+ rand.Next(1970, 2003);
         return bday;
     }
 }

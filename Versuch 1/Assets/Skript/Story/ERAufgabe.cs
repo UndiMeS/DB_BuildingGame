@@ -84,7 +84,7 @@ public class ERAufgabe : MonoBehaviour
     //EM1_EM2 = {Realtionsnamensvarianten}#
     //EM1_EM2_Eig = {EM1, EM2, EM2_schwach(1 ja), Kard1, Kard2}
 
-    private string[] astronaut_forschungsstation = { "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
+    private string[] astronaut_forschungsstation = { "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für","istverantwortlich","istVerantwortlich","ist verantwortlich" };
     private string[] astronaut_forschungsstation_Eig = { "A", "S", "0", "1", "1" };
 
     private string[] wohncontainer_astronaut = { "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt" };
