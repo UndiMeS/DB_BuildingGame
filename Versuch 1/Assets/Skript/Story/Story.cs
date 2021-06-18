@@ -91,7 +91,7 @@ public class Story : MonoBehaviour
     void Awake()
     {
         //folgendes auskommentieren, um sofort auf alles zugriff zu haben.
-        allesOff();
+        //allesOff();
         checkLevel();
     }  
 
