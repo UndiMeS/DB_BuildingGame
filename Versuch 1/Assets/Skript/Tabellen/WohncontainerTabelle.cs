@@ -94,24 +94,6 @@ public class WohncontainerTabelle : MonoBehaviour
         int i = 0;
         foreach (Mensch mensch in Testing.menschen)
         {
-<<<<<<< Updated upstream
-            foreach (Mensch mensch in wohn.bewohner)
-            {
-                alleScrollContent.transform.position.Set(0, 0, 0);
-                GameObject zeile = Instantiate(prefabTabelle, alleScrollContent.transform);
-                Vector3 pos = i * new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y + 4, 0);
-                zeile.transform.localPosition = pos;
-                zeilenListe.Add(zeile);
-
-                Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, mensch.containerNummer);
-                Utilitys.TextInTMP(zeile.transform.GetChild(1).gameObject, mensch.name);
-                Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, mensch.geburtstag);
-                Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, mensch.aufgabe);
-                Utilitys.TextInTMP(zeile.transform.GetChild(4).gameObject, mensch.anreisegebuehr);
-
-                i++;
-            }
-=======
             alleScrollContent.transform.position.Set(0, 0, 0);
             GameObject zeile = Instantiate(prefabTabelle, alleScrollContent.transform);
             Vector3 pos = i * new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y + 4, 0);
@@ -125,7 +107,6 @@ public class WohncontainerTabelle : MonoBehaviour
             Utilitys.TextInTMP(zeile.transform.GetChild(4).gameObject, mensch.anreisegebuehr);
 
             i++;
->>>>>>> Stashed changes
         }
         prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
 

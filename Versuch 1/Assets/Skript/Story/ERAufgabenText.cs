@@ -10,7 +10,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     private string[] aufgabe = { 
                     /*LvL 0*/  "Um den Mars zu besiedeln, müssen Astronautinnen und Astronauten eingeflogen werden. Damit diese auf dem Planeten leben können, werden Wohncontainer benötigt. Dafür wird die Entitymenge Wohncontainer angelegt. Alle Wohncontainer haben gemeinsame Eigenschaften, die Attribute. Sie haben bestimmte Baukosten eine genaue Bettenzahl, die die Menge an beherbergbaren Astronautinnen und Astronauten ausdrückt und ein Attribut für noch freie Betten. Jeder Container hat in der Siedlung eine eindeutige Containernummer, der Primärschlüssel." ,
                     /*LvL 1*/  "Astronautinnen und Astronauten wohnen in (wohntIn) Wohncontainer. Jeder Astronaut ist genau einem Container zugeordnet und teilt sich diesen mit anderen (n:1). Wichtig ist, dass nur Astronauten eingeflogen werden können, wenn ausreichend Wohncontainer existieren (schwache Entitymenge). Alle Astronauten haben einen Namen und ein Geburtstag, worüber man sie eindeutig bestimmen kann. Für die Anreise fallen bestimmt Anreisegebühren an und jeder hat eine bestimmte Aufgabe in der Siedlung.",
-                    /*LvL 2*/  "Eine Möglichkeit Erträge zu erzielen sind Feldsphären in denen Nahrung angebaut wird. Diese haben bestimmte Baukosten, eine genaue Arbeiterzahl und einen Ertrag, den du alle 5 Sol erhältst. Mehrere Astronauten arbeiten in einer Feldsphäre, wobei ein Astronaut nicht auf mehreren Feldsphären gleichzeitig arbeiten kann.",
+                    /*LvL 2*/  "Eine Möglichkeit Erträge zu erzielen sind Feldsphären in denen Nahrung angebaut wird. Diese haben bestimmte Baukosten, eine genaue Arbeiterzahl und einen Ertrag, den du alle 5 Sol erhältst. Mehrere Astronauten arbeiten in einer Feldsphäre, wobei ein Astronaut nicht auf mehreren Feldsphären gleichzeitig arbeiten kann. Jede Feldsphäre kann eindeutig über ihre Feldnummer bestimmt werden.",
                     /*LvL 3*/  "Die Siedlung dient vor allem der Forschung, um Sphären und Wohncontainer zu verbessern. Dafür werden Forschungsstationen gebaut. Eine Forschungsstation hat eine eindeutige Stationsnummer, Baukosten und eine bestimmte Spezialisierung. Diese gibt an, für welchen Objekttyp in der Forschungsstation geforscht wird. Für eine Forschungsstation ist genau ein Astronaut verantwortlich.",
                     /*LvL 4*/  "Bislang können in der Siedlung Wohncontainer und Feldsphären erbaut werden. Forschungsprojekte verbessern die Forschungsmerkmale immer für alle zukünftig gebauten Objekte. Ein Forschungsprojekt verbessert daher mehrere Wohncontainer und Feldsphären. Zugleich können mehrere Projekte an einer Feldsphäre, bzw. Wohncontainer forschen. Neben der Verbesserung von Containern und Sphären kann einmalig ein Forschungsprojekt durchgeführt werden, dass an neuen Methoden forscht und so für alle zukünftigen Forschungsprojekte der jeweiligen Station die Projektkosten verbessert. Diese Möglichkeit betrifft jede errichtete Forschungsstation.",
                     /*LvL 5*/  "Bislang können in der Siedlung neben Wohncontainer auch Feldsphären erbaut werden. Ein Forschungsprojekt verbessert daher auch mehrere Feldsphären. Zugleich können mehrere Projekte an einer Feldsphäre forschen. Neben der Verbesserung von Containern und Sphären kann einmalig ein Forschungsprojekt durchgeführt werden, dass an neuen Methoden forscht und so für alle zukünftigen Forschungsprojekte der jeweiligen Station die Projektkosten verbessert. Diese Möglichkeit betrifft jede errichtete Forschungsstation.",
@@ -20,10 +20,10 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                     /*LvL Ziel*/   //ZIELAUFGABE FEHLT NOCH
                                 };
     public  List<string>[] entitys = {
-                 /*LvL 0*/ new List<string> { "Wohncontainer","Jeder" },
-                 /*LvL 1*/ new List<string>{"Astronautinnen", "Astronauten", "Astronaut"},
+                 /*LvL 0*/ new List<string>{"Wohncontainer" },
+                 /*LvL 1*/ new List<string>{"Astronautinnen", "Astronauten", "Astronaut", "existieren", "schwache","Entitymenge"},
                  /*LvL 2*/ new List<string>{"Feldsphären"},
-                 /*LvL 3*/ new List<string>{},
+                 /*LvL 3*/ new List<string>{"Forschungsstationen","Forschungsstation"},
                  /*LvL 4*/ new List<string>{},
                  /*LvL 5*/ new List<string>{},
                  /*LvL 6*/ new List<string>{},
@@ -31,10 +31,10 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     };
 
     private List<string>[] attribute = {
-                /*LvL 0*/ new List<string> {"Baukosten","freie", "Betten", "Bettenzahl", "Containernummer"},
-                 /*LvL 1*/ new List<string>{},
-                 /*LvL 2*/ new List<string>{},
-                 /*LvL 3*/ new List<string>{},
+                /*LvL 0*/ new List<string> {"Baukosten", "freie", "Betten", "Bettenzahl", "Containernummer" },
+                 /*LvL 1*/ new List<string>{"Namen","Geburtstag","Anreisegebühren","Aufgabe"},
+                 /*LvL 2*/ new List<string>{"Baukosten","Arbeiterzahl","Ertrag","Feldnummer"},
+                 /*LvL 3*/ new List<string>{"Stationsnummer","Baukosten","Spezialisierung"},
                  /*LvL 4*/ new List<string>{},
                  /*LvL 5*/ new List<string>{},
                  /*LvL 6*/ new List<string>{},
@@ -43,9 +43,9 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
 
     private List<string>[] beziehungen = {
                  /*LvL 0*/ new List<string> {  },
-                 /*LvL 1*/ new List<string>{},
-                 /*LvL 2*/ new List<string>{},
-                 /*LvL 3*/ new List<string>{},
+                 /*LvL 1*/ new List<string>{"wohnt", "wohntIn"},
+                 /*LvL 2*/ new List<string>{"arbeiten"},
+                 /*LvL 3*/ new List<string>{"verantwortlich"},
                  /*LvL 4*/ new List<string>{},
                  /*LvL 5*/ new List<string>{},
                  /*LvL 6*/ new List<string>{},
@@ -54,9 +54,9 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
 
     private List<string>[] kardinalitaet = {
                  /*LvL 0*/ new List<string> {  },
-                 /*LvL 1*/ new List<string>{},
-                 /*LvL 2*/ new List<string>{},
-                 /*LvL 3*/ new List<string>{},
+                 /*LvL 1*/ new List<string>{"n:1","jeder", "anderen","genau","einen"},
+                 /*LvL 2*/ new List<string>{"Mehrere","ein"},
+                 /*LvL 3*/ new List<string>{"genau","ein","eine"},
                  /*LvL 4*/ new List<string>{},
                  /*LvL 5*/ new List<string>{},
                  /*LvL 6*/ new List<string>{},
