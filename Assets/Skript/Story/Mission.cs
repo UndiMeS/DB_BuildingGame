@@ -7,6 +7,12 @@ using UnityEngine.UI;
 public class Mission : MonoBehaviour
 {
     //Je Missionslevel ein Bool
+
+
+
+
+
+    //Test nummer zwei
     public static bool[] missionsLevel = new bool[] {false,false,false,false,false,false,false,false, false};
 
     //Je Teilziel ein Bool
