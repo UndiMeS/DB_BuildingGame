@@ -89,14 +89,14 @@ public class ERErstellung : MonoBehaviour
             modellObjekte.Add(temp);
             changeSelectedGameobjekt(temp);
             selectedGameObjekt.transform.SetParent(erModellflaeche.transform);
-            if (selectedGameObjekt.CompareTag("Attribut") && lastselected.CompareTag("Entitaet"))
+            if (selectedGameObjekt.CompareTag("Attribut") && lastselected!=null&& lastselected.CompareTag("Entitaet"))
             {
                 selectedGameObjekt.transform.SetParent(lastselected.transform);
                 zeichneLinie(lastselected, selectedGameObjekt);
                 lastselected.GetComponent<Entitaet>().attribute.Add(selectedGameObjekt);
                 selectedGameObjekt.GetComponent<Attribut>().vater = lastselected;
             }
-            else if (selectedGameObjekt.CompareTag("Attribut") && lastselected.CompareTag("Attribut"))
+            else if (selectedGameObjekt.CompareTag("Attribut") && lastselected != null && lastselected.CompareTag("Attribut"))
             {
                 GameObject vater = lastselected.GetComponent<Attribut>().vater;
                 vater.GetComponent<Entitaet>().attribute.Add(selectedGameObjekt);
