@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -79069,6 +79069,7 @@ MonoBehaviour:
   ddSchwach: {fileID: 314966741}
   dd1: {fileID: 2138949200}
   dd2: {fileID: 1967986360}
+  linienordner: {fileID: 163748123}
   kamerakontroller: {fileID: 648121697}
   schwachEntSelected: {fileID: 21300000, guid: a0e76b41ffc740645ab49ef8455614ad, type: 3}
   schwachEnt: {fileID: 21300000, guid: 170001f73eb248a41a6661815a5823bc, type: 3}
@@ -87522,7 +87523,7 @@ MonoBehaviour:
   gebaeude: {fileID: 2349848642799645956, guid: 7c2d5c99bda9ac44ea45a7f6177fabcf,
     type: 3}
   knopfGruppe: {fileID: 199388794}
-  hintergrund: {fileID: 0}
+  hintergrund: {fileID: 1682569808}
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
 --- !u!114 &1682569808
@@ -87534,7 +87535,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1682569805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -87545,16 +87546,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 278080e2871ef4a44bd21a7295e67b52, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_Texture: {fileID: 2800000, guid: 278080e2871ef4a44bd21a7295e67b52, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!222 &1682569809
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -96780,8 +96778,8 @@ MonoBehaviour:
   buttonAlleProjekte: {fileID: 1710119733}
   buttonStationsprojekte: {fileID: 360976228}
   buttonHilfe: {fileID: 324275057}
-  buttonProjektVerbessern: {fileID: 2142688164}
   buttonNeuesProjekt: {fileID: 40919614}
+  buttonProjektVerbessern: {fileID: 2142688164}
   buttonWohncontainerForschen: {fileID: 2038552453}
   buttonFeldForschen: {fileID: 505274722}
   transparentStallcontainer: {fileID: 411468833}

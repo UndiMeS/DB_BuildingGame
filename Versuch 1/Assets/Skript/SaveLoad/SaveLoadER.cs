@@ -20,6 +20,7 @@ public class SaveLoadER : MonoBehaviour
     public GameObject ddSchwach;
     public GameObject dd1;
     public GameObject dd2;
+    public GameObject linienordner;
 
     public KameraKontroller kamerakontroller;
 
@@ -81,6 +82,7 @@ public class SaveLoadER : MonoBehaviour
                 GameObject game = Instantiate(prefabBeziehung, erModell.transform);
 
                 game.GetComponent<Beziehung>().setWerte(bez);
+                game.GetComponent<Beziehung>().setLinienordner(linienordner);
                 foreach (GameObject ent in ERErstellung.modellObjekte)
                 {
                     if (ent.CompareTag("Entitaet") && ent.GetComponent<Entitaet>().instanceID == game.GetComponent<Beziehung>().objekt1ID)
@@ -111,6 +113,7 @@ public class SaveLoadER : MonoBehaviour
                 game.GetComponent<ERObjekt>().dd1 = dd1;
                 game.GetComponent<ERObjekt>().dd2 = dd2;
                 game.GetComponent<ERObjekt>().dd3 = ddSchwach;
+                
 
                 game.transform.localScale = new Vector3(0.015f, 0.015f, 0.015f);
                 game.transform.position = new Vector3(game.GetComponent<Beziehung>().x, game.GetComponent<Beziehung>().y);

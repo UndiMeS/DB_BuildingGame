@@ -19,48 +19,48 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                                 
                     /*LvL Ziel*/   //ZIELAUFGABE FEHLT NOCH
                                 };
-    private List<int>[] entitys = {
-                 /*LvL 0*/ new List<int> { 17,23,26 },
-                 /*LvL 1*/ new List<int>{0,2,6,3,24,35},
-                 /*LvL 2*/ new List<int>{6},
-                 /*LvL 3*/ new List<int>{},
-                 /*LvL 4*/ new List<int>{},
-                 /*LvL 5*/ new List<int>{},
-                 /*LvL 6*/ new List<int>{},
-                 /*LvL 7*/ new List<int>{},
+    private List<string>[] entitys = {
+                 /*LvL 0*/ new List<string> { "Wohncontainer" },
+                 /*LvL 1*/ new List<string>{"Astronautinnen", "Astronauten", "Astronaut"},
+                 /*LvL 2*/ new List<string>{"Feldsphären"},
+                 /*LvL 3*/ new List<string>{},
+                 /*LvL 4*/ new List<string>{},
+                 /*LvL 5*/ new List<string>{},
+                 /*LvL 6*/ new List<string>{},
+                 /*LvL 7*/ new List<string>{},
     };
 
-    private List<int>[] attribute = {
-                /*LvL 0*/ new List<int> {35, 38,52,51,61 },
-                 /*LvL 1*/ new List<int>{38,41,53,60},
-                 /*LvL 2*/ new List<int>{15,18,21},
-                 /*LvL 3*/ new List<int>{},
-                 /*LvL 4*/ new List<int>{},
-                 /*LvL 5*/ new List<int>{},
-                 /*LvL 6*/ new List<int>{},
-                 /*LvL 7*/ new List<int>{},
+    private List<string>[] attribute = {
+                /*LvL 0*/ new List<string> {"Baukosten", "freie Betten" },
+                 /*LvL 1*/ new List<string>{},
+                 /*LvL 2*/ new List<string>{},
+                 /*LvL 3*/ new List<string>{},
+                 /*LvL 4*/ new List<string>{},
+                 /*LvL 5*/ new List<string>{},
+                 /*LvL 6*/ new List<string>{},
+                 /*LvL 7*/ new List<string>{},
     };
 
-    private List<int>[] beziehungen = {
-                 /*LvL 0*/ new List<int> {  },
-                 /*LvL 1*/ new List<int>{3,1},
-                 /*LvL 2*/ new List<int>{30},
-                 /*LvL 3*/ new List<int>{},
-                 /*LvL 4*/ new List<int>{},
-                 /*LvL 5*/ new List<int>{},
-                 /*LvL 6*/ new List<int>{},
-                 /*LvL 7*/ new List<int>{},
+    private List<string>[] beziehungen = {
+                 /*LvL 0*/ new List<string> {  },
+                 /*LvL 1*/ new List<string>{},
+                 /*LvL 2*/ new List<string>{},
+                 /*LvL 3*/ new List<string>{},
+                 /*LvL 4*/ new List<string>{},
+                 /*LvL 5*/ new List<string>{},
+                 /*LvL 6*/ new List<string>{},
+                 /*LvL 7*/ new List<string>{},
     };
 
-    private List<int>[] kardinalitaet = {
-                 /*LvL 0*/ new List<int> {  },
-                 /*LvL 1*/ new List<int>{8,9,17},
-                 /*LvL 2*/ new List<int>{28,32},
-                 /*LvL 3*/ new List<int>{},
-                 /*LvL 4*/ new List<int>{},
-                 /*LvL 5*/ new List<int>{},
-                 /*LvL 6*/ new List<int>{},
-                 /*LvL 7*/ new List<int>{},
+    private List<string>[] kardinalitaet = {
+                 /*LvL 0*/ new List<string> {  },
+                 /*LvL 1*/ new List<string>{},
+                 /*LvL 2*/ new List<string>{},
+                 /*LvL 3*/ new List<string>{},
+                 /*LvL 4*/ new List<string>{},
+                 /*LvL 5*/ new List<string>{},
+                 /*LvL 6*/ new List<string>{},
+                 /*LvL 7*/ new List<string>{},
     };
 
     private TextMeshProUGUI m_TextMeshPro;
@@ -79,7 +79,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         int index = TMP_TextUtilities.FindIntersectingWord(m_TextMeshPro, eventData.position, eventData.enterEventCamera);
-        Debug.Log(index);
+        //Debug.Log(index);
         if (index != -1)
         {
             TMP_WordInfo info = m_TextMeshPro.textInfo.wordInfo[index];
@@ -88,8 +88,8 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                 int charIndex = info.firstCharacterIndex + i;
                 int meshIndex = m_TextMeshPro.textInfo.characterInfo[charIndex].materialReferenceIndex;
                 int vertexIndex = m_TextMeshPro.textInfo.characterInfo[charIndex].vertexIndex;
-
-                if (entitys[Story.level].Contains(index))
+                
+                if (entitys[Story.level].Contains(info.GetWord()))
                 {
                     Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
                     vertexColors[vertexIndex + 0] = Color.red;
@@ -97,7 +97,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                     vertexColors[vertexIndex + 2] = Color.red;
                     vertexColors[vertexIndex + 3] = Color.red;
                 }
-                if (attribute[Story.level].Contains(index))
+                if (attribute[Story.level].Contains(info.GetWord()))
                 {
                     Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
                     vertexColors[vertexIndex + 0] = Color.green;
@@ -105,7 +105,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                     vertexColors[vertexIndex + 2] = Color.green;
                     vertexColors[vertexIndex + 3] = Color.green;
                 }
-                if (beziehungen[Story.level].Contains(index))
+                if (beziehungen[Story.level].Contains(info.GetWord()))
                 {
                     Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
                     vertexColors[vertexIndex + 0] = Color.blue;
@@ -113,7 +113,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                     vertexColors[vertexIndex + 2] = Color.blue;
                     vertexColors[vertexIndex + 3] = Color.blue;
                 }
-                if (kardinalitaet[Story.level].Contains(index))
+                if (kardinalitaet[Story.level].Contains(info.GetWord()))
                 {
                     Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
                     vertexColors[vertexIndex + 0] = Color.cyan;
