@@ -7,6 +7,7 @@ public class startIntro : MonoBehaviour
     public GameObject intro;
     public GameObject menu_song;
     public static bool played = false;
+    public GameObject skip_button;
     
     /*
     *   Skrip, damit Introvideo beim Zurückkehren ins hauptmenü aus dem Spiel nicht mehr gespielt wird.
@@ -17,7 +18,7 @@ public class startIntro : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        skip_button.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,6 +29,9 @@ public class startIntro : MonoBehaviour
         }else{
             AudioSource x = menu_song.GetComponent<AudioSource>();
             x.Stop();
+        }
+        if(Input.anyKey){
+            skip_button.SetActive(true);
         }
     }
 

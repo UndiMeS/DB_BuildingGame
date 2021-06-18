@@ -76,7 +76,7 @@ public class Mission : MonoBehaviour
 
     //Missionstexte für Fenster
     private string[][] mission = {                  // "Missionstext", TZ1, TZ2, TZ3, TZ4, Ziel für TZ1, Ziel für TZ2, Ziel für TZ3, Ziel für TZ4
-                                        new string[] { "Um eine Siedlung zu gründen, müssen Astronautinnen und Astronauten eingeflogen werden. Gib weiterhin den Namen des ersten Menschen in der Siedlung ein.\nHinweis: Du kannst dir alle Astronauten im Fenster eines beliebigen Wohncontainer anzeigen lassen!", "Fliege 5 beliebige Astronauten ein.", "Gib den Namen des 1. Menschen der Siedlung an.", "aus", "aus", "5", " ", " ", " " },
+                                        new string[] { "Um eine Siedlung zu gründen, müssen Astronautinnen und Astronauten eingeflogen werden. Gib weiterhin den Namen des ersten Menschen der Siedlung ein.\nHinweis: Du kannst dir alle Astronauten im Fenster eines beliebigen Wohncontainer anzeigen lassen!", "Fliege 5 beliebige Astronauten ein.", "Gib den Namen des Menschen der Siedlung an.", "aus", "aus", "5", " ", " ", " " },
                                         new string[] { "Du kannst nun Feldsphären errichten, die in regelmäßigen Abständen Erträge erwirtschaften. Dafür werden jedoch Feldastronauten benötigt.", "Erreiche einen Ertrag von 200.", "aus", "aus", "aus", "200", "", " ", " " },
                                         new string[] { "Wir können nun auch Feldsphären und Stationen verbessern. Erforsche je eine Verbesserung der Merkmale Baukosten, Arbeiterzahl und Ertrag von Feldsphären. Erforsche gleichzeitig neue Methoden in der Station mit Stationsnummer 2. ", "Verbessere die Baukosten von Feldsphären.", "Verbessere die Arbeiterzahl von Feldsphären.", "Verbessere den Ertrag von Feldsphären.", "Verbessere die Projektkosten von der Station mit SNr. 2.", "", "", "", "" },
                                         new string[] { "Neben Feldsphären können bald auch Weidesphären errichtet werden. Darin werden Tiere bewirtschaftet. Diese leben in Stallcontainern. Genau wie Wohncontainer, sollten auch diese mehr erforscht werden.", "Fliege 8 Tiere ein.", "Gib den Namen des 1. Tier der Seidlung an.", "aus", "Verbessere die Baukosten von Stallcontainern.", "8", "", "", "" },
@@ -380,17 +380,25 @@ public class Mission : MonoBehaviour
                         zwischenziel3 = 1;
                         missionsTeilLevel2[2] = true;
                     }
-                    /*
-                    * Hier noch Prüfen, ob die Station mit SNr. 2 verbessert wurde.
-
-                    if(missionsTeilLevel2[3] || Testing.forschungsprojekte[1].kosten){
+                    if(missionsTeilLevel2[3]){
                         hacken4.SetActive(true);
                         zwischenziel4 = 1; 
                         missionsTeilLevel2[3] = true;
+                        zwischenziel4 = 1;
+                    }else{
+                        foreach(Forschung forschung in Testing.forschungsstationen){
+                            if(forschung.stationsnummer == 2){
+                                foreach(Projekt projekt in forschung.projekte){
+                                    if(projekt.merkmal == "Projektkosten"){
+                                        hacken4.SetActive(true);
+                                        zwischenziel4 = 1; 
+                                        missionsTeilLevel2[3] = true;
+                                    }    
+                                }
+                            }
+                        }
                     }
-                    */
-                    
-                    if(zwischenziel1==1 && zwischenziel2==1 && zwischenziel3==1 /*  && zwischenziel4==1  */){
+                    if(zwischenziel1==1 && zwischenziel2==1 && zwischenziel3==1 && zwischenziel4==1){
                         KreuzHacken();
                         missionsLevel[2] = true;
                     }

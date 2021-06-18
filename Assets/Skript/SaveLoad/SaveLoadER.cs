@@ -20,6 +20,7 @@ public class SaveLoadER : MonoBehaviour
     public GameObject ddSchwach;
     public GameObject dd1;
     public GameObject dd2;
+    public GameObject linienordner;
 
     public KameraKontroller kamerakontroller;
 
@@ -70,7 +71,7 @@ public class SaveLoadER : MonoBehaviour
     private void ladeBeziehungen()
     {
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Beziehungen.json");
-        json = json.Remove(json.Length - 1);//] löschen
+        json = json.Remove(json.Length - 1);//] lï¿½schen
 
         string[] split = json.Split('{');
         for (int i = 1; i < split.Length - 1; i++)
@@ -81,6 +82,7 @@ public class SaveLoadER : MonoBehaviour
                 GameObject game = Instantiate(prefabBeziehung, erModell.transform);
 
                 game.GetComponent<Beziehung>().setWerte(bez);
+                game.GetComponent<Beziehung>().setLinienordner(linienordner);
                 foreach (GameObject ent in ERErstellung.modellObjekte)
                 {
                     if (ent.CompareTag("Entitaet") && ent.GetComponent<Entitaet>().instanceID == game.GetComponent<Beziehung>().objekt1ID)
@@ -112,6 +114,7 @@ public class SaveLoadER : MonoBehaviour
                 game.GetComponent<ERObjekt>().dd2 = dd2;
                 game.GetComponent<ERObjekt>().dd3 = ddSchwach;
 
+
                 game.transform.localScale = new Vector3(0.015f, 0.015f, 0.015f);
                 game.transform.position = new Vector3(game.GetComponent<Beziehung>().x, game.GetComponent<Beziehung>().y);
 
@@ -123,7 +126,7 @@ public class SaveLoadER : MonoBehaviour
     private void ladeAttribute()
     {
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Attribut.json");
-        json = json.Remove(json.Length - 1);//] löschen
+        json = json.Remove(json.Length - 1);//] lï¿½schen
 
         string[] split = json.Split('{');
         for (int i = 1; i < split.Length - 1; i++)
@@ -173,7 +176,7 @@ public class SaveLoadER : MonoBehaviour
         ERErstellung.modellObjekte.Clear();
 
         string json = File.ReadAllText(Application.dataPath + "/SaveState/Entity.json");
-        json = json.Remove(json.Length - 1);//] löschen
+        json = json.Remove(json.Length - 1);//] lï¿½schen
 
         string[] split = json.Split('{');
         for (int i = 1; i < split.Length - 1; i++)
