@@ -13,7 +13,7 @@ using UnityEngine;
 */
 public class ERAufgabe : MonoBehaviour
 {
-    public bool testModus = true;
+    
 
     //Welche EM je Level
     private string[][] listeEntity = {
@@ -26,9 +26,6 @@ public class ERAufgabe : MonoBehaviour
                                         new string[] { "Nutztier", "Stallcontainer" },  /*LvL 6*/
                                         new string[] { "Weidesphäre" },                 /*LvL 7*/   
                                     };
-
-    //in diesen Lvl befinden sich schwache Entitys, muss an erster Stelle von listeEntity stehen
-    private bool[] listeSchwacheEntity = { false, true, false, false, true, false, true, false };
 
     //Welche Attribute je EM
     private string[][] wohncontainer = {
@@ -84,7 +81,7 @@ public class ERAufgabe : MonoBehaviour
     //EM1_EM2 = {Realtionsnamensvarianten}#
     //EM1_EM2_Eig = {EM1, EM2, EM2_schwach(1 ja), Kard1, Kard2}
 
-    private string[] astronaut_forschungsstation = { "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für","istverantwortlich","istVerantwortlich","ist verantwortlich" };
+    private string[] astronaut_forschungsstation = { "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
     private string[] astronaut_forschungsstation_Eig = { "A", "S", "0", "1", "1" };
 
     private string[] wohncontainer_astronaut = { "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt" };
@@ -141,11 +138,11 @@ public class ERAufgabe : MonoBehaviour
     public string[][][] listeBeziehungsEigenschaften = new string[8][][];
 
     //Anzahl der Elemente pro Level      lvl{ 0, 1, 2, 3, 4, 5, 6, 7 }
-    private int[] entitysRichtig = { 1, 1, 1, 1, 1, 0, 2, 1 };
-    private int[] attributeRichtig = { 0, 0, 0, 0, 0, 0, 0, 0 };//{ 4, 4, 4, 3, 5, 0, 7, 5 };
-    private int[] primaerschluesselRichtig = { 0, 0, 0, 0, 0, 0, 0, 0 };//{ 1, 2, 1, 1, 2, 0, 3, 1 };
-    private int[] beziehungenRichtig = { 0, 1, 1, 1, 3, 2, 2, 3 };
-    private int[] kardRichtig = { 0, 2, 2, 2, 6, 4, 4, 6 }; //2 pro Relation
+    private int[] entitysRichtig =          { 1, 1, 1, 1, 1, 0, 2, 1 };
+    private int[] attributeRichtig =        { 0, 0, 0, 0, 0, 0, 0, 0 };//{ 4, 4, 4, 3, 5, 0, 7, 5 };
+    private int[] primaerschluesselRichtig ={ 0, 0, 0, 0, 0, 0, 0, 0 };//{ 1, 2, 1, 1, 2, 0, 3, 1 };
+    private int[] beziehungenRichtig =      { 0, 1, 1, 1, 3, 2, 2, 3 };
+    private int[] kardRichtig =             { 0, 2, 2, 2, 6, 4, 4, 6 }; //2 pro Relation
 
     private int[] entitysHat;
     private int[] attributeHat;
@@ -175,7 +172,7 @@ public class ERAufgabe : MonoBehaviour
     public GameObject missionHacken;
     public GameObject missionKreuz;
 
-    private bool firsttime = true;
+    private bool firsttime=true;
 
     public ERAufgabenText ERAufgabenText;
 
@@ -186,74 +183,6 @@ public class ERAufgabe : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        //Testen:
-        if (testModus)
-        {
-            Debug.Log("TESTMODUS:");
-               Debug.Log("Wohncontainer - W; Astronaut - A; Feldsphäre - F; Forschungsstation - S; Projekt - P; Nutztiere - N; Stallcontainer -St; Weide - We");
-            listeEntity = new string[][]{
-                                        new string[] { "W" },               /*LvL 0*/
-                                        new string[] { "A" },                   /*LvL 1*/
-                                        new string[] { "F" },                  /*LvL 2*/
-                                        new string[] { "S" },           /*LvL 3*/
-                                        new string[] { "P" },           /*LvL 4*/
-                                        new string[] {  },                              /*LvL 5*/
-                                        new string[] { "N", "St" },  /*LvL 6*/
-                                        new string[] { "We" },                 /*LvL 7*/   
-                                    };
-            attributeRichtig = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };//{ 4, 4, 4, 3, 5, 0, 7, 5 };
-            primaerschluesselRichtig = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };//{ 1, 2, 1, 1, 2, 0, 3, 1 };
-
-            astronaut_forschungsstation_Eig = new string[] { "A", "S", "0", "1", "1" };
-            wohncontainer_astronaut_Eig = new string[] { "W", "A", "1", "n", "1" };
-            astronaut_forschungsprojekt_Eig = new string[] { "A", "P", "0", "1", "n" };
-            astronaut_feldsphaere_Eig = new string[] { "A", "F", "0", "1", "n" };
-            astronaut_weidesphaere_Eig = new string[] { "A", "We", "0", "1", "n" };
-            stallcontainer_nutztier_Eig = new string[] { "St", "N", "1", "n", "1" };
-            weidesphaere_nutztier_Eig = new string[] { "We", "N", "0", "n", "1" };
-            forschungsprojekt_wohncontainer_Eig = new string[] { "P", "W", "0", "n", "n" };
-            forschungsprojekt_feldsphaere_Eig = new string[] { "P", "F", "0", "n", "n" };
-            forschungsprojekt_stallcontainer_Eig = new string[] { "P", "St", "0", "n", "n" };
-            forschungsprojekt_weidesphaere_Eig = new string[] { "P", "We", "0", "n", "n" };
-            forschungsprojekt_forschungsprojekt_Eig = new string[] { "P", "P", "0", "1", "n" };
-            forschungsstation_forschungsprojekt_Eig = new string[] { "S", "P", "1", "n", "1" };
-
-            anzahlObjekte = new int[]{ 1, 2, 2, 2, 4, 2, 4, 4 }; //{ 5, 6, 6, 5, 9, 2, 11, 9 };
-        }
-        else
-        {
-            Debug.Log("TESTMODUS ausgeschalten");
-            listeEntity = new string[][]{
-                                        new string[] { "Wohncontainer" },               /*LvL 0*/
-                                        new string[] { "Astronaut" },                   /*LvL 1*/
-                                        new string[] { "Feldsphäre" },                  /*LvL 2*/
-                                        new string[] { "Forschungsstation" },           /*LvL 3*/
-                                        new string[] { "Forschungsprojekt" },           /*LvL 4*/
-                                        new string[] {  },                              /*LvL 5*/
-                                        new string[] { "Nutztier", "Stallcontainer" },  /*LvL 6*/
-                                        new string[] { "Weidesphäre" },                 /*LvL 7*/   
-                                    };
-            attributeRichtig = new int[] { 4, 4, 4, 3, 5, 0, 7, 5 };
-            primaerschluesselRichtig = new int[] { 1, 2, 1, 1, 2, 0, 3, 1 };
-
-            astronaut_forschungsstation_Eig = new string[] { "Astronaut", "Forschungsstation", "0", "1", "1" };
-            wohncontainer_astronaut_Eig = new string[] { "Wohncontainer", "Astronaut", "1", "n", "1" };
-            astronaut_forschungsprojekt_Eig = new string[] { "Astronaut", "Forschungsprojekt", "0", "1", "n" };
-            astronaut_feldsphaere_Eig = new string[] { "Astronaut", "Feldsphäre", "0", "1", "n" };
-            astronaut_weidesphaere_Eig = new string[] { "Astronaut", "Weidesphäre", "0", "1", "n" };
-            stallcontainer_nutztier_Eig = new string[] { "Stallcontainer", "Nutztier", "1", "n", "1" };
-            weidesphaere_nutztier_Eig = new string[] { "Weidesphäre", "Nutztier", "0", "n", "1" };
-            forschungsprojekt_wohncontainer_Eig = new string[] { "Forschungsprojekt", "Wohncontainer", "0", "n", "n" };
-            forschungsprojekt_feldsphaere_Eig = new string[] { "Forschungsprojekt", "Feldsphäre", "0", "n", "n" };
-            forschungsprojekt_stallcontainer_Eig = new string[] { "Forschungsprojekt", "Stallcontainer", "0", "n", "n" };
-            forschungsprojekt_weidesphaere_Eig = new string[] { "Forschungsprojekt", "Weidesphäre", "0", "n", "n" };
-            forschungsprojekt_forschungsprojekt_Eig = new string[] { "Forschungsprojekt", "Forschungsprojekt", "0", "1", "n" };
-            forschungsstation_forschungsprojekt_Eig = new string[] { "Forschungsstation", "Forschungsprojekt", "1", "n", "1" };
-
-            anzahlObjekte = new int[] { 5, 6, 6, 5, 9, 2, 11, 9 };
-        }
-
-
         // Level 0
         listeAttribute[0] = new string[][][] { wohncontainer };
         listeBeziehungen[0] = new string[0][];
@@ -273,15 +202,15 @@ public class ERAufgabe : MonoBehaviour
         // Level 4
         listeAttribute[4] = new string[][][] { forschungsprojekt };
         listeBeziehungen[4] = new string[][] { astronaut_forschungsprojekt, forschungsstation_forschungsprojekt, forschungsprojekt_wohncontainer };
-        listeBeziehungsEigenschaften[4] = new string[][] { astronaut_forschungsprojekt_Eig, forschungsstation_forschungsprojekt_Eig, forschungsprojekt_wohncontainer_Eig };
+        listeBeziehungsEigenschaften[4] = new string[][] { astronaut_forschungsprojekt_Eig, forschungsstation_forschungsprojekt_Eig, forschungsprojekt_wohncontainer_Eig};
         // Level 5
         listeAttribute[5] = new string[0][][];
         listeBeziehungen[5] = new string[][] { forschungsprojekt_feldsphaere, forschungsprojekt_forschungsprojekt };
         listeBeziehungsEigenschaften[5] = new string[][] { forschungsprojekt_feldsphaere_Eig, forschungsprojekt_forschungsprojekt_Eig };
         // Level 6
         listeAttribute[6] = new string[][][] { nutztier, stallcontainer };
-        listeBeziehungen[6] = new string[][] { stallcontainer_nutztier, forschungsprojekt_stallcontainer };
-        listeBeziehungsEigenschaften[6] = new string[][] { stallcontainer_nutztier_Eig, forschungsprojekt_stallcontainer_Eig };
+        listeBeziehungen[6] = new string[][] { stallcontainer_nutztier, forschungsprojekt_stallcontainer};
+        listeBeziehungsEigenschaften[6] = new string[][] { stallcontainer_nutztier_Eig,forschungsprojekt_stallcontainer_Eig };
         // Level 7
         listeAttribute[7] = new string[][][] { weidespaehre };
         listeBeziehungen[7] = new string[][] { forschungsprojekt_weidesphaere, weidesphaere_nutztier, astronaut_weidesphaere };
@@ -303,7 +232,7 @@ public class ERAufgabe : MonoBehaviour
             //wenn die Mission erfolgreich absolviert wurde, kann wieder im ER gebastelt werden und es wird chckObjekte() ausgeführt
             if (missionCheck)
             {
-                bottomLeiste.SetActive(true);
+                bottomLeiste.SetActive(true);                
                 aufgabeButton.SetActive(true);
                 checkboxButton.SetActive(true);
                 kreisHacken.SetActive(false);
@@ -314,10 +243,9 @@ public class ERAufgabe : MonoBehaviour
                     checkbox.SetActive(true);
                 }
                 checkObjekte();
-                firsttime = false;
-                //Ist die Mission noch nciht erfüllt, bleibt alles verdeckt.
-            }
-            else
+                firsttime=false;
+            //Ist die Mission noch nciht erfüllt, bleibt alles verdeckt.
+            }else
             {
                 bottomLeiste.SetActive(false);
                 aufgabenFenster.SetActive(false);
@@ -325,7 +253,7 @@ public class ERAufgabe : MonoBehaviour
                 aufgabeButton.SetActive(false);
                 checkboxButton.SetActive(false);
                 firsttime = true;
-            }
+            } 
         }
         else
         {
@@ -372,15 +300,7 @@ public class ERAufgabe : MonoBehaviour
             {
                 if (entity.name.Equals(entityName))
                 {
-                    if (listeSchwacheEntity[Story.level] && listeEntity[Story.level][0] == entityName && entity.GetComponent<Entitaet>().schwach)
-                    {
-                        entitysHat[Story.level]++;
-                    }
-                    else if (!listeSchwacheEntity[Story.level])
-                    {
-                        entitysHat[Story.level]++;
-                    }
-
+                    entitysHat[Story.level]++;
                     checkAttribute(indexEntity, entity);
                 }
             }
@@ -393,29 +313,27 @@ public class ERAufgabe : MonoBehaviour
             //Check Sound wenn alles richtig ist
             AudioSource x = lvl_true.GetComponent<AudioSource>();
             x.Play(0);
-
+            
             //wenn alles richtig ist wird default alles auf aus gesetzt (in Update wird es aber wieder auf true gesetzt, wenn missioncheck == true ist)
             bottomLeiste.SetActive(false);
             aufgabeButton.SetActive(false);
-            checkboxButton.SetActive(false);
+            checkboxButton.SetActive(false); 
             FehlerAnzeige.fehlertext = "Du hast alles richtig gemacht!";
             Story.lvl[Story.level] = true; //Markiere Level als erfüllt
-
-            if (missionCheck == false)
-            {
+            
+            if(missionCheck == false){
                 kreisHacken.SetActive(true);
                 kreisKreuz.SetActive(false);
             }
 
             //ER bleibt bei dem Level stehen, wo Mission bearbeitet werden kann. Ist Mission erfolgreich (missionCheck = true), dann geht es weiter.
-            if ((Story.level == 0 || Story.level == 1 || Story.level == 2 || Story.level == 3 || Story.level == 4 || Story.level == 5 || Story.level == 6 || Story.level == 7) && missionCheck == true)
-            {
+            if((Story.level == 0 || Story.level == 1|| Story.level == 2 || Story.level == 3 || Story.level == 4 || Story.level == 5 || Story.level == 6 || Story.level == 7 ) && missionCheck == true){
                 missionCheck = false;
                 kreisHacken.SetActive(true);
                 kreisKreuz.SetActive(false);
                 missionKreuz.SetActive(true);
                 missionHacken.SetActive(false);
-                Debug.Log("checkcheckcheck " + Story.level);
+                Debug.Log("checkcheckcheck " +Story.level);
             }
 
 
@@ -426,7 +344,7 @@ public class ERAufgabe : MonoBehaviour
                     gespeicherteObjekte.Add(obj);
                     obj.GetComponent<TMPro.TMP_InputField>().DeactivateInputField();
                     obj.transform.GetChild(1).gameObject.SetActive(false);
-
+                    
                     obj.transform.GetChild(0).gameObject.SetActive(true);
                     Utilitys.TextInTMP(obj.transform.GetChild(0).gameObject, obj.name);
                     if (obj.CompareTag("Attribut") && obj.GetComponent<Attribut>().primaerschluessel)
@@ -509,13 +427,11 @@ public class ERAufgabe : MonoBehaviour
                         {
                             kardinalitaeten &= true;
                         }
-                        else if ((ob1 != null && ob1.Equals(ob12) || ob2 != null && ob2.Equals(ob12)) && Story.level == 5)
-                        {
-                            if (obj.GetComponent<Beziehung>().kard1.Equals("1") && obj.GetComponent<Beziehung>().kard2.Equals("n"))
+                        else if((ob1!=null && ob1.Equals(ob12) || ob2 != null && ob2.Equals(ob12) )&& Story.level==5){
+                            if(obj.GetComponent<Beziehung>().kard1.Equals("1")&& obj.GetComponent<Beziehung>().kard2.Equals("n"))
                             {
                                 kardinalitaeten = true;
-                            }
-                            else if (obj.GetComponent<Beziehung>().kard2.Equals("1") && obj.GetComponent<Beziehung>().kard1.Equals("n"))
+                            }else if (obj.GetComponent<Beziehung>().kard2.Equals("1") && obj.GetComponent<Beziehung>().kard1.Equals("n"))
                             {
                                 kardinalitaeten = true;
                             }
@@ -582,7 +498,7 @@ public class ERAufgabe : MonoBehaviour
                         beziehungenHat[Story.level]++;
                         break;
                     }
-
+                    
                 }
             }
         }
@@ -594,7 +510,7 @@ public class ERAufgabe : MonoBehaviour
         string kard = "";
         if (einsOderZwei == 1)
         {
-            kard = obj.GetComponent<Beziehung>().kard1;
+             kard= obj.GetComponent<Beziehung>().kard1;       
         }
         else
         {
@@ -603,13 +519,13 @@ public class ERAufgabe : MonoBehaviour
 
         if (kard.Equals(listeBeziehungsEigenschaften[Story.level][i][dreiOdervier]))
         {
-
+            
             return true;
         }
-
+        
         else
         {
-
+            
             return false;
         }
     }
@@ -678,8 +594,7 @@ public class ERAufgabe : MonoBehaviour
         if (count == anzahlObjekte[Story.level])
         {
             ausgabe &= true;
-        }
-        else if (count > anzahlObjekte[Story.level])
+        }else if(count > anzahlObjekte[Story.level])
         {
             FehlerAnzeige.fehlertext = "Es sind zu viele Objekte.";
             ausgabe &= false;
@@ -710,9 +625,6 @@ public class ERAufgabe : MonoBehaviour
                         {
                             primaerschluesselHat[Story.level]++;
 
-                        }else if(primarschluessel[Story.level][indexEntity][indexattribute] == 1 || entity.GetComponent<Entitaet>().primaerschluessel.Contains(attribut))
-                        {
-                            primaerschluesselHat[Story.level]--;
                         }
                         schonGefunden = true;
                         break;
