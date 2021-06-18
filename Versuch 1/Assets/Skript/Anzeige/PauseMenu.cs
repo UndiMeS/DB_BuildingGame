@@ -25,7 +25,10 @@ public class PauseMenu : MonoBehaviour
 
 
     // Update is called once per frame
-
+    private void Update()
+    {
+        Debug.Log(SpielIstPausiert);
+    }
 
     public void Weiterspielen()
     {

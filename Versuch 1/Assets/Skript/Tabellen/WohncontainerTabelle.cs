@@ -94,7 +94,6 @@ public class WohncontainerTabelle : MonoBehaviour
         int i = 0;
         foreach (Wohncontainer wohn in Testing.wohncontainer)
         {
-
             foreach (Mensch mensch in wohn.bewohner)
             {
                 alleScrollContent.transform.position.Set(0, 0, 0);

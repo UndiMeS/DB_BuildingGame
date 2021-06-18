@@ -19,8 +19,8 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                                 
                     /*LvL Ziel*/   //ZIELAUFGABE FEHLT NOCH
                                 };
-    private List<string>[] entitys = {
-                 /*LvL 0*/ new List<string> { "Wohncontainer" },
+    public  List<string>[] entitys = {
+                 /*LvL 0*/ new List<string> { "Wohncontainer","Jeder" },
                  /*LvL 1*/ new List<string>{"Astronautinnen", "Astronauten", "Astronaut"},
                  /*LvL 2*/ new List<string>{"Feldsphären"},
                  /*LvL 3*/ new List<string>{},
@@ -31,7 +31,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     };
 
     private List<string>[] attribute = {
-                /*LvL 0*/ new List<string> {"Baukosten", "freie Betten" },
+                /*LvL 0*/ new List<string> {"Baukosten","freie", "Betten", "Bettenzahl", "Containernummer"},
                  /*LvL 1*/ new List<string>{},
                  /*LvL 2*/ new List<string>{},
                  /*LvL 3*/ new List<string>{},
@@ -79,7 +79,14 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         int index = TMP_TextUtilities.FindIntersectingWord(m_TextMeshPro, eventData.position, eventData.enterEventCamera);
-        //Debug.Log(index);
+        //welche Position n:1
+        //Debug.Log(TMP_TextUtilities.FindIntersectingCharacter(m_TextMeshPro, eventData.position, eventData.enterEventCamera,true));
+        markieren(index,0,"");
+
+    }
+
+    private void markieren(int index, int leftRight, string entAttBez)
+    {
         if (index != -1)
         {
             TMP_WordInfo info = m_TextMeshPro.textInfo.wordInfo[index];
@@ -88,8 +95,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                 int charIndex = info.firstCharacterIndex + i;
                 int meshIndex = m_TextMeshPro.textInfo.characterInfo[charIndex].materialReferenceIndex;
                 int vertexIndex = m_TextMeshPro.textInfo.characterInfo[charIndex].vertexIndex;
-                
-                if (entitys[Story.level].Contains(info.GetWord()))
+                if (entitys[Story.level].Contains(info.GetWord())&&entAttBez=="")
                 {
                     Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
                     vertexColors[vertexIndex + 0] = Color.red;
@@ -97,7 +103,8 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                     vertexColors[vertexIndex + 2] = Color.red;
                     vertexColors[vertexIndex + 3] = Color.red;
                 }
-                if (attribute[Story.level].Contains(info.GetWord()))
+                
+                if (attribute[Story.level].Contains(info.GetWord()) && (entAttBez == "Att" || entAttBez == ""))
                 {
                     Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
                     vertexColors[vertexIndex + 0] = Color.green;
@@ -105,7 +112,15 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                     vertexColors[vertexIndex + 2] = Color.green;
                     vertexColors[vertexIndex + 3] = Color.green;
                 }
-                if (beziehungen[Story.level].Contains(info.GetWord()))
+                if (attribute[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord())&&leftRight!=1&&(entAttBez=="Att"||entAttBez==""))
+                {
+                    markieren(index - 1,-1,"Att");
+                }
+                else if (attribute[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord())&&leftRight!=-1 && (entAttBez == "Att" || entAttBez == ""))
+                {
+                    markieren(index + 1,1,"Att");
+                }
+                if (beziehungen[Story.level].Contains(info.GetWord()) && (entAttBez == "Bez" || entAttBez == ""))
                 {
                     Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
                     vertexColors[vertexIndex + 0] = Color.blue;
@@ -113,7 +128,15 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                     vertexColors[vertexIndex + 2] = Color.blue;
                     vertexColors[vertexIndex + 3] = Color.blue;
                 }
-                if (kardinalitaet[Story.level].Contains(info.GetWord()))
+                if (beziehungen[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Bez" || entAttBez == ""))
+                {
+                    markieren(index - 1, -1, "Bez");
+                }
+                else if (beziehungen[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord()) && leftRight != -1 && (entAttBez == "Bez" || entAttBez == ""))
+                {
+                    markieren(index + 1, 1, "Bez");
+                }
+                if (kardinalitaet[Story.level].Contains(info.GetWord()) && entAttBez == "")
                 {
                     Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
                     vertexColors[vertexIndex + 0] = Color.cyan;
@@ -121,10 +144,33 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                     vertexColors[vertexIndex + 2] = Color.cyan;
                     vertexColors[vertexIndex + 3] = Color.cyan;
                 }
+                if (kardinalitaet[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Kard" || entAttBez == ""))
+                {
+                    markieren(index - 1, -1, "Kard");
+                }
+                else if (kardinalitaet[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord()) && leftRight != -1 && (entAttBez == "Kard" || entAttBez == ""))
+                {
+                    markieren(index + 1, 1, "Kard");
+                }
+                //Lvl 1 (n:1)
+                if(Story.level==1 && (info.GetWord() == "1" || info.GetWord() == "n"))
+                {
+                    for(int k = 0; k < 3; k++)
+                    {
+                        meshIndex = m_TextMeshPro.textInfo.characterInfo[154 + k].materialReferenceIndex;
+                        vertexIndex = m_TextMeshPro.textInfo.characterInfo[154 + k].vertexIndex;
+                        Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
+                        vertexColors[vertexIndex + 0] = Color.cyan;
+                        vertexColors[vertexIndex + 1] = Color.cyan;
+                        vertexColors[vertexIndex + 2] = Color.cyan;
+                        vertexColors[vertexIndex + 3] = Color.cyan;
+                    }
+                    
+                }
+
             }
 
             m_TextMeshPro.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
         }
-
     }
 }
