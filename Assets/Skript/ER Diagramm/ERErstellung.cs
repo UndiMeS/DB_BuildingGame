@@ -32,6 +32,7 @@ public class ERErstellung : MonoBehaviour
 
     public GameObject aufgabentext;
     public GameObject checkliste;
+    public GameObject infobox;
 
     public GameObject ddSchwach;
     public GameObject dd1;
@@ -147,7 +148,8 @@ public class ERErstellung : MonoBehaviour
         while (ausserhalb) {
             pos = new Vector3(rand.Next(Screen.width / 10, 9 * Screen.width / 10), rand.Next(Screen.height / 6, 5 * Screen.height / 6), 0);
             if (!RectTransformUtility.RectangleContainsScreenPoint(aufgabentext.GetComponent<RectTransform>(), pos, Camera.main)
-                && !RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), pos, Camera.main))
+                && !RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), pos, Camera.main)
+                && !RectTransformUtility.RectangleContainsScreenPoint(infobox.GetComponent<RectTransform>(), pos, Camera.main))
             {
                 ausserhalb = false;
             }
