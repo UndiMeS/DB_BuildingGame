@@ -11,16 +11,17 @@ public class FehlerAnzeige : MonoBehaviour
 {
     public GameObject fehlerObject;
     public static string fehlertext="";
-    public GameObject tutorialanzeige;
-    public static string tutorialtext="";
+    public GameObject tutorialanzeige_Spiel;
+    public GameObject tutorialanzeige_ER;
+    public static string tutorialtext_Spiel="";
+    public static string tutorialtext_ER="";
+
 
     // Start is called before the first frame update
     void Start()
     {
-        tutorialanzeige.SetActive(true);
-        
-        //Zum Testen
-        Utilitys.TextInTMP(tutorialanzeige, "Fliege neue Astronauten ein, indem du auf die entsprechenden Buttons im Wohncontainer klickst. Die Namen kannst du dir auch über einen Button anzeigen lassen");
+        tutorialanzeige_Spiel.SetActive(true);
+        tutorialanzeige_ER.SetActive(true);
     }
 
     // Update is called once per frame
@@ -28,18 +29,21 @@ public class FehlerAnzeige : MonoBehaviour
     {
         if (!fehlertext.Equals(""))
         {
-            tutorialanzeige.SetActive(false);
+            tutorialanzeige_Spiel.SetActive(false);
+            tutorialanzeige_ER.SetActive(false);
             Invoke("Zuruek", 3);//anzeige des Fehlertextes fuer 2s, dann wieder auf "" zurückgesetzt
         }        
         Utilitys.TextInTMP(fehlerObject, fehlertext);
-        //Utilitys.TextInTMP(tutorialanzeige, tutorialtext);
-        
+        Utilitys.TextInTMP(tutorialanzeige_Spiel, tutorialtext_Spiel);
+        Utilitys.TextInTMP(tutorialanzeige_ER, tutorialtext_ER);
+
     }
 
     private void Zuruek()
     {
         fehlertext = ""; 
-        tutorialanzeige.SetActive(true);
+        tutorialanzeige_ER.SetActive(true);
+        tutorialanzeige_Spiel.SetActive(true);
 
     }
 
