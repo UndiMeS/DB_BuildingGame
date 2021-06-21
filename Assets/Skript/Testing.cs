@@ -129,15 +129,38 @@ public class Testing : MonoBehaviour
         }
 
 
-        Mission.missionsLevel = new bool[] { false, false, false, false, false, false, false, false };
+        
         Story.lvl = new bool[] { false, false, false, false, false, false, false, false };
         Story.level = 0;
+        Mission.missionsLevel = new bool[] {false,false,false,false,false,false,false,false,false};
         Mission.missionsTeilLevel0 = new bool[] {false,false};
-        Mission.missionsTeilLevel1 = new bool[] {false,false};
+        Mission.missionsTeilLevel1 = new bool[] {false};
         Mission.missionsTeilLevel2 = new bool[] {false,false,false,false};
-        Mission.missionsTeilLevel3 = new bool[] {false,false};
+        Mission.missionsTeilLevel3 = new bool[] {false,false,false};
         Mission.missionsTeilLevel4 = new bool[] {false,false,false,false};
         Mission.missionsTeilLevel5 = new bool[] {false,false};
+        Mission.missionsTeilLevel6 = new bool[] {false}; 
+        Mission.missionsTeilLevel7 = new bool[] {false}; 
+        Mission.missionsTeilLevel8 = new bool[] {false, false, false}; 
+        Mission.mission1 = false;
+        Mission.mission3 = false;
+        
+        ERAufgabe.missionCheck = true;
+        
+        Mission.temp_baukosten_lvl2 = 0;
+        Mission.temp_ertrag_lvl2 = 0;
+        Mission.temp_arbeiterzahl_lvl2 = 0;
+        Mission.temp_arbeiterzahl_lvl4 = 0;
+        Mission.temp_tierzahl_lvl4 = 0;
+        Mission.temp_baukosten_lvl4 = 0;
+        Mission.temp_anzahl_lvl4 = 0;
+        Mission.temp_geld_lvl6 = 0;
+        Mission.temp_forscher_lvl7 = 0;
+        Mission.temp_baukosten_lvl3 = 0;
+        Mission.temp_baukosten_lvl8 = 0;
+        Mission.temp_bettenzahl_lvl8 = 0;
+        Mission.temp_ertrag_lvl8 = 0;
+        
     }
 
 

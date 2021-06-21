@@ -304,7 +304,7 @@ public class ERAufgabe : MonoBehaviour
             //wenn die Mission erfolgreich absolviert wurde, kann wieder im ER gebastelt werden und es wird chckObjekte() ausgeführt
             if (missionCheck)
             {
-                //infobox.transform.position = new Vector3(-624.0f,-375.0f,0.0f);
+                infobox.transform.localPosition = new Vector3(-624.0f,-375.0f,0.0f);
                 bottomLeiste.SetActive(true);        
                 aufgabeButton.SetActive(true);
                 checkboxButton.SetActive(true);
@@ -397,7 +397,7 @@ public class ERAufgabe : MonoBehaviour
             x.Play(0);
             
             //wenn alles richtig ist wird default alles auf aus gesetzt (in Update wird es aber wieder auf true gesetzt, wenn missioncheck == true ist)
-            //infobox.transform.position = new Vector3(-624.0f,-470.0f,0.0f);
+            infobox.transform.localPosition = new Vector3(-624.0f,-470.0f,0.0f);
             
             bottomLeiste.SetActive(false);
             aufgabeButton.SetActive(false);

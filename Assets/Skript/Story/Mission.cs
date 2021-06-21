@@ -6,15 +6,8 @@ using UnityEngine.UI;
 
 public class Mission : MonoBehaviour
 {
-    //test
-    //Je Missionslevel ein Bool
-
-
-
-
-
-    //Test nummer zwei
-    public static bool[] missionsLevel = new bool[] {false,false,false,false,false,false,false,false, false};
+    //Test Mission ein bool
+    public static bool[] missionsLevel = new bool[] {false,false,false,false,false,false,false,false,false};
 
     //Je Teilziel ein Bool
     public static bool[] missionsTeilLevel0 = new bool[] {false,false};
@@ -32,20 +25,19 @@ public class Mission : MonoBehaviour
     int zwischenziel2 = 0;
     int zwischenziel3 = 0;
     int zwischenziel4 = 0; 
-    int temp_baukosten_lvl2 = 0;
-    int temp_bettenzahl_lvl2 = 0;
-    int temp_ertrag_lvl2 = 0;
-    int temp_arbeiterzahl_lvl2 = 0;
-    int temp_arbeiterzahl_lvl4 = 0;
-    int temp_tierzahl_lvl4 = 0;
-    int temp_baukosten_lvl4 = 0;
-    int temp_anzahl_lvl4 = 0;
-    int temp_geld_lvl6 = 0;
-    int temp_forscher_lvl7 = 0;
-    int temp_baukosten_lvl3 = 0;
-    int temp_baukosten_lvl8 = 0;
-    int temp_bettenzahl_lvl8 = 0;
-    int temp_ertrag_lvl8 = 0;
+    public static int temp_baukosten_lvl2 = 0;
+    public static int temp_ertrag_lvl2 = 0;
+    public static int temp_arbeiterzahl_lvl2 = 0;
+    public static int temp_arbeiterzahl_lvl4 = 0;
+    public static int temp_tierzahl_lvl4 = 0;
+    public static int temp_baukosten_lvl4 = 0;
+    public static int temp_anzahl_lvl4 = 0;
+    public static int temp_geld_lvl6 = 0;
+    public static int temp_forscher_lvl7 = 0;
+    public static int temp_baukosten_lvl3 = 0;
+    public static int temp_baukosten_lvl8 = 0;
+    public static int temp_bettenzahl_lvl8 = 0;
+    public static int temp_ertrag_lvl8 = 0;
 
     bool finale = false;
     public static bool mission1 = false;
@@ -88,7 +80,7 @@ public class Mission : MonoBehaviour
                                         new string[] { "Wir können nun auch Feldsphären und Stationen verbessern. Erforsche je eine Verbesserung der Merkmale Baukosten, Arbeiterzahl und Ertrag von Feldsphären. Erforsche gleichzeitig neue Methoden in der Station mit Stationsnummer 2. ", "Verbessere die Baukosten von Feldsphären.", "Verbessere die Arbeiterzahl von Feldsphären.", "Verbessere den Ertrag von Feldsphären.", "Verbessere die Projektkosten von der Station mit SNr. 2.", "", "", "", "" },
                                         new string[] { "Neben Feldsphären können bald auch Weidesphären errichtet werden. Darin werden Tiere bewirtschaftet. Diese leben in Stallcontainern. Genau wie Wohncontainer, sollten auch diese mehr erforscht werden.", "Fliege 8 Tiere ein.", "Gib den Namen des 1. Tier der Seidlung an.", "aus", "Verbessere die Baukosten von Stallcontainern.", "8", "", "", "" },
                                         new string[] { "Nun können auch Weidesphären konstruiert werden, um Erträge zu erwirtschaften. Verbessere deinen regelmäßigen Ertrag durch den Bau von Weidesphären und forsche an deren Verbesserung.", "Erbaue 3 Weidesphären.", "Verbessere die Baukosten von Weidesphären.", "Verbessere die Tieranzahl von Weidesphären.", "Verbessere die Arbeiterzahl von Weidesphären.", "3", "", "", "" },
-                                        new string[] { "Du hast es geschafft! Die Grundversorgung der ersten Marsseidlung ist aufgebaut und das ER-Diagramm, als Gerüst für die Datenbank, wurde erstellt. Nun ist es an der Zeit mehr zu forschen, um die Grundsteine für zukünftige Missionen auf dem Mars zu legen. Investiere daher in mehr Forschungsprojekt und erweitere die Bevölkerung deiner Siedlung.", "Erweitere deine Siedlungsbevölkerung auf 50 Astronauten.", "Forsche in der Siedlung an 15 Projekten.", "aus", "aus", "50", "15", "", "" },
+                                        new string[] { "Du hast es geschafft! Die Grundversorgung der ersten Marsseidlung ist aufgebaut und das ER-Diagramm, als Gerüst für die Datenbank, wurde erstellt. Nun ist es an der Zeit mehr zu forschen, um die Grundsteine für zukünftige Missionen auf dem Mars zu legen. Investiere daher in mehr Forschungsprojekt und erweitere die Bevölkerung deiner Siedlung.", "Erweitere deine Bevölkerung auf 50 Astronauten.", "Forsche in der Siedlung an 15 Projekten.", "aus", "aus", "50", "15", "", "" },
                                         
                                         //Folgendes Level ist das erste Level. Da es nachträglich hinzukam, wurde es hintendran gehangen.
                                         new string[] { "Damit Astronauten auf dem Mars leben können, werden Wohncontainer benötigt. Beginne deine Siedlung mit dem Bau dieser Wohncontainer.", "Errichte 1 Wohncontainer!", "aus", "aus", "aus", "", "", "", "" },
@@ -103,14 +95,14 @@ public class Mission : MonoBehaviour
     {
         masterKreuz.SetActive(true);
         masterHacken.SetActive(false);  
-        textInput.SetActive(false);       
+        textInput.SetActive(false); 
     }
     // Update is called once per frame
     void Update()
     {
         //Gib alle Texte der Mission aus.
         setMission(setLevel());
-        //setMission(3);
+        //setMission(5);
 
         //Prüfe ob Mission von Level erfolgreich ist
         checkMission(setLevel());
@@ -188,7 +180,6 @@ public class Mission : MonoBehaviour
             if(missionsLevel[6]){
                 hacken1.SetActive(true);
                 KreuzHacken();
-
             }else{ 
                 //missionTeilLevel checkt ob Teilzeil bereits fertig war
                 if(missionsTeilLevel6[0]){
@@ -201,7 +192,6 @@ public class Mission : MonoBehaviour
                     }
                     if(temp_geld_lvl6 > Testing.geld){
                         KreuzHacken();
-                        mission1 = true;
                         missionsLevel[6] = true;
                     }else{
                             firstTime = true;
@@ -230,7 +220,7 @@ public class Mission : MonoBehaviour
                     }
                     if(Testing.forscher + Testing.feldarbeiter + Testing.tierpfleger > 0)
                     {
-                        if((missionsTeilLevel0[1]||mission1|| Testing.menschen.Count>0 )&& lvl1_text.text == Testing.menschen[0].name)
+                        if((missionsTeilLevel0[1]|| Testing.menschen.Count>0 )&& lvl1_text.text == Testing.menschen[0].name)
                         {
                             hacken2.SetActive(true);
                             textInput.GetComponent<InputField>().interactable = false;
@@ -240,7 +230,6 @@ public class Mission : MonoBehaviour
                     }
                     if(zwischenziel1 == 1 && zwischenziel2 == 1){
                         KreuzHacken();
-                        mission1 = true;
                         missionsLevel[0] = true;
                     }
                     else

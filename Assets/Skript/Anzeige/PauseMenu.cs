@@ -27,7 +27,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        Debug.Log("Spiel pausiert "+ SpielIstPausiert);        
+        //Debug.Log("Spiel pausiert "+ SpielIstPausiert);        
     }
 
     public void Weiterspielen()
@@ -161,7 +161,7 @@ public class PauseMenu : MonoBehaviour
         ERon = false;
         SpielIstPausiert = false;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(0);
-        mission.transform.localPosition = new Vector3(16, 726, 0);
+        mission.transform.localPosition = new Vector3(16, 650, 0);
     }
 
     public void AllesAusblenden()
@@ -188,7 +188,7 @@ public class PauseMenu : MonoBehaviour
         LeanTween.cancel(mission);
         if (mission.transform.localPosition.y < 400)
         {
-            LeanTween.moveLocalY(mission, 760, 0.3f);
+            LeanTween.moveLocalY(mission, 650, 0.3f);
         }
         else{
             LeanTween.moveLocalY(mission, 140, 0.3f);
@@ -200,7 +200,7 @@ public class PauseMenu : MonoBehaviour
         LeanTween.cancel(mission);
         if (mission.transform.localPosition.y == 330)
         {
-            LeanTween.moveLocalY(mission, 760, 0.3f);
+            LeanTween.moveLocalY(mission, 650, 0.3f);
         }
         else 
         {
