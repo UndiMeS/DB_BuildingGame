@@ -210,12 +210,12 @@ public class SaveLoad : MonoBehaviour
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
         {
-            GameObject geb = Instantiate(feldPrefab, gebauedeOrdner.transform);
+            GameObject geb = Instantiate(stallPrefab, gebauedeOrdner.transform);
             Stallcontainer stall = geb.AddComponent<Stallcontainer>();
             JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", stall);//entfernt ,
 
             Destroy(geb.GetComponent<ObjektBewegung>());
-            geb.transform.localScale = new Vector3(1, 1, 1);
+            geb.transform.lossyScale.Set(250,250,250);
             geb.transform.rotation = Quaternion.Euler(0, 0, 0);
             geb.transform.position = Testing.grid.GetWorldPosition(stall.x, stall.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
             Testing.grid.SetWert(stall.x, stall.y, 5, geb);
