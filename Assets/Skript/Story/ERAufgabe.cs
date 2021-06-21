@@ -180,8 +180,6 @@ public class ERAufgabe : MonoBehaviour
     public ERAufgabenText ERAufgabenText;
     public GameObject infobox;
 
-    public static bool[] level_ER = new bool[8];
-
     //Audio
     public GameObject lvl_true;
 
@@ -406,7 +404,6 @@ public class ERAufgabe : MonoBehaviour
             checkboxButton.SetActive(false); 
             //FehlerAnzeige.fehlertext = "Du hast alles richtig gemacht!";
             Story.lvl[Story.level] = true; //Markiere Level als erfüllt
-            level_ER[Story.level] = true;
             
             if (missionCheck == false)
             {
