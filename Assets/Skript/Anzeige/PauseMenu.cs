@@ -191,20 +191,20 @@ public class PauseMenu : MonoBehaviour
             LeanTween.moveLocalY(mission, 650, 0.3f);
         }
         else{
-            LeanTween.moveLocalY(mission, 140, 0.3f);
+            LeanTween.moveLocalY(mission, 380, 0.3f);
         }
         
     }
     public void animationMissionHalb()
     {
         LeanTween.cancel(mission);
-        if (mission.transform.localPosition.y == 330)
+        if (mission.transform.localPosition.y == 380)
         {
             LeanTween.moveLocalY(mission, 650, 0.3f);
         }
         else 
         {
-            LeanTween.moveLocalY(mission, 330, 0.3f);
+            LeanTween.moveLocalY(mission, 380, 0.3f);
         }
         
 

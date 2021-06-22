@@ -89,13 +89,16 @@ public class Mission : MonoBehaviour
                                         //Folgendes Level ist das Level zwischen 2 und 3. Da es nachträglich hinzukam, wurde es hintendran gehangen.
                                         new string[] { "Wir können nun mit ersten Forschungen beginnen und Wohncontainer verbessern. Erforsche mindestens eine Verbesserung der Baukosten und Bettenzahl von Wohncontainern. Steigere gleichzeitig deinen Ertrag, um die Forschung zu finanzieren!", "Verbessere die Baukosten von Wohncontainern.", "Verbessere die Bettenzahl von Wohncontainern.", "Erhöhe den Ertrag um 150.", "aus", "", "", "150", "" }
                                         };
+
+    public GameObject missionshintergrund;
     
     // Start is called before the first frame update
     void Start()
     {
         masterKreuz.SetActive(true);
         masterHacken.SetActive(false);  
-        textInput.SetActive(false); 
+        textInput.SetActive(false);
+        missionText.SetActive(false); 
     }
     // Update is called once per frame
     void Update()
@@ -107,6 +110,8 @@ public class Mission : MonoBehaviour
         //Prüfe ob Mission von Level erfolgreich ist
         checkMission(setLevel());
         //checkMission(3);
+
+        setSize();
         
         //Bedingung, damit nach Speichern/Laden die richtigen Icons ausgegeben werden
         if(ERAufgabe.missionCheck == false){
@@ -118,7 +123,7 @@ public class Mission : MonoBehaviour
     //Schreibe Missionstexte ins Fenster. Bei "aus" blende Teilziel aus
     public void setMission(int lvl)
     {
-        Utilitys.TextInTMP(missionText, mission[lvl][0]);
+        //Utilitys.TextInTMP(missionText, mission[lvl][0]);
 
         if(mission[lvl][1]=="aus"){
             teilZiel1.SetActive(false);
@@ -151,24 +156,59 @@ public class Mission : MonoBehaviour
     {
         if(finale){
             return 5;
+            missionshintergrund.transform.localPosition = new Vector3(-16,150.0f,0.0f);
         }else
         {
             if(Story.level == 2){
                 return 0; //X Astronauten einfliegen
+                missionshintergrund.transform.localPosition = new Vector3(-16,105.0f,0.0f);
             }else if(Story.level == 0 || Story.level == 1){
                 return 6; //Wohncontainer bauen
+                missionshintergrund.transform.localPosition = new Vector3(-16,196.0f,0.0f);
             }else if(Story.level == 3){
                 return 1; //Ertrag auf X setzten
+                missionshintergrund.transform.localPosition = new Vector3(-16,196.0f,0.0f);
             }else if(Story.level == 4){
                 return 7; //Forschungsstation bauen
+                missionshintergrund.transform.localPosition = new Vector3(-16,196.0f,0.0f);
             }else if(Story.level == 5){
                 return 8; //Verbessern von Wohncontainern
+                missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
             }else if(Story.level == 6){
                 return 2; //Verbessern von Feldern
+                missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
             }else if(Story.level == 7){
                 return 3; //X Nutztiere einfliegen
+                missionshintergrund.transform.localPosition = new Vector3(-16,105.0f,0.0f);
             }else {
                 return 4; //X Weidearbeiter und Ertrag und Verbesserung
+                missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
+            }
+        }
+    }
+
+    public void setSize()
+    {
+        if(finale){
+            missionshintergrund.transform.localPosition = new Vector3(-16,150.0f,0.0f);
+        }else
+        {
+            if(Story.level == 2){
+                missionshintergrund.transform.localPosition = new Vector3(-16,105.0f,0.0f);
+            }else if(Story.level == 0 || Story.level == 1){
+                missionshintergrund.transform.localPosition = new Vector3(-16,196.0f,0.0f);
+            }else if(Story.level == 3){
+                missionshintergrund.transform.localPosition = new Vector3(-16,196.0f,0.0f);
+            }else if(Story.level == 4){
+                missionshintergrund.transform.localPosition = new Vector3(-16,196.0f,0.0f);
+            }else if(Story.level == 5){
+                missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
+            }else if(Story.level == 6){
+                missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
+            }else if(Story.level == 7){
+                missionshintergrund.transform.localPosition = new Vector3(-16,105.0f,0.0f);
+            }else {
+                missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
             }
         }
     }
