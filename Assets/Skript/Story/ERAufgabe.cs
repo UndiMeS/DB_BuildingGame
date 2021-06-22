@@ -13,7 +13,7 @@ using UnityEngine;
 */
 public class ERAufgabe : MonoBehaviour
 {
-    public bool testModus = true;
+    public bool testModus = true ;
 
     //Welche EM je Level
     private string[][] listeEntity = {
