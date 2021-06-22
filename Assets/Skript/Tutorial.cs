@@ -105,10 +105,9 @@ public class Tutorial : MonoBehaviour
         }else if((Story.lvl[1] == true && Story.lvl[2] == false) && (Mission.missionsLevel[0] == true && Mission.missionsLevel[1] == false)){
             FehlerAnzeige.tutorialtext_Spiel = "Die ersten Siedlungsbewohner sind gelandet. Wechsel, wie nach jeder Mission in den ER-Editor!";
             FehlerAnzeige.tutorialtext_ER = "Erweitere nun erneut dein ER-Diagramm und führe den gleichen Kreislauf aus ER- u. Spielmodus fort und erweitere deine Siedlung!";
-            pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
+            pfeilER.SetActive(false);
             pfeilSpiel.transform.localPosition = new Vector3(637,177,0);
             pfeilSpiel.SetActive(true);
-            pfeilER.SetActive(true);
         }else if((Story.lvl[2] == true && Story.lvl[3] == false) && (Mission.missionsLevel[0] == true && Mission.missionsLevel[1] == false)){
             if(zusatzClick == false){
                 missionClick = false;
