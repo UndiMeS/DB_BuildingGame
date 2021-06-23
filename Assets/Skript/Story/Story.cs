@@ -1,10 +1,3 @@
-/* 
-    ToDo:
-    - Forschungsstation Spezialisierungsfenster verdecken
-    - Forschungsstatuion bauen OHNE Spezialisierung zu wählen
-        - wenn ich dann auf Station gehe werde ich aber immer gefragt, kann aber nichts wählen, wenn lvl 5 nciht erreicht ist
-*/
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
