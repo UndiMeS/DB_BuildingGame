@@ -44,6 +44,9 @@ public class Tutorial : MonoBehaviour
     }
     private void ShowTutorial()
     {
+        bZusatz = buttonZusatz.GetComponent<Button>();
+        bZusatz.interactable = true;
+        containerKiller.SetActive(false);
         if(Story.lvl[0] == false && Mission.missionsLevel[6] == false){
             bZusatz = buttonZusatz.GetComponent<Button>();
             bZusatz.interactable = false;
@@ -60,6 +63,7 @@ public class Tutorial : MonoBehaviour
             pfeilSpiel.transform.localPosition = new Vector3(637,100,0);
             pfeilER.transform.localPosition = new Vector3(844,221,0);
             containerKiller.SetActive(true);
+            bZusatz.interactable = false;
             if(firstTime == false){
                 popUpGameObject(buttonSpiel);
                 firstTime = true;
@@ -74,7 +78,7 @@ public class Tutorial : MonoBehaviour
                 }
                 containerKiller.SetActive(false);
                 pfeilSpiel.transform.localPosition = new Vector3(-635,-215,0);
-                FehlerAnzeige.tutorialtext_Spiel = "Errichte zur Erfüllung deiner Mission einen Wohncontainer!";
+                FehlerAnzeige.tutorialtext_Spiel = "Errichte nun einen Wohncontainer! Zum Bauen hast du ein Startguthaben von "+Testing.geld+". Du kannst es in der oberen Infoleiste sehen.";
                 FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen. Wechsel zurück in die Siedlung!";
             }         
         }else if((Story.lvl[0] == true && Story.lvl[1] == false) && (Mission.missionsLevel[6] == true && Mission.missionsLevel[0] == false)){
@@ -87,6 +91,7 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung!";
             pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
             missionClick = false;
+            bZusatz.interactable = false;
         }else if((Story.lvl[1] == true && Story.lvl[2] == false) && (Mission.missionsLevel[6] == true && Mission.missionsLevel[0] == false)){
             FehlerAnzeige.tutorialtext_Spiel = "Schau dir deine neue Mission an!";
             FehlerAnzeige.tutorialtext_ER = "Fabelhaft! Wechsel nun erneut in die Siedlung und erfülle deine nächste Mission!";
@@ -101,15 +106,17 @@ public class Tutorial : MonoBehaviour
                 FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen. Wechsel zurück in die Siedlung!";
                 pfeilSpiel.SetActive(false);
             }
-            //missionClick = false;
+            bZusatz.interactable = false;
         }else if((Story.lvl[1] == true && Story.lvl[2] == false) && (Mission.missionsLevel[0] == true && Mission.missionsLevel[1] == false)){
-            FehlerAnzeige.tutorialtext_Spiel = "Die ersten Siedlungsbewohner sind gelandet. Wechsel, wie nach jeder Mission in den ER-Editor!";
+            FehlerAnzeige.tutorialtext_Spiel = "Die ersten Siedlungsbewohner sind gelandet. Die Anzahl der zur Verfügung stehenden Astronauten kannst du in der Infoleiste ganz rechts sehen. Wechsel, wie nach jeder Mission in den ER-Editor!";
             FehlerAnzeige.tutorialtext_ER = "Erweitere nun erneut dein ER-Diagramm und führe den gleichen Kreislauf aus ER- u. Spielmodus fort und erweitere deine Siedlung!";
             pfeilER.SetActive(false);
             pfeilSpiel.transform.localPosition = new Vector3(637,177,0);
             pfeilSpiel.SetActive(true);
+            bZusatz.interactable = false;
+            missionClick = false;
         }else if((Story.lvl[2] == true && Story.lvl[3] == false) && (Mission.missionsLevel[0] == true && Mission.missionsLevel[1] == false)){
-            if(zusatzClick == false){
+            if(zusatzClick == false && missionClick == false){
                 missionClick = false;
                 FehlerAnzeige.tutorialtext_Spiel = "Bei knappen Ressourcen kannst du auch eine Zusatzaufgabe lösen, um weiter zu bauen! Öffne eine Zusatzaufgabe!";
                 FehlerAnzeige.tutorialtext_ER = "Super! Im Baumenü sind nun Feldsphären freigeschaltet. Auf geht's in die neue Mission!";
@@ -126,7 +133,14 @@ public class Tutorial : MonoBehaviour
                 FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen und mit Feldspähren Erträge erwirtschaften!";
                 pfeilSpiel.SetActive(false);
                 pfeilER.SetActive(false);
+                if(missionClick){
+                    FehlerAnzeige.tutorialtext_Spiel = "Hinweis: Rechts neben der Guthabenanzeige in der Infoleiste am oberen Bildschirmrand siehst du den Ertrag, der dir alle "+SpielInfos.neuerUmsatz+" Sol ausgezahlt wird.";
+                    zusatzClick = false;
+                }
             }   
+        }else if((Story.lvl[4] == true && Story.lvl[5] == false) && (Mission.missionsLevel[7] == true && Mission.missionsLevel[8] == false)){
+            FehlerAnzeige.tutorialtext_Spiel = " Spezialisiere die Forschungsstation auf Wohncontainer! In der Forschungsstationsanzeige findest du anschließend ein Fragezeichen. Klicke dieses, um Hilfe bei der Erstellung von Projekten zu erhalten.";
+            FehlerAnzeige.tutorialtext_ER = "Los geht's mit den ersten Forschungen! Check deine Mission!"; 
         }else if (Story.lvl[7] == false && ERAufgabe.missionCheck == false){
             pfeilER.SetActive(false);
             FehlerAnzeige.tutorialtext_Spiel = "";
