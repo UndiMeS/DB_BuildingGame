@@ -10,15 +10,12 @@ using UnityEngine.UI;
 public class FehlerAnzeige : MonoBehaviour
 {
     public GameObject fehlerObject;
-    public static string fehlertext="";
+    public static string fehlertext = "";
     public GameObject tutorialanzeige_Spiel;
     public GameObject tutorialanzeige_ER;
-    public static string tutorialtext_Spiel="";
-    public static string tutorialtext_ER="";
+    public static string tutorialtext_Spiel = "";
+    public static string tutorialtext_ER = "";
 
-    public static bool change = false;
-    private static bool zwischendurch = false;
-    public bool temp;
 
     // Start is called before the first frame update
     void Start()
@@ -30,35 +27,24 @@ public class FehlerAnzeige : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!fehlertext.Equals("")&&change)
-        {            
+        if (!fehlertext.Equals(""))
+        {
             tutorialanzeige_Spiel.SetActive(false);
             tutorialanzeige_ER.SetActive(false);
             Invoke("Zuruek", 3);//anzeige des Fehlertextes fuer 2s, dann wieder auf "" zurückgesetzt
         }
-        else if(!fehlertext.Equals(""))
-         
-        {
-            tutorialanzeige_ER.SetActive(true);
-            tutorialanzeige_Spiel.SetActive(true);
-        }        
         Utilitys.TextInTMP(fehlerObject, fehlertext);
         Utilitys.TextInTMP(tutorialanzeige_Spiel, tutorialtext_Spiel);
         Utilitys.TextInTMP(tutorialanzeige_ER, tutorialtext_ER);
-        temp = zwischendurch;
+
     }
 
     private void Zuruek()
     {
-        if (!zwischendurch)
-        {
-            fehlertext = "";
-        }
-        else
-        {
-            zwischendurch = false;
-            Invoke("Zuruek", 3);
-        }
+        fehlertext = "";
+        tutorialanzeige_ER.SetActive(true);
+        tutorialanzeige_Spiel.SetActive(true);
+
     }
 
     public void ClearFehlertext()
@@ -66,18 +52,4 @@ public class FehlerAnzeige : MonoBehaviour
         fehlertext = "";
 
     }
-    public static void changeFehlertext(string text)
-    {
-        if (fehlertext != text)
-        {          
-            fehlertext = text;
-            change = true;
-            zwischendurch = false;
-        }
-        else
-        {           
-            zwischendurch = true;
-        }      
-   
-    }
- }
+}
