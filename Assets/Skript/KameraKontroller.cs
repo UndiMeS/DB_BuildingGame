@@ -32,6 +32,11 @@ public class KameraKontroller : MonoBehaviour
     public RectTransform aufgabentext;
 
     public Vector2 panLimit;
+
+    public Vector2 erXLimit;
+    public Vector2 erYLimit;
+
+    public Vector2 marsLimit;
     public float scrollSpeed = 20f;
 
     public float minY = -520f;
@@ -78,15 +83,20 @@ public class KameraKontroller : MonoBehaviour
 
             if(hintergrund == 0)
             {
-                newPosition.x = Mathf.Clamp(newPosition.x, - panLimit.x + 50, panLimit.x + 150);
+                //newPosition.x = Mathf.Clamp(newPosition.x, marsLimit.x, marsLimit.y);
+                newPosition.x = Mathf.Clamp(newPosition.x, Testing.weite * Testing.zellengroesse-110, panLimit.x);
                 newZoom.y = Mathf.Clamp(newZoom.z, minY, maxY);
+                
+
+                newPosition.y = Mathf.Clamp(newPosition.y, Testing.hoehe * Testing.zellengroesse-40, panLimit.y);
             }
             else{
-                newPosition.x = Mathf.Clamp(newPosition.x, - panLimit.x, panLimit.x);
+                //newPosition.x = Mathf.Clamp(newPosition.x, erXLimit.x, erXLimit.y);
+                newPosition.x = Mathf.Clamp(newPosition.x, -panLimit.x, panLimit.x);
                 newZoom.y = Mathf.Clamp(newZoom.z, 0, 0);
             }
             
-            newPosition.y = Mathf.Clamp(newPosition.y, -panLimit.y, panLimit.y);
+            
 
 
             //Verschiebung der KameraVerankerung und Kamera 
@@ -238,6 +248,10 @@ public class KameraKontroller : MonoBehaviour
             linkeGrenze = -10;
             untereGrenze = -40;
 
+            panLimit.x = rechteGrenze;
+            panLimit.y = obereGrenze;
+
+
             zoomMax = -520;
             zoomMin = -50;
 
@@ -250,6 +264,7 @@ public class KameraKontroller : MonoBehaviour
             obereGrenze = 400;
             linkeGrenze = 10;
             untereGrenze = 10;
+            
             // zoomMin = -20;
             // zoomMax = -230;
 
