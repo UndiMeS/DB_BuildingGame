@@ -78,7 +78,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             if (Feld.arbeiterzahl > Testing.feldarbeiter)
             {
                 GebaeudeInfoBauen.wertFest = 2;
-
+                KameraKontroller.aktiviert = true;
                 FehlerAnzeige.fehlertext = "Erstelle zuerst Feldarbeiter!";
                 return;
             }
@@ -88,16 +88,18 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             GebaeudeInfoBauen.wertFest = 4;
             if (Weide.arbeiterzahl > Testing.tierpfleger&&Weide.tierAnzahl> Testing.summeTiere)
             {
-                
+                KameraKontroller.aktiviert = true;
                 FehlerAnzeige.fehlertext = "Erstelle zuerst Tierpfleger und Tiere!";
                 return;
             }else if (Weide.arbeiterzahl > Testing.tierpfleger)
             {
+                KameraKontroller.aktiviert = true;
                 FehlerAnzeige.fehlertext = "Erstelle zuerst Tierpfleger!";
                 return;
             }
             else if (Weide.tierAnzahl > Testing.tiere)
             {
+                KameraKontroller.aktiviert = true;
                 FehlerAnzeige.fehlertext = "Erstelle zuerst Tiere!";
                 return;
             }
@@ -106,6 +108,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         {
             if (0== Testing.forscher)
             {
+                KameraKontroller.aktiviert = true;
                 GebaeudeInfoBauen.wertFest = 3;
                 FehlerAnzeige.fehlertext = "Erstelle zuerst Forscher!";
                 return;

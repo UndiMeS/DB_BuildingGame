@@ -16,6 +16,9 @@ public class FehlerAnzeige : MonoBehaviour
     public static string tutorialtext_Spiel="";
     public static string tutorialtext_ER="";
 
+    public static bool change = false;
+    private static bool zwischendurch = false;
+    public bool temp;
 
     // Start is called before the first frame update
     void Start()
@@ -27,29 +30,54 @@ public class FehlerAnzeige : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!fehlertext.Equals(""))
-        {
+        if (!fehlertext.Equals("")&&change)
+        {            
             tutorialanzeige_Spiel.SetActive(false);
             tutorialanzeige_ER.SetActive(false);
             Invoke("Zuruek", 3);//anzeige des Fehlertextes fuer 2s, dann wieder auf "" zurückgesetzt
+        }
+        else if(!fehlertext.Equals(""))
+         
+        {
+            tutorialanzeige_ER.SetActive(true);
+            tutorialanzeige_Spiel.SetActive(true);
         }        
         Utilitys.TextInTMP(fehlerObject, fehlertext);
         Utilitys.TextInTMP(tutorialanzeige_Spiel, tutorialtext_Spiel);
         Utilitys.TextInTMP(tutorialanzeige_ER, tutorialtext_ER);
-
+        temp = zwischendurch;
     }
 
     private void Zuruek()
     {
-        fehlertext = ""; 
-        tutorialanzeige_ER.SetActive(true);
-        tutorialanzeige_Spiel.SetActive(true);
-
+        if (!zwischendurch)
+        {
+            fehlertext = "";
+        }
+        else
+        {
+            zwischendurch = false;
+            Invoke("Zuruek", 3);
+        }
     }
 
     public void ClearFehlertext()
     {
         fehlertext = "";
 
+    }
+    public static void changeFehlertext(string text)
+    {
+        if (fehlertext != text)
+        {          
+            fehlertext = text;
+            change = true;
+            zwischendurch = false;
+        }
+        else
+        {           
+            zwischendurch = true;
+        }      
+   
     }
  }

@@ -105,7 +105,7 @@ public class KameraKontroller : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Bewegeung pausiert");
+            Debug.Log("Bewegeung pausiert");
         }
    
 

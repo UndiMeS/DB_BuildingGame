@@ -155,7 +155,7 @@ public class Beziehung : MonoBehaviour
         Vector3 pos2 = objekt.transform.position;
         Vector3 pos1 = gameObject.transform.position;
 
-        double winkel = Vector3.Angle(pos2 - pos1, Vector3.right);
+        float winkel = Vector3.Angle(pos2 - pos1, Vector3.right);
 
         kardtext.transform.position = pos1 + Vector3.Normalize(pos2 - pos1)  ;
 
@@ -170,7 +170,7 @@ public class Beziehung : MonoBehaviour
         }
         else
         {
-            kardtext.transform.localPosition += new Vector3(0, 10, 0);
+            kardtext.transform.localPosition += new Vector3(0, Mathf.Tan(winkel)*kardtext.GetComponent<RectTransform>().sizeDelta.x, 0);
             if (offset && kardtext.Equals(kardText1))
             {
                 kardtext.transform.localPosition += new Vector3(0, 50, 0);
