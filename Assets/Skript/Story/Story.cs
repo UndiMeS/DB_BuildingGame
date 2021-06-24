@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Story : MonoBehaviour
 {
+    public bool offModus = false;
+
     //Startlevel für ER-Editor
     public static int level=0;
 
@@ -83,15 +85,18 @@ public class Story : MonoBehaviour
 
     void Awake()
     {
-        //folgendes auskommentieren, um sofort auf alles zugriff zu haben.
-        //allesOff();
-        //checkLevel();
+        if(offModus == false){
+            allesOff();
+            checkLevel(); 
+        }
+        
     }  
 
     void Update()
     {
-        //Prüfe auf erfüllte Level
-        //checkLevel(); 
+        if(offModus == false){
+            checkLevel(); 
+        }
     }
 
     public void allesOff()

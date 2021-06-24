@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
+    public bool tutorialOff = false;
+
     public GameObject pfeilSpiel;
     public GameObject pfeilER;
     private bool firstTime = true;
@@ -26,13 +28,17 @@ public class Tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //OffTutorial();
+        if(tutorialOff){
+            OffTutorial(); 
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        ShowTutorial();
+        if(tutorialOff == false){
+            ShowTutorial(); 
+        }
     }
     private void OffTutorial()
     {
@@ -56,7 +62,7 @@ public class Tutorial : MonoBehaviour
                 popUpGameObject(buttonER);
                 firstTime = false;
             }
-            pfeilER.SetActive(true);
+            pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
             pfeilSpiel.SetActive(true);
             missionClick = false;
         }else if(Story.lvl[0] == true && Mission.missionsLevel[6] == false){
@@ -69,7 +75,7 @@ public class Tutorial : MonoBehaviour
                 firstTime = true;
             }
             FehlerAnzeige.tutorialtext_Spiel = "Schau dir nun deine Mission an!";
-            FehlerAnzeige.tutorialtext_ER = "Sehr gut! Wechsel zurück in die Siedlung!"; 
+            FehlerAnzeige.tutorialtext_ER = "Sehr gut! Tipp: Halte das Diagramm durch Verschieben per Drag'n'Drop übersichtlich!\n Wechsel zurück in die Siedlung!"; 
             if(missionClick){
                 if(rotationTemp){
                     pfeilSpiel.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
