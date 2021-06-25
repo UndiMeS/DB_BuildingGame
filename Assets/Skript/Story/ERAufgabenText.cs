@@ -9,7 +9,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
 {    //Aufgabentext je LvL    
     private string[] aufgabe = { 
                     /*LvL 0*/  "Um den Mars zu besiedeln, müssen Astronautinnen und Astronauten eingeflogen werden. Damit diese auf dem Planeten leben können, werden Wohncontainer benötigt. Dafür wird die Entitymenge Wohncontainer angelegt. Alle Wohncontainer haben gemeinsame Eigenschaften, die Attribute. Sie haben bestimmte Baukosten eine genaue Bettenzahl, die die Menge an beherbergbaren Astronautinnen und Astronauten ausdrückt und ein Attribut für noch freie Betten. Jeder Container hat in der Siedlung eine eindeutige Containernummer, der Primärschlüssel." ,
-                    /*LvL 1*/  "Astronautinnen und Astronauten wohnen in (wohntIn) Wohncontainer. Jeder Astronaut ist genau einem Container zugeordnet und teilt sich diesen mit anderen (n:1). Wichtig ist, dass nur Astronauten eingeflogen werden können, wenn ausreichend Wohncontainer existieren (schwache Entitymenge). Alle Astronauten haben einen Namen und ein Geburtstag, worüber man sie eindeutig bestimmen kann. Für die Anreise fallen bestimmt Anreisegebühren an und jeder hat eine bestimmte Aufgabe in der Siedlung.",
+                    /*LvL 1*/  "Astronautinnen und Astronauten wohnen in (wohnt) Wohncontainer. Jeder Astronaut ist genau einem Container zugeordnet und teilt sich diesen mit anderen (Kardinaliät n:1). Wichtig ist, dass nur Astronauten eingeflogen werden können, wenn ausreichend Wohncontainer existieren (schwache Entitymenge). Alle Astronauten haben einen Namen und ein Geburtstag, worüber man sie eindeutig bestimmen kann. Für die Anreise fallen bestimmt Anreisegebühren an und jeder hat eine bestimmte Aufgabe in der Siedlung.",
                     /*LvL 2*/  "Eine Möglichkeit Erträge zu erzielen sind Feldsphären in denen Nahrung angebaut wird. Diese haben bestimmte Baukosten, eine genaue Arbeiterzahl und einen Ertrag, den du alle 5 Sol erhältst. Mehrere Astronauten arbeiten in einer Feldsphäre, wobei ein Astronaut nicht auf mehreren Feldsphären gleichzeitig arbeiten kann. Jede Feldsphäre kann eindeutig über ihre Feldnummer bestimmt werden.",
                     /*LvL 3*/  "Die Siedlung dient vor allem der Forschung, um Sphären und Wohncontainer zu verbessern. Dafür werden Forschungsstationen gebaut. Eine Forschungsstation hat eine eindeutige Stationsnummer, Baukosten und eine bestimmte Spezialisierung. Diese gibt an, für welchen Objekttyp in der Forschungsstation geforscht wird. Für eine Forschungsstation ist genau ein Astronaut verantwortlich.",
                     /*LvL 4*/  "Verbesserungen werden durch Forschungsprojekte erreicht. Attribute von Sphären und Containern können mehrfach erforscht und so mehrfach verbessert werden. Ein Forschungsprojekt hat somit ein bestimmtes Forschungsmerkmal und eine Forschungsstufe. Darüber kann ein Forschungsprojekt eindeutig ermittelt werden. Jedes Forschungsprojekt erzielt einen Verbesserungsfaktor, benötigt eine bestimmte Arbeiterzahl und Projektkosten. Forschungsprojekte können nur angelegt werden, wenn die passende Forschungsstation bereits existiert. Eine Forschungsstation organisiert mehrere Forschungsprojekte. Mehrere Astronauten können in einem Forschungsprojekt forschen, jedoch kann ein Astronaut nur an einem Projekt forschen. \nForschungsprojekte verbessern die Forschungsmerkmale immer für alle zukünftig gebauten Objekte. Ein Forschungsprojekt verbessert daher mehrere Wohncontainer. Zugleich können mehrere Projekte einen Wohncontainer verbessern.",
@@ -139,10 +139,10 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                 if (kardinalitaet[Story.level].Contains(info.GetWord()) && entAttBez == "")
                 {
                     Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
-                    vertexColors[vertexIndex + 0] = Color.cyan;
-                    vertexColors[vertexIndex + 1] = Color.cyan;
-                    vertexColors[vertexIndex + 2] = Color.cyan;
-                    vertexColors[vertexIndex + 3] = Color.cyan;
+                    vertexColors[vertexIndex + 0] = Color.gray;
+                    vertexColors[vertexIndex + 1] = Color.gray;
+                    vertexColors[vertexIndex + 2] = Color.gray;
+                    vertexColors[vertexIndex + 3] = Color.gray;
                 }
                 if (kardinalitaet[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Kard" || entAttBez == ""))
                 {
@@ -160,10 +160,10 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                         meshIndex = m_TextMeshPro.textInfo.characterInfo[154 + k].materialReferenceIndex;
                         vertexIndex = m_TextMeshPro.textInfo.characterInfo[154 + k].vertexIndex;
                         Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
-                        vertexColors[vertexIndex + 0] = Color.cyan;
-                        vertexColors[vertexIndex + 1] = Color.cyan;
-                        vertexColors[vertexIndex + 2] = Color.cyan;
-                        vertexColors[vertexIndex + 3] = Color.cyan;
+                        vertexColors[vertexIndex + 0] = Color.gray;
+                        vertexColors[vertexIndex + 1] = Color.gray;
+                        vertexColors[vertexIndex + 2] = Color.gray;
+                        vertexColors[vertexIndex + 3] = Color.gray;
                     } 
                 }
             }

@@ -57,7 +57,7 @@ public class Tutorial : MonoBehaviour
             bZusatz = buttonZusatz.GetComponent<Button>();
             bZusatz.interactable = false;
             FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, öffne zuerst den ER-Editor!";
-            FehlerAnzeige.tutorialtext_ER = "Erstelle ein ER-Diagramm anhand der ER-Beschreibung. Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehackt. Tipp: Bestimmte Wörter sind in der Beschreibung durch antippen markierbar.";
+            FehlerAnzeige.tutorialtext_ER = "Erstelle ein ER-Diagramm anhand der ER-Beschreibung (Vergiss nicht zu scrollen!). Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehakt. 'Primärschlüssel' wird abgehakt, wenn die entsprechenden Attribute richtig gekennzeichnet sind.\n Tipp: Bestimmte Wörter sind in der Beschreibung durch antippen markierbar.";
             if(firstTime){
                 popUpGameObject(buttonER);
                 firstTime = false;
@@ -94,7 +94,7 @@ public class Tutorial : MonoBehaviour
             }
             pfeilSpiel.transform.localPosition = new Vector3(637,177,0);
             FehlerAnzeige.tutorialtext_Spiel = "Sehr gut! Um nun auch Astronauten einzufliegen, erweitere dein ER-Diagramm!";
-            FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung!";
+            FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Beim Anlegen einer Relationship musst du die entsprechenden Entitymengen noch auswählen und die gewünschte Kardinalität setzten  ";
             pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
             missionClick = false;
             bZusatz.interactable = false;

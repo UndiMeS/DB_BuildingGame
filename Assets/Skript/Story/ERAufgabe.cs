@@ -34,11 +34,11 @@ public class ERAufgabe : MonoBehaviour
     private string[][] wohncontainer = {
                                         new string[] { "1", "Kosten", "Baukosten", "Preis", "Baupreis", "€" },
                                         new string[] { "2", "Containernummer", "CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer", "ID", "id", "Id","Cnr" },
-                                        new string[] { "3", "Bettenzahl", "Bettenanzahl", "Betten", "Kapazität" },
-                                        new string[] { "4", "freie Betten", "freieBetten", "Betten frei" }
+                                        new string[] { "3", "Bettenzahl", "Bettenanzahl","Bettanzahl","Bettzahl", "Betten", "Kapazität" },
+                                        new string[] { "4", "freie Betten", "freieBetten", "Betten frei", "Freie Betten", "FreieBetten", "BettenFrei", "Bettenfrei" }
                                         };
     private string[][] astronaut = {
-                                        new string[] { "1","Anreisegebühr", "Kosten", "Gebühren", "Reisekosten", "Preis" },
+                                        new string[] { "1","Anreisegebühr","Anreisegebühren", "Kosten", "Gebühren", "Reisekosten", "Preis" },
                                         new string[] { "2","Aufgabe", "Beruf", "Job", "Art"},
                                         new string[] { "3", "Name", "Namen"},
                                         new string[] { "4", "Geburtsdatum", "Geburtstag", "Datum"}
