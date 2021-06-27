@@ -170,14 +170,25 @@ public class Beziehung : MonoBehaviour
         }
         else
         {
-            kardtext.transform.localPosition += new Vector3(0, Mathf.Tan(winkel)*kardtext.GetComponent<RectTransform>().sizeDelta.x, 0);
+            kardtext.transform.localPosition += new Vector3(0, 10, 0);
             if (offset && kardtext.Equals(kardText1))
             {
                 kardtext.transform.localPosition += new Vector3(0, 50, 0);
             }
         }
 
+        //float winkel = Vector3.SignedAngle(pos2 - pos1, Vector3.left, Vector3.forward) + 180;
+        //kardtext.transform.localPosition = pos1 + Quaternion.Euler(winkel + 10, 0, 0) * Vector3.left * gameObject.GetComponent<RectTransform>().sizeDelta.x / 2;
 
+    }
+    private Vector3 getPosition(GameObject @object)
+    {
+        Vector3[] v = new Vector3[4];
+        @object.GetComponent<RectTransform>().GetWorldCorners(v);
+        float x = v[0].x + (@object.transform.position.x - v[0].x) / (2 * @object.GetComponent<RectTransform>().pivot.x);
+        float y = v[0].y + (@object.transform.position.y - v[0].y) / (2 * @object.GetComponent<RectTransform>().pivot.y);
+
+        return new Vector2(x, y);
     }
 
     public void welcheEntity(int einsOderZwei, int option, bool schwachKommen)

@@ -27,7 +27,8 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //Debug.Log("Spiel pausiert "+ SpielIstPausiert);        
+        //Debug.Log("Spiel pausiert "+ SpielIstPausiert);
+        
     }
 
     public void Weiterspielen()
@@ -164,25 +165,6 @@ public class PauseMenu : MonoBehaviour
         mission.transform.localPosition = new Vector3(16, 650, 0);
     }
 
-    public void AllesAusblenden()
-    {
-        PauseMenuUI.SetActive(false);
-        FehlerAnzeige.fehlertext = "Du hast kurz Zeit einen Screenshot zu machen";
-        Invoke("Info", 5);
-        
-    }
-
-    private void Info()
-    {
-        canvas.SetActive(false);
-        Invoke("AllesAn", 5);
-    }
-
-    private void AllesAn()
-    {
-        canvas.SetActive(true);
-    }
-
     public void animationMission()
     {
         LeanTween.cancel(mission);
@@ -205,10 +187,31 @@ public class PauseMenu : MonoBehaviour
         else 
         {
             LeanTween.moveLocalY(mission, 380, 0.3f);
-        }
-        
-
+        }      
     }
+
+    public void screenshotMachen(string wo)
+    {
+        canvas.SetActive(false);
+        ScreenCapture.CaptureScreenshot(Application.dataPath + "/SaveState/"+wo+"Screenshot.png");
+        Debug.Log("Screenshot gemacht");
+        Invoke("allesAn", 0.1f);
+    }
+
+    private void allesAn()
+    {
+        canvas.SetActive(true);
+        FehlerAnzeige.fehlertext = "Screenshot wurde gemacht. Er befindet sich in deinen Speicherdaten.";
+        Weiterspielen();
+    }
+    public void screenshotMachenER()
+    {
+        Weiterspielen();
+        ScreenCapture.CaptureScreenshot(Application.dataPath + "/SaveState/ERDScreenshot.png");
+        Debug.Log("Screenshot gemacht");
+        FehlerAnzeige.fehlertext = "Screenshot wurde gemacht. Er befindet sich in deinen Speicherdaten.";
+    }
+
 }
 
 
