@@ -99,7 +99,7 @@ public class ERAufgabe : MonoBehaviour
     private string[] astronaut_weidesphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
     private string[] astronaut_weidesphaere_Eig = { "A", "Weidesphäre", "0", "1", "n" };
 
-    private string[] stallcontainer_nutztier = { "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "schläftIn", "PlatzFür" };
+    private string[] stallcontainer_nutztier = { "leben", "lebt", "wohnen","wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "schläftIn", "PlatzFür" };
     private string[] stallcontainer_nutztier_Eig = { "Stallcontainer", "Nutztier", "1", "n", "1" };
 
     private string[] weidesphaere_nutztier = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften", "grasenAuf", "grasen auf", "helfenAuf", "helfen auf" };
@@ -108,7 +108,7 @@ public class ERAufgabe : MonoBehaviour
     private string[] forschungsprojekt_wohncontainer = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
     private string[] forschungsprojekt_wohncontainer_Eig = { "P", "W", "0", "n", "n" };
 
-    private string[] forschungsprojekt_feldsphaere = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
+    private string[] forschungsprojekt_feldsphaere = { "forschen" ,"verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
     private string[] forschungsprojekt_feldsphaere_Eig = { "P", "F", "0", "n", "n" };
 
     private string[] forschungsprojekt_stallcontainer = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
