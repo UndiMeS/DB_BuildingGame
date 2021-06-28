@@ -16,16 +16,20 @@ public class Tutorial : MonoBehaviour
     private static bool zusatzClick = false;
     private bool rotationTemp = true;
     public GameObject containerKiller;
+    public GameObject wohncontainerHilfe;
 
-    //Elemente für PopUp
+    //Elemente aus Spiel
     public GameObject buttonER;
     public GameObject buttonSpiel;
     public GameObject textER;
     public GameObject buttonMission;
+    Button bMission;
     public GameObject container;
     public GameObject feld;
     public GameObject buttonZusatz;
     Button bZusatz;
+    public GameObject beschreibungER;
+    public GameObject wohncontainerGebaeudeanzeige;
 
     // Start is called before the first frame update
     void Start()
@@ -46,28 +50,38 @@ public class Tutorial : MonoBehaviour
     {
         bZusatz = buttonZusatz.GetComponent<Button>();
         bZusatz.interactable = true;
+        bMission = buttonMission.GetComponent<Button>();
+        bMission.interactable = true;
         containerKiller.SetActive(false);
         pfeilER.SetActive(false);
         pfeilSpiel.SetActive(false);
+        wohncontainerHilfe.SetActive(false);
     }
     private void ShowTutorial()
     {
         //Vorbereitung der Komponenten
         bZusatz = buttonZusatz.GetComponent<Button>();
         bZusatz.interactable = true;
+        bMission = buttonMission.GetComponent<Button>();
+        bMission.interactable = true;
         containerKiller.SetActive(false);
+        wohncontainerHilfe.SetActive(false);
 
         //Zeitpunkt: Neues Spiel gestartet und Wechsel in ER-Editor
         if(Story.lvl[0] == false && Mission.missionsLevel[6] == false){
             bZusatz = buttonZusatz.GetComponent<Button>();
             bZusatz.interactable = false;
+            bMission.interactable = false;
             FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, öffne zuerst den ER-Editor!";
-            FehlerAnzeige.tutorialtext_ER = "Erstelle ein ER-Diagramm anhand der ER-Beschreibung (Vergiss nicht zu scrollen!). Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehakt. 'Primärschlüssel' wird abgehakt, wenn die entsprechenden Attribute richtig gekennzeichnet sind.\n Tipp: Bestimmte Wörter sind in der Beschreibung durch antippen markierbar.";
-            if(firstTime){
-                popUpGameObject(buttonER);
-                firstTime = false;
+            FehlerAnzeige.tutorialtext_ER = "Erstelle ein ER-Diagramm anhand der ER-Beschreibung (scrollbar!). Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehakt. 'Primärschlüssel' wird abgehakt, wenn die entsprechenden Attribute richtig gekennzeichnet sind.\n Tipp: Bestimmte Wörter sind in der Beschreibung durch antippen markierbar.";
+            
+            if(beschreibungER.activeSelf){
+                pfeilER.SetActive(true);
+                pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
+            }else{
+                pfeilER.SetActive(true);
+                pfeilER.transform.localPosition = new Vector3(844,132,0);
             }
-            pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
             pfeilSpiel.SetActive(true);
             missionClick = false;
         
@@ -77,10 +91,7 @@ public class Tutorial : MonoBehaviour
             pfeilER.transform.localPosition = new Vector3(844,221,0);
             containerKiller.SetActive(true);
             bZusatz.interactable = false;
-            if(firstTime == false){
-                popUpGameObject(buttonSpiel);
-                firstTime = true;
-            }
+            bMission.interactable = true;
             FehlerAnzeige.tutorialtext_Spiel = "Schau dir nun deine Mission an!";
             FehlerAnzeige.tutorialtext_ER = "Sehr gut! Tipp: Halte das Diagramm durch Verschieben per Drag'n'Drop übersichtlich!\n Wechsel zurück in die Siedlung!"; 
             
@@ -106,7 +117,13 @@ public class Tutorial : MonoBehaviour
             pfeilSpiel.transform.localPosition = new Vector3(637,177,0);
             FehlerAnzeige.tutorialtext_Spiel = "Sehr gut! Um nun auch Astronauten einzufliegen, erweitere dein ER-Diagramm!";
             FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Beim Anlegen einer Relationship musst du die entsprechenden Entitymengen noch auswählen und die gewünschte Kardinalität setzten  ";
-            pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
+            if(beschreibungER.activeSelf){
+                pfeilER.SetActive(true);
+                pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
+            }else{
+                pfeilER.SetActive(true);
+                pfeilER.transform.localPosition = new Vector3(844,132,0);
+            }
             missionClick = false;
             bZusatz.interactable = false;
         
@@ -114,18 +131,18 @@ public class Tutorial : MonoBehaviour
         }else if((Story.lvl[1] == true && Story.lvl[2] == false) && (Mission.missionsLevel[6] == true && Mission.missionsLevel[0] == false)){
             FehlerAnzeige.tutorialtext_Spiel = "Schau dir deine neue Mission an!";
             FehlerAnzeige.tutorialtext_ER = "Fabelhaft! Wechsel nun erneut in die Siedlung und erfülle deine nächste Mission!";
-            if(firstTime == true){
-                popUpGameObject(buttonSpiel);
-                firstTime = false;
-            }
             pfeilER.transform.localPosition = new Vector3(844,221,0);
             pfeilSpiel.transform.localPosition = new Vector3(637,100,0);
             //Prüfe, ob Missionsbutten gedrückt wurde
             if(missionClick){
-                FehlerAnzeige.tutorialtext_Spiel = "Neue Astronauten können über die Buttons im Wohncontainer eingeflogen werden. Auch den Button zum Anzeigen der Astronautenliste findest du dort.";
+                FehlerAnzeige.tutorialtext_Spiel = "Neue Astronauten können über die Buttons im Wohncontainer eingeflogen werden. Klicke dort für den Namen auf 'Alle Astronauten'!";
                 FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen. Wechsel zurück in die Siedlung!";
                 pfeilSpiel.SetActive(false);
+                if(wohncontainerGebaeudeanzeige.activeSelf){
+                    wohncontainerHilfe.SetActive(true);
+                }
             }
+            
             bZusatz.interactable = false;
         
         //Zeitpunkt: Mission 1 (Astronauten einfliegen) fertig und Wechsel in ER-Editor (Feldsphäre)
@@ -147,9 +164,9 @@ public class Tutorial : MonoBehaviour
                 bZusatz.interactable = true;
                 pfeilSpiel.transform.localPosition = new Vector3(637,23,0);
                 pfeilER.transform.localPosition = new Vector3(844,221,0);
-                if(firstTime == false){
+                if(firstTime == true){
                     popUpGameObject(buttonZusatz);
-                    firstTime = true;
+                    firstTime = false;
                 }
             }
             //Prüfe ob Zusatzfenster geklickt wurde

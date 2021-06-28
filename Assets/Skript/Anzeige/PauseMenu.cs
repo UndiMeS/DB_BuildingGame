@@ -20,7 +20,6 @@ public class PauseMenu : MonoBehaviour
     public GameObject Aufgabenfenster;
     public GameObject Checkliste;
     public GameObject baumenuTransparent;
-
     public GameObject mission;
 
 
@@ -91,6 +90,8 @@ public class PauseMenu : MonoBehaviour
         hilfeButtondestroyer.SetActive(true);
         hilfeTexte.SetActive(true);
         baumenuTransparent.SetActive(false);
+        LeanTween.moveLocalY(mission, 650, 0.3f);
+
 
     }
     public void HilfeER()
