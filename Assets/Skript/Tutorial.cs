@@ -76,8 +76,8 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_ER = "Erstelle ein ER-Diagramm anhand der ER-Beschreibung (scrollbar!). Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehakt. 'Primärschlüssel' wird abgehakt, wenn die entsprechenden Attribute richtig gekennzeichnet sind.\n Tipp: Bestimmte Wörter sind in der Beschreibung durch antippen markierbar.";
             
             if(beschreibungER.activeSelf){
-                pfeilER.SetActive(true);
-                pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
+                pfeilER.SetActive(false);
+                //pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
             }else{
                 pfeilER.SetActive(true);
                 pfeilER.transform.localPosition = new Vector3(844,132,0);
@@ -88,6 +88,7 @@ public class Tutorial : MonoBehaviour
         //Zeitpunkt: ER-Level 0 (Wohncontainer) fertig und öffnen des Missionsfensters
         }else if(Story.lvl[0] == true && Mission.missionsLevel[6] == false){
             pfeilSpiel.transform.localPosition = new Vector3(637,100,0);
+            pfeilER.SetActive(true);
             pfeilER.transform.localPosition = new Vector3(844,221,0);
             containerKiller.SetActive(true);
             bZusatz.interactable = false;
