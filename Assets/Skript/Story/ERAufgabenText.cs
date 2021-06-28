@@ -43,7 +43,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
 
     private List<string>[] beziehungen = {
                  /*LvL 0*/ new List<string> {  },
-                 /*LvL 1*/ new List<string>{"wohnt", "wohntIn"},
+                 /*LvL 1*/ new List<string>{"wohnt", "wohntIn", "wohnen"},
                  /*LvL 2*/ new List<string>{"arbeiten"},
                  /*LvL 3*/ new List<string>{"verantwortlich"},
                  /*LvL 4*/ new List<string>{},
@@ -157,8 +157,8 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                 {
                     for(int k = 0; k < 3; k++)
                     {
-                        meshIndex = m_TextMeshPro.textInfo.characterInfo[154 + k].materialReferenceIndex;
-                        vertexIndex = m_TextMeshPro.textInfo.characterInfo[154 + k].vertexIndex;
+                        meshIndex = m_TextMeshPro.textInfo.characterInfo[164 + k].materialReferenceIndex;
+                        vertexIndex = m_TextMeshPro.textInfo.characterInfo[164 + k].vertexIndex;
                         Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
                         vertexColors[vertexIndex + 0] = Color.gray;
                         vertexColors[vertexIndex + 1] = Color.gray;
