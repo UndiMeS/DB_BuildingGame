@@ -116,10 +116,10 @@ public class Tutorial : MonoBehaviour
             }
             pfeilSpiel.transform.localPosition = new Vector3(637,177,0);
             FehlerAnzeige.tutorialtext_Spiel = "Sehr gut! Um nun auch Astronauten einzufliegen, erweitere dein ER-Diagramm!";
-            FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Beim Anlegen einer Relationship musst du die entsprechenden Entitymengen noch auswählen und die gewünschte Kardinalität setzten  ";
+            FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Beim Anlegen einer Relationship musst du die entsprechenden Entitymengen noch auswählen und die gewünschte Kardinalität setzen.";
             if(beschreibungER.activeSelf){
-                pfeilER.SetActive(true);
-                pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
+                pfeilER.SetActive(false);
+                //pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
             }else{
                 pfeilER.SetActive(true);
                 pfeilER.transform.localPosition = new Vector3(844,132,0);
@@ -131,6 +131,7 @@ public class Tutorial : MonoBehaviour
         }else if((Story.lvl[1] == true && Story.lvl[2] == false) && (Mission.missionsLevel[6] == true && Mission.missionsLevel[0] == false)){
             FehlerAnzeige.tutorialtext_Spiel = "Schau dir deine neue Mission an!";
             FehlerAnzeige.tutorialtext_ER = "Fabelhaft! Wechsel nun erneut in die Siedlung und erfülle deine nächste Mission!";
+            pfeilER.SetActive(true);
             pfeilER.transform.localPosition = new Vector3(844,221,0);
             pfeilSpiel.transform.localPosition = new Vector3(637,100,0);
             //Prüfe, ob Missionsbutten gedrückt wurde
@@ -148,7 +149,7 @@ public class Tutorial : MonoBehaviour
         //Zeitpunkt: Mission 1 (Astronauten einfliegen) fertig und Wechsel in ER-Editor (Feldsphäre)
         }else if((Story.lvl[1] == true && Story.lvl[2] == false) && (Mission.missionsLevel[0] == true && Mission.missionsLevel[1] == false)){
             FehlerAnzeige.tutorialtext_Spiel = "Die ersten Siedlungsbewohner sind gelandet. Die Anzahl der zur Verfügung stehenden Astronauten kannst du in der Infoleiste ganz rechts sehen. Wechsel, wie nach jeder Mission in den ER-Editor!";
-            FehlerAnzeige.tutorialtext_ER = "Erweitere nun erneut dein ER-Diagramm und führe den gleichen Kreislauf aus ER- u. Spielmodus fort und erweitere deine Siedlung!";
+            FehlerAnzeige.tutorialtext_ER = "Erweitere nun erneut dein ER-Diagramm, führe den gleichen Kreislauf aus ER- u. Spielmodus fort und erweitere deine Siedlung!";
             pfeilER.SetActive(false);
             pfeilSpiel.transform.localPosition = new Vector3(637,177,0);
             pfeilSpiel.SetActive(true);
