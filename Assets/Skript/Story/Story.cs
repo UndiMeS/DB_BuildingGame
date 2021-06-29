@@ -39,7 +39,7 @@ public class Story : MonoBehaviour
 
     //Level 4 Objecte
     public GameObject projektFeld;
-    public GameObject projektFeld_bauen;
+    //public GameObject projektFeld_bauen;
     public GameObject buttonAlleProjekte;
     Button bAlleProjekte;
     public GameObject buttonStationsprojekte;
@@ -77,7 +77,6 @@ public class Story : MonoBehaviour
     public GameObject buttonWeideForschen;
     Button bWeideForschen;
     public GameObject erBaumenue;
-    public GameObject checklistButton;
     public GameObject aufgabeButton;
     public GameObject checklist;
     public GameObject aufgabe;    
@@ -128,7 +127,7 @@ public class Story : MonoBehaviour
 
         //Level 4
         projektFeld.SetActive(false);
-        projektFeld_bauen.SetActive(false);
+       //projektFeld_bauen.SetActive(false);
         bAlleProjekte = buttonAlleProjekte.GetComponent<Button>();
         bAlleProjekte.interactable = false;
         bStationsprojekte = buttonStationsprojekte.GetComponent<Button>();
@@ -200,7 +199,7 @@ public class Story : MonoBehaviour
         {
             //Debug.Log("Level 4 korrekt");
             projektFeld.SetActive(true);
-            projektFeld_bauen.SetActive(true);
+            //projektFeld_bauen.SetActive(true);
             bAlleProjekte.interactable = true;
             bStationsprojekte.interactable = true;
             bHilfe.interactable = true;
@@ -235,7 +234,6 @@ public class Story : MonoBehaviour
             aufgabe.SetActive(false);
             aufgabeButton.SetActive(false);
             checklist.SetActive(false);
-            checklistButton.SetActive(false);
             bHilfeER.interactable = false; 
             Utilitys.TextInTMP(titelER, "Deine Marssiedlung");
         }

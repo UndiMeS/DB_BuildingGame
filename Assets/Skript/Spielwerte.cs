@@ -7,7 +7,10 @@ public class Spielwerte : MonoBehaviour
 
     public static void Werte()
     {
-        Testing.geld = 600;//400;
+        Testing.geld = 5000;//400;
+        Testing.feldarbeiter = 0;
+        Testing.forscher = 0;
+        Testing.tierpfleger = 0;
 
         Wohncontainer.betten = 5;
         Wohncontainer.preis = 80;
@@ -37,7 +40,7 @@ public class Spielwerte : MonoBehaviour
         Aufgaben.gewinn = 150; //Gewinn bei 1. Chance
         Aufgaben.gewinn2C = 30; //Gewinn bei 2. Chance
 
-        SpielInfos.neuerUmsatz = 3; //alle X Tage neuer Umsatz !!!!!!!!!!!!! Achtung: Text in Leiste Top muss händisch geändert werden!!!! 
+        SpielInfos.neuerUmsatz = 5; //alle X Tage neuer Umsatz !!!!!!!!!!!!! Achtung: Text in Leiste Top muss händisch geändert werden!!!! 
         SpielInfos.neueZusatzaufgabe = 1; //alle X Tage neue Zusatzaufgabe
 
     }

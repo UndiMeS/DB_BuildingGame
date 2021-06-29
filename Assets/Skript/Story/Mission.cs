@@ -173,7 +173,7 @@ public class Mission : MonoBehaviour
                 missionshintergrund.transform.localPosition = new Vector3(-16,196.0f,0.0f);
             }else if(Story.level == 5){
                 return 8; //Verbessern von Wohncontainern
-                missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
+                missionshintergrund.transform.localPosition = new Vector3(-16,105.0f,0.0f);
             }else if(Story.level == 6){
                 return 2; //Verbessern von Feldern
                 missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
@@ -202,7 +202,7 @@ public class Mission : MonoBehaviour
             }else if(Story.level == 4){
                 missionshintergrund.transform.localPosition = new Vector3(-16,196.0f,0.0f);
             }else if(Story.level == 5){
-                missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
+                missionshintergrund.transform.localPosition = new Vector3(-16,105.0f,0.0f);
             }else if(Story.level == 6){
                 missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
             }else if(Story.level == 7){

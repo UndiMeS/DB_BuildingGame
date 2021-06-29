@@ -179,7 +179,7 @@ public class Tutorial : MonoBehaviour
                 pfeilER.SetActive(false);
                 //Prüfe, ob Missionsfenster geklickt wurde
                 if(missionClick){
-                    FehlerAnzeige.tutorialtext_Spiel = "Hinweis: Rechts neben der Guthabenanzeige in der Infoleiste am oberen Bildschirmrand siehst du den Ertrag, der dir alle "+SpielInfos.neuerUmsatz+" Sol ausgezahlt wird.";
+                    FehlerAnzeige.tutorialtext_Spiel = "Hinweis: Rechts neben der Guthabenanzeige in der Infoleiste am oberen Bildschirmrand siehst du den Ertrag, der dir alle "+SpielInfos.neuerUmsatz+" Sol (Marstage) ausgezahlt wird.";
                     zusatzClick = false;
                 }
             }
