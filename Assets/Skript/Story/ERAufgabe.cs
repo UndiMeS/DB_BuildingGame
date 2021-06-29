@@ -677,6 +677,10 @@ public class ERAufgabe : MonoBehaviour
         if (count == anzahlObjekte[Story.level])
         {
             ausgabe &= true;
+            if(FehlerAnzeige.fehlertext.Equals("Es sind zu viele Objekte.")){
+                FehlerAnzeige.fehlertext = "trigger";
+            }
+            
         }
         else if (count > anzahlObjekte[Story.level])
         {
@@ -745,6 +749,4 @@ public class ERAufgabe : MonoBehaviour
             }
         }
     }
-
-
 }

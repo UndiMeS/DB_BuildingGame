@@ -37,6 +37,8 @@ public class Tutorial : MonoBehaviour
         if(tutorialOff){
             OffTutorial(); 
         }
+        pfeilER.SetActive(false);
+        pfeilSpiel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -66,6 +68,7 @@ public class Tutorial : MonoBehaviour
         bMission.interactable = true;
         containerKiller.SetActive(false);
         wohncontainerHilfe.SetActive(false);
+        
 
         //Zeitpunkt: Neues Spiel gestartet und Wechsel in ER-Editor
         if(Story.lvl[0] == false && Mission.missionsLevel[6] == false){
