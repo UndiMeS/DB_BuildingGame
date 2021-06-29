@@ -39,7 +39,6 @@ public class FehlerAnzeige : MonoBehaviour
                 Invoke("Zuruek", 3);//anzeige des Fehlertextes fuer 2s, dann wieder auf "" zurückgesetz  
             }      
         }
-
         Utilitys.TextInTMP(fehlerObject, fehlertext);
         Utilitys.TextInTMP(tutorialanzeige_Spiel, tutorialtext_Spiel);
         Utilitys.TextInTMP(tutorialanzeige_ER, tutorialtext_ER);
