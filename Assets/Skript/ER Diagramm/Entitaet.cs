@@ -48,9 +48,12 @@ public class Entitaet : MonoBehaviour
         foreach (GameObject bez in beziehungen)
         {
             beziehungenID.Add(bez.GetInstanceID());
+        }if (vaterEntitaet != null)
+        {
+            vaterEntitaetID = vaterEntitaet.GetInstanceID();
+            schwacheBeziehungID = schwacheBeziehung.GetInstanceID();
         }
-        vaterEntitaetID = vaterEntitaet.GetInstanceID();
-        schwacheBeziehungID = schwacheBeziehung.GetInstanceID();
+        
     }
 
     public void setWerte(LoadedEntity ent)

@@ -31,6 +31,7 @@ public class Forschung : MonoBehaviour
 
     public void Start()
     {
+        projekte = new List<Projekt>();
         if (stationsnummer == 0)
         {
             stationsnummer = nummerZaehler;
@@ -241,7 +242,8 @@ public class Forschung : MonoBehaviour
 
         if (projekte.Count != 0)
         {
-            Debug.Log(projekte[0].merkmal + " " + dropdown.options[0].text);
+            refreshDropdown();
+            Debug.Log(dropdown.options[0]);
             if (projekte[0].merkmal == dropdown.options[0].text)
             {
                 selectedProj = projekte[0];

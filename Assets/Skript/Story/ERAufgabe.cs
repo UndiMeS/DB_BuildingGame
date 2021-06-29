@@ -369,21 +369,22 @@ public class ERAufgabe : MonoBehaviour
         {
             foreach (GameObject entity in ERErstellung.modellObjekte)
             {
+               
                 if (entity.name.Equals(entityName))
                 {
                     if (listeSchwacheEntity[Story.level] && listeEntity[Story.level][0] == entityName && entity.GetComponent<Entitaet>().schwach)
                     {
                         entitysHat[Story.level]++;
                     }
-                    else if (!listeSchwacheEntity[Story.level])
+                    else if (!listeSchwacheEntity[Story.level]||(Story.level==6&&indexEntity==1&& !entity.GetComponent<Entitaet>().schwach))
                     {
                         entitysHat[Story.level]++;
                     }
 
                     checkAttribute(indexEntity, entity);
                 }
+                
             }
-
             indexEntity++;
         }
 

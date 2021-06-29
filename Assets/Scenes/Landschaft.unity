@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -47091,8 +47091,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb20130931a7f9b4f980523d9fa6b0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infoboxER: {fileID: 0}
-  infoboxSpiel: {fileID: 0}
+  infoboxER: {fileID: 2105285556}
+  infoboxSpiel: {fileID: 693076869}
 --- !u!1 &887362874
 GameObject:
   m_ObjectHideFlags: 0
@@ -63489,7 +63489,7 @@ MonoBehaviour:
   wohncontainerTabelle: {fileID: 171767078}
   feldTabelle: {fileID: 1679555653}
   stallTabelle: {fileID: 665325399}
-  forschungsTabelle: {fileID: 0}
+  forschungsTabelle: {fileID: 1486335141}
   weidenTabelle: {fileID: 817897275}
 --- !u!1 &1190328603
 GameObject:
@@ -92017,7 +92017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37cd7f1e22281b4b867293b294a9963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testModus: 1
+  testModus: 0
   dasIstSchonFertig: {fileID: 1730754993}
   aufgabenText: {fileID: 616779706}
   checkliste:
@@ -98416,7 +98416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4836ad1e902274242aadfc3504d79743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offModus: 0
+  offModus: 1
   transparentWohncontainer: {fileID: 865439306}
   buttonForscher: {fileID: 1566984999}
   buttonFeld: {fileID: 857717934}

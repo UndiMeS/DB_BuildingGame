@@ -59,9 +59,31 @@ public class Beziehung : MonoBehaviour
         beziehungsName = gameObject.name;
         x = gameObject.transform.position.x;
         y = gameObject.transform.position.y;
-        objekt1ID = objekt1.GetInstanceID();
-        objekt2ID = objekt2.GetInstanceID();
-
+        if (objekt1 == null)
+        {
+            objekt2.GetComponent<Entitaet>().beziehungen.Remove(gameObject);
+            Destroy(linie2);
+            ERErstellung.modellObjekte.Remove(gameObject);
+            Destroy(gameObject);
+            Destroy(this);
+        }
+        else
+        {
+            objekt1ID = objekt1.GetInstanceID();
+        }
+        if (objekt2 == null)
+        {
+            objekt1.GetComponent<Entitaet>().beziehungen.Remove(gameObject);
+            Destroy(linie1);
+            ERErstellung.modellObjekte.Remove(gameObject);
+            Destroy(gameObject);
+            Destroy(this);
+        }
+        else
+        {
+            objekt2ID = objekt2.GetInstanceID();
+        }      
+        
         Utilitys.TextInTMP(kardText1, kard1);
         if (kard2.Equals("n"))
         {
@@ -112,6 +134,16 @@ public class Beziehung : MonoBehaviour
         {
             gameObject.GetComponent<ERObjekt>().selectedSprite = Selected;
             gameObject.GetComponent<ERObjekt>().originalSprite = Original;
+        }
+
+        foreach(GameObject bez in ERErstellung.modellObjekte)
+        {
+            if (bez.CompareTag("Beziehung")&&bez!=gameObject&&
+                ((bez.GetComponent<Beziehung>().objekt1==objekt1&& bez.GetComponent<Beziehung>().objekt2 == objekt2)||
+                 (bez.GetComponent<Beziehung>().objekt2 == objekt1 && bez.GetComponent<Beziehung>().objekt1 == objekt2)))
+            {
+                FehlerAnzeige.fehlertext = "Es gibt 2 Beziehungen zwischen den gleichen Entitäten.";
+            }
         }
     }
 

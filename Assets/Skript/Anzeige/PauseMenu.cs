@@ -134,14 +134,12 @@ public class PauseMenu : MonoBehaviour
         if (objekt.activeSelf)
         {
             objekt.SetActive(false);
-            SpielIstPausiert = false;
             KameraKontroller.aktiviert = true;
             GebaeudeAnzeige.allesAus = false;
         }
         else
         {
             objekt.SetActive(true);
-            SpielIstPausiert = true;
             KameraKontroller.aktiviert = false;
             GebaeudeInfoBauen.wertFest = 0;
             GebaeudeAnzeige.allesAus = true;
