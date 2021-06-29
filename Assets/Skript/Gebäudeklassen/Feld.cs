@@ -11,7 +11,7 @@ public class Feld : MonoBehaviour
     public int ertrag;
 
     public static int neuErtrag = 30; //unten auch
-    public static int nummerZaehler = 1100;
+    public static int nummerZaehler = 200;
     public static int preis = 70;
     public static int arbeiterzahl = 4;
 

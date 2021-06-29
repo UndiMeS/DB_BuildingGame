@@ -72,8 +72,8 @@ public class Tutorial : MonoBehaviour
             bZusatz = buttonZusatz.GetComponent<Button>();
             bZusatz.interactable = false;
             bMission.interactable = false;
-            FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, öffne zuerst den ER-Editor!";
-            FehlerAnzeige.tutorialtext_ER = "Erstelle ein ER-Diagramm anhand der ER-Beschreibung (scrollbar!). Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehakt. 'Primärschlüssel' wird abgehakt, wenn die entsprechenden Attribute richtig gekennzeichnet sind.\n Tipp: Bestimmte Wörter sind in der Beschreibung durch antippen markierbar.";
+            FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, folge dem roten Pfeil und öffne zuerst den ER-Editor!";
+            FehlerAnzeige.tutorialtext_ER = "Erstelle ein ER-Diagramm mit der Leiste am unteren Bildschrimrand anhand der ER-Beschreibung (scrollbar!). Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehakt. 'Primärschlüssel' wird abgehakt, wenn die entsprechenden Attribute richtig gekennzeichnet sind.\n Tipp: Bestimmte Wörter sind in der Beschreibung durch antippen markierbar.";
             
             if(beschreibungER.activeSelf){
                 pfeilER.SetActive(false);
@@ -117,7 +117,7 @@ public class Tutorial : MonoBehaviour
             }
             pfeilSpiel.transform.localPosition = new Vector3(637,177,0);
             FehlerAnzeige.tutorialtext_Spiel = "Sehr gut! Um nun auch Astronauten einzufliegen, erweitere dein ER-Diagramm!";
-            FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Beim Anlegen einer Relationship musst du die entsprechenden Entitymengen noch auswählen und die gewünschte Kardinalität setzen.";
+            FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Hinweis: Wird eine Entitymenge als 'schwach' gekennzeichnet, wird automatisch auch eine schwache Relation erzeugt! ";
             if(beschreibungER.activeSelf){
                 pfeilER.SetActive(false);
                 //pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
@@ -150,7 +150,7 @@ public class Tutorial : MonoBehaviour
         //Zeitpunkt: Mission 1 (Astronauten einfliegen) fertig und Wechsel in ER-Editor (Feldsphäre)
         }else if((Story.lvl[1] == true && Story.lvl[2] == false) && (Mission.missionsLevel[0] == true && Mission.missionsLevel[1] == false)){
             FehlerAnzeige.tutorialtext_Spiel = "Die ersten Siedlungsbewohner sind gelandet. Die Anzahl der zur Verfügung stehenden Astronauten kannst du in der Infoleiste ganz rechts sehen. Wechsel, wie nach jeder Mission in den ER-Editor!";
-            FehlerAnzeige.tutorialtext_ER = "Erweitere nun erneut dein ER-Diagramm, führe den gleichen Kreislauf aus ER- u. Spielmodus fort und erweitere deine Siedlung!";
+            FehlerAnzeige.tutorialtext_ER = "Erweitere nun erneut dein ER-Diagramm, führe den gleichen Kreislauf aus ER- u. Spielmodus fort und erweitere deine Siedlung! \n Hinweis: Beim Anlegen einer Relationship musst du die entsprechenden Entitymengen noch auswählen und die gewünschte Kardinalität setzen.";
             pfeilER.SetActive(false);
             pfeilSpiel.transform.localPosition = new Vector3(637,177,0);
             pfeilSpiel.SetActive(true);
@@ -162,7 +162,7 @@ public class Tutorial : MonoBehaviour
             if(zusatzClick == false && missionClick == false){
                 missionClick = false;
                 FehlerAnzeige.tutorialtext_Spiel = "Bei knappen Ressourcen kannst du auch eine Zusatzaufgabe lösen, um weiter zu bauen! Öffne eine Zusatzaufgabe!";
-                FehlerAnzeige.tutorialtext_ER = "Super! Im Baumenü sind nun Feldsphären freigeschaltet. Auf geht's in die neue Mission!";
+                FehlerAnzeige.tutorialtext_ER = "Super! Im Baumenü sind nun Feldsphären freigeschaltet. Auch Feldastronauten leben bereits in der Siedlung. Auf geht's in die neue Mission!";
                 bZusatz.interactable = true;
                 pfeilSpiel.transform.localPosition = new Vector3(637,23,0);
                 pfeilER.transform.localPosition = new Vector3(844,221,0);
@@ -174,7 +174,7 @@ public class Tutorial : MonoBehaviour
             //Prüfe ob Zusatzfenster geklickt wurde
             if(zusatzClick){
                 FehlerAnzeige.tutorialtext_Spiel = "Das Tutorial ist beendet! Versuche nun die nächste Mission zu erfüllen! \n Tipp: Im Pausemenü findest du auch eine Spielhilfe!";
-                FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen und mit Feldspähren Erträge erwirtschaften!";
+                FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen und mit Feldspähren Erträge erwirtschaften! \nTipp: Du benötigst 4 Feldsphären!";
                 pfeilSpiel.SetActive(false);
                 pfeilER.SetActive(false);
                 //Prüfe, ob Missionsfenster geklickt wurde

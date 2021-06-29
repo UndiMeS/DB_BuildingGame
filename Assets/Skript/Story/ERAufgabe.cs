@@ -167,7 +167,6 @@ public class ERAufgabe : MonoBehaviour
     public GameObject aufgabenFenster;
     public GameObject aufgabeButton;
     public GameObject checkbox;
-    public GameObject checkboxButton;
     public GameObject bottomLeiste;
 
     public GameObject kreisHacken;
@@ -307,7 +306,6 @@ public class ERAufgabe : MonoBehaviour
                 infobox.transform.localPosition = new Vector3(-624.0f,-375.0f,0.0f);
                 bottomLeiste.SetActive(true);        
                 aufgabeButton.SetActive(true);
-                checkboxButton.SetActive(true);
                 kreisHacken.SetActive(false);
                 kreisKreuz.SetActive(true);
                 if (firsttime)
@@ -325,7 +323,6 @@ public class ERAufgabe : MonoBehaviour
                 aufgabenFenster.SetActive(false);
                 checkbox.SetActive(false);
                 aufgabeButton.SetActive(false);
-                checkboxButton.SetActive(false);
                 firsttime = true;
             }
         }
@@ -401,7 +398,6 @@ public class ERAufgabe : MonoBehaviour
             
             bottomLeiste.SetActive(false);
             aufgabeButton.SetActive(false);
-            checkboxButton.SetActive(false); 
             //FehlerAnzeige.fehlertext = "Du hast alles richtig gemacht!";
             Story.lvl[Story.level] = true; //Markiere Level als erfüllt
             

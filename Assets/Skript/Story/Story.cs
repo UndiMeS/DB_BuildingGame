@@ -34,6 +34,8 @@ public class Story : MonoBehaviour
 
     //Level 3 Objecte
     public GameObject transparentForschungsstation;
+    public GameObject spezialisierungsauswahl_ohneWahl;
+    public GameObject spezialisierungsauswahl_mitWahl;
 
     //Level 4 Objecte
     public GameObject projektFeld;
@@ -121,6 +123,8 @@ public class Story : MonoBehaviour
 
         //Level 3
         transparentForschungsstation.SetActive(true);
+        spezialisierungsauswahl_ohneWahl.SetActive(true);
+        spezialisierungsauswahl_mitWahl.SetActive(false);
 
         //Level 4
         projektFeld.SetActive(false);
@@ -202,6 +206,8 @@ public class Story : MonoBehaviour
             bHilfe.interactable = true;
             bWohncontainerForschen.interactable = true;
             bNeuesProjekt.interactable = true;
+            spezialisierungsauswahl_ohneWahl.SetActive(false);
+            spezialisierungsauswahl_mitWahl.SetActive(true);
         }
         if(lvl[5])
         {
