@@ -136,17 +136,26 @@ public class Beziehung : MonoBehaviour
             gameObject.GetComponent<ERObjekt>().originalSprite = Original;
         }
 
+        bool temp = false;
+
         foreach(GameObject bez in ERErstellung.modellObjekte)
         {
             if (bez.CompareTag("Beziehung")&&bez!=gameObject&&
                 ((bez.GetComponent<Beziehung>().objekt1==objekt1&& bez.GetComponent<Beziehung>().objekt2 == objekt2)||
                  (bez.GetComponent<Beziehung>().objekt2 == objekt1 && bez.GetComponent<Beziehung>().objekt1 == objekt2)))
             {
-                FehlerAnzeige.fehlertext = "Es dürfen keine zwei Beziehungen zwischen den gleichen Entitäten existieren.";
+                temp = true;
+            }
+        }
+
+        if(temp){
+            FehlerAnzeige.fehlertext = "Es dürfen keine zwei Beziehungen zwischen den gleichen Entitäten existieren.";
+        }else{
+            if(FehlerAnzeige.fehlertext.Equals("Es dürfen keine zwei Beziehungen zwischen den gleichen Entitäten existieren.")){
+                FehlerAnzeige.fehlertext = "trigger";
             }
         }
     }
-
     internal void setWerte(LoadedBeziehung bez)
     {
         firsttime = false;

@@ -38,9 +38,9 @@ public class FehlerAnzeige : MonoBehaviour
                 tutorialanzeige_ER.SetActive(true);
                 tutorialanzeige_Spiel.SetActive(true);
             }else if(!fehlertext.Equals("Es sind zu viele Objekte.")){    
-                //if(!fehlertext.Equals("Es dürfen keine zwei Beziehungen zwischen den gleichen Entitäten existieren.")){
+                if(!fehlertext.Equals("Es dürfen keine zwei Beziehungen zwischen den gleichen Entitäten existieren.")){
                     Invoke("Zuruek", 3);//anzeige des Fehlertextes fuer 2s, dann wieder auf "" zurückgesetz  
-                //}
+                }
             }      
         }
         Utilitys.TextInTMP(fehlerObject, fehlertext);
