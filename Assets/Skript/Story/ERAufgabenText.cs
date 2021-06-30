@@ -70,7 +70,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     public GameObject restKlicks;
     public GameObject absolutKlicks;
     public static bool werteGesetzt = false; //Wird in ERAufgabe.cs auf false gesetzt, wenn ER-Level erfüllt wurde.
-    private int[] lvlKlicks = {10,15,10,10,10,10,10,10}; //Klickguthaben der einzelnen Levels
+    private int[] lvlKlicks = {11,15,10,10,13,6,13,12}; //Klickguthaben der einzelnen Levels
 
     private void Start()
     {
