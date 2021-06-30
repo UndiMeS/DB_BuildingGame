@@ -15,6 +15,8 @@ public class FehlerAnzeige : MonoBehaviour
     public GameObject tutorialanzeige_ER;
     public static string tutorialtext_Spiel = "";
     public static string tutorialtext_ER = "";
+    public GameObject infoboxER;
+    public GameObject infoboxSpiel;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,17 @@ public class FehlerAnzeige : MonoBehaviour
         Utilitys.TextInTMP(fehlerObject, fehlertext);
         Utilitys.TextInTMP(tutorialanzeige_Spiel, tutorialtext_Spiel);
         Utilitys.TextInTMP(tutorialanzeige_ER, tutorialtext_ER);
+
+        if(fehlertext.Equals("") && tutorialtext_ER.Equals("")){
+            infoboxER.SetActive(false);
+        }else{
+            infoboxER.SetActive(true);
+        }
+        if(fehlertext.Equals("") && tutorialtext_Spiel.Equals("")){
+            infoboxSpiel.SetActive(false);
+        }else{
+            infoboxSpiel.SetActive(true);
+        }
 
     }
 
