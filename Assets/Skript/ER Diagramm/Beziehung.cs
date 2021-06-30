@@ -142,7 +142,7 @@ public class Beziehung : MonoBehaviour
                 ((bez.GetComponent<Beziehung>().objekt1==objekt1&& bez.GetComponent<Beziehung>().objekt2 == objekt2)||
                  (bez.GetComponent<Beziehung>().objekt2 == objekt1 && bez.GetComponent<Beziehung>().objekt1 == objekt2)))
             {
-                FehlerAnzeige.fehlertext = "Es gibt 2 Beziehungen zwischen den gleichen Entitäten.";
+                FehlerAnzeige.fehlertext = "Es dürfen keine zwei Beziehungen zwischen den gleichen Entitäten existieren.";
             }
         }
     }
