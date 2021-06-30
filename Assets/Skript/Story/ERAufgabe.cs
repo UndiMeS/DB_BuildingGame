@@ -401,6 +401,8 @@ public class ERAufgabe : MonoBehaviour
             aufgabeButton.SetActive(false);
             //FehlerAnzeige.fehlertext = "Du hast alles richtig gemacht!";
             Story.lvl[Story.level] = true; //Markiere Level als erfüllt
+
+            ERAufgabenText.werteGesetzt = false; //Erlaubt nun das neu setzen der Werte des Klickzählers
             
             if (missionCheck == false)
             {
