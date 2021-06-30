@@ -116,7 +116,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
             markieren(index,0,""); 
 
             if(i == 1 && Story.level == 0){
-                FehlerAnzeige.tutorialtext_ER = "Du kannst für dieses Teildiagramm auf "+ lvlKlicks[Story.level]+" Wörter klicken, um richtige Schlüsselwörter herauszufinden und zu markieren!";
+                FehlerAnzeige.tutorialtext_ER = "Du kannst für dieses Teildiagramm auf noch 10 Wörter klicken, um richtige Schlüsselwörter herauszufinden und zu markieren!";
             }
 
         }else{
