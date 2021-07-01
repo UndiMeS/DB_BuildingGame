@@ -14,6 +14,7 @@ public class Tutorial : MonoBehaviour
     private bool firstTime = true;
     private static bool missionClick = false;
     private static bool zusatzClick = false;
+    private static bool beschreibungClick = false;
     private bool rotationTemp = true;
     public GameObject containerKiller;
     public GameObject wohncontainerHilfe;
@@ -76,11 +77,17 @@ public class Tutorial : MonoBehaviour
             bZusatz.interactable = false;
             bMission.interactable = false;
             FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, folge dem roten Pfeil und öffne zuerst den ER-Editor!";
-            
-            if(!FehlerAnzeige.tutorialtext_ER.Equals("Du kannst für dieses Teildiagramm auf noch 10 Wörter klicken, um richtige Schlüsselwörter herauszufinden und zu markieren!")){
-                FehlerAnzeige.tutorialtext_ER = "Erstelle ein ER-Diagramm mit der Leiste am unteren Bildschrimrand anhand der ER-Beschreibung (scrollbar!). Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehakt. 'Primärschlüssel' wird abgehakt, wenn die entsprechenden Attribute richtig gekennzeichnet sind.\n Tipp: Klicke in das Beschreibungsfeld!";
+            if(beschreibungClick == false){
+                FehlerAnzeige.tutorialtext_ER = "Erstelle ein ER-Diagramm mit der Leiste am unteren Bildschrimrand anhand der ER-Beschreibung (scrollbar!). Öffne die Beschreibung (roter Pfeil)";
             }
-
+            
+            if(beschreibungClick){
+                if(!FehlerAnzeige.tutorialtext_ER.Equals("Du kannst für dieses Teildiagramm auf noch 10 Wörter klicken, um richtige Schlüsselwörter herauszufinden und zu markieren!")){
+                    FehlerAnzeige.tutorialtext_ER = "Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehakt. 'Primärschlüssel' wird abgehakt, wenn die entsprechenden Attribute richtig gekennzeichnet sind.\n Tipp: Klicke in das Beschreibungsfeld!";
+                }   
+            }
+            
+            
             if(beschreibungER.activeSelf){
                 pfeilER.SetActive(false);
                 //pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
@@ -88,6 +95,9 @@ public class Tutorial : MonoBehaviour
                 pfeilER.SetActive(true);
                 pfeilER.transform.localPosition = new Vector3(844,132,0);
             }
+            
+
+            
             pfeilSpiel.SetActive(true);
             missionClick = false;
         
@@ -179,18 +189,28 @@ public class Tutorial : MonoBehaviour
             }
             //Prüfe ob Zusatzfenster geklickt wurde
             if(zusatzClick){
-                FehlerAnzeige.tutorialtext_Spiel = "Das Tutorial ist beendet! Versuche nun die nächste Mission zu erfüllen! \n Tipp: Im Pausemenü findest du auch eine Spielhilfe!";
+                FehlerAnzeige.tutorialtext_Spiel = "Versuche nun die nächste Mission zu erfüllen! \n Tipp: Im Pausemenü findest du auch eine Spielhilfe!";
                 FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen und mit Feldspähren Erträge erwirtschaften! \nTipp: Du benötigst 4 Feldsphären!";
                 pfeilSpiel.SetActive(false);
                 pfeilER.SetActive(false);
                 //Prüfe, ob Missionsfenster geklickt wurde
                 if(missionClick){
-                    FehlerAnzeige.tutorialtext_Spiel = "Hinweis: Rechts neben der Guthabenanzeige in der Infoleiste am oberen Bildschirmrand siehst du den Ertrag, der dir alle "+SpielInfos.neuerUmsatz+" Sol (Marstage) ausgezahlt wird.";
+                    FehlerAnzeige.tutorialtext_Spiel = "Für Feldsphären benötigst du Feldastronauten. Hinweis: Rechts neben der Guthabenanzeige in der Infoleiste am oberen Bildschirmrand siehst du den Ertrag, der dir alle "+SpielInfos.neuerUmsatz+" Sol (Marstage) ausgezahlt wird.";
                     zusatzClick = false;
+                    missionClick = false;
                 }
             }
         
-        //Zeitpunkt: Hinweis zur Forschungsstation       
+        //Zeitpunkt: Hinweis zum Bau von Forschungsstationen       
+        }else if((Story.lvl[3] == true && Story.lvl[4] == false) && (Mission.missionsLevel[1] == true && Mission.missionsLevel[7] == false)){
+            FehlerAnzeige.tutorialtext_Spiel = "Klasse! Erfülle nun die Mission!";
+            FehlerAnzeige.tutorialtext_ER = "Check deine neue Mission!"; 
+            if(missionClick){
+                    FehlerAnzeige.tutorialtext_Spiel = "Beachte, dass für jede Forschungsstation genau ein Forschungsastronaut (Symbol Reagenzglas) verantwortlich ist!";
+                    zusatzClick = false;
+                }
+        
+        //Falls kein Tutorialhinweis geplant ist, so gib bei erfülltem ER-Level einen Standarttext aus
         }else if((Story.lvl[4] == true && Story.lvl[5] == false) && (Mission.missionsLevel[7] == true && Mission.missionsLevel[8] == false)){
             FehlerAnzeige.tutorialtext_Spiel = " Spezialisiere die Forschungsstation auf Wohncontainer! In der Forschungsstationsanzeige findest du anschließend ein Fragezeichen. Klicke dieses, um Hilfe bei der Erstellung von Projekten zu erhalten.";
             FehlerAnzeige.tutorialtext_ER = "Los geht's mit den ersten Forschungen! Check deine Mission!"; 
@@ -201,7 +221,7 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "";
             FehlerAnzeige.tutorialtext_ER = "Klasse! Erfülle nun die Mission!";
         
-        //Sonst: setzte alle Teste zurück
+        //Sonst: setzte alle Texte zurück
         }else{
             FehlerAnzeige.tutorialtext_Spiel = "";
             FehlerAnzeige.tutorialtext_ER = "";
@@ -223,6 +243,11 @@ public class Tutorial : MonoBehaviour
     public void ClickOnZusatz()
     {
         zusatzClick = true;
+    }
+
+    public void ClickOnBeschreibung()
+    {
+        beschreibungClick = true;
     }
 
 }

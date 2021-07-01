@@ -310,8 +310,8 @@ public class ERAufgabe : MonoBehaviour
                 kreisKreuz.SetActive(true);
                 if (firsttime)
                 {
-                    aufgabenFenster.SetActive(true);
-                    checkbox.SetActive(true);
+                    //aufgabenFenster.SetActive(true);
+                    //checkbox.SetActive(true);
                 }
                 checkObjekte();
                 firsttime = false;

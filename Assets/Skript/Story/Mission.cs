@@ -603,7 +603,11 @@ public class Mission : MonoBehaviour
         zwischenziel1 = 0;
         zwischenziel2 = 0;
         zwischenziel3 = 0;
-        zwischenziel4 = 0;        
+        zwischenziel4 = 0;  
+
+        if(FehlerAnzeige.tutorialtext_Spiel.Equals("")){
+            FehlerAnzeige.tutorialtext_Spiel = "Mission erfolgreich! Du kannst nun wieder dein ER-Diagramm erweitern!";
+        }      
     }
 
     public void FinaleAnzeige()
