@@ -243,7 +243,6 @@ public class Forschung : MonoBehaviour
         if (projekte.Count != 0)
         {
             refreshDropdown();
-            Debug.Log(dropdown.options[0]);
             if (projekte[0].merkmal == dropdown.options[0].text)
             {
                 selectedProj = projekte[0];

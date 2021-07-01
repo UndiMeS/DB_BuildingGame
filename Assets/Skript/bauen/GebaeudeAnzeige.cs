@@ -79,6 +79,7 @@ public class GebaeudeAnzeige : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetMouseButtonDown(0) && !PauseMenu.SpielIstPausiert)
         {
             GebaeudeInfoBauen.wertFest = 0;
@@ -102,7 +103,6 @@ public class GebaeudeAnzeige : MonoBehaviour
         {
             wert = 0;
         }
-
 
 
         int i = 1;

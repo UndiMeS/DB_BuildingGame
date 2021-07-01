@@ -56,6 +56,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             if (gebaeudeNummer == 0 && gebautetsGebaeude != null)
             {
                 Testing.objektGebaut = 0;
+                ObjektBewegung.selected = false;
                 Destroy(gebautetsGebaeude.GetComponent<ObjektBewegung>());
                 Destroy(gebautetsGebaeude);
                 gebautetsGebaeude = null;
