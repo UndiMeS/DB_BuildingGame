@@ -23,6 +23,10 @@ public class SpielInfos : MonoBehaviour
     public static float currenttime;
     public static int erdenTag;
     public static int marsTag;
+
+    public static int deltaErdenTag;
+    public static int deltaMarsTag;
+
     public static float lasttime;
     public static float pausedtime;
 
@@ -67,8 +71,8 @@ public class SpielInfos : MonoBehaviour
             }
             
 
-            marsTag = Mathf.RoundToInt(neuSoltag);
-            erdenTag = Mathf.RoundToInt(currenttime / 10 ) + 1;
+            marsTag = deltaMarsTag + Mathf.RoundToInt(neuSoltag);
+            erdenTag =deltaErdenTag+ Mathf.RoundToInt(currenttime / 10 ) + 1;
             lasttime = currenttime;
         }
         else if(PauseMenu.ERon)

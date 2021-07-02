@@ -37,15 +37,16 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        knopfGruppe.OnTabSelected(this);
-
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         knopfGruppe.OnTabEnter(this);
+
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        
+        knopfGruppe.OnTabSelected(this);
         if (gebaeudeNummer != 0 && Testing.objektGebaut == 0)
         {
             KameraKontroller.aktiviert = false;

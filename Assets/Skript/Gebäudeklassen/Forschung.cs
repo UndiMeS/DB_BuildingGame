@@ -29,7 +29,7 @@ public class Forschung : MonoBehaviour
     private int option = 0;
     private GameObject merkmalsanzeige;
 
-    public void Start()
+    public void Awake()
     {
         projekte = new List<Projekt>();
         if (stationsnummer == 0)
@@ -106,24 +106,32 @@ public class Forschung : MonoBehaviour
             listeMerkmale = new List<string> { "Baukosten", "Bettenanzahl" };
             maxAnzahlProjekte = 5;
             spezInt = 1;
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            gameObject.transform.GetChild(1).gameObject.SetActive(true);
         }
         if (spezialisierung.Equals("Feldsphäre"))
         {
             listeMerkmale = new List<string> { "Baukosten", "Arbeiterzahl", "Ertrag" };
             maxAnzahlProjekte = 7;
             spezInt = 2;
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            gameObject.transform.GetChild(2).gameObject.SetActive(true);
         }
         if (spezialisierung.Equals("Weidesphäre"))
         {
             listeMerkmale = new List<string> { "Baukosten", "Arbeiterzahl", "Ertrag", "Tieranzahl" };
             maxAnzahlProjekte = 8;
             spezInt = 4;
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            gameObject.transform.GetChild(3).gameObject.SetActive(true);
         }
         if (spezialisierung.Equals("Stallcontainer"))
         {
             listeMerkmale = new List<string> { "Baukosten", "Gehegezahl" };
             maxAnzahlProjekte = 5;
             spezInt = 5;
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            gameObject.transform.GetChild(4).gameObject.SetActive(true);
         }
         ddm.ClearOptions();
         ddm.AddOptions(listeMerkmale);

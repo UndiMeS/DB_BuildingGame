@@ -198,8 +198,10 @@ public class SaveLoad : MonoBehaviour
                 if (fors.stationsnummer == projekt.stationsnummer)
                 {
                     fors.addProjekt(projekt);
+                    fors.setProjekt();
+                    break;
                 }
-                fors.setProjekt();
+                
             }
         }
     }
@@ -397,8 +399,8 @@ public class SaveLoad : MonoBehaviour
             Testing.summeTiere = summeTiere;
             Testing.summeForschungen = summeForschungen;
 
-            SpielInfos.marsTag = marsTag;
-            SpielInfos.erdenTag = erdenTag;
+            SpielInfos.deltaMarsTag = marsTag;
+            SpielInfos.deltaErdenTag = erdenTag;
 
             Story.level = level;
             Mission.mission1 = mission1;
