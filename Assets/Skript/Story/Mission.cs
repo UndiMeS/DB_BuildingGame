@@ -105,11 +105,11 @@ public class Mission : MonoBehaviour
     {
         //Gib alle Texte der Mission aus.
         setMission(setLevel());
-        //setMission(5);
+        setMission(3);
 
         //Prüfe ob Mission von Level erfolgreich ist
         checkMission(setLevel());
-        //checkMission(3);
+        checkMission(3);
 
         setSize();
         
@@ -187,6 +187,7 @@ public class Mission : MonoBehaviour
         }
     }
 
+    
     public void setSize()
     {
         if(finale){
@@ -206,13 +207,13 @@ public class Mission : MonoBehaviour
             }else if(Story.level == 6){
                 missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
             }else if(Story.level == 7){
-                missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
+                missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f); //4 Hacken
             }else {
                 missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
             }
         }
     }
-
+    
     public void checkMission(int level)
     {
     //Level vor 0
@@ -480,6 +481,10 @@ public class Mission : MonoBehaviour
                     hacken4.SetActive(true);
                     zwischenziel3 = 1;
                     missionsTeilLevel3[2] = true;
+                }
+
+                if(zwischenziel3 == 1){
+                    hacken4.SetActive(true);
                 }
 
                 if(zwischenziel1 == 1 && zwischenziel2 == 1 && zwischenziel3 == 1){

@@ -328,7 +328,11 @@ public class ERAufgabe : MonoBehaviour
         }
         else
         {
-            FehlerAnzeige.fehlertext = "Du hast es geschafft.";
+            FehlerAnzeige.tutorialtext_ER = "Du hast es geschafft. Dein ER-Diagramm ist für diese Siedlung komplett! Auf zu deinen letzten Missionen!";
+            bottomLeiste.SetActive(false);
+            aufgabenFenster.SetActive(false);
+            checkbox.SetActive(false);
+            aufgabeButton.SetActive(false);
         }
         //Checkbox für Level 0 anpassen
         if (Story.level == 0)

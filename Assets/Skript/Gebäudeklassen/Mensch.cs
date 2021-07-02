@@ -10,7 +10,7 @@ public class Mensch
     public string name;
     public string aufgabe;
     public int containerNummer;
-    public static int menschenZaehler=1;//für spezielle Namen
+    public static int menschenZaehler=1;//fï¿½r spezielle Namen
     public static bool ersterMensch = false;
     
     public Mensch(string aufg, int nummer)
@@ -27,17 +27,17 @@ public class Mensch
     {
         string vorname = "";
         string nachname = "";
-        if (menschenZaehler == 1)
+        if (menschenZaehler == 6)
         {
              vorname = "Marcel";
             nachname = "Lehmann";
-            geburtstag = "1.1.1900";
-        }else if (menschenZaehler == 2)
+            geburtstag = "6.6.1966";
+        }else if (menschenZaehler == 13)
         {
             vorname = "Maximilian";
             nachname = "Sterz";
-            geburtstag = "1.1.1900";
-        }else if (menschenZaehler == 3)
+            geburtstag = "13.3.1992";
+        }else if (menschenZaehler == 9)
         {
             vorname = "Annemarie";
             nachname = "Fromm";
