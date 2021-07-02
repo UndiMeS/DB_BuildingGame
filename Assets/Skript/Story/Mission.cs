@@ -179,7 +179,7 @@ public class Mission : MonoBehaviour
                 missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
             }else if(Story.level == 7){
                 return 3; //X Nutztiere einfliegen
-                missionshintergrund.transform.localPosition = new Vector3(-16,105.0f,0.0f);
+                missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
             }else {
                 return 4; //X Weidearbeiter und Ertrag und Verbesserung
                 missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
@@ -206,7 +206,7 @@ public class Mission : MonoBehaviour
             }else if(Story.level == 6){
                 missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
             }else if(Story.level == 7){
-                missionshintergrund.transform.localPosition = new Vector3(-16,105.0f,0.0f);
+                missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
             }else {
                 missionshintergrund.transform.localPosition = new Vector3(-16,11.0f,0.0f);
             }
@@ -447,6 +447,8 @@ public class Mission : MonoBehaviour
         }else if(level == 3){
             hacken1.SetActive(false);
             hacken2.SetActive(false);
+            hacken3.SetActive(false);
+            hacken4.SetActive(false);
             textInput.SetActive(true);
             textInput.GetComponent<InputField>().interactable = true;
 
