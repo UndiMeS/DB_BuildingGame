@@ -61,7 +61,10 @@ public class Beziehung : MonoBehaviour
         y = gameObject.transform.position.y;
         if (objekt1 == null)
         {
-            objekt2.GetComponent<Entitaet>().beziehungen.Remove(gameObject);
+            if (objekt2 != null)
+            {
+                objekt2.GetComponent<Entitaet>().beziehungen.Remove(gameObject);
+            }
             Destroy(linie2);
             ERErstellung.modellObjekte.Remove(gameObject);
             Destroy(gameObject);
@@ -73,7 +76,10 @@ public class Beziehung : MonoBehaviour
         }
         if (objekt2 == null)
         {
-            objekt1.GetComponent<Entitaet>().beziehungen.Remove(gameObject);
+            if (objekt1 != null)
+            {
+                objekt1.GetComponent<Entitaet>().beziehungen.Remove(gameObject);
+            }
             Destroy(linie1);
             ERErstellung.modellObjekte.Remove(gameObject);
             Destroy(gameObject);
@@ -106,6 +112,8 @@ public class Beziehung : MonoBehaviour
 
         if (objekt2 != null)
         {
+            Debug.Log(kardText2);
+            Debug.Log(objekt1);
             positionOfKardinalitaet(kardText2, objekt2, objekt1.Equals(objekt2));
             kardText2.SetActive(true);
         }
@@ -114,7 +122,7 @@ public class Beziehung : MonoBehaviour
             kardText2.SetActive(false);
         }
 
-        if (objekt1.Equals(objekt2))
+        if (objekt1!=null&&objekt2!=null&&objekt1.Equals(objekt2))
         {
             linie1.GetComponent<Linienzeichner>().setposition = 1;
             linie2.GetComponent<Linienzeichner>().setposition = 2;

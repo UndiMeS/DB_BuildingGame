@@ -218,7 +218,7 @@ public class ERErstellung : MonoBehaviour
             {
                 GameObject temp = selectedGameObjekt;
                 selectedGameObjekt = temp.GetComponent<Beziehung>().objekt1;
-                leisteBottom.GetComponent<LeisteBottom>().SchwacheEntitaet(false);
+                leisteBottom.GetComponent<LeisteBottom>().SchwacheEntitaetObj(false,selectedGameObjekt);
                 selectedGameObjekt = temp;
                 selectedGameObjekt.GetComponent<Beziehung>().objekt1.GetComponent<Entitaet>().vaterEntitaet = null;
                 selectedGameObjekt.GetComponent<Beziehung>().objekt1.GetComponent<Entitaet>().schwacheBeziehung = null;
@@ -232,11 +232,16 @@ public class ERErstellung : MonoBehaviour
             {
                 foreach(GameObject bez in selectedGameObjekt.GetComponent<Entitaet>().beziehungen)
                 {
-                    if (bez.GetComponent<Beziehung>().objekt1.Equals(selectedGameObjekt))
+                    if (bez.GetComponent<Beziehung>().schwach&& selectedGameObjekt == bez.GetComponent<Beziehung>().objekt2)
+                    {
+                        FehlerAnzeige.fehlertext = "Lösche zuerst die schwache Beziehung ''"+ bez.name+"''.";
+                        return;
+                    }
+                    if (bez.GetComponent<Beziehung>().objekt1!=null&&bez.GetComponent<Beziehung>().objekt1.Equals(selectedGameObjekt))
                     {
                         bez.GetComponent<Beziehung>().objekt1 = null;
                     }
-                    if(bez.GetComponent<Beziehung>().objekt2.Equals(selectedGameObjekt))
+                    if(bez.GetComponent<Beziehung>().objekt2 != null && bez.GetComponent<Beziehung>().objekt2.Equals(selectedGameObjekt))
                     {
                         bez.GetComponent<Beziehung>().objekt2 = null;
                     }
@@ -263,6 +268,10 @@ public class ERErstellung : MonoBehaviour
             {
                 selectedGameObjekt = lastselected;
                 changeSelectedGameobjekt(lastselected);
+            }
+            if (selectedGameObjekt == null&&modellObjekte.Count!=0)
+            {
+                selectedGameObjekt = modellObjekte[0];
             }
         }
     }

@@ -52,6 +52,9 @@ public class Entitaet : MonoBehaviour
         {
             vaterEntitaetID = vaterEntitaet.GetInstanceID();
             schwacheBeziehungID = schwacheBeziehung.GetInstanceID();
+        }else if (schwach)
+        {
+            schwach = false;
         }
         
     }
