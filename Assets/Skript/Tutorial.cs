@@ -121,7 +121,7 @@ public class Tutorial : MonoBehaviour
                 }
                 containerKiller.SetActive(false);
                 pfeilSpiel.transform.localPosition = new Vector3(-635,-215,0);
-                FehlerAnzeige.tutorialtext_Spiel = "Errichte nun einen Wohncontainer! Zum Bauen hast du ein Startguthaben von "+Testing.geld+". Du kannst es in der oberen Infoleiste sehen.";
+                FehlerAnzeige.tutorialtext_Spiel = "Errichte nun einen Wohncontainer! Zum Bauen hast du ein Startguthaben von "+Testing.geld+". Du kannst dieses in der oberen Infoleiste sehen.";
                 FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen. Wechsel zurück in die Siedlung!";
             }         
         
@@ -221,6 +221,11 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "";
             FehlerAnzeige.tutorialtext_ER = "Klasse! Erfülle nun die Mission!";
         
+        //alle ER und Missions Level erfolgreich
+        }else if (Story.lvl[7] == true && Mission.missionsLevel[5] == true){
+            pfeilER.SetActive(false);
+            FehlerAnzeige.tutorialtext_Spiel = "Hervorragend! Deine Marsmission ist erfolgreich beendet. Du kannst nun noch weiter deine Siedlung erweitern oder zur Erde zurückkehren, um dein Missionszertifikat zu erhalten!";
+            FehlerAnzeige.tutorialtext_ER = "Hervorragend! Deine Marsmission ist erfolgreich beendet. Du kannst nun noch weiter deine Siedlung erweitern oder zur Erde zurückkehren, um dein Missionszertifikat zu erhalten!";
         //Sonst: setzte alle Texte zurück
         }else{
             FehlerAnzeige.tutorialtext_Spiel = "";
