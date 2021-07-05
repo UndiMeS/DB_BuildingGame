@@ -105,11 +105,11 @@ public class Mission : MonoBehaviour
     {
         //Gib alle Texte der Mission aus.
         setMission(setLevel());
-        setMission(3);
+        //setMission(3);
 
         //Prüfe ob Mission von Level erfolgreich ist
         checkMission(setLevel());
-        checkMission(3);
+        //checkMission(3);
 
         setSize();
         
