@@ -20,6 +20,7 @@ public class SpielInfos : MonoBehaviour
 
 
 
+
     public static float currenttime;
     public static int erdenTag;
     public static int marsTag;
@@ -36,11 +37,12 @@ public class SpielInfos : MonoBehaviour
     //Buttons um Zusatzaufgabefenster zeitabhängig anzeigen zu lassen
     public GameObject zusatzButton; 
     public GameObject zusatzButton_transparent;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //PostFX.SetActive(false);
     }
 
     // Update is called once per frame

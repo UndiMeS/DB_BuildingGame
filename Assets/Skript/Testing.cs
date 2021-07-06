@@ -53,9 +53,12 @@ public class Testing : MonoBehaviour
     public static List<GameObject> gebauedeListe = new List<GameObject>();
     public static List<Tiere> tier = new List<Tiere>();
 
+
+
     // Start is called before the first frame update
     void Start()
     {
+        
         Spielwerte.Werte();
         grid = new Gitter(weite, hoehe, zellengroesse);
 
