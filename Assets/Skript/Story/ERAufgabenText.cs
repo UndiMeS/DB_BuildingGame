@@ -151,15 +151,8 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                         vertexColors[vertexIndex + 1] = Color.green;
                         vertexColors[vertexIndex + 2] = Color.green;
                         vertexColors[vertexIndex + 3] = Color.green;
-                    }
-                    if (attribute[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord())&&leftRight!=1&&(entAttBez=="Att"||entAttBez==""))
-                    {
-                        markieren(index - 1,-1,"Att");
-                    }
-                    else if (attribute[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord())&&leftRight!=-1 && (entAttBez == "Att" || entAttBez == ""))
-                    {
-                        markieren(index + 1,1,"Att");
-                    }
+                    }Debug.Log(aufgabe[Story.level].Split(' ').Length > index+1);
+                    
                     if (beziehungen[Story.level].Contains(info.GetWord()) && (entAttBez == "Bez" || entAttBez == ""))
                     {
                         Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
@@ -168,14 +161,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                         vertexColors[vertexIndex + 2] = Color.blue;
                         vertexColors[vertexIndex + 3] = Color.blue;
                     }
-                    if (beziehungen[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Bez" || entAttBez == ""))
-                    {
-                        markieren(index - 1, -1, "Bez");
-                    }
-                    else if (beziehungen[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord()) && leftRight != -1 && (entAttBez == "Bez" || entAttBez == ""))
-                    {
-                        markieren(index + 1, 1, "Bez");
-                    }
+                    
                     if (kardinalitaet[Story.level].Contains(info.GetWord()) && entAttBez == "")
                     {
                         Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
@@ -184,14 +170,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                         vertexColors[vertexIndex + 2] = Color.gray;
                         vertexColors[vertexIndex + 3] = Color.gray;
                     }
-                    if (kardinalitaet[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Kard" || entAttBez == ""))
-                    {
-                        markieren(index - 1, -1, "Kard");
-                    }
-                    else if (kardinalitaet[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord()) && leftRight != -1 && (entAttBez == "Kard" || entAttBez == ""))
-                    {
-                        markieren(index + 1, 1, "Kard");
-                    }
+                    
                     //Lvl 1 (n:1)
                     if(Story.level==1 && (info.GetWord() == "1" || info.GetWord() == "n"))
                     {
@@ -206,6 +185,31 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                             vertexColors[vertexIndex + 3] = Color.gray;
                         } 
                     }
+                    if (0 < index - 1 && aufgabe[Story.level].Split(' ').Length > index + 1) {
+                        if (kardinalitaet[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Kard" || entAttBez == ""))
+                        {
+                            markieren(index - 1, -1, "Kard");
+                        }
+                        if ( kardinalitaet[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord()) && leftRight != -1 && (entAttBez == "Kard" || entAttBez == ""))
+                        {
+                            markieren(index + 1, 1, "Kard");
+                        }
+                        if (attribute[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Att" || entAttBez == ""))
+                        {
+                            markieren(index - 1, -1, "Att");
+                        }
+                        if (attribute[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord()) && leftRight != -1 && (entAttBez == "Att" || entAttBez == ""))
+                        {
+                            markieren(index + 1, 1, "Att");
+                        }
+                        if (beziehungen[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Bez" || entAttBez == ""))
+                        {
+                            markieren(index - 1, -1, "Bez");
+                        }
+                        if (beziehungen[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord()) && leftRight != -1 && (entAttBez == "Bez" || entAttBez == ""))
+                        {
+                            markieren(index + 1, 1, "Bez");
+                        } }
                 }
                 m_TextMeshPro.UpdateVertexData(TMP_VertexDataUpdateFlags.All);  
 
