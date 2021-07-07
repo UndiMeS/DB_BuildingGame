@@ -14,7 +14,7 @@ public class Testing : MonoBehaviour
 
     //Grundlegende Werte, die verändert werden können
     public static int weite=20;
-    public static int hoehe=13;
+    public static int hoehe=20;
     public static int zellengroesse = 10;
     public static Gitter grid;
 
@@ -63,7 +63,7 @@ public class Testing : MonoBehaviour
         grid = new Gitter(weite, hoehe, zellengroesse);
 
         //Hintergrund und Camera
-        boden.transform.localPosition = new Vector3(140, -21, -100);
+        boden.transform.localPosition = new Vector3(140, 21, -150);
         boden.transform.localScale = new Vector3(20000,20000,200);
         boden.transform.localRotation = Quaternion.Euler(42, 222, -148);
         FehlerAnzeige.fehlertext = "";
