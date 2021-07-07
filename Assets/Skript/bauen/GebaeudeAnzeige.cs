@@ -158,8 +158,8 @@ public class GebaeudeAnzeige : MonoBehaviour
     {
         if (childOn)
         {
-            return !(RectTransformUtility.RectangleContainsScreenPoint(ObjektBewegung.infoAnzeige.GetComponent<RectTransform>(), mousePosition, Camera.main) ||
-     RectTransformUtility.RectangleContainsScreenPoint(buttonRechts.GetComponent<RectTransform>(), mousePosition, Camera.main));
+            return !(RectTransformUtility.RectangleContainsScreenPoint(ObjektBewegung.infoAnzeige.GetComponent<RectTransform>(), mousePosition, null) ||
+     RectTransformUtility.RectangleContainsScreenPoint(buttonRechts.GetComponent<RectTransform>(), mousePosition, null));
         }
         else { return true; }
     }
