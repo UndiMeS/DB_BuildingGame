@@ -22,8 +22,8 @@ public class Linienzeichner : MonoBehaviour
     {
        rect = gameObject.GetComponent<RectTransform>();
         lineRenderer = gameObject.GetComponent<LineRenderer>();
-        lineRenderer.endWidth = 0.05f;
-        lineRenderer.startWidth = 0.05f;
+        lineRenderer.endWidth = 0.1f;
+        lineRenderer.startWidth = 0.1f;
         
         lineRenderer.sortingOrder = 0;
     }

@@ -33,7 +33,8 @@ public class ObjektBewegung : MonoBehaviour
             if (initKlasseTestePreis()&& Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
             {
                 selected = false;
-                transform.position += new Vector3(0, 0, 0.8f);
+                transform.position += new Vector3(0, 0, 0);
+                
                 Testing.grid.SetWert(transform.position, Testing.objektGebaut,gameObject);
 
                 //2x1 und 2x2 Bauten abfangen und wert setzen
@@ -54,7 +55,7 @@ public class ObjektBewegung : MonoBehaviour
                 
                 PanelKnopf.gebautetsGebaeude = null;
                 KameraKontroller.aktiviert = true;
-                
+                Debug.Log(transform.position);
                 Destroy(GetComponent<ObjektBewegung>());
                
             }
@@ -94,7 +95,10 @@ public class ObjektBewegung : MonoBehaviour
         {
             Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);
             Vector3 position = Testing.grid.stayInGrid(cursorPos);
+            position.z = 0;
+            
             transform.position = position;
+            Debug.Log(transform.localPosition);
         }
 
 
@@ -208,9 +212,9 @@ public class ObjektBewegung : MonoBehaviour
 
     private bool outBox(Vector3 mousePosition)
     {
-        bool temp = RectTransformUtility.RectangleContainsScreenPoint(erstellfenster.GetComponent<RectTransform>(), mousePosition, Camera.main);
+        bool temp = RectTransformUtility.RectangleContainsScreenPoint(erstellfenster.GetComponent<RectTransform>(), mousePosition,null);
         if (!GebaeudeAnzeige.childOn) { return !temp; }
-        return !temp&&!RectTransformUtility.RectangleContainsScreenPoint(infoAnzeige.GetComponent<RectTransform>(), mousePosition, Camera.main); 
+        return !temp&&!RectTransformUtility.RectangleContainsScreenPoint(infoAnzeige.GetComponent<RectTransform>(), mousePosition, null); 
     }
 
     /*private void GridWertSetzen2x2()

@@ -30,7 +30,7 @@ RectTransform:
   m_GameObject: {fileID: 1141620032127629371}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 6624712294198859100}
   - {fileID: 3077217927641531265}
@@ -215,11 +215,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: 1
-  schreibenSelected: 0
   selectedSprite: {fileID: 21300000, guid: 3a22521b726710c4bb1fda0f62c45466, type: 3}
   originalSprite: {fileID: 21300000, guid: 52db94fa66475fe459feb59b21d98d8e, type: 3}
   leisteBottom: {fileID: 0}
   leisteRechts: {fileID: 0}
+  checkliste: {fileID: 0}
+  aufgabe: {fileID: 0}
+  dd1: {fileID: 0}
+  dd2: {fileID: 0}
+  dd3: {fileID: 0}
   canvas: {fileID: 0}
   inputfield: {fileID: 7892306914820924749}
 --- !u!114 &4448681517629706858
@@ -234,7 +238,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b80d8d791f4ae4bafb6a1de02f928b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entitaetsName: 
   schwach: 0
+  instanceID: 0
+  vaterEntitaetID: 0
+  schwacheBeziehungID: 0
+  attributeID: 
+  primaerschluesselID: 
+  beziehungenID: 
+  x: 0
+  y: 0
   vaterEntitaet: {fileID: 0}
   schwacheBeziehung: {fileID: 0}
   attribute: []

@@ -105,16 +105,16 @@ public class ERObjekt : MonoBehaviour
 
     private bool inBox()
     {
-        bool drin = RectTransformUtility.RectangleContainsScreenPoint(leisteBottom.GetComponent<RectTransform>(), Input.mousePosition, Camera.main);
+        bool drin = RectTransformUtility.RectangleContainsScreenPoint(leisteBottom.GetComponent<RectTransform>(), Input.mousePosition, null);
         if (checkliste.activeSelf)
         {
-            drin = drin || RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), Input.mousePosition, Camera.main);
+            drin = drin || RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), Input.mousePosition, null);
         }
         if (aufgabe.activeSelf)
         {
-            drin = drin || RectTransformUtility.RectangleContainsScreenPoint(aufgabe.GetComponent<RectTransform>(), Input.mousePosition, Camera.main);
+            drin = drin || RectTransformUtility.RectangleContainsScreenPoint(aufgabe.GetComponent<RectTransform>(), Input.mousePosition, null);
         }
-        drin = drin || RectTransformUtility.RectangleContainsScreenPoint(leisteRechts.GetComponent<RectTransform>(), Input.mousePosition, Camera.main);
+        drin = drin || RectTransformUtility.RectangleContainsScreenPoint(leisteRechts.GetComponent<RectTransform>(), Input.mousePosition, null);
         return drin;
     }
 
@@ -135,7 +135,9 @@ public class ERObjekt : MonoBehaviour
     //Begrenzung der Bewegung des Objektes
     private Vector3 imSichtfeld(Vector3 cursorPos)
     {
-        if (cursorPos.y > (425 * Screen.height / 530) - height / 2)
+        cursorPos.x = Mathf.Clamp(cursorPos.x, -20, 120);
+        cursorPos.y = Mathf.Clamp(cursorPos.y, 210, 290);
+        /* if (cursorPos.y > (425 * Screen.height / 530) - height / 2)
         {
             cursorPos.y = 425 * Screen.height / 530 - height / 2;
         }
@@ -144,13 +146,13 @@ public class ERObjekt : MonoBehaviour
             cursorPos.y = 60 * Screen.height / 530 + height / 2;
         }
         if (cursorPos.x < width / 2) { cursorPos.x = width / 2; }
-        if (cursorPos.x > Screen.width - width / 2) { cursorPos.x = Screen.width - width / 2; }
+        if (cursorPos.x > Screen.width - width / 2) { cursorPos.x = Screen.width - width / 2; }*/
         return cursorPos;
     }
     //Überprüft ob der Mausklick auf dem Objket ist
     private bool checkMausIn(Vector3 mousePosition)
     {
-        bool drin = RectTransformUtility.RectangleContainsScreenPoint(gameObject.GetComponent<RectTransform>(), Input.mousePosition, Camera.main);
+        bool drin = RectTransformUtility.RectangleContainsScreenPoint(gameObject.GetComponent<RectTransform>(), Utilitys.GetMouseWorldPosition(mousePosition), null);
         return drin;
     }
 

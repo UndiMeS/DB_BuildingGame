@@ -55,7 +55,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     private List<string>[] kardinalitaet = {
                  /*LvL 0*/ new List<string> {  },
                  /*LvL 1*/ new List<string>{"n:1","jeder", "anderen","genau"},
-                 /*LvL 2*/ new List<string>{"Mehrere"},
+                 /*LvL 2*/ new List<string>{"Mehrere", "ein"},
                  /*LvL 3*/ new List<string>{"genau"},
                  /*LvL 4*/ new List<string>{"mehrere","Mehrere"},
                  /*LvL 5*/ new List<string>{"mehrere","Mehrere"},

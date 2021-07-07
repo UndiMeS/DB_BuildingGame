@@ -114,8 +114,6 @@ public class SaveLoadER : MonoBehaviour
                 game.GetComponent<ERObjekt>().dd2 = dd2;
                 game.GetComponent<ERObjekt>().dd3 = ddSchwach;
 
-
-                game.transform.localScale = new Vector3(0.015f, 0.015f, 0.015f);
                 game.transform.position = new Vector3(game.GetComponent<Beziehung>().x, game.GetComponent<Beziehung>().y);
 
                 game.GetComponent<TMPro.TMP_InputField>().text = game.GetComponent<Beziehung>().name;
@@ -163,7 +161,6 @@ public class SaveLoadER : MonoBehaviour
                 game.GetComponent<ERObjekt>().dd2 = dd2;
                 game.GetComponent<ERObjekt>().dd3 = ddSchwach;
 
-                game.transform.localScale = new Vector3(1, 1, 1);
                 game.transform.position = new Vector3(game.GetComponent<Attribut>().x, game.GetComponent<Attribut>().y);
 
                 game.GetComponent<TMPro.TMP_InputField>().text = game.GetComponent<Attribut>().name;
@@ -203,7 +200,6 @@ public class SaveLoadER : MonoBehaviour
                     game.GetComponent<ERObjekt>().selectedSprite = schwachEntSelected;
                 }
 
-                game.transform.localScale = new Vector3(0.015f, 0.015f, 0.015f);
                 game.transform.position = new Vector3(game.GetComponent<Entitaet>().x, game.GetComponent<Entitaet>().y);
                 game.GetComponent<TMPro.TMP_InputField>().text = game.GetComponent<Entitaet>().name;
             }

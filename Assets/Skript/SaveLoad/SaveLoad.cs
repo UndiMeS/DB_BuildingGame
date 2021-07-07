@@ -304,7 +304,6 @@ public class SaveLoad : MonoBehaviour
             JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", wohn);//entfernt ,
 
             Destroy(geb.GetComponent<ObjektBewegung>());
-            geb.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
             geb.transform.rotation = Quaternion.Euler(0, 0, -180);
             geb.transform.position = Testing.grid.GetWorldPosition(wohn.x, wohn.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
             Testing.grid.SetWert(wohn.x, wohn.y, 1, geb);

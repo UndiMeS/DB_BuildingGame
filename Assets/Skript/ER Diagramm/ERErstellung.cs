@@ -147,9 +147,9 @@ public class ERErstellung : MonoBehaviour
         bool ausserhalb = true;
         while (ausserhalb) {
             pos = new Vector3(rand.Next(Screen.width / 10, 9 * Screen.width / 10), rand.Next(Screen.height / 6, 5 * Screen.height / 6), 0);
-            if (!RectTransformUtility.RectangleContainsScreenPoint(aufgabentext.GetComponent<RectTransform>(), pos, Camera.main)
-                && !RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), pos, Camera.main)
-                && !RectTransformUtility.RectangleContainsScreenPoint(infobox.GetComponent<RectTransform>(), pos, Camera.main))
+            if (!RectTransformUtility.RectangleContainsScreenPoint(aufgabentext.GetComponent<RectTransform>(), pos, null)
+                && !RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), pos, null)
+                && !RectTransformUtility.RectangleContainsScreenPoint(infobox.GetComponent<RectTransform>(), pos, null))
             {
                 ausserhalb = false;
             }
@@ -290,7 +290,7 @@ public class ERErstellung : MonoBehaviour
 
     private static bool checkMausIn(Vector3 mousePosition, GameObject objekt)
     {
-        bool drin = RectTransformUtility.RectangleContainsScreenPoint(objekt.GetComponent<RectTransform>(), mousePosition, Camera.main);
+        bool drin = RectTransformUtility.RectangleContainsScreenPoint(objekt.GetComponent<RectTransform>(), Utilitys.GetMouseWorldPosition(mousePosition),null);
         return drin;
     }
 

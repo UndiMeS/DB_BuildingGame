@@ -13720,7 +13720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3726a15791d6ea44b8d3dd0560768ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialOff: 1
+  tutorialOff: 0
   pfeilSpiel: {fileID: 1688200390}
   pfeilER: {fileID: 1909072898}
   containerKiller: {fileID: 1342842098}
@@ -30684,8 +30684,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 1
   movementTime: 5
-  newPosition: {x: 60, y: -10, z: 5}
-  newZoom: {x: 0, y: -40, z: -140}
+  newPosition: {x: 90, y: 120, z: 5}
+  newZoom: {x: 0, y: -200, z: -200}
   zoomAmount: {x: 0, y: 1, z: 1}
   cameraTransform: {fileID: 963194228}
   dragStartPosition: {x: 0, y: 0, z: 0}
@@ -30695,13 +30695,7 @@ MonoBehaviour:
   oldPos: {x: 50, y: 200, z: 0}
   oldZoom: {x: 0, y: 50, z: -60}
   aufgabentext: {fileID: 1508547998}
-  panLimit: {x: 800, y: 400}
-  erXLimit: {x: 800, y: 10}
-  erYLimit: {x: 400, y: 10}
-  marsLimit: {x: 0, y: 0}
-  scrollSpeed: 20
-  minY: -520
-  maxY: -50
+  grenzen: 00000000
 --- !u!1 &648295050
 GameObject:
   m_ObjectHideFlags: 0
@@ -89872,7 +89866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4836ad1e902274242aadfc3504d79743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offModus: 1
+  offModus: 0
   transparentWohncontainer: {fileID: 865439306}
   buttonForscher: {fileID: 1566984999}
   buttonFeld: {fileID: 857717934}
