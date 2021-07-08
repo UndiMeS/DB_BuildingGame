@@ -120,6 +120,10 @@ public class Mission : MonoBehaviour
             ERkreisKreuz.SetActive(false);
         }
 
+        if(missionsLevel[5]){
+            Debug.Log("Zertifikat geben");
+        }
+
     }
     //Schreibe Missionstexte ins Fenster. Bei "aus" blende Teilziel aus
     public void setMission(int lvl)
@@ -537,9 +541,9 @@ public class Mission : MonoBehaviour
                             missionsTeilLevel4[3] = true;
                         }
                         if(zwischenziel1==1 && zwischenziel2==1 && zwischenziel3==1 && zwischenziel4==1){
-                            KreuzHacken();
                             finale = true;
                             missionsLevel[4] = true;
+                            KreuzHackenFinal();
                         }
                         else
                         {
