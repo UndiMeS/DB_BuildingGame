@@ -13,6 +13,7 @@ public class Tutorial : MonoBehaviour
     public GameObject pfeilER;
     private bool firstTime = true;
     private static bool missionClick = false;
+    private static bool missionTemp = false;
     private static bool zusatzClick = false;
     private static bool beschreibungClick = false;
     private bool rotationTemp = true;
@@ -175,11 +176,10 @@ public class Tutorial : MonoBehaviour
         
         //Zeitpunkt: ER-Level 2 fertig (Feldsphäre) und Wechsel zum Spiel für Zusatzaufgabe
         }else if((Story.lvl[2] == true && Story.lvl[3] == false) && (Mission.missionsLevel[0] == true && Mission.missionsLevel[1] == false)){
-            if(zusatzClick == false && missionClick == false){
-                missionClick = false;
+            bZusatz.interactable = true;
+            if(zusatzClick == false && missionClick == false && missionTemp == false){
                 FehlerAnzeige.tutorialtext_Spiel = "Bei knappen Ressourcen kannst du auch eine Zusatzaufgabe lösen, um weiter zu bauen! Öffne eine Zusatzaufgabe!";
                 FehlerAnzeige.tutorialtext_ER = "Super! Im Baumenü sind nun Feldsphären freigeschaltet. Auch Feldastronauten leben bereits in der Siedlung. Auf geht's in die neue Mission!";
-                bZusatz.interactable = true;
                 pfeilSpiel.transform.localPosition = new Vector3(637,23,0);
                 pfeilER.transform.localPosition = new Vector3(844,221,0);
                 if(firstTime == true){
@@ -189,20 +189,24 @@ public class Tutorial : MonoBehaviour
             }
             //Prüfe ob Zusatzfenster geklickt wurde
             if(zusatzClick){
-                FehlerAnzeige.tutorialtext_Spiel = "Versuche nun die nächste Mission zu erfüllen! \n Tipp: Im Pausemenü findest du auch eine Spielhilfe!";
                 FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen und mit Feldspähren Erträge erwirtschaften! \nTipp: Du benötigst 4 Feldsphären!";
                 pfeilSpiel.SetActive(false);
                 pfeilER.SetActive(false);
+                missionTemp = true;
                 //Prüfe, ob Missionsfenster geklickt wurde
                 if(missionClick){
                     FehlerAnzeige.tutorialtext_Spiel = "Für Feldsphären benötigst du Feldastronauten. Hinweis: Rechts neben der Guthabenanzeige in der Infoleiste am oberen Bildschirmrand siehst du den Ertrag, der dir alle "+SpielInfos.neuerUmsatz+" Sol (Marstage) ausgezahlt wird.";
-                    zusatzClick = false;
-                    missionClick = false;
+                }else{
+                    FehlerAnzeige.tutorialtext_Spiel = "Versuche nun die nächste Mission zu erfüllen! \n Tipp: Im Pausemenü findest du auch eine Spielhilfe!";
                 }
             }
         
         //Zeitpunkt: Hinweis zum Bau von Forschungsstationen       
         }else if((Story.lvl[3] == true && Story.lvl[4] == false) && (Mission.missionsLevel[1] == true && Mission.missionsLevel[7] == false)){
+            if(missionTemp){
+                missionClick = false;
+                missionTemp = false;
+            }
             FehlerAnzeige.tutorialtext_Spiel = "Klasse! Erfülle nun die Mission!";
             FehlerAnzeige.tutorialtext_ER = "Check deine neue Mission!"; 
             if(missionClick){
@@ -220,6 +224,12 @@ public class Tutorial : MonoBehaviour
             pfeilER.SetActive(false);
             FehlerAnzeige.tutorialtext_Spiel = "";
             FehlerAnzeige.tutorialtext_ER = "Klasse! Erfülle nun die Mission!";
+        
+        //alle ER und Missions Level erfolgreich
+        }else if (Story.lvl[7] == true && Mission.missionsLevel[5] == false){
+            pfeilER.SetActive(false);
+            FehlerAnzeige.tutorialtext_Spiel = "";
+            FehlerAnzeige.tutorialtext_ER = "Klasse! Erfülle nun die letzten Missionen!";
         
         //alle ER und Missions Level erfolgreich
         }else if (Story.lvl[7] == true && Mission.missionsLevel[5] == true){

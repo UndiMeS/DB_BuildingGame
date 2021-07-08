@@ -81,17 +81,22 @@ public class Mission : MonoBehaviour
                                         new string[] { "Wir können nun auch Feldsphären und Stationen verbessern. Erforsche je eine Verbesserung der Merkmale Baukosten, Arbeiterzahl und Ertrag von Feldsphären. Erforsche gleichzeitig neue Methoden in der Station mit Stationsnummer 2. ", "Verbessere die Baukosten von Feldsphären.", "Verbessere die Arbeiterzahl von Feldsphären.", "Verbessere den Ertrag von Feldsphären.", "Verbessere die Projektkosten von der Station mit SNr. 2.", "", "", "", "" },
                                         new string[] { "Neben Feldsphären können bald auch Weidesphären errichtet werden. Darin werden Tiere bewirtschaftet. Diese leben in Stallcontainern. Genau wie Wohncontainer, sollten auch diese mehr erforscht werden.", "Fliege 8 Tiere ein.", "Gib den Namen des 1. Tier der Seidlung an.", "aus", "Verbessere die Baukosten von Stallcontainern.", "8", "", "", "" },
                                         new string[] { "Nun können auch Weidesphären konstruiert werden, um Erträge zu erwirtschaften. Verbessere deinen regelmäßigen Ertrag durch den Bau von Weidesphären und forsche an deren Verbesserung.", "Erbaue 6 Weidesphären.", "Verbessere die Baukosten von Weidesphären.", "Verbessere die Tieranzahl von Weidesphären.", "Verbessere die Arbeiterzahl von Weidesphären.", "6", "", "", "" },
-                                        new string[] { "Du hast es geschafft! Die Grundversorgung der ersten Marsseidlung ist aufgebaut und das ER-Diagramm, als Gerüst für die Datenbank, wurde erstellt. Nun ist es an der Zeit mehr zu forschen, um die Grundsteine für zukünftige Missionen auf dem Mars zu legen. Investiere daher in mehr Forschungsprojekt und erweitere die Bevölkerung deiner Siedlung.", "Erweitere deine Bevölkerung auf 50 Astronauten.", "Forsche in der Siedlung an 15 Projekten.", "aus", "aus", "120", "25", "", "" },
+                                        new string[] { "Du hast es geschafft! Die Grundversorgung der ersten Marsseidlung ist aufgebaut und das ER-Diagramm, als Gerüst für die Datenbank, wurde erstellt. Nun ist es an der Zeit mehr zu forschen, um die Grundsteine für zukünftige Missionen auf dem Mars zu legen. Investiere daher in mehr Forschungsprojekt und erweitere die Bevölkerung deiner Siedlung.", "Erweitere deine Bevölkerung auf 120 Astronauten.", "Forsche in der Siedlung an 25 Projekten.", "aus", "aus", "120", "25", "", "" },
                                         
                                         //Folgendes Level ist das erste Level. Da es nachträglich hinzukam, wurde es hintendran gehangen.
                                         new string[] { "Damit Astronauten auf dem Mars leben können, werden Wohncontainer benötigt. Beginne deine Siedlung mit dem Bau dieser Wohncontainer.", "Errichte 1 Wohncontainer!", "aus", "aus", "aus", "", "", "", "" },
                                         //Folgendes Level ist das Level zwischen 1 und 2. Da es nachträglich hinzukam, wurde es hintendran gehangen.
                                         new string[] { "Um Forschung auf dem Mars zu betreiben werden Forschungsstationen benötigt. Jeder Sphären- und Containertyp hat eine eigene Forschungsstationstypen.", "Errichte 1 Forschungsstation!", "aus", "aus", "aus", "", "", "", "" },
                                         //Folgendes Level ist das Level zwischen 2 und 3. Da es nachträglich hinzukam, wurde es hintendran gehangen.
-                                        new string[] { "Wir können nun mit ersten Forschungen beginnen und Wohncontainer verbessern. Erforsche mindestens eine Verbesserung der Baukosten und Bettenzahl von Wohncontainern. Steigere gleichzeitig deinen Ertrag, um die Forschung zuküntig finanzieren zu können!", "Verbessere die Baukosten von Wohncontainern.", "Verbessere die Bettenzahl von Wohncontainern.", "Erhöhe den Ertrag um 150.", "aus", "", "", "300", "" }
+                                        new string[] { "Wir können nun mit ersten Forschungen beginnen und Wohncontainer verbessern. Erforsche mindestens eine Verbesserung der Baukosten und Bettenzahl von Wohncontainern. Steigere gleichzeitig deinen Ertrag, um die Forschung zuküntig finanzieren zu können!", "Verbessere die Baukosten von Wohncontainern.", "Verbessere die Bettenzahl von Wohncontainern.", "Erhöhe den Ertrag um 300.", "aus", "", "", "300", "" }
                                         };
 
     public GameObject missionshintergrund;
+
+    //Variablen, wenn alle Missionen absolviert sind
+    public GameObject backToEarthButton;
+    public GameObject missionsButton;
+    public GameObject missionsFenster;
     
     // Start is called before the first frame update
     void Start()
@@ -104,25 +109,33 @@ public class Mission : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Gib alle Texte der Mission aus.
-        setMission(setLevel());
-        //setMission(3);
-
-        //Prüfe ob Mission von Level erfolgreich ist
-        checkMission(setLevel());
-        //checkMission(3);
-
-        setSize();
-        
-        //Bedingung, damit nach Speichern/Laden die richtigen Icons ausgegeben werden
-        if(ERAufgabe.missionCheck == false){
-            ERkreisHacken.SetActive(true);
-            ERkreisKreuz.SetActive(false);
-        }
-
+        //Alle Missionen erfolgreich absolviert
         if(missionsLevel[5]){
-            Debug.Log("Zertifikat geben");
+            FinaleAnzeige();
+        //noch nicht alle Missionen erfolgreich absolviert
+        }else{
+            //Gib alle Texte der Mission aus.
+            setMission(setLevel());
+            //setMission(3);
+
+            //Prüfe ob Mission von Level erfolgreich ist
+            checkMission(setLevel());
+            //checkMission(3);
+
+            setSize();
+            
+            //Bedingung, damit nach Speichern/Laden die richtigen Icons ausgegeben werden
+            if(ERAufgabe.missionCheck == false){
+                ERkreisHacken.SetActive(true);
+                ERkreisKreuz.SetActive(false);
+            }
+
+            if(missionsLevel[5]){
+                Debug.Log("Zertifikat geben");
+            } 
         }
+        
+        
 
     }
     //Schreibe Missionstexte ins Fenster. Bei "aus" blende Teilziel aus
@@ -511,7 +524,7 @@ public class Mission : MonoBehaviour
                     hacken2.SetActive(true);
                     hacken3.SetActive(true);
                     hacken4.SetActive(true);
-                    KreuzHacken();
+                    KreuzHackenFinal();
                 }else{
                         if(temp_anzahl_lvl4 == 0 && temp_arbeiterzahl_lvl4 == 0 && temp_baukosten_lvl4 == 0 && temp_tierzahl_lvl4 == 0)
                         {
@@ -560,7 +573,10 @@ public class Mission : MonoBehaviour
             if(missionsLevel[5]){
                 hacken1.SetActive(true);
                 hacken2.SetActive(true);
-                KreuzHacken();
+                zwischenziel1 = 0;
+                zwischenziel2 = 0;
+                zwischenziel3 = 0;
+                zwischenziel4 = 0;  
             }else{
                 if(missionsTeilLevel5[0] || Testing.summeMenschen >= System.Convert.ToInt32(mission[5][5]))
                 {
@@ -575,8 +591,12 @@ public class Mission : MonoBehaviour
                     missionsTeilLevel5[1] = true;
                 }
                 if(zwischenziel1==1 && zwischenziel2==1){
-                    KreuzHackenFinal();
+                    zwischenziel1 = 0;
+                    zwischenziel2 = 0;
+                    zwischenziel3 = 0;
+                    zwischenziel4 = 0;  
                     missionsLevel[5] = true;
+
 
                 }
                 else
@@ -621,21 +641,21 @@ public class Mission : MonoBehaviour
 
     private void KreuzHackenFinal()
     {   
-        masterKreuz.SetActive(false);
-        masterHacken.SetActive(true);
+        //masterKreuz.SetActive(false);
+        //masterHacken.SetActive(true);
         popUpKreis(Missionskreis);
         zwischenziel1 = 0;
         zwischenziel2 = 0;
         zwischenziel3 = 0;
-        zwischenziel4 = 0;  
-
-        if(FehlerAnzeige.tutorialtext_Spiel.Equals("")){
-            FehlerAnzeige.tutorialtext_Spiel = "Mission erfolgreich! Du kannst nun wieder dein ER-Diagramm erweitern!";
-        }      
+        zwischenziel4 = 0;       
     }
 
     public void FinaleAnzeige()
     {
         Debug.Log("Du hast gewonnen!");
+        backToEarthButton.SetActive(true);
+        missionsFenster.SetActive(false);
+        missionsButton.SetActive(false);
+        popUpKreis(backToEarthButton);
     }
 }
