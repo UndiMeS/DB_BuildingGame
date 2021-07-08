@@ -71,6 +71,7 @@ public class Mission : MonoBehaviour
 
     //Kreise
     public GameObject ERkreis;
+    public GameObject Missionskreis;
     private bool firstTime=true;//nur beim ersten mal PopUp
 
     //Missionstexte für Fenster
@@ -79,15 +80,15 @@ public class Mission : MonoBehaviour
                                         new string[] { "Du kannst nun Feldsphären errichten, die in regelmäßigen Abständen Erträge erwirtschaften. Dafür werden jedoch Feldastronauten benötigt.", "Erreiche einen Ertrag von 200.", "aus", "aus", "aus", "200", "", " ", " " },
                                         new string[] { "Wir können nun auch Feldsphären und Stationen verbessern. Erforsche je eine Verbesserung der Merkmale Baukosten, Arbeiterzahl und Ertrag von Feldsphären. Erforsche gleichzeitig neue Methoden in der Station mit Stationsnummer 2. ", "Verbessere die Baukosten von Feldsphären.", "Verbessere die Arbeiterzahl von Feldsphären.", "Verbessere den Ertrag von Feldsphären.", "Verbessere die Projektkosten von der Station mit SNr. 2.", "", "", "", "" },
                                         new string[] { "Neben Feldsphären können bald auch Weidesphären errichtet werden. Darin werden Tiere bewirtschaftet. Diese leben in Stallcontainern. Genau wie Wohncontainer, sollten auch diese mehr erforscht werden.", "Fliege 8 Tiere ein.", "Gib den Namen des 1. Tier der Seidlung an.", "aus", "Verbessere die Baukosten von Stallcontainern.", "8", "", "", "" },
-                                        new string[] { "Nun können auch Weidesphären konstruiert werden, um Erträge zu erwirtschaften. Verbessere deinen regelmäßigen Ertrag durch den Bau von Weidesphären und forsche an deren Verbesserung.", "Erbaue 3 Weidesphären.", "Verbessere die Baukosten von Weidesphären.", "Verbessere die Tieranzahl von Weidesphären.", "Verbessere die Arbeiterzahl von Weidesphären.", "3", "", "", "" },
-                                        new string[] { "Du hast es geschafft! Die Grundversorgung der ersten Marsseidlung ist aufgebaut und das ER-Diagramm, als Gerüst für die Datenbank, wurde erstellt. Nun ist es an der Zeit mehr zu forschen, um die Grundsteine für zukünftige Missionen auf dem Mars zu legen. Investiere daher in mehr Forschungsprojekt und erweitere die Bevölkerung deiner Siedlung.", "Erweitere deine Bevölkerung auf 50 Astronauten.", "Forsche in der Siedlung an 15 Projekten.", "aus", "aus", "50", "15", "", "" },
+                                        new string[] { "Nun können auch Weidesphären konstruiert werden, um Erträge zu erwirtschaften. Verbessere deinen regelmäßigen Ertrag durch den Bau von Weidesphären und forsche an deren Verbesserung.", "Erbaue 6 Weidesphären.", "Verbessere die Baukosten von Weidesphären.", "Verbessere die Tieranzahl von Weidesphären.", "Verbessere die Arbeiterzahl von Weidesphären.", "6", "", "", "" },
+                                        new string[] { "Du hast es geschafft! Die Grundversorgung der ersten Marsseidlung ist aufgebaut und das ER-Diagramm, als Gerüst für die Datenbank, wurde erstellt. Nun ist es an der Zeit mehr zu forschen, um die Grundsteine für zukünftige Missionen auf dem Mars zu legen. Investiere daher in mehr Forschungsprojekt und erweitere die Bevölkerung deiner Siedlung.", "Erweitere deine Bevölkerung auf 50 Astronauten.", "Forsche in der Siedlung an 15 Projekten.", "aus", "aus", "120", "25", "", "" },
                                         
                                         //Folgendes Level ist das erste Level. Da es nachträglich hinzukam, wurde es hintendran gehangen.
                                         new string[] { "Damit Astronauten auf dem Mars leben können, werden Wohncontainer benötigt. Beginne deine Siedlung mit dem Bau dieser Wohncontainer.", "Errichte 1 Wohncontainer!", "aus", "aus", "aus", "", "", "", "" },
                                         //Folgendes Level ist das Level zwischen 1 und 2. Da es nachträglich hinzukam, wurde es hintendran gehangen.
                                         new string[] { "Um Forschung auf dem Mars zu betreiben werden Forschungsstationen benötigt. Jeder Sphären- und Containertyp hat eine eigene Forschungsstationstypen.", "Errichte 1 Forschungsstation!", "aus", "aus", "aus", "", "", "", "" },
                                         //Folgendes Level ist das Level zwischen 2 und 3. Da es nachträglich hinzukam, wurde es hintendran gehangen.
-                                        new string[] { "Wir können nun mit ersten Forschungen beginnen und Wohncontainer verbessern. Erforsche mindestens eine Verbesserung der Baukosten und Bettenzahl von Wohncontainern. Steigere gleichzeitig deinen Ertrag, um die Forschung zu finanzieren!", "Verbessere die Baukosten von Wohncontainern.", "Verbessere die Bettenzahl von Wohncontainern.", "Erhöhe den Ertrag um 150.", "aus", "", "", "150", "" }
+                                        new string[] { "Wir können nun mit ersten Forschungen beginnen und Wohncontainer verbessern. Erforsche mindestens eine Verbesserung der Baukosten und Bettenzahl von Wohncontainern. Steigere gleichzeitig deinen Ertrag, um die Forschung zuküntig finanzieren zu können!", "Verbessere die Baukosten von Wohncontainern.", "Verbessere die Bettenzahl von Wohncontainern.", "Erhöhe den Ertrag um 150.", "aus", "", "", "300", "" }
                                         };
 
     public GameObject missionshintergrund;
@@ -456,6 +457,7 @@ public class Mission : MonoBehaviour
             if(missionsLevel[3]){
                 hacken1.SetActive(true);
                 hacken2.SetActive(true);
+                hacken4.SetActive(true);
                 KreuzHacken();
             }else{
                 if(Testing.tiere > 0)
@@ -481,10 +483,6 @@ public class Mission : MonoBehaviour
                     hacken4.SetActive(true);
                     zwischenziel3 = 1;
                     missionsTeilLevel3[2] = true;
-                }
-
-                if(zwischenziel3 == 1){
-                    hacken4.SetActive(true);
                 }
 
                 if(zwischenziel1 == 1 && zwischenziel2 == 1 && zwischenziel3 == 1){
@@ -573,7 +571,7 @@ public class Mission : MonoBehaviour
                     missionsTeilLevel5[1] = true;
                 }
                 if(zwischenziel1==1 && zwischenziel2==1){
-                    KreuzHacken();
+                    KreuzHackenFinal();
                     missionsLevel[5] = true;
 
                 }
@@ -607,6 +605,21 @@ public class Mission : MonoBehaviour
         ERkreisHacken.SetActive(false);
         ERkreisKreuz.SetActive(true);
         popUpKreis(ERkreis);
+        zwischenziel1 = 0;
+        zwischenziel2 = 0;
+        zwischenziel3 = 0;
+        zwischenziel4 = 0;  
+
+        if(FehlerAnzeige.tutorialtext_Spiel.Equals("")){
+            FehlerAnzeige.tutorialtext_Spiel = "Mission erfolgreich! Du kannst nun wieder dein ER-Diagramm erweitern!";
+        }      
+    }
+
+    private void KreuzHackenFinal()
+    {   
+        masterKreuz.SetActive(false);
+        masterHacken.SetActive(true);
+        popUpKreis(Missionskreis);
         zwischenziel1 = 0;
         zwischenziel2 = 0;
         zwischenziel3 = 0;

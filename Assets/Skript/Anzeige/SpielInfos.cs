@@ -61,6 +61,10 @@ public class SpielInfos : MonoBehaviour
         {
             currenttime = Time.time-pausedtime;
             float neuSoltag = Mathf.RoundToInt(currenttime / 10.274f ) + 1; // +1 da es keinen Tag 0  gibt/ Marstag = 1,02748 * Erdtag --> 20* 1,02748
+            
+            marsTag = deltaMarsTag + Mathf.RoundToInt(neuSoltag);
+            erdenTag =deltaErdenTag+ Mathf.RoundToInt(currenttime / 10 ) + 1;
+
             if (neuSoltag % neuerUmsatz == 0 && marsTag != neuSoltag)
             {
                 Testing.geld += Testing.umsatz;
@@ -73,8 +77,6 @@ public class SpielInfos : MonoBehaviour
             }
             
 
-            marsTag = deltaMarsTag + Mathf.RoundToInt(neuSoltag);
-            erdenTag =deltaErdenTag+ Mathf.RoundToInt(currenttime / 10 ) + 1;
             lasttime = currenttime;
         }
         else if(PauseMenu.ERon)

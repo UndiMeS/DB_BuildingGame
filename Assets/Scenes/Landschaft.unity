@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2743,7 +2743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3726a15791d6ea44b8d3dd0560768ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialOff: 0
+  tutorialOff: 1
   pfeilSpiel: {fileID: 1688200390}
   pfeilER: {fileID: 1909072898}
   containerKiller: {fileID: 1342842098}
@@ -10072,7 +10072,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184288484}
   m_LocalRotation: {x: 0, y: -0, z: 0.9588198, w: -0.28401524}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 507312739}
@@ -10080,7 +10080,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 213}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 310.3, y: 193.62}
+  m_AnchoredPosition: {x: 320, y: 201}
   m_SizeDelta: {x: 27, y: 83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &184288486
@@ -13720,7 +13720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3726a15791d6ea44b8d3dd0560768ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialOff: 0
+  tutorialOff: 1
   pfeilSpiel: {fileID: 1688200390}
   pfeilER: {fileID: 1909072898}
   containerKiller: {fileID: 1342842098}
@@ -29223,8 +29223,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00051498, y: -180.47}
-  m_SizeDelta: {x: 997.3, y: 537.56}
+  m_AnchoredPosition: {x: -0.00051498, y: -247.664}
+  m_SizeDelta: {x: 997.3, y: 671.947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &616779708
 MonoBehaviour:
@@ -51773,7 +51773,7 @@ RectTransform:
   m_GameObject: {fileID: 1068222334}
   m_LocalRotation: {x: 0.000000029802319, y: -0.000000014901159, z: 0.000000014901159,
     w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 507312739}
@@ -51781,7 +51781,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 249, y: 273}
+  m_AnchoredPosition: {x: 249, y: 303}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1068222336
@@ -51804,7 +51804,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1. Kapazit\xE4t f\xFCr neue Projekte pr\xFCfen"
+  m_text: "1. Kapazit\xE4t f\xFCr neue Projekte in dieser Stationpr\xFCfen"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1cd2c1f0f97eab04faf605d702b5e1b3, type: 2}
   m_sharedMaterial: {fileID: -8889975471788233363, guid: 1cd2c1f0f97eab04faf605d702b5e1b3,
@@ -51868,7 +51868,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -23.250116, y: 0, z: 34.161045, w: 0}
+  m_margin: {x: -46.966343, y: 0, z: 16.68582, w: -76.158424}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -65755,7 +65755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1326066185
 RectTransform:
   m_ObjectHideFlags: 0
@@ -74240,8 +74240,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 496.5, y: -372.27982}
-  m_SizeDelta: {x: 1009, y: 194}
+  m_AnchoredPosition: {x: 496.5, y: -372.7373}
+  m_SizeDelta: {x: 1009, y: 194.9149}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1508547999
 MonoBehaviour:
@@ -83735,7 +83735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37cd7f1e22281b4b867293b294a9963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testModus: 0
+  testModus: 1
   dasIstSchonFertig: {fileID: 1730754993}
   aufgabenText: {fileID: 616779706}
   checkliste:
@@ -84081,6 +84081,7 @@ MonoBehaviour:
   hacken3: {fileID: 700626141}
   hacken4: {fileID: 1837982168}
   ERkreis: {fileID: 1824772113}
+  Missionskreis: {fileID: 413170613}
   missionshintergrund: {fileID: 1177426176}
 --- !u!1 &1733489364
 GameObject:
@@ -89866,7 +89867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4836ad1e902274242aadfc3504d79743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offModus: 0
+  offModus: 1
   transparentWohncontainer: {fileID: 865439306}
   buttonForscher: {fileID: 1566984999}
   buttonFeld: {fileID: 857717934}
@@ -96530,7 +96531,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 233.1, y: 242}
+  m_AnchoredPosition: {x: 224, y: 251}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1989783435

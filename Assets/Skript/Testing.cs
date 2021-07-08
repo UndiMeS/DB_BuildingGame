@@ -82,6 +82,7 @@ public class Testing : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (geld < 25 && zuvorNichtAn)
         {
             pausemenu.ObjectAnzeigenTimeStop(zusatz);
@@ -92,6 +93,7 @@ public class Testing : MonoBehaviour
         {
             zuvorNichtAn = true;
         }
+        */
     }
 
 

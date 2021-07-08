@@ -110,7 +110,7 @@ public class Tutorial : MonoBehaviour
             bZusatz.interactable = false;
             bMission.interactable = true;
             FehlerAnzeige.tutorialtext_Spiel = "Schau dir nun deine Mission an!";
-            FehlerAnzeige.tutorialtext_ER = "Sehr gut! Tipp: Halte das Diagramm durch Verschieben per Drag'n'Drop übersichtlich!\n Wechsel zurück in die Siedlung!"; 
+            FehlerAnzeige.tutorialtext_ER = "Sehr gut! Tipp: Halte das Diagramm durch Verschiebung per Drag'n'Drop übersichtlich!\n Wechsel zurück in die Siedlung!"; 
             
             //Prüfe, ob Missionsbutten gedrückt wurde
             if(missionClick){

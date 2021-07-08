@@ -21,7 +21,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                                 };
     public  List<string>[] entitys = {
                  /*LvL 0*/ new List<string>{"Wohncontainer" },
-                 /*LvL 1*/ new List<string>{"Astronauten", "Astronaut", "existieren", "schwache","Entitymenge"},
+                 /*LvL 1*/ new List<string>{"Astronauten", "Astronaut", "existieren", "schwache"},
                  /*LvL 2*/ new List<string>{"Feldsphären", "Feldsphäre"},
                  /*LvL 3*/ new List<string>{"Forschungsstationen","Forschungsstation"},
                  /*LvL 4*/ new List<string>{"Forschungsprojekte","Forschungsprojekt","bereits","existiert"},
@@ -55,7 +55,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     private List<string>[] kardinalitaet = {
                  /*LvL 0*/ new List<string> {  },
                  /*LvL 1*/ new List<string>{"n:1","jeder", "anderen","genau"},
-                 /*LvL 2*/ new List<string>{"Mehrere", "ein"},
+                 /*LvL 2*/ new List<string>{"Mehrere","mehreren", "ein"},
                  /*LvL 3*/ new List<string>{"genau"},
                  /*LvL 4*/ new List<string>{"mehrere","Mehrere"},
                  /*LvL 5*/ new List<string>{"mehrere","Mehrere"},
