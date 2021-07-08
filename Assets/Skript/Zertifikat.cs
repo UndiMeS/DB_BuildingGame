@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using sharpPDF;
+
  
 
 public class Zertifikat : MonoBehaviour
@@ -20,13 +21,13 @@ public class Zertifikat : MonoBehaviour
 
     public void CreatePDF()
     {
-        pdfDocument myDoc = new pdfDocument("TUTORIAL","ME");
+        pdfDocument myDoc = new pdfDocument("Missionsbestätigung","UndiMeS");
         pdfPage myPage = myDoc.addPage();
-        myPage.addText("Hello World!", 200, 450, myDoc.getFontReference("Helvetica"), 20);
-        //myDoc.addImageReference(@"C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Assets\SaveState\ERDScreenshot.png","Bild");
+        myPage.addText("Mein Geld: "+Testing.geld.ToString(), 0, 0, myDoc.getFontReference("Helvetica"), 20);
+        //myDoc.addImageReference(Application.dataPath + @"\SaveState\ERDScreenshot.png","Bild");
         //myPage.addImage(myDoc.getImageReference("Bild"),400,750);
 
-        myDoc.createPDF(@"C:\Users\marcel\Desktop\UndiMeS_GIT\DB_BuildingGame\Assets\PDF\test.pdf");
+        myDoc.createPDF( Application.dataPath + @"\PDF\missionsbestätigung.pdf");
         myPage = null;
         myDoc = null; 
     }
