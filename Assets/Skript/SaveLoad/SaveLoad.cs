@@ -343,6 +343,10 @@ public class SaveLoad : MonoBehaviour
         public bool [] missionsTeilLevel6 = Mission.missionsTeilLevel6;
         public bool [] missionsTeilLevel7 = Mission.missionsTeilLevel7;
         public bool [] missionsTeilLevel8 = Mission.missionsTeilLevel8;
+        public bool [] missionsTeilLevel9 = Mission.missionsTeilLevel9;
+
+        public bool finale;
+        public bool screenshotMission;
 
         public bool missionCheck = ERAufgabe.missionCheck;
         
@@ -380,6 +384,10 @@ public class SaveLoad : MonoBehaviour
         public bool [] missionsTeilLevel6;
         public bool [] missionsTeilLevel7;
         public bool [] missionsTeilLevel8;
+        public bool [] missionsTeilLevel9;
+
+        public bool finale;
+        public bool screenshotMission;
 
         public bool missionCheck;
 
@@ -413,6 +421,13 @@ public class SaveLoad : MonoBehaviour
             Mission.missionsTeilLevel3 = missionsTeilLevel3;
             Mission.missionsTeilLevel4 = missionsTeilLevel4;
             Mission.missionsTeilLevel5 = missionsTeilLevel5;
+            Mission.missionsTeilLevel6 = missionsTeilLevel6;
+            Mission.missionsTeilLevel7 = missionsTeilLevel7;
+            Mission.missionsTeilLevel8 = missionsTeilLevel8;
+            Mission.missionsTeilLevel9 = missionsTeilLevel9;
+
+            Mission.finale = finale;
+            Mission.screenshotMission = screenshotMission;
 
             ERAufgabe.missionCheck = missionCheck;
             

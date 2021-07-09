@@ -16,6 +16,7 @@ public class Tutorial : MonoBehaviour
     private static bool missionTemp = false;
     private static bool zusatzClick = false;
     private static bool beschreibungClick = false;
+    private static bool zurErdeClick = false;
     private bool rotationTemp = true;
     public GameObject containerKiller;
     public GameObject wohncontainerHilfe;
@@ -231,11 +232,22 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "";
             FehlerAnzeige.tutorialtext_ER = "Klasse! Erfülle nun die letzten Missionen!";
         
-        //alle ER und Missions Level erfolgreich
-        }else if (Story.lvl[7] == true && Mission.missionsLevel[5] == true){
+        //Screenshots erstellen
+        }else if (Story.lvl[7] == true && Mission.missionsLevel[5] == true && Mission.missionsLevel[9] == false){
             pfeilER.SetActive(false);
-            FehlerAnzeige.tutorialtext_Spiel = "Hervorragend! Deine Marsmission ist erfolgreich beendet. Du kannst nun noch weiter deine Siedlung erweitern oder zur Erde zurückkehren, um dein Missionszertifikat zu erhalten!";
-            FehlerAnzeige.tutorialtext_ER = "Hervorragend! Deine Marsmission ist erfolgreich beendet. Du kannst nun noch weiter deine Siedlung erweitern oder zur Erde zurückkehren, um dein Missionszertifikat zu erhalten!";
+            FehlerAnzeige.tutorialtext_Spiel = "Klasse! Für eine vollumfängliche Dokumentation des Siedlungsbaus, erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot.";
+            FehlerAnzeige.tutorialtext_ER = "Klasse! Für eine vollumfängliche Dokumentation des Siedlungsbaus, erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot.";
+        
+        //alle ER und Missions Level erfolgreich
+        }else if (Story.lvl[7] == true && Mission.missionsLevel[9] == true){
+            pfeilER.SetActive(false);
+            if(zurErdeClick == false){
+                FehlerAnzeige.tutorialtext_Spiel = "Hervorragend! Deine Marsmission ist erfolgreich beendet. Du kannst nun noch weiter deine Siedlung erweitern oder zur Erde zurückkehren, um dein Missionszertifikat zu erhalten!";
+                FehlerAnzeige.tutorialtext_ER = "Hervorragend! Deine Marsmission ist erfolgreich beendet. Du kannst nun noch weiter deine Siedlung erweitern oder zur Erde zurückkehren, um dein Missionszertifikat zu erhalten!";
+            }else{
+                FehlerAnzeige.tutorialtext_Spiel = "Herzlichen Glückwunsch zu deinem Missionszertifikat! Du kannst das Spiel nun beenden!";
+            }
+        
         //Sonst: setzte alle Texte zurück
         }else{
             FehlerAnzeige.tutorialtext_Spiel = "";
@@ -263,6 +275,11 @@ public class Tutorial : MonoBehaviour
     public void ClickOnBeschreibung()
     {
         beschreibungClick = true;
+    }
+    
+    public void ClickOnZurErde()
+    {
+        zurErdeClick = true;
     }
 
 }

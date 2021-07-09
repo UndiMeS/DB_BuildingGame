@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Mission : MonoBehaviour
 {
     //Test Mission ein bool
-    public static bool[] missionsLevel = new bool[] {false,false,false,false,false,false,false,false,false};
+    public static bool[] missionsLevel = new bool[] {false,false,false,false,false,false,false,false,false,false};
 
     //Je Teilziel ein Bool
     public static bool[] missionsTeilLevel0 = new bool[] {false,false};
@@ -19,6 +19,7 @@ public class Mission : MonoBehaviour
     public static bool[] missionsTeilLevel6 = new bool[] {false}; //Das ist für das Level VOR Level 0
     public static bool[] missionsTeilLevel7 = new bool[] {false}; //Das ist für das Level zwischen 1 und 2
     public static bool[] missionsTeilLevel8 = new bool[] {false, false, false}; //Das ist für das Level zwischen 2 und 3
+    public static bool[] missionsTeilLevel9 = new bool[] {false, false}; //Screenshot-Level
     
     //Hilfsvariablen
     int zwischenziel1 = 0;
@@ -39,7 +40,8 @@ public class Mission : MonoBehaviour
     public static int temp_bettenzahl_lvl8 = 0;
     public static int temp_ertrag_lvl8 = 0;
 
-    bool finale = false;
+    public static bool finale = false;
+    public static bool screenshotMission = false;
     public static bool mission1 = false;
     public static bool mission3 = false;
 
@@ -88,7 +90,9 @@ public class Mission : MonoBehaviour
                                         //Folgendes Level ist das Level zwischen 1 und 2. Da es nachträglich hinzukam, wurde es hintendran gehangen.
                                         new string[] { "Um Forschung auf dem Mars zu betreiben werden Forschungsstationen benötigt. Jeder Sphären- und Containertyp hat eine eigene Forschungsstationstypen.", "Errichte 1 Forschungsstation!", "aus", "aus", "aus", "", "", "", "" },
                                         //Folgendes Level ist das Level zwischen 2 und 3. Da es nachträglich hinzukam, wurde es hintendran gehangen.
-                                        new string[] { "Wir können nun mit ersten Forschungen beginnen und Wohncontainer verbessern. Erforsche mindestens eine Verbesserung der Baukosten und Bettenzahl von Wohncontainern. Steigere gleichzeitig deinen Ertrag, um die Forschung zuküntig finanzieren zu können!", "Verbessere die Baukosten von Wohncontainern.", "Verbessere die Bettenzahl von Wohncontainern.", "Erhöhe den Ertrag um 300.", "aus", "", "", "300", "" }
+                                        new string[] { "Wir können nun mit ersten Forschungen beginnen und Wohncontainer verbessern. Erforsche mindestens eine Verbesserung der Baukosten und Bettenzahl von Wohncontainern. Steigere gleichzeitig deinen Ertrag, um die Forschung zuküntig finanzieren zu können!", "Verbessere die Baukosten von Wohncontainern.", "Verbessere die Bettenzahl von Wohncontainern.", "Erhöhe den Ertrag um 300.", "aus", "", "", "300", "" },
+                                        //Folgendes Level ist das Level zwischen 2 und 3. Da es nachträglich hinzukam, wurde es hintendran gehangen.
+                                        new string[] { "Klasse deine Siedlung ist fertig gestellt! Für eine vollumfängliche Dokumentation des Siedlungsbaus, erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot. ", "Erstelle einen Screenshot der Siedlung!", "Erstelle einen Screenshot des ER-Diagramms!", "aus", "aus", "", "", "", "" }
                                         };
 
     public GameObject missionshintergrund;
@@ -97,6 +101,9 @@ public class Mission : MonoBehaviour
     public GameObject backToEarthButton;
     public GameObject missionsButton;
     public GameObject missionsFenster;
+
+    public static bool screenshotER = false;
+    public static bool screenshotSpiel = false;
     
     // Start is called before the first frame update
     void Start()
@@ -110,7 +117,7 @@ public class Mission : MonoBehaviour
     void Update()
     {
         //Alle Missionen erfolgreich absolviert
-        if(missionsLevel[5]){
+        if(missionsLevel[9]){
             FinaleAnzeige();
         //noch nicht alle Missionen erfolgreich absolviert
         }else{
@@ -128,15 +135,8 @@ public class Mission : MonoBehaviour
             if(ERAufgabe.missionCheck == false){
                 ERkreisHacken.SetActive(true);
                 ERkreisKreuz.SetActive(false);
-            }
-
-            if(missionsLevel[5]){
-                Debug.Log("Zertifikat geben");
             } 
         }
-        
-        
-
     }
     //Schreibe Missionstexte ins Fenster. Bei "aus" blende Teilziel aus
     public void setMission(int lvl)
@@ -174,8 +174,9 @@ public class Mission : MonoBehaviour
     {
         if(finale){
             return 5;
-        }else
-        {
+        }else if(screenshotMission){
+            return 9;
+        }else{
             if(Story.level == 2){
                 return 0; //X Astronauten einfliegen
             }else if(Story.level == 0 || Story.level == 1){
@@ -199,7 +200,7 @@ public class Mission : MonoBehaviour
     
     public void setSize()
     {
-        if(finale){
+        if(finale || screenshotMission){
             missionshintergrund.transform.localPosition = new Vector3(-16,150.0f,0.0f);
         }else
         {
@@ -516,6 +517,7 @@ public class Mission : MonoBehaviour
                     hacken3.SetActive(true);
                     hacken4.SetActive(true);
                     KreuzHackenFinal();
+                    finale = true;
                 }else{
                         if(temp_anzahl_lvl4 == 0 && temp_arbeiterzahl_lvl4 == 0 && temp_baukosten_lvl4 == 0 && temp_tierzahl_lvl4 == 0)
                         {
@@ -560,6 +562,7 @@ public class Mission : MonoBehaviour
             hacken2.SetActive(false);
             hacken3.SetActive(false);
             hacken4.SetActive(false);
+            screenshotMission = true;
 
             if(missionsLevel[5]){
                 hacken1.SetActive(true);
@@ -567,7 +570,10 @@ public class Mission : MonoBehaviour
                 zwischenziel1 = 0;
                 zwischenziel2 = 0;
                 zwischenziel3 = 0;
-                zwischenziel4 = 0;  
+                zwischenziel4 = 0; 
+                screenshotER = false;
+                screenshotSpiel = false;
+                finale = false;
             }else{
                 if(missionsTeilLevel5[0] || Testing.summeMenschen >= System.Convert.ToInt32(mission[5][5]))
                 {
@@ -582,13 +588,51 @@ public class Mission : MonoBehaviour
                     missionsTeilLevel5[1] = true;
                 }
                 if(zwischenziel1==1 && zwischenziel2==1){
+                    KreuzHackenFinal(); 
+                    missionsLevel[5] = true;
+                    screenshotER = false;
+                    screenshotSpiel = false;
+                    screenshotMission = true;
+                    finale = false;
+
+                }
+                else
+                {
+                    firstTime = true;
+                }
+            }
+        }else if (level == 9)
+        {
+            hacken1.SetActive(false);
+            hacken2.SetActive(false);
+            hacken3.SetActive(false);
+            hacken4.SetActive(false);
+
+            if(missionsLevel[9]){
+                hacken1.SetActive(true);
+                hacken2.SetActive(true);
+                zwischenziel1 = 0;
+                zwischenziel2 = 0;
+                zwischenziel3 = 0;
+                zwischenziel4 = 0;  
+            }else{
+                if(missionsTeilLevel9[0] || screenshotSpiel){
+                    hacken1.SetActive(true);
+                    zwischenziel1 = 1;
+                    missionsTeilLevel9[0] = true;
+                }
+                if(missionsTeilLevel9[1] || screenshotER){
+                    hacken2.SetActive(true);
+                    zwischenziel2 = 1;
+                    missionsTeilLevel9[1] = true;
+                }
+
+                if(zwischenziel1==1 && zwischenziel2==1){
                     zwischenziel1 = 0;
                     zwischenziel2 = 0;
                     zwischenziel3 = 0;
                     zwischenziel4 = 0;  
-                    missionsLevel[5] = true;
-
-
+                    missionsLevel[9] = true;
                 }
                 else
                 {

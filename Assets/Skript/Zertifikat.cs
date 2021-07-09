@@ -65,7 +65,5 @@ public class Zertifikat : MonoBehaviour
         myDoc.createPDF( Application.dataPath + @"\PDF\missionsbestätigung.pdf");
         myPage = null;
         myDoc = null; 
-
-        FehlerAnzeige.tutorialtext_Spiel = "Herzlichen Glückwunsch zu deinem Missionszertifikat!";
     }
 }
