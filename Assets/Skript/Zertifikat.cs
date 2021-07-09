@@ -23,6 +23,9 @@ public class Zertifikat : MonoBehaviour
 
     public void CreatePDF()
     {
+
+        
+
         pdfDocument myDoc = new pdfDocument("Missionsbestätigung","UndiMeS");
         pdfPage myPage = myDoc.addPage();
         myPage.addText("Mein Geld: "+Testing.geld.ToString(), 0, 0, myDoc.getFontReference("Helvetica"), 20);
