@@ -24,10 +24,37 @@ public class Zertifikat : MonoBehaviour
     public void CreatePDF()
     {
         pdfDocument myDoc = new pdfDocument("Missionsbestätigung","UndiMeS");
-        pdfPage myPage = myDoc.addPage();
-        myPage.addText("Mein Geld: "+Testing.geld.ToString(), 0, 0, myDoc.getFontReference("Helvetica"), 20);
-        myDoc.addImageReference(Application.dataPath + @"\SaveState\ERDScreenshot.png","Bild");
-        myPage.addImage(myDoc.getImageReference("Bild"),400,750);
+        pdfPage myPage = myDoc.addPage(3508, 2480);
+        
+        
+        //Hintergrundbild
+        myDoc.addImageReference(Application.dataPath + @"\Zertifikatsbilder\Zertifikat.png","Hintergrund");
+        myPage.addImage(myDoc.getImageReference("Hintergrund"),0 ,0);
+
+        myDoc.addImageReference(Application.dataPath + @"\Zertifikatsbilder\Spiel.png","Spiel");
+        myPage.addImage(myDoc.getImageReference("Spiel"),227,1683);
+
+        myDoc.addImageReference(Application.dataPath + @"\Zertifikatsbilder\ERD.png","ERD");
+        myPage.addImage(myDoc.getImageReference("ERD"), 227,473);
+
+        //Schriftgröße
+        int schriftSize = 50;
+        //Schriftart AstroSpace: myDoc.getFontReference("AstroSpace")
+        myDoc.addTrueTypeFont(Application.dataPath + @"\Font\AstroSpace-eZ2Bg.ttf", "AstroSpace");
+        //Schriftart FallingSky: myDoc.getFontReference("FallingSky")
+        myDoc.addTrueTypeFont(Application.dataPath + @"\Font\FallingSky-JKwK.ttf", "FallingSky");
+        
+        //Name und Level
+        myPage.addText("Maxi Mustermensch", 513, 2945, myDoc.getFontReference("AstroSpace"), schriftSize);
+        myPage.addText(Story.level.ToString(), 2108, 2945, myDoc.getFontReference("AstroSpace"), schriftSize);
+        
+        //Siedlungsdaten
+        myPage.addText(Testing.summeMenschen.ToString(), 355, 152, myDoc.getFontReference("AstroSpace"), schriftSize);
+        myPage.addText(Testing.summeTiere.ToString(), 868, 152, myDoc.getFontReference("AstroSpace"), schriftSize);
+        myPage.addText(Testing.summeForschungen.ToString(), 1307, 152, myDoc.getFontReference("AstroSpace"), schriftSize);
+        myPage.addText(Testing.umsatz.ToString(), 1966, 152, myDoc.getFontReference("AstroSpace"), schriftSize);
+        
+        
 
 
         myDoc.createPDF( Application.dataPath + @"\PDF\missionsbestätigung.pdf");
