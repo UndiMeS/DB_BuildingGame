@@ -192,7 +192,7 @@ public class PauseMenu : MonoBehaviour
     public void screenshotMachen(string wo)
     {
         canvas.SetActive(false);
-        ScreenCapture.CaptureScreenshot(Application.dataPath + "/SaveState/"+wo+"Screenshot.png");
+        ScreenCapture.CaptureScreenshot(Application.dataPath + "/Zertifikatsbilder/Spiel.png",2);
         Debug.Log("Screenshot gemacht");
         Invoke("allesAn", 0.1f);
     }
@@ -206,7 +206,7 @@ public class PauseMenu : MonoBehaviour
     public void screenshotMachenER()
     {
         Weiterspielen();
-        ScreenCapture.CaptureScreenshot(Application.dataPath + "/SaveState/ERDScreenshot.png");
+        ScreenCapture.CaptureScreenshot(Application.dataPath + "/Zertifikatsbilder/ERD.png",2);
         Debug.Log("Screenshot gemacht");
         FehlerAnzeige.fehlertext = "Screenshot wurde gemacht. Er befindet sich in deinen Speicherdaten.";
     }

@@ -33,12 +33,12 @@ public class Zertifikat : MonoBehaviour
         //Hintergrundbild
         myDoc.addImageReference(Application.dataPath + @"\Zertifikatsbilder\Zertifikat.png","Hintergrund");
         myPage.addImage(myDoc.getImageReference("Hintergrund"),0 ,0);
-
+        //Spiel-Screenshot
         myDoc.addImageReference(Application.dataPath + @"\Zertifikatsbilder\Spiel.png","Spiel");
-        myPage.addImage(myDoc.getImageReference("Spiel"),227,1683);
-
+        myPage.addImage(myDoc.getImageReference("Spiel"),239,1691, 1044, 1878);
+        //ER-Screenshot
         myDoc.addImageReference(Application.dataPath + @"\Zertifikatsbilder\ERD.png","ERD");
-        myPage.addImage(myDoc.getImageReference("ERD"), 227,473);
+        myPage.addImage(myDoc.getImageReference("ERD"), 239,476, 1044, 1878);
 
         //Schriftgröße
         int schriftSize = 50;
@@ -49,7 +49,7 @@ public class Zertifikat : MonoBehaviour
         
         //Name und Level
         myPage.addText("Maxi Mustermensch", 513, 2945, myDoc.getFontReference("AstroSpace"), schriftSize);
-        myPage.addText(Story.level.ToString(), 2108, 2945, myDoc.getFontReference("AstroSpace"), schriftSize);
+        myPage.addText(Story.level.ToString(), 2109, 2946, myDoc.getFontReference("AstroSpace"), schriftSize);
         
         //Siedlungsdaten
         myPage.addText(Testing.summeMenschen.ToString(), 355, 152, myDoc.getFontReference("AstroSpace"), schriftSize);
