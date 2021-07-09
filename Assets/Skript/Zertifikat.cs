@@ -21,11 +21,13 @@ public class Zertifikat : MonoBehaviour
         
     }
 
+    public void Go()
+    {
+        Invoke("CreatePDF",2);
+    }
+
     public void CreatePDF()
     {
-
-        
-
         pdfDocument myDoc = new pdfDocument("Missionsbestätigung","UndiMeS");
         pdfPage myPage = myDoc.addPage(3508, 2480);
         
@@ -63,5 +65,7 @@ public class Zertifikat : MonoBehaviour
         myDoc.createPDF( Application.dataPath + @"\PDF\missionsbestätigung.pdf");
         myPage = null;
         myDoc = null; 
+
+        FehlerAnzeige.tutorialtext_Spiel = "Herzlichen Glückwunsch zu deinem Missionszertifikat!";
     }
 }
