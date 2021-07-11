@@ -37,7 +37,8 @@ public class SpielInfos : MonoBehaviour
     //Buttons um Zusatzaufgabefenster zeitabhängig anzeigen zu lassen
     public GameObject zusatzButton; 
     public GameObject zusatzButton_transparent;
-    
+
+    private bool nurEinmalGeldDazu = true;
 
     // Start is called before the first frame update
     void Start()
@@ -60,23 +61,26 @@ public class SpielInfos : MonoBehaviour
         if (!PauseMenu.SpielIstPausiert&&!PauseMenu.ERon)
         {
             currenttime = Time.time-pausedtime;
-            float neuSoltag = Mathf.RoundToInt(currenttime / 10.274f ) + 1; // +1 da es keinen Tag 0  gibt/ Marstag = 1,02748 * Erdtag --> 20* 1,02748
             
-            
+            marsTag = deltaMarsTag + Mathf.RoundToInt(currenttime / 10.274f) + 1; // +1 da es keinen Tag 0  gibt/ Marstag = 1,02748 * Erdtag --> 20* 1,02748
+            erdenTag = deltaErdenTag + Mathf.RoundToInt(currenttime / 10) + 1;
 
-            if (neuSoltag % neuerUmsatz == 0 && marsTag != neuSoltag)
+            if (marsTag % neuerUmsatz == 0 && nurEinmalGeldDazu)
             {
                 Testing.geld += Testing.umsatz;
+                nurEinmalGeldDazu = false;
+            }else if(marsTag % neuerUmsatz != 0 && !nurEinmalGeldDazu)
+            {
+                nurEinmalGeldDazu = true;
             }
             
-            else if (neuSoltag % neueZusatzaufgabe == 0 && marsTag != neuSoltag) //alle 3 Tage eine neue Zusatzaufgabe
+            if (marsTag % neueZusatzaufgabe == 0) //alle 3 Tage eine neue Zusatzaufgabe
             {
                 zusatzButton.SetActive(true);
                 zusatzButton_transparent.SetActive(false);
             }
             
-            marsTag = deltaMarsTag + Mathf.RoundToInt(neuSoltag);
-            erdenTag =deltaErdenTag+ Mathf.RoundToInt(currenttime / 10 ) + 1;
+            
             lasttime = currenttime;
         }
         else if(PauseMenu.ERon)

@@ -21,12 +21,18 @@ public class PauseMenu : MonoBehaviour
     public GameObject Checkliste;
     public GameObject baumenuTransparent;
     public GameObject mission;
+    public GameObject leisteRechts;
+    public GameObject infoBox;
+    public GameObject leisteBottom;
+    public GameObject tutorial;
 
+
+    private GameObject selectedGameObjektZwischenspeicher;
 
     // Update is called once per frame
     private void Update()
     {
-        //Debug.Log("Spiel pausiert "+ SpielIstPausiert);
+        Debug.Log("Spiel pausiert "+ SpielIstPausiert);
         
     }
 
@@ -210,15 +216,38 @@ public class PauseMenu : MonoBehaviour
     }
     public void screenshotMachenER()
     {
-        Weiterspielen();
+        WeiterspielenER();
+        infoBox.SetActive(false);
+        leisteRechts.SetActive(false);
+        Aufgabenfenster.SetActive(false);
+        Checkliste.SetActive(false);
+        tutorial.SetActive(false);
+        leisteBottom.SetActive(false);
+
+        selectedGameObjektZwischenspeicher = ERErstellung.selectedGameObjekt;
+        ERErstellung.selectedGameObjekt = null;
+
         ScreenCapture.CaptureScreenshot(Application.dataPath + "/Zertifikatsbilder/ERD.png",2); //Größe mit Faktor 2 multipliziert, damit wir es im Zertifikat verkleinern können
         Debug.Log("Screenshot gemacht");
         //FehlerAnzeige.fehlertext = "Screenshot wurde gemacht. Er befindet sich in deinen Speicherdaten.";
         
         //Wichtiger Bool, damit letzte Mission erfüllt werden kann
         Mission.screenshotER = true;
+        Invoke("neuesAllesAn", 0.1f);
     }
+    private void neuesAllesAn()
+    { 
+    FehlerAnzeige.fehlertext = "Screenshot wurde gemacht. Er befindet sich in deinen Speicherdaten.";
+        leisteRechts.SetActive(true);
+        infoBox.SetActive(true);
+        leisteRechts.SetActive(true);
+        Aufgabenfenster.SetActive(true);
+        Checkliste.SetActive(true);
+        tutorial.SetActive(true);
+        leisteBottom.SetActive(true);
 
+        ERErstellung.selectedGameObjekt = selectedGameObjektZwischenspeicher;
+    }
 }
 
 

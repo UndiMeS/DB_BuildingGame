@@ -45,6 +45,10 @@ public class ERObjekt : MonoBehaviour
         {
             changeSprite(ERErstellung.selectedGameObjekt.Equals(gameObject));
         }
+        else
+        {
+            changeSprite(false);
+        }
 
         if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition)&&dropdownclose() && ERErstellung.testAufGleicherPosition(Input.mousePosition) != null && ERErstellung.testAufGleicherPosition(Input.mousePosition).Equals(gameObject)&& !PauseMenu.SpielIstPausiert)
         //wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
@@ -135,8 +139,8 @@ public class ERObjekt : MonoBehaviour
     //Begrenzung der Bewegung des Objektes
     private Vector3 imSichtfeld(Vector3 cursorPos)
     {
-        cursorPos.x = Mathf.Clamp(cursorPos.x, -20, 120);
-        cursorPos.y = Mathf.Clamp(cursorPos.y, 210, 290);
+        cursorPos.x = Mathf.Clamp(cursorPos.x, -100, 200); //Daten aus Kamerakontroller.grenzen
+        cursorPos.y = Mathf.Clamp(cursorPos.y, 200, 350);
         /* if (cursorPos.y > (425 * Screen.height / 530) - height / 2)
         {
             cursorPos.y = 425 * Screen.height / 530 - height / 2;

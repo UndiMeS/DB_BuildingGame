@@ -833,6 +833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7602815678841818729}
   - component: {fileID: 1112011228732529276}
+  - component: {fileID: 4174344393663335879}
   m_Layer: 0
   m_Name: Stall
   m_TagString: Stall
@@ -875,6 +876,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f421cb733154a4f459682073e1720b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4174344393663335879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6480939531429702549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418491a811776e945805650106756ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 2687277169526319919}
 --- !u!1 &8025388103765917485
 GameObject:
   m_ObjectHideFlags: 0

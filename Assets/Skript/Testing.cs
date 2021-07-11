@@ -137,7 +137,7 @@ public class Testing : MonoBehaviour
         
         Story.lvl = new bool[] { false, false, false, false, false, false, false, false };
         Story.level = 0;
-        Mission.missionsLevel = new bool[] {false,false,false,false,false,false,false,false,false};
+        Mission.missionsLevel = new bool[] { false, false, false, false, false, false, false, false, false, false }; ;
         Mission.missionsTeilLevel0 = new bool[] {false,false};
         Mission.missionsTeilLevel1 = new bool[] {false};
         Mission.missionsTeilLevel2 = new bool[] {false,false,false,false};

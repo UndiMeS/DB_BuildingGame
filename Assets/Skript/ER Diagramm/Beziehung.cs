@@ -112,8 +112,6 @@ public class Beziehung : MonoBehaviour
 
         if (objekt2 != null)
         {
-            Debug.Log(kardText2);
-            Debug.Log(objekt1);
             positionOfKardinalitaet(kardText2, objekt2, objekt1.Equals(objekt2));
             kardText2.SetActive(true);
         }
@@ -228,7 +226,7 @@ public class Beziehung : MonoBehaviour
 
         //float winkel = Vector3.SignedAngle(pos2 - pos1, Vector3.left, Vector3.forward) + 180;
         //kardtext.transform.localPosition = pos1 + Quaternion.Euler(winkel + 10, 0, 0) * Vector3.left * gameObject.GetComponent<RectTransform>().sizeDelta.x / 2;
-
+        //+ Vector3.Normalize(pos1 - pos2) * Mathf.Sin(winkel * Mathf.PI / 180) * gameObject.GetComponent<RectTransform>().sizeDelta.x / 10;
     }
     private Vector3 getPosition(GameObject @object)
     {

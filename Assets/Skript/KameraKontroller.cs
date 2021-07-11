@@ -30,6 +30,7 @@ public class KameraKontroller : MonoBehaviour
     //private Vector3 testPos;
 
     public RectTransform aufgabentext;
+    private bool mouseInAufgabe = false;
 
     //public Vector2 panLimit;
 
@@ -97,7 +98,7 @@ public class KameraKontroller : MonoBehaviour
         }
         else
         {
-            // Debug.Log("Bewegeung pausiert");
+            Debug.Log("Bewegeung pausiert");
         }
 
 
@@ -155,10 +156,8 @@ public class KameraKontroller : MonoBehaviour
     //Touch Input
     private void HandleMouseInput()
     {
-        if (!RectTransformUtility.RectangleContainsScreenPoint(aufgabentext, Input.mousePosition, Camera.main))
+        if (!RectTransformUtility.RectangleContainsScreenPoint(aufgabentext, Input.mousePosition, null))
         {
-
-
             if (Input.mouseScrollDelta.y != 0)      //Mausrad
             {
                 newZoom += Input.mouseScrollDelta.y * zoomAmount * 10;
@@ -166,8 +165,9 @@ public class KameraKontroller : MonoBehaviour
             if (Input.GetMouseButtonDown(0))        //Beginn des Ziehens
             {
                 dragStartPosition = Utilitys.GetMouseWorldPosition(Input.mousePosition);
+                mouseInAufgabe = false;
             }
-            if (Input.touchCount == 2)  //multitouch
+            if (Input.touchCount == 2&&!mouseInAufgabe)  //multitouch
             {
                 Touch touch1 = Input.GetTouch(0);
                 Touch touch2 = Input.GetTouch(1);
@@ -185,11 +185,15 @@ public class KameraKontroller : MonoBehaviour
             {
                 prevaktiviert = false;
             }
-            else if (Input.GetMouseButton(0)) //aktuelle position des Ziehens
+            else if (Input.GetMouseButton(0)&&!mouseInAufgabe) //aktuelle position des Ziehens
             {
                 dragCurrentPosition = Utilitys.GetMouseWorldPosition(Input.mousePosition);
                 newPosition = transform.position + dragStartPosition - dragCurrentPosition; //start-aktuelle Position des ziehens  (wie viel gezogen) addiert auf aktuelle position
             }
+        }
+        else
+        {
+            mouseInAufgabe = true;
         }
     }
 
@@ -317,11 +321,11 @@ public class KameraKontroller : MonoBehaviour
             minY = -230;
             maxY = -20;
 */
-            newZoom.z = Mathf.Clamp(newZoom.z, -450, -50);
+            newZoom.z = Mathf.Clamp(newZoom.z, -700, -50);
 
             //diese auch in ERObjekt sichfeld anpassen
-            newPosition.x = Mathf.Clamp(newPosition.x, -20, 120);
-            newPosition.y = Mathf.Clamp(newPosition.y, 210, 290);
+            newPosition.x = Mathf.Clamp(newPosition.x, -100, 200); 
+            newPosition.y = Mathf.Clamp(newPosition.y, 200, 350);
 
             /*//zum Werte heraufinden
             if (cameraTransform.position.z < -449)

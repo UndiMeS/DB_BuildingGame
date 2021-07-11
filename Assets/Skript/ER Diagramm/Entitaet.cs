@@ -25,12 +25,10 @@ public class Entitaet : MonoBehaviour
     public List<GameObject> primaerschluessel;
     public List<GameObject> beziehungen;
 
-    public void Start()
-    {
-        instanceID = gameObject.GetInstanceID();
-    }
+    
     public void Update()
     {
+        instanceID = gameObject.GetInstanceID();
         entitaetsName = gameObject.name;
         x = gameObject.transform.position.x;
         y = gameObject.transform.position.y;

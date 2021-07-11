@@ -21,7 +21,7 @@ public class Forschung : MonoBehaviour
 
     private TMPro.TMP_Dropdown dropdown;
 
-    public List<Projekt> projekte;
+    public List<Projekt> projekte = new List<Projekt>();
     private Projekt selectedProj;
 
     private string aktuellesMerkmal = "";
@@ -29,9 +29,8 @@ public class Forschung : MonoBehaviour
     private int option = 0;
     private GameObject merkmalsanzeige;
 
-    public void Awake()
+    public void Start()
     {
-        projekte = new List<Projekt>();
         if (stationsnummer == 0)
         {
             stationsnummer = nummerZaehler;

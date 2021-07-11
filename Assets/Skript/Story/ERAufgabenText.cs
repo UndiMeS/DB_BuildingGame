@@ -15,11 +15,11 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                     /*LvL 4*/  "Verbesserungen werden durch Forschungsprojekte erreicht. Attribute von Sphären und Containern können mehrfach erforscht und so mehrfach verbessert werden. Ein Forschungsprojekt hat somit ein bestimmtes Forschungsmerkmal und eine Forschungsstufe. Darüber kann ein Forschungsprojekt eindeutig ermittelt werden. Jedes Forschungsprojekt erzielt einen Verbesserungsfaktor, benötigt eine bestimmte Arbeiterzahl und Projektkosten. Forschungsprojekte können nur angelegt werden, wenn die passende Forschungsstation bereits existiert. Eine Forschungsstation organisiert mehrere Forschungsprojekte. Mehrere Astronauten können in einem Forschungsprojekt forschen, jedoch kann ein Astronaut nur an einem Projekt forschen. \nForschungsprojekte verbessern die Forschungsmerkmale immer für alle zukünftig gebauten Objekte. Ein Forschungsprojekt verbessert mehrere Wohncontainer. Zugleich können mehrere Projekte einen Wohncontainer verbessern.",
                     /*LvL 5*/  "Bislang können in der Siedlung neben Wohncontainer auch Feldsphären erbaut werden. Ein Forschungsprojekt verbessert daher auch mehrere Feldsphären. Zugleich können mehrere Projekte an einer Feldsphäre forschen. Neben der Verbesserung von Containern und Sphären kann einmalig ein Forschungsprojekt durchgeführt werden, dass an neuen Methoden forscht und so für alle zukünftigen Forschungsprojekte die Projektkosten verbessert. Diese Möglichkeit betrifft die Forschungsprojekte von jeder errichteten Forschungsstation.",
                     /*LvL 6*/  "Eine weitere Möglichkeit Erträge zu erzielen sind Weidesphären. Doch bevor wir diese anlegen, werden zunächst Nutztiere und Stallcontainer benötigt. Um ein Nutztier einfliegen zu lassen, müssen vorher Stallcontainer existieren. Ein Stallcontainer hat Baukosten, eine Containernummer, eine Gehegezahl und eine Anzahl der noch freien Gehege. Stallcontainer werden exakt wie Wohncontainer durch Forschungsprojekte verbessert. Mehrere Nutztiere wohnen in einem Stallcontainer. Diese haben Transportkosten, einen Namen und eine Art. Jedes Nutztier kann eindeutig über Name und Art identifiziert werden.",
-                    /*LvL 7*/  "Um Erträge zu erhalten arbeiten mehrere Nutztiere auf einer Weidesphäre. Diese hat eine eindeutige Weidenummer, einen Ertrag, eine Tieranzahl und eine Arbeiterzahl, die sie benötigt. Somit arbeiten mehrere Astronauten in einer Weidesphäre, jedoch wie bei Feldsphären arbeitet ein Astronaut nur in einer Weidesphäre. Wie bei Feldsphären, werden zukünftig erbaute Weidesphären von einem Forschungsprojekt verbessert und mehrere Projekte können eine Weidesphäre verbessern.",
+                    /*LvL 7*/  "Um Erträge zu erhalten arbeiten mehrere Nutztiere auf einer Weidesphäre. Diese hat eine eindeutige Weidenummer, einen Ertrag, Baukosten, eine Tieranzahl und eine Arbeiterzahl, die sie benötigt. Somit arbeiten mehrere Astronauten in einer Weidesphäre, jedoch wie bei Feldsphären arbeitet ein Astronaut nur in einer Weidesphäre. Wie bei Feldsphären, werden zukünftig erbaute Weidesphären von einem Forschungsprojekt verbessert und mehrere Projekte können eine Weidesphäre verbessern.",
                                 
                     /*LvL Ziel*/   //ZIELAUFGABE FEHLT NOCH
                                 };
-    public  List<string>[] entitys = {
+    public List<string>[] entitys = {
                  /*LvL 0*/ new List<string>{"Wohncontainer" },
                  /*LvL 1*/ new List<string>{"Astronauten", "Astronaut", "existieren", "schwache"},
                  /*LvL 2*/ new List<string>{"Feldsphären", "Feldsphäre"},
@@ -37,8 +37,8 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                  /*LvL 3*/ new List<string>{"Stationsnummer","Baukosten","Spezialisierung"},
                  /*LvL 4*/ new List<string>{"Forschungsmerkmal", "Forschungsstufe", "Verbesserungsfaktor","Arbeiterzahl","Projektkosten"},
                  /*LvL 5*/ new List<string>{},
-                 /*LvL 6*/ new List<string>{"Baukosten","Gehegezahl","freien","Gehege","Transportkosten","Namen","Art"},
-                 /*LvL 7*/ new List<string>{"Weidenummer","Ertrag","Tieranzahl","Arbeiterzahl"},
+                 /*LvL 6*/ new List<string>{"Baukosten","Gehegezahl","freien","Gehege","Transportkosten","Namen","Art","Containernummer"},
+                 /*LvL 7*/ new List<string>{"Weidenummer","Ertrag","Tieranzahl","Arbeiterzahl","Baukosten"},
     };
 
     private List<string>[] beziehungen = {
@@ -55,12 +55,12 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     private List<string>[] kardinalitaet = {
                  /*LvL 0*/ new List<string> {  },
                  /*LvL 1*/ new List<string>{"n:1","jeder", "anderen","genau"},
-                 /*LvL 2*/ new List<string>{"Mehrere","mehreren", "ein"},
-                 /*LvL 3*/ new List<string>{"genau"},
-                 /*LvL 4*/ new List<string>{"mehrere","Mehrere"},
-                 /*LvL 5*/ new List<string>{"mehrere","Mehrere"},
-                 /*LvL 6*/ new List<string>{"mehrere","Mehrere"},
-                 /*LvL 7*/ new List<string>{"mehrere","Mehrere"},
+                 /*LvL 2*/ new List<string>{"Mehrere","mehreren", "ein", "nicht", "einer"},
+                 /*LvL 3*/ new List<string>{"genau","ein"},
+                 /*LvL 4*/ new List<string>{"mehrere","Mehrere", "einem","ein"},
+                 /*LvL 5*/ new List<string>{"mehrere","Mehrere","einmalig"},
+                 /*LvL 6*/ new List<string>{"mehrere","Mehrere","einem"},
+                 /*LvL 7*/ new List<string>{"mehrere","Mehrere","einer","ein"},
     };
 
     private TextMeshProUGUI m_TextMeshPro;
@@ -70,13 +70,22 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     public GameObject restKlicks;
     public GameObject absolutKlicks;
     public static bool werteGesetzt = false; //Wird in ERAufgabe.cs auf false gesetzt, wenn ER-Level erfüllt wurde.
-    private int[] lvlKlicks = {11,15,10,10,13,6,13,12}; //Klickguthaben der einzelnen Levels
+    private int[] lvlKlicks; // { 11, 15, 10, 10, 13, 6, 13, 12 }; //Klickguthaben der einzelnen Levels
 
     private void Start()
     {
+        if (ERAufgabe.testModus)
+        {
+            lvlKlicks = new int[] { 50,50, 50, 50, 50, 50, 50,50};
+        }
+        else
+        {
+            lvlKlicks = new int[] { 11, 15, 10, 10, 13, 6, 13, 12 };
+        }
+
         m_TextMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
         m_TextMeshPro.ForceMeshUpdate();
-        
+
         //Setze die Startwerte des Klick-Zählers
         Utilitys.TextInTMP(restKlicks, lvlKlicks[Story.level].ToString());
         Utilitys.TextInTMP(absolutKlicks, lvlKlicks[Story.level].ToString());
@@ -86,11 +95,13 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     {
         //Veränderung des absoluten Klickwerts bei neuem ER-Level
         Utilitys.TextInTMP(absolutKlicks, lvlKlicks[Story.level].ToString());
-        
+
         //Veränderung des relativen Start - Klickwerts bei neuem ER-Level
-        if(Story.level != 0 && werteGesetzt == false){ //werteGesetzt wird in ERAufgabe auf false gesetzt wenn Level erfüllt
+        if (Story.level != 0 && werteGesetzt == false)
+        { //werteGesetzt wird in ERAufgabe auf false gesetzt wenn Level erfüllt
             //Prüfe, ob vorheriges Level erfüllt wurde.
-            if(Story.lvl[Story.level - 1]){
+            if (Story.lvl[Story.level - 1])
+            {
                 i = 0;
                 Utilitys.TextInTMP(restKlicks, (lvlKlicks[Story.level]).ToString());
                 werteGesetzt = true;
@@ -108,112 +119,110 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
         int index = TMP_TextUtilities.FindIntersectingWord(m_TextMeshPro, eventData.position, eventData.enterEventCamera);
         //welche Position n:1
         //Debug.Log(TMP_TextUtilities.FindIntersectingCharacter(m_TextMeshPro, eventData.position, eventData.enterEventCamera,true));
-        
-        if(lvlKlicks[Story.level] - i > 0){   
-            Utilitys.TextInTMP(restKlicks, (lvlKlicks[Story.level] - i -1).ToString());
+
+        if (lvlKlicks[Story.level] - i > 0)
+        {
+            Utilitys.TextInTMP(restKlicks, (lvlKlicks[Story.level] - i - 1).ToString());
             i++;
 
-            markieren(index,0,""); 
+            markieren(index, 0, "");
 
-            if(i == 1 && Story.level == 0){
+            if (i == 1 && Story.level == 0)
+            {
                 FehlerAnzeige.tutorialtext_ER = "Du kannst für dieses Teildiagramm auf noch 10 Wörter klicken, um richtige Schlüsselwörter herauszufinden und zu markieren!";
             }
 
-        }else{
-                FehlerAnzeige.fehlertext="Du hast nicht mehr Klicks zur Verfügung!";
+        }
+        else
+        {
+            FehlerAnzeige.fehlertext = "Du hast nicht mehr Klicks zur Verfügung!";
         }
     }
 
     private void markieren(int index, int leftRight, string entAttBez)
     {
+        bool wasgefunden = false;
         if (index > 0)
         {
-            if(true){
-                TMP_WordInfo info = m_TextMeshPro.textInfo.wordInfo[index];
+                            TMP_WordInfo info = m_TextMeshPro.textInfo.wordInfo[index];
+                Color farbe = Color.black;
+                if (entitys[Story.level].Contains(info.GetWord()) && entAttBez == "")
+                { farbe = Color.red;
+                    wasgefunden = true;
+                }
+                else if (attribute[Story.level].Contains(info.GetWord()) && (entAttBez == "Att" || entAttBez == ""))
+                { farbe = Color.green;
+                    entAttBez = "Att"; wasgefunden = true;
+            }
+                else if (beziehungen[Story.level].Contains(info.GetWord()) && (entAttBez == "Bez" || entAttBez == ""))
+                { farbe = Color.blue;
+                    entAttBez = "Bez"; wasgefunden = true;
+            }
+                else if (kardinalitaet[Story.level].Contains(info.GetWord()) && (entAttBez == "Kard" || entAttBez == ""))
+                { farbe = Color.gray;
+                    entAttBez = "Kard"; wasgefunden = true;
+            }
                 for (int i = 0; i < info.characterCount; ++i)
                 {
-                    int charIndex = info.firstCharacterIndex + i;
-                    int meshIndex = m_TextMeshPro.textInfo.characterInfo[charIndex].materialReferenceIndex;
-                    int vertexIndex = m_TextMeshPro.textInfo.characterInfo[charIndex].vertexIndex;
+                    if (farbe != Color.black)
+                    {
+                        int charIndex = info.firstCharacterIndex + i;
+                        int meshIndex = m_TextMeshPro.textInfo.characterInfo[charIndex].materialReferenceIndex;
+                        int vertexIndex = m_TextMeshPro.textInfo.characterInfo[charIndex].vertexIndex;
 
-                    if (entitys[Story.level].Contains(info.GetWord())&&entAttBez=="")
-                    {
                         Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
-                        vertexColors[vertexIndex + 0] = Color.red;
-                        vertexColors[vertexIndex + 1] = Color.red;
-                        vertexColors[vertexIndex + 2] = Color.red;
-                        vertexColors[vertexIndex + 3] = Color.red;
+                        vertexColors[vertexIndex + 0] = farbe;
+                        vertexColors[vertexIndex + 1] = farbe;
+                        vertexColors[vertexIndex + 2] = farbe;
+                        vertexColors[vertexIndex + 3] = farbe;
+
+                        //Lvl 1 (n:1)
+                        if (Story.level == 1 && (info.GetWord() == "1" || info.GetWord() == "n"))
+                        {
+                            for (int k = 0; k < 3; k++)
+                            {
+                                meshIndex = m_TextMeshPro.textInfo.characterInfo[164 + k].materialReferenceIndex;
+                                vertexIndex = m_TextMeshPro.textInfo.characterInfo[164 + k].vertexIndex;
+                                vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
+                                vertexColors[vertexIndex + 0] = Color.gray;
+                                vertexColors[vertexIndex + 1] = Color.gray;
+                                vertexColors[vertexIndex + 2] = Color.gray;
+                                vertexColors[vertexIndex + 3] = Color.gray;
+                            }
+                        }
                     }
-                    if (attribute[Story.level].Contains(info.GetWord()) && (entAttBez == "Att" || entAttBez == ""))
-                    {
-                        Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
-                        vertexColors[vertexIndex + 0] = Color.green;
-                        vertexColors[vertexIndex + 1] = Color.green;
-                        vertexColors[vertexIndex + 2] = Color.green;
-                        vertexColors[vertexIndex + 3] = Color.green;
-                    }Debug.Log(aufgabe[Story.level].Split(' ').Length > index+1);
-                    
-                    if (beziehungen[Story.level].Contains(info.GetWord()) && (entAttBez == "Bez" || entAttBez == ""))
-                    {
-                        Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
-                        vertexColors[vertexIndex + 0] = Color.blue;
-                        vertexColors[vertexIndex + 1] = Color.blue;
-                        vertexColors[vertexIndex + 2] = Color.blue;
-                        vertexColors[vertexIndex + 3] = Color.blue;
-                    }
-                    
-                    if (kardinalitaet[Story.level].Contains(info.GetWord()) && entAttBez == "")
-                    {
-                        Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
-                        vertexColors[vertexIndex + 0] = Color.gray;
-                        vertexColors[vertexIndex + 1] = Color.gray;
-                        vertexColors[vertexIndex + 2] = Color.gray;
-                        vertexColors[vertexIndex + 3] = Color.gray;
-                    }
-                    
-                    //Lvl 1 (n:1)
-                    if(Story.level==1 && (info.GetWord() == "1" || info.GetWord() == "n"))
-                    {
-                        for(int k = 0; k < 3; k++)
-                        {
-                            meshIndex = m_TextMeshPro.textInfo.characterInfo[164 + k].materialReferenceIndex;
-                            vertexIndex = m_TextMeshPro.textInfo.characterInfo[164 + k].vertexIndex;
-                            Color32[] vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
-                            vertexColors[vertexIndex + 0] = Color.gray;
-                            vertexColors[vertexIndex + 1] = Color.gray;
-                            vertexColors[vertexIndex + 2] = Color.gray;
-                            vertexColors[vertexIndex + 3] = Color.gray;
-                        } 
-                    }
-                    if (0 < index - 1 && aufgabe[Story.level].Split(' ').Length > index + 1) {
-                        if (kardinalitaet[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Kard" || entAttBez == ""))
-                        {
-                            markieren(index - 1, -1, "Kard");
-                        }
-                        if ( kardinalitaet[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord()) && leftRight != -1 && (entAttBez == "Kard" || entAttBez == ""))
-                        {
-                            markieren(index + 1, 1, "Kard");
-                        }
-                        if (attribute[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Att" || entAttBez == ""))
-                        {
-                            markieren(index - 1, -1, "Att");
-                        }
-                        if (attribute[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord()) && leftRight != -1 && (entAttBez == "Att" || entAttBez == ""))
-                        {
-                            markieren(index + 1, 1, "Att");
-                        }
-                        if (beziehungen[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Bez" || entAttBez == ""))
-                        {
-                            markieren(index - 1, -1, "Bez");
-                        }
-                        if (beziehungen[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord()) && leftRight != -1 && (entAttBez == "Bez" || entAttBez == ""))
-                        {
-                            markieren(index + 1, 1, "Bez");
-                        } }
                 }
-                m_TextMeshPro.UpdateVertexData(TMP_VertexDataUpdateFlags.All);  
 
-            }
+                if (0 < index - 1 && aufgabe[Story.level].Split(' ').Length > index + 1&&wasgefunden)
+                {
+                    if (kardinalitaet[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Kard" || entAttBez == ""))
+                    {
+                        markieren(index - 1, -1, "Kard");
+                    }
+                    if (kardinalitaet[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord()) && leftRight != -1 && (entAttBez == "Kard" || entAttBez == ""))
+                    {
+                        markieren(index + 1, 1, "Kard");
+                    }
+                    if (attribute[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Att" || entAttBez == ""))
+                    {
+                        markieren(index - 1, -1, "Att");
+                    }
+                    if (attribute[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord()) && leftRight != -1 && (entAttBez == "Att" || entAttBez == ""))
+                    {
+                        markieren(index + 1, 1, "Att");
+                    }
+                    if (beziehungen[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Bez" || entAttBez == ""))
+                    {
+                        markieren(index - 1, -1, "Bez");
+                    }
+                    if (beziehungen[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord()) && leftRight != -1 && (entAttBez == "Bez" || entAttBez == ""))
+                    {
+                        markieren(index + 1, 1, "Bez");
+                    }
+                }
+                m_TextMeshPro.UpdateVertexData(TMP_VertexDataUpdateFlags.All);
+
+            
         }
     }
 }

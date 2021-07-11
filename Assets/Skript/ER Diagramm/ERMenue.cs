@@ -14,10 +14,14 @@ public class ERMenue : MonoBehaviour
         if (aufgabe.activeSelf)
         {
             aufgabe.SetActive(false);
+            aufgabe.transform.GetChild(0).gameObject.SetActive(false);
+            aufgabe.transform.GetChild(1).gameObject.SetActive(false);
         }
         else
         {
             aufgabe.SetActive(true);
+            aufgabe.transform.GetChild(0).gameObject.SetActive(true);
+            aufgabe.transform.GetChild(1).gameObject.SetActive(true);
         }
     }
    public void LadeMenu()

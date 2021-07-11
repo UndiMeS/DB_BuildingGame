@@ -55,7 +55,6 @@ public class ObjektBewegung : MonoBehaviour
                 
                 PanelKnopf.gebautetsGebaeude = null;
                 KameraKontroller.aktiviert = true;
-                Debug.Log(transform.position);
                 Destroy(GetComponent<ObjektBewegung>());
                
             }
@@ -98,7 +97,6 @@ public class ObjektBewegung : MonoBehaviour
             position.z = 0;
             
             transform.position = position;
-            Debug.Log(transform.localPosition);
         }
 
 
