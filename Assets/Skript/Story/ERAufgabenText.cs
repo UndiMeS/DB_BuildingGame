@@ -76,11 +76,11 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     {
         if (ERAufgabe.testModus)
         {
-            lvlKlicks = new int[] { 50,50, 50, 50, 50, 50, 50,50};
+            lvlKlicks = new int[] { 50,50, 50, 50, 50, 50, 50, 50, 0, 0};
         }
         else
         {
-            lvlKlicks = new int[] { 11, 15, 10, 10, 13, 6, 13, 12 };
+            lvlKlicks = new int[] { 11, 15, 10, 10, 13, 6, 13, 12, 0, 0};
         }
 
         m_TextMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
