@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using sharpPDF;
-
- 
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using UnityEditor;
+using System;
 
 public class Zertifikat : MonoBehaviour
 {
-    //public Image myImage;
+    string path = null;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        path = Application.dataPath + "/PDF/missionsbestätigung.pdf";  
     }
 
     // Update is called once per frame
@@ -23,7 +26,7 @@ public class Zertifikat : MonoBehaviour
 
     public void Go()
     {
-        Invoke("CreatePDF",2);
+        Invoke("PrintFiles",2);
     }
 
     public void CreatePDF()
@@ -65,5 +68,30 @@ public class Zertifikat : MonoBehaviour
         myDoc.createPDF( Application.dataPath + @"\PDF\missionsbestätigung.pdf");
         myPage = null;
         myDoc = null; 
+
+        Go();
+    }
+    public void PrintFiles() 
+    {
+        Debug.Log(path);
+        if (path == null)
+            return;
+
+        if (File.Exists(path))
+        {
+            Debug.Log("file found");
+        }
+        else
+        {
+            Debug.Log("file not found");
+            return;
+        }
+        System.Diagnostics.Process process = new System.Diagnostics.Process();
+        process.StartInfo.CreateNoWindow = true;
+        process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+        process.StartInfo.UseShellExecute = true;
+        process.StartInfo.FileName = path;
+
+        process.Start();
     }
 }
