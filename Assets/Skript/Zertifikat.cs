@@ -75,6 +75,7 @@ public class Zertifikat : MonoBehaviour
     }
     public void PrintFiles() 
     {
+        /*
         Debug.Log(path);
         if (path == null)
             return;
@@ -88,6 +89,7 @@ public class Zertifikat : MonoBehaviour
             Debug.Log("file not found");
             return;
         }
+        */
         System.Diagnostics.Process process = new System.Diagnostics.Process();
         process.StartInfo.CreateNoWindow = true;
         process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
