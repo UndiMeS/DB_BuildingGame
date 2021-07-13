@@ -16024,8 +16024,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 1949946897}
-  m_RootOrder: 1
+  m_Father: {fileID: 817594681}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16044,7 +16044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c56872472aaaf2846b6caa30f89e2b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorSpiel: {fileID: 2800000, guid: f24a3ac3c99a4c14bb56754d56e90838, type: 3}
+  cursorSpiel: {fileID: 2800000, guid: dcfcd3a543a243645b1ce6fc0910b763, type: 3}
 --- !u!1 &319422810
 GameObject:
   m_ObjectHideFlags: 0
@@ -34229,7 +34229,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 7.02e-43, y: -21.63411, z: 4.5904e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -37930,6 +37930,7 @@ RectTransform:
   - {fileID: 51233434}
   - {fileID: 821967010}
   - {fileID: 248883878}
+  - {fileID: 317591546}
   m_Father: {fileID: 1949946897}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -54123,6 +54124,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MarsGround_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f851cc4a83f292c4da4947ca1124f887,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f851cc4a83f292c4da4947ca1124f887, type: 3}
@@ -94729,7 +94735,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 817594681}
-  - {fileID: 317591546}
   m_Father: {fileID: 1909574203}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
