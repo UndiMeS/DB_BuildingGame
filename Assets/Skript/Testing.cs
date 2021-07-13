@@ -58,7 +58,8 @@ public class Testing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log(Application.streamingAssetsPath);
+
         Spielwerte.Werte();
         grid = new Gitter(weite, hoehe, zellengroesse);
 

@@ -16,7 +16,13 @@ public class Zertifikat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        path = Application.dataPath + "/PDF/missionsbestätigung.pdf";  
+        if(!Directory.Exists(Application.streamingAssetsPath + "/PDF/"))
+        {
+            Directory.CreateDirectory(Application.streamingAssetsPath + "/PDF/");
+        }
+        
+        path = Application.streamingAssetsPath + "/PDF/missionsbestätigung.pdf";  
+
     }
 
     // Update is called once per frame
@@ -37,13 +43,13 @@ public class Zertifikat : MonoBehaviour
         
         
         //Hintergrundbild
-        myDoc.addImageReference(Application.dataPath + @"\Zertifikatsbilder\Zertifikat.png","Hintergrund");
+        myDoc.addImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\Zertifikat.png","Hintergrund");
         myPage.addImage(myDoc.getImageReference("Hintergrund"),0 ,0);
         //Spiel-Screenshot
-        myDoc.addImageReference(Application.dataPath + @"\Zertifikatsbilder\Spiel.png","Spiel");
+        myDoc.addImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\Spiel.png","Spiel");
         myPage.addImage(myDoc.getImageReference("Spiel"),241,1692, 1044, 1878);
         //ER-Screenshot
-        myDoc.addImageReference(Application.dataPath + @"\Zertifikatsbilder\ERD.png","ERD");
+        myDoc.addImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\ERD.png","ERD");
         myPage.addImage(myDoc.getImageReference("ERD"), 241,478, 1044, 1878);
 
         //Schriftgröße
@@ -66,7 +72,7 @@ public class Zertifikat : MonoBehaviour
         
 
 
-        myDoc.createPDF( Application.dataPath + @"\PDF\missionsbestätigung.pdf");
+        myDoc.createPDF( Application.streamingAssetsPath + @"\PDF\missionsbestätigung.pdf");
         myPage = null;
         myDoc = null; 
 

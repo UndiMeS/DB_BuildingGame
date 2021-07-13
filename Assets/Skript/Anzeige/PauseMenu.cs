@@ -198,7 +198,7 @@ public class PauseMenu : MonoBehaviour
     public void screenshotMachen()
     {
         canvas.SetActive(false);
-        ScreenCapture.CaptureScreenshot(Application.dataPath + "/Zertifikatsbilder/Spiel.png",2); //Größe mit Faktor 2 multipliziert, damit wir es im Zertifikat verkleinern können
+        ScreenCapture.CaptureScreenshot(Application.streamingAssetsPath + "/Zertifikatsbilder/Spiel.png",2); //Größe mit Faktor 2 multipliziert, damit wir es im Zertifikat verkleinern können
         Debug.Log("Screenshot gemacht");
         
         //Wichtiger Bool, damit letzte Mission erfüllt werden kann
@@ -227,7 +227,7 @@ public class PauseMenu : MonoBehaviour
         selectedGameObjektZwischenspeicher = ERErstellung.selectedGameObjekt;
         ERErstellung.selectedGameObjekt = null;
 
-        ScreenCapture.CaptureScreenshot(Application.dataPath + "/Zertifikatsbilder/ERD.png",2); //Größe mit Faktor 2 multipliziert, damit wir es im Zertifikat verkleinern können
+        ScreenCapture.CaptureScreenshot(Application.streamingAssetsPath + "/Zertifikatsbilder/ERD.png",2); //Größe mit Faktor 2 multipliziert, damit wir es im Zertifikat verkleinern können
         Debug.Log("Screenshot gemacht");
         //FehlerAnzeige.fehlertext = "Screenshot wurde gemacht. Er befindet sich in deinen Speicherdaten.";
         
