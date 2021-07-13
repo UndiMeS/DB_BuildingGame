@@ -211,7 +211,7 @@ public class PauseMenu : MonoBehaviour
     private void allesAn()
     {
         canvas.SetActive(true);
-        FehlerAnzeige.fehlertext = "Screenshot wurde gemacht. Er befindet sich in deinen Speicherdaten.";
+        FehlerAnzeige.fehlertext = "Screenshot erstellt!";
         Weiterspielen();
     }
     public void screenshotMachenER()
@@ -237,7 +237,7 @@ public class PauseMenu : MonoBehaviour
     }
     private void neuesAllesAn()
     { 
-    FehlerAnzeige.fehlertext = "Screenshot wurde gemacht. Er befindet sich in deinen Speicherdaten.";
+    FehlerAnzeige.fehlertext = "Screenshot erstellt!";
         leisteRechts.SetActive(true);
         infoBox.SetActive(true);
         leisteRechts.SetActive(true);
