@@ -223,12 +223,10 @@ public class PauseMenu : MonoBehaviour
     public void screenshotErstellen()
     {
         canvas.SetActive(false);
-<<<<<<< Updated upstream
-        ScreenCapture.CaptureScreenshot(Application.streamingAssetsPath + "/Zertifikatsbilder/Spiel.png",2); //Größe mit Faktor 2 multipliziert, damit wir es im Zertifikat verkleinern können
-=======
+
         //yield return new WaitForSeconds(0.2f);
-        ScreenCapture.CaptureScreenshot(Application.dataPath + "/Zertifikatsbilder/Spiel.png",2); //Größe mit Faktor 2 multipliziert, damit wir es im Zertifikat verkleinern können
->>>>>>> Stashed changes
+        ScreenCapture.CaptureScreenshot(Application.streamingAssetsPath + "/Zertifikatsbilder/Spiel.png",2); //Größe mit Faktor 2 multipliziert, damit wir es im Zertifikat verkleinern können
+
         Debug.Log("Screenshot gemacht");
         
         //Wichtiger Bool, damit letzte Mission erfüllt werden kann
