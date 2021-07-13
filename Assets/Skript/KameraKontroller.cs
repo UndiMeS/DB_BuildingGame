@@ -8,6 +8,18 @@ public class KameraKontroller : MonoBehaviour
     public float movementSpeed;
     public float movementTime;
 
+    public float MarsMaxZoomZ;
+    public float MarsMaxZoomY;
+
+    public float MarsMinZoomZ;
+    public float MarsMinZoomY;
+
+        public float ERMaxZoomZ;
+    public float ERMaxZoomY;
+
+    public float ERMinZoomZ;
+    public float ERMinZoomY;
+
     public Vector3 newPosition = new Vector3(90, 120, 5);
     public Vector3 newZoom = new Vector3(0, -200, -200);
     public Vector3 zoomAmount;
@@ -227,6 +239,28 @@ public class KameraKontroller : MonoBehaviour
 
     }
 
+
+    public void ScreenshotZoom()
+    {
+        if(hintergrund == 0)
+        {
+            newZoom.y = -469.9f;
+            newZoom.z = -469.9f;
+        }
+        else
+        {
+            newZoom.z = -700.0f;
+        }
+
+        // yield return new WaitForSeconds(0.2f);
+        // ScreenCapture.CaptureScreenshot(Application.dataPath + "/Zertifikatsbilder/Spiel.png",2); //Größe mit Faktor 2 multipliziert, damit wir es im Zertifikat verkleinern können
+        // Debug.Log("Screenshot gemacht");
+        
+        // //Wichtiger Bool, damit letzte Mission erfüllt werden kann
+        // Mission.screenshotSpiel = true;
+        
+    }
+
     private void Grenze()
     {
         /*int rechteGrenze;
@@ -256,8 +290,8 @@ public class KameraKontroller : MonoBehaviour
             minY = -520;
             maxY = -50;*/
 
-            newZoom.y = Mathf.Clamp(newZoom.y, -470,-80);
-            newZoom.z = Mathf.Clamp(newZoom.z, -470, -80);
+            newZoom.y = Mathf.Clamp(newZoom.y, MarsMinZoomY,MarsMaxZoomY);
+            newZoom.z = Mathf.Clamp(newZoom.z, MarsMinZoomZ, MarsMaxZoomZ);
 
             int x, y;
             Testing.grid.GetXY(Utilitys.GetMouseWorldPosition(new Vector3(0, 0, 0)), out x, out y);
@@ -321,7 +355,7 @@ public class KameraKontroller : MonoBehaviour
             minY = -230;
             maxY = -20;
 */
-            newZoom.z = Mathf.Clamp(newZoom.z, -700, -50);
+            newZoom.z = Mathf.Clamp(newZoom.z, ERMinZoomZ, ERMaxZoomZ);
 
             //diese auch in ERObjekt sichfeld anpassen
             newPosition.x = Mathf.Clamp(newPosition.x, -100, 200); 

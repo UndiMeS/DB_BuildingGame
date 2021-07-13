@@ -53,11 +53,22 @@ public class Testing : MonoBehaviour
     public static List<GameObject> gebauedeListe = new List<GameObject>();
     public static List<Tiere> tier = new List<Tiere>();
 
+    public KameraKontroller KameraScript;
+    public GameObject canvas;
+
+    public PauseMenu PauseScript;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< Updated upstream
+=======
+
+        
+
+>>>>>>> Stashed changes
         Spielwerte.Werte();
         grid = new Gitter(weite, hoehe, zellengroesse);
 
@@ -76,6 +87,9 @@ public class Testing : MonoBehaviour
             laden = false;
             speichermenue.GetComponent<SaveLoad>().laden();
         }
+
+        // KameraScript = GameObject.FindGameObjectWithTag("KameraAnker").GetComponent<KameraKontroller>();
+        // PauseScript = GameObject.FindGameObjectWithTag("Pause").GetComponent<PauseMenu>();
 
     }
 
@@ -166,6 +180,44 @@ public class Testing : MonoBehaviour
         Mission.temp_ertrag_lvl8 = 0;
         
     }
+
+
+    // public void screenshotMachen()
+    // {
+    //     KameraScript.ScreenshotZoom();
+        
+        
+    //     Invoke("screenshotErstellen", 0.3f);
+        
+    //     Invoke("allesAn", 0.1f);
+        
+
+    //     //StartCoroutine(screenshotErstellen());
+
+        
+        
+    // }
+
+    // public void screenshotErstellen()
+    // {
+    //     canvas.SetActive(false);
+    //     //yield return new WaitForSeconds(0.2f);
+    //     ScreenCapture.CaptureScreenshot(Application.dataPath + "/Zertifikatsbilder/Spiel.png",2); //Größe mit Faktor 2 multipliziert, damit wir es im Zertifikat verkleinern können
+    //     Debug.Log("Screenshot gemacht");
+        
+    //     //Wichtiger Bool, damit letzte Mission erfüllt werden kann
+    //     Mission.screenshotSpiel = true;
+    //     Invoke("allesAn", 1.1f);
+        
+        
+    // }
+
+    //     private void allesAn()
+    // {
+    //     canvas.SetActive(true);
+    //     FehlerAnzeige.fehlertext = "Screenshot wurde gemacht. Er befindet sich in deinen Speicherdaten.";
+    //     PauseScript.Weiterspielen();
+    // }
 
 
 

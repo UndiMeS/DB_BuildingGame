@@ -26,8 +26,16 @@ public class PauseMenu : MonoBehaviour
     public GameObject leisteBottom;
     public GameObject tutorial;
 
+    public KameraKontroller KameraScript;
+
 
     private GameObject selectedGameObjektZwischenspeicher;
+
+
+    void Start()
+    {
+        KameraScript = GameObject.FindGameObjectWithTag("KameraAnker").GetComponent<KameraKontroller>();
+    }
 
     // Update is called once per frame
     private void Update()
@@ -197,15 +205,37 @@ public class PauseMenu : MonoBehaviour
 
     public void screenshotMachen()
     {
+        KameraScript.ScreenshotZoom();
+        //canvas.SetActive(false);
+        Invoke("screenshotErstellen", 0.7f);
+        Invoke("allesAn", 0.1f);
+        
+        
+        
+        
+
+        //StartCoroutine(screenshotErstellen());
+
+        
+        
+    }
+
+    public void screenshotErstellen()
+    {
         canvas.SetActive(false);
+<<<<<<< Updated upstream
         ScreenCapture.CaptureScreenshot(Application.streamingAssetsPath + "/Zertifikatsbilder/Spiel.png",2); //Größe mit Faktor 2 multipliziert, damit wir es im Zertifikat verkleinern können
+=======
+        //yield return new WaitForSeconds(0.2f);
+        ScreenCapture.CaptureScreenshot(Application.dataPath + "/Zertifikatsbilder/Spiel.png",2); //Größe mit Faktor 2 multipliziert, damit wir es im Zertifikat verkleinern können
+>>>>>>> Stashed changes
         Debug.Log("Screenshot gemacht");
         
         //Wichtiger Bool, damit letzte Mission erfüllt werden kann
         Mission.screenshotSpiel = true;
-
-        
         Invoke("allesAn", 0.1f);
+        
+        
     }
 
     private void allesAn()
@@ -216,13 +246,28 @@ public class PauseMenu : MonoBehaviour
     }
     public void screenshotMachenER()
     {
+
         WeiterspielenER();
+        KameraScript.ScreenshotZoom();
+        //Debug.Log("Screenshot gemacht");
+        //canvas.SetActive(false);
+        Invoke("ERscreenshotErstellen", 0.7f);
+        //Invoke("neuesAllesAn", 0.1f);
+
+        
+        //Invoke("neuesAllesAn", 0.1f);
+    }
+
+    public void ERscreenshotErstellen()
+    {
+        
         infoBox.SetActive(false);
         leisteRechts.SetActive(false);
         Aufgabenfenster.SetActive(false);
         Checkliste.SetActive(false);
         tutorial.SetActive(false);
         leisteBottom.SetActive(false);
+
 
         selectedGameObjektZwischenspeicher = ERErstellung.selectedGameObjekt;
         ERErstellung.selectedGameObjekt = null;
@@ -233,9 +278,9 @@ public class PauseMenu : MonoBehaviour
         
         //Wichtiger Bool, damit letzte Mission erfüllt werden kann
         Mission.screenshotER = true;
-        Invoke("neuesAllesAn", 0.1f);
+        
     }
-    private void neuesAllesAn()
+    public void neuesAllesAn()
     { 
     FehlerAnzeige.fehlertext = "Screenshot erstellt!";
         leisteRechts.SetActive(true);
