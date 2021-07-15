@@ -107,7 +107,7 @@ public class Tutorial : MonoBehaviour
         }else if(Story.lvl[0] == true && Mission.missionsLevel[6] == false){
             pfeilSpiel.transform.localPosition = new Vector3(637,100,0);
             pfeilER.SetActive(true);
-            pfeilER.transform.localPosition = new Vector3(844,221,0);
+            pfeilER.transform.localPosition = new Vector3(612,177,0);
             containerKiller.SetActive(true);
             bZusatz.interactable = false;
             bMission.interactable = true;

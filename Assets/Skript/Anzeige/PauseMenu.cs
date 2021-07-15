@@ -25,6 +25,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject infoBox;
     public GameObject leisteBottom;
     public GameObject tutorial;
+    public GameObject leisteTop;
 
     public KameraKontroller KameraScript;
 
@@ -250,10 +251,8 @@ public class PauseMenu : MonoBehaviour
         //Debug.Log("Screenshot gemacht");
         //canvas.SetActive(false);
         Invoke("ERscreenshotErstellen", 0.7f);
-        //Invoke("neuesAllesAn", 0.1f);
-
-        
-        //Invoke("neuesAllesAn", 0.1f);
+         
+        Invoke("neuesAllesAn", 1.0f);
     }
 
     public void ERscreenshotErstellen()
@@ -265,6 +264,7 @@ public class PauseMenu : MonoBehaviour
         Checkliste.SetActive(false);
         tutorial.SetActive(false);
         leisteBottom.SetActive(false);
+        leisteTop.SetActive(false);
 
 
         selectedGameObjektZwischenspeicher = ERErstellung.selectedGameObjekt;
@@ -280,7 +280,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void neuesAllesAn()
     { 
-    FehlerAnzeige.fehlertext = "Screenshot erstellt!";
+        FehlerAnzeige.fehlertext = "Screenshot erstellt!";
         leisteRechts.SetActive(true);
         infoBox.SetActive(true);
         leisteRechts.SetActive(true);
@@ -288,6 +288,8 @@ public class PauseMenu : MonoBehaviour
         Checkliste.SetActive(true);
         tutorial.SetActive(true);
         leisteBottom.SetActive(true);
+        leisteTop.SetActive(true);
+
 
         ERErstellung.selectedGameObjekt = selectedGameObjektZwischenspeicher;
     }
