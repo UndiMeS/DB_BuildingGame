@@ -15,7 +15,7 @@ public class Mission : MonoBehaviour
     public static bool[] missionsTeilLevel2 = new bool[] {false,false,false,false};
     public static bool[] missionsTeilLevel3 = new bool[] {false,false,false};
     public static bool[] missionsTeilLevel4 = new bool[] {false,false,false,false};
-    public static bool[] missionsTeilLevel5 = new bool[] {false,false};
+    public static bool[] missionsTeilLevel5 = new bool[] {false,false,false};
     public static bool[] missionsTeilLevel6 = new bool[] {false}; //Das ist für das Level VOR Level 0
     public static bool[] missionsTeilLevel7 = new bool[] {false}; //Das ist für das Level zwischen 1 und 2
     public static bool[] missionsTeilLevel8 = new bool[] {false, false, false}; //Das ist für das Level zwischen 2 und 3
@@ -202,10 +202,11 @@ public class Mission : MonoBehaviour
     
     public void setSize()
     {
-        if(finale || screenshotMission){
+        if(screenshotMission){
             missionshintergrund.transform.localPosition = new Vector3(-16,150.0f,0.0f);
-        }else
-        {
+        }else if(finale){
+           missionshintergrund.transform.localPosition = new Vector3(-16, 96.03f,0.0f);
+        }else{
             if(Story.level == 2){
                 missionshintergrund.transform.localPosition = new Vector3(-16,105.0f,0.0f);
             }else if(Story.level == 0 || Story.level == 1){
@@ -564,7 +565,7 @@ public class Mission : MonoBehaviour
             hacken2.SetActive(false);
             hacken3.SetActive(false);
             hacken4.SetActive(false);
-            screenshotMission = true;
+            //screenshotMission = true;
 
             if(missionsLevel[5]){
                 hacken1.SetActive(true);
