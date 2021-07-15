@@ -27,6 +27,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject tutorial;
     public GameObject leisteTop;
 
+
     public KameraKontroller KameraScript;
 
 
@@ -42,6 +43,16 @@ public class PauseMenu : MonoBehaviour
     private void Update()
     {
         //Debug.Log("Spiel pausiert "+ SpielIstPausiert);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(ERon == false && PauseMenuUI.activeSelf == false)
+            {
+                Pause();
+            }else if(ERon == false && PauseMenuUI.activeSelf == true)
+            {
+                Weiterspielen();
+            }
+        }
         
     }
 
