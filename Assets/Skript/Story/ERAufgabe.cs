@@ -303,7 +303,7 @@ public class ERAufgabe : MonoBehaviour
             //wenn die Mission erfolgreich absolviert wurde, kann wieder im ER gebastelt werden und es wird chckObjekte() ausgeführt
             if (missionCheck)
             {
-                infobox.transform.localPosition = new Vector3(-624.0f,-375.0f,0.0f);
+                infobox.transform.localPosition = new Vector3(0,0,0);
                 bottomLeiste.SetActive(true);        
                 aufgabeButton.SetActive(true);
                 kreisHacken.SetActive(false);
@@ -399,7 +399,7 @@ public class ERAufgabe : MonoBehaviour
             x.Play(0);
             
             //wenn alles richtig ist wird default alles auf aus gesetzt (in Update wird es aber wieder auf true gesetzt, wenn missioncheck == true ist)
-            infobox.transform.localPosition = new Vector3(-624.0f,-470.0f,0.0f);
+            infobox.transform.localPosition = new Vector3(0,-82,0);
             
             bottomLeiste.SetActive(false);
             aufgabeButton.SetActive(false);

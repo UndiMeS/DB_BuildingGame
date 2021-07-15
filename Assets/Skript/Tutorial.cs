@@ -95,7 +95,7 @@ public class Tutorial : MonoBehaviour
                 //pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
             }else{
                 pfeilER.SetActive(true);
-                pfeilER.transform.localPosition = new Vector3(844,132,0);
+                //pfeilER.transform.localPosition = new Vector3(844,132,0);
             }
             
 
