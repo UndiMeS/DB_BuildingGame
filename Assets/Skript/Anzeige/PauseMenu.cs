@@ -42,6 +42,7 @@ public class PauseMenu : MonoBehaviour
     private void Update()
     {
         //Debug.Log("Spiel pausiert "+ SpielIstPausiert);
+        /*
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if(ERon == false && PauseMenuUI.activeSelf == false)
@@ -52,6 +53,7 @@ public class PauseMenu : MonoBehaviour
                 Weiterspielen();
             }
         }
+        */
         
     }
 

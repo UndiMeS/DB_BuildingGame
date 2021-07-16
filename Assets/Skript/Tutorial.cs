@@ -250,7 +250,7 @@ public class Tutorial : MonoBehaviour
         
         //Sonst: setzte alle Texte zurück
         }else{
-            FehlerAnzeige.tutorialtext_Spiel = "";
+            //FehlerAnzeige.tutorialtext_Spiel = "";
             FehlerAnzeige.tutorialtext_ER = "";
         }
     }

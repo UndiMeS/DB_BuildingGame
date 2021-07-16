@@ -18,9 +18,11 @@ public class EscER : MonoBehaviour
     void Update()
     {
         //Öffne ER-Optionemenu bei Esc
+        /*
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             b.onClick.Invoke();
         }
+        */
     }
 }

@@ -80,7 +80,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            lvlKlicks = new int[] { 11, 15, 10, 10, 13, 6, 13, 12, 0, 0};
+            lvlKlicks = new int[] { 11, 15, 10, 10, 13, 6, 15, 12, 0, 0};
         }
 
         m_TextMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
