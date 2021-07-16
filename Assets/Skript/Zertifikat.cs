@@ -55,9 +55,9 @@ public class Zertifikat : MonoBehaviour
         //Schriftgröße
         int schriftSize = 50;
         //Schriftart AstroSpace: myDoc.getFontReference("AstroSpace")
-        myDoc.addTrueTypeFont(Application.dataPath + @"\Font\AstroSpace-eZ2Bg.ttf", "AstroSpace");
+        myDoc.addTrueTypeFont(Application.streamingAssetsPath + @"\Font\AstroSpace-eZ2Bg.ttf", "AstroSpace");
         //Schriftart FallingSky: myDoc.getFontReference("FallingSky")
-        myDoc.addTrueTypeFont(Application.dataPath + @"\Font\FallingSky-JKwK.ttf", "FallingSky");
+        myDoc.addTrueTypeFont(Application.streamingAssetsPath + @"\Font\FallingSky-JKwK.ttf", "FallingSky");
         
         //Name und Level
         myPage.addText(Testing.menschen[0].name, 702, 2945, myDoc.getFontReference("AstroSpace"), 40);
