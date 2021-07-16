@@ -27,7 +27,6 @@ public class PauseMenu : MonoBehaviour
     public GameObject tutorial;
     public GameObject leisteTop;
 
-
     public KameraKontroller KameraScript;
 
 
