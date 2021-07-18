@@ -102,7 +102,12 @@ public class Beziehung : MonoBehaviour
 
         if (objekt1 != null)
         {
-            positionOfKardinalitaet(kardText1, objekt1, objekt1.Equals(objekt2));
+            int offset=0;
+            if (objekt1.Equals(objekt2))
+            {
+                offset = 1;
+            }
+            positionOfKardinalitaet(kardText1, objekt1, offset);
             kardText1.SetActive(true);
         }
         else
@@ -112,7 +117,12 @@ public class Beziehung : MonoBehaviour
 
         if (objekt2 != null)
         {
-            positionOfKardinalitaet(kardText2, objekt2, objekt1.Equals(objekt2));
+            int offset = 0;
+            if (objekt1.Equals(objekt2))
+            {
+                offset = 2;
+            }
+            positionOfKardinalitaet(kardText2, objekt2, offset);
             kardText2.SetActive(true);
         }
         else
@@ -197,31 +207,34 @@ public class Beziehung : MonoBehaviour
         welcheEntity(2, 0, false);
     }
 
-    private void positionOfKardinalitaet(GameObject kardtext, GameObject objekt, bool offset)   //GRÖßE VON EROBJEKT /2
+    private void positionOfKardinalitaet(GameObject kardtext, GameObject objekt, int offset)   //offset =  0-keiner, 1- rechts, 2-Links
     {
-        Vector3 pos2 = objekt.transform.position;
         Vector3 pos1 = gameObject.transform.position;
+        Vector3 pos2 = objekt.transform.position;
+        if (offset == 1)
+        {
+            pos2 += Vector3.right;
+            pos1 += Vector3.right;
+        }else if (offset == 2)
+        {
+            pos2 -= Vector3.right;
+            pos1 -= Vector3.right;
+        }    
 
         float winkel = Vector3.Angle(pos2 - pos1, Vector3.right);
 
-        kardtext.transform.position = pos1 + Vector3.Normalize(pos2 - pos1)  ;
+        kardtext.transform.position = pos1 + 2*Vector3.Normalize(pos2 - pos1)  ;
 
 
         if (45 < winkel && winkel < 135 || 225 < winkel && 305 > winkel)
         {
             kardtext.transform.localPosition += new Vector3(10, 0, 0);
-            if (offset && kardtext.Equals(kardText1))
-            {
-                kardtext.transform.localPosition += new Vector3(50, 0, 0);
-            }
+            
         }
         else
         {
             kardtext.transform.localPosition += new Vector3(0, 10, 0);
-            if (offset && kardtext.Equals(kardText1))
-            {
-                kardtext.transform.localPosition += new Vector3(0, 50, 0);
-            }
+           
         }
 
         //float winkel = Vector3.SignedAngle(pos2 - pos1, Vector3.left, Vector3.forward) + 180;

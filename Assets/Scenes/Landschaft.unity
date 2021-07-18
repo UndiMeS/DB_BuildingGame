@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -29015,6 +29015,7 @@ GameObject:
   - component: {fileID: 616779708}
   - component: {fileID: 616779710}
   - component: {fileID: 616779711}
+  - component: {fileID: 616779712}
   m_Layer: 5
   m_Name: Aufgabentext
   m_TagString: Untagged
@@ -29030,7 +29031,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616779706}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1701279073}
@@ -29038,9 +29039,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.312, y: -292.77396}
-  m_SizeDelta: {x: 775.117, y: 764.339}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 387.8705, y: 113.06772}
+  m_SizeDelta: {x: 775.117, y: 551.29}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &616779708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29061,13 +29062,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Um den Mars zu besiedeln, m\xFCssen Astronauten eingeflogen werden. Damit
-    diese auf dem Planeten leben k\xF6nnen, werden Wohncontainer ben\xF6tigt. Daf\xFCr
-    wird die Entitymenge Wohncontainer angelegt. Alle Wohncontainer haben gemeinsame
-    Eigenschaften, die Attribute. Sie haben bestimmte Baukosten eine genaue Bettenzahl,
-    die die Menge an beherbergbaren Astronauten ausdr\xFCckt und ein Attribut f\xFCr
-    noch freie Betten. Jeder Container hat in der Siedlung eine eindeutige Containernummer,
-    der Prim\xE4rschl\xFCssel."
+  m_text: "Verbesserungen werden durch Forschungsprojekte erreicht. Attribute von
+    Sph\xE4ren und Containern k\xF6nnen mehrfach erforscht und so mehrfach verbessert
+    werden. Ein Forschungsprojekt hat somit ein bestimmtes Forschungsmerkmal und
+    eine Forschungsstufe. Dar\xFCber kann ein Forschungsprojekt eindeutig ermittelt
+    werden. Jedes Forschungsprojekt erzielt einen Verbesserungsfaktor, ben\xF6tigt
+    eine bestimmte Arbeiterzahl und Projektkosten. Forschungsprojekte k\xF6nnen nur
+    angelegt werden, wenn die passende Forschungsstation bereits existiert. Eine
+    Forschungsstation organisiert mehrere Forschungsprojekte. Mehrere Astronauten
+    k\xF6nnen in einem Forschungsprojekt forschen, jedoch kann ein Astronaut nur
+    an einem Projekt forschen. \\nForschungsprojekte verbessern die Forschungsmerkmale
+    immer f\xFCr alle zuk\xFCnftig gebauten Objekte. Ein Forschungsprojekt verbessert
+    mehrere Wohncontainer. Zugleich k\xF6nnen mehrere Projekte einen Wohncontainer
+    verbessern."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1cd2c1f0f97eab04faf605d702b5e1b3, type: 2}
   m_sharedMaterial: {fileID: -8889975471788233363, guid: 1cd2c1f0f97eab04faf605d702b5e1b3,
@@ -29158,7 +29165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 0
+  m_VerticalFit: 2
 --- !u!114 &616779711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29173,6 +29180,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restKlicks: {fileID: 621135337}
   absolutKlicks: {fileID: 1192723344}
+--- !u!114 &616779712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616779706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 0
 --- !u!1 &621135337
 GameObject:
   m_ObjectHideFlags: 0
@@ -30567,7 +30588,7 @@ MonoBehaviour:
   mars: {fileID: 211956887}
   erModell: {fileID: 1909574202}
   oldPos: {x: 50, y: 200, z: 0}
-  oldZoom: {x: 0, y: 50, z: -60}
+  oldZoom: {x: 0, y: 50, z: -270}
   aufgabentext: {fileID: 1508547998}
   grenzen: 00000000
 --- !u!1 &648295050
@@ -42092,12 +42113,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 21
+  m_fontSizeBase: 21
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 10
+  m_fontSizeMax: 25
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
@@ -43154,7 +43175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &901882045
 RectTransform:
   m_ObjectHideFlags: 0
@@ -51861,12 +51882,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17
-  m_fontSizeBase: 17
+  m_fontSize: 21
+  m_fontSizeBase: 21
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 10
+  m_fontSizeMax: 25
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
@@ -66735,7 +66756,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1326066185
 RectTransform:
   m_ObjectHideFlags: 0
@@ -82899,8 +82920,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.1386, y: 1.56}
-  m_SizeDelta: {x: 791.28, y: 176.6}
+  m_AnchoredPosition: {x: -1.1385498, y: 1.0935059}
+  m_SizeDelta: {x: 791.28, y: 177.5331}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1701279074
 MonoBehaviour:
@@ -82922,7 +82943,7 @@ MonoBehaviour:
   m_Inertia: 1
   m_DecelerationRate: 0.135
   m_ScrollSensitivity: 5
-  m_Viewport: {fileID: 0}
+  m_Viewport: {fileID: 1701279073}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
   m_HorizontalScrollbarVisibility: 0

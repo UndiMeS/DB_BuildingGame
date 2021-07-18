@@ -42,6 +42,7 @@ public class KameraKontroller : MonoBehaviour
     //private Vector3 testPos;
 
     public RectTransform aufgabentext;
+
     private bool mouseInAufgabe = false;
 
     //public Vector2 panLimit;
@@ -66,8 +67,8 @@ public class KameraKontroller : MonoBehaviour
         transform.position = newPosition;
         cameraTransform.localPosition= newZoom ;
 
-        oldPos = new Vector3(50,210,0); //für ER-Modell; Mars: new Vector3(90, 120, 5);
-        oldZoom = new Vector3(0,50,-60); // für ER-Modell; Mars: new Vector3(0, -200, -200);
+        oldPos = new Vector3(40,250,0); //für ER-Modell; Mars: new Vector3(90, 120, 5);
+        oldZoom = new Vector3(0,50,-120); // für ER-Modell; Mars: new Vector3(0, -200, -200);
 
 
     }
@@ -110,7 +111,7 @@ public class KameraKontroller : MonoBehaviour
         }
         else
         {
-            Debug.Log("Bewegeung pausiert");
+            //Debug.Log("Bewegeung pausiert");
         }
 
 
@@ -168,7 +169,7 @@ public class KameraKontroller : MonoBehaviour
     //Touch Input
     private void HandleMouseInput()
     {
-        if (!RectTransformUtility.RectangleContainsScreenPoint(aufgabentext, Input.mousePosition, null))
+        if (!inBox())
         {
             if (Input.mouseScrollDelta.y != 0)      //Mausrad
             {
@@ -209,6 +210,16 @@ public class KameraKontroller : MonoBehaviour
         }
     }
 
+
+    private bool inBox()
+    {
+        bool drin = false;
+        if (aufgabentext.gameObject.activeSelf&&hintergrund==1)
+        {
+            drin = drin || RectTransformUtility.RectangleContainsScreenPoint(aufgabentext, Input.mousePosition, null);
+        }
+        return drin;
+    }
 
     void HandleMovementInput()
     {

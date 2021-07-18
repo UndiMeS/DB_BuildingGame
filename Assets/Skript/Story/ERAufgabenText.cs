@@ -7,26 +7,27 @@ using TMPro;
 
 public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
 {    //Aufgabentext je LvL    
+    // \n da´mit Leerzeile erzeugt wird und Scrollview von oben sichtbar
     private string[] aufgabe = { 
-                    /*LvL 0*/  "Um den Mars mit Astronauten und Astronautinnen zu besiedeln werden Wohncontainer benötigt. Dafür wird die Entitymenge Wohncontainer angelegt. Alle Wohncontainer haben gemeinsame Eigenschaften, die Attribute. Sie haben bestimmte Baukosten eine genaue Bettenzahl, die die Menge an beherbergbaren Astronautinnen und Astronauten ausdrückt und ein Attribut für noch freie Betten. Jeder Container hat in der Siedlung eine eindeutige Containernummer, der Primärschlüssel." ,
-                    /*LvL 1*/  "Die Astronauten können nur dann eingeflogen werden, wenn ausreichend Wohncontainer existieren. Astronaut ist daher eine schwache Entitymenge. (Hinweis: Schwache Entitymengen erkennst du im Spiel daran, dass damit mögliche Handlungen nur in der Anzeige der zugehörigen 'starken Entitymenge' möglich sind.) \n Astronauten wohnen in Wohncontainern (Beziehung 'wohnt'). Jeder Astronaut ist genau einem Container zugeordnet und teilt sich diesen mit anderen (Kardinaliät n:1). Alle Astronauten haben einen Namen und ein Geburtstag, worüber man sie eindeutig bestimmen kann. Für die Anreise fallen bestimmt Anreisegebühren an und jeder hat eine bestimmte Aufgabe in der Siedlung (Weideastronaut (Symbol Mistgabel), Forschungsastronaut (Symbol Reagenzglas) und Feldastronaut (Symbol Weizenähre)).",
-                    /*LvL 2*/  "Eine Möglichkeit Erträge zu erzielen sind Feldsphären in denen Nahrung angebaut wird. Diese haben bestimmte Baukosten, eine genaue Arbeiterzahl und einen Ertrag, den du alle 5 Sol erhältst. Mehrere Astronauten arbeiten in einer Feldsphäre, wobei ein Astronaut nicht auf mehreren Feldsphären gleichzeitig arbeiten kann. Jede Feldsphäre kann eindeutig über ihre Feldnummer bestimmt werden.",
-                    /*LvL 3*/  "Die Siedlung dient vor allem der Forschung, um Sphären und Wohncontainer zu verbessern. Dafür werden Forschungsstationen gebaut. Eine Forschungsstation hat eine eindeutige Stationsnummer, Baukosten und eine bestimmte Spezialisierung. Diese gibt an, für welchen Objekttyp in der Forschungsstation geforscht wird. Für eine Forschungsstation ist genau ein Astronaut verantwortlich.",
-                    /*LvL 4*/  "Verbesserungen werden durch Forschungsprojekte erreicht. Attribute von Sphären und Containern können mehrfach erforscht und so mehrfach verbessert werden. Ein Forschungsprojekt hat somit ein bestimmtes Forschungsmerkmal und eine Forschungsstufe. Darüber kann ein Forschungsprojekt eindeutig ermittelt werden. Jedes Forschungsprojekt erzielt einen Verbesserungsfaktor, benötigt eine bestimmte Arbeiterzahl und Projektkosten. Forschungsprojekte können nur angelegt werden, wenn die passende Forschungsstation bereits existiert. Eine Forschungsstation organisiert mehrere Forschungsprojekte. Mehrere Astronauten können in einem Forschungsprojekt forschen, jedoch kann ein Astronaut nur an einem Projekt forschen. \nForschungsprojekte verbessern die Forschungsmerkmale immer für alle zukünftig gebauten Objekte. Ein Forschungsprojekt verbessert mehrere Wohncontainer. Zugleich können mehrere Projekte einen Wohncontainer verbessern.",
-                    /*LvL 5*/  "Bislang können in der Siedlung neben Wohncontainer auch Feldsphären erbaut werden. Ein Forschungsprojekt verbessert daher auch mehrere Feldsphären. Zugleich können mehrere Projekte an einer Feldsphäre forschen. Neben der Verbesserung von Containern und Sphären kann einmalig ein Forschungsprojekt durchgeführt werden, dass an neuen Methoden forscht und so für alle zukünftigen Forschungsprojekte die Projektkosten verbessert. Diese Möglichkeit betrifft die Forschungsprojekte von jeder errichteten Forschungsstation.",
-                    /*LvL 6*/  "Eine weitere Möglichkeit Erträge zu erzielen sind Weidesphären. Doch bevor wir diese anlegen, werden zunächst Nutztiere und Stallcontainer benötigt. Um ein Nutztier einfliegen zu lassen, müssen vorher Stallcontainer existieren. Ein Stallcontainer hat Baukosten, eine Containernummer, eine Gehegezahl und eine Anzahl der noch freien Gehege. Stallcontainer werden exakt wie Wohncontainer durch Forschungsprojekte verbessert. Mehrere Nutztiere wohnen in einem Stallcontainer. Diese haben Transportkosten, einen Namen und eine Art. Jedes Nutztier kann eindeutig über Name und Art identifiziert werden.",
-                    /*LvL 7*/  "Um Erträge zu erhalten arbeiten mehrere Nutztiere auf einer Weidesphäre. Diese hat eine eindeutige Weidenummer, einen Ertrag, Baukosten, eine Tieranzahl und eine Arbeiterzahl, die sie benötigt. Somit arbeiten mehrere Astronauten in einer Weidesphäre, jedoch wie bei Feldsphären arbeitet ein Astronaut nur in einer Weidesphäre. Wie bei Feldsphären, werden zukünftig erbaute Weidesphären von einem Forschungsprojekt verbessert und mehrere Projekte können eine Weidesphäre verbessern.",
+                    /*LvL 0*/  "\nUm den Mars mit Astronauten und Astronautinnen zu besiedeln werden Wohncontainer benötigt. Dafür wird die Entitymenge Wohncontainer angelegt. Alle Wohncontainer haben gemeinsame Eigenschaften, die Attribute. Sie haben bestimmte Baukosten eine genaue Bettenzahl, die die Menge an beherbergbaren Astronautinnen und Astronauten ausdrückt und ein Attribut für noch freie Betten. Jeder Container hat in der Siedlung eine eindeutige Containernummer, der Primärschlüssel.\n" ,
+                    /*LvL 1*/  "\nDie Astronauten können nur dann eingeflogen werden, wenn ausreichend Wohncontainer existieren. Astronaut ist daher eine schwache Entitymenge. (Hinweis: Schwache Entitymengen erkennst du im Spiel daran, dass damit mögliche Handlungen nur in der Anzeige der zugehörigen 'starken Entitymenge' möglich sind.) \nAstronauten wohnen in Wohncontainern (Beziehung 'wohnt'). Jeder Astronaut ist genau einem Container zugeordnet und teilt sich diesen mit anderen (Kardinaliät n:1). Alle Astronauten haben einen Namen und ein Geburtstag, worüber man sie eindeutig bestimmen kann. Für die Anreise fallen bestimmt Anreisegebühren an und jeder hat eine bestimmte Aufgabe in der Siedlung (Weideastronaut (Symbol Mistgabel), Forschungsastronaut (Symbol Reagenzglas) und Feldastronaut (Symbol Weizenähre)).\n",
+                    /*LvL 2*/  "\nEine Möglichkeit Erträge zu erzielen sind Feldsphären in denen Nahrung angebaut wird. Diese haben bestimmte Baukosten, eine genaue Arbeiterzahl und einen Ertrag, den du alle 5 Sol erhältst. Mehrere Astronauten arbeiten in einer Feldsphäre, wobei ein Astronaut nicht auf mehreren Feldsphären gleichzeitig arbeiten kann. Jede Feldsphäre kann eindeutig über ihre Feldnummer bestimmt werden.\n",
+                    /*LvL 3*/  "\nDie Siedlung dient vor allem der Forschung, um Sphären und Wohncontainer zu verbessern. Dafür werden Forschungsstationen gebaut. Eine Forschungsstation hat eine eindeutige Stationsnummer und Baukosten, sowie eine bestimmte Spezialisierung. Diese gibt an, für welchen Objekttyp in der Forschungsstation geforscht wird. Für eine Forschungsstation ist genau ein Astronaut verantwortlich.\n",
+                    /*LvL 4*/  "\nVerbesserungen werden durch Forschungsprojekte erreicht. Attribute von Sphären und Containern können mehrfach erforscht und so mehrfach verbessert werden. Ein Forschungsprojekt hat somit ein bestimmtes Forschungsmerkmal und eine Forschungsstufe. Darüber kann ein Forschungsprojekt eindeutig ermittelt werden. Jedes Forschungsprojekt erzielt einen Verbesserungsfaktor, benötigt eine bestimmte Arbeiterzahl und Projektkosten. Forschungsprojekte können nur angelegt werden, wenn die passende Forschungsstation bereits existiert. Eine Forschungsstation organisiert mehrere Forschungsprojekte. Mehrere Astronauten können in einem Forschungsprojekt forschen, jedoch kann ein Astronaut nur an einem Projekt forschen. \nForschungsprojekte verbessern die Forschungsmerkmale immer für alle zukünftig gebauten Objekte. Ein Forschungsprojekt verbessert mehrere Wohncontainer. Zugleich können mehrere Projekte einen Wohncontainer verbessern.\n",
+                    /*LvL 5*/  "\nBislang können in der Siedlung neben Wohncontainer auch Feldsphären erbaut werden. Ein Forschungsprojekt verbessert daher auch mehrere Feldsphären. Zugleich können mehrere Projekte an einer Feldsphäre forschen. Neben der Verbesserung von Containern und Sphären kann einmalig ein Forschungsprojekt durchgeführt werden, dass an neuen Methoden forscht und so für alle zukünftigen Forschungsprojekte die Projektkosten verbessert. Diese Möglichkeit betrifft die Forschungsprojekte von jeder errichteten Forschungsstation.\n",
+                    /*LvL 6*/  "\nEine weitere Möglichkeit Erträge zu erzielen sind Weidesphären. Doch bevor wir diese anlegen, werden zunächst Nutztiere und Stallcontainer benötigt. Um ein Nutztier einfliegen zu lassen, müssen vorher Stallcontainer existieren. Ein Stallcontainer hat Baukosten, eine Containernummer, eine Gehegezahl und eine Anzahl der noch freien Gehege. Stallcontainer werden exakt wie Wohncontainer durch Forschungsprojekte verbessert. Mehrere Nutztiere wohnen in einem Stallcontainer. Diese haben Transportkosten, einen Namen und eine Art. Jedes Nutztier kann eindeutig über Name und Art identifiziert werden.\n",
+                    /*LvL 7*/  "\nUm Erträge zu erhalten arbeiten mehrere Nutztiere auf einer Weidesphäre. Diese hat eine eindeutige Weidenummer, einen Ertrag, Baukosten, eine Tieranzahl und eine Arbeiterzahl, die sie benötigt. Somit arbeiten mehrere Astronauten in einer Weidesphäre, jedoch wie bei Feldsphären arbeitet ein Astronaut nur in einer Weidesphäre. Wie bei Feldsphären, werden zukünftig erbaute Weidesphären von einem Forschungsprojekt verbessert und mehrere Projekte können eine Weidesphäre verbessern.",
                                 
                     /*LvL Ziel*/   //ZIELAUFGABE FEHLT NOCH
                                 };
     public List<string>[] entitys = {
                  /*LvL 0*/ new List<string>{"Wohncontainer" },
-                 /*LvL 1*/ new List<string>{"Astronauten", "Astronaut", "existieren", "schwache"},
+                 /*LvL 1*/ new List<string>{"Astronauten", "Astronaut", "existieren", "schwache", "Entitymenge"},
                  /*LvL 2*/ new List<string>{"Feldsphären", "Feldsphäre"},
                  /*LvL 3*/ new List<string>{"Forschungsstationen","Forschungsstation"},
                  /*LvL 4*/ new List<string>{"Forschungsprojekte","Forschungsprojekt","bereits","existiert"},
                  /*LvL 5*/ new List<string>{},
-                 /*LvL 6*/ new List<string>{"Nutztiere","Stallcontainer"},
+                 /*LvL 6*/ new List<string>{"Nutztiere","Stallcontainer", "existieren"},
                  /*LvL 7*/ new List<string>{"Weidesphäre"},
     };
 
@@ -43,7 +44,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
 
     private List<string>[] beziehungen = {
                  /*LvL 0*/ new List<string> {  },
-                 /*LvL 1*/ new List<string>{"wohnt", "wohnen"},
+                 /*LvL 1*/ new List<string>{"wohnt", "wohnen", "Wohncontainer"},
                  /*LvL 2*/ new List<string>{"arbeiten"},
                  /*LvL 3*/ new List<string>{"verantwortlich"},
                  /*LvL 4*/ new List<string>{"organisiert","verbessert","forschen","forscht"},
@@ -54,9 +55,9 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
 
     private List<string>[] kardinalitaet = {
                  /*LvL 0*/ new List<string> {  },
-                 /*LvL 1*/ new List<string>{"n:1","jeder", "anderen","genau"},
+                 /*LvL 1*/ new List<string>{"Jeder", "anderen","genau","einem"},
                  /*LvL 2*/ new List<string>{"Mehrere","mehreren", "ein", "nicht", "einer"},
-                 /*LvL 3*/ new List<string>{"genau","ein"},
+                 /*LvL 3*/ new List<string>{"genau","ein","eine"},
                  /*LvL 4*/ new List<string>{"mehrere","Mehrere", "einem","ein"},
                  /*LvL 5*/ new List<string>{"mehrere","Mehrere","einmalig"},
                  /*LvL 6*/ new List<string>{"mehrere","Mehrere","einem"},
@@ -71,6 +72,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     public GameObject absolutKlicks;
     public static bool werteGesetzt = false; //Wird in ERAufgabe.cs auf false gesetzt, wenn ER-Level erfüllt wurde.
     private int[] lvlKlicks; // { 11, 15, 10, 10, 13, 6, 13, 12 }; //Klickguthaben der einzelnen Levels
+    private List<int>[] geklickteWörter;
 
     private void Start()
     {
@@ -80,8 +82,9 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            lvlKlicks = new int[] { 11, 15, 10, 10, 13, 6, 15, 12, 0, 0};
+            lvlKlicks = new int[] { 11, 15, 15, 10, 13, 6, 15, 15, 0, 0};
         }
+        geklickteWörter=  new List<int>[] { new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { } };
 
         m_TextMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
         m_TextMeshPro.ForceMeshUpdate();
@@ -106,6 +109,11 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                 Utilitys.TextInTMP(restKlicks, (lvlKlicks[Story.level]).ToString());
                 werteGesetzt = true;
             }
+        }
+        //wenn markiert und dann Textgeschlossen marikierung wird aufgelöst, deshlab werden geklickte Wörter gespeichert und immer neu gefärbt
+        foreach (int ind in geklickteWörter[Story.level])
+        {
+            markieren(ind, 0, "");
         }
     }
 
@@ -137,6 +145,8 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
         {
             FehlerAnzeige.fehlertext = "Du hast nicht mehr Klicks zur Verfügung!";
         }
+        
+
     }
 
     private void markieren(int index, int leftRight, string entAttBez)
@@ -144,11 +154,16 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
         bool wasgefunden = false;
         if (index > 0)
         {
-                            TMP_WordInfo info = m_TextMeshPro.textInfo.wordInfo[index];
+            if (!geklickteWörter[Story.level].Contains(index))
+            {
+                geklickteWörter[Story.level].Add(index);
+            }
+                TMP_WordInfo info = m_TextMeshPro.textInfo.wordInfo[index];
                 Color farbe = Color.black;
                 if (entitys[Story.level].Contains(info.GetWord()) && entAttBez == "")
                 { farbe = Color.red;
                     wasgefunden = true;
+                entAttBez = "Ent";
                 }
                 else if (attribute[Story.level].Contains(info.GetWord()) && (entAttBez == "Att" || entAttBez == ""))
                 { farbe = Color.green;
@@ -175,21 +190,6 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                         vertexColors[vertexIndex + 1] = farbe;
                         vertexColors[vertexIndex + 2] = farbe;
                         vertexColors[vertexIndex + 3] = farbe;
-
-                        //Lvl 1 (n:1)
-                        if (Story.level == 1 && (info.GetWord() == "1" || info.GetWord() == "n"))
-                        {
-                            for (int k = 0; k < 3; k++)
-                            {
-                                meshIndex = m_TextMeshPro.textInfo.characterInfo[164 + k].materialReferenceIndex;
-                                vertexIndex = m_TextMeshPro.textInfo.characterInfo[164 + k].vertexIndex;
-                                vertexColors = m_TextMeshPro.textInfo.meshInfo[meshIndex].colors32;
-                                vertexColors[vertexIndex + 0] = Color.gray;
-                                vertexColors[vertexIndex + 1] = Color.gray;
-                                vertexColors[vertexIndex + 2] = Color.gray;
-                                vertexColors[vertexIndex + 3] = Color.gray;
-                            }
-                        }
                     }
                 }
 
@@ -203,7 +203,15 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                     {
                         markieren(index + 1, 1, "Kard");
                     }
-                    if (attribute[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Att" || entAttBez == ""))
+                if (entitys[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Ent" || entAttBez == ""))
+                {
+                    markieren(index - 1, -1, "Ent");
+                }
+                if (entitys[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index + 1].GetWord()) && leftRight != -1 && (entAttBez == "Ent" || entAttBez == ""))
+                {
+                    markieren(index + 1, 1, "Ent");
+                }
+                if (attribute[Story.level].Contains(m_TextMeshPro.textInfo.wordInfo[index - 1].GetWord()) && leftRight != 1 && (entAttBez == "Att" || entAttBez == ""))
                     {
                         markieren(index - 1, -1, "Att");
                     }
