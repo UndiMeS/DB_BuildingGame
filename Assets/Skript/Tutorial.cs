@@ -201,7 +201,10 @@ public class Tutorial : MonoBehaviour
                     FehlerAnzeige.tutorialtext_Spiel = "Versuche nun die nächste Mission zu erfüllen! \n Tipp: Im Pausemenü findest du auch eine Spielhilfe!";
                 }
             }
-        
+        }else if((Story.lvl[2] == true && Story.lvl[3] == false) && (Mission.missionsLevel[1] == true && Mission.missionsLevel[7] == false)){
+            FehlerAnzeige.tutorialtext_Spiel = "Klasse! Erfülle nun die Mission!";
+            FehlerAnzeige.tutorialtext_ER = "";
+                
         //Zeitpunkt: Hinweis zum Bau von Forschungsstationen       
         }else if((Story.lvl[3] == true && Story.lvl[4] == false) && (Mission.missionsLevel[1] == true && Mission.missionsLevel[7] == false)){
             if(missionTemp){
@@ -209,7 +212,7 @@ public class Tutorial : MonoBehaviour
                 missionTemp = false;
             }
             FehlerAnzeige.tutorialtext_Spiel = "Klasse! Erfülle nun die Mission!";
-            FehlerAnzeige.tutorialtext_ER = "Check deine neue Mission!"; 
+            FehlerAnzeige.tutorialtext_ER = "Du kannst nun Forschungsstationen errichten! Check deine neue Mission!"; 
             if(missionClick){
                     FehlerAnzeige.tutorialtext_Spiel = "Beachte, dass für jede Forschungsstation genau ein Forschungsastronaut (Symbol Reagenzglas) verantwortlich ist!";
                     zusatzClick = false;
@@ -224,7 +227,7 @@ public class Tutorial : MonoBehaviour
         }else if (Story.lvl[7] == false && ERAufgabe.missionCheck == false){
             pfeilER.SetActive(false);
             FehlerAnzeige.tutorialtext_Spiel = "";
-            FehlerAnzeige.tutorialtext_ER = "Klasse! Erfülle nun die Mission!";
+            FehlerAnzeige.tutorialtext_ER = "Erfülle nun die Mission, um bald forschen zu können!";
         
         //alle ER und Missions Level erfolgreich
         }else if (Story.lvl[7] == true && Mission.missionsLevel[5] == false){
@@ -238,7 +241,7 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "Klasse! Für eine vollumfängliche Dokumentation des Siedlungsbaus, erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot.";
             FehlerAnzeige.tutorialtext_ER = "Klasse! Für eine vollumfängliche Dokumentation des Siedlungsbaus, erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot.";
         
-        //alle ER und Missions Level erfolgreich
+        //Zur Erde zurückkehren
         }else if (Story.lvl[7] == true && Mission.missionsLevel[9] == true){
             pfeilER.SetActive(false);
             if(zurErdeClick == false){
@@ -250,7 +253,7 @@ public class Tutorial : MonoBehaviour
         
         //Sonst: setzte alle Texte zurück
         }else{
-            //FehlerAnzeige.tutorialtext_Spiel = "";
+            FehlerAnzeige.tutorialtext_Spiel = "";
             FehlerAnzeige.tutorialtext_ER = "";
         }
     }
