@@ -202,7 +202,7 @@ public class Tutorial : MonoBehaviour
                 }
             }
         }else if((Story.lvl[2] == true && Story.lvl[3] == false) && (Mission.missionsLevel[1] == true && Mission.missionsLevel[7] == false)){
-            FehlerAnzeige.tutorialtext_Spiel = "Klasse! Erfülle nun die Mission!";
+            FehlerAnzeige.tutorialtext_Spiel = "Klasse! Erweitere erneut dein ER-Diagramm!";
             FehlerAnzeige.tutorialtext_ER = "";
                 
         //Zeitpunkt: Hinweis zum Bau von Forschungsstationen       
@@ -222,7 +222,7 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = " Spezialisiere die Forschungsstation auf Wohncontainer! In der Forschungsstationsanzeige findest du anschließend ein Fragezeichen. Klicke dieses, um Hilfe bei der Erstellung von Projekten zu erhalten.";
             FehlerAnzeige.tutorialtext_ER = "Los geht's mit den ersten Forschungen! Check deine Mission!"; 
         
-        }else if((Story.lvl[5] == true && Story.lvl[6] == false) && (Mission.missionsLevel[8] == true && Mission.missionsLevel[2] == false)){
+        }else if((Story.lvl[5] == true && Story.lvl[6] == false) && (Mission.missionsLevel[7] == true && Mission.missionsLevel[8] == false)){
             FehlerAnzeige.tutorialtext_Spiel = "Tipp: \n Lass dir die Tabelle aller Wohncontainer anzeigen, um Container mit noch freien Betten anhand der Containernummer in der Siedlung zu finden.";
             FehlerAnzeige.tutorialtext_ER = ""; 
 
