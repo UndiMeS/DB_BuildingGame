@@ -106,7 +106,7 @@ public class Testing : MonoBehaviour
 
     public static void resetAll()
     {
-        geld = 800;
+        geld = 0;
         umsatz = 0;
         forscher = 0;
         feldarbeiter = 0;

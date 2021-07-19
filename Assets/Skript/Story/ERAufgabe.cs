@@ -13,7 +13,7 @@ using UnityEngine;
 */
 public class ERAufgabe : MonoBehaviour
 {
-    public static bool testModus = true ;
+    public static bool testModus = false ;
 
     //Welche EM je Level
     private string[][] listeEntity = {
@@ -698,6 +698,9 @@ public class ERAufgabe : MonoBehaviour
         else
         {
             ausgabe &= false;
+            if(FehlerAnzeige.fehlertext.Equals("Es sind zu viele Objekte.")){
+                FehlerAnzeige.fehlertext = "trigger";
+            }
         }
 
 

@@ -236,21 +236,18 @@ public class Mission : MonoBehaviour
                 KreuzHacken();
             }else{ 
                 //missionTeilLevel checkt ob Teilzeil bereits fertig war
-                if(missionsTeilLevel6[0]){
-                    hacken1.SetActive(true);
-                    zwischenziel1 = 1;
-                    missionsTeilLevel6[0] = true;
-                }else{
-                    if(temp_geld_lvl6 < Testing.geld){
-                        temp_geld_lvl6 = Testing.geld;
-                    }
-                    if(temp_geld_lvl6 > Testing.geld){
-                        KreuzHacken();
-                        missionsLevel[6] = true;
-                    }else{
-                            firstTime = true;
-                    }
+
+                if(temp_geld_lvl6 < Testing.geld){
+                    temp_geld_lvl6 = Testing.geld;
                 }
+                if(temp_geld_lvl6 > Testing.geld){
+                    KreuzHacken();
+                    missionsLevel[6] = true;
+
+                }else{
+                        firstTime = true;
+                }
+                
             }           
     //Level 0
         }else if(level == 0){

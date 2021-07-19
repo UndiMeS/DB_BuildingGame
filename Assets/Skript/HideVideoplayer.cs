@@ -22,6 +22,7 @@ public class HideVideoplayer : MonoBehaviour
         if (isPlayerStarted == true && videoPlayer.isPlaying == false ) {
             // Wehen the player stopped playing, hide it
             intro.SetActive(false);
+            startIntro.played = true;
             isPlayerStarted = false;
         }
 
