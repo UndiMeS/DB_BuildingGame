@@ -12382,6 +12382,7 @@ RectTransform:
   - {fileID: 400819075}
   - {fileID: 960680857}
   - {fileID: 448898433}
+  - {fileID: 1968770989}
   m_Father: {fileID: 817594681}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25339,7 +25340,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1519451947}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: loeschen
         m_Mode: 1
@@ -34441,7 +34442,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.5904e-41, y: -2.1007141e-30, z: 4.5904e-41, w: 9.403955e-38}
+  m_BoundingSphereOverride: {x: 0, y: 0.000000026541187, z: 4.58e-43, w: 0.000000014450563}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -46796,11 +46797,11 @@ MonoBehaviour:
         m_CallState: 1
       - m_Target: {fileID: 821967011}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: ObjectAnzeigenTimeStop
-        m_Mode: 2
+        m_MethodName: ExitHilfeER
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 503711322}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -46825,6 +46826,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 821967011}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: ObjectAnzeigenTimeStop
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1968770988}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -60449,7 +60462,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1519451948}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LeisteBottom, Assembly-CSharp
         m_MethodName: primaerschluessel
         m_Mode: 0
@@ -70223,7 +70236,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1519451948}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: SchwacheEntitaetAuswahl
         m_Mode: 0
@@ -72806,6 +72819,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 821967011}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: WeiterspielenER
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 821967011}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: ObjectAnzeigenTimeStop
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1968770988}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1450775395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75208,8 +75245,6 @@ GameObject:
   - component: {fileID: 1519451946}
   - component: {fileID: 1519451950}
   - component: {fileID: 1519451949}
-  - component: {fileID: 1519451947}
-  - component: {fileID: 1519451948}
   m_Layer: 5
   m_Name: Leiste_Bottom
   m_TagString: Untagged
@@ -75246,60 +75281,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000061035156, y: -363.00003}
   m_SizeDelta: {x: 1600, y: 93}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1519451947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519451945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7a2cb5b603c495449bcf5397dcd05a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  linie: {fileID: 7522486218302427998, guid: 4329b69ee7c51364f95bd8e085357311, type: 3}
-  linienOrdner: {fileID: 163748123}
-  erModellflaeche: {fileID: 1232103454}
-  entitaetOberflaeche: {fileID: 1021674549}
-  attributOberflaeche: {fileID: 272257491}
-  beziehOberflaeche: {fileID: 1793320496}
-  entity: {fileID: 2800000, guid: 367174c82285efb43a7d91630bf1f0e0, type: 3}
-  schwachEntity: {fileID: 2800000, guid: b0d31c55d580e524fab06eb3511fe0bf, type: 3}
-  leisteRechts: {fileID: 1277503}
-  leisteBottom: {fileID: 1519451945}
-  aufgabentext: {fileID: 1508547997}
-  checkliste: {fileID: 629954372}
-  infobox: {fileID: 2008418258}
-  ddSchwach: {fileID: 1403300068}
-  dd1: {fileID: 408135818}
-  dd2: {fileID: 495880974}
---- !u!114 &1519451948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519451945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 158d9889a2dc18345bccd80e66129c7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  schwacheEntitaet: {fileID: 21300000, guid: 170001f73eb248a41a6661815a5823bc, type: 3}
-  selecSchwacheEntitaet: {fileID: 21300000, guid: a0e76b41ffc740645ab49ef8455614ad,
-    type: 3}
-  entitaet: {fileID: 21300000, guid: 52db94fa66475fe459feb59b21d98d8e, type: 3}
-  selecEntitaet: {fileID: 21300000, guid: 3a22521b726710c4bb1fda0f62c45466, type: 3}
-  schwEntKnopf: {fileID: 1844779698}
-  dropdownSE: {fileID: 1403300068}
-  prefabBez: {fileID: 4991376348046480694, guid: 3a99a9483acea62499e4756187dcad1c,
-    type: 3}
-  erFlaeche: {fileID: 1232103450}
-  bezEinstellung: {fileID: 1793320496}
-  kard1: {fileID: 94322892}
-  kard2: {fileID: 1949666066}
-  primKnopf: {fileID: 1205004704}
 --- !u!114 &1519451949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90940,7 +90921,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1519451948}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LeisteBottom, Assembly-CSharp
         m_MethodName: SchwacheEntitaet
         m_Mode: 0
@@ -96398,6 +96379,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967986360}
   m_CullTransparentMesh: 0
+--- !u!1 &1968770988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1968770989}
+  m_Layer: 5
+  m_Name: Zeitstopper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1968770989
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968770988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 248883878}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1969259219
 GameObject:
   m_ObjectHideFlags: 0

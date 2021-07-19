@@ -79,10 +79,6 @@ public class PauseMenu : MonoBehaviour
         PauseMenuUI.SetActive(false);
         KameraKontroller.aktiviert = true;
         GebaeudeAnzeige.allesAus = false;
-        hilfeButtondestroyer.SetActive(false);
-        hilfeTexte.SetActive(false);
-        hilfeZurückButton.SetActive(false);
-        hilfeFenster.SetActive(false);
         SpielIstPausiert = false;
         Time.timeScale = 1;
 
@@ -123,15 +119,23 @@ public class PauseMenu : MonoBehaviour
     }
     public void HilfeER()
     {
-        PauseMenuUI.SetActive(false);
-        
-
         hilfeFenster.SetActive(true);
         hilfeZurückButton.SetActive(true);        
         hilfeButtondestroyer.SetActive(true);
-        ObjectAnzeigenTimeStop(hilfeTexte);
+        hilfeTexte.SetActive(true);
         Aufgabenfenster.SetActive(false);
         Checkliste.SetActive(false);
+
+        
+    }
+    public void ExitHilfeER()
+    {
+        hilfeFenster.SetActive(false);
+        hilfeZurückButton.SetActive(false);        
+        hilfeButtondestroyer.SetActive(false);
+        hilfeTexte.SetActive(false);
+        Aufgabenfenster.SetActive(true);
+        Checkliste.SetActive(true);
     }
 
     public void ObjectAnzeigenTimeStop (GameObject objekt)
