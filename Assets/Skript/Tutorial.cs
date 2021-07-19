@@ -218,16 +218,19 @@ public class Tutorial : MonoBehaviour
                     zusatzClick = false;
                 }
         
-        //Falls kein Tutorialhinweis geplant ist, so gib bei erfülltem ER-Level einen Standarttext aus
         }else if((Story.lvl[4] == true && Story.lvl[5] == false) && (Mission.missionsLevel[7] == true && Mission.missionsLevel[8] == false)){
             FehlerAnzeige.tutorialtext_Spiel = " Spezialisiere die Forschungsstation auf Wohncontainer! In der Forschungsstationsanzeige findest du anschließend ein Fragezeichen. Klicke dieses, um Hilfe bei der Erstellung von Projekten zu erhalten.";
             FehlerAnzeige.tutorialtext_ER = "Los geht's mit den ersten Forschungen! Check deine Mission!"; 
         
+        }else if((Story.lvl[5] == true && Story.lvl[6] == false) && (Mission.missionsLevel[8] == true && Mission.missionsLevel[2] == false)){
+            FehlerAnzeige.tutorialtext_Spiel = "Tipp: \n Lass dir die Tabelle aller Wohncontainer anzeigen, um Container mit noch freien Betten anhand der Containernummer in der Siedlung zu finden.";
+            FehlerAnzeige.tutorialtext_ER = ""; 
+
         //Falls kein Tutorialhinweis geplant ist, so gib bei erfülltem ER-Level einen Standarttext aus
         }else if (Story.lvl[7] == false && ERAufgabe.missionCheck == false){
             pfeilER.SetActive(false);
             FehlerAnzeige.tutorialtext_Spiel = "";
-            FehlerAnzeige.tutorialtext_ER = "Erfülle nun die Mission, um bald forschen zu können!";
+            FehlerAnzeige.tutorialtext_ER = "Erfülle nun die Mission!";
         
         //alle ER und Missions Level erfolgreich
         }else if (Story.lvl[7] == true && Mission.missionsLevel[5] == false){
