@@ -98,6 +98,7 @@ public class Mission : MonoBehaviour
                                         };
 
     public GameObject missionshintergrund;
+    public GameObject skip_missions;
 
     //Variablen, wenn alle Missionen absolviert sind
     public GameObject backToEarthButton;
@@ -563,6 +564,7 @@ public class Mission : MonoBehaviour
             hacken3.SetActive(false);
             hacken4.SetActive(false);
             //screenshotMission = true;
+            skip_missions.SetActive(true);
 
             if(missionsLevel[5]){
                 hacken1.SetActive(true);

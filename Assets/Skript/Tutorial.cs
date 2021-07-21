@@ -239,6 +239,12 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_ER = "Klasse! Erfülle nun die letzten Missionen!";
         
         //Screenshots erstellen
+        }else if (Story.lvl[7] == true && Mission.missionsLevel[4] == true && Mission.missionsLevel[5] == false){
+            pfeilER.SetActive(false);
+            FehlerAnzeige.tutorialtext_Spiel = "Deine Siedlung ist nun grundsätzlich aufgebaut, muss jedoch noch umfangreich erweitert werden. Los geht's mit der letzten Mission!";
+            FehlerAnzeige.tutorialtext_ER = "";
+        
+        //Screenshots erstellen
         }else if (Story.lvl[7] == true && Mission.missionsLevel[5] == true && Mission.missionsLevel[9] == false){
             pfeilER.SetActive(false);
             FehlerAnzeige.tutorialtext_Spiel = "Klasse! Für eine vollumfängliche Dokumentation des Siedlungsbaus, erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot.";
