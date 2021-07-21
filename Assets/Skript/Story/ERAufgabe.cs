@@ -45,7 +45,7 @@ public class ERAufgabe : MonoBehaviour
                                     };
     private string[][] feldspaehre = {
                                         new string[] { "1","Kosten", "Baukosten", "Preis", "Baupreis", "€" },
-                                        new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Feldarbeiter", "Anzahl"},
+                                        new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Feldarbeiter", "Anzahl Arbeiter"},
                                         new string[] { "3","Ertrag", "Gewinn", "Gehalt"},
                                         new string[] { "4", "Feldnummer", "FNR", "fnr", "FNr", "FNR.", "Fnr.", "FNr.", "Feldnr.", "Nummer", "ID", "id", "Id" }
                                     };
@@ -87,10 +87,10 @@ public class ERAufgabe : MonoBehaviour
     private string[] astronaut_forschungsstation = { "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für","istverantwortlich","istVerantwortlich","ist verantwortlich" };
     private string[] astronaut_forschungsstation_Eig = { "A", "S", "0", "1", "1" };
 
-    private string[] wohncontainer_astronaut = { "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt" };
+    private string[] wohncontainer_astronaut = { "wohnt in","wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt" };
     private string[] wohncontainer_astronaut_Eig = { "W", "A", "1", "n", "1" };
 
-    private string[] astronaut_forschungsprojekt = { "forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };
+    private string[] astronaut_forschungsprojekt = { " forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };
     private string[] astronaut_forschungsprojekt_Eig = { "A", "P", "0", "1", "n" };
 
     private string[] astronaut_feldsphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
@@ -99,10 +99,10 @@ public class ERAufgabe : MonoBehaviour
     private string[] astronaut_weidesphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
     private string[] astronaut_weidesphaere_Eig = { "A", "Weidesphäre", "0", "1", "n" };
 
-    private string[] stallcontainer_nutztier = { "leben", "lebt", "wohnen","wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "schläftIn", "PlatzFür" };
+    private string[] stallcontainer_nutztier = { "leben", "lebt", "wohnen","wohntIn","wohnt in", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "schläftIn", "PlatzFür" };
     private string[] stallcontainer_nutztier_Eig = { "Stallcontainer", "Nutztier", "1", "n", "1" };
 
-    private string[] weidesphaere_nutztier = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften", "grasenAuf", "grasen auf", "helfenAuf", "helfen auf" };
+    private string[] weidesphaere_nutztier = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften", "grasenAuf", "grasen auf", "helfenAuf", "helfen auf","leben","lebenAuf", "leben auf" };
     private string[] weidesphaere_nutztier_Eig = { "Weidesphäre", "Nutztier", "0", "n", "1" };
 
     private string[] forschungsprojekt_wohncontainer = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
@@ -117,7 +117,7 @@ public class ERAufgabe : MonoBehaviour
     private string[] forschungsprojekt_weidesphaere = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
     private string[] forschungsprojekt_weidesphaere_Eig = { "P", "Weidesphäre", "0", "n", "n" };
 
-    private string[] forschungsprojekt_forschungsprojekt = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern", "MethodenVerbessern", "verbessertMethodenVon", "verbessertMethoden" };
+    private string[] forschungsprojekt_forschungsprojekt = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern", "MethodenVerbessern", "verbessertMethodenVon", "verbessertMethoden","forscht" };
     private string[] forschungsprojekt_forschungsprojekt_Eig = { "P", "P", "0", "1", "n" };
 
     private string[] forschungsstation_forschungsprojekt = { "organisiert", "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };

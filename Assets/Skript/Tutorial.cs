@@ -247,12 +247,16 @@ public class Tutorial : MonoBehaviour
         //Screenshots erstellen
         }else if (Story.lvl[7] == true && Mission.missionsLevel[5] == true && Mission.missionsLevel[9] == false){
             pfeilER.SetActive(false);
-            FehlerAnzeige.tutorialtext_Spiel = "Klasse! Für eine vollumfängliche Dokumentation des Siedlungsbaus, erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot.";
+            FehlerAnzeige.tutorialtext_Spiel = "Klasse! Für eine vollumfängliche Dokumentation des Siedlungsbaus, erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot (im jeweiligen Menü).";
             FehlerAnzeige.tutorialtext_ER = "Klasse! Für eine vollumfängliche Dokumentation des Siedlungsbaus, erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot.";
-        
+            pfeilSpiel.SetActive(true);
+            pfeilSpiel.transform.localPosition = new Vector3(637,253,0);
+
         //Zur Erde zurückkehren
         }else if (Story.lvl[7] == true && Mission.missionsLevel[9] == true){
             pfeilER.SetActive(false);
+            pfeilSpiel.SetActive(false);
+
             if(zurErdeClick == false){
                 FehlerAnzeige.tutorialtext_Spiel = "Hervorragend! Deine Marsmission ist erfolgreich beendet. Du kannst nun noch weiter deine Siedlung erweitern oder zur Erde zurückkehren, um dein Missionszertifikat zu erhalten!";
                 FehlerAnzeige.tutorialtext_ER = "Hervorragend! Deine Marsmission ist erfolgreich beendet. Du kannst nun noch weiter deine Siedlung erweitern oder zur Erde zurückkehren, um dein Missionszertifikat zu erhalten!";

@@ -9,7 +9,7 @@ public class hilfe_forschungsstation : MonoBehaviour
     public void Show()
     {
         texte.SetActive(true);
-        Invoke("Close", 5);
+        Invoke("Close", 8);
     }
         
 
