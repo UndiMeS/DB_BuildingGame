@@ -7,7 +7,7 @@ public class Spielwerte : MonoBehaviour
 
     public static void Werte()
     {
-        Testing.geld = 500;//500;
+        Testing.geld = 350;//500;
         Testing.feldarbeiter = 0;
         Testing.forscher = 0;
         Testing.tierpfleger = 0;
@@ -16,16 +16,16 @@ public class Spielwerte : MonoBehaviour
         Wohncontainer.preis = 80;
 
         Feld.neuErtrag = 50;
-        Feld.preis = 80;
+        Feld.preis = 90;
         Feld.arbeiterzahl = 4; //am besten bei 4 belassen und anderes ändern
 
-        Weide.preis = 100;
-        Weide.arbeiterzahl = 3;
-        Weide.neuErtrag = 50;  
+        Weide.preis = 200;
+        Weide.arbeiterzahl = 4;
+        Weide.neuErtrag = 120;  
         Weide.tierAnzahl = 4;
 
-        Stallcontainer.preis = 90;
-        Stallcontainer.gehege = 5;
+        Stallcontainer.preis = 150;
+        Stallcontainer.gehege = 10;
 
         Forschung.preis = 200;
 
@@ -40,7 +40,7 @@ public class Spielwerte : MonoBehaviour
         Aufgaben.gewinn = 150; //Gewinn bei 1. Chance
         Aufgaben.gewinn2C = 30; //Gewinn bei 2. Chance
 
-        SpielInfos.neuerUmsatz = 5; //alle X Tage neuer Umsatz !!!!!!!!!!!!! Achtung: Text in Leiste Top muss händisch geändert werden!!!! 
+        SpielInfos.neuerUmsatz = 8; //alle X Tage neuer Umsatz !!!!!!!!!!!!! Achtung: Text in Leiste Top muss händisch geändert werden!!!! 
         SpielInfos.neueZusatzaufgabe = 1; //alle X Tage neue Zusatzaufgabe
 
     }

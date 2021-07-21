@@ -155,7 +155,7 @@ public class Tutorial : MonoBehaviour
             pfeilSpiel.transform.localPosition = new Vector3(637,100,0);
             //Prüfe, ob Missionsbutten gedrückt wurde
             if(missionClick){
-                FehlerAnzeige.tutorialtext_Spiel = "Neue Astronauten können über die Buttons im Wohncontainer eingeflogen werden. Klicke dort für den Namen auf 'Alle Astronauten'!";
+                FehlerAnzeige.tutorialtext_Spiel = "Klicke auf den eben erbauten Wohncontainer. Neue Astronauten können über die Buttons mit entsprechenden Symbol eingeflogen werden. Den Namen erhälst du über 'Alle Astronauten'!";
                 FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen. Wechsel zurück in die Siedlung!";
                 pfeilSpiel.SetActive(false);
                 if(wohncontainerGebaeudeanzeige.activeSelf){

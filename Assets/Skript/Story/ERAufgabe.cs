@@ -45,13 +45,13 @@ public class ERAufgabe : MonoBehaviour
                                     };
     private string[][] feldspaehre = {
                                         new string[] { "1","Kosten", "Baukosten", "Preis", "Baupreis", "€" },
-                                        new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Feldarbeiter", "Anzahl Arbeiter"},
+                                        new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Feldarbeiter", "Anzahl Arbeiter", "Arbeiteranzahl"},
                                         new string[] { "3","Ertrag", "Gewinn", "Gehalt"},
                                         new string[] { "4", "Feldnummer", "FNR", "fnr", "FNr", "FNR.", "Fnr.", "FNr.", "Feldnr.", "Nummer", "ID", "id", "Id" }
                                     };
     private string[][] weidespaehre = {
                                         new string[] { "1","Kosten", "Baukosten", "Preis", "Baupreis", "€" },
-                                        new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Weidenarbeiter", "Weidearbeiter", "Anzahl"},
+                                        new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Weidenarbeiter", "Weidearbeiter", "Anzahl","Anzahl Arbeiter", "Arbeiteranzahl"},
                                         new string[] { "3","Ertrag", "Gewinn", "Gehalt"},
                                         new string[] { "4","Weidennummer", "Weidenummer", "WNR", "wnr", "WNr", "WNR.", "Wnr.", "WNr.", "Weidenr.","Weidenr.", "Nummer", "ID", "id", "Id" },
                                         new string[] { "5","Tierzahl", "Tiere", "Tieranzahl", "Anzahl Tiere", "AnzahlTiere"}
@@ -74,7 +74,7 @@ public class ERAufgabe : MonoBehaviour
                                         };
     private string[][] forschungsprojekt = {
                                         new string[] { "1","Kosten", "Baukosten", "Preis", "Baupreis", "€", "Projektkosten", "Forschungskosten" },
-                                        new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Forschungsarbeiter", "Forschungsastronauten", "Anzahl"},
+                                        new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Forschungsarbeiter", "Forschungsastronauten", "Anzahl","Anzahl Arbeiter", "Arbeiteranzahl"},
                                         new string[] { "3","Verbesserungsfaktor", "Gewinn", "Faktor", "Verbesserung"},
                                         new string[] { "4","Stufe", "Forschungsstufe", "Level", "LvL", "Forschungslevel"},
                                         new string[] { "5","Merkmal", "Forschungsmerkmal", "Attribut", "Forschungsattribut", "Projektmerkmal"}
