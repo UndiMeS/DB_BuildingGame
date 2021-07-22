@@ -87,6 +87,7 @@ public class ERErstellung : MonoBehaviour
         else //erzeugt neues Objekt und markiert es
         {
             temp.GetComponent<ERObjekt>().canvas = erModellflaeche;
+            setRandomPosition(temp);
             modellObjekte.Add(temp);
             changeSelectedGameobjekt(temp);
             selectedGameObjekt.transform.SetParent(erModellflaeche.transform);
@@ -106,7 +107,7 @@ public class ERErstellung : MonoBehaviour
                 selectedGameObjekt.GetComponent<Attribut>().vater = vater;
             }
 
-            setRandomPosition(selectedGameObjekt);
+            
             selectedGameObjekt.GetComponent<ERObjekt>().leisteBottom = leisteBottom;
             selectedGameObjekt.GetComponent<ERObjekt>().leisteRechts = leisteRechts;
             selectedGameObjekt.GetComponent<ERObjekt>().aufgabe = aufgabentext;
@@ -150,7 +151,7 @@ public class ERErstellung : MonoBehaviour
             if (!RectTransformUtility.RectangleContainsScreenPoint(aufgabentext.GetComponent<RectTransform>(), pos, null)
                 && !RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), pos, null)
                 && !RectTransformUtility.RectangleContainsScreenPoint(infobox.GetComponent<RectTransform>(), pos, null)
-                )//&&!nichtInAnderen(pos)
+                )//&&!nichtInAnderen(pos,gameObject))
             {
                 ausserhalb = false;
             }
@@ -159,19 +160,24 @@ public class ERErstellung : MonoBehaviour
 
     }
 
-    private bool nichtInAnderen(Vector3 pos)
+    private bool nichtInAnderen(Vector3 pos, GameObject gameObject)
     {
         bool drin = false;
         if (modellObjekte.Count == 0)
         {
             return false;
         }
-        Rect rect1 = new Rect(Utilitys.GetMouseWorldPosition(pos)+new Vector3(-modellObjekte[0].GetComponent<RectTransform>().sizeDelta.x/2, modellObjekte[0].GetComponent<RectTransform>().sizeDelta.y/2), modellObjekte[0].GetComponent<RectTransform>().sizeDelta);
+        Debug.Log(pos + " " + (pos + new Vector3(gameObject.GetComponent<RectTransform>().sizeDelta.x / 2, gameObject.GetComponent<RectTransform>().sizeDelta.x / 2, 0)));
+
         foreach (GameObject go in modellObjekte)
         {
-            Rect rect2 = go.GetComponent<RectTransform>().rect;
-            Debug.Log(rect1 + " " + rect2);
-            if (rect1.Overlaps(rect2,true))
+            float minX = go.transform.position.x - go.GetComponent<RectTransform>().sizeDelta.x / 2;
+            float maxX = go.transform.position.x + go.GetComponent<RectTransform>().sizeDelta.x / 2;
+
+            float minY = go.transform.position.y - go.GetComponent<RectTransform>().sizeDelta.y / 2;
+            float maxY = go.transform.position.y + go.GetComponent<RectTransform>().sizeDelta.y / 2;
+            Debug.Log(minX + " " + go.transform.position.x + " " + maxX+" "+ Utilitys.GetMouseWorldPosition(pos).x);
+            if (Utilitys.GetMouseWorldPosition(pos).x>minX&& Utilitys.GetMouseWorldPosition(pos).x<maxX&& Utilitys.GetMouseWorldPosition(pos).y > minY && Utilitys.GetMouseWorldPosition(pos).y < maxY)
             {
                 drin = true;
                 Debug.Log("*");
