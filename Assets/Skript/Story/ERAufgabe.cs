@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 /* erstetzte Wörter:
     W = Wohncontainer
@@ -13,7 +13,7 @@ using UnityEngine;
 */
 public class ERAufgabe : MonoBehaviour
 {
-    public bool testModus = false ;
+    public bool testModus = true ;
 
     //Welche EM je Level
     private string[][] listeEntity = {
@@ -290,6 +290,8 @@ public class ERAufgabe : MonoBehaviour
         Utilitys.TextInTMP(dasIstSchonFertig, "");
 
         gespeicherteObjekteAus();
+    
+
     }
 
     // Update is called once per frame
