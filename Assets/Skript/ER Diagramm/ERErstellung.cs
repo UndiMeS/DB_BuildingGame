@@ -149,13 +149,37 @@ public class ERErstellung : MonoBehaviour
             pos = new Vector3(rand.Next(Screen.width / 10, 9 * Screen.width / 10), rand.Next(Screen.height / 6, 5 * Screen.height / 6), 0);
             if (!RectTransformUtility.RectangleContainsScreenPoint(aufgabentext.GetComponent<RectTransform>(), pos, null)
                 && !RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), pos, null)
-                && !RectTransformUtility.RectangleContainsScreenPoint(infobox.GetComponent<RectTransform>(), pos, null))
+                && !RectTransformUtility.RectangleContainsScreenPoint(infobox.GetComponent<RectTransform>(), pos, null)
+                )//&&!nichtInAnderen(pos)
             {
                 ausserhalb = false;
             }
                 }
         gameObject.transform.position = Utilitys.GetMouseWorldPosition(pos);
 
+    }
+
+    private bool nichtInAnderen(Vector3 pos)
+    {
+        bool drin = false;
+        if (modellObjekte.Count == 0)
+        {
+            return false;
+        }
+        Rect rect1 = new Rect(Utilitys.GetMouseWorldPosition(pos)+new Vector3(-modellObjekte[0].GetComponent<RectTransform>().sizeDelta.x/2, modellObjekte[0].GetComponent<RectTransform>().sizeDelta.y/2), modellObjekte[0].GetComponent<RectTransform>().sizeDelta);
+        foreach (GameObject go in modellObjekte)
+        {
+            Rect rect2 = go.GetComponent<RectTransform>().rect;
+            Debug.Log(rect1 + " " + rect2);
+            if (rect1.Overlaps(rect2,true))
+            {
+                drin = true;
+                Debug.Log("*");
+                break;
+            }
+        }
+       
+        return drin;
     }
 
     public GameObject zeichneLinie(GameObject last, GameObject select)

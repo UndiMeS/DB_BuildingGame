@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
@@ -9,14 +10,14 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
 {    //Aufgabentext je LvL    
     // \n da´mit Leerzeile erzeugt wird und Scrollview von oben sichtbar
     private string[] aufgabe = { 
-                    /*LvL 0*/  "\nUm den Mars mit Astronauten und Astronautinnen zu besiedeln werden Wohncontainer benötigt. Dafür wird die Entitymenge Wohncontainer angelegt. Alle Wohncontainer haben gemeinsame Eigenschaften, die Attribute. Sie haben bestimmte Baukosten eine genaue Bettenzahl, die die Menge an beherbergbaren Astronautinnen und Astronauten ausdrückt und ein Attribut für noch freie Betten. Jeder Container hat in der Siedlung eine eindeutige Containernummer, der Primärschlüssel.\n" ,
-                    /*LvL 1*/  "\nDie Astronauten können nur dann eingeflogen werden, wenn ausreichend Wohncontainer existieren. Astronaut ist daher eine schwache Entitymenge. (Hinweis: Schwache Entitymengen erkennst du im Spiel daran, dass damit mögliche Handlungen nur in der Anzeige der zugehörigen 'starken Entitymenge' möglich sind.) \nAstronauten wohnen in Wohncontainern (Beziehung 'wohnt'). Jeder Astronaut ist genau einem Container zugeordnet und teilt sich diesen mit anderen (Kardinaliät n:1). Alle Astronauten haben einen Namen und ein Geburtstag, worüber man sie eindeutig bestimmen kann. Für die Anreise fallen bestimmt Anreisegebühren an und jeder hat eine bestimmte Aufgabe in der Siedlung (Weideastronaut (Symbol Mistgabel), Forschungsastronaut (Symbol Reagenzglas) und Feldastronaut (Symbol Weizenähre)).\n",
-                    /*LvL 2*/  "\nEine Möglichkeit Erträge zu erzielen sind Feldsphären in denen Nahrung angebaut wird. Diese haben bestimmte Baukosten, eine genaue Arbeiterzahl und einen Ertrag, den du alle 5 Sol erhältst. Mehrere Astronauten arbeiten in einer Feldsphäre, wobei ein Astronaut nicht auf mehreren Feldsphären gleichzeitig arbeiten kann. Jede Feldsphäre kann eindeutig über ihre Feldnummer bestimmt werden.\n",
-                    /*LvL 3*/  "\nDie Siedlung dient vor allem der Forschung, um Sphären und Wohncontainer zu verbessern. Dafür werden Forschungsstationen gebaut. Eine Forschungsstation hat eine eindeutige Stationsnummer und Baukosten, sowie eine bestimmte Spezialisierung. Diese gibt an, für welchen Objekttyp in der Forschungsstation geforscht wird. Für eine Forschungsstation ist genau ein Forschungsastronaut (Reagenzglas) verantwortlich.\n",
-                    /*LvL 4*/  "\nVerbesserungen werden durch Forschungsprojekte erreicht. Forschungsprojekte können nur angelegt werden, wenn die passende Forschungsstation bereits existiert. Attribute von Sphären und Containern können mehrfach erforscht und so mehrfach verbessert werden. Ein Forschungsprojekt hat somit ein bestimmtes Forschungsmerkmal und eine Forschungsstufe. Darüber kann ein Forschungsprojekt eindeutig ermittelt werden. Jedes Forschungsprojekt erzielt einen Verbesserungsfaktor, benötigt eine bestimmte Arbeiterzahl und Projektkosten. Eine Forschungsstation organisiert mehrere Forschungsprojekte. Mehrere Astronauten können in einem Forschungsprojekt forschen, jedoch kann ein Astronaut nur an einem Projekt forschen. \nForschungsprojekte verbessern die Forschungsmerkmale immer für alle zukünftig gebauten Objekte. Ein Forschungsprojekt verbessert mehrere Wohncontainer. Zugleich können mehrere Projekte einen Wohncontainer verbessern.\n",
-                    /*LvL 5*/  "\nBislang können in der Siedlung neben Wohncontainer auch Feldsphären erbaut werden. Ein Forschungsprojekt verbessert daher auch mehrere Feldsphären. Zugleich können mehrere Projekte an einer Feldsphäre forschen. Neben der Verbesserung von Containern und Sphären kann einmalig ein Forschungsprojekt durchgeführt werden, dass an neuen Methoden forscht und so für alle zukünftigen Forschungsprojekte die Projektkosten verbessert. Diese Möglichkeit betrifft die Forschungsprojekte von jeder errichteten Forschungsstation.\n",
-                    /*LvL 6*/  "\nEine weitere Möglichkeit Erträge zu erzielen sind Weidesphären. Doch bevor wir diese anlegen, werden zunächst Nutztiere und Stallcontainer benötigt. Ein Stallcontainer hat Baukosten, eine eindeutige Containernummer, eine Gehegezahl und eine Anzahl der noch freien Gehege. Stallcontainer werden exakt wie Wohncontainer durch Forschungsprojekte verbessert. Mehrere Nutztiere wohnen in einem Stallcontainer. Ohne den Stallcontainer können Nutztiere nicht eingeflogen werden. Diese haben Transportkosten, einen Namen und eine Art. Jedes Nutztier kann eindeutig über Name und Art identifiziert werden.\n",
-                    /*LvL 7*/  "\nUm Erträge zu erhalten arbeiten mehrere Nutztiere auf einer Weidesphäre. Diese hat eine eindeutige Weidenummer, einen Ertrag, Baukosten, eine Tieranzahl und eine Arbeiterzahl, die sie benötigt. Somit arbeiten mehrere Astronauten in einer Weidesphäre, jedoch wie bei Feldsphären arbeitet ein Astronaut nur in einer Weidesphäre. Wie bei Feldsphären, werden zukünftig erbaute Weidesphären von einem Forschungsprojekt verbessert und mehrere Projekte können eine Weidesphäre verbessern.",
+                    /*LvL 0*/  "Um den Mars mit Astronauten und Astronautinnen zu besiedeln werden Wohncontainer benötigt. Dafür wird die Entitymenge Wohncontainer angelegt. Alle Wohncontainer haben gemeinsame Eigenschaften, die Attribute. Sie haben bestimmte Baukosten eine genaue Bettenzahl, die die Menge an beherbergbaren Astronautinnen und Astronauten ausdrückt und ein Attribut für noch freie Betten. Jeder Container hat in der Siedlung eine eindeutige Containernummer, der Primärschlüssel." ,
+                    /*LvL 1*/  "Die Astronauten können nur dann eingeflogen werden, wenn ausreichend Wohncontainer existieren. Astronaut ist daher eine schwache Entitymenge. (Hinweis: Schwache Entitymengen erkennst du im Spiel daran, dass damit mögliche Handlungen nur in der Anzeige der zugehörigen 'starken Entitymenge' möglich sind.) \nAstronauten wohnen in Wohncontainern (Beziehung 'wohnt'). Jeder Astronaut ist genau einem Container zugeordnet und teilt sich diesen mit anderen (Kardinaliät n:1). Alle Astronauten haben einen Namen und ein Geburtstag, worüber man sie eindeutig bestimmen kann. Für die Anreise fallen bestimmt Anreisegebühren an und jeder hat eine bestimmte Aufgabe in der Siedlung (Weideastronaut (Symbol Mistgabel), Forschungsastronaut (Symbol Reagenzglas) und Feldastronaut (Symbol Weizenähre)).",
+                    /*LvL 2*/  "Eine Möglichkeit Erträge zu erzielen sind Feldsphären in denen Nahrung angebaut wird. Diese haben bestimmte Baukosten, eine genaue Arbeiterzahl und einen Ertrag, den du alle 5 Sol erhältst. Mehrere Astronauten arbeiten in einer Feldsphäre, wobei ein Astronaut nicht auf mehreren Feldsphären gleichzeitig arbeiten kann. Jede Feldsphäre kann eindeutig über ihre Feldnummer bestimmt werden.",
+                    /*LvL 3*/  "Die Siedlung dient vor allem der Forschung, um Sphären und Wohncontainer zu verbessern. Dafür werden Forschungsstationen gebaut. Eine Forschungsstation hat eine eindeutige Stationsnummer und Baukosten, sowie eine bestimmte Spezialisierung. Diese gibt an, für welchen Objekttyp in der Forschungsstation geforscht wird. Für eine Forschungsstation ist genau ein Forschungsastronaut (Reagenzglas) verantwortlich.",
+                    /*LvL 4*/  "Verbesserungen werden durch Forschungsprojekte erreicht. Forschungsprojekte können nur angelegt werden, wenn die passende Forschungsstation bereits existiert. Attribute von Sphären und Containern können mehrfach erforscht und so mehrfach verbessert werden. Ein Forschungsprojekt hat somit ein bestimmtes Forschungsmerkmal und eine Forschungsstufe. Darüber kann ein Forschungsprojekt eindeutig ermittelt werden. Jedes Forschungsprojekt erzielt einen Verbesserungsfaktor, benötigt eine bestimmte Arbeiterzahl und Projektkosten. Eine Forschungsstation organisiert mehrere Forschungsprojekte. Mehrere Astronauten können in einem Forschungsprojekt forschen, jedoch kann ein Astronaut nur an einem Projekt forschen. \nForschungsprojekte verbessern die Forschungsmerkmale immer für alle zukünftig gebauten Objekte. Ein Forschungsprojekt verbessert mehrere Wohncontainer. Zugleich können mehrere Projekte einen Wohncontainer verbessern.",
+                    /*LvL 5*/  "Bislang können in der Siedlung neben Wohncontainer auch Feldsphären erbaut werden. Ein Forschungsprojekt verbessert daher auch mehrere Feldsphären. Zugleich können mehrere Projekte an einer Feldsphäre forschen. Neben der Verbesserung von Containern und Sphären kann einmalig ein Forschungsprojekt durchgeführt werden, dass an neuen Methoden forscht und so für alle zukünftigen Forschungsprojekte die Projektkosten verbessert. Diese Möglichkeit betrifft die Forschungsprojekte von jeder errichteten Forschungsstation.",
+                    /*LvL 6*/  "Eine weitere Möglichkeit Erträge zu erzielen sind Weidesphären. Doch bevor wir diese anlegen, werden zunächst Nutztiere und Stallcontainer benötigt. Ein Stallcontainer hat Baukosten, eine eindeutige Containernummer, eine Gehegezahl und eine Anzahl der noch freien Gehege. Stallcontainer werden exakt wie Wohncontainer durch Forschungsprojekte verbessert. Mehrere Nutztiere wohnen in einem Stallcontainer. Ohne den Stallcontainer können Nutztiere nicht eingeflogen werden. Diese haben Transportkosten, einen Namen und eine Art. Jedes Nutztier kann eindeutig über Name und Art identifiziert werden.",
+                    /*LvL 7*/  "Um Erträge zu erhalten arbeiten mehrere Nutztiere auf einer Weidesphäre. Diese hat eine eindeutige Weidenummer, einen Ertrag, Baukosten, eine Tieranzahl und eine Arbeiterzahl, die sie benötigt. Somit arbeiten mehrere Astronauten in einer Weidesphäre, jedoch wie bei Feldsphären arbeitet ein Astronaut nur in einer Weidesphäre. Wie bei Feldsphären, werden zukünftig erbaute Weidesphären von einem Forschungsprojekt verbessert und mehrere Projekte können eine Weidesphäre verbessern.",
                                 
                     /*LvL Ziel*/   //ZIELAUFGABE FEHLT NOCH
                                 };
@@ -71,19 +72,14 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     public GameObject restKlicks;
     public GameObject absolutKlicks;
     public static bool werteGesetzt = false; //Wird in ERAufgabe.cs auf false gesetzt, wenn ER-Level erfüllt wurde.
-    private int[] lvlKlicks; // { 11, 15, 10, 10, 13, 6, 13, 12 }; //Klickguthaben der einzelnen Levels
+    private int[] lvlKlicks = new int[] { 20, 20, 15, 10, 10, 6, 12, 12, 0, 0 }; //Klickguthaben der einzelnen Levels
     private List<int>[] geklickteWörter;
+    private int storyChanged=0; //setzt Scrollview nach oben
+    public ScrollRect scrollview;
 
     private void Start()
     {
-        if (ERAufgabe.testModus)
-        {
-            lvlKlicks = new int[] { 50,50, 50, 50, 50, 50, 50, 50, 0, 0};
-        }
-        else
-        {
-            lvlKlicks = new int[] { 11, 15, 15, 10, 10, 6, 12, 12, 0, 0};
-        }
+        
         geklickteWörter=  new List<int>[] { new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { } };
 
         m_TextMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
@@ -120,6 +116,13 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                 werteGesetzt = true;
             }
         }
+        //setzt Scrollview nach oben
+        if (Story.level != storyChanged)
+        {
+            scrollview.normalizedPosition = new Vector2(0, 1);
+            storyChanged = Story.level;
+        }
+       
         //wenn markiert und dann Textgeschlossen marikierung wird aufgelöst, deshlab werden geklickte Wörter gespeichert und immer neu gefärbt
         foreach (int ind in geklickteWörter[Story.level])
         {
