@@ -92,10 +92,8 @@ public class Tutorial : MonoBehaviour
             
             if(beschreibungER.activeSelf){
                 pfeilER.SetActive(false);
-                //pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
             }else{
                 pfeilER.SetActive(true);
-                //pfeilER.transform.localPosition = new Vector3(844,132,0);
             }
             
 
@@ -136,12 +134,14 @@ public class Tutorial : MonoBehaviour
             pfeilSpiel.transform.localPosition = new Vector3(637,177,0);
             FehlerAnzeige.tutorialtext_Spiel = "Sehr gut! Um nun auch Astronauten einzufliegen, erweitere dein ER-Diagramm!";
             FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Hinweis: Wird eine Entitymenge als 'schwach' gekennzeichnet, wird automatisch auch eine schwache Relation erzeugt! ";
+            pfeilER.transform.localPosition = new Vector3(612,100,0);
+
             if(beschreibungER.activeSelf){
                 pfeilER.SetActive(false);
                 //pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
             }else{
                 pfeilER.SetActive(true);
-                pfeilER.transform.localPosition = new Vector3(844,132,0);
+                
             }
             missionClick = false;
             bZusatz.interactable = false;
@@ -151,7 +151,7 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "Schau dir deine neue Mission an!";
             FehlerAnzeige.tutorialtext_ER = "Fabelhaft! Wechsel nun erneut in die Siedlung und erfülle deine nächste Mission!";
             pfeilER.SetActive(true);
-            pfeilER.transform.localPosition = new Vector3(844,221,0);
+            pfeilER.transform.localPosition = new Vector3(612,177,0);
             pfeilSpiel.transform.localPosition = new Vector3(637,100,0);
             //Prüfe, ob Missionsbutten gedrückt wurde
             if(missionClick){
@@ -182,9 +182,9 @@ public class Tutorial : MonoBehaviour
                 FehlerAnzeige.tutorialtext_Spiel = "Bei knappen Ressourcen kannst du auch eine Zusatzaufgabe lösen, um weiter zu bauen! Öffne eine Zusatzaufgabe!";
                 FehlerAnzeige.tutorialtext_ER = "Super! Im Baumenü sind nun Feldsphären freigeschaltet. Auch Feldastronauten leben bereits in der Siedlung. Auf geht's in die neue Mission!";
                 pfeilSpiel.transform.localPosition = new Vector3(637,23,0);
-                pfeilER.transform.localPosition = new Vector3(844,221,0);
+                pfeilER.transform.localPosition = new Vector3(612,177,0);
                 if(firstTime == true){
-                    popUpGameObject(buttonZusatz);
+                    //popUpGameObject(buttonZusatz);
                     firstTime = false;
                 }
             }

@@ -45,7 +45,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
 
     private List<string>[] beziehungen = {
                  /*LvL 0*/ new List<string> {  },
-                 /*LvL 1*/ new List<string>{"wohnt", "wohnen", "Wohncontainer"},
+                 /*LvL 1*/ new List<string>{"wohnt", "wohnen"},
                  /*LvL 2*/ new List<string>{"arbeiten"},
                  /*LvL 3*/ new List<string>{"verantwortlich"},
                  /*LvL 4*/ new List<string>{"organisiert","verbessert","forschen","forscht"},
@@ -74,8 +74,6 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     public static bool werteGesetzt = false; //Wird in ERAufgabe.cs auf false gesetzt, wenn ER-Level erfüllt wurde.
     private int[] lvlKlicks = new int[] { 20, 20, 15, 10, 10, 6, 12, 12, 0, 0 }; //Klickguthaben der einzelnen Levels
     private List<int>[] geklickteWörter;
-    private int storyChanged=0; //setzt Scrollview nach oben
-    public ScrollRect scrollview;
 
     private void Start()
     {
@@ -116,12 +114,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                 werteGesetzt = true;
             }
         }
-        //setzt Scrollview nach oben
-        if (Story.level != storyChanged)
-        {
-            scrollview.normalizedPosition = new Vector2(0, 1);
-            storyChanged = Story.level;
-        }
+
        
         //wenn markiert und dann Textgeschlossen marikierung wird aufgelöst, deshlab werden geklickte Wörter gespeichert und immer neu gefärbt
         foreach (int ind in geklickteWörter[Story.level])

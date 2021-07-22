@@ -38,7 +38,7 @@ public class ERAufgabe : MonoBehaviour
                                         new string[] { "4", "freie Betten", "freieBetten", "Betten frei", "Freie Betten", "FreieBetten", "BettenFrei", "Bettenfrei" }
                                         };
     private string[][] astronaut = {
-                                        new string[] { "1","Anreisegebühr","Anreisegebühren", "Kosten", "Gebühren", "Reisekosten", "Preis" },
+                                        new string[] { "1","Anreisegebühr","Anreisegebühren","Anreisekosten", "Kosten", "Gebühren", "Reisekosten", "Preis" },
                                         new string[] { "2","Aufgabe", "Beruf", "Job", "Art"},
                                         new string[] { "3", "Name", "Namen"},
                                         new string[] { "4", "Geburtsdatum", "Geburtstag", "Datum"}
