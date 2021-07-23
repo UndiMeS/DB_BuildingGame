@@ -20,18 +20,9 @@ public class WeidenTabelle : MonoBehaviour
         Tabelle.SetActive(true);
         alleTabelle.SetActive(true);
 
-        int size = Testing.weiden.Count;
-        scrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(prefabTabelle.GetComponent<RectTransform>().sizeDelta.x, prefabTabelle.GetComponent<RectTransform>().sizeDelta.y * size);
-        prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
-
-        int i = 0;
         foreach (Weide weide in Testing.weiden)
         {
-
-            scrollContent.transform.position.Set(0, 0, 0);
             GameObject zeile = Instantiate(prefabTabelle, scrollContent.transform);
-            Vector3 pos = i * new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y + 4, 0);
-            zeile.transform.localPosition = pos;
             zeilenListe.Add(zeile);
 
             Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, weide.weidennummer);
@@ -39,13 +30,7 @@ public class WeidenTabelle : MonoBehaviour
             Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, weide.arbeiter); 
             Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, weide.tiere);
             Utilitys.TextInTMP(zeile.transform.GetChild(4).gameObject, weide.ertrag);
-
-            i++;
-
         }
-
-        prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
-
     }
     public void alleWeidenTabelleAus()
     {

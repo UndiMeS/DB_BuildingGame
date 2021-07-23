@@ -203,8 +203,25 @@ public class Beziehung : MonoBehaviour
 
     public void erstelleBeziehung()
     {
-        welcheEntity(1, 0, false);
-        welcheEntity(2, 0, false);
+        GameObject ent = ERErstellung.selectedGameObjekt;
+        int counter = -1;
+        if (ent.CompareTag("Attribut"))
+        {
+            ent = ent.transform.parent.gameObject;
+        }
+        foreach (GameObject go in ERErstellung.modellObjekte)
+        {
+            if (go.CompareTag("Entitaet") && go.Equals(ent))
+            {
+                break;
+            }else if (go.CompareTag("Entitaet"))
+            {
+                counter++;
+            }
+        }
+        Debug.Log(counter);
+        welcheEntity(1, counter, false);
+        welcheEntity(2, counter, false);
     }
 
     private void positionOfKardinalitaet(GameObject kardtext, GameObject objekt, int offset)   //offset =  0-keiner, 1- rechts, 2-Links

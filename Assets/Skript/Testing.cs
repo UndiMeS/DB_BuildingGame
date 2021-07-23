@@ -13,8 +13,8 @@ public class Testing : MonoBehaviour
     public GameObject fehlermeldung;
 
     //Grundlegende Werte, die verändert werden können
-    public static int weite=20;
-    public static int hoehe=20;
+    public static int weite=19;
+    public static int hoehe=13;
     public static int zellengroesse = 10;
     public static Gitter grid;
 

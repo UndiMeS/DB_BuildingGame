@@ -28,25 +28,16 @@ public class WohncontainerTabelle : MonoBehaviour
     }
 
     public void wohnendeAstroTabelleAn()
-    {
-        
+    {        
         PauseMenu.SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
 
         Tabelle.SetActive(true);
         wohnendeTabelle.SetActive(true);
-        int size = GebaeudeAnzeige.gebaeude.GetComponent<Wohncontainer>().bewohner.Count;
-        bewohnerScrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(prefabTabelle.GetComponent<RectTransform>().sizeDelta.x, prefabTabelle.GetComponent<RectTransform>().sizeDelta.y * size);
-        prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
-
-        int i = 0;
 
         foreach (Mensch mensch in GebaeudeAnzeige.gebaeude.GetComponent<Wohncontainer>().bewohner)
         {
-            bewohnerScrollContent.transform.position.Set(0, 0, 0);
             GameObject zeile = Instantiate(prefabTabelle, bewohnerScrollContent.transform);
-            Vector3 pos = i * new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y + 4, 0);
-            zeile.transform.localPosition = pos;
             zeilenListe.Add(zeile);
 
             Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, mensch.containerNummer);
@@ -54,11 +45,7 @@ public class WohncontainerTabelle : MonoBehaviour
             Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, mensch.geburtstag);
             Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, mensch.aufgabe);
             Utilitys.TextInTMP(zeile.transform.GetChild(4).gameObject, mensch.anreisegebuehr);
-
-            i++;
-
         }
-        prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
     }
     public void wohnendeAstroTabelleAus()
     {
@@ -76,28 +63,15 @@ public class WohncontainerTabelle : MonoBehaviour
 
     public void alleAstroTabelleAn()
     {
-       PauseMenu.SpielIstPausiert = true;
+        PauseMenu.SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
 
         Tabelle.SetActive(true);
         alleTabelle.SetActive(true);
-        int size = 0;
-        foreach (Wohncontainer wohn in Testing.wohncontainer)
-        {
-            size += wohn.bewohner.Count;
-        }
 
-
-        alleScrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(prefabTabelle.GetComponent<RectTransform>().sizeDelta.x, prefabTabelle.GetComponent<RectTransform>().sizeDelta.y * size);
-        prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
-
-        int i = 0;
         foreach (Mensch mensch in Testing.menschen)
         {
-            alleScrollContent.transform.position.Set(0, 0, 0);
             GameObject zeile = Instantiate(prefabTabelle, alleScrollContent.transform);
-            Vector3 pos = i * new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y + 4, 0);
-            zeile.transform.localPosition = pos;
             zeilenListe.Add(zeile);
 
             Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, mensch.containerNummer);
@@ -105,9 +79,7 @@ public class WohncontainerTabelle : MonoBehaviour
             Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, mensch.geburtstag);
             Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, mensch.aufgabe);
             Utilitys.TextInTMP(zeile.transform.GetChild(4).gameObject, mensch.anreisegebuehr);
-            i++;
         }
-        prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
     }
     public void alleAstroTabelleAus()
     {
@@ -147,28 +119,17 @@ public class WohncontainerTabelle : MonoBehaviour
 
         Tabelle.SetActive(true);
         wohncontainerTabelle.SetActive(true);
-        int size = Testing.wohncontainer.Count;
-        wohnScrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(prefabTabelle.GetComponent<RectTransform>().sizeDelta.x, prefabTabelle.GetComponent<RectTransform>().sizeDelta.y * size);
-        wohnprefab.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
-
-        int i = 0;
-
+       
         foreach (Wohncontainer container in Testing.wohncontainer)
         {
-            wohnScrollContent.transform.position.Set(0, 0, 0);
             GameObject zeile = Instantiate(wohnprefab, wohnScrollContent.transform);
-            Vector3 pos = i * new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y + 4, 0);
-            zeile.transform.localPosition = pos;
             zeilenListe.Add(zeile);
 
             Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, container.containernummer);
             Utilitys.TextInTMP(zeile.transform.GetChild(1).gameObject, container.baukosten);
             Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, container.bettenanzahl);
             Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, container.freieBetten);
-            i++;
-
         }
-        wohnprefab.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
     }
     public void wohnTabelleAus()
     {

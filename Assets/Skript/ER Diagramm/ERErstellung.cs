@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System;
 using Random = System.Random;
@@ -146,45 +147,46 @@ public class ERErstellung : MonoBehaviour
         Random rand = new Random();
         Vector3 pos= new Vector3();
         bool ausserhalb = true;
+        int zaehler = 0;
         while (ausserhalb) {
+            zaehler++;
             pos = new Vector3(rand.Next(Screen.width / 10, 9 * Screen.width / 10), rand.Next(Screen.height / 6, 5 * Screen.height / 6), 0);
+            gameObject.transform.position = Utilitys.GetMouseWorldPosition(pos);
             if (!RectTransformUtility.RectangleContainsScreenPoint(aufgabentext.GetComponent<RectTransform>(), pos, null)
                 && !RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), pos, null)
                 && !RectTransformUtility.RectangleContainsScreenPoint(infobox.GetComponent<RectTransform>(), pos, null)
-                )//&&!nichtInAnderen(pos,gameObject))
+                &&!nichtInAnderen(gameObject))
+            {                
+                ausserhalb = false;
+            }
+            //Grenze, denn sonst wird es zur Unendlich Schleife
+            if (zaehler>40
+                && !RectTransformUtility.RectangleContainsScreenPoint(aufgabentext.GetComponent<RectTransform>(), pos, null)
+                && !RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), pos, null)
+                && !RectTransformUtility.RectangleContainsScreenPoint(infobox.GetComponent<RectTransform>(), pos, null)) 
             {
                 ausserhalb = false;
             }
-                }
-        gameObject.transform.position = Utilitys.GetMouseWorldPosition(pos);
-
+        }
     }
 
-    private bool nichtInAnderen(Vector3 pos, GameObject gameObject)
+    private bool nichtInAnderen(GameObject gameObject)
     {
         bool drin = false;
-        if (modellObjekte.Count == 0)
-        {
-            return false;
-        }
-        Debug.Log(pos + " " + (pos + new Vector3(gameObject.GetComponent<RectTransform>().sizeDelta.x / 2, gameObject.GetComponent<RectTransform>().sizeDelta.x / 2, 0)));
-
+        Vector3[] ecken= new Vector3[4];
+        gameObject.GetComponent<RectTransform>().GetWorldCorners(ecken);
+          
         foreach (GameObject go in modellObjekte)
-        {
-            float minX = go.transform.position.x - go.GetComponent<RectTransform>().sizeDelta.x / 2;
-            float maxX = go.transform.position.x + go.GetComponent<RectTransform>().sizeDelta.x / 2;
-
-            float minY = go.transform.position.y - go.GetComponent<RectTransform>().sizeDelta.y / 2;
-            float maxY = go.transform.position.y + go.GetComponent<RectTransform>().sizeDelta.y / 2;
-            Debug.Log(minX + " " + go.transform.position.x + " " + maxX+" "+ Utilitys.GetMouseWorldPosition(pos).x);
-            if (Utilitys.GetMouseWorldPosition(pos).x>minX&& Utilitys.GetMouseWorldPosition(pos).x<maxX&& Utilitys.GetMouseWorldPosition(pos).y > minY && Utilitys.GetMouseWorldPosition(pos).y < maxY)
+        {            
+            if (RectTransformUtility.RectangleContainsScreenPoint(go.GetComponent<RectTransform>(), ecken[0], null)
+                || RectTransformUtility.RectangleContainsScreenPoint(go.GetComponent<RectTransform>(), ecken[1], null)
+                || RectTransformUtility.RectangleContainsScreenPoint(go.GetComponent<RectTransform>(), ecken[2], null)
+                || RectTransformUtility.RectangleContainsScreenPoint(go.GetComponent<RectTransform>(), ecken[3], null))
             {
                 drin = true;
-                Debug.Log("*");
                 break;
             }
-        }
-       
+        }       
         return drin;
     }
 

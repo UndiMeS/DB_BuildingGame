@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class ProjektTabelle : MonoBehaviour
 {
-    public bool stationsprojekte = false;
-    public bool alleProjekte = false;
-
     public GameObject Tabelle;
     public GameObject stationsprojekteTabelle;
     public GameObject alleProjekteTabelle;
@@ -27,35 +24,19 @@ public class ProjektTabelle : MonoBehaviour
 
         Tabelle.SetActive(true);
         stationsprojekteTabelle.SetActive(true);
-        stationsprojekte = true;
 
-        int size = GebaeudeAnzeige.gebaeude.GetComponent<Forschung>().projekte.Count;
-        
-        stationScrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(prefabTabelle.GetComponent<RectTransform>().sizeDelta.x, prefabTabelle.GetComponent<RectTransform>().sizeDelta.y * size);
-        prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
+        foreach (Projekt projekt in GebaeudeAnzeige.gebaeude.GetComponent<Forschung>().projekte)
+        {
+            GameObject zeile = Instantiate(prefabTabelle, stationScrollContent.transform);
+            zeilenListe.Add(zeile);
 
-        int i = 0;
-                    foreach (Projekt projekt in GebaeudeAnzeige.gebaeude.GetComponent<Forschung>().projekte)
-            {
-                stationScrollContent.transform.position.Set(0, 0, 0);
-                GameObject zeile = Instantiate(prefabTabelle, stationScrollContent.transform);
-                Vector3 pos = i * new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y + 4, 0);
-                zeile.transform.localPosition = pos;
-                zeilenListe.Add(zeile);
-
-                Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, projekt.stationsnummer);
-                Utilitys.TextInTMP(zeile.transform.GetChild(1).gameObject, projekt.merkmal);
-                Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, projekt.stufe);
-                Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, projekt.kosten);
-                Utilitys.TextInTMP(zeile.transform.GetChild(4).gameObject, projekt.forscheranzahl);
-                Utilitys.TextInTMP(zeile.transform.GetChild(5).gameObject, projekt.verbesserungsfaktor);
-
-                i++;
-            
+            Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, projekt.stationsnummer);
+            Utilitys.TextInTMP(zeile.transform.GetChild(1).gameObject, projekt.merkmal);
+            Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, projekt.stufe);
+            Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, projekt.kosten);
+            Utilitys.TextInTMP(zeile.transform.GetChild(4).gameObject, projekt.forscheranzahl);
+            Utilitys.TextInTMP(zeile.transform.GetChild(5).gameObject, projekt.verbesserungsfaktor);
         }
-
-        prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
-
     }
     public void stationsProjekteTabelleAus()
     {
@@ -64,7 +45,6 @@ public class ProjektTabelle : MonoBehaviour
 
         Tabelle.SetActive(false);
         stationsprojekteTabelle.SetActive(false);
-        stationsprojekte = false;
 
         foreach (GameObject zeile in zeilenListe)
         {
@@ -79,43 +59,20 @@ public class ProjektTabelle : MonoBehaviour
 
         Tabelle.SetActive(true);
         alleProjekteTabelle.SetActive(true);
-        alleProjekte = true;
-        int size = 0;
-        foreach (Forschung station in Testing.forschungsstationen)
+        foreach (Projekt projekt in Testing.forschungsprojekte)
         {
-            size += station.projekte.Count;
+            GameObject zeile = Instantiate(prefabTabelle, alleScrollContent.transform);
+            zeilenListe.Add(zeile);
+
+            Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, projekt.stationsnummer);
+            Utilitys.TextInTMP(zeile.transform.GetChild(1).gameObject, projekt.merkmal);
+            Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, projekt.stufe);
+            Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, projekt.kosten);
+            Utilitys.TextInTMP(zeile.transform.GetChild(4).gameObject, projekt.forscheranzahl);
+            Utilitys.TextInTMP(zeile.transform.GetChild(5).gameObject, projekt.verbesserungsfaktor);
         }
-
-
-        alleScrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(prefabTabelle.GetComponent<RectTransform>().sizeDelta.x, prefabTabelle.GetComponent<RectTransform>().sizeDelta.y * size);
-        prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
-
-        int i = 0;
-        foreach (Forschung station in Testing.forschungsstationen)
-        {
-
-            foreach (Projekt projekt in station.projekte)
-            {
-                alleScrollContent.transform.position.Set(0, 0, 0);
-                GameObject zeile = Instantiate(prefabTabelle, alleScrollContent.transform);
-                Vector3 pos = i * new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y + 4, 0);
-                zeile.transform.localPosition = pos;
-                zeilenListe.Add(zeile);
-
-                Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, projekt.stationsnummer);
-                Utilitys.TextInTMP(zeile.transform.GetChild(1).gameObject, projekt.merkmal);
-                Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, projekt.stufe);
-                Utilitys.TextInTMP(zeile.transform.GetChild(3).gameObject, projekt.kosten);
-                Utilitys.TextInTMP(zeile.transform.GetChild(4).gameObject, projekt.forscheranzahl);
-                Utilitys.TextInTMP(zeile.transform.GetChild(5).gameObject, projekt.verbesserungsfaktor);
-
-                i++;
-            }
-        }
-
-        prefabTabelle.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
-
     }
+
     public void alleProjekteTabelleAus()
     {
         PauseMenu.SpielIstPausiert = false;
@@ -123,7 +80,6 @@ public class ProjektTabelle : MonoBehaviour
 
         Tabelle.SetActive(false);
         alleProjekteTabelle.SetActive(false);
-        alleProjekte = false;
 
         foreach (GameObject zeile in zeilenListe)
         {
@@ -138,27 +94,16 @@ public class ProjektTabelle : MonoBehaviour
 
         Tabelle.SetActive(true);
         stationenTabelle.SetActive(true);
-        int size = Testing.wohncontainer.Count;
-        forsstationScrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(prefabTabelle.GetComponent<RectTransform>().sizeDelta.x, prefabTabelle.GetComponent<RectTransform>().sizeDelta.y * size);
-        prefabStation.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
-
-        int i = 0;
-
+       
         foreach (Forschung container in Testing.forschungsstationen)
-        {
-            forsstationScrollContent.transform.position.Set(0, 0, 0);
+        { 
             GameObject zeile = Instantiate(prefabStation, forsstationScrollContent.transform);
-            Vector3 pos = i * new Vector3(0, -zeile.GetComponent<RectTransform>().sizeDelta.y + 4, 0);
-            zeile.transform.localPosition = pos;
             zeilenListe.Add(zeile);
 
             Utilitys.TextInTMP(zeile.transform.GetChild(0).gameObject, container.stationsnummer);
             Utilitys.TextInTMP(zeile.transform.GetChild(1).gameObject, container.baukosten);
             Utilitys.TextInTMP(zeile.transform.GetChild(2).gameObject, container.spezialisierung);
-            i++;
-
         }
-        prefabStation.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
     }
     public void stationTabelleAus()
     {
