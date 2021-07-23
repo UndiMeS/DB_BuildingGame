@@ -173,7 +173,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                 TMP_WordInfo info = m_TextMeshPro.textInfo.wordInfo[index];
                 Color farbe = Color.black;
                 if (entitys[Story.level].Contains(info.GetWord()) && entAttBez == "")
-                { farbe = Color.red;
+                { farbe = new Color(1, 0.65f, 0);
                     wasgefunden = true;
                 entAttBez = "Ent";
                 }

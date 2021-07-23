@@ -20,6 +20,9 @@ public class Tutorial : MonoBehaviour
     private bool rotationTemp = true;
     public GameObject containerKiller;
     public GameObject wohncontainerHilfe;
+    public GameObject wohncontainerHilfeAlle;
+    public GameObject pfeilLeisteUnten;
+    public GameObject klickPreil;
 
     //Elemente aus Spiel
     public GameObject buttonER;
@@ -33,6 +36,7 @@ public class Tutorial : MonoBehaviour
     Button bZusatz;
     public GameObject beschreibungER;
     public GameObject wohncontainerGebaeudeanzeige;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +75,9 @@ public class Tutorial : MonoBehaviour
         bMission.interactable = true;
         containerKiller.SetActive(false);
         wohncontainerHilfe.SetActive(false);
+        pfeilLeisteUnten.SetActive(false);
+        klickPreil.SetActive(false);
+
         
 
         //Zeitpunkt: Neues Spiel gestartet und Wechsel in ER-Editor
@@ -81,11 +88,16 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, folge dem roten Pfeil und öffne zuerst den ER-Editor!";
             if(beschreibungClick == false){
                 FehlerAnzeige.tutorialtext_ER = "Erstelle ein ER-Diagramm mit der Leiste am unteren Bildschrimrand anhand der ER-Beschreibung (scrollbar!). Öffne die Beschreibung (roter Pfeil)";
+                pfeilLeisteUnten.SetActive(true);
+                klickPreil.SetActive(false);
+
             }
             
             if(beschreibungClick){
                 if(!FehlerAnzeige.tutorialtext_ER.Equals("Du kannst für dieses Teildiagramm auf noch 10 Wörter klicken, um richtige Schlüsselwörter herauszufinden und zu markieren!")){
                     FehlerAnzeige.tutorialtext_ER = "Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehakt. 'Primärschlüssel' wird abgehakt, wenn die entsprechenden Attribute richtig gekennzeichnet sind.\n Tipp: Klicke in das Beschreibungsfeld!";
+                    pfeilLeisteUnten.SetActive(false);
+                    klickPreil.SetActive(true);
                 }   
             }
             
@@ -160,6 +172,9 @@ public class Tutorial : MonoBehaviour
                 pfeilSpiel.SetActive(false);
                 if(wohncontainerGebaeudeanzeige.activeSelf){
                     wohncontainerHilfe.SetActive(true);
+                    if(Testing.feldarbeiter >= 1){
+                        wohncontainerHilfeAlle.SetActive(true);
+                    }
                 }
             }
             
