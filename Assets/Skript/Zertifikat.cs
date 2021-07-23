@@ -12,6 +12,7 @@ using System;
 public class Zertifikat : MonoBehaviour
 {
     string path = null;
+    public GameObject outro;
 
     // Start is called before the first frame update
     void Start()
@@ -29,11 +30,6 @@ public class Zertifikat : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void Bye()
-    {
-        Invoke("PrintFiles",4);
     }
 
     public void CreatePDF()
@@ -78,8 +74,7 @@ public class Zertifikat : MonoBehaviour
         myPage = null;
         myDoc = null; 
 
-        //Button erstellt erst PDF und ruft dann GO() auf (Drucken PDF und  Spiel beendet (ladeMenu))
-        Bye();
+        Invoke("PrintFiles",2);
     }
     public void PrintFiles() 
     {
@@ -109,5 +104,15 @@ public class Zertifikat : MonoBehaviour
         //Beende Spiel und lade Menu
         Testing.resetAll();
         SceneManager.LoadScene(0);
+    }
+
+    public void OpenOutro()
+    {
+        Invoke("Outro",4);
+    }
+
+    void Outro()
+    {
+        outro.SetActive(true);
     }
 }
