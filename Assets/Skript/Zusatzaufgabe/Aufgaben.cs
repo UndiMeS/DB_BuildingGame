@@ -265,7 +265,10 @@ public class Aufgaben : MonoBehaviour
         toggleKiller2.SetActive(false);
         toogle.init();
         toogle.toggleOff();
-        gameObject.GetComponent<Image>().sprite = aufgabenListe[welcheAufgabe];
+        if (welcheAufgabe < aufgabenListe.Length)
+        {
+            gameObject.GetComponent<Image>().sprite = aufgabenListe[welcheAufgabe];
+        }
         exitKnopfHinweis.SetActive(false);
         clearAnzeige();
         checkButton.SetActive(true);

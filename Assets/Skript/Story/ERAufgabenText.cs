@@ -72,8 +72,11 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     public GameObject restKlicks;
     public GameObject absolutKlicks;
     public static bool werteGesetzt = false; //Wird in ERAufgabe.cs auf false gesetzt, wenn ER-Level erfüllt wurde.
-    private int[] lvlKlicks = new int[] { 20, 20, 15, 10, 10, 6, 12, 12, 0, 0 }; //Klickguthaben der einzelnen Levels
+    private int[] lvlKlicks = new int[] { 10,15, 15, 10, 20, 6, 12, 12, 0, 0 }; //Klickguthaben der einzelnen Levels
     private List<int>[] geklickteWörter;
+
+    private int storyChanged = 0; //setzt Scrollview nach oben
+    public ScrollRect scrollview;
 
     private void Start()
     {
@@ -115,7 +118,13 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
             }
         }
 
-       
+        //setzt Scrollview nach oben
+        if (Story.level != storyChanged)
+        {
+            scrollview.normalizedPosition = new Vector2(0, 1);
+            storyChanged = Story.level;
+        }
+
         //wenn markiert und dann Textgeschlossen marikierung wird aufgelöst, deshlab werden geklickte Wörter gespeichert und immer neu gefärbt
         foreach (int ind in geklickteWörter[Story.level])
         {

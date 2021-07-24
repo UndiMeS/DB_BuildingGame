@@ -7,7 +7,7 @@ public class Spielwerte : MonoBehaviour
 
     public static void Werte()
     {
-        Testing.geld = 3500000;//350;
+        Testing.geld = 350;//350;
         Testing.feldarbeiter = 0;
         Testing.forscher = 0;
         Testing.tierpfleger = 0;

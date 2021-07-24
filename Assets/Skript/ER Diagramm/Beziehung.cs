@@ -219,7 +219,6 @@ public class Beziehung : MonoBehaviour
                 counter++;
             }
         }
-        Debug.Log(counter);
         welcheEntity(1, counter, false);
         welcheEntity(2, counter, false);
     }
