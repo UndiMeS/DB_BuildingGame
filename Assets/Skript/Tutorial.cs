@@ -22,7 +22,7 @@ public class Tutorial : MonoBehaviour
     public GameObject wohncontainerHilfe;
     public GameObject wohncontainerHilfeAlle;
     public GameObject pfeilLeisteUnten;
-    public GameObject klickPreil;
+    public GameObject klickPfeil;
     public GameObject pfeilErtrag;
 
     //Elemente aus Spiel
@@ -78,7 +78,7 @@ public class Tutorial : MonoBehaviour
         containerKiller.SetActive(false);
         wohncontainerHilfe.SetActive(false);
         pfeilLeisteUnten.SetActive(false);
-        klickPreil.SetActive(false);
+        klickPfeil.SetActive(false);
 
         
 
@@ -91,7 +91,7 @@ public class Tutorial : MonoBehaviour
             if(beschreibungClick == false){
                 FehlerAnzeige.tutorialtext_ER = "Erstelle ein ER-Diagramm mit der Leiste am unteren Bildschrimrand anhand der ER-Beschreibung (scrollbar!). Öffne die Beschreibung (roter Pfeil)";
                 pfeilLeisteUnten.SetActive(true);
-                klickPreil.SetActive(false);
+                klickPfeil.SetActive(false);
 
             }
             
@@ -99,7 +99,7 @@ public class Tutorial : MonoBehaviour
                 if(!FehlerAnzeige.tutorialtext_ER.Equals("Du kannst für dieses Teildiagramm auf noch 10 Wörter klicken, um richtige Schlüsselwörter herauszufinden und zu markieren!")){
                     FehlerAnzeige.tutorialtext_ER = "Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehakt. 'Primärschlüssel' wird abgehakt, wenn die entsprechenden Attribute richtig gekennzeichnet sind.\n Tipp: Klicke in das Beschreibungsfeld!";
                     pfeilLeisteUnten.SetActive(false);
-                    klickPreil.SetActive(true);
+                    klickPfeil.SetActive(true);
                 }   
             }
             
@@ -108,6 +108,7 @@ public class Tutorial : MonoBehaviour
                 pfeilER.SetActive(false);
             }else{
                 pfeilER.SetActive(true);
+                klickPfeil.SetActive(false);
             }
             
 
