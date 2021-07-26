@@ -70,7 +70,7 @@ public class Aufgaben : MonoBehaviour
         correct[16] = "A";
         correct[17] = "B";
         correct[18] = "C";
-        correct[19] = "B";
+        correct[19] = "D";
         correct[20] = "D";
         correct[21] = "A";
         correct[22] = "D";
@@ -110,10 +110,13 @@ public class Aufgaben : MonoBehaviour
         secondchance[23] = "Tipp: Ein Kunde kauft an einem gewissen Tag in dem Geschäft ein und bezahlt einen bestimmten Preis. Und wir benötigen noch einen Primärschlüssel!";
         secondchance[24] = "An einem Tag werden in dem Sporthaus 300 Rechnungen ausgestellt. Welche Attributwerte könnten doppelt vorkommen?";
         secondchance[25] = "Das ist die letzte Aufgabe! Alle Antwortmöglichkeiten wurden in vorherigen Aufgaben thematisiert! Versuche es nochmal!";
-    
-    
-        
-    
+
+    }
+    public void Update()
+    {
+        if(welcheAufgabe >= 26){
+            zusatzButton.SetActive(false);
+        }        
     }
     /*
     *Prüfen der Eingabe und drücken auf Button

@@ -111,7 +111,7 @@ public class ObjektBewegung : MonoBehaviour
             if (Testing.geld < Wohncontainer.preis)
             {
                 GebaeudeInfoBauen.wertFest = 1;
-                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld";
+                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
                 return false;
             }
             else
@@ -126,7 +126,7 @@ public class ObjektBewegung : MonoBehaviour
             {
                 GebaeudeInfoBauen.wertFest = 2;
 
-                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld";
+                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
                 return false;
             }
             else
@@ -141,7 +141,7 @@ public class ObjektBewegung : MonoBehaviour
             {
                 GebaeudeInfoBauen.wertFest = 3;
 
-                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld";
+                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
                 return false;
             }
             else
@@ -156,7 +156,7 @@ public class ObjektBewegung : MonoBehaviour
             {
                 GebaeudeInfoBauen.wertFest = 4;
 
-                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld";
+                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
                 return false;
             }
             else
@@ -171,7 +171,7 @@ public class ObjektBewegung : MonoBehaviour
             {
                 GebaeudeInfoBauen.wertFest =5;
 
-                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld";
+                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
                 return false;
             }
             else

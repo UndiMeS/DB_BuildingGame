@@ -76,8 +76,14 @@ public class SpielInfos : MonoBehaviour
             
             if (marsTag % neueZusatzaufgabe == 0) //alle 3 Tage eine neue Zusatzaufgabe
             {
-                zusatzButton.SetActive(true);
-                zusatzButton_transparent.SetActive(false);
+                if(Aufgaben.welcheAufgabe <= 25){
+                    zusatzButton.SetActive(true);
+                    zusatzButton_transparent.SetActive(false);
+                }else{
+                    zusatzButton.SetActive(false);
+
+                }
+                
             }
             
             

@@ -23,6 +23,7 @@ public class Tutorial : MonoBehaviour
     public GameObject wohncontainerHilfeAlle;
     public GameObject pfeilLeisteUnten;
     public GameObject klickPreil;
+    public GameObject pfeilErtrag;
 
     //Elemente aus Spiel
     public GameObject buttonER;
@@ -65,6 +66,7 @@ public class Tutorial : MonoBehaviour
         pfeilER.SetActive(false);
         pfeilSpiel.SetActive(false);
         wohncontainerHilfe.SetActive(false);
+        WohncontainerTutorialPfeil.anzeigen = false;
     }
     private void ShowTutorial()
     {
@@ -185,6 +187,7 @@ public class Tutorial : MonoBehaviour
         
         //Zeitpunkt: Mission 1 (Astronauten einfliegen) fertig und Wechsel in ER-Editor (Feldsphäre)
         }else if((Story.lvl[1] == true && Story.lvl[2] == false) && (Mission.missionsLevel[0] == true && Mission.missionsLevel[1] == false)){
+            WohncontainerTutorialPfeil.anzeigen = false;
             FehlerAnzeige.tutorialtext_Spiel = "Die ersten Siedlungsbewohner sind gelandet. Die Anzahl der zur Verfügung stehenden Astronauten kannst du in der Infoleiste ganz rechts sehen. Wechsel, wie nach jeder Mission in den ER-Editor!";
             FehlerAnzeige.tutorialtext_ER = "Erweitere nun erneut dein ER-Diagramm, führe den gleichen Kreislauf aus ER- u. Spielmodus fort und erweitere deine Siedlung! \n Hinweis: Beim Anlegen einer Relationship musst du die entsprechenden Entitymengen noch auswählen und die gewünschte Kardinalität setzen.";
             pfeilER.SetActive(false);
@@ -215,6 +218,7 @@ public class Tutorial : MonoBehaviour
                 //Prüfe, ob Missionsfenster geklickt wurde
                 if(missionClick){
                     FehlerAnzeige.tutorialtext_Spiel = "Für Feldsphären benötigst du Feldastronauten. Hinweis: Rechts neben der Guthabenanzeige in der Infoleiste am oberen Bildschirmrand siehst du den Ertrag, der dir alle "+SpielInfos.neuerUmsatz+" Sol (Marstage) ausgezahlt wird.";
+                    pfeilErtrag.SetActive(true);
                 }else{
                     FehlerAnzeige.tutorialtext_Spiel = "Versuche nun die nächste Mission zu erfüllen! \n Tipp: Im Pausemenü findest du auch eine Spielhilfe!";
                 }
@@ -222,6 +226,7 @@ public class Tutorial : MonoBehaviour
         }else if((Story.lvl[2] == true && Story.lvl[3] == false) && (Mission.missionsLevel[1] == true && Mission.missionsLevel[7] == false)){
             FehlerAnzeige.tutorialtext_Spiel = "Klasse! Erweitere erneut dein ER-Diagramm!";
             FehlerAnzeige.tutorialtext_ER = "";
+            pfeilErtrag.SetActive(false);
                 
         //Zeitpunkt: Hinweis zum Bau von Forschungsstationen       
         }else if((Story.lvl[3] == true && Story.lvl[4] == false) && (Mission.missionsLevel[1] == true && Mission.missionsLevel[7] == false)){
@@ -249,18 +254,12 @@ public class Tutorial : MonoBehaviour
             pfeilER.SetActive(false);
             FehlerAnzeige.tutorialtext_Spiel = "";
             FehlerAnzeige.tutorialtext_ER = "Erfülle nun die Mission!";
+               
         
-        //alle ER und Missions Level erfolgreich
-        }else if (Story.lvl[7] == true && Mission.missionsLevel[5] == false){
-            pfeilER.SetActive(false);
-            FehlerAnzeige.tutorialtext_Spiel = "";
-            FehlerAnzeige.tutorialtext_ER = "Klasse! Erfülle nun die letzten Missionen!";
-        
-        //Screenshots erstellen
         }else if (Story.lvl[7] == true && Mission.missionsLevel[4] == true && Mission.missionsLevel[5] == false){
             pfeilER.SetActive(false);
             FehlerAnzeige.tutorialtext_Spiel = "Deine Siedlung ist nun grundsätzlich aufgebaut, muss jedoch noch umfangreich erweitert werden. Los geht's mit der letzten Mission!";
-            FehlerAnzeige.tutorialtext_ER = "";
+            FehlerAnzeige.tutorialtext_ER = "Du hast es geschafft. Dein ER-Diagramm ist für diese Siedlung komplett! Auf zu deinen letzten Missionen!";
         
         //Screenshots erstellen
         }else if (Story.lvl[7] == true && Mission.missionsLevel[5] == true && Mission.missionsLevel[9] == false){

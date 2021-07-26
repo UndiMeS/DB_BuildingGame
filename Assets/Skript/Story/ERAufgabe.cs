@@ -330,7 +330,7 @@ public class ERAufgabe : MonoBehaviour
         }
         else
         {
-            FehlerAnzeige.tutorialtext_ER = "Du hast es geschafft. Dein ER-Diagramm ist für diese Siedlung komplett! Auf zu deinen letzten Missionen!";
+            //FehlerAnzeige.tutorialtext_ER = "Du hast es geschafft. Dein ER-Diagramm ist für diese Siedlung komplett! Auf zu deinen letzten Missionen!";
             infobox.transform.localPosition = new Vector3(0,-82,0);
             bottomLeiste.SetActive(false);
             aufgabenFenster.SetActive(false);

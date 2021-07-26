@@ -33,14 +33,14 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     };
 
     private List<string>[] attribute = {
-                /*LvL 0*/ new List<string> {"Baukosten", "freie", "Betten", "Bettenzahl", "Containernummer", "CNr." },
+                /*LvL 0*/ new List<string> {"Baukosten", "freie", "Betten", "Bettenzahl", "Containernummer", "(CNr.)" },
                  /*LvL 1*/ new List<string>{"Namen","Geburtstag","Anreisegebühren","Aufgabe"},
-                 /*LvL 2*/ new List<string>{"Baukosten","Arbeiterzahl","Ertrag","Feldnummer", "FNr."},
-                 /*LvL 3*/ new List<string>{"Stationsnummer","Baukosten","Spezialisierung", "SNr."},
+                 /*LvL 2*/ new List<string>{"Baukosten","Arbeiterzahl","Ertrag","Feldnummer", "(FNr.)"},
+                 /*LvL 3*/ new List<string>{"Stationsnummer","Baukosten","Spezialisierung", "(SNr.)"},
                  /*LvL 4*/ new List<string>{"Forschungsmerkmal", "Forschungsstufe", "Verbesserungsfaktor","Arbeiterzahl","Projektkosten"},
                  /*LvL 5*/ new List<string>{},
-                 /*LvL 6*/ new List<string>{"Baukosten","Gehegezahl","freien","Gehege","Transportkosten","Namen","Art","Containernummer", "CNr."},
-                 /*LvL 7*/ new List<string>{"Weidenummer","Ertrag","Tieranzahl","Arbeiterzahl","Baukosten", "WNr."},
+                 /*LvL 6*/ new List<string>{"Baukosten","Gehegezahl","freien","Gehege","Transportkosten","Namen","Art","Containernummer", "(CNr.)"},
+                 /*LvL 7*/ new List<string>{"Weidenummer","Ertrag","Tieranzahl","Arbeiterzahl","Baukosten", "(WNr.)"},
     };
 
     private List<string>[] beziehungen = {
@@ -118,12 +118,16 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
             }
         }
 
+        /* Auskommentiert, da das Textfeld fehlerhaft eingerückt wird
+
         //setzt Scrollview nach oben
         if (Story.level != storyChanged)
         {
             scrollview.normalizedPosition = new Vector2(0, 1);
             storyChanged = Story.level;
         }
+        */
+
 
         //wenn markiert und dann Textgeschlossen marikierung wird aufgelöst, deshlab werden geklickte Wörter gespeichert und immer neu gefärbt
         foreach (int ind in geklickteWörter[Story.level])

@@ -365,7 +365,7 @@ public class GebaeudeAnzeige : MonoBehaviour
         {
             if (Testing.geld < gebaeude.GetComponent<Forschung>().projektkosten)
             {
-                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld.";
+                FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
             }
             else if (Testing.forscher < Projekt.forscher)
             {
