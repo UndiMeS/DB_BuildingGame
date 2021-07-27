@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class audio_off : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class audio_off : MonoBehaviour
     public GameObject off;
     public GameObject gameMusic;
     private bool musicOn = true;
+    VideoPlayer p;
+    public GameObject video;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,22 @@ public class audio_off : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void videoAudioOff(GameObject video)
+    {
+        p = video.GetComponent<VideoPlayer>();
+        
+        
+        if(p.GetDirectAudioMute(0)){
+            p.SetDirectAudioMute(0,false);
+            on.SetActive(true);
+            off.SetActive(false);
+        }else{
+            p.SetDirectAudioMute(0,true);
+            on.SetActive(false);
+            off.SetActive(true);
+        }
     }
 
     public void audioOff()
