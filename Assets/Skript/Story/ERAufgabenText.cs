@@ -75,7 +75,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     private int[] lvlKlicks = new int[] { 10,15, 15, 10, 20, 6, 12, 12, 0, 0 }; //Klickguthaben der einzelnen Levels
     private List<int>[] geklickteWörter;
 
-    private int storyChanged = 0; //setzt Scrollview nach oben
+    //private int storyChanged = 0; //setzt Scrollview nach oben
     public ScrollRect scrollview;
 
     private void Start()
