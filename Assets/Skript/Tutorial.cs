@@ -17,6 +17,7 @@ public class Tutorial : MonoBehaviour
     private static bool zusatzClick = false;
     private static bool beschreibungClick = false;
     private static bool zurErdeClick = false;
+    private static bool KonventionsClick = false;
     private bool rotationTemp = true;
     public GameObject containerKiller;
     public GameObject wohncontainerHilfe;
@@ -37,6 +38,7 @@ public class Tutorial : MonoBehaviour
     Button bZusatz;
     public GameObject beschreibungER;
     public GameObject wohncontainerGebaeudeanzeige;
+    public GameObject konventionsFenster;
     
 
     // Start is called before the first frame update
@@ -67,6 +69,7 @@ public class Tutorial : MonoBehaviour
         pfeilSpiel.SetActive(false);
         wohncontainerHilfe.SetActive(false);
         WohncontainerTutorialPfeil.anzeigen = false;
+        konventionsFenster.SetActive(false);
     }
     private void ShowTutorial()
     {
@@ -79,11 +82,15 @@ public class Tutorial : MonoBehaviour
         wohncontainerHilfe.SetActive(false);
         pfeilLeisteUnten.SetActive(false);
         klickPfeil.SetActive(false);
-
-        
+        konventionsFenster.SetActive(false);        
 
         //Zeitpunkt: Neues Spiel gestartet und Wechsel in ER-Editor
         if(Story.lvl[0] == false && Mission.missionsLevel[6] == false){
+            if(KonventionsClick == false){
+                konventionsFenster.SetActive(true);
+            }else{
+                konventionsFenster.SetActive(false);        
+            }
             bZusatz = buttonZusatz.GetComponent<Button>();
             bZusatz.interactable = false;
             bMission.interactable = false;
@@ -314,6 +321,11 @@ public class Tutorial : MonoBehaviour
     public void ClickOnZurErde()
     {
         zurErdeClick = true;
+    }
+
+    public void ClickOnKonvention()
+    {
+        KonventionsClick = true;
     }
 
 }
