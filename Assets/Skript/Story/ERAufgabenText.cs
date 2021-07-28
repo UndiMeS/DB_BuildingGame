@@ -75,7 +75,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     private int[] lvlKlicks = new int[] { 10,15, 15, 10, 20, 6, 12, 12, 0, 0 }; //Klickguthaben der einzelnen Levels
     private List<int>[] geklickteWörter;
 
-    //private int storyChanged = 0; //setzt Scrollview nach oben
+    private int storyChanged = 0; //setzt Scrollview nach oben
     public ScrollRect scrollview;
 
     private void Start()
@@ -118,15 +118,14 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
             }
         }
 
-        /* Auskommentiert, da das Textfeld fehlerhaft eingerückt wird
-
+        
         //setzt Scrollview nach oben
         if (Story.level != storyChanged)
         {
-            scrollview.normalizedPosition = new Vector2(0, 1);
+            scrollview.verticalNormalizedPosition = 1;
             storyChanged = Story.level;
         }
-        */
+    
 
 
         //wenn markiert und dann Textgeschlossen marikierung wird aufgelöst, deshlab werden geklickte Wörter gespeichert und immer neu gefärbt
