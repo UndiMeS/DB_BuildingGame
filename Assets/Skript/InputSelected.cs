@@ -21,7 +21,7 @@ public class InputSelected : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Delete) && selected == false)
         {
-            //b.onClick.Invoke();
+            FehlerAnzeige.fehlertext = "Zum Löschen einzelner Komponenten, klicke links unten auf den Mülleimer!";
         }
     }
 

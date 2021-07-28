@@ -39,6 +39,7 @@ public class Tutorial : MonoBehaviour
     public GameObject beschreibungER;
     public GameObject wohncontainerGebaeudeanzeige;
     public GameObject konventionsFenster;
+    public GameObject buttonHilfeInGame;
     
 
     // Start is called before the first frame update
@@ -212,10 +213,7 @@ public class Tutorial : MonoBehaviour
                 FehlerAnzeige.tutorialtext_ER = "Super! Im Baumenü sind nun Feldsphären freigeschaltet. Auch Feldastronauten leben bereits in der Siedlung. Auf geht's in die neue Mission!";
                 pfeilSpiel.transform.localPosition = new Vector3(637,23,0);
                 pfeilER.transform.localPosition = new Vector3(612,177,0);
-                if(firstTime == true){
-                    //popUpGameObject(buttonZusatz);
-                    firstTime = false;
-                }
+                
             }
             //Prüfe ob Zusatzfenster geklickt wurde
             if(zusatzClick){
@@ -228,7 +226,11 @@ public class Tutorial : MonoBehaviour
                     FehlerAnzeige.tutorialtext_Spiel = "Für Feldsphären benötigst du Feldastronauten. Hinweis: Rechts neben der Guthabenanzeige in der Infoleiste am oberen Bildschirmrand siehst du den Ertrag, der dir alle "+SpielInfos.neuerUmsatz+" Sol (Marstage) ausgezahlt wird.";
                     pfeilErtrag.SetActive(true);
                 }else{
-                    FehlerAnzeige.tutorialtext_Spiel = "Versuche nun die nächste Mission zu erfüllen! \n Tipp: Im Pausemenü findest du auch eine Spielhilfe!";
+                    FehlerAnzeige.tutorialtext_Spiel = "Versuche nun die nächste Mission zu erfüllen! \n Tipp: Unten links und im Pausemenü findest du auch eine Spielhilfe!";
+                    if(firstTime == true){
+                        popUpGameObject(buttonHilfeInGame);
+                        firstTime = false;
+                    }
                 }
             }
         }else if((Story.lvl[2] == true && Story.lvl[3] == false) && (Mission.missionsLevel[1] == true && Mission.missionsLevel[7] == false)){

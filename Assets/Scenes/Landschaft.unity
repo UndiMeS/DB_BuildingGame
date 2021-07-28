@@ -37227,7 +37227,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -0.000000016831166, z: 4.37e-43, w: 1.72e-43}
+  m_BoundingSphereOverride: {x: -1, y: 8, z: 9, w: -10}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -52654,7 +52654,6 @@ GameObject:
   - component: {fileID: 984719259}
   - component: {fileID: 984719258}
   - component: {fileID: 984719257}
-  - component: {fileID: 984719260}
   m_Layer: 5
   m_Name: "L\xF6sch-Button"
   m_TagString: Untagged
@@ -52775,19 +52774,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984719255}
   m_CullTransparentMesh: 0
---- !u!114 &984719260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 984719255}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61c7bec268a3d9d4b8f71c35c103603f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 984719255}
 --- !u!1 &987169684
 GameObject:
   m_ObjectHideFlags: 0
