@@ -140,8 +140,17 @@ public class Testing : MonoBehaviour
             ERAufgabe.gespeicherteObjekte.Clear();
         }
 
+        SpielInfos.marsTag = 0;
+        SpielInfos.currenttime=0;
+        SpielInfos.erdenTag=0;
+        SpielInfos.marsTag=0;
 
-        
+        SpielInfos.deltaErdenTag=0;
+        SpielInfos.deltaMarsTag=0;
+
+        SpielInfos.lasttime=0;
+        SpielInfos.pausedtime=0;
+
         Story.lvl = new bool[] { false, false, false, false, false, false, false, false };
         Story.level = 0;
         Mission.missionsLevel = new bool[] { false, false, false, false, false, false, false, false, false, false }; ;

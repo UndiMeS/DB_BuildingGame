@@ -60,7 +60,7 @@ public class SpielInfos : MonoBehaviour
 
         if (!PauseMenu.SpielIstPausiert&&!PauseMenu.ERon)
         {
-            currenttime = Time.time-pausedtime;
+            currenttime = Time.timeSinceLevelLoad-pausedtime;
             
             marsTag = deltaMarsTag + Mathf.RoundToInt(currenttime / 10.274f) + 1; // +1 da es keinen Tag 0  gibt/ Marstag = 1,02748 * Erdtag --> 20* 1,02748
             erdenTag = deltaErdenTag + Mathf.RoundToInt(currenttime / 10) + 1;
@@ -91,7 +91,7 @@ public class SpielInfos : MonoBehaviour
         }
         else if(PauseMenu.ERon)
         {
-            pausedtime = Time.time-currenttime;
+            pausedtime = Time.timeSinceLevelLoad - currenttime;
         }  
         Utilitys.TextInTMP(sol, marsTag);
         Utilitys.TextInTMP(erde, erdenTag);
