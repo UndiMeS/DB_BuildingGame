@@ -185,9 +185,11 @@ public class Tutorial : MonoBehaviour
                 WohncontainerTutorialPfeil.anzeigen = true;
                 if(wohncontainerGebaeudeanzeige.activeSelf){
                     wohncontainerHilfe.SetActive(true);
+                    WohncontainerTutorialPfeil.anzeigen = false;
                     if(Testing.feldarbeiter >= 1){
                         wohncontainerHilfeAlle.SetActive(true);
                         WohncontainerTutorialPfeil.anzeigen = false;
+                        
                     }
                 }
             }
@@ -259,12 +261,13 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "Tipp: \n Lass dir die Tabelle aller Wohncontainer anzeigen, um Container mit noch freien Betten anhand der Containernummer in der Siedlung zu finden.";
             FehlerAnzeige.tutorialtext_ER = ""; 
 
+        /*
         //Falls kein Tutorialhinweis geplant ist, so gib bei erfülltem ER-Level einen Standarttext aus
         }else if (Story.lvl[7] == false && ERAufgabe.missionCheck == false){
             pfeilER.SetActive(false);
             FehlerAnzeige.tutorialtext_Spiel = "";
             FehlerAnzeige.tutorialtext_ER = "Erfülle nun die Mission!";
-               
+         */      
         
         }else if (Story.lvl[7] == true && Mission.missionsLevel[4] == true && Mission.missionsLevel[5] == false){
             pfeilER.SetActive(false);
