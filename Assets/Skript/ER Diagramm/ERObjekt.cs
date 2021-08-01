@@ -139,8 +139,8 @@ public class ERObjekt : MonoBehaviour
     //Begrenzung der Bewegung des Objektes
     private Vector3 imSichtfeld(Vector3 cursorPos)
     {
-        cursorPos.x = Mathf.Clamp(cursorPos.x, -100, 200); //Daten aus Kamerakontroller.grenzen
-        cursorPos.y = Mathf.Clamp(cursorPos.y, 200, 350);
+        cursorPos.x = Mathf.Clamp(cursorPos.x, 5, 160); //Daten aus Kamerakontroller.grenzen
+        cursorPos.y = Mathf.Clamp(cursorPos.y, 245 , 325);
         /* if (cursorPos.y > (425 * Screen.height / 530) - height / 2)
         {
             cursorPos.y = 425 * Screen.height / 530 - height / 2;

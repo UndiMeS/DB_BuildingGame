@@ -123,6 +123,7 @@ public class KameraKontroller : MonoBehaviour
     {
         Vector3 tempPos;
         Vector3 tempZoom;
+        grenzen =new bool[] { false, false, false, false };
         if (newHintergrund == hintergrund)
         {
             return;
@@ -340,14 +341,14 @@ public class KameraKontroller : MonoBehaviour
             {
                 newPosition.x = transform.position.x;
             }
-            if (y > Testing.hoehe)
+            if (y > Testing.hoehe+1)
             {
                 //Debug.Log("oben");
                 grenzen[0] = true;
                 Invoke("oben", 2);
                 newPosition.y = transform.position.y - movementSpeed;
             }
-            else if (y > Testing.hoehe && grenzen[0] && newPosition.y > transform.position.y)
+            else if (y > Testing.hoehe+1 && grenzen[0] && newPosition.y > transform.position.y)
             {
                 newPosition.y = transform.position.y;
             }
@@ -366,11 +367,66 @@ public class KameraKontroller : MonoBehaviour
             minY = -230;
             maxY = -20;
 */
-            newZoom.z = Mathf.Clamp(newZoom.z, ERMinZoomZ, ERMaxZoomZ);
 
-            //diese auch in ERObjekt sichfeld anpassen
-            newPosition.x = Mathf.Clamp(newPosition.x, -100, 200); 
-            newPosition.y = Mathf.Clamp(newPosition.y, 200, 350);
+            
+            newZoom.z = Mathf.Clamp(newZoom.z, ERMinZoomZ, ERMaxZoomZ);
+            int minX = 5;
+            int maxX = 160;
+            int minY = 245;
+            int maxY = 325;
+            //Grenzen mit ... herausfinden
+            //auch in ER-Objekt sichtfeld eintragen
+            //Debug.Log(Utilitys.GetMouseWorldPosition(new Vector3(0, 0, 0)) + " " + Utilitys.GetMouseWorldPosition(new Vector3(Screen.width, Screen.height - 50, 0)));
+
+            Vector3 xyVektor=Utilitys.GetMouseWorldPosition(new Vector3(0, 0, 0));
+            if (xyVektor.x < minX && !grenzen[1])
+            {
+                newPosition.x = transform.position.x + movementSpeed;
+                grenzen[1] = true;
+                Invoke("links", 2);
+                //Debug.Log("links");
+            }
+            else if (xyVektor.x < minX && grenzen[1] && newPosition.x < transform.position.x)
+            {
+                newPosition.x = transform.position.x;
+            }
+            if (xyVektor.y < minY && !grenzen[2])
+            {
+                //Debug.Log("unten");
+                Invoke("unten", 2);
+                grenzen[2] = true;
+                newPosition.y = transform.position.y + 2 * movementSpeed;
+            }
+            else if (xyVektor .y< minY && grenzen[2] && newPosition.y < transform.position.y)
+            {
+                newPosition.y = transform.position.y;
+            }
+            xyVektor = Utilitys.GetMouseWorldPosition(new Vector3(Screen.width, Screen.height-50, 0));
+            if (xyVektor.x > maxX)
+            {
+                //Debug.Log("rechts");
+                newPosition.x = transform.position.x - movementSpeed;
+                Invoke("rechts", 2);
+                grenzen[3] = true;
+            }
+            else if (xyVektor.x > maxX && grenzen[3] && newPosition.x > transform.position.x)
+            {
+                newPosition.x = transform.position.x;
+            }
+            if (xyVektor.y > maxY)
+            {
+                //Debug.Log("oben");
+                grenzen[0] = true;
+                Invoke("oben", 2);
+                newPosition.y = transform.position.y - movementSpeed;
+            }
+            else if (xyVektor.y > maxY && grenzen[0] && newPosition.y > transform.position.y)
+            {
+                newPosition.y = transform.position.y;
+            }
+
+
+
 
             /*//zum Werte heraufinden
             if (cameraTransform.position.z < -449)

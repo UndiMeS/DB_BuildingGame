@@ -24,7 +24,10 @@ public class Attribut : MonoBehaviour
         attributName = gameObject.name;
         x = gameObject.transform.position.x;
         y = gameObject.transform.position.y;
-        vaterID = vater.GetInstanceID();
+        if (vater != null)
+        {
+            vaterID = vater.GetInstanceID();
+        }
     }
 
     internal void setWerte(LoadedAttribut attribut)
