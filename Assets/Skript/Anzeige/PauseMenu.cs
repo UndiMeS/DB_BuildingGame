@@ -26,6 +26,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject leisteBottom;
     public GameObject tutorial;
     public GameObject leisteTop;
+    public GameObject hilfeInGameER;
 
     public KameraKontroller KameraScript;
 
@@ -272,6 +273,7 @@ public class PauseMenu : MonoBehaviour
         tutorial.SetActive(false);
         leisteBottom.SetActive(false);
         leisteTop.SetActive(false);
+        hilfeInGameER.SetActive(false);
 
 
         selectedGameObjektZwischenspeicher = ERErstellung.selectedGameObjekt;
@@ -296,6 +298,7 @@ public class PauseMenu : MonoBehaviour
         tutorial.SetActive(true);
         leisteBottom.SetActive(true);
         leisteTop.SetActive(true);
+        hilfeInGameER.SetActive(true);
 
 
         ERErstellung.selectedGameObjekt = selectedGameObjektZwischenspeicher;
