@@ -58,6 +58,10 @@ public class Tutorial : MonoBehaviour
         if(tutorialOff == false){
             ShowTutorial(); 
         }
+        if (Input.GetKeyDown(KeyCode.Delete))
+        {
+            FehlerAnzeige.fehlertext = "Zum Löschen der Gebäudeauswahl, klicke links unten auf den Mülleimer!";
+        }
     }
     private void OffTutorial()
     {
@@ -257,18 +261,15 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = " Spezialisiere die Forschungsstation auf Wohncontainer! In der Forschungsstationsanzeige findest du anschließend ein Fragezeichen. Klicke dieses, um Hilfe bei der Erstellung von Projekten zu erhalten.";
             FehlerAnzeige.tutorialtext_ER = "Los geht's mit den ersten Forschungen! Check deine Mission!"; 
         
-        }else if((Story.lvl[5] == true && Story.lvl[6] == false) && (Mission.missionsLevel[7] == true && Mission.missionsLevel[8] == false)){
+        }else if((Story.lvl[5] == true && Story.lvl[6] == false) && (Mission.missionsLevel[8] == true && Mission.missionsLevel[2] == false)){
             FehlerAnzeige.tutorialtext_Spiel = "Tipp: \n Lass dir die Tabelle aller Wohncontainer anzeigen, um Container mit noch freien Betten anhand der Containernummer in der Siedlung zu finden.";
-            FehlerAnzeige.tutorialtext_ER = ""; 
-
-        /*
-        //Falls kein Tutorialhinweis geplant ist, so gib bei erfülltem ER-Level einen Standarttext aus
-        }else if (Story.lvl[7] == false && ERAufgabe.missionCheck == false){
+            FehlerAnzeige.tutorialtext_ER = "";   
+        
+        }else if (Story.lvl[7] == true && Mission.missionsLevel[3] == true && Mission.missionsLevel[4] == false){
             pfeilER.SetActive(false);
             FehlerAnzeige.tutorialtext_Spiel = "";
-            FehlerAnzeige.tutorialtext_ER = "Erfülle nun die Mission!";
-         */      
-        
+            FehlerAnzeige.tutorialtext_ER = "Starte nun mit dem Bau von Weidesphären!";
+
         }else if (Story.lvl[7] == true && Mission.missionsLevel[4] == true && Mission.missionsLevel[5] == false){
             pfeilER.SetActive(false);
             FehlerAnzeige.tutorialtext_Spiel = "Deine Siedlung ist nun grundsätzlich aufgebaut, muss jedoch noch umfangreich erweitert werden. Los geht's mit der letzten Mission!";
@@ -293,11 +294,20 @@ public class Tutorial : MonoBehaviour
             }else{
                 FehlerAnzeige.tutorialtext_Spiel = "Herzlichen Glückwunsch zu deinem Missionszertifikat! Das Spiel wird nun automatisch beendet!";
             }
-        
+        //Falls kein Tutorialhinweis geplant ist, so gib bei erfülltem ER-Level einen Standarttext aus
+        }else if (Story.lvl[7] == false && ERAufgabe.missionCheck == false){
+            pfeilER.SetActive(false);
+            FehlerAnzeige.tutorialtext_Spiel = "";
+            FehlerAnzeige.tutorialtext_ER = "Erfülle nun die Mission!";
+        }else if (Story.lvl[7] == false && ERAufgabe.missionCheck == true){
+            pfeilER.SetActive(false);
+            FehlerAnzeige.tutorialtext_Spiel = "Wechsel zurück in den ER-Editor!";
+            FehlerAnzeige.tutorialtext_ER = "";
+
         //Sonst: setzte alle Texte zurück
         }else{
-            FehlerAnzeige.tutorialtext_Spiel = "";
-            FehlerAnzeige.tutorialtext_ER = "";
+            //FehlerAnzeige.tutorialtext_Spiel = "";
+            //FehlerAnzeige.tutorialtext_ER = "";
         }
     }
 
@@ -332,5 +342,6 @@ public class Tutorial : MonoBehaviour
     {
         KonventionsClick = true;
     }
+
 
 }

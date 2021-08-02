@@ -25,11 +25,10 @@ public class SaveLoad : MonoBehaviour
 
     public InputField missionsEingabe;
 
-    public GameObject sound_true;
 
     public void speichern()
     {
-        AudioSource soundTrue = sound_true.GetComponent<AudioSource>();
+        
         //üüberall Application.persistentDataPath
         if (!Directory.Exists(Application.dataPath + "/SaveState/"))
         {
@@ -110,7 +109,6 @@ public class SaveLoad : MonoBehaviour
 
         saveLoadER.speichern();
         saveLoadBeziehungen.speichern();
-        soundTrue.Play();
     }
 
     public void laden()
