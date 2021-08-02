@@ -60,10 +60,13 @@ public class ObjektBewegung : MonoBehaviour
             }
             else
             {
-                if(FehlerAnzeige.fehlertext.Equals(""))
+                if (FehlerAnzeige.fehlertext.Equals("") && !outBox(Input.mousePosition))
                 {
-                    FehlerAnzeige.fehlertext = "An dieser Stelle befindt sich schon ein Gebäude!";
-                }
+                    FehlerAnzeige.fehlertext = "Wähle zum Bauen eine freie Fläche!";
+                }else if (FehlerAnzeige.fehlertext.Equals("") && !Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z))
+                    {
+                        FehlerAnzeige.fehlertext = "An dieser Stelle befindet sich schon ein Gebäude!";
+                    }
 
                 selected = false;                
                 int x, y;

@@ -66,8 +66,14 @@ public class KameraKontroller : MonoBehaviour
 
         oldPos = new Vector3(40,250,0); //für ER-Modell; Mars: new Vector3(90, 120, 5);
         oldZoom = new Vector3(0,50,-120); // für ER-Modell; Mars: new Vector3(0, -200, -200);
-
-
+        int minX = -50;
+        int maxX = 130;
+        int minY = 265;
+        int maxY = 350;
+        Debug.DrawLine(new Vector3(minX,minY,0),new Vector3(minX,maxY,0), Color.black, 100);
+        Debug.DrawLine(new Vector3(minX, minY, 0), new Vector3(maxX, minY, 0), Color.black, 100);
+        Debug.DrawLine(new Vector3(maxX, maxY, 0), new Vector3(minX, maxY, 0), Color.black, 100);
+        Debug.DrawLine(new Vector3(maxX, maxY, 0), new Vector3(maxX, minY, 0), Color.black, 100);
     }
 
     // Update is called once per frame
@@ -304,7 +310,15 @@ public class KameraKontroller : MonoBehaviour
 
             int x, y;
             Testing.grid.GetXY(Utilitys.GetMouseWorldPosition(new Vector3(0, 0, 0)), out x, out y);
-            if (x < -1 && !grenzen[1])
+            if (x < -1 && newZoom != cameraTransform.localPosition && !grenzen[1] )
+            {
+                newPosition = Vector3.Lerp(newPosition, newPosition + new Vector3( 15 * movementSpeed,0,0),0.1f);
+               // newPosition.x = transform.position.x + 15 * movementSpeed;
+                grenzen[1] = true;
+                Invoke("links", 0.2f);
+                //Debug.Log("links zoom");
+            }
+            else if(x < -1 && !grenzen[1])
             {
                 newPosition.x = transform.position.x + movementSpeed;
                 grenzen[1] = true;
@@ -315,7 +329,15 @@ public class KameraKontroller : MonoBehaviour
             {
                 newPosition.x = transform.position.x;
             }
-            if (y < -1 && !grenzen[2])
+            if (y < -1 && newZoom != cameraTransform.localPosition && !grenzen[2] )
+            {
+                newPosition = Vector3.Lerp(newPosition, newPosition + new Vector3(0, 15 * movementSpeed,  0), 0.1f);
+                //newPosition.y = transform.position.y + 15 * movementSpeed;
+                grenzen[2] = true;
+                Invoke("unten", 0.2f);
+                //Debug.Log("unten zoom");
+            }
+            else if(y < -1 && !grenzen[2])
             {
                 //Debug.Log("unten");
                 Invoke("unten", 2);
@@ -327,7 +349,15 @@ public class KameraKontroller : MonoBehaviour
                 newPosition.y = transform.position.y;
             }
             Testing.grid.GetXY(Utilitys.GetMouseWorldPosition(new Vector3(Screen.width, Screen.height, 0)), out x, out y);
-            if (x > Testing.weite)
+            if (x > Testing.weite  && newZoom != cameraTransform.localPosition && !grenzen[3])
+            {
+                newPosition = Vector3.Lerp(newPosition, newPosition - new Vector3( 15 * movementSpeed, 0,0), 0.1f);
+                //newPosition.x = transform.position.x - 15 * movementSpeed;
+                Invoke("rechts", 0.2f);
+                grenzen[3] = true;
+                //Debug.Log("rechts zoom");
+            }
+            else if(x > Testing.weite)
             {
                 //Debug.Log("rechts");
                 newPosition.x = transform.position.x - movementSpeed;
@@ -338,7 +368,15 @@ public class KameraKontroller : MonoBehaviour
             {
                 newPosition.x = transform.position.x;
             }
-            if (y > Testing.hoehe+1)
+            if (y > Testing.hoehe + 1 && newZoom != cameraTransform.localPosition && !grenzen[0] )
+            {
+                newPosition = Vector3.Lerp(newPosition, newPosition-  new Vector3(0, 15 * movementSpeed, 0), 0.1f);
+                //newPosition.y = transform.position.y - 15 * movementSpeed;
+                Invoke("oben", 0.2f);
+                grenzen[0] = true;
+                //Debug.Log("oben zoom");
+            }
+            else if(y > Testing.hoehe+1)
             {
                 //Debug.Log("oben");
                 grenzen[0] = true;
@@ -367,42 +405,66 @@ public class KameraKontroller : MonoBehaviour
 
             
             newZoom.z = Mathf.Clamp(newZoom.z, ERMinZoomZ, ERMaxZoomZ);
-            int minX = 5;
-            int maxX = 160;
-            int minY = 245;
-            int maxY = 325;
+            int minX = -50;
+            int maxX = 130;
+            int minY = 265;
+            int maxY = 350;
             //Grenzen mit ... herausfinden
             //auch in ER-Objekt sichtfeld eintragen
-            //Debug.Log(Utilitys.GetMouseWorldPosition(new Vector3(0, 0, 0)) + " " + Utilitys.GetMouseWorldPosition(new Vector3(Screen.width, Screen.height - 50, 0)));
+            //Debug.Log(Utilitys.GetMouseWorldPosition(new Vector3(10, 50, 0)) + " " + Utilitys.GetMouseWorldPosition(new Vector3(Screen.width-10, Screen.height - 50, 0)));
 
-            Vector3 xyVektor=Utilitys.GetMouseWorldPosition(new Vector3(0, 0, 0));
-            if (xyVektor.x < minX && !grenzen[1])
+            Vector3 xyVektor=Utilitys.GetMouseWorldPosition(new Vector3(0, 50, 0));
+            
+             if (xyVektor.x < minX &&  newZoom != cameraTransform.localPosition && !grenzen[1] )
             {
-                newPosition.x = transform.position.x +1/2* movementSpeed;
+                newPosition = Vector3.Lerp(newPosition, newPosition + new Vector3(5 * movementSpeed,0, 0), 0.1f);
+                //newPosition.x = transform.position.x + 5 * movementSpeed;
+                grenzen[1] = true;
+                Invoke("links", 0.2f);
+                //Debug.Log("links zoom");
+            }
+            else if(xyVektor.x < minX && !grenzen[1])
+            {
+                newPosition.x = transform.position.x + 1 / 2 * movementSpeed;
                 grenzen[1] = true;
                 Invoke("links", 2);
                 //Debug.Log("links");
-            }
-            else if (xyVektor.x < minX && grenzen[1] && newPosition.x < transform.position.x)
+            }else if (xyVektor.x < minX && grenzen[1] && newPosition.x < transform.position.x)
             {
                 newPosition.x = transform.position.x;
             }
-            if (xyVektor.y < minY && !grenzen[2])
+             if (xyVektor.y < minY && newZoom != cameraTransform.localPosition && !grenzen[2] )
+            {
+                newPosition = Vector3.Lerp(newPosition, newPosition + new Vector3(0,5 * movementSpeed, 0), 0.1f);
+                //newPosition.y = transform.position.y + 5 * movementSpeed;
+                grenzen[2] = true;
+                Invoke("unten", 0.2f);
+                //Debug.Log("unten zoom");
+            }
+            else if (xyVektor.y < minY && (!grenzen[2] || newZoom != cameraTransform.localPosition))
             {
                 //Debug.Log("unten");
                 Invoke("unten", 2);
                 grenzen[2] = true;
-                newPosition.y = transform.position.y + 1/2*movementSpeed;
+                newPosition.y = transform.position.y + 1 / 2 * movementSpeed;
             }
-            else if (xyVektor .y< minY && grenzen[2] && newPosition.y < transform.position.y)
+            else if(xyVektor .y< minY && grenzen[2] && newPosition.y < transform.position.y)
             {
                 newPosition.y = transform.position.y;
             }
             xyVektor = Utilitys.GetMouseWorldPosition(new Vector3(Screen.width, Screen.height-50, 0));
-            if (xyVektor.x > maxX)
+            if (xyVektor.x > maxX && newZoom != cameraTransform.localPosition && !grenzen[3] )
+            {
+                newPosition = Vector3.Lerp(newPosition, newPosition - new Vector3(5 * movementSpeed, 0, 0), 0.1f);
+                //newPosition.x = transform.position.x - 5 * movementSpeed;
+                grenzen[3] = true;
+                Invoke("rechts", 0.2f);
+                //Debug.Log("rechts zoom");
+            }
+            else if (xyVektor.x > maxX)
             {
                 //Debug.Log("rechts");
-                newPosition.x = transform.position.x -1/2* movementSpeed;
+                newPosition.x = transform.position.x - 1 / 2 * movementSpeed;
                 Invoke("rechts", 2);
                 grenzen[3] = true;
             }
@@ -410,12 +472,20 @@ public class KameraKontroller : MonoBehaviour
             {
                 newPosition.x = transform.position.x;
             }
-            if (xyVektor.y > maxY)
+            if (xyVektor.y > maxY && newZoom != cameraTransform.localPosition && !grenzen[0] )
+            {
+                newPosition = Vector3.Lerp(newPosition, newPosition - new Vector3(0,5 * movementSpeed,  0), 0.1f);
+                //newPosition.y = transform.position.y - 5 * movementSpeed;
+                grenzen[0] = true;
+                Invoke("oben", 0.2f);
+                //Debug.Log("oben zoom");
+            }
+            else if(xyVektor.y > maxY)
             {
                 //Debug.Log("oben");
                 grenzen[0] = true;
                 Invoke("oben", 2);
-                newPosition.y = transform.position.y - 1/2*movementSpeed;
+                newPosition.y = transform.position.y - 1 / 2 * movementSpeed;
             }
             else if (xyVektor.y > maxY && grenzen[0] && newPosition.y > transform.position.y)
             {
@@ -423,7 +493,7 @@ public class KameraKontroller : MonoBehaviour
             }
             if(grenzen[0]&&grenzen[1] && grenzen[2]&& grenzen[3])
             {
-                newZoom -= new Vector3(0, 0, 0.05f);
+                newZoom += new Vector3(0, 0, 0.05f);
             }
 
 

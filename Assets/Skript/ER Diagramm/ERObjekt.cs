@@ -110,12 +110,9 @@ public class ERObjekt : MonoBehaviour
     private bool inBox()
     {
         bool drin = RectTransformUtility.RectangleContainsScreenPoint(leisteBottom.GetComponent<RectTransform>(), Input.mousePosition, null);
-        if (checkliste.activeSelf)
+        if (checkliste.transform.parent.gameObject.activeSelf)
         {
-            drin = drin || RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), Input.mousePosition, null);
-        }
-        if (aufgabe.activeSelf)
-        {
+            drin = drin || RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), Input.mousePosition, null);     
             drin = drin || RectTransformUtility.RectangleContainsScreenPoint(aufgabe.GetComponent<RectTransform>(), Input.mousePosition, null);
         }
         drin = drin || RectTransformUtility.RectangleContainsScreenPoint(leisteRechts.GetComponent<RectTransform>(), Input.mousePosition, null);
@@ -139,8 +136,12 @@ public class ERObjekt : MonoBehaviour
     //Begrenzung der Bewegung des Objektes
     private Vector3 imSichtfeld(Vector3 cursorPos)
     {
-        cursorPos.x = Mathf.Clamp(cursorPos.x, 5, 160); //Daten aus Kamerakontroller.grenzen
-        cursorPos.y = Mathf.Clamp(cursorPos.y, 245 , 325);
+        int minX = -50;
+        int maxX = 130;
+        int minY = 265;
+        int maxY = 350;
+        cursorPos.x = Mathf.Clamp(cursorPos.x, minX+5, maxX-5); //Daten aus Kamerakontroller.grenzen
+        cursorPos.y = Mathf.Clamp(cursorPos.y, minY+5 , maxY-5);
         /* if (cursorPos.y > (425 * Screen.height / 530) - height / 2)
         {
             cursorPos.y = 425 * Screen.height / 530 - height / 2;
