@@ -14,11 +14,8 @@ public class KameraKontroller : MonoBehaviour
     public float MarsMinZoomZ;
     public float MarsMinZoomY;
 
-        public float ERMaxZoomZ;
-    public float ERMaxZoomY;
-
+    public float ERMaxZoomZ;
     public float ERMinZoomZ;
-    public float ERMinZoomY;
 
     public Vector3 newPosition = new Vector3(90, 120, 5);
     public Vector3 newZoom = new Vector3(0, -200, -200);
@@ -381,7 +378,7 @@ public class KameraKontroller : MonoBehaviour
             Vector3 xyVektor=Utilitys.GetMouseWorldPosition(new Vector3(0, 0, 0));
             if (xyVektor.x < minX && !grenzen[1])
             {
-                newPosition.x = transform.position.x + movementSpeed;
+                newPosition.x = transform.position.x +1/2* movementSpeed;
                 grenzen[1] = true;
                 Invoke("links", 2);
                 //Debug.Log("links");
@@ -395,7 +392,7 @@ public class KameraKontroller : MonoBehaviour
                 //Debug.Log("unten");
                 Invoke("unten", 2);
                 grenzen[2] = true;
-                newPosition.y = transform.position.y + 2 * movementSpeed;
+                newPosition.y = transform.position.y + 1/2*movementSpeed;
             }
             else if (xyVektor .y< minY && grenzen[2] && newPosition.y < transform.position.y)
             {
@@ -405,7 +402,7 @@ public class KameraKontroller : MonoBehaviour
             if (xyVektor.x > maxX)
             {
                 //Debug.Log("rechts");
-                newPosition.x = transform.position.x - movementSpeed;
+                newPosition.x = transform.position.x -1/2* movementSpeed;
                 Invoke("rechts", 2);
                 grenzen[3] = true;
             }
@@ -418,11 +415,15 @@ public class KameraKontroller : MonoBehaviour
                 //Debug.Log("oben");
                 grenzen[0] = true;
                 Invoke("oben", 2);
-                newPosition.y = transform.position.y - movementSpeed;
+                newPosition.y = transform.position.y - 1/2*movementSpeed;
             }
             else if (xyVektor.y > maxY && grenzen[0] && newPosition.y > transform.position.y)
             {
                 newPosition.y = transform.position.y;
+            }
+            if(grenzen[0]&&grenzen[1] && grenzen[2]&& grenzen[3])
+            {
+                newZoom -= new Vector3(0, 0, 0.05f);
             }
 
 

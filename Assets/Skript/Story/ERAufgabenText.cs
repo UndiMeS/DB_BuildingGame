@@ -33,14 +33,14 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     };
 
     private List<string>[] attribute = {
-                /*LvL 0*/ new List<string> {"Baukosten", "freie", "Betten", "Bettenzahl", "Containernummer", "(CNr.)" },
+                /*LvL 0*/ new List<string> {"Baukosten", "freie", "Betten", "Bettenzahl", "Containernummer", "CNr" },
                  /*LvL 1*/ new List<string>{"Namen","Geburtstag","Anreisegebühren","Aufgabe"},
-                 /*LvL 2*/ new List<string>{"Baukosten","Arbeiterzahl","Ertrag","Feldnummer", "(FNr.)"},
-                 /*LvL 3*/ new List<string>{"Stationsnummer","Baukosten","Spezialisierung", "(SNr.)"},
+                 /*LvL 2*/ new List<string>{"Baukosten","Arbeiterzahl","Ertrag","Feldnummer", "FNr"},
+                 /*LvL 3*/ new List<string>{"Stationsnummer","Baukosten","Spezialisierung", "SNr"},
                  /*LvL 4*/ new List<string>{"Forschungsmerkmal", "Forschungsstufe", "Verbesserungsfaktor","Arbeiterzahl","Projektkosten"},
                  /*LvL 5*/ new List<string>{},
-                 /*LvL 6*/ new List<string>{"Baukosten","Gehegezahl","freien","Gehege","Transportkosten","Namen","Art","Containernummer", "(CNr.)"},
-                 /*LvL 7*/ new List<string>{"Weidenummer","Ertrag","Tieranzahl","Arbeiterzahl","Baukosten", "(WNr.)"},
+                 /*LvL 6*/ new List<string>{"Baukosten","Gehegezahl","freien","Gehege","Transportkosten","Namen","Art","Containernummer", "CNr"},
+                 /*LvL 7*/ new List<string>{"Weidenummer","Ertrag","Tieranzahl","Arbeiterzahl","Baukosten", "WNr"},
     };
 
     private List<string>[] beziehungen = {
@@ -48,7 +48,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                  /*LvL 1*/ new List<string>{"wohnt", "wohnen"},
                  /*LvL 2*/ new List<string>{"arbeiten"},
                  /*LvL 3*/ new List<string>{"verantwortlich"},
-                 /*LvL 4*/ new List<string>{"organisiert","verbessert","forschen","forscht"},
+                 /*LvL 4*/ new List<string>{"organisiert","verbessert","verbessern","forschen","forscht"},
                  /*LvL 5*/ new List<string>{"verbessert","forscht"},
                  /*LvL 6*/ new List<string>{"verbessert","leben"},
                  /*LvL 7*/ new List<string>{"verbessert","arbeitet","arbeiten"},

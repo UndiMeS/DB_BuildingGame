@@ -90,7 +90,7 @@ public class ERAufgabe : MonoBehaviour
     private string[] wohncontainer_astronaut = { "wohnt in","wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt" };
     private string[] wohncontainer_astronaut_Eig = { "W", "A", "1", "n", "1" };
 
-    private string[] astronaut_forschungsprojekt = { " forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };
+    private string[] astronaut_forschungsprojekt = { "forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };
     private string[] astronaut_forschungsprojekt_Eig = { "A", "P", "0", "1", "n" };
 
     private string[] astronaut_feldsphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
@@ -273,7 +273,8 @@ public class ERAufgabe : MonoBehaviour
         // Level 4
         listeAttribute[4] = new string[][][] { forschungsprojekt };
         listeBeziehungen[4] = new string[][] { astronaut_forschungsprojekt, forschungsstation_forschungsprojekt, forschungsprojekt_wohncontainer };
-        listeBeziehungsEigenschaften[4] = new string[][] { astronaut_forschungsprojekt_Eig, forschungsstation_forschungsprojekt_Eig, forschungsprojekt_wohncontainer_Eig };        // Level 5
+        listeBeziehungsEigenschaften[4] = new string[][] { astronaut_forschungsprojekt_Eig, forschungsstation_forschungsprojekt_Eig, forschungsprojekt_wohncontainer_Eig };
+        // Level 5
         listeAttribute[5] = new string[0][][];
         listeBeziehungen[5] = new string[][] { forschungsprojekt_feldsphaere, forschungsprojekt_forschungsprojekt };
         listeBeziehungsEigenschaften[5] = new string[][] { forschungsprojekt_feldsphaere_Eig, forschungsprojekt_forschungsprojekt_Eig };

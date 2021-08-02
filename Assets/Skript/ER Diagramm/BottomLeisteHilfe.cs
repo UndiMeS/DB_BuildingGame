@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BottomLeisteHilfe : MonoBehaviour
 {
@@ -26,5 +27,10 @@ public class BottomLeisteHilfe : MonoBehaviour
         button.SetActive(false);
         zurueck.SetActive(false);
         texte.SetActive(false);
+    }
+
+    public void KonventionOnTop(ScrollRect konvention)
+    {
+        konvention.verticalNormalizedPosition = 1;
     }
 }

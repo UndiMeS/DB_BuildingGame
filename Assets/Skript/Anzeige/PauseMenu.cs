@@ -32,7 +32,6 @@ public class PauseMenu : MonoBehaviour
 
     private GameObject selectedGameObjektZwischenspeicher;
 
-
     void Start()
     {
         KameraScript = GameObject.FindGameObjectWithTag("KameraAnker").GetComponent<KameraKontroller>();
@@ -225,15 +224,7 @@ public class PauseMenu : MonoBehaviour
         KameraScript.ScreenshotZoom();
         //canvas.SetActive(false);
         Invoke("screenshotErstellen", 0.7f);
-        Invoke("allesAn", 0.1f);
-        
-        
-        
-        
-
-        //StartCoroutine(screenshotErstellen());
-
-        
+        Invoke("allesAn", 0.1f);        
         
     }
 

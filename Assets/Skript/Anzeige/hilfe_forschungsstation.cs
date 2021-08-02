@@ -5,10 +5,12 @@ using UnityEngine;
 public class hilfe_forschungsstation : MonoBehaviour
 {
     public GameObject texte;
+    public GameObject TransapentFuerForschungsstation;
 
     public void Show()
     {
         texte.SetActive(true);
+        TransapentFuerForschungsstation.SetActive(true);
         Invoke("Close", 8);
     }
         
@@ -16,5 +18,6 @@ public class hilfe_forschungsstation : MonoBehaviour
     private void Close()
     {
         texte.SetActive(false);
+        TransapentFuerForschungsstation.SetActive(false);
     }
 }
