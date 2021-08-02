@@ -238,6 +238,8 @@ public class GebaeudeAnzeige : MonoBehaviour
             Testing.summeMenschen++;
             Mensch temp = new Mensch("Forschung", gebaeude.GetComponent<Wohncontainer>().containernummer);
             gebaeude.GetComponent<Wohncontainer>().bewohner.Add(temp);
+        }else if(gebaeude.GetComponent<Wohncontainer>().freieBetten == 0){
+            FehlerAnzeige.fehlertext = "Dieser Wohncontainer hat keine freien Betten mehr! Baue einen neuen!";
         }
     }
     public void Feldarbeiter()
@@ -258,6 +260,8 @@ public class GebaeudeAnzeige : MonoBehaviour
             Testing.summeMenschen++;
             Mensch temp = new Mensch("Feld", gebaeude.GetComponent<Wohncontainer>().containernummer);
             gebaeude.GetComponent<Wohncontainer>().bewohner.Add(temp);
+        }else if(gebaeude.GetComponent<Wohncontainer>().freieBetten == 0){
+            FehlerAnzeige.fehlertext = "Dieser Wohncontainer hat keine freien Betten mehr! Baue einen neuen!";
         }
     }
     public void Tierpfleger()
@@ -278,6 +282,8 @@ public class GebaeudeAnzeige : MonoBehaviour
             Testing.summeMenschen++;
             Mensch temp = new Mensch("Weide", gebaeude.GetComponent<Wohncontainer>().containernummer);
             gebaeude.GetComponent<Wohncontainer>().bewohner.Add(temp);
+        }else if(gebaeude.GetComponent<Wohncontainer>().freieBetten == 0){
+            FehlerAnzeige.fehlertext = "Dieser Wohncontainer hat keine freien Betten mehr! Baue einen neuen!";
         }
     }
     public void Tiere(int welchesTier)
@@ -315,6 +321,8 @@ public class GebaeudeAnzeige : MonoBehaviour
             }
             Tiere temp = new Tiere(art, gebaeude.GetComponent<Stallcontainer>().containernummer);
             gebaeude.GetComponent<Stallcontainer>().tiere.Add(temp);
+        }else if(gebaeude.GetComponent<Stallcontainer>().freieGehege == 0){
+            FehlerAnzeige.fehlertext = "Dieser Stallcontainer hat keine freien Gehege mehr! Baue einen neuen!";
         }
     }
 
@@ -369,7 +377,7 @@ public class GebaeudeAnzeige : MonoBehaviour
             }
             else if (Testing.forscher < Projekt.forscher)
             {
-                FehlerAnzeige.fehlertext = "Du hast zu wenige Forscher.";
+                FehlerAnzeige.fehlertext = "Du hast zu wenige Forschungsastronauten.";
             }
             else
             {

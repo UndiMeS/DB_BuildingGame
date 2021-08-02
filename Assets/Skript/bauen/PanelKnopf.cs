@@ -81,7 +81,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             {
                 GebaeudeInfoBauen.wertFest = 2;
                 KameraKontroller.aktiviert = true;
-                FehlerAnzeige.fehlertext = "Erstelle zuerst Feldarbeiter!";
+                FehlerAnzeige.fehlertext = "Erstelle zuerst Feldastronauten in einem Wohncontainer mit noch freien Betten! ";
                 return;
             }
         }
@@ -91,12 +91,12 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             if (Weide.arbeiterzahl > Testing.tierpfleger&&Weide.tierAnzahl> Testing.summeTiere)
             {
                 KameraKontroller.aktiviert = true;
-                FehlerAnzeige.fehlertext = "Erstelle zuerst Tierpfleger und Tiere!";
+                FehlerAnzeige.fehlertext = "Erstelle zuerst Weideastronauten und Tiere!";
                 return;
             }else if (Weide.arbeiterzahl > Testing.tierpfleger)
             {
                 KameraKontroller.aktiviert = true;
-                FehlerAnzeige.fehlertext = "Erstelle zuerst Tierpfleger!";
+                FehlerAnzeige.fehlertext = "Erstelle zuerst Weideastronauten!";
                 return;
             }
             else if (Weide.tierAnzahl > Testing.tiere)
@@ -112,7 +112,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             {
                 KameraKontroller.aktiviert = true;
                 GebaeudeInfoBauen.wertFest = 3;
-                FehlerAnzeige.fehlertext = "Erstelle zuerst Forscher!";
+                FehlerAnzeige.fehlertext = "Erstelle zuerst Forschungsastronauten in einem Wohncontainer mit noch freien Betten!";
                 return;
             }
 
