@@ -8,7 +8,7 @@ public class Story : MonoBehaviour
     public bool offModus = false;
 
     //Startlevel für ER-Editor
-    public static int level=0;
+    public static int level;
 
     //Array zum Prüfen, ob LvL im ER erreicht ist
     public static bool[] lvl = new bool[] {false,false,false,false,false,false,false,false};

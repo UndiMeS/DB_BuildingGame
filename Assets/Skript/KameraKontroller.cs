@@ -65,12 +65,12 @@ public class KameraKontroller : MonoBehaviour
         transform.position = newPosition;
         cameraTransform.localPosition= newZoom ;
 
-        oldPos = new Vector3(40,250,0); //für ER-Modell; Mars: new Vector3(90, 120, 5);
+        oldPos = new Vector3(100,250,0); //für ER-Modell; Mars: new Vector3(90, 120, 5);
         oldZoom = new Vector3(0,50,-120); // für ER-Modell; Mars: new Vector3(0, -200, -200);
-        int minX = -50;
-        int maxX = 130;
-        int minY = 265;
-        int maxY = 350;
+        int minX = -10;
+        int maxX = 210;
+        int minY = 250;
+        int maxY = 360;
         Debug.DrawLine(new Vector3(minX,minY,0),new Vector3(minX,maxY,0), Color.black, 100);
         Debug.DrawLine(new Vector3(minX, minY, 0), new Vector3(maxX, minY, 0), Color.black, 100);
         Debug.DrawLine(new Vector3(maxX, maxY, 0), new Vector3(minX, maxY, 0), Color.black, 100);
@@ -392,10 +392,10 @@ public class KameraKontroller : MonoBehaviour
 
             
             newZoom.z = Mathf.Clamp(newZoom.z, ERMinZoomZ, ERMaxZoomZ);
-            int minX = -50;
-            int maxX = 130;
-            int minY = 265;
-            int maxY = 350;
+            int minX = -10;
+            int maxX = 210;
+            int minY = 250;
+            int maxY = 360;
             //Grenzen mit ... herausfinden
             //auch in ER-Objekt sichtfeld eintragen
             //Debug.Log(Utilitys.GetMouseWorldPosition(new Vector3(10, 50, 0)) + " " + Utilitys.GetMouseWorldPosition(new Vector3(Screen.width-10, Screen.height - 50, 0)));
