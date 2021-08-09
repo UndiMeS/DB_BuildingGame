@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Hauptmenu : MonoBehaviour
 {
+    public void Start()
+    {
+        Screen.SetResolution(1920, 1080, true);
+    }
     public void StartSpiel()
     {
        SwitchToBaumenue();
