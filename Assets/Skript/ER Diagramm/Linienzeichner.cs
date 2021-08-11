@@ -39,15 +39,20 @@ public class Linienzeichner : MonoBehaviour
         changeName();
         if (zeichnen && objekt1!=null&&objekt2!=null)
         {
-            if (setposition==1)
+            if (setposition != 0)
             {
-                //pos1 = objekt1.transform.position + Vector3.right;
-                pos1=getPosition(objekt1)+ Vector3.right;
-            }
-            else if (setposition == 2)
-            {
-                //pos1 = objekt1.transform.position - Vector3.right;
-                pos1 = getPosition(objekt1) - Vector3.right;
+                Vector3[] ecken = new Vector3[4];
+                objekt1.GetComponent<RectTransform>().GetWorldCorners(ecken);
+                Vector3[] mittelpunkte = new Vector3[] { (ecken[0] + ecken[1]) / 2, (ecken[1] + ecken[2]) / 2, (ecken[2] + ecken[3]) / 2, (ecken[3] + ecken[0]) / 2 };
+                //falls Entität mit sich selbst in Beziehung
+                if (setposition == 1)
+                {
+                    pos1 = mittelpunkte[0];
+                }
+                else if (setposition == 2)
+                {
+                    pos1 = mittelpunkte[2];
+                }
             }
             else
             {
