@@ -4,11 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Pausemenü in der Landschaft und im EREditor
 public class PauseMenu : MonoBehaviour
 {
-    public static bool SpielIstPausiert= false;
-    public static bool ERon = false;
 
+    public static bool SpielIstPausiert= false; //Spiel ist nicht pausiert im ER Editor, pausiert z.B.: im Pausemenü
+
+    public static bool ERon = false; //gibt an ob in ER Editor, wichtig für die Zeit
+
+    //Objekte die an oder ausgeschalten werden
     public GameObject PauseMenuUI;
     public GameObject kameraKontroller;
     public GameObject canvas;
@@ -28,35 +32,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject leisteTop;
     public GameObject hilfeInGameER;
 
+    //für Screenshot
     public KameraKontroller KameraScript;
-
-
     private GameObject selectedGameObjektZwischenspeicher;
 
-    void Start()
-    {
-        KameraScript = GameObject.FindGameObjectWithTag("KameraAnker").GetComponent<KameraKontroller>();
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        //Debug.Log("Spiel pausiert "+ SpielIstPausiert);
-        /*
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(ERon == false && PauseMenuUI.activeSelf == false)
-            {
-                Pause();
-            }else if(ERon == false && PauseMenuUI.activeSelf == true)
-            {
-                Weiterspielen();
-            }
-        }
-        */
-        
-    }
-
+    //zurück-Knopf im Pausemenü/Optionsmenü der Landschaft
     public void Weiterspielen()
     {
         PauseMenuUI.SetActive(false);
@@ -74,6 +54,7 @@ public class PauseMenu : MonoBehaviour
         baumenuTransparent.SetActive(true);
     }
 
+    //zurück-Knopf im Pausemenü/Optionsmenü des ER-Editors
     public void WeiterspielenER()
     {
         PauseMenuUI.SetActive(false);
@@ -83,6 +64,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
 
     }
+
+    // ruft Optionsmenü in Landschaft aus (rechts Knopf)
     void Pause()
     {
         PauseMenuUI.SetActive(true);
@@ -92,16 +75,15 @@ public class PauseMenu : MonoBehaviour
         GebaeudeAnzeige.allesAus = true;
         
     }
+
+    //geht zurück ins Hauptmenü
     public void LadeMenu()
     {
-        Testing.resetAll();
+        Testing.resetAll(); //alle Werte werden auf 0 gesetzt
         SceneManager.LoadScene(0);
     }
-    public void BeendeSpiel()
-    {
-        Debug.Log("Beendet!");
-        Application.Quit();
-    }
+    
+    //Hilfe Anzeigen in PauseMenü der Landschaft
     public void Hilfe()
     {
         PauseMenuUI.SetActive(false);
@@ -117,6 +99,8 @@ public class PauseMenu : MonoBehaviour
 
 
     }
+
+    //Hilfe Anzeigen in Optionsmenü des ER-Editors
     public void HilfeER()
     {
         hilfeFenster.SetActive(true);
@@ -124,10 +108,10 @@ public class PauseMenu : MonoBehaviour
         hilfeButtondestroyer.SetActive(true);
         hilfeTexte.SetActive(true);
         Aufgabenfenster.SetActive(false);
-        Checkliste.SetActive(false);
-
-        
+        Checkliste.SetActive(false);        
     }
+
+    //Schließen der Hilfe Anzeigen des ER-Editors
     public void ExitHilfeER()
     {
         hilfeFenster.SetActive(false);
@@ -138,6 +122,8 @@ public class PauseMenu : MonoBehaviour
         Checkliste.SetActive(true);
     }
 
+    // GameObject objekt wird angezeigt oder ausgeblendet
+    // dabei wird die Zeit angehalten, keine Gebäudeanzeige (Landschaft unten links), keine Kamerabewegung
     public void ObjectAnzeigenTimeStop (GameObject objekt)
     {
         if (objekt.activeSelf)
@@ -160,6 +146,8 @@ public class PauseMenu : MonoBehaviour
 
     }
 
+    // GameObject objekt wird angezeigt oder ausgeblendet
+    // ohne obigen Einschränkungen
     public void ObjectAnzeigenNotStop(GameObject objekt)
     {
         if (objekt.activeSelf)
@@ -183,8 +171,7 @@ public class PauseMenu : MonoBehaviour
         ERon = true;
         SpielIstPausiert = false;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(1);
-        GebaeudeInfoBauen.wertFest = 0;
-        
+        GebaeudeInfoBauen.wertFest = 0;        
     }
 
     public void SwitchToBaumenue()
@@ -256,8 +243,6 @@ public class PauseMenu : MonoBehaviour
 
         WeiterspielenER();
         KameraScript.ScreenshotZoom();
-        //Debug.Log("Screenshot gemacht");
-        //canvas.SetActive(false);
         Invoke("ERscreenshotErstellen", 0.7f);
          
         Invoke("neuesAllesAn", 1.0f);

@@ -7,6 +7,7 @@ public class hilfe_forschungsstation : MonoBehaviour
     public GameObject texte;
     public GameObject TransapentFuerForschungsstation;
 
+    //Hilfeanzeige bei der Gebäudeanzeige der Forschungsstation
     public void Show()
     {
         texte.SetActive(true);

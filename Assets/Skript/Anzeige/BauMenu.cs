@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
-*   Anpassung der Baupreise im Baumenü
-*
+*   Anpassung der Baupreise im Baumenü/ linke Spalte
 */
 public class BauMenu : MonoBehaviour
 {
