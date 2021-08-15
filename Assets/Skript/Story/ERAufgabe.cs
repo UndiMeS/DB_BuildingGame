@@ -87,7 +87,7 @@ public class ERAufgabe : MonoBehaviour
     private string[] astronaut_forschungsstation = { "arbeitet","verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für","istverantwortlich","istVerantwortlich","ist verantwortlich" };
     private string[] astronaut_forschungsstation_Eig = { "A", "S", "0", "1", "1" };
 
-    private string[] wohncontainer_astronaut = { "wohnt in","wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt" };
+    private string[] wohncontainer_astronaut = { "wohnt in","wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "wohnen" };
     private string[] wohncontainer_astronaut_Eig = { "W", "A", "1", "n", "1" };
 
     private string[] astronaut_forschungsprojekt = { "forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };

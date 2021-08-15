@@ -14783,7 +14783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3726a15791d6ea44b8d3dd0560768ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialOff: 0
+  tutorialOff: 1
   pfeilSpiel: {fileID: 1688200390}
   pfeilER: {fileID: 1909072898}
   containerKiller: {fileID: 1342842098}
@@ -17221,6 +17221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texte: {fileID: 667127102}
   TransapentFuerForschungsstation: {fileID: 1648971866}
+  HilfeForschungssattionTransapentRundeEcke: {fileID: 0}
 --- !u!114 &324275060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33261,7 +33262,7 @@ MonoBehaviour:
   MarsMinZoomZ: -470
   MarsMinZoomY: -470
   ERMaxZoomZ: -100
-  ERMinZoomZ: -660
+  ERMinZoomZ: -900
   newPosition: {x: 95, y: 75, z: 5}
   newZoom: {x: 0, y: -200, z: -200}
   zoomAmount: {x: 0, y: 1, z: 1}
@@ -37382,6 +37383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texte: {fileID: 0}
   TransapentFuerForschungsstation: {fileID: 0}
+  HilfeForschungssattionTransapentRundeEcke: {fileID: 0}
 --- !u!114 &708493274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80676,6 +80678,7 @@ GameObject:
   - component: {fileID: 1545071745}
   - component: {fileID: 1545071744}
   - component: {fileID: 1545071743}
+  - component: {fileID: 1545071746}
   m_Layer: 5
   m_Name: Hilfe InGame
   m_TagString: Untagged
@@ -80747,8 +80750,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1005837856}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 1545071746}
+        m_TargetAssemblyTypeName: Hilfe_Anzeige, Assembly-CSharp
         m_MethodName: Hilfe
         m_Mode: 1
         m_Arguments:
@@ -80758,42 +80761,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 281158135}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1694637442}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1246403229}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1545071744
 MonoBehaviour:
@@ -80833,6 +80800,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545071741}
   m_CullTransparentMesh: 0
+--- !u!114 &1545071746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545071741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d70cf7322239c409cecc5e6463a959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hilfeFenster: {fileID: 1246403229}
+  PauseMenuUI: {fileID: 1005837852}
+  "hilfeZur\xFCckButton": {fileID: 373089642}
+  hilfeGebaeudeinfo: {fileID: 1685498134}
+  hilfeButtondestroyer: {fileID: 177496285}
+  hilfeTexte: {fileID: 359977250}
+  baumenuTransparent: {fileID: 1840935811}
+  mission: {fileID: 1733310776}
+  tutorial: {fileID: 281158135}
+  info: {fileID: 1694637442}
+  hilfeBackground: {fileID: 1246403229}
 --- !u!1 &1545242694
 GameObject:
   m_ObjectHideFlags: 0
@@ -83440,8 +83430,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1005837856}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 1545071746}
+        m_TargetAssemblyTypeName: Hilfe_Anzeige, Assembly-CSharp
         m_MethodName: Hilfe
         m_Mode: 1
         m_Arguments:
@@ -83451,42 +83441,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 281158135}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1694637442}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1246403229}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1596613948
 MonoBehaviour:
@@ -95330,6 +95284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texte: {fileID: 667127102}
   TransapentFuerForschungsstation: {fileID: 215272376}
+  HilfeForschungssattionTransapentRundeEcke: {fileID: 1648971866}
 --- !u!1 &1835054124
 GameObject:
   m_ObjectHideFlags: 0
@@ -95807,7 +95762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4836ad1e902274242aadfc3504d79743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offModus: 0
+  offModus: 1
   transparentWohncontainer: {fileID: 865439306}
   buttonForscher: {fileID: 1566984999}
   buttonFeld: {fileID: 857717934}

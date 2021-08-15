@@ -83,23 +83,6 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
     
-    //Hilfe Anzeigen in PauseMenü der Landschaft
-    public void Hilfe()
-    {
-        PauseMenuUI.SetActive(false);
-        SpielIstPausiert = true;
-        KameraKontroller.aktiviert = false;
-        hilfeFenster.SetActive(true);
-        hilfeZurückButton.SetActive(true);
-        hilfeGebaeudeinfo.SetActive(true);
-        hilfeButtondestroyer.SetActive(true);
-        hilfeTexte.SetActive(true);
-        baumenuTransparent.SetActive(false);
-        LeanTween.moveLocalY(mission, 650, 0.3f);
-
-
-    }
-
     //Hilfe Anzeigen in Optionsmenü des ER-Editors
     public void HilfeER()
     {

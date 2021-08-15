@@ -95,7 +95,7 @@ public class Beziehung : MonoBehaviour
         
         //setzen der Kardinaltiäten, immer 1:n und nicht 1:m
         Utilitys.TextInTMP(kardText1, kard1);
-        if (kard2.Equals("n"))
+        if (kard1.Equals("n") && kard2.Equals("n"))
         {
             Utilitys.TextInTMP(kardText2, "m");
         }

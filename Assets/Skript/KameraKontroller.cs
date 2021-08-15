@@ -81,7 +81,8 @@ public class KameraKontroller : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {            
+        // Debug.Log(Utilitys.GetMouseWorldPosition(new Vector3(0, 50, 0)) + " " + Utilitys.GetMouseWorldPosition(new Vector3(Screen.width, Screen.height - 50, 0)));
         if (aktiviert)
         {
             //testPos = newPosition;
@@ -392,13 +393,13 @@ public class KameraKontroller : MonoBehaviour
 
             
             newZoom.z = Mathf.Clamp(newZoom.z, ERMinZoomZ, ERMaxZoomZ);
-            int minX = -10;
-            int maxX = 210;
-            int minY = 250;
-            int maxY = 360;
+            int minX = -40;
+            int maxX =240;
+            int minY = 235;
+            int maxY = 380;
             //Grenzen mit ... herausfinden
             //auch in ER-Objekt sichtfeld eintragen
-            //Debug.Log(Utilitys.GetMouseWorldPosition(new Vector3(10, 50, 0)) + " " + Utilitys.GetMouseWorldPosition(new Vector3(Screen.width-10, Screen.height - 50, 0)));
+            //Debug.Log(Utilitys.GetMouseWorldPosition(new Vector3(0, 50, 0)) + " " + Utilitys.GetMouseWorldPosition(new Vector3(Screen.width, Screen.height - 50, 0)));
 
             Vector3 xyVektor=Utilitys.GetMouseWorldPosition(new Vector3(0, 50, 0));
             //Debug.Log(newZoom.z + " " + cameraTransform.localPosition.z);

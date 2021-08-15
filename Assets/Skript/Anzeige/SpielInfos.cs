@@ -32,7 +32,7 @@ public class SpielInfos : MonoBehaviour
     public static float pausedtime;
 
     public static int neueZusatzaufgabe = 3;
-    public static int neuerUmsatz = 5;
+    public static int neuerUmsatz = 8;
 
     //Buttons um Zusatzaufgabefenster zeitabhängig anzeigen zu lassen
     public GameObject zusatzButton; 
@@ -84,9 +84,7 @@ public class SpielInfos : MonoBehaviour
 
                 }
                 
-            }
-            
-            
+            }        
             lasttime = currenttime;
         }
         else if(PauseMenu.ERon)
