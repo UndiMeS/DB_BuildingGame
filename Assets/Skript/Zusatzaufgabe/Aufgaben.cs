@@ -198,7 +198,7 @@ public class Aufgaben : MonoBehaviour
             fenster.SetActive(false);
             lösungsButton.SetActive(false);
             exitKnopfHinweis.SetActive(true);
-
+            toggleKiller.SetActive(false) ;
         //Ausgabe des Hinweises
         }else{
             secondChanceScreen.SetActive(true);

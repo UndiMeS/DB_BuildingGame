@@ -13903,7 +13903,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 797408287}
         m_TargetAssemblyTypeName: Zertifikat, Assembly-CSharp
-        m_MethodName: CreatePDF
+        m_MethodName: skipLastMission
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14783,7 +14783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3726a15791d6ea44b8d3dd0560768ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialOff: 1
+  tutorialOff: 0
   pfeilSpiel: {fileID: 1688200390}
   pfeilER: {fileID: 1909072898}
   containerKiller: {fileID: 1342842098}
@@ -40790,7 +40790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1d607b4aa0c1441a6aef11dea69244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outro: {fileID: 0}
+  outro: {fileID: 1044023698}
 --- !u!224 &797408288
 RectTransform:
   m_ObjectHideFlags: 0
@@ -89409,7 +89409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37cd7f1e22281b4b867293b294a9963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testModus: 1
+  testModus: 0
   dasIstSchonFertig: {fileID: 1730754993}
   aufgabenText: {fileID: 616779706}
   checkliste:
@@ -95762,7 +95762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4836ad1e902274242aadfc3504d79743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offModus: 1
+  offModus: 0
   transparentWohncontainer: {fileID: 865439306}
   buttonForscher: {fileID: 1566984999}
   buttonFeld: {fileID: 857717934}

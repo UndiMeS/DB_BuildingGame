@@ -115,4 +115,10 @@ public class Zertifikat : MonoBehaviour
     {
         outro.SetActive(true);
     }
+    public void skipLastMission()
+    {
+        Mission.missionsLevel[5] = true;
+        Mission.missionsTeilLevel5 = new bool[] { true, true, true };
+        Mission.screenshotMission = true;
+    }
 }

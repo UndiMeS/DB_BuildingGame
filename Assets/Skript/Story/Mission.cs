@@ -143,6 +143,7 @@ public class Mission : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Story.level);
         //Alle Missionen erfolgreich absolviert
         if(missionsLevel[9]){
             FinaleAnzeige();

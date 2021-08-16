@@ -81,7 +81,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             {
                 GebaeudeInfoBauen.wertFest = 2;
                 KameraKontroller.aktiviert = true;
-                FehlerAnzeige.fehlertext = "Erstelle zuerst Feldastronauten in einem Wohncontainer mit noch freien Betten! ";
+                FehlerAnzeige.fehlertext = "Siedle zuerst Feldastronauten in einem Wohncontainer mit noch freien Betten an! ";
                 return;
             }
         }
@@ -91,18 +91,18 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             if (Weide.arbeiterzahl > Testing.tierpfleger&&Weide.tierAnzahl> Testing.summeTiere)
             {
                 KameraKontroller.aktiviert = true;
-                FehlerAnzeige.fehlertext = "Erstelle zuerst Weideastronauten und Tiere!";
+                FehlerAnzeige.fehlertext = "Siedle zuerst Weideastronauten und Tiere an!";
                 return;
             }else if (Weide.arbeiterzahl > Testing.tierpfleger)
             {
                 KameraKontroller.aktiviert = true;
-                FehlerAnzeige.fehlertext = "Erstelle zuerst Weideastronauten!";
+                FehlerAnzeige.fehlertext = "Siedle zuerst Weideastronauten an!";
                 return;
             }
             else if (Weide.tierAnzahl > Testing.tiere)
             {
                 KameraKontroller.aktiviert = true;
-                FehlerAnzeige.fehlertext = "Erstelle zuerst Tiere!";
+                FehlerAnzeige.fehlertext = "Siedle zuerst Tiere an!";
                 return;
             }
         }
@@ -112,7 +112,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             {
                 KameraKontroller.aktiviert = true;
                 GebaeudeInfoBauen.wertFest = 3;
-                FehlerAnzeige.fehlertext = "Erstelle zuerst Forschungsastronauten in einem Wohncontainer mit noch freien Betten!";
+                FehlerAnzeige.fehlertext = "Siedle zuerst Forschungsastronauten in einem Wohncontainer mit noch freien Betten an!";
                 return;
             }
 

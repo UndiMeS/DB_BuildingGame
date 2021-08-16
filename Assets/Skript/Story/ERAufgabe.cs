@@ -510,7 +510,7 @@ public class ERAufgabe : MonoBehaviour
                     }
                     if (i == 2)
                     {
-                        Debug.Log("1");
+                        //Debug.Log("1");
                     }
                     if (listeBeziehungsEigenschaften[Story.level][i][1].Equals(nameAnderesEnitity))
                     {
