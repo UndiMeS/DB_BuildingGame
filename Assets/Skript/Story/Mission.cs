@@ -143,7 +143,6 @@ public class Mission : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Story.level);
         //Alle Missionen erfolgreich absolviert
         if(missionsLevel[9]){
             FinaleAnzeige();
@@ -257,13 +256,16 @@ public class Mission : MonoBehaviour
     {
     //Level vor 0
         if(level == 6){
-            if(missionsLevel[6]){
+            if (Story.level == 1)
+            {
+                masterHacken.transform.parent.gameObject.SetActive(true);
+            }
+            if (missionsLevel[6]){
                 hacken1.SetActive(true);
                 KreuzHacken();
-            }else{ 
+            }else{
                 //missionTeilLevel checkt ob Teilzeil bereits fertig war
-
-                if(temp_geld_lvl6 < Testing.geld){
+                if (temp_geld_lvl6 < Testing.geld){
                     temp_geld_lvl6 = Testing.geld;
                 }
                 if(temp_geld_lvl6 > Testing.geld){

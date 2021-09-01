@@ -11,6 +11,23 @@ public class BottomLeisteHilfe : MonoBehaviour
     public GameObject zurueck;
     public GameObject texte;
 
+    public GameObject optionsmenue;
+    public GameObject tutorial;
+    public GameObject zeitstopper;
+    public GameObject hinweis;
+    public GameObject infobox;
+
+    public void Hilfe_anzeigen_ER()
+    {
+        if (!texte.activeSelf)
+        {
+            Einblenden();
+        }
+        else
+        {
+            Ausblenden();
+        }
+    }
 
     public void Einblenden()
     {
@@ -19,6 +36,13 @@ public class BottomLeisteHilfe : MonoBehaviour
         button.SetActive(true);
         zurueck.SetActive(true);
         texte.SetActive(true);
+        optionsmenue.SetActive(false);
+        tutorial.SetActive(false);
+        optionsmenue.GetComponent<PauseMenu>().ObjectAnzeigenTimeStop(zeitstopper);
+        hinweis.SetActive(true);
+        infobox.SetActive(false);
+        optionsmenue.GetComponent<PauseMenu>().WeiterspielenER();
+        optionsmenue.GetComponent<PauseMenu>().HilfeER();
     }
     public void Ausblenden()
     {
@@ -27,6 +51,11 @@ public class BottomLeisteHilfe : MonoBehaviour
         button.SetActive(false);
         zurueck.SetActive(false);
         texte.SetActive(false);
+        tutorial.SetActive(true);
+        optionsmenue.GetComponent<PauseMenu>().ObjectAnzeigenTimeStop(zeitstopper);
+        hinweis.SetActive(false);
+        optionsmenue.GetComponent<PauseMenu>().ExitHilfeER();
+        infobox.SetActive(true);
     }
 
     public void KonventionOnTop(ScrollRect konvention)

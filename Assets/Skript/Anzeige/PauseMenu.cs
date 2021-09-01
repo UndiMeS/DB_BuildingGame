@@ -91,7 +91,8 @@ public class PauseMenu : MonoBehaviour
         hilfeButtondestroyer.SetActive(true);
         hilfeTexte.SetActive(true);
         Aufgabenfenster.SetActive(false);
-        Checkliste.SetActive(false);        
+        Checkliste.SetActive(false);
+        KameraKontroller.aktiviert = false;
     }
 
     //Schließen der Hilfe Anzeigen des ER-Editors
@@ -103,6 +104,7 @@ public class PauseMenu : MonoBehaviour
         hilfeTexte.SetActive(false);
         Aufgabenfenster.SetActive(true);
         Checkliste.SetActive(true);
+        KameraKontroller.aktiviert = true;
     }
 
     // GameObject objekt wird angezeigt oder ausgeblendet

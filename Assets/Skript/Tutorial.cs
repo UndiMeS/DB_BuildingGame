@@ -102,9 +102,9 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, folge dem roten Pfeil und öffne zuerst den ER-Editor!";
             if(beschreibungClick == false){
                 FehlerAnzeige.tutorialtext_ER = "Erstelle ein ER-Diagramm mit der Leiste am unteren Bildschrimrand anhand der ER-Beschreibung (scrollbar!). Öffne die Beschreibung (roter Pfeil)";
-                pfeilLeisteUnten.SetActive(true);
+                pfeilLeisteUnten.SetActive(false);
                 klickPfeil.SetActive(false);
-
+                pfeilER.SetActive(true);
             }
             
             if(beschreibungClick){
@@ -112,15 +112,20 @@ public class Tutorial : MonoBehaviour
                     FehlerAnzeige.tutorialtext_ER = "Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehakt. 'Primärschlüssel' wird abgehakt, wenn die entsprechenden Attribute richtig gekennzeichnet sind.\n Tipp: Klicke in das Beschreibungsfeld!";
                     pfeilLeisteUnten.SetActive(false);
                     klickPfeil.SetActive(true);
-                }   
-            }
-            
-            
-            if(beschreibungER.activeSelf){
-                pfeilER.SetActive(false);
-            }else{
-                pfeilER.SetActive(true);
-                klickPfeil.SetActive(false);
+                    pfeilER.SetActive(false);
+                }
+                else if (beschreibungER.activeSelf)
+                {
+                    pfeilER.SetActive(false);
+                    pfeilLeisteUnten.SetActive(true);
+                    klickPfeil.SetActive(false);
+                }
+                else
+                {
+                    pfeilER.SetActive(true);
+                    pfeilLeisteUnten.SetActive(false);
+                    klickPfeil.SetActive(false);
+                }
             }
             
 
@@ -130,9 +135,9 @@ public class Tutorial : MonoBehaviour
         
         //Zeitpunkt: ER-Level 0 (Wohncontainer) fertig und öffnen des Missionsfensters
         }else if(Story.lvl[0] == true && Mission.missionsLevel[6] == false){
-            pfeilSpiel.transform.localPosition = new Vector3(637,100,0);
+            pfeilSpiel.transform.localPosition = new Vector3(637,132,0);
             pfeilER.SetActive(true);
-            pfeilER.transform.localPosition = new Vector3(612,177,0);
+            pfeilER.transform.localPosition = new Vector3(590,208,0);
             containerKiller.SetActive(true);
             bZusatz.interactable = false;
             bMission.interactable = true;
@@ -158,10 +163,10 @@ public class Tutorial : MonoBehaviour
                     pfeilSpiel.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
                     rotationTemp = true;
             }
-            pfeilSpiel.transform.localPosition = new Vector3(637,177,0);
+            pfeilSpiel.transform.localPosition = new Vector3(637,208,0);
             FehlerAnzeige.tutorialtext_Spiel = "Sehr gut! Um nun auch Astronauten einzufliegen, erweitere dein ER-Diagramm!";
             FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Hinweis: Wird eine Entitymenge als 'schwach' gekennzeichnet, wird automatisch auch eine schwache Relation erzeugt! ";
-            pfeilER.transform.localPosition = new Vector3(612,100,0);
+            pfeilER.transform.localPosition = new Vector3(590,132,0);
 
             if(beschreibungER.activeSelf){
                 pfeilER.SetActive(false);
@@ -178,8 +183,8 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "Schau dir deine neue Mission an!";
             FehlerAnzeige.tutorialtext_ER = "Fabelhaft! Wechsel nun erneut in die Siedlung und erfülle deine nächste Mission!";
             pfeilER.SetActive(true);
-            pfeilER.transform.localPosition = new Vector3(612,177,0);
-            pfeilSpiel.transform.localPosition = new Vector3(637,100,0);
+            pfeilER.transform.localPosition = new Vector3(590,208,0);
+            pfeilSpiel.transform.localPosition = new Vector3(637,132,0);
             //Prüfe, ob Missionsbutten gedrückt wurde
             if(missionClick){
 
@@ -206,7 +211,7 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "Die ersten Siedlungsbewohner sind gelandet. Die Anzahl der zur Verfügung stehenden Astronauten kannst du in der Infoleiste ganz rechts sehen. Wechsel, wie nach jeder Mission in den ER-Editor!";
             FehlerAnzeige.tutorialtext_ER = "Erweitere nun erneut dein ER-Diagramm, führe den gleichen Kreislauf aus ER- u. Spielmodus fort und erweitere deine Siedlung! \n Hinweis: Beim Anlegen einer Relationship musst du die entsprechenden Entitymengen noch auswählen und die gewünschte Kardinalität setzen.";
             pfeilER.SetActive(false);
-            pfeilSpiel.transform.localPosition = new Vector3(637,177,0);
+            pfeilSpiel.transform.localPosition = new Vector3(637,208,0);
             pfeilSpiel.SetActive(true);
             bZusatz.interactable = false;
             missionClick = false;
@@ -217,8 +222,8 @@ public class Tutorial : MonoBehaviour
             if(zusatzClick == false && missionClick == false && missionTemp == false){
                 FehlerAnzeige.tutorialtext_Spiel = "Bei knappen Ressourcen kannst du auch eine Zusatzaufgabe lösen, um weiter zu bauen! Öffne eine Zusatzaufgabe!";
                 FehlerAnzeige.tutorialtext_ER = "Super! Im Baumenü sind nun Feldsphären freigeschaltet. Auch Feldastronauten leben bereits in der Siedlung. Auf geht's in die neue Mission!";
-                pfeilSpiel.transform.localPosition = new Vector3(637,23,0);
-                pfeilER.transform.localPosition = new Vector3(612,177,0);
+                pfeilSpiel.transform.localPosition = new Vector3(637,57,0);
+                pfeilER.transform.localPosition = new Vector3(590,208,0);
                 
             }
             //Prüfe ob Zusatzfenster geklickt wurde
@@ -232,7 +237,7 @@ public class Tutorial : MonoBehaviour
                     FehlerAnzeige.tutorialtext_Spiel = "Für Feldsphären benötigst du die eben eingeflogenen Feldastronauten. Hinweis: Rechts neben der Guthabenanzeige in der Infoleiste am oberen Bildschirmrand siehst du den Ertrag, der dir alle "+SpielInfos.neuerUmsatz+" Sol (Marstage) ausgezahlt wird.";
                     pfeilErtrag.SetActive(true);
                 }else{
-                    FehlerAnzeige.tutorialtext_Spiel = "Versuche nun die nächste Mission zu erfüllen! \n Tipp: Unten links und im Pausemenü findest du auch eine Spielhilfe!";
+                    FehlerAnzeige.tutorialtext_Spiel = "Versuche nun die nächste Mission zu erfüllen! \n Tipp: Rechts und im Pausemenü findest du auch eine Spielhilfe!";
                     if(firstTime == true){
                         popUpGameObject(buttonHilfeInGame);
                         firstTime = false;
