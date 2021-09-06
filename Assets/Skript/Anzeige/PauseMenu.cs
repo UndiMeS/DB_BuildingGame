@@ -36,6 +36,15 @@ public class PauseMenu : MonoBehaviour
     public KameraKontroller KameraScript;
     private GameObject selectedGameObjektZwischenspeicher;
 
+    public GameObject RTS_Camera;
+    public RTS_Cam.RTS_Camera RTS_CameraScript;
+    //public RTS_Camera CameraScript;
+
+    void Start()
+    {
+        RTS_CameraScript = RTS_Camera.GetComponent<RTS_Cam.RTS_Camera>();
+    }
+
     //zurück-Knopf im Pausemenü/Optionsmenü der Landschaft
     public void Weiterspielen()
     {
@@ -156,7 +165,8 @@ public class PauseMenu : MonoBehaviour
         ERon = true;
         SpielIstPausiert = false;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(1);
-        GebaeudeInfoBauen.wertFest = 0;        
+        GebaeudeInfoBauen.wertFest = 0;
+        RTS_Camera.transform.rotation = Quaternion.Euler(90,0,0);
     }
 
     public void SwitchToBaumenue()
@@ -165,6 +175,7 @@ public class PauseMenu : MonoBehaviour
         SpielIstPausiert = false;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(0);
         mission.transform.localPosition = new Vector3(16, 650, 0);
+        RTS_Camera.transform.rotation = Quaternion.Euler(45,0,0);
     }
 
     public void animationMission()
