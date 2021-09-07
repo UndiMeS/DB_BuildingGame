@@ -13,9 +13,11 @@ public class Gitter
     private TextMesh[,] debugTextArray;
 
     private GameObject[,] gebaeudeArray;
+    private Vector3 offset;
 
-    public Gitter(int weite, int hoehe, float zellengroesse)
+    public Gitter(int weite, int hoehe, float zellengroesse, Vector3 offset )
     {
+        this.offset = offset;
         this.weite = weite;
         this.hoehe = hoehe;
         this.zellengroesse = zellengroesse;
@@ -29,7 +31,7 @@ public class Gitter
         {
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
-                //debugTextArray[x, y] = Utilitys.CreateWorldText(gridArray[x, y].ToString(), null, GetWorldPosition(x, y) + new Vector3(zellengroesse, zellengroesse) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter); //20 Textgröße
+                //debugTextArray[x, y] = Utilitys.CreateWorldText(gridArray[x, y].ToString(), null, GetWorldPosition(x, y) + new Vector3(zellengroesse,0, zellengroesse) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter); //20 Textgröße
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100);
             }
@@ -41,14 +43,14 @@ public class Gitter
     //gridposition zu Weltposition
     public Vector3 GetWorldPosition(int x, int y)
     {
-        return (new Vector3(x, y) * zellengroesse);
+        return (new Vector3(x,0, y) * zellengroesse)+offset;
     }
 
     //worldposition in x,y
     public void GetXY(Vector3 weltPosition, out int x, out int y)
     {
         x = Mathf.FloorToInt(weltPosition.x / zellengroesse);
-        y = Mathf.FloorToInt(weltPosition.y / zellengroesse);
+        y = Mathf.FloorToInt(weltPosition.z / zellengroesse);
 
     }
 
@@ -173,19 +175,19 @@ public class Gitter
     {
         Vector3 position = new Vector3(-1, -1, -1);
         float x = cursorPos.x;
-        x = ((int)(x / Testing.zellengroesse)) * Testing.zellengroesse + Testing.zellengroesse / 2;
+        x = ((int)(x / Testing.zellengroesse)) * Testing.zellengroesse + Testing.zellengroesse / 2 + offset.x;
         position.x = x;
 
-        float y = cursorPos.y;
-        y = ((int)(y / Testing.zellengroesse)) * Testing.zellengroesse + Testing.zellengroesse / 2;
-        position.y = y;
+        float z = cursorPos.z;
+        z = ((int)(z / Testing.zellengroesse)) * Testing.zellengroesse + Testing.zellengroesse / 2 + offset.z;
+        position.z = z;
 
 
-        position.z = -0.8f;
+        position.y = -0.8f;
         if (position.x > Testing.weite * Testing.zellengroesse) { position.x = Testing.weite * Testing.zellengroesse - Testing.zellengroesse / 2; }
         if (position.x < 0) { position.x = Testing.zellengroesse / 2; }
-        if (position.y > Testing.hoehe * Testing.zellengroesse) { position.y = Testing.hoehe * Testing.zellengroesse - Testing.zellengroesse / 2; }
-        if (position.y < 0) { position.y = Testing.zellengroesse / 2; }
+        if (position.z > Testing.hoehe * Testing.zellengroesse) { position.z = Testing.hoehe * Testing.zellengroesse - Testing.zellengroesse / 2; }
+        if (position.z < 0) { position.z = Testing.zellengroesse / 2; }
         return position;
     }
 

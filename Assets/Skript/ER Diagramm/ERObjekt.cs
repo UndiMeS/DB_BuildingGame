@@ -66,32 +66,32 @@ public class ERObjekt : MonoBehaviour
                 rectTransform.GetWorldCorners(v);
 
                 float pivotX = rectTransform.pivot.x * (Utilitys.GetMouseWorldPosition(Input.mousePosition).x - v[0].x) / (gameObject.transform.position.x - v[0].x);
-                float pivotY = rectTransform.pivot.y * (Utilitys.GetMouseWorldPosition(Input.mousePosition).y - v[0].y) / (gameObject.transform.position.y - v[0].y);
+                float pivotY = rectTransform.pivot.y * (Utilitys.GetMouseWorldPosition(Input.mousePosition).z - v[0].z) / (gameObject.transform.position.z - v[0].z);
                 rectTransform.pivot = new Vector2(pivotX, pivotY);
                 ERErstellung.changeSelectedGameobjekt(gameObject);
             }
             selected = true;
             moveSelected = true;
-            KameraKontroller.aktiviert = false;
+            Testing.aktiviert = false;
         }
         if (Input.GetMouseButtonUp(0))
         {
             moveSelected = false;
             selected = false;
-            KameraKontroller.aktiviert = true;
+            Testing.aktiviert = true;
             //setzt Pivot zurueck in die Mitte, wenn Maus losgelassen wird
             Vector3[] v = new Vector3[4];
             rectTransform.GetWorldCorners(v);
 
             float x = v[0].x+(gameObject.transform.position.x-v[0].x)/(2* rectTransform.pivot.x);
-            float y = v[0].y + (gameObject.transform.position.y - v[0].y) / (2 * rectTransform.pivot.y);
-            gameObject.transform.position = new Vector2(x, y);
+            float y = v[0].z + (gameObject.transform.position.z - v[0].z) / (2 * rectTransform.pivot.y);
+            gameObject.transform.position = new Vector3(x,0, y);
             gameObject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
         }
         if (moveSelected)//bewegen des Objekts
         {
             Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);
-            cursorPos = imSichtfeld(cursorPos);
+            //cursorPos = imSichtfeld(cursorPos);
             transform.position = cursorPos;
         }
 

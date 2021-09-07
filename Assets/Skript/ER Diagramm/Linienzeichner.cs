@@ -74,9 +74,9 @@ public class Linienzeichner : MonoBehaviour
         Vector3[] v = new Vector3[4];
         @object.GetComponent<RectTransform>().GetWorldCorners(v);
         float x = v[0].x + (@object.transform.position.x - v[0].x) / (2 * @object.GetComponent<RectTransform>().pivot.x);
-        float y = v[0].y + (@object.transform.position.y - v[0].y) / (2 * @object.GetComponent<RectTransform>().pivot.y);
+        float y = v[0].z + (@object.transform.position.z - v[0].z) / (2 * @object.GetComponent<RectTransform>().pivot.y);
 
-        return new Vector2(x, y);
+        return new Vector3(x,0, y);
     }
 
     private void changeName()

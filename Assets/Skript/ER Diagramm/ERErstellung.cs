@@ -67,6 +67,7 @@ public class ERErstellung : MonoBehaviour
         }
 
         GameObject temp = Instantiate(prefab, transform);
+        prefab.transform.rotation = Quaternion.Euler(90, 0, 0);
         if (temp.CompareTag("Beziehung"))
         {
             temp.GetComponent<Beziehung>().setLinienordner(linienOrdner);

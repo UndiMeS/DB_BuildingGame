@@ -97,7 +97,7 @@ public class ObjektBewegung : MonoBehaviour
         {
             Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);
             Vector3 position = Testing.grid.stayInGrid(cursorPos);
-            position.z = 0;
+            position.y = 0;
             
             transform.position = position;
         }

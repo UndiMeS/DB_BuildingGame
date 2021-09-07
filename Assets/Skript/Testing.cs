@@ -58,13 +58,15 @@ public class Testing : MonoBehaviour
 
     public PauseMenu PauseScript;
 
+    public Vector3 offset;
 
+    public static bool aktiviert=true;
 
     // Start is called before the first frame update
     void Start()
     {
         Spielwerte.Werte();
-        grid = new Gitter(weite, hoehe, zellengroesse);
+        grid = new Gitter(weite, hoehe, zellengroesse, offset);
 
         //Hintergrund und Camera
         boden.transform.localPosition = new Vector3(140, 21, -150);
@@ -101,6 +103,11 @@ public class Testing : MonoBehaviour
             zuvorNichtAn = true;
         }
         */
+        if (!aktiviert)
+        {
+            Debug.Log("Deaktiviert!");
+        }
+        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().enabled = aktiviert;
     }
 
 

@@ -31,7 +31,7 @@ public class Entitaet : MonoBehaviour
         instanceID = gameObject.GetInstanceID();
         entitaetsName = gameObject.name;
         x = gameObject.transform.position.x;
-        y = gameObject.transform.position.y;
+        y = gameObject.transform.position.z;
         attributeID.Clear();
         foreach (GameObject attribut in attribute)
         {

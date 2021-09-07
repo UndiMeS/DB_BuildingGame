@@ -35,7 +35,7 @@ public class Utilitys
     public static Vector3 GetMouseWorldPosition(Vector3 mousePosition)
     {
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-        Plane plane = new Plane(Vector3.forward, Vector3.zero);
+        Plane plane = new Plane(Vector3.up, Vector3.zero);
         float hit;
 
         if (plane.Raycast(ray, out hit))

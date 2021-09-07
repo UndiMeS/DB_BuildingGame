@@ -59,7 +59,7 @@ public class Beziehung : MonoBehaviour
         //x und y für Speichern
         beziehungsName = gameObject.name;
         x = gameObject.transform.position.x;
-        y = gameObject.transform.position.y;
+        y = gameObject.transform.position.z;
 
         //Löscht Beziheung wenn Entität gelöscht ansonsten wird instanceID gemerkt von Entität
         if (objekt1 == null)
@@ -324,9 +324,9 @@ public class Beziehung : MonoBehaviour
         Vector3[] v = new Vector3[4];
         @object.GetComponent<RectTransform>().GetWorldCorners(v);
         float x = v[0].x + (@object.transform.position.x - v[0].x) / (2 * @object.GetComponent<RectTransform>().pivot.x);
-        float y = v[0].y + (@object.transform.position.y - v[0].y) / (2 * @object.GetComponent<RectTransform>().pivot.y);
+        float y = v[0].z + (@object.transform.position.z - v[0].z) / (2 * @object.GetComponent<RectTransform>().pivot.y);
 
-        return new Vector2(x, y);
+        return new Vector3(x, 0,y);
     }
     // für Dropdown Menü auswahl welche Entität in Beziehung gesetzt wird
     // einsOderZwei: gibt an ob 1. oder 2. Entität der Beziehung, Bei SCHWACH: 1 Kind 2 Elter
