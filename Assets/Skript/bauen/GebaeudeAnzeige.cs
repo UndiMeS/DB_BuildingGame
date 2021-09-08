@@ -88,7 +88,7 @@ public class GebaeudeAnzeige : MonoBehaviour
             if (Testing.objektGebaut == 0 && outBox(Input.mousePosition))
             {
                 Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);
-                cursorPos.z = 2f;
+                cursorPos.y = 2f;
                 wert = Testing.grid.GetWert(cursorPos);
                 gebaeude = Testing.grid.GetGebaeude(cursorPos);
             }
