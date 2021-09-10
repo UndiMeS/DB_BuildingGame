@@ -40,6 +40,7 @@ public class Tutorial : MonoBehaviour
     public GameObject wohncontainerGebaeudeanzeige;
     public GameObject konventionsFenster;
     public GameObject buttonHilfeInGame;
+    public RTS_Cam.RTS_Camera RTS_Camera;
     
 
     // Start is called before the first frame update
@@ -93,6 +94,7 @@ public class Tutorial : MonoBehaviour
         if(Story.lvl[0] == false && Mission.missionsLevel[6] == false){
             if(KonventionsClick == false){
                 konventionsFenster.SetActive(true);
+                RTS_Camera.enabled = false;
             }else{
                 konventionsFenster.SetActive(false);        
             }
@@ -345,6 +347,7 @@ public class Tutorial : MonoBehaviour
 
     public void ClickOnKonvention()
     {
+        RTS_Camera.enabled = true;
         KonventionsClick = true;
     }
 
