@@ -179,7 +179,10 @@ public class PauseMenu : MonoBehaviour
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(1);
         GebaeudeInfoBauen.wertFest = 0;
         RTS_Camera.transform.rotation = Quaternion.Euler(0,0,0);
+        RTS_CameraScript.minHeight = -3.0f;
+        RTS_CameraScript.maxHeight = -25.0f;
         RTS_CameraScript.targetFollow = null;
+        RTS_CameraScript.Mars = false;
     }
 
     public void SwitchToBaumenue()
@@ -188,7 +191,10 @@ public class PauseMenu : MonoBehaviour
         SpielIstPausiert = false;
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(0);
         mission.transform.localPosition = new Vector3(16, 650, 0);
+        RTS_CameraScript.minHeight = -7.0f;
+        RTS_CameraScript.maxHeight = -35.0f;
         RTS_Camera.transform.rotation = Quaternion.Euler(-45,0,0);
+        RTS_CameraScript.Mars = true;
     }
 
     public void animationMission()

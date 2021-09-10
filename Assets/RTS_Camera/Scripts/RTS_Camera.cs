@@ -12,6 +12,8 @@ namespace RTS_Cam
 
 #if UNITY_EDITOR
 
+        public bool Mars;
+
         public int lastTab = 0;
 
         public bool movementSettingsFoldout;
@@ -297,7 +299,16 @@ namespace RTS_Cam
 
             // target in the middle of view
 
-            targetOffset.y = this.transform.position.z;
+            if(Mars == true)
+            {
+                targetOffset.y = this.transform.position.z;
+            }
+            else
+            {
+                targetOffset.y = 0;
+            }
+
+            
 
             // custom code
 

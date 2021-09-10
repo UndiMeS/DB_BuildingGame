@@ -15,6 +15,7 @@ namespace RTS_Cam
         {
             tabs = new TabsBlock(new Dictionary<string, System.Action>() 
             {
+                
                 {"Movement", MovementTab},
                 {"Rotation", RotationTab},
                 {"Height", HeightTab}
@@ -36,6 +37,13 @@ namespace RTS_Cam
         {
             using (new HorizontalBlock())
             {
+                GUILayout.Label("Mars:", EditorStyles.boldLabel, GUILayout.Width(170f));
+                camera.Mars = EditorGUILayout.Toggle(camera.Mars);
+            }
+            using (new HorizontalBlock())
+            {
+                
+
                 GUILayout.Label("Use keyboard input: ", EditorStyles.boldLabel, GUILayout.Width(170f));
                 camera.useKeyboardInput = EditorGUILayout.Toggle( camera.useKeyboardInput);
             }

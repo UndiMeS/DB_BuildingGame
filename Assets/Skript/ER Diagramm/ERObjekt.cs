@@ -60,7 +60,10 @@ public class ERObjekt : MonoBehaviour
     private void Update()
     {
 
-        
+        if(Input.GetMouseButtonDown(0))
+        {
+            RTS_Camera.targetFollow = null;
+        }
         
 
         if (ERErstellung.selectedGameObjekt != null)
@@ -97,6 +100,7 @@ public class ERObjekt : MonoBehaviour
             moveSelected = true;
             KameraKontroller.aktiviert = false;
             RTS_Camera.usePanning = false;
+            RTS_Camera.targetFollow = null;
         }
         if (Input.GetMouseButtonUp(0))
         {

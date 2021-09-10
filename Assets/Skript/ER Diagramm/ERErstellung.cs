@@ -39,6 +39,9 @@ public class ERErstellung : MonoBehaviour
     public GameObject dd1;
     public GameObject dd2;
 
+    public TargetSelector Target;
+    public RTS_Cam.RTS_Camera Camera;
+
 
     // Start is called before the first frame update
     // zuerst leer
@@ -48,6 +51,9 @@ public class ERErstellung : MonoBehaviour
         selectedGameObjekt = null;
         schwach = false;
         modellObjekte.Clear();
+
+        Camera = GameObject.FindWithTag("MainCamera").GetComponent<RTS_Cam.RTS_Camera>();
+        //Target = Camera.TargetSelector;
     }
     
 
@@ -59,6 +65,7 @@ public class ERErstellung : MonoBehaviour
         if (modellObjekte.Count != 0&& selectedGameObjekt!= null)
         {
             selectedGameObjekt.GetComponent<ERObjekt>().selected = false;//bei ERObjekt auswahl aufloesen
+
         }
         if (prefab.CompareTag("Beziehung") && modellObjekte.Count == 0)
         {
@@ -92,6 +99,7 @@ public class ERErstellung : MonoBehaviour
             modellObjekte.Add(temp);
             changeSelectedGameobjekt(temp);
             selectedGameObjekt.transform.SetParent(erModellflaeche.transform);
+            Camera.targetFollow = temp.transform;
             if (selectedGameObjekt.CompareTag("Attribut") && lastselected!=null&& lastselected.CompareTag("Entitaet"))
             {
                 selectedGameObjekt.transform.SetParent(lastselected.transform);
