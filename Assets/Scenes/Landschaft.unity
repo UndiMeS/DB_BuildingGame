@@ -14962,7 +14962,7 @@ MonoBehaviour:
   wohncontainerGebaeudeanzeige: {fileID: 243676920}
   konventionsFenster: {fileID: 1479528826}
   buttonHilfeInGame: {fileID: 1545071741}
-  RTS_Camera: {fileID: 0}
+  RTS_Camera: {fileID: 2006992626}
 --- !u!1 &281159844
 GameObject:
   m_ObjectHideFlags: 0
@@ -31305,6 +31305,8 @@ MonoBehaviour:
   KameraScript: {fileID: 0}
   RTS_Camera: {fileID: 2006992622}
   RTS_CameraScript: {fileID: 0}
+  ScreenShotPosition: {x: 0, y: 0, z: 0}
+  ScreenShot: 0
 --- !u!1 &609237370
 GameObject:
   m_ObjectHideFlags: 0
@@ -42189,7 +42191,9 @@ MonoBehaviour:
   hilfeInGameER: {fileID: 898884033}
   KameraScript: {fileID: 648121697}
   RTS_Camera: {fileID: 2006992622}
-  RTS_CameraScript: {fileID: 0}
+  RTS_CameraScript: {fileID: 2006992626}
+  ScreenShotPosition: {x: 90, y: 2, z: -70}
+  ScreenShot: 0
 --- !u!1 &822745092
 GameObject:
   m_ObjectHideFlags: 0
@@ -53599,6 +53603,8 @@ MonoBehaviour:
   KameraScript: {fileID: 648121697}
   RTS_Camera: {fileID: 2006992622}
   RTS_CameraScript: {fileID: 2006992626}
+  ScreenShotPosition: {x: 90, y: 2, z: -70}
+  ScreenShot: 0
 --- !u!1 &1006286693
 GameObject:
   m_ObjectHideFlags: 0
@@ -77662,6 +77668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1479528827}
   - component: {fileID: 1479528829}
+  - component: {fileID: 1479528828}
   m_Layer: 5
   m_Name: Konvention
   m_TagString: Untagged
@@ -77691,6 +77698,19 @@ RectTransform:
   m_AnchoredPosition: {x: 30.852, y: 14}
   m_SizeDelta: {x: 1358.4275, y: 712.5023}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1479528828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479528826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001aac6f879e60142bd41a732bda7535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RTS_Camera: {fileID: 2006992626}
 --- !u!222 &1479528829
 CanvasRenderer:
   m_ObjectHideFlags: 0

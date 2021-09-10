@@ -94,9 +94,9 @@ public class Tutorial : MonoBehaviour
         if(Story.lvl[0] == false && Mission.missionsLevel[6] == false){
             if(KonventionsClick == false){
                 konventionsFenster.SetActive(true);
-                RTS_Camera.enabled = false;
+                
             }else{
-                konventionsFenster.SetActive(false);        
+                konventionsFenster.SetActive(false); 
             }
             bZusatz = buttonZusatz.GetComponent<Button>();
             bZusatz.interactable = false;

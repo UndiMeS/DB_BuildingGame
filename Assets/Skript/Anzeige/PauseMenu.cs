@@ -38,6 +38,9 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject RTS_Camera;
     public RTS_Cam.RTS_Camera RTS_CameraScript;
+
+    public Vector3 ScreenShotPosition;
+    public bool ScreenShot;
     //public RTS_Camera CameraScript;
 
     void Start()
@@ -59,6 +62,7 @@ public class PauseMenu : MonoBehaviour
         hilfeTexte.SetActive(false);
         SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
+        RTS_CameraScript.enabled = true;
         GebaeudeAnzeige.allesAus = false;
         baumenuTransparent.SetActive(true);
     }
@@ -68,6 +72,7 @@ public class PauseMenu : MonoBehaviour
     {
         PauseMenuUI.SetActive(false);
         KameraKontroller.aktiviert = true;
+        RTS_CameraScript.enabled = true;
         GebaeudeAnzeige.allesAus = false;
         SpielIstPausiert = false;
         Time.timeScale = 1;
@@ -80,6 +85,7 @@ public class PauseMenu : MonoBehaviour
         PauseMenuUI.SetActive(true);
         SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
+        RTS_CameraScript.enabled = false;
         GebaeudeInfoBauen.wertFest = 0;
         GebaeudeAnzeige.allesAus = true;
         
@@ -102,6 +108,7 @@ public class PauseMenu : MonoBehaviour
         Aufgabenfenster.SetActive(false);
         Checkliste.SetActive(false);
         KameraKontroller.aktiviert = false;
+        RTS_CameraScript.enabled = false;
     }
 
     //Schließen der Hilfe Anzeigen des ER-Editors
@@ -114,6 +121,7 @@ public class PauseMenu : MonoBehaviour
         Aufgabenfenster.SetActive(true);
         Checkliste.SetActive(true);
         KameraKontroller.aktiviert = true;
+        RTS_CameraScript.enabled = true;
     }
 
     // GameObject objekt wird angezeigt oder ausgeblendet
@@ -124,7 +132,8 @@ public class PauseMenu : MonoBehaviour
         {
             objekt.SetActive(false);
             SpielIstPausiert = false;
-            KameraKontroller.aktiviert = true;            
+            KameraKontroller.aktiviert = true;
+            RTS_CameraScript.enabled = true;            
             GebaeudeAnzeige.allesAus = false;
             Time.timeScale = 1;
         }
@@ -133,6 +142,7 @@ public class PauseMenu : MonoBehaviour
             objekt.SetActive(true);
             SpielIstPausiert = true;
             KameraKontroller.aktiviert = false;
+            RTS_CameraScript.enabled = false;
             GebaeudeInfoBauen.wertFest = 0;
             GebaeudeAnzeige.allesAus = true;
             Time.timeScale = 0;
@@ -148,12 +158,14 @@ public class PauseMenu : MonoBehaviour
         {
             objekt.SetActive(false);
             KameraKontroller.aktiviert = true;
+            RTS_CameraScript.enabled = true;
             GebaeudeAnzeige.allesAus = false;
         }
         else
         {
             objekt.SetActive(true);
             KameraKontroller.aktiviert = false;
+            RTS_CameraScript.enabled = false;
             GebaeudeInfoBauen.wertFest = 0;
             GebaeudeAnzeige.allesAus = true;
         }
@@ -206,8 +218,12 @@ public class PauseMenu : MonoBehaviour
 
     public void screenshotMachen()
     {
-        KameraScript.ScreenshotZoom();
+        //KameraScript.ScreenshotZoom();
         //canvas.SetActive(false);
+
+        
+        RTS_CameraScript.useScrollwheelZooming = false;
+
         Invoke("screenshotErstellen", 0.7f);
         Invoke("allesAn", 0.1f);        
         
@@ -217,29 +233,45 @@ public class PauseMenu : MonoBehaviour
     {
         canvas.SetActive(false);
 
+        
+        
+        
+
         //yield return new WaitForSeconds(0.2f);
         ScreenCapture.CaptureScreenshot(Application.streamingAssetsPath + "/Zertifikatsbilder/Spiel.png",2); //Größe mit Faktor 2 multipliziert, damit wir es im Zertifikat verkleinern können
 
+        
         Debug.Log("Screenshot gemacht");
         
         //Wichtiger Bool, damit letzte Mission erfüllt werden kann
-        Mission.screenshotSpiel = true;
+        if(ScreenShot == false)
+        {
+            RTS_Camera.transform.position = ScreenShotPosition;
+            Mission.screenshotSpiel = true;
+            ScreenShot =true;
+        }
+        
         Invoke("allesAn", 0.1f);
+        RTS_CameraScript.useScrollwheelZooming = true;
         
         
     }
+
+
 
     private void allesAn()
     {
         canvas.SetActive(true);
         FehlerAnzeige.fehlertext = "Screenshot erstellt!";
+        ScreenShot = false;
         Weiterspielen();
     }
     public void screenshotMachenER()
     {
 
         WeiterspielenER();
-        KameraScript.ScreenshotZoom();
+        //KameraScript.ScreenshotZoom();
+        RTS_CameraScript.useScrollwheelZooming = false;
         Invoke("ERscreenshotErstellen", 0.7f);
          
         Invoke("neuesAllesAn", 1.0f);
@@ -261,16 +293,24 @@ public class PauseMenu : MonoBehaviour
         selectedGameObjektZwischenspeicher = ERErstellung.selectedGameObjekt;
         ERErstellung.selectedGameObjekt = null;
 
+        if(ScreenShot == false)
+        {
+            RTS_Camera.transform.position = ScreenShotPosition;
+            ScreenShot = true;
+        }
+
         ScreenCapture.CaptureScreenshot(Application.streamingAssetsPath + "/Zertifikatsbilder/ERD.png",2); //Größe mit Faktor 2 multipliziert, damit wir es im Zertifikat verkleinern können
         Debug.Log("Screenshot gemacht");
         //FehlerAnzeige.fehlertext = "Screenshot wurde gemacht. Er befindet sich in deinen Speicherdaten.";
         
         //Wichtiger Bool, damit letzte Mission erfüllt werden kann
         Mission.screenshotER = true;
+        RTS_CameraScript.useScrollwheelZooming = true;
         
     }
     public void neuesAllesAn()
     { 
+        //RTS_Camera.transform.position = ScreenShotPosition;
         FehlerAnzeige.fehlertext = "Screenshot erstellt!";
         leisteRechts.SetActive(true);
         infoBox.SetActive(true);
@@ -282,6 +322,7 @@ public class PauseMenu : MonoBehaviour
         leisteTop.SetActive(true);
         hilfeInGameER.SetActive(true);
 
+        ScreenShot = false;
 
         ERErstellung.selectedGameObjekt = selectedGameObjektZwischenspeicher;
     }
