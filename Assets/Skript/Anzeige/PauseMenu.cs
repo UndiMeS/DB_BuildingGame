@@ -181,8 +181,11 @@ public class PauseMenu : MonoBehaviour
         RTS_Camera.transform.rotation = Quaternion.Euler(0,0,0);
         RTS_CameraScript.minHeight = -3.0f;
         RTS_CameraScript.maxHeight = -25.0f;
-        RTS_CameraScript.targetFollow = null;
-        RTS_CameraScript.Mars = false;
+        if (ERErstellung.selectedGameObjekt != null)
+        {
+            RTS_CameraScript.targetFollow = ERErstellung.selectedGameObjekt.transform;
+        }
+        Testing.Mars = false;
     }
 
     public void SwitchToBaumenue()
@@ -194,7 +197,7 @@ public class PauseMenu : MonoBehaviour
         RTS_CameraScript.minHeight = -7.0f;
         RTS_CameraScript.maxHeight = -35.0f;
         RTS_Camera.transform.rotation = Quaternion.Euler(-45,0,0);
-        RTS_CameraScript.Mars = true;
+        Testing.Mars = true;
     }
 
     public void animationMission()

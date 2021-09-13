@@ -38,7 +38,7 @@ namespace RTS_Cam
             using (new HorizontalBlock())
             {
                 GUILayout.Label("Mars:", EditorStyles.boldLabel, GUILayout.Width(170f));
-                camera.Mars = EditorGUILayout.Toggle(camera.Mars);
+                Testing.Mars = EditorGUILayout.Toggle(Testing.Mars);
             }
             using (new HorizontalBlock())
             {

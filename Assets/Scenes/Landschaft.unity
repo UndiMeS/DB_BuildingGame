@@ -5031,26 +5031,10 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options:
-    - m_Text: 1
-      m_Image: {fileID: 0}
-    - m_Text: n
-      m_Image: {fileID: 0}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 408135819}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: kardinalitaetSetzen
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!224 &94322893
 RectTransform:
@@ -22259,7 +22243,6 @@ GameObject:
   - component: {fileID: 408135822}
   - component: {fileID: 408135821}
   - component: {fileID: 408135820}
-  - component: {fileID: 408135819}
   m_Layer: 5
   m_Name: Von
   m_TagString: Untagged
@@ -22267,21 +22250,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &408135819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 408135818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81cf5f7b788fb7b45929f34277527730, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menu: {fileID: 408135820}
-  einsOderZwei: 1
-  kard: {fileID: 94322892}
 --- !u!114 &408135820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22334,19 +22302,7 @@ MonoBehaviour:
     m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 408135819}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: eingabeDropDown
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &408135821
 MonoBehaviour:
@@ -26904,7 +26860,6 @@ GameObject:
   - component: {fileID: 495880978}
   - component: {fileID: 495880977}
   - component: {fileID: 495880976}
-  - component: {fileID: 495880975}
   m_Layer: 5
   m_Name: Nach
   m_TagString: Untagged
@@ -26912,21 +26867,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &495880975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495880974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81cf5f7b788fb7b45929f34277527730, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menu: {fileID: 495880976}
-  einsOderZwei: 2
-  kard: {fileID: 1949666066}
 --- !u!114 &495880976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26979,19 +26919,7 @@ MonoBehaviour:
     m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 495880975}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: eingabeDropDown
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &495880977
 MonoBehaviour:
@@ -89597,7 +89525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37cd7f1e22281b4b867293b294a9963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testModus: 1
+  testModus: 0
   dasIstSchonFertig: {fileID: 1730754993}
   aufgabenText: {fileID: 616779706}
   checkliste:
@@ -96024,7 +95952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4836ad1e902274242aadfc3504d79743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offModus: 1
+  offModus: 0
   transparentWohncontainer: {fileID: 865439306}
   buttonForscher: {fileID: 1566984999}
   buttonFeld: {fileID: 857717934}
@@ -100996,26 +100924,10 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options:
-    - m_Text: 1
-      m_Image: {fileID: 0}
-    - m_Text: m
-      m_Image: {fileID: 0}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 495880975}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: kardinalitaetSetzen
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!224 &1949666067
 RectTransform:
