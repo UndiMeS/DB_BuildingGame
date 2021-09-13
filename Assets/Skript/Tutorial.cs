@@ -288,7 +288,7 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "Klasse! Für eine vollumfängliche Dokumentation des Siedlungsbaus, erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot (im jeweiligen Menü).";
             FehlerAnzeige.tutorialtext_ER = "Klasse! Für eine vollumfängliche Dokumentation des Siedlungsbaus, erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot.";
             pfeilSpiel.SetActive(true);
-            pfeilSpiel.transform.localPosition = new Vector3(637,253,0);
+            pfeilSpiel.transform.localPosition = new Vector3(637,279,0);
 
         //Zur Erde zurückkehren
         }else if (Story.lvl[7] == true && Mission.missionsLevel[9] == true){

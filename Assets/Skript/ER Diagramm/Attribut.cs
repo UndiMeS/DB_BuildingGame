@@ -26,6 +26,7 @@ public class Attribut : MonoBehaviour
         y = gameObject.transform.position.y;
         if (vater != null)
         {
+            Debug.Log(gameObject.name);
             vaterID = vater.GetInstanceID();
         }
     }

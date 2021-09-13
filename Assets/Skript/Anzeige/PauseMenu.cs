@@ -43,9 +43,12 @@ public class PauseMenu : MonoBehaviour
     public bool ScreenShot;
     //public RTS_Camera CameraScript;
 
+    public static Vector3 lastpos;
+
     void Start()
     {
         RTS_CameraScript = RTS_Camera.GetComponent<RTS_Cam.RTS_Camera>();
+        lastpos = RTS_Camera.transform.position;
     }
 
     //zurück-Knopf im Pausemenü/Optionsmenü der Landschaft
@@ -180,12 +183,20 @@ public class PauseMenu : MonoBehaviour
         GebaeudeInfoBauen.wertFest = 0;
         RTS_Camera.transform.rotation = Quaternion.Euler(0,0,0);
         RTS_CameraScript.minHeight = -3.0f;
-        RTS_CameraScript.maxHeight = -25.0f;
+        RTS_CameraScript.maxHeight = -75.0f;
+        RTS_CameraScript.limitXMax = 275;
         if (ERErstellung.selectedGameObjekt != null)
         {
             RTS_CameraScript.targetFollow = ERErstellung.selectedGameObjekt.transform;
         }
         Testing.Mars = false;
+
+        Vector3 temp = RTS_Camera.transform.position;
+        RTS_Camera.transform.position = lastpos;
+        lastpos = temp;
+
+        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
+        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;
     }
 
     public void SwitchToBaumenue()
@@ -196,8 +207,16 @@ public class PauseMenu : MonoBehaviour
         mission.transform.localPosition = new Vector3(16, 650, 0);
         RTS_CameraScript.minHeight = -7.0f;
         RTS_CameraScript.maxHeight = -35.0f;
+        RTS_CameraScript.limitXMax = 175;
         RTS_Camera.transform.rotation = Quaternion.Euler(-45,0,0);
         Testing.Mars = true;
+
+        Vector3 temp = RTS_Camera.transform.position;
+        RTS_Camera.transform.position = lastpos;
+        lastpos = temp;
+
+        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
+        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;
     }
 
     public void animationMission()
@@ -255,7 +274,7 @@ public class PauseMenu : MonoBehaviour
         //Wichtiger Bool, damit letzte Mission erfüllt werden kann
         if(ScreenShot == false)
         {
-            RTS_Camera.transform.position = ScreenShotPosition;
+            //RTS_Camera.transform.position = ScreenShotPosition;
             Mission.screenshotSpiel = true;
             ScreenShot =true;
         }
@@ -304,7 +323,7 @@ public class PauseMenu : MonoBehaviour
 
         if(ScreenShot == false)
         {
-            RTS_Camera.transform.position = ScreenShotPosition;
+            //RTS_Camera.transform.position = ScreenShotPosition;
             ScreenShot = true;
         }
 

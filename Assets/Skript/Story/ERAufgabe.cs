@@ -306,8 +306,8 @@ public class ERAufgabe : MonoBehaviour
             //wenn die Mission erfolgreich absolviert wurde, kann wieder im ER gebastelt werden und es wird chckObjekte() ausgeführt
             if (missionCheck)
             {
-                infobox.transform.localPosition = new Vector3(0,0,0);
-                bottomLeiste.SetActive(true);        
+                infobox.transform.localPosition = new Vector3(0, 0, 0);
+                bottomLeiste.SetActive(true);
                 aufgabeButton.SetActive(true);
                 kreisHacken.SetActive(false);
                 kreisKreuz.SetActive(true);
@@ -332,7 +332,7 @@ public class ERAufgabe : MonoBehaviour
         else
         {
             //FehlerAnzeige.tutorialtext_ER = "Du hast es geschafft. Dein ER-Diagramm ist für diese Siedlung komplett! Auf zu deinen letzten Missionen!";
-            infobox.transform.localPosition = new Vector3(0,-82,0);
+            infobox.transform.localPosition = new Vector3(0, -82, 0);
             bottomLeiste.SetActive(false);
             aufgabenFenster.SetActive(false);
             checkbox.SetActive(false);
@@ -361,6 +361,7 @@ public class ERAufgabe : MonoBehaviour
         {
             checkboxOhneEntity.SetActive(false);
         }
+
     }
 
     private void checkObjekte()

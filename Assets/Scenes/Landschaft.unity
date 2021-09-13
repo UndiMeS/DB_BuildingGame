@@ -89506,6 +89506,7 @@ GameObject:
   - component: {fileID: 1730754996}
   - component: {fileID: 1730754995}
   - component: {fileID: 1730754994}
+  - component: {fileID: 1730754998}
   m_Layer: 5
   m_Name: ER-Aufgabe
   m_TagString: Untagged
@@ -89665,6 +89666,22 @@ RectTransform:
   m_AnchoredPosition: {x: 397, y: -109}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.50000006}
+--- !u!114 &1730754998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730754993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6afb9d3ec55374ea7e4dbf4ab9c5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leisteBottom: {fileID: 1321532782}
+  checkliste: {fileID: 629954372}
+  aufgabe: {fileID: 1508547997}
+  leisteRechts: {fileID: 1277503}
 --- !u!1 &1731236799
 GameObject:
   m_ObjectHideFlags: 0
@@ -106118,7 +106135,7 @@ PrefabInstance:
     - target: {fileID: 2808810203750505461, guid: 1201fbb80dac9304ca9c80cae071fdcf,
         type: 3}
       propertyPath: lastTab
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2808810203750505461, guid: 1201fbb80dac9304ca9c80cae071fdcf,
         type: 3}

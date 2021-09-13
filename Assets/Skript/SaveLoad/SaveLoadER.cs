@@ -113,6 +113,7 @@ public class SaveLoadER : MonoBehaviour
                 game.GetComponent<ERObjekt>().dd1 = dd1;
                 game.GetComponent<ERObjekt>().dd2 = dd2;
                 game.GetComponent<ERObjekt>().dd3 = ddSchwach;
+                game.GetComponent<Beziehung>().linienOrdner = linienordner;
 
                 game.transform.position = new Vector3(game.GetComponent<Beziehung>().x, game.GetComponent<Beziehung>().y);
 
@@ -142,6 +143,7 @@ public class SaveLoadER : MonoBehaviour
                         game.transform.SetParent(ent.transform);
                         eRErstellung.zeichneLinie(ent, game);
                         ent.GetComponent<Entitaet>().attribute.Add(game);
+                        game.GetComponent<Attribut>().vater = ent;
                         if (game.GetComponent<Attribut>().primaerschluessel)
                         {
                             ent.GetComponent<Entitaet>().primaerschluessel.Add(ERErstellung.selectedGameObjekt);

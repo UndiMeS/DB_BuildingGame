@@ -10,7 +10,7 @@ public class ERObjekt : MonoBehaviour
 {
     private float width;
     private float height;
-    private bool moveSelected = false;
+    public bool moveSelected = false;
     public bool selected = false;
     private RectTransform rectTransform;
 
@@ -34,7 +34,7 @@ public class ERObjekt : MonoBehaviour
     public TMPro.TMP_InputField inputfield;
 
     public float minX = 15;
-    public float maxX = 175;
+    public float maxX = 275;
     public float minY = 2;
     public float maxY = 130;
     public Vector3 ObjectPos;
@@ -52,7 +52,7 @@ public class ERObjekt : MonoBehaviour
         {
             CameraRTS = GameObject.FindGameObjectWithTag("MainCamera");
         }
-
+        maxX += 100;
         RTS_Camera = CameraRTS.GetComponent<RTS_Cam.RTS_Camera>();
     }
 

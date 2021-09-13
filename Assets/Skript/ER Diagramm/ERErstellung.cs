@@ -99,7 +99,11 @@ public class ERErstellung : MonoBehaviour
             modellObjekte.Add(temp);
             changeSelectedGameobjekt(temp);
             selectedGameObjekt.transform.SetParent(erModellflaeche.transform);
-            Camera.targetFollow = temp.transform;
+            if (!selectedGameObjekt.CompareTag("Attribut"))
+            {
+                Camera.targetFollow = temp.transform;
+            }
+           
             if (selectedGameObjekt.CompareTag("Attribut") && lastselected!=null&& lastselected.CompareTag("Entitaet"))
             {
                 selectedGameObjekt.transform.SetParent(lastselected.transform);
