@@ -97,6 +97,7 @@ public class PauseMenu : MonoBehaviour
     //geht zurück ins Hauptmenü
     public void LadeMenu()
     {
+        SwitchToBaumenue();
         Testing.resetAll(); //alle Werte werden auf 0 gesetzt
         SceneManager.LoadScene(0);
     }

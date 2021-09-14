@@ -51,6 +51,20 @@ public class SaveLoadER : MonoBehaviour
         FertigeObjekte fertige = JsonUtility.FromJson<FertigeObjekte>(json);
         fertige.setData();
 
+        foreach (GameObject swent in ERErstellung.modellObjekte)
+        {
+            if (swent.CompareTag("Entitaet") && swent.GetComponent<Entitaet>().schwach)
+            {
+                foreach (GameObject ent in ERErstellung.modellObjekte)
+                {
+                    if (ent.CompareTag("Entitaet") && ent.GetComponent<Entitaet>().instanceID == swent.GetComponent<Entitaet>().vaterEntitaetID)
+                    {
+                        swent.GetComponent<Entitaet>().vaterEntitaet = ent;
+                    }
+                }
+            }
+        }
+
         foreach (GameObject ent in ERErstellung.modellObjekte)
         {
             if (ent.CompareTag("Entitaet"))
@@ -113,7 +127,7 @@ public class SaveLoadER : MonoBehaviour
                 game.GetComponent<ERObjekt>().dd1 = dd1;
                 game.GetComponent<ERObjekt>().dd2 = dd2;
                 game.GetComponent<ERObjekt>().dd3 = ddSchwach;
-                game.GetComponent<Beziehung>().linienOrdner = linienordner;
+                game.GetComponent<Beziehung>().linienOrdner=linienordner;
 
                 game.transform.position = new Vector3(game.GetComponent<Beziehung>().x, game.GetComponent<Beziehung>().y);
 
@@ -268,27 +282,28 @@ public class SaveLoadER : MonoBehaviour
         public void instanceIDsErstellen()
         {
             fertigeInstanceID = new List<int>();
-            if (ERAufgabe.gespeicherteObjekte != null) { 
-            foreach (GameObject game in ERAufgabe.gespeicherteObjekte)
+            if (ERAufgabe.gespeicherteObjekte != null)
             {
-               
+                foreach (GameObject game in ERAufgabe.gespeicherteObjekte)
+                {
+
                     fertigeInstanceID.Add(game.GetInstanceID());
-               
-            }
+
+                }
             }
         }
 
         public void setData()
         {
-           foreach(GameObject game in ERErstellung.modellObjekte)
+            foreach (GameObject game in ERErstellung.modellObjekte)
             {
-                if(game!= null &&(game.CompareTag("Entitaet")&& fertigeInstanceID.Contains(game.GetComponent<Entitaet>().instanceID)
+                if (game != null && (game.CompareTag("Entitaet") && fertigeInstanceID.Contains(game.GetComponent<Entitaet>().instanceID)
                     || game.CompareTag("Attribut") && fertigeInstanceID.Contains(game.GetComponent<Attribut>().instanceID)
                     || game.CompareTag("Beziehung") && fertigeInstanceID.Contains(game.GetComponent<Beziehung>().instanceID)))
                 {
                     ERAufgabe.gespeicherteObjekte.Add(game);
                 }
-                
+
             }
             ERAufgabe.gespeicherteObjekteAus();
         }

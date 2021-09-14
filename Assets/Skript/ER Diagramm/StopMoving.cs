@@ -18,7 +18,6 @@ public class StopMoving : MonoBehaviour
         {
             Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = false;
             Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = false;
-            Debug.Log("!");
         }
         else
         {
