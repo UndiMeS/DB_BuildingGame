@@ -31,6 +31,24 @@ public class Feld : MonoBehaviour
             Testing.umsatz += ertrag;
             Testing.felder.Add(this);
             Testing.gebauedeListe.Add(gameObject);
+
+            bool temp = true;
+            for (int i = 0; i < arbeiter; i++)
+            {
+                foreach (Mensch mensch in Testing.menschen)
+                {
+                    if (mensch.aufgabe == "Feld" && mensch.feldNummer == 0)
+                    {
+                        mensch.feldNummer = feldnummer;
+                        temp = false;
+                        break;
+                    }
+                }
+            }
+            if (temp)
+            {
+                Debug.Log("Fehler");
+            }
         }
         
 

@@ -8,6 +8,7 @@ public class Tiere
     public string tiername;
     public string art;
     public int transportkosten = 5;
+    public int weidenNummer;
 
 
     public Tiere(string artName, int nr)

@@ -37,9 +37,43 @@ public class Weide : MonoBehaviour
 
             Testing.weiden.Add(this);
             Testing.gebauedeListe.Add(gameObject);
+            bool temp = true;
+
+            for (int i = 0; i < arbeiter; i++)
+            {
+                foreach (Mensch mensch in Testing.menschen)
+                {
+                    if (mensch.aufgabe == "Weide" && mensch.weidenNummer == 0)
+                    {                       
+                        mensch.weidenNummer = weidennummer;
+                        temp = false;
+                        break;
+                    }
+                }
+            }
+            if (temp)
+            {
+                Debug.Log("Fehler");
+            }
+            for (int i = 0; i < tiere; i++)
+            {
+                foreach (Tiere tier in Testing.tier)
+                {
+                    if (tier.weidenNummer == 0)
+                    {
+                        tier.weidenNummer = weidennummer;
+                        temp = false;
+                        break;
+                    }
+                }
+            }
+            if (temp)
+            {
+                Debug.Log("Fehler");
+            }
         }
 
-
+       
     }
 
     public void ausgabe(GameObject tabelle)

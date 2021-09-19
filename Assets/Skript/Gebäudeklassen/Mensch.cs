@@ -12,7 +12,15 @@ public class Mensch
     public int containerNummer;
     public static int menschenZaehler=1;//f�r spezielle Namen
     public static bool ersterMensch = false;
-    
+
+    public int projektForschungsstationsNummer;
+    public string projektForschungsMerkmal;
+    public int projektForschungsmerkmal;
+
+    public int feldNummer;
+    public int weidenNummer;
+    public int stationsNummer;
+
     public Mensch(string aufg, int nummer)
     {
         aufgabe = aufg;

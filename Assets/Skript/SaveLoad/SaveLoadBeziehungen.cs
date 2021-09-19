@@ -8,12 +8,12 @@ public class SaveLoadBeziehungen : MonoBehaviour
 {
     public void speichern()
     {
-        astronautFeldspaehre();
-        astronautForschungsstation();
-        astronautForschungsprojekte();
-        astronautWeidespaehre();
-        nutztiereWeidespaehre();
-        forschungsprojektForschungsprojekt();
+        //astronautFeldspaehre();
+        //astronautForschungsstation();
+        //astronautForschungsprojekte();
+        //astronautWeidespaehre();
+        //nutztiereWeidespaehre();
+        //forschungsprojektForschungsprojekt();
         forschungsprojektWohncontainer();
         forschungsprojektWeidesphaere();
         forschungsprojektFeldsphaere();

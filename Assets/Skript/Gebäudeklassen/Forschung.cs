@@ -43,6 +43,23 @@ public class Forschung : MonoBehaviour
 
             Testing.forschungsstationen.Add(this);
             Testing.gebauedeListe.Add(gameObject);
+
+            bool temp = true;
+            foreach (Mensch mensch in Testing.menschen)
+                {
+                    if (mensch.aufgabe == "Forschung" && mensch.stationsNummer == 0)
+                    {
+                        mensch.stationsNummer = stationsnummer;
+                        temp = false;
+                        break;
+                    }
+            }
+            
+            if (temp)
+            {
+                Debug.Log("Fehler");
+            }
+
         }
         if (nummerZaehler < stationsnummer)
         {

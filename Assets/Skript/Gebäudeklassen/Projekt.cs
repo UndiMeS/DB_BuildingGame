@@ -20,6 +20,10 @@ public class Projekt
     public static int preis_nach_verbesserung = 50;
     public static int kosten_verbesserung = 200;
 
+    public int VerbessertVonProjektForschungsstationsNummer;
+    public string VerbessertVonProjektForschungsMerkmal;
+    public int VerbessertVonProjektForschungsStufe;
+
     public Projekt(int nr, int preis)
     {
         stationsnummer= nr;
@@ -54,9 +58,17 @@ public class Projekt
         {
             if (fors.stationsnummer == nr)
             {
-                fors.addProjekt(this);
+                foreach (Projekt projekt in fors.projekte)
+                {
+                    projekt.VerbessertVonProjektForschungsMerkmal = merkmal;
+                    projekt.VerbessertVonProjektForschungsstationsNummer = stationsnummer;
+                    projekt.VerbessertVonProjektForschungsStufe = stufe;
+                }
+                fors.addProjekt(this);                
             }
         }
+
+        
     }
 
     public void SetMerkmal(string merkmalNeu)
