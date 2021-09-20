@@ -47,7 +47,7 @@ public class Forschung : MonoBehaviour
             bool temp = true;
             foreach (Mensch mensch in Testing.menschen)
                 {
-                    if (mensch.aufgabe == "Forschung" && mensch.stationsNummer == 0)
+                    if (mensch.aufgabe == "Forschung" && mensch.stationsNummer == 0&&mensch.projektForschungsstationsNummer==0)
                     {
                         mensch.stationsNummer = stationsnummer;
                         temp = false;

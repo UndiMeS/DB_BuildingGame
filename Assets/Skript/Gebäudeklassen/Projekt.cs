@@ -35,6 +35,42 @@ public class Projekt
         Testing.summeForschungen++;
         Testing.forschungsprojekte.Add(this);
 
+        foreach (Forschung fors in Testing.forschungsstationen)
+        {
+            if (fors.stationsnummer == nr)
+            {
+                foreach(Projekt pro in fors.projekte)
+                {
+                    if(pro.merkmal== "Projektkosten")
+                    {
+                        VerbessertVonProjektForschungsMerkmal = pro.merkmal;
+                        VerbessertVonProjektForschungsstationsNummer = pro.stationsnummer;
+                        VerbessertVonProjektForschungsStufe = stufe;                           
+                    }
+                }
+                fors.addProjekt(this);
+            }
+        }
+        bool temp = true;
+        for (int i = 0; i < forscher; i++)
+        {
+            foreach (Mensch mensch in Testing.menschen)
+            {
+                if (mensch.aufgabe == "Forschung" && mensch.stationsNummer == 0 && mensch.projektForschungsstationsNummer == 0)
+                {
+                    mensch.projektForschungsstationsNummer = stationsnummer;
+                    mensch.projektForschungsMerkmal = merkmal;
+                    mensch.projektForschungsStufe = stufe;
+                    temp = false;
+                    break;
+                }
+            }
+        }
+        if (temp)
+        {
+            Debug.Log("Fehler");
+        }
+
     }
     //für Projekt was Forschungsstation verbessert
     public Projekt(int nr, string merk, int merkInt, int st, int kost, int forAnz,float faktor, int p)
@@ -58,15 +94,10 @@ public class Projekt
         {
             if (fors.stationsnummer == nr)
             {
-                foreach (Projekt projekt in fors.projekte)
-                {
-                    projekt.VerbessertVonProjektForschungsMerkmal = merkmal;
-                    projekt.VerbessertVonProjektForschungsstationsNummer = stationsnummer;
-                    projekt.VerbessertVonProjektForschungsStufe = stufe;
-                }
                 fors.addProjekt(this);                
             }
         }
+
 
         
     }

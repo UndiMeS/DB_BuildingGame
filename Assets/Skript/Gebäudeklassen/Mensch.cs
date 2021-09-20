@@ -15,7 +15,7 @@ public class Mensch
 
     public int projektForschungsstationsNummer;
     public string projektForschungsMerkmal;
-    public int projektForschungsmerkmal;
+    public int projektForschungsStufe;
 
     public int feldNummer;
     public int weidenNummer;
