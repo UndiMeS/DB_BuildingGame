@@ -7560,6 +7560,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -66
       objectReference: {fileID: 0}
+    - target: {fileID: 1771897472245864111, guid: d16ef0d498beb3c4b9c892dd47c8ed67,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -120.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771897472245864111, guid: d16ef0d498beb3c4b9c892dd47c8ed67,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 97.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771897472245864111, guid: d16ef0d498beb3c4b9c892dd47c8ed67,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -148.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2854035851831483297, guid: d16ef0d498beb3c4b9c892dd47c8ed67,
         type: 3}
       propertyPath: m_Name
@@ -47345,7 +47360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &901882045
 RectTransform:
   m_ObjectHideFlags: 0
@@ -103305,8 +103320,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 215266178}
   m_HandleRect: {fileID: 215266177}
   m_Direction: 2
-  m_Value: 0.9999999
-  m_Size: 0.32277092
+  m_Value: 1
+  m_Size: 0.32277098
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

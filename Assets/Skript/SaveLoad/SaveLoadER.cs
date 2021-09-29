@@ -160,7 +160,7 @@ public class SaveLoadER : MonoBehaviour
                         game.GetComponent<Attribut>().vater = ent;
                         if (game.GetComponent<Attribut>().primaerschluessel)
                         {
-                            ent.GetComponent<Entitaet>().primaerschluessel.Add(ERErstellung.selectedGameObjekt);
+                            ent.GetComponent<Entitaet>().primaerschluessel.Add(game);
                             game.transform.GetChild(1).GetChild(2).transform.GetComponent<TMPro.TextMeshProUGUI>().fontStyle = TMPro.FontStyles.Underline;
                         }
                     }

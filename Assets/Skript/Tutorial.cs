@@ -212,7 +212,17 @@ public class Tutorial : MonoBehaviour
             WohncontainerTutorialPfeil.anzeigen = false;
             FehlerAnzeige.tutorialtext_Spiel = "Die ersten Siedlungsbewohner sind gelandet. Die Anzahl der zur Verfügung stehenden Astronauten kannst du in der Infoleiste ganz rechts sehen. Wechsel, wie nach jeder Mission in den ER-Editor!";
             FehlerAnzeige.tutorialtext_ER = "Erweitere nun erneut dein ER-Diagramm, führe den gleichen Kreislauf aus ER- u. Spielmodus fort und erweitere deine Siedlung! \n Hinweis: Beim Anlegen einer Relationship musst du die entsprechenden Entitymengen noch auswählen und die gewünschte Kardinalität setzen.";
-            pfeilER.SetActive(false);
+            if (beschreibungER.activeSelf)
+            {
+                pfeilER.SetActive(false);
+                //pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
+            }
+            else
+            {
+                pfeilER.SetActive(true);
+
+            }
+            pfeilER.transform.localPosition = new Vector3(590, 130, 0);
             pfeilSpiel.transform.localPosition = new Vector3(637,208,0);
             pfeilSpiel.SetActive(true);
             bZusatz.interactable = false;

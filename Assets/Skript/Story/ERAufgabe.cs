@@ -33,7 +33,7 @@ public class ERAufgabe : MonoBehaviour
     //Welche Attribute je EM
     private string[][] wohncontainer = {
                                         new string[] { "1", "Kosten", "Baukosten", "Preis", "Baupreis", "€" },
-                                        new string[] { "2", "Containernummer", "CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer", "ID", "id", "Id","Cnr" },
+                                        new string[] { "2", "Containernummer", "Cnr","Cnr.","CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer", "ID", "id", "Id","Cnr" },
                                         new string[] { "3", "Bettenzahl", "Bettenanzahl","Bettanzahl","Bettzahl", "Betten", "Kapazität" },
                                         new string[] { "4", "freie Betten", "freieBetten", "Betten frei", "Freie Betten", "FreieBetten", "BettenFrei", "Bettenfrei" }
                                         };
@@ -47,13 +47,13 @@ public class ERAufgabe : MonoBehaviour
                                         new string[] { "1","Kosten", "Baukosten", "Preis", "Baupreis", "€" },
                                         new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Feldarbeiter", "Anzahl Arbeiter", "Arbeiteranzahl"},
                                         new string[] { "3","Ertrag", "Gewinn", "Gehalt"},
-                                        new string[] { "4", "Feldnummer", "FNR", "fnr", "FNr", "FNR.", "Fnr.", "FNr.", "Feldnr.", "Nummer", "ID", "id", "Id" }
+                                        new string[] { "4", "Feldnummer", "FNR", "Fnr", "Fnr.", "fnr", "FNr", "FNR.", "Fnr.", "FNr.", "Feldnr.", "Nummer", "ID", "id", "Id" }
                                     };
     private string[][] weidespaehre = {
                                         new string[] { "1","Kosten", "Baukosten", "Preis", "Baupreis", "€" },
                                         new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Weidenarbeiter", "Weidearbeiter", "Anzahl","Anzahl Arbeiter", "Arbeiteranzahl"},
                                         new string[] { "3","Ertrag", "Gewinn", "Gehalt"},
-                                        new string[] { "4","Weidennummer", "Weidenummer", "WNR", "wnr", "WNr", "WNR.", "Wnr.", "WNr.", "Weidenr.","Weidenr.", "Nummer", "ID", "id", "Id" },
+                                        new string[] { "4","Weidennummer", "Weidenummer", "Wnr", "Wnr.", "WNR", "wnr", "WNr", "WNR.", "Wnr.", "WNr.", "Weidenr.","Weidenr.", "Nummer", "ID", "id", "Id" },
                                         new string[] { "5","Tierzahl", "Tiere", "Tieranzahl", "Anzahl Tiere", "AnzahlTiere"}
                                     };
     private string[][] nutztier = {
@@ -63,13 +63,13 @@ public class ERAufgabe : MonoBehaviour
                                     };
     private string[][] stallcontainer = {
                                         new string[] {"1","Kosten", "Baukosten", "Preis", "Baupreis", "€", "Containerkosten" },
-                                        new string[] {"2","Containernummer", "CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer", "ID", "id", "Id", "Stallnummer", "SNR","Stallnr.", "snr", "SNr", "SNR.", "snr.", "SNr.", "Containernr."},
+                                        new string[] {"2","Containernummer", "Cnr", "Cnr.", "CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer", "ID", "id", "Id", "Stallnummer", "SNR","Stallnr.", "snr", "SNr", "SNR.", "snr.", "SNr.", "Containernr."},
                                         new string[] {"3","Gehegezahl", "Gehegeanzahl", "Gehege", "Kapazität" },
                                         new string[] {"4","freie Gehege", "freieGehege", "Gehege frei" }
                                         };
     private string[][] forschungsstation ={
                                         new string[] {"1","Kosten", "Baukosten", "Preis", "Baupreis", "€", "Stationskosten" },
-                                        new string[] {"2","Stationsnummer", "SNR", "snr", "SNr", "SNR.", "snr.", "SNr.", "Stationsnr.", "Nummer", "ID", "id", "Id"},
+                                        new string[] {"2","Stationsnummer", "SNR", "Snr", "Snr.", "snr", "SNr", "SNR.", "snr.", "SNr.", "Stationsnr.", "Nummer", "ID", "id", "Id"},
                                         new string[] {"3","Spezialisierung", "Gebiet", "Typ", "Bereich"},
                                         };
     private string[][] forschungsprojekt = {
@@ -84,7 +84,7 @@ public class ERAufgabe : MonoBehaviour
     //EM1_EM2 = {Realtionsnamensvarianten}#
     //EM1_EM2_Eig = {EM1, EM2, EM2_schwach(1 ja), Kard1, Kard2}
 
-    private string[] astronaut_forschungsstation = { "arbeitet","verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für","istverantwortlich","istVerantwortlich","ist verantwortlich" };
+    private string[] astronaut_forschungsstation = { "arbeitet","verantwortet","verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für","istverantwortlich","istVerantwortlich","ist verantwortlich" };
     private string[] astronaut_forschungsstation_Eig = { "A", "S", "0", "1", "1" };
 
     private string[] wohncontainer_astronaut = { "wohnt in","wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "wohnen" };
@@ -105,19 +105,19 @@ public class ERAufgabe : MonoBehaviour
     private string[] weidesphaere_nutztier = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften", "grasenAuf", "grasen auf", "helfenAuf", "helfen auf","leben","lebenAuf", "leben auf" };
     private string[] weidesphaere_nutztier_Eig = { "Weidesphäre", "Nutztier", "0", "n", "1" };
 
-    private string[] forschungsprojekt_wohncontainer = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
+    private string[] forschungsprojekt_wohncontainer = { "optimiert", "forschen", "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
     private string[] forschungsprojekt_wohncontainer_Eig = { "P", "W", "0", "n", "n" };
 
-    private string[] forschungsprojekt_feldsphaere = { "forschen" ,"verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
+    private string[] forschungsprojekt_feldsphaere = {"optimiert", "forschen" ,"verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
     private string[] forschungsprojekt_feldsphaere_Eig = { "P", "F", "0", "n", "n" };
 
-    private string[] forschungsprojekt_stallcontainer = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
+    private string[] forschungsprojekt_stallcontainer = { "optimiert", "forschen", "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
     private string[] forschungsprojekt_stallcontainer_Eig = { "P", "Stallcontainer", "0", "n", "n" };
 
-    private string[] forschungsprojekt_weidesphaere = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
+    private string[] forschungsprojekt_weidesphaere = { "optimiert", "forschen", "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
     private string[] forschungsprojekt_weidesphaere_Eig = { "P", "Weidesphäre", "0", "n", "n" };
 
-    private string[] forschungsprojekt_forschungsprojekt = { "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern", "MethodenVerbessern", "verbessertMethodenVon", "verbessertMethoden","forscht" };
+    private string[] forschungsprojekt_forschungsprojekt = {"optimiert", "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern", "MethodenVerbessern", "verbessertMethodenVon", "verbessertMethoden","forscht" };
     private string[] forschungsprojekt_forschungsprojekt_Eig = { "P", "P", "0", "1", "n" };
 
     private string[] forschungsstation_forschungsprojekt = { "organisiert", "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
@@ -378,8 +378,8 @@ public class ERAufgabe : MonoBehaviour
         {
             foreach (GameObject entity in ERErstellung.modellObjekte)
             {
-               
-                if (entity.name.Equals(entityName))
+                string name = entity.name.Trim(' ');
+                if (name.Equals(entityName))
                 {
                     if (listeSchwacheEntity[Story.level] && listeEntity[Story.level][0] == entityName && entity.GetComponent<Entitaet>().schwach)
                     {
@@ -469,15 +469,16 @@ public class ERAufgabe : MonoBehaviour
                     GameObject ob1 = null;
                     GameObject ob2 = null;
                     GameObject ob12 = null;
-
+                    string name1 = obj.GetComponent<Beziehung>().objekt1.name.Trim(' ');
+                    string name2 = obj.GetComponent<Beziehung>().objekt2.name.Trim(' ');
                     //Entitäten und Kardinalität prüfen
-                    if (obj.GetComponent<Beziehung>().objekt1 != null && listeBeziehungsEigenschaften[Story.level][i][0].Equals(obj.GetComponent<Beziehung>().objekt1.name))
+                    if (obj.GetComponent<Beziehung>().objekt1 != null && listeBeziehungsEigenschaften[Story.level][i][0].Equals(name1))
                     {
                         if (obj.GetComponent<Beziehung>().objekt2 != null)
                         {
                             ob1 = obj.GetComponent<Beziehung>().objekt1;
                             ob12 = obj.GetComponent<Beziehung>().objekt2;
-                            nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt2.name;
+                            nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt2.name.Trim(' '); 
                         }
                         if (checkKard(obj, 1, i, 4))
                         {
@@ -490,13 +491,13 @@ public class ERAufgabe : MonoBehaviour
                             kardinalitaeten &= false;
                         }
                     }
-                    else if (obj.GetComponent<Beziehung>().objekt2 != null && listeBeziehungsEigenschaften[Story.level][i][0].Equals(obj.GetComponent<Beziehung>().objekt2.name))
+                    else if (obj.GetComponent<Beziehung>().objekt2 != null && listeBeziehungsEigenschaften[Story.level][i][0].Equals(name2))
                     {
                         if (obj.GetComponent<Beziehung>().objekt1 != null)
                         {
                             ob2 = obj.GetComponent<Beziehung>().objekt2;
                             ob12 = obj.GetComponent<Beziehung>().objekt1;
-                            nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt1.name;
+                            nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt1.name.Trim(' ');
                         }
                         if (checkKard(obj, 2, i, 4))
                         {
@@ -555,7 +556,7 @@ public class ERAufgabe : MonoBehaviour
                     bool temp = true;
                     foreach (string name in listeBeziehungen[Story.level][i])
                     {
-                        if (obj.name.Equals(name))
+                        if ((obj.name.Trim(' ')).Equals(name))
                         {
                             allesDa &= true;
                             temp = false;
@@ -721,7 +722,8 @@ public class ERAufgabe : MonoBehaviour
             {
                 foreach (string attributName in attributNamesMoeglichkeiten)
                 {
-                    if (attribut.name.Equals(attributName))
+                    string name = attribut.name.Trim(' ');
+                    if (name.Equals(attributName))
                     {
                         attributeHat[Story.level]++;
                         if (primarschluessel[Story.level][indexEntity][indexattribute] == 1 && entity.GetComponent<Entitaet>().primaerschluessel.Contains(attribut))
