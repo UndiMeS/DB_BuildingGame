@@ -183,8 +183,8 @@ public class PauseMenu : MonoBehaviour
         kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(1);
         GebaeudeInfoBauen.wertFest = 0;
         RTS_Camera.transform.rotation = Quaternion.Euler(0,0,0);
-        RTS_CameraScript.minHeight = -3.0f;
-        RTS_CameraScript.maxHeight = -75.0f;
+        RTS_CameraScript.minHeight = -10.0f;
+        RTS_CameraScript.maxHeight = -50.0f;
         RTS_CameraScript.limitXMax = 275;
         if (ERErstellung.selectedGameObjekt != null)
         {
