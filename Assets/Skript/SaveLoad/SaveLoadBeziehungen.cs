@@ -50,7 +50,7 @@ public class SaveLoadBeziehungen : MonoBehaviour
             }
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/DB/ForschungsprojektStallcontainer.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/ForschungsprojektStallcontainer.json", json);
     }
     private void forschungsprojektFeldsphaere()
     {
@@ -82,7 +82,7 @@ public class SaveLoadBeziehungen : MonoBehaviour
             }
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/DB/ForschungsprojektFeldsphaere.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/ForschungsprojektFeldsphaere.json", json);
     }
     private void forschungsprojektWohncontainer()
     {
@@ -113,7 +113,7 @@ public class SaveLoadBeziehungen : MonoBehaviour
             }
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/DB/ForschungsprojektWohncontainer.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/ForschungsprojektWohncontainer.json", json);
     }
     private void forschungsprojektWeidesphaere()
     {
@@ -147,7 +147,7 @@ public class SaveLoadBeziehungen : MonoBehaviour
             
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/DB/ForschungsprojektWeidesphaere.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/ForschungsprojektWeidesphaere.json", json);
     }
     private void forschungsprojektForschungsprojekt()
     {
@@ -180,7 +180,7 @@ public class SaveLoadBeziehungen : MonoBehaviour
            }
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/DB/ForschungsprojektForschungsprojekt.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/ForschungsprojektForschungsprojekt.json", json);
     }
     private void nutztiereWeidespaehre()
     {
@@ -199,7 +199,7 @@ public class SaveLoadBeziehungen : MonoBehaviour
             }
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/DB/NutztierWeidespaehre.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/NutztierWeidespaehre.json", json);
     }
     private void astronautWeidespaehre()
     {
@@ -222,7 +222,7 @@ public class SaveLoadBeziehungen : MonoBehaviour
             }
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/DB/AstronautWeidespaehre.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/AstronautWeidespaehre.json", json);
     }
     private void astronautForschungsprojekte()
     {
@@ -247,7 +247,7 @@ public class SaveLoadBeziehungen : MonoBehaviour
             }
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/DB/AstronautForschungsprojekt.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/AstronautForschungsprojekt.json", json);
     }
     private void astronautForschungsstation()
     {
@@ -269,7 +269,7 @@ public class SaveLoadBeziehungen : MonoBehaviour
             
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/DB/AstronautForschungsstation.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/AstronautForschungsstation.json", json);
     }
     private void astronautFeldspaehre()
     {
@@ -292,7 +292,7 @@ public class SaveLoadBeziehungen : MonoBehaviour
             }
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/DB/AstronautFeldspaehre.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/AstronautFeldspaehre.json", json);
     }
 
 

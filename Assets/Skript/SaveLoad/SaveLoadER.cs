@@ -47,7 +47,7 @@ public class SaveLoadER : MonoBehaviour
 
         kamerakontroller.changeHintergrund(0);
 
-        string json = File.ReadAllText(Application.dataPath + "/SaveState/fertigeObjekte.json");
+        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/fertigeObjekte.json");
         FertigeObjekte fertige = JsonUtility.FromJson<FertigeObjekte>(json);
         fertige.setData();
 
@@ -84,7 +84,7 @@ public class SaveLoadER : MonoBehaviour
 
     private void ladeBeziehungen()
     {
-        string json = File.ReadAllText(Application.dataPath + "/SaveState/Beziehungen.json");
+        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/Beziehungen.json");
         json = json.Remove(json.Length - 1);//] l�schen
 
         string[] split = json.Split('{');
@@ -138,7 +138,7 @@ public class SaveLoadER : MonoBehaviour
 
     private void ladeAttribute()
     {
-        string json = File.ReadAllText(Application.dataPath + "/SaveState/Attribut.json");
+        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/Attribut.json");
         json = json.Remove(json.Length - 1);//] l�schen
 
         string[] split = json.Split('{');
@@ -188,7 +188,7 @@ public class SaveLoadER : MonoBehaviour
     {
         ERErstellung.modellObjekte.Clear();
 
-        string json = File.ReadAllText(Application.dataPath + "/SaveState/Entity.json");
+        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/Entity.json");
         json = json.Remove(json.Length - 1);//] l�schen
 
         string[] split = json.Split('{');
@@ -234,7 +234,7 @@ public class SaveLoadER : MonoBehaviour
 
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/Beziehungen.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/Beziehungen.json", json);
     }
 
     private void saveAttribute()
@@ -249,7 +249,7 @@ public class SaveLoadER : MonoBehaviour
 
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/Attribut.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/Attribut.json", json);
     }
 
     private void saveEntity()
@@ -264,7 +264,7 @@ public class SaveLoadER : MonoBehaviour
 
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Application.dataPath + "/SaveState/Entity.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/Entity.json", json);
     }
 
     private void saveFertigeObjekte()
@@ -272,7 +272,7 @@ public class SaveLoadER : MonoBehaviour
         FertigeObjekte fertigObjekte = new FertigeObjekte();
         fertigObjekte.instanceIDsErstellen();
         string json = JsonUtility.ToJson(fertigObjekte);
-        File.WriteAllText(Application.dataPath + "/SaveState/fertigeObjekte.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/fertigeObjekte.json", json);
     }
 
     private class FertigeObjekte

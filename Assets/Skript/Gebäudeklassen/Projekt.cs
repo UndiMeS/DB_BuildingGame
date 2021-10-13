@@ -24,6 +24,8 @@ public class Projekt
     public string VerbessertVonProjektForschungsMerkmal;
     public int VerbessertVonProjektForschungsStufe;
 
+    private List<Mensch> forschende = new List<Mensch>();
+
     public Projekt(int nr, int preis)
     {
         stationsnummer= nr;
@@ -58,8 +60,9 @@ public class Projekt
             {
                 if (mensch.aufgabe == "Forschung" && mensch.stationsNummer == 0 && mensch.projektForschungsstationsNummer == 0)
                 {
+                    forschende.Add(mensch);
                     mensch.projektForschungsstationsNummer = stationsnummer;
-                    mensch.projektForschungsMerkmal = merkmal;
+                    //Merkmal bei SetMerkmal festgelegt
                     mensch.projektForschungsStufe = stufe;
                     temp = false;
                     break;
@@ -105,6 +108,11 @@ public class Projekt
     public void SetMerkmal(string merkmalNeu)
     {
         merkmal = merkmalNeu;
+
+        foreach(Mensch mensch in forschende)
+        {
+            mensch.projektForschungsMerkmal = merkmal;
+        }
     }
 
    
