@@ -102,10 +102,11 @@ public class ERErstellung : MonoBehaviour
         else //erzeugt neues Objekt und markiert es
         {
             temp.GetComponent<ERObjekt>().canvas = erModellflaeche;
-            setRandomPosition(temp);
+            
             SpawnLimit.x = Mathf.Clamp(SpawnLimit.x, minX, maxX);
             SpawnLimit.y = Mathf.Clamp(SpawnLimit.y, minY, maxY);
             temp.gameObject.transform.position = SpawnLimit;
+            setRandomPosition(temp);
             modellObjekte.Add(temp);
             changeSelectedGameobjekt(temp);
             selectedGameObjekt.transform.SetParent(erModellflaeche.transform);
@@ -175,11 +176,19 @@ public class ERErstellung : MonoBehaviour
             pos = new Vector3(rand.Next(Screen.width / 10, 9 * Screen.width / 10), rand.Next(Screen.height / 6, 5 * Screen.height / 6), 0);
             
 
+            pos.x = Mathf.Clamp(pos.x, minX, maxX);
+            pos.y = Mathf.Clamp(pos.y, minY, maxY);
+
             // if(pos.x < minX || pos.x > maxX || pos.y < minY || pos.y > maxY)
             // {
             //     ausserhalb = true;
             // }
-            gameObject.transform.position = Utilitys.GetMouseWorldPosition(pos);
+
+            SpawnLimit = Utilitys.GetMouseWorldPosition(pos);
+            SpawnLimit.x = Mathf.Clamp(SpawnLimit.x, minX, maxX);
+            SpawnLimit.y = Mathf.Clamp(SpawnLimit.y, minY, maxY);
+            //gameObject.transform.position = Utilitys.GetMouseWorldPosition(pos);
+            gameObject.transform.position = SpawnLimit;
             if (!RectTransformUtility.RectangleContainsScreenPoint(aufgabentext.GetComponent<RectTransform>(), pos, null)
                 && !RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), pos, null)
                 && !RectTransformUtility.RectangleContainsScreenPoint(infobox.GetComponent<RectTransform>(), pos, null)
