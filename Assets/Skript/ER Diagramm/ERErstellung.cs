@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 using TMPro;
 using System;
 using Random = System.Random;
@@ -38,6 +38,13 @@ public class ERErstellung : MonoBehaviour
     public GameObject ddSchwach;
     public GameObject dd1;
     public GameObject dd2;
+
+
+    public float minX = 0;
+    public float maxX = 175;
+    public float minY = -15;
+    public float maxY = 130;
+    public Vector3 SpawnLimit;
 
     public TargetSelector Target;
     public RTS_Cam.RTS_Camera Camera;
@@ -96,6 +103,9 @@ public class ERErstellung : MonoBehaviour
         {
             temp.GetComponent<ERObjekt>().canvas = erModellflaeche;
             setRandomPosition(temp);
+            SpawnLimit.x = Mathf.Clamp(SpawnLimit.x, minX, maxX);
+            SpawnLimit.y = Mathf.Clamp(SpawnLimit.y, minY, maxY);
+            temp.gameObject.transform.position = SpawnLimit;
             modellObjekte.Add(temp);
             changeSelectedGameobjekt(temp);
             selectedGameObjekt.transform.SetParent(erModellflaeche.transform);
@@ -163,6 +173,12 @@ public class ERErstellung : MonoBehaviour
         while (ausserhalb) {
             zaehler++;
             pos = new Vector3(rand.Next(Screen.width / 10, 9 * Screen.width / 10), rand.Next(Screen.height / 6, 5 * Screen.height / 6), 0);
+            
+
+            // if(pos.x < minX || pos.x > maxX || pos.y < minY || pos.y > maxY)
+            // {
+            //     ausserhalb = true;
+            // }
             gameObject.transform.position = Utilitys.GetMouseWorldPosition(pos);
             if (!RectTransformUtility.RectangleContainsScreenPoint(aufgabentext.GetComponent<RectTransform>(), pos, null)
                 && !RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), pos, null)
