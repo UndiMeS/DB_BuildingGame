@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.UI;
 using TMPro;
-using System;
-using Random = System.Random;
+//using System;
+//using Random = System.Random;
 
 public class ERErstellung : MonoBehaviour
 {
@@ -47,7 +47,9 @@ public class ERErstellung : MonoBehaviour
     public Vector3 SpawnLimit;
 
     public TargetSelector Target;
-    public RTS_Cam.RTS_Camera Camera;
+    public RTS_Cam.RTS_Camera RTS_Camera;
+    public Camera MainCamera;
+    public int SpawnRadios;
 
 
     // Start is called before the first frame update
@@ -59,7 +61,7 @@ public class ERErstellung : MonoBehaviour
         schwach = false;
         modellObjekte.Clear();
 
-        Camera = GameObject.FindWithTag("MainCamera").GetComponent<RTS_Cam.RTS_Camera>();
+        RTS_Camera = GameObject.FindWithTag("MainCamera").GetComponent<RTS_Cam.RTS_Camera>();
         //Target = Camera.TargetSelector;
     }
     
@@ -103,16 +105,16 @@ public class ERErstellung : MonoBehaviour
         {
             temp.GetComponent<ERObjekt>().canvas = erModellflaeche;
             
-            SpawnLimit.x = Mathf.Clamp(SpawnLimit.x, minX, maxX);
-            SpawnLimit.y = Mathf.Clamp(SpawnLimit.y, minY, maxY);
-            temp.gameObject.transform.position = SpawnLimit;
+            // SpawnLimit.x = Mathf.Clamp(SpawnLimit.x, minX, maxX);
+            // SpawnLimit.y = Mathf.Clamp(SpawnLimit.y, minY, maxY);
+            //temp.gameObject.transform.position = SpawnLimit;
             setRandomPosition(temp);
             modellObjekte.Add(temp);
             changeSelectedGameobjekt(temp);
             selectedGameObjekt.transform.SetParent(erModellflaeche.transform);
             if (!selectedGameObjekt.CompareTag("Attribut"))
             {
-                Camera.targetFollow = temp.transform;
+                RTS_Camera.targetFollow = temp.transform;
             }
            
             if (selectedGameObjekt.CompareTag("Attribut") && lastselected!=null&& lastselected.CompareTag("Entitaet"))
@@ -167,27 +169,52 @@ public class ERErstellung : MonoBehaviour
 
     private void setRandomPosition(GameObject gameObject)
     {
-        Random rand = new Random();
+        //Random rand = new Random();
         Vector3 pos= new Vector3();
         bool ausserhalb = true;
         int zaehler = 0;
         while (ausserhalb) {
             zaehler++;
-            pos = new Vector3(rand.Next(Screen.width / 10, 9 * Screen.width / 10), rand.Next(Screen.height / 6, 5 * Screen.height / 6), 0);
+            //pos = new Vector3(rand.Next(Screen.width / 10, 9 * Screen.width / 10), rand.Next(Screen.height / 6, 5 * Screen.height / 6), 0);
             
+            // SpawnLimit = new Vector3(Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x),Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y),0);
+            // SpawnLimit = new Vector3(Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x),Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y),0);
 
-            pos.x = Mathf.Clamp(pos.x, minX, maxX);
-            pos.y = Mathf.Clamp(pos.y, minY, maxY);
+            // pos.x = Mathf.Clamp(pos.x, minX, maxX);
+            // pos.y = Mathf.Clamp(pos.y, minY, maxY);
 
             // if(pos.x < minX || pos.x > maxX || pos.y < minY || pos.y > maxY)
             // {
             //     ausserhalb = true;
             // }
 
-            SpawnLimit = Utilitys.GetMouseWorldPosition(pos);
+            //SpawnLimit = Utilitys.GetMouseWorldPosition(pos);
+
+
+            //SpawnLimit.y = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y);
+            //SpawnLimit.x = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
+            //SpawnLimit = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height),0));
+            
+            float RandX = Random.Range(minX, maxX);
+            float RandY = Random.Range(minY, maxY);
+
+            //SpawnLimit = MainCamera.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 0.0f));
+            
+
+            SpawnLimit.x = Random.Range(MainCamera.transform.position.x - SpawnRadios, MainCamera.transform.position.x + SpawnRadios);
+            SpawnLimit.y = Random.Range(MainCamera.transform.position.y - SpawnRadios, MainCamera.transform.position.y + SpawnRadios);
+
+
+            //SpawnLimit = new Vector3(RandX, RandY, 1.0f);
+            //SpawnLimit = MainCamera.ScreenToWorldPoint(new Vector3((Screen.width / 3), (Screen.height / 3), 0.0f));
+            //SpawnLimit = MainCamera.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height),1.0f));
+            SpawnLimit.z = 0.0f;
+
             SpawnLimit.x = Mathf.Clamp(SpawnLimit.x, minX, maxX);
             SpawnLimit.y = Mathf.Clamp(SpawnLimit.y, minY, maxY);
             //gameObject.transform.position = Utilitys.GetMouseWorldPosition(pos);
+            //gameObject.transform.position = SpawnLimit;
+
             gameObject.transform.position = SpawnLimit;
             if (!RectTransformUtility.RectangleContainsScreenPoint(aufgabentext.GetComponent<RectTransform>(), pos, null)
                 && !RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), pos, null)
