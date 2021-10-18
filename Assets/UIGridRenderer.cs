@@ -8,6 +8,8 @@ public class UIGridRenderer : Graphic
     public Vector2Int gridSize = new Vector2Int(1,1);
     public float thickness = 10f;
 
+    
+
     float width;
     float height;
     float cellWidth;
