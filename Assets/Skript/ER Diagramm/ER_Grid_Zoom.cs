@@ -27,7 +27,7 @@ public class ER_Grid_Zoom : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 offset = obj.position - lastPos;
-        if (offset.z < threshold && offset.z < -20f && GridColor.a >= 0 && BigGridColor.a <= 70){
+        if (offset.z < threshold && offset.z < -10f && GridColor.a >= 0 && BigGridColor.a <= 70){
             GridColor.a = GridColor.a - 0.15f;
             BigGridColor.a = BigGridColor.a + 0.15f;
             lastPos = obj.position; // update lastPos
@@ -37,7 +37,7 @@ public class ER_Grid_Zoom : MonoBehaviour
             UI_Grid.color = GridColor;
         }
         else
-        if (offset.z > threshold && offset.z > +20f && GridColor.a <= 70 && BigGridColor.a >= 0){
+        if (offset.z > threshold && offset.z > +10f && GridColor.a <= 70 && BigGridColor.a >= 0){
             GridColor.a = GridColor.a + 0.15f;
             BigGridColor.a = BigGridColor.a - 0.15f;
             lastPos = obj.position; // update lastPos
