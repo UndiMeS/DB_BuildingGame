@@ -129,6 +129,7 @@ public class LeisteBottom : MonoBehaviour
                 schwEntKnopf.SetIsOnWithoutNotify(false);
                 return;
             }
+
             foreach (GameObject bez in gameObject.GetComponent<Entitaet>().beziehungen)
             {
                 if (bez == null)
@@ -158,8 +159,8 @@ public class LeisteBottom : MonoBehaviour
             gameObject.GetComponent<Entitaet>().schwach = false;
             gameObject.GetComponent<Entitaet>().beziehungen.Remove(gameObject.GetComponent<Entitaet>().schwacheBeziehung);
             gameObject.GetComponent<Entitaet>().schwacheBeziehung.GetComponent<Beziehung>().objekt2.GetComponent<Entitaet>().beziehungen.Remove(gameObject.GetComponent<Entitaet>().schwacheBeziehung);
-            Destroy(gameObject.GetComponent<Entitaet>().schwacheBeziehung);
             ERErstellung.modellObjekte.Remove(gameObject.GetComponent<Entitaet>().schwacheBeziehung);
+             Destroy(gameObject.GetComponent<Entitaet>().schwacheBeziehung);
             gameObject.GetComponent<Entitaet>().vaterEntitaet = null;
             gameObject.GetComponent<Entitaet>().schwacheBeziehung = null;
         }
@@ -221,7 +222,7 @@ public class LeisteBottom : MonoBehaviour
                 bez.GetComponent<Beziehung>().schwach = true;
                 ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung = bez;
                 
-
+                //hier muss bez in Entität eingefügt werden
             }
             
 
@@ -235,7 +236,8 @@ public class LeisteBottom : MonoBehaviour
                 bez.GetComponent<Beziehung>().welcheEntity(2, option,true);
                 bez.GetComponent<Beziehung>().objekt1 = ERErstellung.selectedGameObjekt;
                 bez.GetComponent<Beziehung>().objekt2 = entity;
-                
+                ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().beziehungen.Add(bez);
+                entity.GetComponent<Entitaet>().beziehungen.Add(bez);
             }
             else
             {

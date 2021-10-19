@@ -298,8 +298,12 @@ public class ERErstellung : MonoBehaviour
             modellObjekte.Remove(selectedGameObjekt);
             if (selectedGameObjekt.CompareTag("Entitaet")&&selectedGameObjekt.GetComponent<Entitaet>().schwach)
             {
+                selectedGameObjekt.GetComponent<Entitaet>().beziehungen.Remove(selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung);
+                selectedGameObjekt.GetComponent<Entitaet>().vaterEntitaet.GetComponent<Entitaet>().beziehungen.Remove(selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung);
                 modellObjekte.Remove(selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung);
                 Destroy(selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung);
+                selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung = null;
+                selectedGameObjekt.GetComponent<Entitaet>().vaterEntitaet = null;
             }
             if (selectedGameObjekt.CompareTag("Attribut")){
                 foreach (GameObject obj in modellObjekte)
@@ -313,12 +317,12 @@ public class ERErstellung : MonoBehaviour
             if (selectedGameObjekt.CompareTag("Beziehung") && selectedGameObjekt.GetComponent<Beziehung>().schwach)
             {
                 GameObject temp = selectedGameObjekt;
-                selectedGameObjekt = temp.GetComponent<Beziehung>().objekt1;
-                leisteBottom.GetComponent<LeisteBottom>().SchwacheEntitaetObj(false,selectedGameObjekt);
-                selectedGameObjekt = temp;
+                leisteBottom.GetComponent<LeisteBottom>().SchwacheEntitaetObj(false, selectedGameObjekt.GetComponent<Beziehung>().objekt1);
+
+                selectedGameObjekt.GetComponent<Beziehung>().objekt1.GetComponent<Entitaet>().schwach = false;
                 selectedGameObjekt.GetComponent<Beziehung>().objekt1.GetComponent<Entitaet>().vaterEntitaet = null;
                 selectedGameObjekt.GetComponent<Beziehung>().objekt1.GetComponent<Entitaet>().schwacheBeziehung = null;
-                
+
             }
             if (selectedGameObjekt.CompareTag("Beziehung")){
                 selectedGameObjekt.GetComponent<Beziehung>().objekt1.GetComponent<Entitaet>().beziehungen.Remove(selectedGameObjekt);
