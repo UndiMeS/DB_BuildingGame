@@ -25,6 +25,7 @@ public class Tutorial : MonoBehaviour
     public GameObject pfeilLeisteUnten;
     public GameObject klickPfeil;
     public GameObject pfeilErtrag;
+    public GameObject pfeilBeziehung;
 
     //Elemente aus Spiel
     public GameObject buttonER;
@@ -148,7 +149,8 @@ public class Tutorial : MonoBehaviour
             
             //Prüfe, ob Missionsbutten gedrückt wurde
             if(missionClick){
-                if(rotationTemp){
+                if(rotationTemp && Testing.Mars)
+                {
                     pfeilSpiel.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
                     popUpGameObject(container);
                     rotationTemp = false;
@@ -161,7 +163,7 @@ public class Tutorial : MonoBehaviour
         
         //Zeitpunkt: Mission 0 (Wohncontainer) fertig und Wechsel in ER-Editor
         }else if((Story.lvl[0] == true && Story.lvl[1] == false) && (Mission.missionsLevel[6] == true && Mission.missionsLevel[0] == false)){
-            if(rotationTemp == false){
+            if(rotationTemp == false && Testing.Mars){
                     pfeilSpiel.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
                     rotationTemp = true;
             }
@@ -177,6 +179,18 @@ public class Tutorial : MonoBehaviour
                 pfeilER.SetActive(true);
                 
             }
+            Beziehung bez;
+            if(ERErstellung.selectedGameObjekt.TryGetComponent(out bez)&&ERAufgabe.gespeicherteObjekte.Contains(ERErstellung.selectedGameObjekt))
+            {
+                FehlerAnzeige.tutorialtext_ER = "In Beziehung stehende Entitymengen könnne in der rechten unteren Ecke eingestellt werden.";
+                pfeilBeziehung.SetActive(true);
+            }
+            else
+            {
+                pfeilBeziehung.SetActive(false);
+                FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Hinweis: Wird eine Entitymenge als 'schwach' gekennzeichnet, wird automatisch auch eine schwache Relation erzeugt! ";
+            }
+
             missionClick = false;
             bZusatz.interactable = false;
         
@@ -185,6 +199,7 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "Schau dir deine neue Mission an!";
             FehlerAnzeige.tutorialtext_ER = "Fabelhaft! Wechsel nun erneut in die Siedlung und erfülle deine nächste Mission!";
             pfeilER.SetActive(true);
+            pfeilBeziehung.SetActive(false);
             pfeilER.transform.localPosition = new Vector3(590,208,0);
             pfeilSpiel.transform.localPosition = new Vector3(637,132,0);
             //Prüfe, ob Missionsbutten gedrückt wurde
@@ -204,7 +219,8 @@ public class Tutorial : MonoBehaviour
                     }
                 }
             }
-            
+           
+
             bZusatz.interactable = false;
         
         //Zeitpunkt: Mission 1 (Astronauten einfliegen) fertig und Wechsel in ER-Editor (Feldsphäre)
@@ -227,11 +243,25 @@ public class Tutorial : MonoBehaviour
             pfeilSpiel.SetActive(true);
             bZusatz.interactable = false;
             missionClick = false;
-        
-        //Zeitpunkt: ER-Level 2 fertig (Feldsphäre) und Wechsel zum Spiel für Zusatzaufgabe
-        }else if((Story.lvl[2] == true && Story.lvl[3] == false) && (Mission.missionsLevel[0] == true && Mission.missionsLevel[1] == false)){
+            Beziehung bez;
+            if (ERErstellung.selectedGameObjekt.TryGetComponent(out bez) && ERAufgabe.gespeicherteObjekte.Contains(ERErstellung.selectedGameObjekt))
+            {
+                pfeilBeziehung.SetActive(true);
+                FehlerAnzeige.tutorialtext_ER = "In Beziehung stehende Entitymengen könnne in der rechten unteren Ecke eingestellt werden.";
+            }
+            else
+            {
+                pfeilBeziehung.SetActive(false);
+                FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen. Wechsel zurück in die Siedlung!";
+
+            }
+
+            //Zeitpunkt: ER-Level 2 fertig (Feldsphäre) und Wechsel zum Spiel für Zusatzaufgabe
+        }
+        else if((Story.lvl[2] == true && Story.lvl[3] == false) && (Mission.missionsLevel[0] == true && Mission.missionsLevel[1] == false)){
             bZusatz.interactable = true;
-            if(zusatzClick == false && missionClick == false && missionTemp == false){
+            pfeilBeziehung.SetActive(false);
+            if (zusatzClick == false && missionClick == false && missionTemp == false){
                 FehlerAnzeige.tutorialtext_Spiel = "Bei knappen Ressourcen kannst du auch eine Zusatzaufgabe lösen, um weiter zu bauen! Öffne eine Zusatzaufgabe!";
                 FehlerAnzeige.tutorialtext_ER = "Super! Im Baumenü sind nun Feldsphären freigeschaltet. Auch Feldastronauten leben bereits in der Siedlung. Auf geht's in die neue Mission!";
                 pfeilSpiel.transform.localPosition = new Vector3(637,57,0);
