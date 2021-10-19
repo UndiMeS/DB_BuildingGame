@@ -48,6 +48,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         RTS_CameraScript = RTS_Camera.GetComponent<RTS_Cam.RTS_Camera>();
+        //RTS_Camera.transform.position = new Vector3(88.0f, 25.0f, -70.0f);
         lastpos = RTS_Camera.transform.position;
     }
 
