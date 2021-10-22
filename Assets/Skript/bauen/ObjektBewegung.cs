@@ -13,6 +13,8 @@ public class ObjektBewegung : MonoBehaviour
 
     public static GameObject erstellfenster;
     public static GameObject infoAnzeige;
+
+    public GebäudeAnimation AnimationScript;
     
 
     // Start is called before the first frame update
@@ -21,6 +23,7 @@ public class ObjektBewegung : MonoBehaviour
         GebaeudeInfoBauen.wertFest = 0;
         selected = true;
         Testing.gebautesObjekt = gameObject;
+        //LandingAnimation = this.gameObject.GetComponent<Animator>();
     }
 
 
@@ -36,6 +39,10 @@ public class ObjektBewegung : MonoBehaviour
                 transform.position += new Vector3(0, 0, 0);
                 
                 Testing.grid.SetWert(transform.position, Testing.objektGebaut,gameObject);
+
+                AnimationScript.GebäudeBauen = true;
+
+                
 
                 //2x1 und 2x2 Bauten abfangen und wert setzen
                 /*if (Testing.objektGebaut>20 && Testing.objektGebaut % 10 % 3 == 1)//10,11,12 haus; 20,21,22 weide; 30,31,32 feld; ...1 klein;...2 mittel;...3 groß
@@ -55,6 +62,12 @@ public class ObjektBewegung : MonoBehaviour
                 
                 PanelKnopf.gebautetsGebaeude = null;
                 KameraKontroller.aktiviert = true;
+                
+
+               
+                    
+
+                
                 Destroy(GetComponent<ObjektBewegung>());
                
             }

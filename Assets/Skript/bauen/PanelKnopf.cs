@@ -16,6 +16,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public static GameObject gebautetsGebaeude;
     public GameObject spezialisierungsauswahl;
     public GameObject gebaeudeOrdner;
+    //public Animator LandingAnimation;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,9 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     {
         Testing.objektGebaut = gebaeudeNummer;
         gebautetsGebaeude = Instantiate(gebaeude);
+        //LandingAnimation = gebautetsGebaeude.GetComponent<Animator>();
         gebautetsGebaeude.transform.SetParent(gebaeudeOrdner.transform);
+        //LandingAnimation.SetBool("Landing", true);
     }
 
     // Update is called once per frame
