@@ -15,6 +15,7 @@ public class ObjektBewegung : MonoBehaviour
     public static GameObject infoAnzeige;
 
     public GebäudeAnimation AnimationScript;
+    public float ZPosition;
     
 
     // Start is called before the first frame update
@@ -36,7 +37,7 @@ public class ObjektBewegung : MonoBehaviour
             if (initKlasseTestePreis()&& Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
             {
                 selected = false;
-                transform.position += new Vector3(0, 0, 0);
+                transform.position += new Vector3(0, 0, ZPosition);
                 
                 Testing.grid.SetWert(transform.position, Testing.objektGebaut,gameObject);
 
