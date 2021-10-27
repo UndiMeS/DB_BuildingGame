@@ -206,6 +206,12 @@ public class ERObjekt : MonoBehaviour
     public void nameAendern(string str)
     {
         gameObject.name = str;
+        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useKeyboardInput = false;
+        Invoke("KeyboardMoveOn", 2);
+    }
+    public void KeyboardMoveOn()
+    {
+        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useKeyboardInput = true;
     }
 
 

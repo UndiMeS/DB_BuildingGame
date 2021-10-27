@@ -42,6 +42,13 @@ public class Tutorial : MonoBehaviour
     public GameObject konventionsFenster;
     public GameObject buttonHilfeInGame;
     public RTS_Cam.RTS_Camera RTS_Camera;
+
+    //Elemente die Markiert werden sollen
+    public HighlightButton MarsHighlighting;
+    public HighlightButton ERDHighlighting;
+    public GameObject MarsToERD;
+    public GameObject ERDBeschreibung;
+    public GameObject ERDLeisteUnten;
     
 
     // Start is called before the first frame update
@@ -89,7 +96,10 @@ public class Tutorial : MonoBehaviour
         wohncontainerHilfe.SetActive(false);
         pfeilLeisteUnten.SetActive(false);
         klickPfeil.SetActive(false);
-        konventionsFenster.SetActive(false);        
+        konventionsFenster.SetActive(false);
+
+        pfeilSpiel.SetActive(false);
+        MarsHighlighting.highlight = MarsToERD;
 
         //Zeitpunkt: Neues Spiel gestartet und Wechsel in ER-Editor
         if(Story.lvl[0] == false && Mission.missionsLevel[6] == false){
@@ -103,11 +113,15 @@ public class Tutorial : MonoBehaviour
             bZusatz.interactable = false;
             bMission.interactable = false;
             FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, folge dem roten Pfeil und öffne zuerst den ER-Editor!";
+
+            pfeilER.SetActive(false);
+            ERDHighlighting.highlight = ERDBeschreibung;
+            
             if(beschreibungClick == false){
                 FehlerAnzeige.tutorialtext_ER = "Erstelle ein ER-Diagramm mit der Leiste am unteren Bildschrimrand anhand der ER-Beschreibung (scrollbar!). Öffne die Beschreibung (roter Pfeil)";
                 pfeilLeisteUnten.SetActive(false);
                 klickPfeil.SetActive(false);
-                pfeilER.SetActive(true);
+                //pfeilER.SetActive(true);
             }
             
             if(beschreibungClick){
@@ -116,16 +130,19 @@ public class Tutorial : MonoBehaviour
                     pfeilLeisteUnten.SetActive(false);
                     klickPfeil.SetActive(true);
                     pfeilER.SetActive(false);
+                    //ERDHighlighting.highlight = ERDLeisteUnten;
                 }
                 else if (beschreibungER.activeSelf)
                 {
+                    //ERDHighlighting.highlight = ERDLeisteUnten;
                     pfeilER.SetActive(false);
                     pfeilLeisteUnten.SetActive(true);
                     klickPfeil.SetActive(false);
                 }
                 else
                 {
-                    pfeilER.SetActive(true);
+                    ERDHighlighting.highlight = ERDBeschreibung;
+                    //pfeilER.SetActive(true);
                     pfeilLeisteUnten.SetActive(false);
                     klickPfeil.SetActive(false);
                 }
