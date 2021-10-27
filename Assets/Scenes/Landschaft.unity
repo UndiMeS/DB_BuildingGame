@@ -42466,7 +42466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &821967010
 RectTransform:
   m_ObjectHideFlags: 0
@@ -106812,7 +106812,7 @@ PrefabInstance:
     - target: {fileID: 2808810203750505461, guid: 1201fbb80dac9304ca9c80cae071fdcf,
         type: 3}
       propertyPath: lastTab
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2808810203750505461, guid: 1201fbb80dac9304ca9c80cae071fdcf,
         type: 3}
@@ -106843,6 +106843,21 @@ PrefabInstance:
         type: 3}
       propertyPath: minHeight
       value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808810203750505461, guid: 1201fbb80dac9304ca9c80cae071fdcf,
+        type: 3}
+      propertyPath: autoHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808810203750505461, guid: 1201fbb80dac9304ca9c80cae071fdcf,
+        type: 3}
+      propertyPath: useKeyboardInput
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808810203750505461, guid: 1201fbb80dac9304ca9c80cae071fdcf,
+        type: 3}
+      propertyPath: useScreenEdgeInput
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2808810203750505462, guid: 1201fbb80dac9304ca9c80cae071fdcf,
         type: 3}

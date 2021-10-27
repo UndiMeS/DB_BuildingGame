@@ -43,7 +43,7 @@ public class Testing : MonoBehaviour
     public PauseMenu pausemenu;
     public GameObject zusatz;
 
-    public static bool Mars;
+    public static bool Mars = true;
 
     public static List<Wohncontainer> wohncontainer = new List<Wohncontainer>();
     public static List<Mensch> menschen = new List<Mensch>();

@@ -44,12 +44,15 @@ public class PauseMenu : MonoBehaviour
     //public RTS_Camera CameraScript;
 
     public static Vector3 lastpos;
+    //public float tempZoomPos;
+    public static float lastZoomPos;
 
     void Start()
     {
         RTS_CameraScript = RTS_Camera.GetComponent<RTS_Cam.RTS_Camera>();
         //RTS_Camera.transform.position = new Vector3(88.0f, 25.0f, -70.0f);
         lastpos = RTS_Camera.transform.position;
+        //lastZoomPos = RTS_CameraScript.zoomPos;
     }
 
     //zurück-Knopf im Pausemenü/Optionsmenü der Landschaft
@@ -197,6 +200,10 @@ public class PauseMenu : MonoBehaviour
         RTS_Camera.transform.position = lastpos;
         lastpos = temp;
 
+        float tempZoomPos = RTS_CameraScript.zoomPos;
+        RTS_CameraScript.zoomPos = lastZoomPos;
+        lastZoomPos = tempZoomPos;
+
         Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
         Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;
     }
@@ -216,6 +223,10 @@ public class PauseMenu : MonoBehaviour
         Vector3 temp = RTS_Camera.transform.position;
         RTS_Camera.transform.position = lastpos;
         lastpos = temp;
+
+        float tempZoomPos = RTS_CameraScript.zoomPos;
+        RTS_CameraScript.zoomPos = lastZoomPos;
+        lastZoomPos = tempZoomPos;
 
         Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
         Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;
