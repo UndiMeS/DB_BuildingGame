@@ -350,29 +350,29 @@ public class GebaeudeAnzeige : MonoBehaviour
         {
             gebaeude.GetComponent<Forschung>().spezialisierung = "Wohncontainer";
             spezialisierungsIcon.GetComponent<Image>().sprite = wohn;
-            gebaeude.transform.GetChild(0).gameObject.SetActive(false);
-            gebaeude.transform.GetChild(1).gameObject.SetActive(true);
+            //gebaeude.transform.GetChild(0).gameObject.SetActive(false);
+            gebaeude.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
         else if (spezialisierung.Equals("Feldsphäre"))
         {
             gebaeude.GetComponent<Forschung>().spezialisierung = "Feldsphäre";
             spezialisierungsIcon.GetComponent<Image>().sprite = feld;
-            gebaeude.transform.GetChild(0).gameObject.SetActive(false);
-            gebaeude.transform.GetChild(2).gameObject.SetActive(true);
+            //gebaeude.transform.GetChild(0).gameObject.SetActive(false);
+            gebaeude.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.SetActive(true);
         }
         else if (spezialisierung.Equals("Weidesphäre"))
         {
             gebaeude.GetComponent<Forschung>().spezialisierung = "Weidesphäre";
             spezialisierungsIcon.GetComponent<Image>().sprite = weide;
-            gebaeude.transform.GetChild(0).gameObject.SetActive(false);
-            gebaeude.transform.GetChild(3).gameObject.SetActive(true);
+            //gebaeude.transform.GetChild(0).gameObject.SetActive(false);
+            gebaeude.transform.GetChild(0).gameObject.transform.GetChild(2).gameObject.SetActive(true);
         }
         else if (spezialisierung.Equals("Stallcontainer"))
         {
             gebaeude.GetComponent<Forschung>().spezialisierung = "Stallcontainer";
             spezialisierungsIcon.GetComponent<Image>().sprite = stall;
-            gebaeude.transform.GetChild(0).gameObject.SetActive(false);
-            gebaeude.transform.GetChild(4).gameObject.SetActive(true);
+            //gebaeude.transform.GetChild(0).gameObject.SetActive(false);
+            gebaeude.transform.GetChild(0).gameObject.transform.GetChild(3).gameObject.SetActive(true);
         }
         gebaeude.GetComponent<Forschung>().verbesserung(Forschungsmerkmal, merkmalGO);
     }

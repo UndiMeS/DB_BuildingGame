@@ -15,7 +15,10 @@ public class ObjektBewegung : MonoBehaviour
     public static GameObject infoAnzeige;
 
     public GebäudeAnimation AnimationScript;
+    public GameObject GrünesGebäude;
+    public GameObject FinalGebäude;
     public float ZPosition;
+    public Renderer GrünesGebäudeRenderer;
     
 
     // Start is called before the first frame update
@@ -24,6 +27,7 @@ public class ObjektBewegung : MonoBehaviour
         GebaeudeInfoBauen.wertFest = 0;
         selected = true;
         Testing.gebautesObjekt = gameObject;
+        GrünesGebäudeRenderer = GrünesGebäude.GetComponent<Renderer>();
         //LandingAnimation = this.gameObject.GetComponent<Animator>();
     }
 
@@ -33,10 +37,12 @@ public class ObjektBewegung : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0) )
         {
-            //Schaue, ob schon Gebäude ander Stelle und abfangen ob in Bildschirmflaeche
+            //Schaue, ob schon Gebäude an der Stelle und abfangen ob in Bildschirmflaeche
             if (initKlasseTestePreis()&& Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
             {
                 selected = false;
+                GrünesGebäude.SetActive(false);
+                FinalGebäude.SetActive(true);
                 transform.position += new Vector3(0, 0, ZPosition);
                 
                 Testing.grid.SetWert(transform.position, Testing.objektGebaut,gameObject);
@@ -76,10 +82,12 @@ public class ObjektBewegung : MonoBehaviour
             {
                 if (FehlerAnzeige.fehlertext.Equals("") && !outBox(Input.mousePosition))
                 {
+                    GrünesGebäudeRenderer.material.SetColor("_Color", Color.red); 
                     FehlerAnzeige.fehlertext = "Wähle zum Bauen eine freie Fläche!";
                 }else if (FehlerAnzeige.fehlertext.Equals("") && !Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z))
                     {
                         FehlerAnzeige.fehlertext = "An dieser Stelle befindet sich schon ein Gebäude!";
+                        GrünesGebäudeRenderer.material.SetColor("_Color", Color.red); 
                     }
 
                 selected = false;                
