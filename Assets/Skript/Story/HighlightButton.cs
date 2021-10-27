@@ -11,14 +11,14 @@ public class HighlightButton : MonoBehaviour
     public void Start()
     {
         image = gameObject.GetComponent<Image>();
+
     }
 
     public void Update()
     {
         if (highlight != null)
         {
-            gameObject.SetActive(true);
-            gameObject.GetComponent<RectTransform>().sizeDelta = highlight.GetComponent<RectTransform>().sizeDelta;
+            gameObject.GetComponent<RectTransform>().sizeDelta = 1.25f*highlight.GetComponent<RectTransform>().sizeDelta;
             gameObject.transform.position = highlight.transform.position;
 
             if (((int)Time.time) % 3 == 0)
@@ -32,7 +32,7 @@ public class HighlightButton : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            image.CrossFadeAlpha(0f, 0, true);
         }
     }
 }
