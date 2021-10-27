@@ -39,10 +39,11 @@ public class GebäudeAnimation : MonoBehaviour
                 if(ParachuteAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
                 {
                     ParachuteAnimation.enabled = false;
+                    Parachute.SetActive(false);
                     LandingAnimation.enabled = false;
                     ParachuteAnimation.SetBool("DriveIn", false);
                     GebäudeAnzeige.SetActive(true);
-                    Parachute.SetActive(false);
+                    
                 }
                     
                 else
@@ -52,6 +53,7 @@ public class GebäudeAnimation : MonoBehaviour
 
                 if(GebäudeBauen == true)
                 {
+                    GebäudeBauen = false;
                     LandingAnimation.enabled = true;
                     Parachute.SetActive(true);
 
@@ -60,7 +62,7 @@ public class GebäudeAnimation : MonoBehaviour
 
                     LandingAnimation.SetBool("Landing", false);
 
-                    GebäudeBauen = false;
+                    
                 }
 
 
