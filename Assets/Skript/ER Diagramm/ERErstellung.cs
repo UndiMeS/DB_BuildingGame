@@ -49,7 +49,7 @@ public class ERErstellung : MonoBehaviour
     public TargetSelector Target;
     public RTS_Cam.RTS_Camera RTS_Camera;
     public Camera MainCamera;
-    public int SpawnRadios;
+    public int SpawnRadius;
 
 
     // Start is called before the first frame update
@@ -202,8 +202,8 @@ public class ERErstellung : MonoBehaviour
             //SpawnLimit = MainCamera.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 0.0f));
             
 
-            SpawnLimit.x = Random.Range(MainCamera.transform.position.x - SpawnRadios, MainCamera.transform.position.x + SpawnRadios);
-            SpawnLimit.y = Random.Range(MainCamera.transform.position.y - SpawnRadios, MainCamera.transform.position.y + SpawnRadios);
+            SpawnLimit.x = Random.Range(MainCamera.transform.position.x - SpawnRadius, MainCamera.transform.position.x + SpawnRadius);
+            SpawnLimit.y = Random.Range(MainCamera.transform.position.y - SpawnRadius, MainCamera.transform.position.y + SpawnRadius);
 
 
             //SpawnLimit = new Vector3(RandX, RandY, 1.0f);
