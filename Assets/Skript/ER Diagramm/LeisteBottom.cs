@@ -27,8 +27,8 @@ public class LeisteBottom : MonoBehaviour
     public void Awake()
     {
        leiste_bottom = gameObject;
-       objekt1= bezEinstellung.transform.GetChild(1).gameObject.GetComponent<TMPro.TMP_Dropdown>();
-       objekt2= bezEinstellung.transform.GetChild(4).gameObject.GetComponent<TMPro.TMP_Dropdown>();
+       objekt1= bezEinstellung.transform.GetChild(2).gameObject.GetComponent<TMPro.TMP_Dropdown>();
+       objekt2= bezEinstellung.transform.GetChild(5).gameObject.GetComponent<TMPro.TMP_Dropdown>();
 
     }
 
