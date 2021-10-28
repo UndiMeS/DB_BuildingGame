@@ -44,12 +44,13 @@ public class Tutorial : MonoBehaviour
     public RTS_Cam.RTS_Camera RTS_Camera;
 
     //Elemente die Markiert werden sollen
-    public HighlightButton MarsHighlighting;
-    public HighlightButton ERDHighlighting;
     public GameObject MarsToERD;
     public GameObject ERDBeschreibung;
     public GameObject ERDLeisteUnten;
-    
+    public GameObject ERDToMars;
+    public GameObject MarsMission;
+    public GameObject Wohncontainer;
+    public GameObject BeziehungsHighlight;
 
     // Start is called before the first frame update
     void Start()
@@ -99,7 +100,7 @@ public class Tutorial : MonoBehaviour
         konventionsFenster.SetActive(false);
 
         pfeilSpiel.SetActive(false);
-        MarsHighlighting.highlight = MarsToERD;
+        MarsToERD.SetActive( true);
 
         //Zeitpunkt: Neues Spiel gestartet und Wechsel in ER-Editor
         if(Story.lvl[0] == false && Mission.missionsLevel[6] == false){
@@ -115,13 +116,15 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, folge dem roten Pfeil und öffne zuerst den ER-Editor!";
 
             pfeilER.SetActive(false);
-            ERDHighlighting.highlight = ERDBeschreibung;
+            
             
             if(beschreibungClick == false){
                 FehlerAnzeige.tutorialtext_ER = "Erstelle ein ER-Diagramm mit der Leiste am unteren Bildschrimrand anhand der ER-Beschreibung (scrollbar!). Öffne die Beschreibung (roter Pfeil)";
                 pfeilLeisteUnten.SetActive(false);
                 klickPfeil.SetActive(false);
                 //pfeilER.SetActive(true);
+                ERDLeisteUnten.SetActive(false);
+                ERDBeschreibung.SetActive(true);
             }
             
             if(beschreibungClick){
@@ -130,18 +133,20 @@ public class Tutorial : MonoBehaviour
                     pfeilLeisteUnten.SetActive(false);
                     klickPfeil.SetActive(true);
                     pfeilER.SetActive(false);
-                    //ERDHighlighting.highlight = ERDLeisteUnten;
+                    ERDLeisteUnten.SetActive(true);
+                    ERDBeschreibung.SetActive(false);
                 }
                 else if (beschreibungER.activeSelf)
                 {
-                    //ERDHighlighting.highlight = ERDLeisteUnten;
+                    ERDLeisteUnten.SetActive(true);
+                    ERDBeschreibung.SetActive(false);
                     pfeilER.SetActive(false);
-                    pfeilLeisteUnten.SetActive(true);
+                    //pfeilLeisteUnten.SetActive(true);
                     klickPfeil.SetActive(false);
                 }
                 else
                 {
-                    ERDHighlighting.highlight = ERDBeschreibung;
+                    ERDBeschreibung.SetActive(true);
                     //pfeilER.SetActive(true);
                     pfeilLeisteUnten.SetActive(false);
                     klickPfeil.SetActive(false);
@@ -150,13 +155,19 @@ public class Tutorial : MonoBehaviour
             
 
             
-            pfeilSpiel.SetActive(true);
+            //pfeilSpiel.SetActive(true);
             missionClick = false;
         
         //Zeitpunkt: ER-Level 0 (Wohncontainer) fertig und öffnen des Missionsfensters
         }else if(Story.lvl[0] == true && Mission.missionsLevel[6] == false){
+            ERDToMars.SetActive(true);
+            MarsToERD.SetActive(false);
+            MarsMission.SetActive(true);
+            ERDLeisteUnten.SetActive(false);
+
+
             pfeilSpiel.transform.localPosition = new Vector3(637,132,0);
-            pfeilER.SetActive(true);
+            //pfeilER.SetActive(true);
             pfeilER.transform.localPosition = new Vector3(590,208,0);
             containerKiller.SetActive(true);
             bZusatz.interactable = false;
@@ -166,45 +177,56 @@ public class Tutorial : MonoBehaviour
             
             //Prüfe, ob Missionsbutten gedrückt wurde
             if(missionClick){
-                if(rotationTemp && Testing.Mars)
+                /*if(rotationTemp && Testing.Mars)
                 {
                     pfeilSpiel.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
                     popUpGameObject(container);
                     rotationTemp = false;
-                }
+                }*/
                 containerKiller.SetActive(false);
-                pfeilSpiel.transform.localPosition = new Vector3(-635,-215,0);
+                MarsMission.SetActive(false);
+                Wohncontainer.SetActive(true);
+
+                //pfeilSpiel.transform.localPosition = new Vector3(-635,-215,0);
                 FehlerAnzeige.tutorialtext_Spiel = "Errichte nun einen Wohncontainer! Zum Bauen hast du ein Startguthaben von "+Testing.geld+". Du kannst dieses in der oberen Infoleiste sehen.";
                 FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen. Wechsel zurück in die Siedlung!";
             }         
         
         //Zeitpunkt: Mission 0 (Wohncontainer) fertig und Wechsel in ER-Editor
         }else if((Story.lvl[0] == true && Story.lvl[1] == false) && (Mission.missionsLevel[6] == true && Mission.missionsLevel[0] == false)){
-            if(rotationTemp == false && Testing.Mars){
+
+            ERDToMars.SetActive(false);
+            ERDBeschreibung.SetActive(true);
+
+            /*if (rotationTemp == false && Testing.Mars){
                     pfeilSpiel.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
                     rotationTemp = true;
-            }
-            pfeilSpiel.transform.localPosition = new Vector3(637,208,0);
+            }*/
+            //pfeilSpiel.transform.localPosition = new Vector3(637,208,0);
             FehlerAnzeige.tutorialtext_Spiel = "Sehr gut! Um nun auch Astronauten einzufliegen, erweitere dein ER-Diagramm!";
             FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Hinweis: Wird eine Entitymenge als 'schwach' gekennzeichnet, wird automatisch auch eine schwache Relation erzeugt! ";
-            pfeilER.transform.localPosition = new Vector3(590,132,0);
+            //pfeilER.transform.localPosition = new Vector3(590,132,0);
 
             if(beschreibungER.activeSelf){
-                pfeilER.SetActive(false);
+                //pfeilER.SetActive(false);
+                ERDBeschreibung.SetActive(false);
                 //pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
-            }else{
-                pfeilER.SetActive(true);
-                
+            }
+            else{
+                //pfeilER.SetActive(true);
+                ERDBeschreibung.SetActive(true);
             }
             Beziehung bez;
             if(ERErstellung.selectedGameObjekt.TryGetComponent(out bez)&&ERAufgabe.gespeicherteObjekte.Contains(ERErstellung.selectedGameObjekt))
             {
                 FehlerAnzeige.tutorialtext_ER = "In Beziehung stehende Entitymengen könnne in der rechten unteren Ecke eingestellt werden.";
-                pfeilBeziehung.SetActive(true);
+                //pfeilBeziehung.SetActive(true);
+                BeziehungsHighlight.SetActive(true);
             }
             else
             {
-                pfeilBeziehung.SetActive(false);
+                //pfeilBeziehung.SetActive(false);
+                BeziehungsHighlight.SetActive(false);
                 FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Hinweis: Wird eine Entitymenge als 'schwach' gekennzeichnet, wird automatisch auch eine schwache Relation erzeugt! ";
             }
 
@@ -215,16 +237,21 @@ public class Tutorial : MonoBehaviour
         }else if((Story.lvl[1] == true && Story.lvl[2] == false) && (Mission.missionsLevel[6] == true && Mission.missionsLevel[0] == false)){
             FehlerAnzeige.tutorialtext_Spiel = "Schau dir deine neue Mission an!";
             FehlerAnzeige.tutorialtext_ER = "Fabelhaft! Wechsel nun erneut in die Siedlung und erfülle deine nächste Mission!";
-            pfeilER.SetActive(true);
+            /*pfeilER.SetActive(true);
             pfeilBeziehung.SetActive(false);
             pfeilER.transform.localPosition = new Vector3(590,208,0);
-            pfeilSpiel.transform.localPosition = new Vector3(637,132,0);
+            pfeilSpiel.transform.localPosition = new Vector3(637,132,0);*/
+            ERDToMars.SetActive(true);
+            MarsMission.SetActive(true);
+            BeziehungsHighlight.SetActive(false);
+
             //Prüfe, ob Missionsbutten gedrückt wurde
-            if(missionClick){
+            if (missionClick){
 
                 FehlerAnzeige.tutorialtext_Spiel = "Klicke auf den eben erbauten Wohncontainer. Neue Astronauten können über die Buttons mit entsprechenden Symbol eingeflogen werden. Den Namen erhälst du über 'Alle Astronauten'!";
                 FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen. Wechsel zurück in die Siedlung!";
                 pfeilSpiel.SetActive(false);
+                MarsMission.SetActive(false);
                 WohncontainerTutorialPfeil.anzeigen = true;
                 if(wohncontainerGebaeudeanzeige.activeSelf){
                     wohncontainerHilfe.SetActive(true);
