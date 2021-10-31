@@ -74,18 +74,7 @@ public class SpielInfos : MonoBehaviour
                 nurEinmalGeldDazu = true;
             }
             
-            if (marsTag % neueZusatzaufgabe == 0) //alle 3 Tage eine neue Zusatzaufgabe
-            {
-                if(Aufgaben.welcheAufgabe <= 25){
-                    zusatzButton.SetActive(true);
-                    zusatzButton_transparent.SetActive(false);
-                }else{
-                    zusatzButton.SetActive(false);
-
-                }
-                
-            }        
-            lasttime = currenttime;
+            
         }
         else if(PauseMenu.ERon)
         {

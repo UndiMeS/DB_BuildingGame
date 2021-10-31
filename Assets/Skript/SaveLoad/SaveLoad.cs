@@ -25,7 +25,8 @@ public class SaveLoad : MonoBehaviour
     public GameObject gebauedeOrdner;
 
     public InputField missionsEingabe;
-
+    public GameObject FrageMars;
+    public GameObject FrageER;
 
     public void speichern()
     {
@@ -110,6 +111,9 @@ public class SaveLoad : MonoBehaviour
 
         saveLoadER.speichern();
         saveLoadBeziehungen.speichern();
+
+        FrageMars.SetActive(true);
+        FrageER.SetActive(true);
     }
 
     public void laden()

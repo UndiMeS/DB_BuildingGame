@@ -132,9 +132,6 @@ public class KameraKontroller : MonoBehaviour
     // 0 Mars 1 ER-Dia
     public void changeHintergrund(int newHintergrund)
     {
-        Vector3 tempPos;
-        Vector3 tempZoom;
-        grenzen =new bool[] { false, false, false, false };
         if (newHintergrund == hintergrund)
         {
             return;
@@ -144,38 +141,13 @@ public class KameraKontroller : MonoBehaviour
             hintergrund = 0;
             erModell.SetActive(false);
             mars.SetActive(true);
-            cameraTransform.rotation = Quaternion.Euler(-45, 0, 0);//Kamerawinkel
-            zoomAmount = new Vector3(0, 1, 1);
-
-            tempPos = transform.position;               //Zwischenspeichern der Zoom und Pos Daten
-            tempZoom = cameraTransform.localPosition;
-
-            aktiviert = true;
         }
         else
         { //ER-Dia
             hintergrund = 1;
             erModell.SetActive(true);
             mars.SetActive(false);
-            cameraTransform.rotation = Quaternion.Euler(0, 0, 0);
-            zoomAmount = new Vector3(0, 0, 1);
-
-            tempPos = transform.position;
-            tempZoom = cameraTransform.localPosition;
-
-            aktiviert = true;
         }
-
-        dragCurrentPosition = Vector3.zero; //0, da sonst allten Koordinaten von anderen Hintergrund
-        dragStartPosition = Vector3.zero;
-
-        newPosition = oldPos;
-        transform.position = newPosition;   //KameraVerankerung auf alte Position setzen
-        newZoom = oldZoom;
-        cameraTransform.localPosition = newZoom; //Kamera auf alte Position setzen
-
-        oldPos = tempPos;       //Daten von vorherigen Hintergrund
-        oldZoom = tempZoom;
     }
 
     //Touch Input

@@ -86,7 +86,7 @@ public class Testing : MonoBehaviour
 
         // KameraScript = GameObject.FindGameObjectWithTag("KameraAnker").GetComponent<KameraKontroller>();
         // PauseScript = GameObject.FindGameObjectWithTag("Pause").GetComponent<PauseMenu>();
-
+        PauseScript.changeHintergrund(0);
     }
 
     private void Update()

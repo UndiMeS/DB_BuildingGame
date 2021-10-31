@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 //Pausemenü in der Landschaft und im EREditor
 public class PauseMenu : MonoBehaviour
 {
+    //change Hintergrund
+    public GameObject erModell;
+    public GameObject mars;
+
 
     public static bool SpielIstPausiert= false; //Spiel ist nicht pausiert im ER Editor, pausiert z.B.: im Pausemenü
 
@@ -33,7 +37,6 @@ public class PauseMenu : MonoBehaviour
     public GameObject hilfeInGameER;
 
     //für Screenshot
-    public KameraKontroller KameraScript;
     private GameObject selectedGameObjektZwischenspeicher;
 
     public GameObject RTS_Camera;
@@ -53,6 +56,14 @@ public class PauseMenu : MonoBehaviour
         //RTS_Camera.transform.position = new Vector3(88.0f, 25.0f, -70.0f);
         lastpos = RTS_Camera.transform.position;
         lastZoomPos = RTS_CameraScript.zoomPos;
+
+        
+    }
+
+    public void SpielBeenden()
+    {
+        Debug.Log("Beendet!");
+        Application.Quit();
     }
 
     //zurück-Knopf im Pausemenü/Optionsmenü der Landschaft
@@ -179,12 +190,26 @@ public class PauseMenu : MonoBehaviour
         }
 
     }
+    public void changeHintergrund(int newHintergrund)
+    { 
+         if (newHintergrund == 0)//Mars
+        {
+            erModell.SetActive(false);
+            mars.SetActive(true);
+        }
+        else
+        { //ER-Dia
+            erModell.SetActive(true);
+            mars.SetActive(false);
+        }
+    }
+
 
     public void SwitchToER()
     {
         ERon = true;
         SpielIstPausiert = false;
-        kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(1);
+        changeHintergrund(1);
         GebaeudeInfoBauen.wertFest = 0;
         RTS_Camera.transform.rotation = Quaternion.Euler(0,0,0);
         RTS_CameraScript.minHeight = -10.0f;
@@ -212,7 +237,7 @@ public class PauseMenu : MonoBehaviour
     {
         ERon = false;
         SpielIstPausiert = false;
-        kameraKontroller.GetComponent<KameraKontroller>().changeHintergrund(0);
+        changeHintergrund(0);
         mission.transform.localPosition = new Vector3(16, 650, 0);
         RTS_CameraScript.minHeight = -7.0f;
         RTS_CameraScript.maxHeight = -35.0f;

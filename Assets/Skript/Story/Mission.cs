@@ -55,7 +55,6 @@ public class Mission : MonoBehaviour
     InputField t;
 
     //Missionsfenster Objekte
-    public GameObject missionText;
     public GameObject teilZiel1;
     public GameObject teilZiel2;
     public GameObject teilZiel3;
@@ -138,7 +137,7 @@ public class Mission : MonoBehaviour
         masterKreuz.SetActive(true);
         masterHacken.SetActive(false);  
         textInput.SetActive(false);
-        missionText.SetActive(false); 
+         
     }
     // Update is called once per frame
     void Update()
@@ -168,7 +167,6 @@ public class Mission : MonoBehaviour
     //Schreibe Missionstexte ins Fenster. Bei "aus" blende Teilziel aus
     public void setMission(int lvl)
     {
-        //Utilitys.TextInTMP(missionText, mission[lvl][0]);
 
         if(mission[lvl][1]=="aus"){
             teilZiel1.SetActive(false);
