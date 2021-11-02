@@ -18,7 +18,11 @@ public class ObjektBewegung : MonoBehaviour
     public GameObject GrünesGebäude;
     public GameObject FinalGebäude;
     public float ZPosition;
-    public Renderer GrünesGebäudeRenderer;
+    public Material[] GrünesGebäudeRenderer;
+    public Color RedHouseColor;
+    public Color GreenHouseColor;
+
+    //public bool BuildBool = true;
     
 
     // Start is called before the first frame update
@@ -27,7 +31,7 @@ public class ObjektBewegung : MonoBehaviour
         GebaeudeInfoBauen.wertFest = 0;
         selected = true;
         Testing.gebautesObjekt = gameObject;
-        GrünesGebäudeRenderer = GrünesGebäude.GetComponent<Renderer>();
+        //GrünesGebäudeRenderer = GrünesGebäude.GetComponent<Renderer>();
         //LandingAnimation = this.gameObject.GetComponent<Animator>();
     }
 
@@ -82,12 +86,12 @@ public class ObjektBewegung : MonoBehaviour
             {
                 if (FehlerAnzeige.fehlertext.Equals("") && !outBox(Input.mousePosition))
                 {
-                    GrünesGebäudeRenderer.material.SetColor("_Color", Color.red); 
+                    //GrünesGebäudeRenderer.material.SetColor("_Color", Color.red); 
                     FehlerAnzeige.fehlertext = "Wähle zum Bauen eine freie Fläche!";
                 }else if (FehlerAnzeige.fehlertext.Equals("") && !Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z))
                     {
                         FehlerAnzeige.fehlertext = "An dieser Stelle befindet sich schon ein Gebäude!";
-                        GrünesGebäudeRenderer.material.SetColor("_Color", Color.red); 
+                        //GrünesGebäudeRenderer.material.SetColor("_Color", Color.red); 
                     }
 
                 selected = false;                
@@ -122,11 +126,91 @@ public class ObjektBewegung : MonoBehaviour
             position.z = 0;
             
             transform.position = position;
+
+            if(BuildBool() == false)
+            {
+                foreach (Material GreenRenderer in GrünesGebäudeRenderer)
+                {
+                    GreenRenderer.SetColor("_Color", RedHouseColor);
+                }
+                 
+            }
+            else
+            {
+                foreach (Material GreenRenderer in GrünesGebäudeRenderer)
+                {
+                    GreenRenderer.SetColor("_Color", GreenHouseColor);
+                }
+            }
         }
 
 
 
 
+    }
+
+    private bool BuildBool()
+    {
+            
+        if (Testing.objektGebaut == 1)
+        {
+            if (Testing.geld < Wohncontainer.preis)
+            {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else if (Testing.objektGebaut == 2)
+        {
+            if (Testing.geld < Feld.preis)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else if (Testing.objektGebaut == 3)
+        {
+            if (Testing.geld < Forschung.preis)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else if (Testing.objektGebaut == 4)
+        {
+            if (Testing.geld < Weide.preis)
+            {
+                
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else if (Testing.objektGebaut == 5)
+        {
+            if (Testing.geld < Stallcontainer.preis)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        return false;
+    
     }
 
     private bool initKlasseTestePreis()

@@ -43547,7 +43547,7 @@ MonoBehaviour:
   erModell: {fileID: 1909574202}
   mars: {fileID: 211956887}
   PauseMenuUI: {fileID: 821967009}
-  kameraKontroller: {fileID: 0}
+  kameraKontroller: {fileID: 2006992622}
   canvas: {fileID: 817594680}
   hilfeFenster: {fileID: 503711322}
   "hilfeZur\xFCckButton": {fileID: 960680856}
@@ -54987,7 +54987,7 @@ MonoBehaviour:
   erModell: {fileID: 1909574202}
   mars: {fileID: 211956887}
   PauseMenuUI: {fileID: 1005837852}
-  kameraKontroller: {fileID: 0}
+  kameraKontroller: {fileID: 2006992622}
   canvas: {fileID: 1731972392}
   hilfeFenster: {fileID: 1732333740}
   "hilfeZur\xFCckButton": {fileID: 373089642}
@@ -107018,9 +107018,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ef8c68bade09b41aca258d42a632f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2006992627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006992622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda5d5a847d502a41a6a432134d0a99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 0
+  movementTime: 0
+  MarsMaxZoomZ: 0
+  MarsMaxZoomY: 0
+  MarsMinZoomZ: 0
+  MarsMinZoomY: 0
+  ERMaxZoomZ: 0
+  ERMinZoomZ: 0
+  newPosition: {x: 90, y: 120, z: 5}
+  newZoom: {x: 0, y: -200, z: -200}
+  zoomAmount: {x: 0, y: 0, z: 0}
+  cameraTransform: {fileID: 2006992629}
+  dragStartPosition: {x: 0, y: 0, z: 0}
+  dragCurrentPosition: {x: 0, y: 0, z: 0}
+  mars: {fileID: 211956887}
+  erModell: {fileID: 1909574202}
+  oldPos: {x: 0, y: 0, z: 0}
+  oldZoom: {x: 0, y: 0, z: 0}
+  aufgabentext: {fileID: 0}
+  grenzen: 00000000
 --- !u!20 &2006992628 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2808810203750505459, guid: 1201fbb80dac9304ca9c80cae071fdcf,
+    type: 3}
+  m_PrefabInstance: {fileID: 2032613615}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2006992629 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2808810203750505460, guid: 1201fbb80dac9304ca9c80cae071fdcf,
     type: 3}
   m_PrefabInstance: {fileID: 2032613615}
   m_PrefabAsset: {fileID: 0}
