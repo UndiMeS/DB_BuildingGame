@@ -296,7 +296,7 @@ public class Beziehung : MonoBehaviour
     }
 
     // aus: https://stackoverflow.com/questions/59449628/check-when-two-vector3-lines-intersect-unity3d
-    //linePoint Stützvektor, lineVec1 Richtungsvektor der Geraden
+    //linePoint Stützvektor, lineVec Richtungsvektor der Geraden
     private Vector3 LineLineIntersection(Vector3 linePoint1, Vector3 lineVec1, Vector3 linePoint2, Vector3 lineVec2)
     {
         Vector3 lineVec3 = linePoint2 - linePoint1;

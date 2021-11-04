@@ -583,6 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc66c34d53a871429c9fba11d7f21b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSelected: 0
   selected: 1
   selectedSprite: {fileID: 21300000, guid: 62bd8644c3620de498770ae7db31b04d, type: 3}
   originalSprite: {fileID: 21300000, guid: 1fdc070acc835414b8e5c048d2f1a422, type: 3}
@@ -594,7 +595,14 @@ MonoBehaviour:
   dd2: {fileID: 0}
   dd3: {fileID: 0}
   canvas: {fileID: 0}
+  CameraRTS: {fileID: 0}
+  RTS_Camera: {fileID: 0}
   inputfield: {fileID: 2815924439902160960}
+  minX: 15
+  maxX: 275
+  minY: 2
+  maxY: 130
+  ObjectPos: {x: 0, y: 0, z: 0}
 --- !u!114 &-2974130042670022660
 MonoBehaviour:
   m_ObjectHideFlags: 0

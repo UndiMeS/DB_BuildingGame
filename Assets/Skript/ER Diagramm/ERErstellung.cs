@@ -82,7 +82,7 @@ public class ERErstellung : MonoBehaviour
             return;
         }
 
-        GameObject temp = Instantiate(prefab, transform);
+        GameObject temp = Instantiate(prefab, transform, true);
         if (temp.CompareTag("Beziehung"))
         {
             temp.GetComponent<Beziehung>().setLinienordner(linienOrdner);

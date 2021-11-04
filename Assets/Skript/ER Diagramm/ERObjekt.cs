@@ -41,9 +41,7 @@ public class ERObjekt : MonoBehaviour
 
     public void Start()
     {
-        rectTransform = gameObject.GetComponent<RectTransform>();
-        width = rectTransform.sizeDelta.x;
-        height = rectTransform.sizeDelta.y;
+ 
         inputfield.ActivateInputField();
 
         
@@ -151,7 +149,11 @@ public class ERObjekt : MonoBehaviour
 
     private bool inBox()
     {
-        bool drin = RectTransformUtility.RectangleContainsScreenPoint(leisteBottom.GetComponent<RectTransform>(), Input.mousePosition, null);
+        bool drin = false;
+        if (leisteBottom.activeSelf)
+        {
+            drin = drin || RectTransformUtility.RectangleContainsScreenPoint(leisteBottom.GetComponent<RectTransform>(), Input.mousePosition, null);
+        }
         if (checkliste.transform.parent.gameObject.activeSelf)
         {
             drin = drin || RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), Input.mousePosition, null);     

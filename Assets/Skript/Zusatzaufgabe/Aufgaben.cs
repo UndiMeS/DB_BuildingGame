@@ -24,7 +24,7 @@ public class Aufgaben : MonoBehaviour
     //public GameObject falschKreuz;
 
     public GameObject zusatzButton;
-    public GameObject zusatzButton_transparent;
+    //public GameObject zusatzButton_transparent;
 
     public GameObject hinweisFenster;
     public GameObject hinweisButton;
@@ -149,8 +149,7 @@ public class Aufgaben : MonoBehaviour
                 exitKnopfHinweis.SetActive(false);
                 checkButton.SetActive(false);
 
-                zusatzButton.SetActive(false);
-                zusatzButton_transparent.SetActive(true);
+                zusatzButton.SetActive(true);
             }
             //falsche Eingabe
             else
@@ -168,8 +167,7 @@ public class Aufgaben : MonoBehaviour
                     hinweisButton.SetActive(false);
                     lösungsButton.SetActive(true);
                     checkButton.SetActive(false);
-                    zusatzButton.SetActive(false);
-                    zusatzButton_transparent.SetActive(true);
+                    zusatzButton.SetActive(true);
                     welcheAufgabe++;
 
                 //zweite Chance noch möglich

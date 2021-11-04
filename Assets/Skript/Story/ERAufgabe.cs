@@ -288,7 +288,6 @@ public class ERAufgabe : MonoBehaviour
         listeBeziehungsEigenschaften[7] = new string[][] { forschungsprojekt_weidesphaere_Eig, weidesphaere_nutztier_Eig, astronaut_weidesphaere_Eig };
 
         gespeicherteObjekte = new List<GameObject>();
-        Utilitys.TextInTMP(dasIstSchonFertig, "");
 
         gespeicherteObjekteAus();
     
@@ -379,8 +378,12 @@ public class ERAufgabe : MonoBehaviour
             foreach (GameObject entity in ERErstellung.modellObjekte)
             {
                 string name = entity.name.Trim(' ');
-                if (name.Equals(entityName))
+                if (name.ToLower().Contains("spähre"))
                 {
+                    FehlerAnzeige.fehlertext = "Achte auf korrekte Rechtschreibung. Sp<b>h</b>äre statt Spä<b>h</b>re!";
+                }
+                if (name.Equals(entityName))
+                {                  
                     if (listeSchwacheEntity[Story.level] && listeEntity[Story.level][0] == entityName && entity.GetComponent<Entitaet>().schwach)
                     {
                         entitysHat[Story.level]++;
