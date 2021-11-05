@@ -328,8 +328,8 @@ MonoBehaviour:
   ZPosition: 2.1
   "Gr\xFCnesGeb\xE4udeRenderer":
   - {fileID: 2100000, guid: 6d35f183abe5bc84ba0afb35356dafd4, type: 2}
-  RedHouseColor: {r: 1, g: 0, b: 0, a: 0.5882353}
-  GreenHouseColor: {r: 0, g: 1, b: 0, a: 0.5882353}
+  RedHouseColor: {r: 1, g: 0, b: 0, a: 0.19607843}
+  GreenHouseColor: {r: 0, g: 1, b: 0, a: 0.19607843}
 --- !u!114 &4174344393663335879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +359,7 @@ MonoBehaviour:
   ParachuteAnimation: {fileID: 510237031573516250}
   "Geb\xE4udeAnzeige": {fileID: 4617973694685794715}
   Parachute: {fileID: 7908500115295373021}
+  AnimationEndet: 0
   "Geb\xE4udeBauen": 0
 --- !u!95 &510237031573516250
 Animator:
