@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ResetBeschreibungPosition : MonoBehaviour
 {
+    public static bool ERButtonClick = false;
     public GameObject scrollbar;
     Scrollbar sbar;
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class ResetBeschreibungPosition : MonoBehaviour
 
     public void Reset()
     {
+        ERButtonClick = true;
         sbar = scrollbar.GetComponent<Scrollbar>();
         sbar.value = 1;
     }

@@ -8791,7 +8791,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81f4ca75a2cbd46bbca44819083bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 160445888}
   highlinghtingOn: 0
 --- !u!114 &160445888
 MonoBehaviour:
@@ -12927,7 +12926,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81f4ca75a2cbd46bbca44819083bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
   highlinghtingOn: 0
 --- !u!114 &237773470
 MonoBehaviour:
@@ -13454,7 +13452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81f4ca75a2cbd46bbca44819083bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 252025448}
   highlinghtingOn: 0
 --- !u!114 &252025448
 MonoBehaviour:
@@ -24877,7 +24874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81f4ca75a2cbd46bbca44819083bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
   highlinghtingOn: 0
 --- !u!114 &455212262
 MonoBehaviour:
@@ -37066,7 +37062,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81f4ca75a2cbd46bbca44819083bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
   highlinghtingOn: 0
 --- !u!114 &690772504
 MonoBehaviour:
@@ -43407,7 +43402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81f4ca75a2cbd46bbca44819083bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
   highlinghtingOn: 0
 --- !u!114 &822347890
 MonoBehaviour:
@@ -69503,7 +69497,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81f4ca75a2cbd46bbca44819083bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 1274661860}
   highlinghtingOn: 0
 --- !u!114 &1274661860
 MonoBehaviour:
@@ -73428,7 +73421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81f4ca75a2cbd46bbca44819083bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 1350888449}
   highlinghtingOn: 0
 --- !u!114 &1350888449
 MonoBehaviour:
@@ -87222,7 +87214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81f4ca75a2cbd46bbca44819083bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
   highlinghtingOn: 0
 --- !u!114 &1635178006
 MonoBehaviour:
@@ -88312,7 +88303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81f4ca75a2cbd46bbca44819083bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 1661224132}
   highlinghtingOn: 0
 --- !u!114 &1661224132
 MonoBehaviour:
@@ -90960,7 +90950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81f4ca75a2cbd46bbca44819083bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
   highlinghtingOn: 0
 --- !u!114 &1721291938
 MonoBehaviour:
@@ -97048,6 +97037,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1819158615}
+        m_TargetAssemblyTypeName: Hauptmenu, Assembly-CSharp
+        m_MethodName: EnableAnimations
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1819158618
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -98025,7 +98026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4836ad1e902274242aadfc3504d79743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offModus: 0
+  offModus: 1
   transparentWohncontainer: {fileID: 865439306}
   buttonForscher: {fileID: 1566984999}
   buttonFeld: {fileID: 857717934}
@@ -98979,7 +98980,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec81f4ca75a2cbd46bbca44819083bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
   highlinghtingOn: 0
 --- !u!114 &1860504140
 MonoBehaviour:
