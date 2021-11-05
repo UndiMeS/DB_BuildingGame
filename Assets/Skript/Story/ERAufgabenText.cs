@@ -78,6 +78,8 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     private int storyChanged = 0; //setzt Scrollview nach oben
     public ScrollRect scrollview;
 
+    public Tutorial tutorial;
+
     private void Start()
     {
         
@@ -161,7 +163,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
 
             if (i == 1 && Story.level == 0)
             {
-                FehlerAnzeige.tutorialtext_ER = "Du kannst für dieses Teildiagramm auf noch 10 Wörter klicken, um richtige Schlüsselwörter herauszufinden und zu markieren!";
+                tutorial.ClickOnBeschreibungstext = true;
             }
 
         }

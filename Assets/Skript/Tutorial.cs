@@ -8,9 +8,7 @@ public class Tutorial : MonoBehaviour
     
     public bool tutorialOff = false; //Bool, um Tutorial in der Entwicklung auszuschalten
 
-    //Tutorial Hilfselemente
-    public GameObject pfeilSpiel;
-    public GameObject pfeilER;
+    //Tutorial Hilfselemente;
     private bool firstTime = true;
     private static bool missionClick = false;
     private static bool missionTemp = false;
@@ -18,14 +16,10 @@ public class Tutorial : MonoBehaviour
     private static bool beschreibungClick = false;
     private static bool zurErdeClick = false;
     private static bool KonventionsClick = false;
+    public bool ClickOnBeschreibungstext = false;
     private bool rotationTemp = true;
     public GameObject containerKiller;
     public GameObject wohncontainerHilfe;
-    public GameObject wohncontainerHilfeAlle;
-    public GameObject pfeilLeisteUnten;
-    public GameObject klickPfeil;
-    public GameObject pfeilErtrag;
-    public GameObject pfeilBeziehung;
 
     //Elemente aus Spiel
     public GameObject buttonER;
@@ -44,22 +38,37 @@ public class Tutorial : MonoBehaviour
     public RTS_Cam.RTS_Camera RTS_Camera;
 
     //Elemente die Markiert werden sollen
-    public GameObject MarsToERD;
-    public GameObject ERDBeschreibung;
-    public GameObject ERDLeisteUnten;
-    public GameObject ERDToMars;
-    public GameObject MarsMission;
-    public GameObject Wohncontainer;
-    public GameObject BeziehungsHighlight;
+    public GameObject HighlightMarsToERD;
+    public GameObject HighlightERDBeschreibung;
+    public GameObject HighlightERDLeisteUnten;
+    public GameObject HighlightERDToMars;
+    public GameObject HighlightMarsMission;
+    public GameObject HighlightWohncontainer;
+    public GameObject HighlightBeziehung;
+    public GameObject HighlightERKlick;
+
+    public GameObject HighlightFeldastros;
+    public GameObject HighlightTabelleAstros;
+    public GameObject HighlightAnzFeldastros;
+
+    //Pfeile
+    public GameObject pfeilSpiel;
+    public GameObject pfeilER;
+    public GameObject pfeilLeisteUnten;
+    public GameObject klickPfeil;
+    public GameObject pfeilErtrag;
+    public GameObject pfeilBeziehung;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        if(tutorialOff){
-            OffTutorial(); 
+        if (tutorialOff)
+        {
+            OffTutorial();
         }
-        pfeilER.SetActive(false);
-        pfeilSpiel.SetActive(false);
+        bZusatz = buttonZusatz.GetComponent<Button>();
+        bMission = buttonMission.GetComponent<Button>();
     }
 
     // Update is called once per frame
@@ -75,13 +84,8 @@ public class Tutorial : MonoBehaviour
     }
     private void OffTutorial()
     {
-        bZusatz = buttonZusatz.GetComponent<Button>();
-        bZusatz.interactable = true;
-        bMission = buttonMission.GetComponent<Button>();
         bMission.interactable = true;
-        containerKiller.SetActive(false);
-        pfeilER.SetActive(false);
-        pfeilSpiel.SetActive(false);
+        containerKiller.SetActive(false);        
         wohncontainerHilfe.SetActive(false);
         WohncontainerTutorialPfeil.anzeigen = false;
         konventionsFenster.SetActive(false);
@@ -89,87 +93,70 @@ public class Tutorial : MonoBehaviour
     private void ShowTutorial()
     {
         //Vorbereitung der Komponenten
-        bZusatz = buttonZusatz.GetComponent<Button>();
-        bZusatz.interactable = true;
-        bMission = buttonMission.GetComponent<Button>();
-        bMission.interactable = true;
         containerKiller.SetActive(false);
         wohncontainerHilfe.SetActive(false);
-        pfeilLeisteUnten.SetActive(false);
-        klickPfeil.SetActive(false);
         konventionsFenster.SetActive(false);
-
-        pfeilSpiel.SetActive(false);
-        MarsToERD.SetActive( true);
 
         //Zeitpunkt: Neues Spiel gestartet und Wechsel in ER-Editor
         if(Story.lvl[0] == false && Mission.missionsLevel[6] == false){
-            if(KonventionsClick == false){
-                konventionsFenster.SetActive(true);
-                
-            }else{
-                konventionsFenster.SetActive(false); 
-            }
-            bZusatz = buttonZusatz.GetComponent<Button>();
+            
+            HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = true;//zu ERD gehen          
             bZusatz.interactable = false;
             bMission.interactable = false;
             FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, folge dem roten Pfeil und öffne zuerst den ER-Editor!";
 
-            pfeilER.SetActive(false);
+            //wenn noch ncith geöffnet, dann öffnet es sich
+            konventionsFenster.SetActive(!KonventionsClick);
+
+            //ERD
             
-            
-            if(beschreibungClick == false){
-                FehlerAnzeige.tutorialtext_ER = "Erstelle ein ER-Diagramm mit der Leiste am unteren Bildschrimrand anhand der ER-Beschreibung (scrollbar!). Öffne die Beschreibung (roter Pfeil)";
-                pfeilLeisteUnten.SetActive(false);
-                klickPfeil.SetActive(false);
-                //pfeilER.SetActive(true);
-                ERDLeisteUnten.SetActive(false);
-                ERDBeschreibung.SetActive(true);
+            if (!beschreibungClick ){  //in ERD angekommen
+                FehlerAnzeige.tutorialtext_ER = "Öffne die Beschreibung rechts.";
+                HighlightERDLeisteUnten.GetComponent<HighlightButton>().highlinghtingOn = false;
+                HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = true;
             }
             
-            if(beschreibungClick){
-                if(!FehlerAnzeige.tutorialtext_ER.Equals("Du kannst für dieses Teildiagramm auf noch 10 Wörter klicken, um richtige Schlüsselwörter herauszufinden und zu markieren!")){
-                    FehlerAnzeige.tutorialtext_ER = "Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehakt. 'Primärschlüssel' wird abgehakt, wenn die entsprechenden Attribute richtig gekennzeichnet sind.\n Tipp: Klicke in das Beschreibungsfeld!";
-                    pfeilLeisteUnten.SetActive(false);
-                    klickPfeil.SetActive(true);
-                    pfeilER.SetActive(false);
-                    ERDLeisteUnten.SetActive(true);
-                    ERDBeschreibung.SetActive(false);
+            if(beschreibungClick)
+            { 
+                if (!ClickOnBeschreibungstext)
+                {
+                    FehlerAnzeige.tutorialtext_ER = "Klicke in das Beschreibungsfeld, um Wörter zu markieren! Du kannst bis zu 10 Wörter anklicken.";
+                    HighlightERKlick.GetComponent<HighlightButton>().highlinghtingOn = true;
+                    HighlightERDLeisteUnten.GetComponent<HighlightButton>().highlinghtingOn = false;
+                    HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = false;
+                    beschreibungER.transform.GetChild(0).GetChild(0).GetComponent<ScrollRect>().enabled = false;
                 }
                 else if (beschreibungER.activeSelf)
                 {
-                    ERDLeisteUnten.SetActive(true);
-                    ERDBeschreibung.SetActive(false);
-                    pfeilER.SetActive(false);
-                    //pfeilLeisteUnten.SetActive(true);
-                    klickPfeil.SetActive(false);
+                    FehlerAnzeige.tutorialtext_ER = "Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehakt.";
+                    HighlightERDLeisteUnten.GetComponent<HighlightButton>().highlinghtingOn = true;
+                    HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = false;
+                    HighlightERKlick.GetComponent<HighlightButton>().highlinghtingOn = false;
+                    beschreibungER.transform.GetChild(0).GetChild(0).GetComponent<ScrollRect>().enabled = true;
                 }
                 else
                 {
-                    ERDBeschreibung.SetActive(true);
-                    //pfeilER.SetActive(true);
-                    pfeilLeisteUnten.SetActive(false);
-                    klickPfeil.SetActive(false);
+                    HighlightERDLeisteUnten.GetComponent<HighlightButton>().highlinghtingOn = false;
+                    HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = true;
+                    HighlightERKlick.GetComponent<HighlightButton>().highlinghtingOn = false;
+                    beschreibungER.transform.GetChild(0).GetChild(0).GetComponent<ScrollRect>().enabled = true;
+                    FehlerAnzeige.tutorialtext_ER = "Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehakt.";
                 }
             }
-            
+            missionClick = false; //vorbereitung für nächstes Level
 
             
-            //pfeilSpiel.SetActive(true);
-            missionClick = false;
-        
+        }
         //Zeitpunkt: ER-Level 0 (Wohncontainer) fertig und öffnen des Missionsfensters
-        }else if(Story.lvl[0] == true && Mission.missionsLevel[6] == false){
-            ERDToMars.SetActive(true);
-            MarsToERD.SetActive(false);
-            MarsMission.SetActive(true);
-            ERDLeisteUnten.SetActive(false);
+        else if (Story.lvl[0] == true && Mission.missionsLevel[6] == false){
+            //ausschalten aus den vorherrigen Level
+            HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDLeisteUnten.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERKlick.GetComponent<HighlightButton>().highlinghtingOn = false;
 
+            HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = true;
+            HighlightMarsMission.GetComponent<HighlightButton>().highlinghtingOn = true;
 
-            pfeilSpiel.transform.localPosition = new Vector3(637,132,0);
-            //pfeilER.SetActive(true);
-            pfeilER.transform.localPosition = new Vector3(590,208,0);
-            containerKiller.SetActive(true);
             bZusatz.interactable = false;
             bMission.interactable = true;
             FehlerAnzeige.tutorialtext_Spiel = "Schau dir nun deine Mission an!";
@@ -177,56 +164,38 @@ public class Tutorial : MonoBehaviour
             
             //Prüfe, ob Missionsbutten gedrückt wurde
             if(missionClick){
-                /*if(rotationTemp && Testing.Mars)
-                {
-                    pfeilSpiel.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
-                    popUpGameObject(container);
-                    rotationTemp = false;
-                }*/
                 containerKiller.SetActive(false);
-                MarsMission.SetActive(false);
-                Wohncontainer.SetActive(true);
+                HighlightMarsMission.GetComponent<HighlightButton>().highlinghtingOn =false;
+                HighlightWohncontainer.GetComponent<HighlightButton>().highlinghtingOn = true;
 
-                //pfeilSpiel.transform.localPosition = new Vector3(-635,-215,0);
-                FehlerAnzeige.tutorialtext_Spiel = "Errichte nun einen Wohncontainer! Zum Bauen hast du ein Startguthaben von "+Testing.geld+". Du kannst dieses in der oberen Infoleiste sehen.";
+                FehlerAnzeige.tutorialtext_Spiel = "Errichte nun einen Wohncontainer! Zum Bauen hast du ein Startguthaben von "+Testing.geld+". Du kannst dieses oben sehen.";
                 FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen. Wechsel zurück in die Siedlung!";
+            }
+            else
+            {
+                containerKiller.SetActive(true);
             }         
         
         //Zeitpunkt: Mission 0 (Wohncontainer) fertig und Wechsel in ER-Editor
         }else if((Story.lvl[0] == true && Story.lvl[1] == false) && (Mission.missionsLevel[6] == true && Mission.missionsLevel[0] == false)){
 
-            ERDToMars.SetActive(false);
-            ERDBeschreibung.SetActive(true);
+            HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn =false;
+            HighlightWohncontainer.GetComponent<HighlightButton>().highlinghtingOn = false;
 
-            /*if (rotationTemp == false && Testing.Mars){
-                    pfeilSpiel.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
-                    rotationTemp = true;
-            }*/
-            //pfeilSpiel.transform.localPosition = new Vector3(637,208,0);
+            HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = true;
+            HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = !beschreibungER.activeSelf; //an aus
+
             FehlerAnzeige.tutorialtext_Spiel = "Sehr gut! Um nun auch Astronauten einzufliegen, erweitere dein ER-Diagramm!";
-            FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Hinweis: Wird eine Entitymenge als 'schwach' gekennzeichnet, wird automatisch auch eine schwache Relation erzeugt! ";
-            //pfeilER.transform.localPosition = new Vector3(590,132,0);
-
-            if(beschreibungER.activeSelf){
-                //pfeilER.SetActive(false);
-                ERDBeschreibung.SetActive(false);
-                //pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
-            }
-            else{
-                //pfeilER.SetActive(true);
-                ERDBeschreibung.SetActive(true);
-            }
+                        
             Beziehung bez;
-            if(ERErstellung.selectedGameObjekt.TryGetComponent(out bez)&&ERAufgabe.gespeicherteObjekte.Contains(ERErstellung.selectedGameObjekt))
+            if(ERErstellung.selectedGameObjekt.TryGetComponent(out bez))
             {
                 FehlerAnzeige.tutorialtext_ER = "In Beziehung stehende Entitymengen könnne in der rechten unteren Ecke eingestellt werden.";
-                //pfeilBeziehung.SetActive(true);
-                BeziehungsHighlight.SetActive(true);
+                HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = true;
             }
             else
             {
-                //pfeilBeziehung.SetActive(false);
-                BeziehungsHighlight.SetActive(false);
+                HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
                 FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Hinweis: Wird eine Entitymenge als 'schwach' gekennzeichnet, wird automatisch auch eine schwache Relation erzeugt! ";
             }
 
@@ -237,31 +206,45 @@ public class Tutorial : MonoBehaviour
         }else if((Story.lvl[1] == true && Story.lvl[2] == false) && (Mission.missionsLevel[6] == true && Mission.missionsLevel[0] == false)){
             FehlerAnzeige.tutorialtext_Spiel = "Schau dir deine neue Mission an!";
             FehlerAnzeige.tutorialtext_ER = "Fabelhaft! Wechsel nun erneut in die Siedlung und erfülle deine nächste Mission!";
-            /*pfeilER.SetActive(true);
-            pfeilBeziehung.SetActive(false);
-            pfeilER.transform.localPosition = new Vector3(590,208,0);
-            pfeilSpiel.transform.localPosition = new Vector3(637,132,0);*/
-            ERDToMars.SetActive(true);
-            MarsMission.SetActive(true);
-            BeziehungsHighlight.SetActive(false);
+
+            HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
+
+            HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = true;
 
             //Prüfe, ob Missionsbutten gedrückt wurde
             if (missionClick){
 
                 FehlerAnzeige.tutorialtext_Spiel = "Klicke auf den eben erbauten Wohncontainer. Neue Astronauten können über die Buttons mit entsprechenden Symbol eingeflogen werden. Den Namen erhälst du über 'Alle Astronauten'!";
                 FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen. Wechsel zurück in die Siedlung!";
-                pfeilSpiel.SetActive(false);
-                MarsMission.SetActive(false);
+                
+                HighlightMarsMission.GetComponent<HighlightButton>().highlinghtingOn = false;
+
                 WohncontainerTutorialPfeil.anzeigen = true;
-                if(wohncontainerGebaeudeanzeige.activeSelf){
-                    wohncontainerHilfe.SetActive(true);
+                if (wohncontainerGebaeudeanzeige.activeSelf)
+                {
+                    HighlightAnzFeldastros.GetComponent<HighlightButton>().highlinghtingOn = true;
+                    HighlightFeldastros.GetComponent<HighlightButton>().highlinghtingOn = true;
                     WohncontainerTutorialPfeil.anzeigen = false;
-                    if(Testing.feldarbeiter >= 1){
-                        wohncontainerHilfeAlle.SetActive(true);
-                        WohncontainerTutorialPfeil.anzeigen = false;
-                        
+                    if (Testing.feldarbeiter >= 1)
+                    {
+                        HighlightTabelleAstros.GetComponent<HighlightButton>().highlinghtingOn = true;
+                    }
+                    if (Testing.feldarbeiter >= 5)
+                    {
+                        HighlightFeldastros.GetComponent<HighlightButton>().highlinghtingOn = false;
                     }
                 }
+                else
+                {
+                    HighlightAnzFeldastros.GetComponent<HighlightButton>().highlinghtingOn = false;
+                    HighlightFeldastros.GetComponent<HighlightButton>().highlinghtingOn = false;
+                }
+            }
+            else
+            {
+                HighlightMarsMission.GetComponent<HighlightButton>().highlinghtingOn = true;
             }
            
 
