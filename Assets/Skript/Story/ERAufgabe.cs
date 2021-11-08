@@ -87,13 +87,13 @@ public class ERAufgabe : MonoBehaviour
     private string[] astronaut_forschungsstation = { "arbeitet","verantwortet","verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für","istverantwortlich","istVerantwortlich","ist verantwortlich" };
     private string[] astronaut_forschungsstation_Eig = { "A", "S", "0", "1", "1" };
 
-    private string[] wohncontainer_astronaut = { "wohnt in","wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "wohnen" };
+    private string[] wohncontainer_astronaut = { "w","wohnt in","wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "wohnen" };
     private string[] wohncontainer_astronaut_Eig = { "W", "A", "1", "n", "1" };
 
     private string[] astronaut_forschungsprojekt = { "forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };
     private string[] astronaut_forschungsprojekt_Eig = { "A", "P", "0", "1", "n" };
 
-    private string[] astronaut_feldsphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
+    private string[] astronaut_feldsphaere = {"a", "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
     private string[] astronaut_feldsphaere_Eig = { "A", "F", "0", "1", "n" };
 
     private string[] astronaut_weidesphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
@@ -205,7 +205,7 @@ public class ERAufgabe : MonoBehaviour
             primaerschluesselRichtig = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };//{ 1, 2, 1, 1, 2, 0, 3, 1 };
 
             astronaut_forschungsstation_Eig = new string[] { "A", "S", "0", "1", "1" };
-            wohncontainer_astronaut_Eig = new string[] { "W", "A", "1", "n", "1" };
+            wohncontainer_astronaut_Eig = new string[] { "W", "A", "1", "1", "1" };
             astronaut_forschungsprojekt_Eig = new string[] { "A", "P", "0", "1", "n" };
             astronaut_feldsphaere_Eig = new string[] { "A", "F", "0", "1", "n" };
             astronaut_weidesphaere_Eig = new string[] { "A", "We", "0", "1", "n" };

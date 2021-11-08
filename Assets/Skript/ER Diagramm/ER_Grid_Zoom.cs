@@ -57,7 +57,7 @@ public class ER_Grid_Zoom : MonoBehaviour
             GridColor.a = 0.20f;
             BigGridColor.a = 0.0f;
             //lastZoom = CameraZoom; // update lastPos
-            Debug.Log("moving up");
+            //Debug.Log("moving up");
             // code to execute when X is getting bigger
             UI_Grid_Big.color = BigGridColor;
             UI_Grid.color = GridColor;
@@ -66,7 +66,7 @@ public class ER_Grid_Zoom : MonoBehaviour
         if (CameraZoom >= -40.0f && CameraZoom <= -25.0f){
             GridColor.a = 0.15f;
             BigGridColor.a = 0.05f;
-            Debug.Log("moving down");
+            //Debug.Log("moving down");
             // code to execute when X is getting smaller
             UI_Grid_Big.color = BigGridColor;
             UI_Grid.color = GridColor;
@@ -75,7 +75,7 @@ public class ER_Grid_Zoom : MonoBehaviour
         if (CameraZoom >= -60.0f && CameraZoom <= -41.0f){
             GridColor.a = 0.10f;
             BigGridColor.a = 0.10f;
-            Debug.Log("moving down");
+            //Debug.Log("moving down");
             // code to execute when X is getting smaller
             UI_Grid_Big.color = BigGridColor;
             UI_Grid.color = GridColor;
@@ -84,7 +84,7 @@ public class ER_Grid_Zoom : MonoBehaviour
         if (CameraZoom >= -80.0f && CameraZoom <= -61.0f){
             GridColor.a = 0.05f;
             BigGridColor.a = 0.15f;
-            Debug.Log("moving down");
+            //Debug.Log("moving down");
             // code to execute when X is getting smaller
             UI_Grid_Big.color = BigGridColor;
             UI_Grid.color = GridColor;
@@ -93,7 +93,7 @@ public class ER_Grid_Zoom : MonoBehaviour
         if (CameraZoom >= -100.0f && CameraZoom <= -81.0f){
             GridColor.a = 0.0f;
             BigGridColor.a = 0.20f;
-            Debug.Log("moving down");
+            //Debug.Log("moving down");
             // code to execute when X is getting smaller
             UI_Grid_Big.color = BigGridColor;
             UI_Grid.color = GridColor;

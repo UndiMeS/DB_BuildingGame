@@ -7,29 +7,33 @@ public class HighlightButton : MonoBehaviour
 {
 
     public bool highlinghtingOn = false;
+    public Image image;
+    private bool einmal = true;
 
     public void Start()
     {
         
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (highlinghtingOn)
-        {
-            
-            if (((int)Time.time) % 3 == 0)
+        {            
+            if (((int)Time.time) % 3 == 0&&einmal)
             {
                 gameObject.GetComponent<Image>().CrossFadeAlpha(1f, 1, true);
+                einmal = false;
             }
-            else if(((int)(Time.time+1.5)) % 3 == 0)
+            else if(((int)(Time.time+1.5)) % 3 == 0&&!einmal)
             {
                 gameObject.GetComponent<Image>().CrossFadeAlpha(0f, 1, true);
+                einmal = true;
             }
         }
         else
         {
             gameObject.GetComponent<Image>().CrossFadeAlpha(0f, 0, true);
         }
+        
     }
 }

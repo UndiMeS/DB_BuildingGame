@@ -51,6 +51,12 @@ public class Tutorial : MonoBehaviour
     public GameObject HighlightTabelleAstros;
     public GameObject HighlightAnzFeldastros;
 
+    public GameObject HighlightZusatz;
+    public GameObject HighlightErtrag;
+
+    public GameObject HighlightMarsOption;
+    public GameObject HighlightERDOption;
+
     //Pfeile
     public GameObject pfeilSpiel;
     public GameObject pfeilER;
@@ -106,7 +112,7 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, folge dem roten Pfeil und öffne zuerst den ER-Editor!";
 
             //wenn noch ncith geöffnet, dann öffnet es sich
-            konventionsFenster.SetActive(!KonventionsClick);
+            //konventionsFenster.SetActive(!KonventionsClick);
 
             //ERD
             
@@ -201,6 +207,7 @@ public class Tutorial : MonoBehaviour
 
             missionClick = false;
             bZusatz.interactable = false;
+            GebaeudeAnzeige.allesAus = true;
         
         //Zeitpunkt: ER-Level 1 fertig (Astronauten) und wechsel zur Mission (Astronauten)
         }else if((Story.lvl[1] == true && Story.lvl[2] == false) && (Mission.missionsLevel[6] == true && Mission.missionsLevel[0] == false)){
@@ -212,34 +219,41 @@ public class Tutorial : MonoBehaviour
             HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
 
             HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = true;
+            wohncontainerHilfe.SetActive(true);
+
+            GebaeudeAnzeige.allesAus = false;
 
             //Prüfe, ob Missionsbutten gedrückt wurde
             if (missionClick){
-
                 FehlerAnzeige.tutorialtext_Spiel = "Klicke auf den eben erbauten Wohncontainer. Neue Astronauten können über die Buttons mit entsprechenden Symbol eingeflogen werden. Den Namen erhälst du über 'Alle Astronauten'!";
                 FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen. Wechsel zurück in die Siedlung!";
                 
-                HighlightMarsMission.GetComponent<HighlightButton>().highlinghtingOn = false;
-
-                WohncontainerTutorialPfeil.anzeigen = true;
+                HighlightMarsMission.GetComponent<HighlightButton>().highlinghtingOn = false;                
                 if (wohncontainerGebaeudeanzeige.activeSelf)
                 {
                     HighlightAnzFeldastros.GetComponent<HighlightButton>().highlinghtingOn = true;
-                    HighlightFeldastros.GetComponent<HighlightButton>().highlinghtingOn = true;
+                   
                     WohncontainerTutorialPfeil.anzeigen = false;
                     if (Testing.feldarbeiter >= 1)
                     {
                         HighlightTabelleAstros.GetComponent<HighlightButton>().highlinghtingOn = true;
                     }
+                    else
+                    {
+                        HighlightTabelleAstros.GetComponent<HighlightButton>().highlinghtingOn = false;
+                    }
                     if (Testing.feldarbeiter >= 5)
                     {
                         HighlightFeldastros.GetComponent<HighlightButton>().highlinghtingOn = false;
                     }
+                    else
+                    {
+                        HighlightFeldastros.GetComponent<HighlightButton>().highlinghtingOn = true;
+                    }
                 }
                 else
                 {
-                    HighlightAnzFeldastros.GetComponent<HighlightButton>().highlinghtingOn = false;
-                    HighlightFeldastros.GetComponent<HighlightButton>().highlinghtingOn = false;
+                    WohncontainerTutorialPfeil.anzeigen = true;
                 }
             }
             else
@@ -252,60 +266,60 @@ public class Tutorial : MonoBehaviour
         
         //Zeitpunkt: Mission 1 (Astronauten einfliegen) fertig und Wechsel in ER-Editor (Feldsphäre)
         }else if((Story.lvl[1] == true && Story.lvl[2] == false) && (Mission.missionsLevel[0] == true && Mission.missionsLevel[1] == false)){
+            
+            HighlightAnzFeldastros.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightFeldastros.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightTabelleAstros.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightMarsMission.GetComponent<HighlightButton>().highlinghtingOn = false;
             WohncontainerTutorialPfeil.anzeigen = false;
-            FehlerAnzeige.tutorialtext_Spiel = "Die ersten Siedlungsbewohner sind gelandet. Die Anzahl der zur Verfügung stehenden Astronauten kannst du in der Infoleiste ganz rechts sehen. Wechsel, wie nach jeder Mission in den ER-Editor!";
-            FehlerAnzeige.tutorialtext_ER = "Erweitere nun erneut dein ER-Diagramm, führe den gleichen Kreislauf aus ER- u. Spielmodus fort und erweitere deine Siedlung! \n Hinweis: Beim Anlegen einer Relationship musst du die entsprechenden Entitymengen noch auswählen und die gewünschte Kardinalität setzen.";
-            if (beschreibungER.activeSelf)
-            {
-                pfeilER.SetActive(false);
-                //pfeilER.transform.localPosition = new Vector3(166,20.5f,0);
-            }
-            else
-            {
-                pfeilER.SetActive(true);
 
-            }
-            pfeilER.transform.localPosition = new Vector3(590, 130, 0);
-            pfeilSpiel.transform.localPosition = new Vector3(637,208,0);
-            pfeilSpiel.SetActive(true);
+            FehlerAnzeige.tutorialtext_Spiel = "Die ersten Siedlungsbewohner sind gelandet. Wechsel, wie nach jeder Mission in den ER-Editor!";
+            FehlerAnzeige.tutorialtext_ER = "Beim Anlegen einer Relationship musst du die entsprechenden Entitymengen noch auswählen und die gewünschte Kardinalität setzen.";
+
+            HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = true;
+            HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = !beschreibungER.activeSelf; //an aus
+
             bZusatz.interactable = false;
             missionClick = false;
+
             Beziehung bez;
-            if (ERErstellung.selectedGameObjekt.TryGetComponent(out bez) && ERAufgabe.gespeicherteObjekte.Contains(ERErstellung.selectedGameObjekt))
+            if(ERErstellung.selectedGameObjekt.TryGetComponent(out bez))
             {
-                pfeilBeziehung.SetActive(true);
-                FehlerAnzeige.tutorialtext_ER = "In Beziehung stehende Entitymengen könnne in der rechten unteren Ecke eingestellt werden.";
+                HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = true ;
             }
             else
             {
-                pfeilBeziehung.SetActive(false);
-                FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen. Wechsel zurück in die Siedlung!";
-
+                HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
             }
+            
+            
 
             //Zeitpunkt: ER-Level 2 fertig (Feldsphäre) und Wechsel zum Spiel für Zusatzaufgabe
         }
         else if((Story.lvl[2] == true && Story.lvl[3] == false) && (Mission.missionsLevel[0] == true && Mission.missionsLevel[1] == false)){
             bZusatz.interactable = true;
-            pfeilBeziehung.SetActive(false);
+            HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = false;
+
             if (zusatzClick == false && missionClick == false && missionTemp == false){
                 FehlerAnzeige.tutorialtext_Spiel = "Bei knappen Ressourcen kannst du auch eine Zusatzaufgabe lösen, um weiter zu bauen! Öffne eine Zusatzaufgabe!";
-                FehlerAnzeige.tutorialtext_ER = "Super! Im Baumenü sind nun Feldsphären freigeschaltet. Auch Feldastronauten leben bereits in der Siedlung. Auf geht's in die neue Mission!";
-                pfeilSpiel.transform.localPosition = new Vector3(637,57,0);
-                pfeilER.transform.localPosition = new Vector3(590,208,0);
-                
+                FehlerAnzeige.tutorialtext_ER = "Super! Im Baumenü sind nun Feldsphären freigeschaltet. Auf geht's in die neue Mission!";
+                HighlightZusatz.GetComponent<HighlightButton>().highlinghtingOn = true;
             }
+
             //Prüfe ob Zusatzfenster geklickt wurde
             if(zusatzClick){
                 FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen und mit Feldspähren Erträge erwirtschaften! \nTipp: Du benötigst 4 Feldsphären!";
-                pfeilSpiel.SetActive(false);
-                pfeilER.SetActive(false);
+                HighlightZusatz.GetComponent<HighlightButton>().highlinghtingOn = false;
                 missionTemp = true;
                 //Prüfe, ob Missionsfenster geklickt wurde
                 if(missionClick){
                     FehlerAnzeige.tutorialtext_Spiel = "Für Feldsphären benötigst du die eben eingeflogenen Feldastronauten. Hinweis: Rechts neben der Guthabenanzeige in der Infoleiste am oberen Bildschirmrand siehst du den Ertrag, der dir alle "+SpielInfos.neuerUmsatz+" Sol (Marstage) ausgezahlt wird.";
-                    pfeilErtrag.SetActive(true);
-                }else{
+                    HighlightErtrag.GetComponent<HighlightButton>().highlinghtingOn = true;
+                }
+                else{
                     FehlerAnzeige.tutorialtext_Spiel = "Versuche nun die nächste Mission zu erfüllen! \n Tipp: Rechts und im Pausemenü findest du auch eine Spielhilfe!";
                     if(firstTime == true){
                         popUpGameObject(buttonHilfeInGame);
@@ -313,13 +327,16 @@ public class Tutorial : MonoBehaviour
                     }
                 }
             }
+
+
         }else if((Story.lvl[2] == true && Story.lvl[3] == false) && (Mission.missionsLevel[1] == true && Mission.missionsLevel[7] == false)){
             FehlerAnzeige.tutorialtext_Spiel = "Klasse! Erweitere erneut dein ER-Diagramm!";
             FehlerAnzeige.tutorialtext_ER = "";
-            pfeilErtrag.SetActive(false);
-                
+            HighlightErtrag.GetComponent<HighlightButton>().highlinghtingOn = false;
+
         //Zeitpunkt: Hinweis zum Bau von Forschungsstationen       
-        }else if((Story.lvl[3] == true && Story.lvl[4] == false) && (Mission.missionsLevel[1] == true && Mission.missionsLevel[7] == false)){
+        }
+        else if((Story.lvl[3] == true && Story.lvl[4] == false) && (Mission.missionsLevel[1] == true && Mission.missionsLevel[7] == false)){
             if(missionTemp){
                 missionClick = false;
                 missionTemp = false;
@@ -340,28 +357,29 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_ER = "";   
         
         }else if (Story.lvl[7] == true && Mission.missionsLevel[3] == true && Mission.missionsLevel[4] == false){
-            pfeilER.SetActive(false);
+           
             FehlerAnzeige.tutorialtext_Spiel = "";
             FehlerAnzeige.tutorialtext_ER = "Starte nun mit dem Bau von Weidesphären!";
 
         }else if (Story.lvl[7] == true && Mission.missionsLevel[4] == true && Mission.missionsLevel[5] == false){
-            pfeilER.SetActive(false);
+            
             FehlerAnzeige.tutorialtext_Spiel = "Deine Siedlung ist nun grundsätzlich aufgebaut, muss jedoch noch umfangreich erweitert werden. Tipp: Vielleicht kannst du durch intelligentes Forschen deine letzte Mission einfacher erfüllen!";
             FehlerAnzeige.tutorialtext_ER = "Du hast es geschafft. Dein ER-Diagramm ist für diese Siedlung komplett! Auf zu deinen letzten Missionen!";
         
         //Screenshots erstellen
         }else if (Story.lvl[7] == true && Mission.missionsLevel[5] == true && Mission.missionsLevel[9] == false){
-            pfeilER.SetActive(false);
+            
             FehlerAnzeige.tutorialtext_Spiel = "Klasse! Für eine vollumfängliche Dokumentation des Siedlungsbaus, erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot (im jeweiligen Menü).";
             FehlerAnzeige.tutorialtext_ER = "Klasse! Für eine vollumfängliche Dokumentation des Siedlungsbaus, erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot.";
-            pfeilSpiel.SetActive(true);
-            pfeilSpiel.transform.localPosition = new Vector3(637,279,0);
+            HighlightMarsOption.GetComponent<HighlightButton>().highlinghtingOn = true;
+            HighlightERDOption.GetComponent<HighlightButton>().highlinghtingOn = true;
 
-        //Zur Erde zurückkehren
-        }else if (Story.lvl[7] == true && Mission.missionsLevel[9] == true){
-            pfeilER.SetActive(false);
-            pfeilSpiel.SetActive(false);
-
+            //Zur Erde zurückkehren
+        }
+        else if (Story.lvl[7] == true && Mission.missionsLevel[9] == true){
+            HighlightMarsOption.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDOption.GetComponent<HighlightButton>().highlinghtingOn = false;
+            
             if(zurErdeClick == false){
                 FehlerAnzeige.tutorialtext_Spiel = "Hervorragend! Deine Marsmission ist erfolgreich beendet. Du kannst nun noch weiter deine Siedlung erweitern oder zur Erde zurückkehren, um dein Missionszertifikat zu erhalten!";
                 FehlerAnzeige.tutorialtext_ER = "Hervorragend! Deine Marsmission ist erfolgreich beendet. Du kannst nun noch weiter deine Siedlung erweitern oder zur Erde zurückkehren, um dein Missionszertifikat zu erhalten!";
