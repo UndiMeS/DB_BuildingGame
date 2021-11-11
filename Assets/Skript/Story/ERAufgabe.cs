@@ -159,6 +159,8 @@ public class ERAufgabe : MonoBehaviour
     public GameObject dasIstSchonFertig;
     public GameObject aufgabenText;
     public List<GameObject> checkliste;
+    public List<TMPro.TextMeshProUGUI> checkliste_Namen;
+    private Color gruen = new Color32(3, 168, 82, 255); //noch anpassen
     public static List<GameObject> gespeicherteObjekte;
     public GameObject checkboxOhneRelation;
     public GameObject checkboxOhneEntity;
@@ -631,9 +633,10 @@ public class ERAufgabe : MonoBehaviour
 
     private bool checkAllesRichtig()
     {
-        foreach (GameObject check in checkliste)
+        for(int k=0; k< checkliste.Count;k++)
         {
-            check.SetActive(false);
+            checkliste[k].SetActive(false);
+            checkliste_Namen[k].color = Color.black;
         }
         bool ausgabe = true;
         int i = Story.level;
@@ -641,46 +644,56 @@ public class ERAufgabe : MonoBehaviour
         if (entitysHat[i] == entitysRichtig[i])
         {
             checkliste[0].SetActive(true);
+            checkliste_Namen[0].color = gruen;
         }
         else
         {
             checkliste[0].SetActive(false);
+            checkliste_Namen[0].color = Color.black;
         }
         ausgabe &= attributeHat[i] == attributeRichtig[i];
         if (attributeHat[i] == attributeRichtig[i])
         {
             checkliste[1].SetActive(true);
+            checkliste_Namen[1].color = gruen;
         }
         else
         {
             checkliste[1].SetActive(false);
+            checkliste_Namen[1].color = Color.black;
         }
         ausgabe &= primaerschluesselHat[i] == primaerschluesselRichtig[i];
         if (primaerschluesselHat[i] == primaerschluesselRichtig[i])
         {
             checkliste[2].SetActive(true);
+            checkliste_Namen[2].color = gruen;
         }
         else
         {
             checkliste[2].SetActive(false);
+            checkliste_Namen[2].color = Color.black;
         }
         ausgabe &= beziehungenRichtig[i] == beziehungenHat[i];
         if (beziehungenRichtig[i] == beziehungenHat[i])
         {
             checkliste[3].SetActive(true);
+            checkliste_Namen[3].color = gruen;
         }
         else
         {
             checkliste[3].SetActive(false);
+            checkliste_Namen[3].color = Color.black;
         }
         ausgabe &= kardHat[i] == kardRichtig[i];
         if (kardRichtig[i] == kardHat[i])
         {
             checkliste[4].SetActive(true);
+            checkliste_Namen[4].color = gruen;
         }
         else
         {
             checkliste[4].SetActive(false);
+            checkliste_Namen[4].color = Color.black;
         }
         int count = 0;
         foreach (GameObject obj in ERErstellung.modellObjekte)

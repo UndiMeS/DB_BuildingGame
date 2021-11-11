@@ -317,7 +317,6 @@ public class ERErstellung : MonoBehaviour
             }
             if (selectedGameObjekt.CompareTag("Beziehung") && selectedGameObjekt.GetComponent<Beziehung>().schwach)
             {
-                GameObject temp = selectedGameObjekt;
                 leisteBottom.GetComponent<LeisteBottom>().SchwacheEntitaetObj(false, selectedGameObjekt.GetComponent<Beziehung>().objekt1);
 
                 selectedGameObjekt.GetComponent<Beziehung>().objekt1.GetComponent<Entitaet>().schwach = false;

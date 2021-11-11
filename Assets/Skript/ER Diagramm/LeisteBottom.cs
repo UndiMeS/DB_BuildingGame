@@ -207,36 +207,34 @@ public class LeisteBottom : MonoBehaviour
         if (entity != null && !entity.Equals(ERErstellung.selectedGameObjekt))
         {
             GameObject bez = null;
+            GameObject ent = ERErstellung.selectedGameObjekt;
             if (ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().vaterEntitaet == null)
             {
                 gameObject.GetComponent<ERErstellung>().erstelleObjekt(prefabBez);
                 bez = ERErstellung.selectedGameObjekt;
-                ERErstellung.schwach = true;
-                ERErstellung.changeSelectedGameobjekt(ERErstellung.lastselected);
-                ERErstellung.schwach = false;
+                ent = ERErstellung.lastselected;
 
 
-                ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwach = false;
-                bez.GetComponent<Beziehung>().welcheEntity(1, entityZuNummer(ERErstellung.selectedGameObjekt), false) ;
-                ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwach = true;
+                ent.GetComponent<Entitaet>().schwach = false;
+                bez.GetComponent<Beziehung>().welcheEntity(1, entityZuNummer(ent), false);
+                ent.GetComponent<Entitaet>().schwach = true;
                 bez.GetComponent<Beziehung>().schwach = true;
-                ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung = bez;
-                
+
                 //hier muss bez in Entität eingefügt werden
             }
+            else
+            {
+                bez = ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung; 
+            }           
             
-
-            bez = ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung;
-            
-            ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().vaterEntitaet = entity;            
-            ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().schwacheBeziehung = ERErstellung.lastselected;
+            ent.GetComponent<Entitaet>().vaterEntitaet = entity;            
+            ent.GetComponent<Entitaet>().schwacheBeziehung =bez;
             
             if (bez.GetComponent<Beziehung>() != null)
             {
                 bez.GetComponent<Beziehung>().welcheEntity(2, option,true);
-                bez.GetComponent<Beziehung>().objekt1 = ERErstellung.selectedGameObjekt;
+                bez.GetComponent<Beziehung>().objekt1 = ent;
                 bez.GetComponent<Beziehung>().objekt2 = entity;
-                ERErstellung.selectedGameObjekt.GetComponent<Entitaet>().beziehungen.Add(bez);
                 entity.GetComponent<Entitaet>().beziehungen.Add(bez);
             }
             else
