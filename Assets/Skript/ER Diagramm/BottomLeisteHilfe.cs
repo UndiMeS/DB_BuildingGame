@@ -37,7 +37,6 @@ public class BottomLeisteHilfe : MonoBehaviour
         zurueck.SetActive(true);
         texte.SetActive(true);
         optionsmenue.SetActive(false);
-        tutorial.SetActive(false);
         optionsmenue.GetComponent<PauseMenu>().ObjectAnzeigenTimeStop(zeitstopper);
         hinweis.SetActive(true);
         infobox.SetActive(false);
@@ -51,7 +50,6 @@ public class BottomLeisteHilfe : MonoBehaviour
         button.SetActive(false);
         zurueck.SetActive(false);
         texte.SetActive(false);
-        tutorial.SetActive(true);
         optionsmenue.GetComponent<PauseMenu>().ObjectAnzeigenTimeStop(zeitstopper);
         hinweis.SetActive(false);
         optionsmenue.GetComponent<PauseMenu>().ExitHilfeER();
@@ -61,5 +59,10 @@ public class BottomLeisteHilfe : MonoBehaviour
     public void KonventionOnTop(ScrollRect konvention)
     {
         konvention.verticalNormalizedPosition = 1;
+    }
+
+    public void TurnOnOff(GameObject game)
+    {
+        game.SetActive(game.activeSelf);
     }
 }

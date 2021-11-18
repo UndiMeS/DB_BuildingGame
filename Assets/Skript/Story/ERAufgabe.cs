@@ -28,7 +28,7 @@ public class ERAufgabe : MonoBehaviour
                                     };
 
     //in diesen Lvl befinden sich schwache Entitys, muss an erster Stelle von listeEntity stehen
-    private bool[] listeSchwacheEntity = { false, true, false, false, true, false, true, false };
+    public bool[] listeSchwacheEntity = { false, true, false, false, true, false, true, false };
 
     //Welche Attribute je EM
     private string[][] wohncontainer = {
@@ -88,7 +88,7 @@ public class ERAufgabe : MonoBehaviour
     private string[] astronaut_forschungsstation_Eig = { "A", "S", "0", "1", "1" };
 
     private string[] wohncontainer_astronaut = { "w","wohnt in","wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "wohnen" };
-    private string[] wohncontainer_astronaut_Eig = { "W", "A", "1", "n", "1" };
+    public string[] wohncontainer_astronaut_Eig = { "W", "A", "1", "n", "1" };
 
     private string[] astronaut_forschungsprojekt = { "forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };
     private string[] astronaut_forschungsprojekt_Eig = { "A", "P", "0", "1", "n" };
@@ -100,7 +100,7 @@ public class ERAufgabe : MonoBehaviour
     private string[] astronaut_weidesphaere_Eig = { "A", "Weidesphäre", "0", "1", "n" };
 
     private string[] stallcontainer_nutztier = { "leben", "lebt", "wohnen","wohntIn","wohnt in", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "schläftIn", "PlatzFür" };
-    private string[] stallcontainer_nutztier_Eig = { "Stallcontainer", "Nutztier", "1", "n", "1" };
+    public string[] stallcontainer_nutztier_Eig = { "Stallcontainer", "Nutztier", "1", "n", "1" };
 
     private string[] weidesphaere_nutztier = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften", "grasenAuf", "grasen auf", "helfenAuf", "helfen auf","leben","lebenAuf", "leben auf" };
     private string[] weidesphaere_nutztier_Eig = { "Weidesphäre", "Nutztier", "0", "n", "1" };
@@ -121,7 +121,7 @@ public class ERAufgabe : MonoBehaviour
     private string[] forschungsprojekt_forschungsprojekt_Eig = { "P", "P", "0", "1", "n" };
 
     private string[] forschungsstation_forschungsprojekt = { "organisiert", "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
-    private string[] forschungsstation_forschungsprojekt_Eig = { "S", "P", "1", "n", "1" };
+    public string[] forschungsstation_forschungsprojekt_Eig = { "S", "P", "1", "n", "1" };
 
     //PS Attribut mit 1 setzten für das jeweilige Level
     // Reihenfolge von Attributen 0 kein Ps, 1 PS

@@ -2556,6 +2556,7 @@ MonoBehaviour:
   konventionsFenster: {fileID: 1479528826}
   buttonHilfeInGame: {fileID: 1545071741}
   RTS_Camera: {fileID: 2006992626}
+  buttonHilfeERD: {fileID: 898884033}
   HighlightMarsToERD: {fileID: 1961795495}
   HighlightERDBeschreibung: {fileID: 455212260}
   HighlightERDLeisteUnten: {fileID: 690772502}
@@ -2571,12 +2572,6 @@ MonoBehaviour:
   HighlightErtrag: {fileID: 1669811888}
   HighlightMarsOption: {fileID: 1301538509}
   HighlightERDOption: {fileID: 2118947155}
-  pfeilSpiel: {fileID: 1688200390}
-  pfeilER: {fileID: 1909072898}
-  pfeilLeisteUnten: {fileID: 845338006}
-  klickPfeil: {fileID: 2041109415}
-  pfeilErtrag: {fileID: 811792560}
-  pfeilBeziehung: {fileID: 587697965}
 --- !u!224 &54561990
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32472,6 +32467,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdcc3f31b925e884fb31b4cdcb064630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aufgabe:
+  - "Um den Mars mit Astronauten und Astronautinnen zu besiedeln, werden Wohncontainer
+    ben\xF6tigt. Daf\xFCr wird die Entitymenge Wohncontainer angelegt. Alle Wohncontainer
+    haben gemeinsame Eigenschaften, die Attribute. Sie haben bestimmte Baukosten,
+    eine genaue Bettenzahl, die die Menge an beherbergbaren Astronautinnen und Astronauten
+    ausdr\xFCckt und ein Attribut f\xFCr noch freie Betten. Jeder Container hat in
+    der Siedlung eine eindeutige Containernummer (CNr.), der Prim\xE4rschl\xFCssel."
+  - "Die Astronauten k\xF6nnen nur dann eingeflogen werden, wenn ausreichend Wohncontainer
+    existieren. Astronaut ist daher eine schwache Entitymenge. (Hinweis: Schwache
+    Entitymengen erkennst du im Spiel daran, dass damit m\xF6gliche Handlungen nur
+    in der Anzeige der zugeh\xF6rigen 'starken Entitymenge' m\xF6glich sind.) \nAstronauten
+    wohnen in Wohncontainern (Beziehung 'wohnt'). Jeder Astronaut ist genau einem
+    Container zugeordnet und teilt sich diesen mit anderen (Kardinali\xE4t n:1).
+    Alle Astronauten haben einen Namen und ein Geburtstag, wor\xFCber man sie eindeutig
+    bestimmen kann. F\xFCr die Anreise fallen bestimmte Anreisegeb\xFChren an und
+    jeder hat eine bestimmte Aufgabe in der Siedlung (Weideastronaut (Symbol Mistgabel),
+    Forschungsastronaut (Symbol Reagenzglas) und Feldastronaut (Symbol Weizen\xE4hre))."
+  - "Eine M\xF6glichkeit Ertr\xE4ge zu erzielen sind Feldsph\xE4ren in denen Nahrung
+    angebaut wird. Diese haben bestimmte Baukosten, eine genaue Arbeiterzahl und
+    einen Ertrag, den du alle 8 Sol erh\xE4ltst. Mehrere Astronauten arbeiten in
+    einer Feldsph\xE4re, wobei ein Astronaut nicht auf mehreren Feldsph\xE4ren gleichzeitig
+    arbeiten kann. Jede Feldsph\xE4re kann eindeutig \xFCber ihre Feldnummer (FNr.)
+    bestimmt werden."
+  - "Die Siedlung dient vor allem der Forschung, um Sph\xE4ren und Wohncontainer
+    zu verbessern. Daf\xFCr werden Forschungsstationen gebaut. Eine Forschungsstation
+    hat eine eindeutige Stationsnummer (SNr.) und Baukosten, sowie eine bestimmte
+    Spezialisierung. Diese gibt an, f\xFCr welchen Objekttyp (Wohncontainer, Feldsph\xE4re,
+    ...) in der Forschungsstation geforscht wird. F\xFCr eine Forschungsstation ist
+    genau ein Forschungsastronaut (Reagenzglas) verantwortlich."
+  - "Verbesserungen werden durch Forschungsprojekte erreicht. Forschungsprojekte
+    k\xF6nnen nur angelegt werden, wenn die passende Forschungsstation bereits existiert.
+    Eine Forschungsstation organisiert mehrere Forschungsprojekte. Attribute von
+    Sph\xE4ren und Containern k\xF6nnen mehrfach erforscht und so mehrfach verbessert
+    werden. Forschungsprojekte optimieren die Forschungsmerkmale immer f\xFCr alle
+    zuk\xFCnftig gebauten Objekte. Ein Forschungsprojekt hat somit ein bestimmtes
+    Forschungsmerkmal und eine Forschungsstufe. Dar\xFCber kann ein Forschungsprojekt
+    eindeutig ermittelt werden. Jedes Forschungsprojekt erzielt einen Verbesserungsfaktor,
+    ben\xF6tigt eine bestimmte Arbeiterzahl und Projektkosten. Mehrere Astronauten
+    k\xF6nnen in einem Forschungsprojekt forschen, jedoch kann ein Astronaut nur
+    an einem Projekt forschen. \n Ein Forschungsprojekt verbessert mehrere Wohncontainer.
+    Zugleich k\xF6nnen mehrere Projekte einen Wohncontainer verbessern."
+  - "Bislang k\xF6nnen in der Siedlung neben Wohncontainer auch Feldsph\xE4ren erbaut
+    werden. Ein Forschungsprojekt verbessert daher auch mehrere Feldsph\xE4ren. Zugleich
+    k\xF6nnen mehrere Projekte an einer Feldsph\xE4re forschen. Neben der Verbesserung
+    von Containern und Sph\xE4ren kann einmalig ein Forschungsprojekt durchgef\xFChrt
+    werden, dass an neuen Methoden forscht und so f\xFCr alle zuk\xFCnftigen Forschungsprojekte
+    die Projektkosten verbessert. Ein Forschungsprojekt verbessert daher mehrere
+    Forschungsprojekte. Diese M\xF6glichkeit betrifft die Forschungsprojekte von
+    jeder errichteten Forschungsstation."
+  - "Eine weitere M\xF6glichkeit Ertr\xE4ge zu erzielen sind Weidesph\xE4ren. Doch
+    bevor wir diese anlegen, werden zun\xE4chst Nutztiere und Stallcontainer ben\xF6tigt.
+    Ein Stallcontainer hat Baukosten, eine eindeutige Containernummer (CNr.), eine
+    Gehegezahl und eine Anzahl der noch freien Gehege. Stallcontainer werden exakt
+    wie Wohncontainer durch Forschungsprojekte verbessert. Mehrere Nutztiere wohnen
+    in einem Stallcontainer. Ohne den Stallcontainer k\xF6nnen Nutztiere nicht eingeflogen
+    werden. Diese haben Transportkosten, einen Namen und eine Art. Jedes Nutztier
+    kann eindeutig \xFCber Name und Art identifiziert werden."
+  - "Um Ertr\xE4ge zu erhalten, arbeiten mehrere Nutztiere auf einer Weidesph\xE4re.
+    Diese hat eine eindeutige Weidenummer (WNr.), einen Ertrag, Baukosten, eine Tieranzahl
+    und eine Arbeiterzahl, die sie ben\xF6tigt. Somit arbeiten mehrere Astronauten
+    in einer Weidesph\xE4re, jedoch wie bei Feldsph\xE4ren arbeitet ein Astronaut
+    nur in einer Weidesph\xE4re. Wie bei Feldsph\xE4ren, werden zuk\xFCnftig erbaute
+    Weidesph\xE4ren von einem Forschungsprojekt verbessert und mehrere Projekte k\xF6nnen
+    mehrere Weidesph\xE4ren verbessern."
   restKlicks: {fileID: 621135337}
   absolutKlicks: {fileID: 1192723344}
   scrollview: {fileID: 1701279074}
@@ -33608,6 +33667,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 248883879}
+        m_TargetAssemblyTypeName: BottomLeisteHilfe, Assembly-CSharp
+        m_MethodName: TurnOnOff
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 503711322}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -42734,6 +42805,7 @@ RectTransform:
   - {fileID: 317591546}
   - {fileID: 548561039}
   - {fileID: 376629821}
+  - {fileID: 980583254}
   m_Father: {fileID: 1949946897}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52235,6 +52307,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 248883879}
+        m_TargetAssemblyTypeName: BottomLeisteHilfe, Assembly-CSharp
+        m_MethodName: TurnOnOff
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 503711322}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &960680859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53486,6 +53570,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978777357}
   m_CullTransparentMesh: 0
+--- !u!1 &980583253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 980583254}
+  - component: {fileID: 980583255}
+  m_Layer: 5
+  m_Name: OhneSchwacheEM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &980583254
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980583253}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 817594681}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &980583255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980583253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14c16ed964ffd546bda3368ffa415ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eRAufgabe: {fileID: 1730754994}
+  eRAufgabenText: {fileID: 616779711}
+  schwacheEMButton: {fileID: 314966741}
 --- !u!1 &981723938
 GameObject:
   m_ObjectHideFlags: 0
@@ -91998,7 +92133,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37cd7f1e22281b4b867293b294a9963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testModus: 1
+  testModus: 0
+  listeSchwacheEntity: 0001000001000100
+  wohncontainer_astronaut_Eig:
+  - W
+  - A
+  - 1
+  - n
+  - 1
+  stallcontainer_nutztier_Eig:
+  - Stallcontainer
+  - Nutztier
+  - 1
+  - n
+  - 1
+  forschungsstation_forschungsprojekt_Eig:
+  - S
+  - P
+  - 1
+  - n
+  - 1
   dasIstSchonFertig: {fileID: 1730754993}
   aufgabenText: {fileID: 616779706}
   checkliste:

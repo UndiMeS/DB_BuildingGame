@@ -21,8 +21,6 @@ public class HighlightButton : MonoBehaviour
         {
             M_material = GetComponent<Image>().materialForRendering;
 
-            SelectedColor = M_material.GetColor("_OutlineColor");
-
             NotSelectedColor = Color.black;
             NotSelectedColor.a = 0;
             //M_material.SetColor("_OutlineColor", new Color32((byte) 0, (byte) 0, (byte) 0, (byte) 0));

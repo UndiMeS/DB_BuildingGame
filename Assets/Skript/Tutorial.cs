@@ -36,6 +36,7 @@ public class Tutorial : MonoBehaviour
     public GameObject konventionsFenster;
     public GameObject buttonHilfeInGame;
     public RTS_Cam.RTS_Camera RTS_Camera;
+    public GameObject buttonHilfeERD;
 
     //Elemente die Markiert werden sollen
     public GameObject HighlightMarsToERD;
@@ -56,15 +57,6 @@ public class Tutorial : MonoBehaviour
 
     public GameObject HighlightMarsOption;
     public GameObject HighlightERDOption;
-
-    //Pfeile
-    public GameObject pfeilSpiel;
-    public GameObject pfeilER;
-    public GameObject pfeilLeisteUnten;
-    public GameObject klickPfeil;
-    public GameObject pfeilErtrag;
-    public GameObject pfeilBeziehung;
-
 
     // Start is called before the first frame update
     void Start()
@@ -112,7 +104,7 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, folge dem roten Pfeil und öffne zuerst den ER-Editor!";
 
             //wenn noch ncith geöffnet, dann öffnet es sich
-            //konventionsFenster.SetActive(!KonventionsClick);
+            konventionsFenster.SetActive(!KonventionsClick);
 
             //ERD
             
@@ -187,6 +179,7 @@ public class Tutorial : MonoBehaviour
 
             HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn =false;
             HighlightWohncontainer.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightMarsMission.GetComponent<HighlightButton>().highlinghtingOn = false;
 
             HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = true;
             HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = !beschreibungER.activeSelf; //an aus
@@ -201,8 +194,15 @@ public class Tutorial : MonoBehaviour
             }
             else
             {
+                if (OhneSchwacheEntity.schwachAus)
+                {
+                    FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung!";
+                }
+                else
+                {
+                    FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Hinweis: Wird eine Entitymenge als 'schwach' gekennzeichnet, wird automatisch auch eine schwache Relation erzeugt! ";
+                }
                 HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
-                FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Hinweis: Wird eine Entitymenge als 'schwach' gekennzeichnet, wird automatisch auch eine schwache Relation erzeugt! ";
             }
 
             missionClick = false;
@@ -303,6 +303,12 @@ public class Tutorial : MonoBehaviour
             HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = false;
 
+            if (firstTime == true)
+            {
+                popUpGameObject(buttonHilfeERD);
+                firstTime = false;
+            }
+
             if (zusatzClick == false && missionClick == false && missionTemp == false){
                 FehlerAnzeige.tutorialtext_Spiel = "Bei knappen Ressourcen kannst du auch eine Zusatzaufgabe lösen, um weiter zu bauen! Öffne eine Zusatzaufgabe!";
                 FehlerAnzeige.tutorialtext_ER = "Super! Im Baumenü sind nun Feldsphären freigeschaltet. Auf geht's in die neue Mission!";
@@ -388,11 +394,9 @@ public class Tutorial : MonoBehaviour
             }
         //Falls kein Tutorialhinweis geplant ist, so gib bei erfülltem ER-Level einen Standarttext aus
         }else if (Story.lvl[7] == false && ERAufgabe.missionCheck == false){
-            pfeilER.SetActive(false);
             FehlerAnzeige.tutorialtext_Spiel = "";
             FehlerAnzeige.tutorialtext_ER = "Erfülle nun die Mission!";
         }else if (Story.lvl[7] == false && ERAufgabe.missionCheck == true){
-            pfeilER.SetActive(false);
             FehlerAnzeige.tutorialtext_Spiel = "Wechsel zurück in den ER-Editor!";
             FehlerAnzeige.tutorialtext_ER = "";
 
