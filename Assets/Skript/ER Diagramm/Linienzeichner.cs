@@ -15,7 +15,8 @@ public class Linienzeichner : MonoBehaviour
     private LineRenderer lineRenderer;
 
 
-    public int setposition=0;
+    public int setposition=0; //0 normal, 1 2 Beziehung zur selben EM, 3 Bez
+    public int wo = 0;//0oben, 1 rechts,  2 unten, 3 links
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,7 @@ public class Linienzeichner : MonoBehaviour
         changeName();
         if (zeichnen && objekt1!=null&&objekt2!=null)
         {
-            if (setposition != 0)
+            if (setposition == 1 || setposition==2)
             {
                 Vector3[] ecken = new Vector3[4];
                 objekt1.GetComponent<RectTransform>().GetWorldCorners(ecken);
@@ -53,16 +54,23 @@ public class Linienzeichner : MonoBehaviour
                 {
                     pos1 = mittelpunkte[2];
                 }
+                pos2 = getPosition(objekt2);
+            }
+            else if (setposition == 3)
+            {
+                Vector3[] ecken = new Vector3[4];
+                objekt2.GetComponent<RectTransform>().GetWorldCorners(ecken);
+                Vector3[] mittelpunkte = new Vector3[] { (ecken[0] + ecken[1]) / 2, (ecken[1] + ecken[2]) / 2, (ecken[2] + ecken[3]) / 2, (ecken[3] + ecken[0]) / 2 };
+                pos2 = mittelpunkte[wo];
+                pos1 = getPosition(objekt1);
             }
             else
             {
-                //pos1 = objekt1.transform.position;
                 pos1 = getPosition(objekt1);
+                pos2 = getPosition(objekt2);
             }
 
-
-            //pos2 = objekt2.transform.position;
-            pos2 = getPosition(objekt2);
+            
             lineRenderer.SetPosition(0, pos1);
             lineRenderer.SetPosition(1, pos2 );
            

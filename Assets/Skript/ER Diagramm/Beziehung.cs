@@ -112,7 +112,7 @@ public class Beziehung : MonoBehaviour
             {
                 offset = 1;
             }
-            positionOfKardinalitaet(kardText1, objekt1, offset);
+            positionOfKardinalitaet(kardText1, objekt1, offset,1);
             kardText1.SetActive(true);
         }
         else
@@ -127,7 +127,7 @@ public class Beziehung : MonoBehaviour
             {
                 offset = 2;
             }
-            positionOfKardinalitaet(kardText2, objekt2, offset);
+            positionOfKardinalitaet(kardText2, objekt2, offset,2);
             kardText2.SetActive(true);
         }
         else
@@ -142,8 +142,35 @@ public class Beziehung : MonoBehaviour
         }
         else
         {
-            linie1.GetComponent<Linienzeichner>().setposition = 0;
+            linie1.GetComponent<Linienzeichner>().setposition = 3;
+            linie2.GetComponent<Linienzeichner>().setposition = 3;
+
+            float deltaX = Math.Abs(objekt1.transform.position.x - objekt2.transform.position.x);
+            float deltaY = Math.Abs(objekt1.transform.position.y - objekt2.transform.position.y);
+
+            if (deltaX>deltaY)
+            {
+                if(objekt1.transform.position.x> objekt2.transform.position.x)
+                {
+                    linie1.GetComponent<Linienzeichner>().wo = 2;
+                    linie2.GetComponent<Linienzeichner>().wo = 0;
+                }else{
+                     linie1.GetComponent<Linienzeichner>().wo = 0;
+                    linie2.GetComponent<Linienzeichner>().wo = 2;
+                }
+            }else{
+                if(objekt1.transform.position.y> objekt2.transform.position.y)
+                {
+                    linie1.GetComponent<Linienzeichner>().wo = 1;
+                    linie2.GetComponent<Linienzeichner>().wo = 3;
+                }else{
+                    linie1.GetComponent<Linienzeichner>().wo =3;
+                    linie2.GetComponent<Linienzeichner>().wo = 1;
+                }
+            }
         }
+
+
 
         //Aussehen (schwach oder nicht schwach) übergeben
         if (schwach)
@@ -235,7 +262,7 @@ public class Beziehung : MonoBehaviour
         welcheEntity(2, counter, false);
     }
 
-    private void positionOfKardinalitaet(GameObject kardtext, GameObject objekt, int offset)   //offset =  0-keiner, 1- rechts, 2-Links
+    private void positionOfKardinalitaet(GameObject kardtext, GameObject objekt, int offset, int EinsOderZwei)   //offset =  0-keiner, 1- rechts, 2-Links
     {
         Vector3 pos1 = getPosition(gameObject);
         Vector3 pos2 = getPosition(objekt);
@@ -255,6 +282,15 @@ public class Beziehung : MonoBehaviour
         else if (offset == 2)
         {
             pos1 = mittelpunkte[2];
+        }else{
+            ecken = new Vector3[4];
+            gameObject.GetComponent<RectTransform>().GetWorldCorners(ecken);
+            mittelpunkte = new Vector3[] { (ecken[0] + ecken[1]) / 2, (ecken[1] + ecken[2]) / 2, (ecken[2] + ecken[3]) / 2, (ecken[3] + ecken[0]) / 2 };
+            if(EinsOderZwei==1){
+                pos2 = mittelpunkte[linie1.GetComponent<Linienzeichner>().wo];
+            }else{
+                pos2 = mittelpunkte[linie2.GetComponent<Linienzeichner>().wo];   
+            }
         }
 
         //rechts 0 Grad, oben 90 Grad
