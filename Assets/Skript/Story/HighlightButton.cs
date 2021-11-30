@@ -7,6 +7,7 @@ public class HighlightButton : MonoBehaviour
 {
     public bool test;
     public bool highlinghtingOn = false;
+    public bool text;
     //public Image image;
     private bool einmal = true;
 
@@ -19,10 +20,25 @@ public class HighlightButton : MonoBehaviour
     {
         if (test)
         {
-            M_material = GetComponent<Image>().materialForRendering;
+            Image temp;
+            if(TryGetComponent<Image>(out temp))
+            {
+                M_material = GetComponent<Image>().materialForRendering;
+            }
+            else
+            {
+                M_material = GetComponent<RawImage>().materialForRendering;
+            }
+            
 
             NotSelectedColor = Color.black;
             NotSelectedColor.a = 0;
+
+            if(!ColorUtility.TryParseHtmlString("#27AE60", out SelectedColor))
+            {
+                Debug.Log("Fehler!");
+            }
+
             //M_material.SetColor("_OutlineColor", new Color32((byte) 0, (byte) 0, (byte) 0, (byte) 0));
         }
 
@@ -30,8 +46,30 @@ public class HighlightButton : MonoBehaviour
 
     public void FixedUpdate()
     {
+        if (text)
+        {
+            if (highlinghtingOn)
+            {
+               
+                if (((int)Time.time / schnelligkeit) % 2 == 0)
+                {
+                    Debug.Log("!"); 
+                    
+                    gameObject.GetComponent<TMPro.TMP_Text>().CrossFadeColor(NotSelectedColor, 3, true, false);
+                }
+                else if (((int)Time.time / schnelligkeit) % 2 == 1)
+                {
+                    gameObject.GetComponent<TMPro.TMP_Text>().CrossFadeColor(SelectedColor, 3, true, false);
 
-        if (test)
+                }
+            }
+            else
+            {
+                gameObject.GetComponent<TMPro.TMP_Text>().CrossFadeColor(NotSelectedColor, 0, true, false);
+
+            }
+        }
+        else if (test)
         {
             if (highlinghtingOn)
             {

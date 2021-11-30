@@ -50,6 +50,8 @@ public class PauseMenu : MonoBehaviour
     //public float tempZoomPos;
     public static float lastZoomPos;
 
+    public LevelGeschafft levelGeschafft;
+
     void Start()
     {
         RTS_CameraScript = RTS_Camera.GetComponent<RTS_Cam.RTS_Camera>();
@@ -255,6 +257,8 @@ public class PauseMenu : MonoBehaviour
 
         Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
         Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;
+
+        levelGeschafft.back();
     }
 
     public void animationMission()

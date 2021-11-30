@@ -160,7 +160,7 @@ public class ERAufgabe : MonoBehaviour
     public GameObject aufgabenText;
     public List<GameObject> checkliste;
     public List<TMPro.TextMeshProUGUI> checkliste_Namen;
-    private Color gruen = new Color32(3, 168, 82, 255); //noch anpassen
+    private Color gruen = new Color32(39, 174, 96, 255); //noch anpassen
     public static List<GameObject> gespeicherteObjekte;
     public GameObject checkboxOhneRelation;
     public GameObject checkboxOhneEntity;
@@ -183,6 +183,8 @@ public class ERAufgabe : MonoBehaviour
 
     //Audio
     public GameObject lvl_true;
+
+    public LevelGeschafft levelGeschafft;
 
 
     // Start is called before the first frame update
@@ -407,7 +409,11 @@ public class ERAufgabe : MonoBehaviour
             //Check Sound wenn alles richtig ist
             AudioSource x = lvl_true.GetComponent<AudioSource>();
             x.Play(0);
-            
+
+            //Level geschafft Anzeige
+            levelGeschafft.MoveRechtsLinks();
+
+
             //wenn alles richtig ist wird default alles auf aus gesetzt (in Update wird es aber wieder auf true gesetzt, wenn missioncheck == true ist)
             infobox.transform.localPosition = new Vector3(0,-82,0);
             

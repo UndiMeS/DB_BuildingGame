@@ -19,7 +19,6 @@ public class Tutorial : MonoBehaviour
     public bool ClickOnBeschreibungstext = false;
     private bool rotationTemp = true;
     public GameObject containerKiller;
-    public GameObject wohncontainerHilfe;
 
     //Elemente aus Spiel
     public GameObject buttonER;
@@ -84,7 +83,6 @@ public class Tutorial : MonoBehaviour
     {
         bMission.interactable = true;
         containerKiller.SetActive(false);        
-        wohncontainerHilfe.SetActive(false);
         WohncontainerTutorialPfeil.anzeigen = false;
         konventionsFenster.SetActive(false);
     }
@@ -92,7 +90,6 @@ public class Tutorial : MonoBehaviour
     {
         //Vorbereitung der Komponenten
         containerKiller.SetActive(false);
-        wohncontainerHilfe.SetActive(false);
         konventionsFenster.SetActive(false);
 
         //Zeitpunkt: Neues Spiel gestartet und Wechsel in ER-Editor
@@ -219,7 +216,6 @@ public class Tutorial : MonoBehaviour
             HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
 
             HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = true;
-            wohncontainerHilfe.SetActive(true);
 
             GebaeudeAnzeige.allesAus = false;
 
