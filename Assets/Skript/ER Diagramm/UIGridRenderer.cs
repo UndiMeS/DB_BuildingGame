@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class UIGridRenderer : Graphic
 {
-    public Vector2Int gridSize = new Vector2Int(1,1);
+    public Vector2 gridSize = new Vector2(1,1);
     public float thickness = 10f;
 
     
 
-    float width;
-    float height;
+    public float width;
+    public float height;
     float cellWidth;
     float cellHeight;
     protected override void OnPopulateMesh(VertexHelper vh)
