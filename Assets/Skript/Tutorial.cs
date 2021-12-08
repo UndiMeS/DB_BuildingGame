@@ -40,7 +40,9 @@ public class Tutorial : MonoBehaviour
     //Elemente die Markiert werden sollen
     public GameObject HighlightMarsToERD;
     public GameObject HighlightERDBeschreibung;
-    public GameObject HighlightERDLeisteUnten;
+    public GameObject HighlightERDLeisteUntenEntity;
+    public GameObject HighlightERDLeisteUntenAttribut;
+    public GameObject HighlightERDLeisteUntenBeziehung;
     public GameObject HighlightERDToMars;
     public GameObject HighlightMarsMission;
     public GameObject HighlightWohncontainer;
@@ -81,16 +83,21 @@ public class Tutorial : MonoBehaviour
     }
     private void OffTutorial()
     {
+        bZusatz = buttonZusatz.GetComponent<Button>();
+        bMission = buttonMission.GetComponent<Button>();
         bMission.interactable = true;
+        bZusatz.interactable=true;
         containerKiller.SetActive(false);        
         WohncontainerTutorialPfeil.anzeigen = false;
         konventionsFenster.SetActive(false);
     }
     private void ShowTutorial()
     {
+        bZusatz = buttonZusatz.GetComponent<Button>();
+        bMission = buttonMission.GetComponent<Button>();
         //Vorbereitung der Komponenten
         containerKiller.SetActive(false);
-        konventionsFenster.SetActive(false);
+        //konventionsFenster.SetActive(false);
 
         //Zeitpunkt: Neues Spiel gestartet und Wechsel in ER-Editor
         if(Story.lvl[0] == false && Mission.missionsLevel[6] == false){
@@ -107,7 +114,9 @@ public class Tutorial : MonoBehaviour
             
             if (!beschreibungClick ){  //in ERD angekommen
                 FehlerAnzeige.tutorialtext_ER = "Öffne die Beschreibung rechts.";
-                HighlightERDLeisteUnten.GetComponent<HighlightButton>().highlinghtingOn = false;
+                HighlightERDLeisteUntenEntity.GetComponent<HighlightButton>().highlinghtingOn = false;
+                HighlightERDLeisteUntenAttribut.GetComponent<HighlightButton>().highlinghtingOn = false;
+                HighlightERDLeisteUntenBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
                 HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = true;
             }
             
@@ -117,21 +126,27 @@ public class Tutorial : MonoBehaviour
                 {
                     FehlerAnzeige.tutorialtext_ER = "Klicke in das Beschreibungsfeld, um Wörter zu markieren! Du kannst bis zu 10 Wörter anklicken.";
                     HighlightERKlick.GetComponent<HighlightButton>().highlinghtingOn = true;
-                    HighlightERDLeisteUnten.GetComponent<HighlightButton>().highlinghtingOn = false;
+                    HighlightERDLeisteUntenEntity.GetComponent<HighlightButton>().highlinghtingOn = false;
+                    HighlightERDLeisteUntenAttribut.GetComponent<HighlightButton>().highlinghtingOn = false;
+                    HighlightERDLeisteUntenBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
                     HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = false;
                     beschreibungER.transform.GetChild(0).GetChild(0).GetComponent<ScrollRect>().enabled = false;
                 }
                 else if (beschreibungER.activeSelf)
                 {
                     FehlerAnzeige.tutorialtext_ER = "Stimmen Anzahl und Beschriftung einer Komponente, wird diese in der Checkbox abgehakt.";
-                    HighlightERDLeisteUnten.GetComponent<HighlightButton>().highlinghtingOn = true;
+                    HighlightERDLeisteUntenEntity.GetComponent<HighlightButton>().highlinghtingOn = true;
+                    HighlightERDLeisteUntenAttribut.GetComponent<HighlightButton>().highlinghtingOn = true;
+                    HighlightERDLeisteUntenBeziehung.GetComponent<HighlightButton>().highlinghtingOn = true;
                     HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = false;
                     HighlightERKlick.GetComponent<HighlightButton>().highlinghtingOn = false;
                     beschreibungER.transform.GetChild(0).GetChild(0).GetComponent<ScrollRect>().enabled = true;
                 }
                 else
                 {
-                    HighlightERDLeisteUnten.GetComponent<HighlightButton>().highlinghtingOn = false;
+                    HighlightERDLeisteUntenEntity.GetComponent<HighlightButton>().highlinghtingOn = false;
+                    HighlightERDLeisteUntenAttribut.GetComponent<HighlightButton>().highlinghtingOn = false;
+                    HighlightERDLeisteUntenBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
                     HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = true;
                     HighlightERKlick.GetComponent<HighlightButton>().highlinghtingOn = false;
                     beschreibungER.transform.GetChild(0).GetChild(0).GetComponent<ScrollRect>().enabled = true;
@@ -146,7 +161,9 @@ public class Tutorial : MonoBehaviour
         else if (Story.lvl[0] == true && Mission.missionsLevel[6] == false){
             //ausschalten aus den vorherrigen Level
             HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false;
-            HighlightERDLeisteUnten.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDLeisteUntenEntity.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDLeisteUntenAttribut.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDLeisteUntenBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightERKlick.GetComponent<HighlightButton>().highlinghtingOn = false;
 
             HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = true;

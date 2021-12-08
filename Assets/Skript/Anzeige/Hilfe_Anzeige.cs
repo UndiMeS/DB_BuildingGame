@@ -6,7 +6,7 @@ public class Hilfe_Anzeige : MonoBehaviour
 {
     public GameObject hilfeFenster;
     public GameObject PauseMenuUI;
-    public GameObject hilfeZurückButton;
+    public GameObject hilfeZurueckButton;
     public GameObject hilfeGebaeudeinfo;
     public GameObject hilfeButtondestroyer;
     public GameObject hilfeTexte;
@@ -17,7 +17,7 @@ public class Hilfe_Anzeige : MonoBehaviour
     public GameObject hilfeBackground;
 
 
-    //Hilfe Anzeigen in PauseMenü der Landschaft
+    //Hilfe Anzeigen in PauseMenï¿½ der Landschaft
     public void Hilfe()
     {
         if (!hilfeFenster.activeSelf)
@@ -26,8 +26,8 @@ public class Hilfe_Anzeige : MonoBehaviour
             PauseMenu.SpielIstPausiert = true;
             KameraKontroller.aktiviert = false;
             hilfeFenster.SetActive(true);
-            hilfeZurückButton.SetActive(true);
-            hilfeGebaeudeinfo.SetActive(true);
+            hilfeZurueckButton.SetActive(true);
+            //hilfeGebaeudeinfo.SetActive(true);
             hilfeButtondestroyer.SetActive(true);
             hilfeTexte.SetActive(true);
             baumenuTransparent.SetActive(false);
@@ -41,8 +41,8 @@ public class Hilfe_Anzeige : MonoBehaviour
             PauseMenu.SpielIstPausiert = false;
             KameraKontroller.aktiviert = true;
             hilfeFenster.SetActive(false);
-            hilfeZurückButton.SetActive(false);
-            hilfeGebaeudeinfo.SetActive(false);
+            hilfeZurueckButton.SetActive(false);
+            //hilfeGebaeudeinfo.SetActive(false);
             hilfeButtondestroyer.SetActive(false);
             hilfeTexte.SetActive(false);
             baumenuTransparent.SetActive(true);

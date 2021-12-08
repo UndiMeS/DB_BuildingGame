@@ -9,6 +9,8 @@ public class OhneSchwacheEntity : MonoBehaviour
     public ERAufgabenText eRAufgabenText;
     public GameObject schwacheEMButton;
 
+    public List<GameObject> hilfen;
+
     void Start()
     {
         if (schwachAus)
@@ -22,7 +24,10 @@ public class OhneSchwacheEntity : MonoBehaviour
 
             schwacheEMButton.SetActive(false);
 
-
+            foreach(GameObject hilfe in hilfen)
+            {
+                hilfe.SetActive(false);
+            }
         }
     }
 }

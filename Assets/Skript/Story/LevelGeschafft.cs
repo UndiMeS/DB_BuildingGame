@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class LevelGeschafft : MonoBehaviour
 {
-    public Vector3 from = new Vector3(-253, 304, 0);
-    public Vector3 to = new Vector3(1220, 304, 0);
-    public float time=3;
-    private bool temp;
+    private Vector3 from = new Vector3(-1220, 14, 0);
+    private Vector3 to = new Vector3(1220, 304, 0);
+    private float time=3;
+    private bool temp=true;
 
     public void Update()
     {
         if (temp)
         {
-            gameObject.transform.position = from;
+            gameObject.transform.localPosition = from;
         }
     }
 
     public void MoveRechtsLinks()
     {
-        gameObject.LeanMoveX(to.x, time);
         Invoke("back", time+1);
         temp = false;
+        gameObject.LeanMoveX(to.x, time);
     }
     public void back()
     {
