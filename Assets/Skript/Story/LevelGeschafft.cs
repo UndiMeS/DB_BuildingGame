@@ -6,14 +6,20 @@ public class LevelGeschafft : MonoBehaviour
 {
     private Vector3 from = new Vector3(-1220, 14, 0);
     private Vector3 to = new Vector3(1220, 304, 0);
-    private float time=3;
+    private float time=4;
     private bool temp=true;
+
+    private void Start()
+    {
+        from = gameObject.transform.position;
+        to = gameObject.transform.position + new Vector3(Screen.width+gameObject.GetComponent<RectTransform>().sizeDelta.x, 0, 0);
+    }
 
     public void Update()
     {
         if (temp)
         {
-            gameObject.transform.localPosition = from;
+            gameObject.transform.position = from;
         }
     }
 
@@ -21,7 +27,7 @@ public class LevelGeschafft : MonoBehaviour
     {
         Invoke("back", time+1);
         temp = false;
-        gameObject.LeanMoveX(to.x, time);
+        gameObject.LeanMove(to, time);
     }
     public void back()
     {

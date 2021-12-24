@@ -18,7 +18,9 @@ public class ObjektBewegung : MonoBehaviour
     public GameObject GrünesGebäude;
     public GameObject FinalGebäude;
     public float ZPosition;
-    public Material[] GrünesGebäudeRenderer;
+    public float XPosition;
+    public float YPosition;
+    public Material GrünesGebäudeRenderer;
     public Color RedHouseColor;
     public Color GreenHouseColor;
 
@@ -47,13 +49,13 @@ public class ObjektBewegung : MonoBehaviour
                 selected = false;
                 GrünesGebäude.SetActive(false);
                 FinalGebäude.SetActive(true);
-                transform.position += new Vector3(0, 0, ZPosition);
+                Debug.Log(transform.position + " " + (transform.position + new Vector3(0, 0, ZPosition)));
+                
                 
                 Testing.grid.SetWert(transform.position, Testing.objektGebaut,gameObject);
-
+                transform.position += new Vector3(XPosition, YPosition, ZPosition);
                 AnimationScript.GebäudeBauen = true;
 
-                
 
                 //2x1 und 2x2 Bauten abfangen und wert setzen
                 /*if (Testing.objektGebaut>20 && Testing.objektGebaut % 10 % 3 == 1)//10,11,12 haus; 20,21,22 weide; 30,31,32 feld; ...1 klein;...2 mittel;...3 groß
@@ -65,7 +67,7 @@ public class ObjektBewegung : MonoBehaviour
                     GridWertSetzen2x2();
                 }*/
 
-                
+
                 if (Testing.objektGebaut == 3)
                 {
                     GebaeudeAnzeige.staticSpezialisierungsauswahl.SetActive(true);
@@ -127,20 +129,16 @@ public class ObjektBewegung : MonoBehaviour
             
             transform.position = position;
 
-            if(BuildBool() == false)
+            if(!Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)||!outBox(Input.mousePosition))
             {
-                foreach (Material GreenRenderer in GrünesGebäudeRenderer)
-                {
-                    GreenRenderer.SetColor("_Color", RedHouseColor);
-                }
+                Debug.Log("besetzt");
+                GrünesGebäudeRenderer.SetColor("_BaseColor", RedHouseColor);
+                
                  
             }
             else
             {
-                foreach (Material GreenRenderer in GrünesGebäudeRenderer)
-                {
-                    GreenRenderer.SetColor("_Color", GreenHouseColor);
-                }
+                GrünesGebäudeRenderer.SetColor("_BaseColor", GreenHouseColor);
             }
         }
 

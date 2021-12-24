@@ -26,7 +26,7 @@ public class Linienzeichner : MonoBehaviour
         lineRenderer.endWidth = 0.1f;
         lineRenderer.startWidth = 0.1f;
         
-        lineRenderer.sortingOrder = 1;
+        lineRenderer.sortingOrder = 400;
     }
 
     // Update is called once per frame

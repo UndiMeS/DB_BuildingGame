@@ -108,7 +108,10 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, folge dem roten Pfeil und öffne zuerst den ER-Editor!";
 
             //wenn noch ncith geöffnet, dann öffnet es sich
-            konventionsFenster.SetActive(!KonventionsClick);
+            if (!KonventionsClick)
+            {
+                konventionsFenster.SetActive(!KonventionsClick);
+            }
 
             //ERD
             

@@ -8,6 +8,8 @@ public class OhneSchwacheEntity : MonoBehaviour
     public ERAufgabe eRAufgabe;
     public ERAufgabenText eRAufgabenText;
     public GameObject schwacheEMButton;
+    public GameObject KonventionMitSchwach;
+    public GameObject KonventionOhneSchwach;
 
     public List<GameObject> hilfen;
 
@@ -28,6 +30,9 @@ public class OhneSchwacheEntity : MonoBehaviour
             {
                 hilfe.SetActive(false);
             }
+
+            KonventionMitSchwach.SetActive(true);
+            KonventionOhneSchwach.SetActive(false);
         }
     }
 }

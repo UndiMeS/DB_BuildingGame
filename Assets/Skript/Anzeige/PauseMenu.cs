@@ -72,14 +72,14 @@ public class PauseMenu : MonoBehaviour
     public void Weiterspielen()
     {
         PauseMenuUI.SetActive(false);
-        hilfeFenster.SetActive(false);
-        hilfeZurückButton.SetActive(false);
+        //hilfeFenster.SetActive(false);
+        //hilfeZurückButton.SetActive(false);
         if (hilfeGebaeudeinfo != null)
         {
             hilfeGebaeudeinfo.SetActive(false);
         }
-        hilfeButtondestroyer.SetActive(false);
-        hilfeTexte.SetActive(false);
+        //hilfeButtondestroyer.SetActive(false);
+        //hilfeTexte.SetActive(false);
         SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
         RTS_CameraScript.enabled = true;

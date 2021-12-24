@@ -163,7 +163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6605252203469454522
 Transform:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5869974538047143971}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: -5, y: 5, z: -0.61}
+  m_LocalPosition: {x: -5, y: 5, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 7593100698369956509}
@@ -562,8 +562,8 @@ MonoBehaviour:
   "Gr\xFCnesGeb\xE4ude": {fileID: 2172428138001483109}
   "FinalGeb\xE4ude": {fileID: 6608752148407300961}
   ZPosition: 0
-  "Gr\xFCnesGeb\xE4udeRenderer":
-  - {fileID: 2100000, guid: 6d35f183abe5bc84ba0afb35356dafd4, type: 2}
+  "Gr\xFCnesGeb\xE4udeRenderer": {fileID: 2100000, guid: 6d35f183abe5bc84ba0afb35356dafd4,
+    type: 2}
   RedHouseColor: {r: 1, g: 0, b: 0, a: 0.19607843}
   GreenHouseColor: {r: 0, g: 1, b: 0, a: 0.19607843}
 --- !u!114 &285367121617947745

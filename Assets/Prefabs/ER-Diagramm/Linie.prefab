@@ -61,7 +61,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objekt1: {fileID: 0}
   objekt2: {fileID: 0}
+  pos1: {x: 0, y: 0, z: 0}
   zeichnen: 0
+  setposition: 0
+  wo: 0
 --- !u!114 &633911931899057421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +134,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 400
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}

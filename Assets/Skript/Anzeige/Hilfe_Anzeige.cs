@@ -14,7 +14,6 @@ public class Hilfe_Anzeige : MonoBehaviour
     public GameObject mission;
     public GameObject tutorial;
     public GameObject info;
-    public GameObject hilfeBackground;
 
 
     //Hilfe Anzeigen in PauseMen� der Landschaft
@@ -34,7 +33,6 @@ public class Hilfe_Anzeige : MonoBehaviour
             LeanTween.moveLocalY(mission, 650, 0.3f);
             tutorial.SetActive(false);
             info.SetActive(false);
-            hilfeBackground.SetActive(true);
         }
         else
         {
@@ -48,7 +46,6 @@ public class Hilfe_Anzeige : MonoBehaviour
             baumenuTransparent.SetActive(true);
             tutorial.SetActive(true);
             info.SetActive(true);
-            hilfeBackground.SetActive(false);
         }
     }
 }
