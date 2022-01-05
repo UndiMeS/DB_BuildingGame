@@ -266,10 +266,12 @@ public class PauseMenu : MonoBehaviour
         LeanTween.cancel(mission);
         if (mission.transform.localPosition.y < 400)
         {
+            Debug.Log(mission.transform.localPosition);
             LeanTween.moveLocalY(mission, 650, 0.3f);
         }
         else{
-            LeanTween.moveLocalY(mission, 380, 0.3f);
+            Debug.Log(mission.transform.localPosition);
+            LeanTween.moveLocalY(mission, 348, 0.3f);
         }
         
     }
@@ -354,7 +356,7 @@ public class PauseMenu : MonoBehaviour
         leisteRechts.SetActive(false);
         Aufgabenfenster.SetActive(false);
         Checkliste.SetActive(false);
-        tutorial.SetActive(false);
+        //tutorial.SetActive(false);
         leisteBottom.SetActive(false);
         leisteTop.SetActive(false);
         hilfeInGameER.SetActive(false);
@@ -387,7 +389,7 @@ public class PauseMenu : MonoBehaviour
         leisteRechts.SetActive(true);
         Aufgabenfenster.SetActive(true);
         Checkliste.SetActive(true);
-        tutorial.SetActive(true);
+        //tutorial.SetActive(true);
         leisteBottom.SetActive(true);
         leisteTop.SetActive(true);
         hilfeInGameER.SetActive(true);
