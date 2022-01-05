@@ -31,8 +31,9 @@ public class OhneSchwacheEntity : MonoBehaviour
                 hilfe.SetActive(false);
             }
 
-            KonventionMitSchwach.SetActive(true);
-            KonventionOhneSchwach.SetActive(false);
+            KonventionMitSchwach.SetActive(false);
+            KonventionOhneSchwach.SetActive(true);
         }
+       
     }
 }

@@ -6,8 +6,21 @@ using UnityEngine.Events;
 public class Hilfe_Knopf : MonoBehaviour
 {
     public List<GameObject> hilfen;
+    public static List<GameObject> alle= new List<GameObject>();
 
+    private void Awake()
+    {
+
+        foreach(GameObject item in hilfen)
+        {
+            alle.Add(item);
+        }
+    }
     public void onClick(){
+        foreach (GameObject item in alle)
+        {
+            item.SetActive(false);
+        }
         foreach (GameObject item in hilfen)
         {
             item.SetActive(true);
@@ -22,6 +35,10 @@ public class Hilfe_Knopf : MonoBehaviour
         }
     }
      private void OnCollisionEnter(Collision other) {
+        foreach (GameObject item in alle)
+        {
+            item.SetActive(false);
+        }
         foreach (GameObject item in hilfen)
         {
             item.SetActive(true);
