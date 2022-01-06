@@ -8,6 +8,7 @@ public class LevelGeschafft : MonoBehaviour
     private Vector3 to = new Vector3(1220, 304, 0);
     private float time=4;
     private bool temp=true;
+    public AudioSource LevelUpSound;
 
     private void Start()
     {
@@ -38,5 +39,9 @@ public class LevelGeschafft : MonoBehaviour
         public void LevelUpAnimationStop()
     {
         this.gameObject.SetActive(false);
+    }
+    public void LevelUpSoundPlay()
+    {
+        LevelUpSound.Play();
     }
 }
