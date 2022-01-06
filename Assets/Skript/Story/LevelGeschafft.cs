@@ -34,4 +34,9 @@ public class LevelGeschafft : MonoBehaviour
         temp = true;
         gameObject.transform.position = from;
     }
+
+        public void LevelUpAnimationStop()
+    {
+        this.gameObject.SetActive(false);
+    }
 }

@@ -184,7 +184,7 @@ public class ERAufgabe : MonoBehaviour
     //Audio
     public GameObject lvl_true;
 
-    public LevelGeschafft levelGeschafft;
+    public GameObject levelGeschafft;
 
 
     // Start is called before the first frame update
@@ -411,7 +411,7 @@ public class ERAufgabe : MonoBehaviour
             x.Play(0);
 
             //Level geschafft Anzeige
-            levelGeschafft.MoveRechtsLinks();
+            levelGeschafft.SetActive(true);
 
 
             //wenn alles richtig ist wird default alles auf aus gesetzt (in Update wird es aber wieder auf true gesetzt, wenn missioncheck == true ist)
@@ -788,4 +788,6 @@ public class ERAufgabe : MonoBehaviour
             }
         }
     }
+
+
 }
