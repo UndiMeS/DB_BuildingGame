@@ -74,8 +74,32 @@ public class Tutorial : MonoBehaviour
     void Update()
     {
         if(tutorialOff == false){
-            ShowTutorial(); 
+            ShowTutorial();
         }
+        else
+        {
+                HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false; 
+            HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = false; 
+             HighlightERDLeisteUntenEntity.GetComponent<HighlightButton>().highlinghtingOn = false; 
+            HighlightERDLeisteUntenAttribut.GetComponent<HighlightButton>().highlinghtingOn = false; 
+            HighlightERDLeisteUntenBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false; 
+            HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = false; 
+            HighlightMarsMission.GetComponent<HighlightButton>().highlinghtingOn = false; 
+              HighlightWohncontainer.GetComponent<HighlightButton>().highlinghtingOn = false; 
+            HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false; 
+             HighlightERKlick.GetComponent<HighlightButton>().highlinghtingOn = false; 
+
+            HighlightFeldastros.GetComponent<HighlightButton>().highlinghtingOn = false; 
+            HighlightTabelleAstros.GetComponent<HighlightButton>().highlinghtingOn = false; 
+            HighlightAnzFeldastros.GetComponent<HighlightButton>().highlinghtingOn = false; 
+
+            HighlightZusatz.GetComponent<HighlightButton>().highlinghtingOn = false; 
+            HighlightErtrag.GetComponent<HighlightButton>().highlinghtingOn = false; 
+
+            HighlightMarsOption.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDOption.GetComponent<HighlightButton>().highlinghtingOn = false; 
+
+}
         if (Input.GetKeyDown(KeyCode.Delete))
         {
             FehlerAnzeige.fehlertext = "Zum Löschen der Gebäudeauswahl, klicke links unten auf den Mülleimer!";
@@ -93,8 +117,7 @@ public class Tutorial : MonoBehaviour
     }
     private void ShowTutorial()
     {
-        bZusatz = buttonZusatz.GetComponent<Button>();
-        bMission = buttonMission.GetComponent<Button>();
+       
         //Vorbereitung der Komponenten
         containerKiller.SetActive(false);
         //konventionsFenster.SetActive(false);
@@ -102,9 +125,10 @@ public class Tutorial : MonoBehaviour
         //Zeitpunkt: Neues Spiel gestartet und Wechsel in ER-Editor
         if(Story.lvl[0] == false && Mission.missionsLevel[6] == false){
             
-            HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = true;//zu ERD gehen          
-            bZusatz.interactable = false;
-            bMission.interactable = false;
+            HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = true;//zu ERD gehen
+            Debug.Log("!");
+            bZusatz.enabled = false;
+            bMission.enabled = false;
             FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, folge dem roten Pfeil und öffne zuerst den ER-Editor!";
 
             //wenn noch ncith geöffnet, dann öffnet es sich
@@ -172,8 +196,8 @@ public class Tutorial : MonoBehaviour
             HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = true;
             HighlightMarsMission.GetComponent<HighlightButton>().highlinghtingOn = true;
 
-            bZusatz.interactable = false;
-            bMission.interactable = true;
+            bZusatz.enabled = false;
+            bMission.enabled = true;
             FehlerAnzeige.tutorialtext_Spiel = "Schau dir nun deine Mission an!";
             FehlerAnzeige.tutorialtext_ER = "Sehr gut! Tipp: Halte das Diagramm durch Verschiebung per Drag'n'Drop übersichtlich!\n Wechsel zurück in die Siedlung!"; 
             
@@ -204,7 +228,7 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "Sehr gut! Um nun auch Astronauten einzufliegen, erweitere dein ER-Diagramm!";
                         
             Beziehung bez;
-            if(ERErstellung.selectedGameObjekt.TryGetComponent(out bez))
+            if(ERErstellung.selectedGameObjekt.TryGetComponent(out bez)&&!ERAufgabe.beziehungKardRichtig)
             {
                 FehlerAnzeige.tutorialtext_ER = "In Beziehung stehende Entitymengen könnne in der rechten unteren Ecke eingestellt werden.";
                 HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = true;
@@ -223,7 +247,7 @@ public class Tutorial : MonoBehaviour
             }
 
             missionClick = false;
-            bZusatz.interactable = false;
+            bZusatz.enabled = false;
             GebaeudeAnzeige.allesAus = true;
         
         //Zeitpunkt: ER-Level 1 fertig (Astronauten) und wechsel zur Mission (Astronauten)
@@ -278,7 +302,7 @@ public class Tutorial : MonoBehaviour
             }
            
 
-            bZusatz.interactable = false;
+            bZusatz.enabled = false;
         
         //Zeitpunkt: Mission 1 (Astronauten einfliegen) fertig und Wechsel in ER-Editor (Feldsphäre)
         }else if((Story.lvl[1] == true && Story.lvl[2] == false) && (Mission.missionsLevel[0] == true && Mission.missionsLevel[1] == false)){
@@ -296,11 +320,11 @@ public class Tutorial : MonoBehaviour
             HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = true;
             HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = !beschreibungER.activeSelf; //an aus
 
-            bZusatz.interactable = false;
+            bZusatz.enabled = true;
             missionClick = false;
 
             Beziehung bez;
-            if(ERErstellung.selectedGameObjekt.TryGetComponent(out bez))
+            if(ERErstellung.selectedGameObjekt.TryGetComponent(out bez) && !ERAufgabe.beziehungKardRichtig)
             {
                 HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = true ;
             }

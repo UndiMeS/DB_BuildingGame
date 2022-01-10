@@ -30,7 +30,6 @@ public class SaveLoad : MonoBehaviour
 
     public void speichern()
     {
-        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\mytextfile.txt", "Test");
         //überall Application.persistentDataPath
         if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/"))
         {

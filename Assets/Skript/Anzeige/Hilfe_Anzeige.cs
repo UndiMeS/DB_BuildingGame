@@ -13,6 +13,7 @@ public class Hilfe_Anzeige : MonoBehaviour
     public GameObject baumenuTransparent;
     public GameObject mission;
     public GameObject tutorial;
+    public Tutorial tutorialgross;
     public GameObject info;
 
 
@@ -33,6 +34,7 @@ public class Hilfe_Anzeige : MonoBehaviour
             LeanTween.moveLocalY(mission, 650, 0.3f);
             tutorial.SetActive(false);
             info.SetActive(false);
+            tutorialgross.tutorialOff = true;
         }
         else
         {
@@ -46,6 +48,7 @@ public class Hilfe_Anzeige : MonoBehaviour
             baumenuTransparent.SetActive(true);
             tutorial.SetActive(true);
             info.SetActive(true);
+            tutorialgross.tutorialOff = false;
         }
     }
 }

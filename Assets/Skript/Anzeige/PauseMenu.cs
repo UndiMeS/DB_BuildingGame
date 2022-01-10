@@ -130,6 +130,7 @@ public class PauseMenu : MonoBehaviour
         Checkliste.SetActive(false);
         KameraKontroller.aktiviert = false;
         RTS_CameraScript.enabled = false;
+        tutorial.GetComponent<Tutorial>().tutorialOff = true;
     }
 
     //Schließen der Hilfe Anzeigen des ER-Editors
@@ -143,6 +144,7 @@ public class PauseMenu : MonoBehaviour
         Checkliste.SetActive(true);
         KameraKontroller.aktiviert = true;
         RTS_CameraScript.enabled = true;
+        tutorial.GetComponent<Tutorial>().tutorialOff = false;
     }
 
     // GameObject objekt wird angezeigt oder ausgeblendet
@@ -167,6 +169,7 @@ public class PauseMenu : MonoBehaviour
             GebaeudeInfoBauen.wertFest = 0;
             GebaeudeAnzeige.allesAus = true;
             Time.timeScale = 0;
+            
         }
 
     }

@@ -49,7 +49,6 @@ public class ObjektBewegung : MonoBehaviour
                 selected = false;
                 GrünesGebäude.SetActive(false);
                 FinalGebäude.SetActive(true);
-                Debug.Log(transform.position + " " + (transform.position + new Vector3(0, 0, ZPosition)));
                 
                 
                 Testing.grid.SetWert(transform.position, Testing.objektGebaut,gameObject);

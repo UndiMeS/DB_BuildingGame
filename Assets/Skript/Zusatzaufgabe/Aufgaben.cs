@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class Aufgaben : MonoBehaviour
 {
-    public Sprite[] aufgabenListe = new Sprite[25];
-    public Sprite[] loesungsListe = new Sprite[25];
+    public List<Sprite> aufgabenListe = new List<Sprite>();
+    public List<Sprite> loesungsListe = new List<Sprite>();
+    public List<Sprite> SchwachaufgabenListe = new List<Sprite>();
+    public List<Sprite> SchwachloesungsListe = new List<Sprite>();
     public string[] correct ;
     public string[] secondchance;
     public int[] level ;
@@ -48,9 +50,15 @@ public class Aufgaben : MonoBehaviour
 
     public void Start()
     {
-        //Richtige Antworten
+        if (!OhneSchwacheEntity.schwachAus)
+        {
+            aufgabenListe.AddRange(SchwachaufgabenListe);
+            loesungsListe.AddRange(SchwachloesungsListe);
 
-        correct = new string[aufgabenListe.Length];
+        }
+
+        //Richtige Antworten
+        correct = new string[aufgabenListe.Count];
         correct[0] = "C";
         correct[1] = "D";
         correct[2] = "C";
@@ -67,23 +75,20 @@ public class Aufgaben : MonoBehaviour
         correct[13] = "D";
         correct[14] = "B";
         correct[15] = "C";
-        correct[16] = "A";
-        correct[17] = "B";
-        correct[18] = "C";
-        correct[19] = "D";
+        correct[16] = "D";
+        correct[17] = "A";
+        correct[18] = "D";
+        correct[19] = "C";
         correct[20] = "D";
-        correct[21] = "A";
-        correct[22] = "D";
-        correct[23] = "C";
-        correct[24] = "D";
-        correct[25] = "D";
+        correct[21] = "D";
         
-  
-        level = new int[aufgabenListe.Length]; //?
+
+
+        level = new int[aufgabenListe.Count]; //?
 
         //Hinweis Texte für die zweite Chance
 
-        secondchance = new string[aufgabenListe.Length];
+        secondchance = new string[aufgabenListe.Count];
         secondchance[0] = "In wie viele Klassen gehst du persönlich an deiner Schule?";
         secondchance[1] = "Unterrichtet an deiner Schule nur eine Lehrkraft Informatik? Und hat diese auch andere Fächer, die sie unterrichtet?";
         secondchance[2] = "Kleine Kinos haben ggf. nur ein Saal, aber größere? Und kann denn derselbe (nicht der gleiche) Raum an verschiedenen Orten gleichzeitig exitieren?";
@@ -100,23 +105,35 @@ public class Aufgaben : MonoBehaviour
         secondchance[13] = "Laut Wikipedia ist die die Internationale Standartbuchnummer (ISBN) “eine Nummer zur eindeutigen Kennzeichnung von Büchern [...]“.";
         secondchance[14] = "Hast du schon einmal davon gehört, dass in einer Klasse zwei Schüler oder Schülerinnen den gleichen Namen haben?";
         secondchance[15] = "Achte auf die Primärschlüssel der Entitymenge und die Kardinalität.";
-        secondchance[16] = "Teilen zwei Patienten sich dieselben Zähne? Und können Zähne überhaupt ohne Menschen/Patienten „existieren“?";
-        secondchance[17] = "Was geschieht mit dem Klassenzimmer, wenn das Schulgebäude abgerissen wird?";
-        secondchance[18] = "Was geschieht, wenn du die Zeitschrift in den Müll wirfst?";
-        secondchance[19] = "Was geschieht mit dem Monitor, wenn du den Computer herunterfährst oder dir einen neuen zulegst?";
-        secondchance[20] = "Welcher Bereich auf der Rechnung beschreibt die gekauften Artikel? Dort stehen die Attribute!";
-        secondchance[21] = "Es gibt auch eine Entitymenge „Rechnung“. Achte auf ALLE Attribute der Entitymenge „Kunde“.";
-        secondchance[22] = "Hast du schon einmal Artikel in einem Sportgeschäft gekauft und eine Rechnung/Quittung erhalten? Wie viele waren das? Waren die Artikel auch nach deinem Kauf noch im Laden auf Lager?";
-        secondchance[23] = "Tipp: Ein Kunde kauft an einem gewissen Tag in dem Geschäft ein und bezahlt einen bestimmten Preis. Und wir benötigen noch einen Primärschlüssel!";
-        secondchance[24] = "An einem Tag werden in dem Sporthaus 300 Rechnungen ausgestellt. Welche Attributwerte könnten doppelt vorkommen?";
-        secondchance[25] = "Das ist die letzte Aufgabe! Alle Antwortmöglichkeiten wurden in vorherigen Aufgaben thematisiert! Versuche es nochmal!";
+        secondchance[16] = "Welcher Bereich auf der Rechnung beschreibt die gekauften Artikel? Dort stehen die Attribute!";
+        secondchance[17] = "Es gibt auch eine Entitymenge „Rechnung“. Achte auf ALLE Attribute der Entitymenge „Kunde“.";
+        secondchance[18] = "Hast du schon einmal Artikel in einem Sportgeschäft gekauft und eine Rechnung/Quittung erhalten? Wie viele waren das? Waren die Artikel auch nach deinem Kauf noch im Laden auf Lager?";
+        secondchance[19] = "Tipp: Ein Kunde kauft an einem gewissen Tag in dem Geschäft ein und bezahlt einen bestimmten Preis. Und wir benötigen noch einen Primärschlüssel!";
+        secondchance[20] = "An einem Tag werden in dem Sporthaus 300 Rechnungen ausgestellt. Welche Attributwerte könnten doppelt vorkommen?";
+        secondchance[21] = "Das ist die letzte Aufgabe! Alle Antwortmöglichkeiten wurden in vorherigen Aufgaben thematisiert! Versuche es nochmal!";
 
+        if (!OhneSchwacheEntity.schwachAus)
+        {
+            secondchance[22] = "Teilen zwei Patienten sich dieselben Zähne? Und können Zähne überhaupt ohne Menschen/Patienten „existieren“?";
+            secondchance[23] = "Was geschieht mit dem Klassenzimmer, wenn das Schulgebäude abgerissen wird?";
+            secondchance[24] = "Was geschieht, wenn du die Zeitschrift in den Müll wirfst?";
+            secondchance[25] = "Was geschieht mit dem Monitor, wenn du den Computer herunterfährst oder dir einen neuen zulegst?";
+            correct[22] = "A";
+            correct[23] = "B";
+            correct[24] = "C";
+            correct[25] = "D";
+        }
     }
     public void Update()
     {
-        if(welcheAufgabe >= 26){
+        if(welcheAufgabe <aufgabenListe.Count){
+            zusatzButton.GetComponent<Button>().enabled = true;
+        }
+        else
+        {
+            zusatzButton.GetComponent<Button>().enabled = false;
             zusatzButton.SetActive(false);
-        }        
+        }       
     }
     /*
     *Prüfen der Eingabe und drücken auf Button
@@ -266,7 +283,7 @@ public class Aufgaben : MonoBehaviour
         toggleKiller2.SetActive(false);
         toogle.init();
         toogle.toggleOff();
-        if (welcheAufgabe < aufgabenListe.Length)
+        if (welcheAufgabe < aufgabenListe.Count)
         {
             gameObject.GetComponent<Image>().sprite = aufgabenListe[welcheAufgabe];
         }
