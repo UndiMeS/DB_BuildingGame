@@ -50,7 +50,7 @@ public class PauseMenu : MonoBehaviour
     //public float tempZoomPos;
     public static float lastZoomPos;
 
-    public LevelGeschafft levelGeschafft;
+    public GameObject levelGeschafft;
 
     void Start()
     {
@@ -237,6 +237,7 @@ public class PauseMenu : MonoBehaviour
 
     public void SwitchToBaumenue()
     {
+        levelGeschafft.SetActive(false);
         ERon = false;
         SpielIstPausiert = false;
         changeHintergrund(0);
@@ -258,7 +259,7 @@ public class PauseMenu : MonoBehaviour
         Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
         Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;
 
-        levelGeschafft.back();
+        //levelGeschafft.SetActive(false);
     }
 
     public void animationMission()
