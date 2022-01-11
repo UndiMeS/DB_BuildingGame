@@ -29,6 +29,10 @@ public class Tutorial : MonoBehaviour
     public GameObject container;
     public GameObject feld;
     public GameObject buttonZusatz;
+    public Image ZusatzBackground;
+    public Color BackgroundTemp;
+    public Color IconTemp;
+    public Image ZusatzIcon;
     Button bZusatz;
     public GameObject beschreibungER;
     public GameObject wohncontainerGebaeudeanzeige;
@@ -68,6 +72,12 @@ public class Tutorial : MonoBehaviour
         }
         bZusatz = buttonZusatz.GetComponent<Button>();
         bMission = buttonMission.GetComponent<Button>();
+
+        BackgroundTemp = ZusatzBackground.color;
+        BackgroundTemp.a = 1.0f;
+
+        IconTemp = ZusatzIcon.color;
+        IconTemp.a = 1.0f;
     }
 
     // Update is called once per frame
@@ -111,6 +121,8 @@ public class Tutorial : MonoBehaviour
         bMission = buttonMission.GetComponent<Button>();
         bMission.interactable = true;
         bZusatz.interactable=true;
+        ZusatzBackground.color = BackgroundTemp;
+        ZusatzIcon.color = IconTemp;
         containerKiller.SetActive(false);        
         WohncontainerTutorialPfeil.anzeigen = false;
         konventionsFenster.SetActive(false);
@@ -321,6 +333,9 @@ public class Tutorial : MonoBehaviour
             HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = !beschreibungER.activeSelf; //an aus
 
             bZusatz.enabled = true;
+
+            ZusatzBackground.color = BackgroundTemp;
+            ZusatzIcon.color = IconTemp;
             missionClick = false;
 
             Beziehung bez;
@@ -339,6 +354,9 @@ public class Tutorial : MonoBehaviour
         }
         else if((Story.lvl[2] == true && Story.lvl[3] == false) && (Mission.missionsLevel[0] == true && Mission.missionsLevel[1] == false)){
             bZusatz.interactable = true;
+
+            ZusatzBackground.color = BackgroundTemp;
+        ZusatzIcon.color = IconTemp;
             HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = false;
