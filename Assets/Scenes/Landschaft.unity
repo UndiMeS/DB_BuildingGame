@@ -985,7 +985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -142.99995, y: 133.00005}
+  m_AnchoredPosition: {x: -19, y: 97}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &16900311
@@ -2951,13 +2951,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3726a15791d6ea44b8d3dd0560768ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialOff: 1
+  tutorialOff: 0
   ClickOnBeschreibungstext: 0
   containerKiller: {fileID: 1342842098}
   buttonER: {fileID: 180412312}
   buttonSpiel: {fileID: 1819158613}
   textER: {fileID: 1508547997}
   buttonMission: {fileID: 1905278430}
+  MissionButtonImage: {fileID: 1112753524}
+  MissionTemp: {r: 0, g: 0, b: 0, a: 0}
   container: {fileID: 20067404}
   feld: {fileID: 1682569805}
   buttonZusatz: {fileID: 2109065769}
@@ -15379,8 +15381,8 @@ RectTransform:
   m_Father: {fileID: 1716699979}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.37271202}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -38829,7 +38831,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 367.41928, y: 92.17369}
-  m_SizeDelta: {x: 754.9796, y: 0}
+  m_SizeDelta: {x: 754.9796, y: 293.88}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &616779708
 MonoBehaviour:
@@ -53574,7 +53576,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 302.14667, y: -90.89874}
+  m_AnchoredPosition: {x: 302.14667, y: -133}
   m_SizeDelta: {x: 210, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &840859606
@@ -57192,7 +57194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &901882045
 RectTransform:
   m_ObjectHideFlags: 0
@@ -71633,7 +71635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: d0aa579202c7e6c4ca611a6a91643e1c, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.49803922}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -101914,8 +101916,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -37.099873, y: 4.3934}
-  m_SizeDelta: {x: 759.9871, y: 50.2081}
+  m_AnchoredPosition: {x: -35.158615, y: 2.7999}
+  m_SizeDelta: {x: 766.5769, y: 57.4554}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1635178005
 MonoBehaviour:
@@ -101953,7 +101955,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 21300000, guid: f142c197226a14c468c81304d4e7015f, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
-  m_FillCenter: 1
+  m_FillCenter: 0
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
@@ -106909,7 +106911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37cd7f1e22281b4b867293b294a9963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testModus: 1
+  testModus: 0
   listeSchwacheEntity: 0001000001000100
   wohncontainer_astronaut_Eig:
   - W
@@ -107303,7 +107305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 16, y: 567}
+  m_AnchoredPosition: {x: 16, y: 450}
   m_SizeDelta: {x: 698, y: 568}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1733310779
@@ -108759,7 +108761,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 0}
+  m_AnchoredPosition: {x: -0, y: -42}
   m_SizeDelta: {x: 210, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1753693226
@@ -114042,12 +114044,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840935811}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4836ad1e902274242aadfc3504d79743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offModus: 1
+  offModus: 0
   transparentWohncontainer: {fileID: 865439306}
   buttonForscher: {fileID: 1566984999}
   buttonFeld: {fileID: 857717934}
@@ -123174,8 +123176,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 215266178}
   m_HandleRect: {fileID: 215266177}
   m_Direction: 2
-  m_Value: 0.99999976
-  m_Size: 0.62728804
+  m_Value: 1.0000001
+  m_Size: 0.627288
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

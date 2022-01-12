@@ -86,6 +86,9 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
         geklickteWörter=  new List<int>[] { new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { }, new List<int> { } };
 
         m_TextMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
+        m_TextMeshPro.outlineWidth = 0.25f;
+
+        
         m_TextMeshPro.ForceMeshUpdate();
 
         //Setze die Startwerte des Klick-Zählers
@@ -188,27 +191,25 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
                 Color farbe = Color.black;
                 if (entitys[Story.level].Contains(info.GetWord()) && entAttBez == "")
                 { farbe = new Color(1, 0.65f, 0);
-                    m_TextMeshPro.outlineWidth = 0.25f;
                     wasgefunden = true;
                 entAttBez = "Ent";
                 }
                 else if (attribute[Story.level].Contains(info.GetWord()) && (entAttBez == "Att" || entAttBez == ""))
                 { farbe = Color.green;
-                m_TextMeshPro.outlineWidth = 0.25f;
                     entAttBez = "Att"; wasgefunden = true;
             }
                 else if (beziehungen[Story.level].Contains(info.GetWord()) && (entAttBez == "Bez" || entAttBez == ""))
                 { farbe = Color.blue;
-                m_TextMeshPro.outlineWidth = 0.25f;
                     entAttBez = "Bez"; wasgefunden = true;
             }
                 else if (kardinalitaet[Story.level].Contains(info.GetWord()) && (entAttBez == "Kard" || entAttBez == ""))
                 { farbe = Color.gray;
-                m_TextMeshPro.outlineWidth = 0.25f;
                     entAttBez = "Kard"; wasgefunden = true;
             }
                 for (int i = 0; i < info.characterCount; ++i)
                 {
+
+                    
                     if (farbe != Color.black)
                     {
                         int charIndex = info.firstCharacterIndex + i;

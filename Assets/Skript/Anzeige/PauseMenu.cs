@@ -244,7 +244,7 @@ public class PauseMenu : MonoBehaviour
         ERon = false;
         SpielIstPausiert = false;
         changeHintergrund(0);
-        mission.transform.localPosition = new Vector3(16, 650, 0);
+        mission.transform.localPosition = new Vector3(16, 800, 0);
         RTS_CameraScript.minHeight = -7.0f;
         RTS_CameraScript.maxHeight = -35.0f;
         RTS_CameraScript.limitXMax = 175;
@@ -271,7 +271,7 @@ public class PauseMenu : MonoBehaviour
         if (mission.transform.localPosition.y < 400)
         {
             Debug.Log(mission.transform.localPosition);
-            LeanTween.moveLocalY(mission, 650, 0.3f);
+            LeanTween.moveLocalY(mission, 800, 0.3f);
         }
         else{
             Debug.Log(mission.transform.localPosition);

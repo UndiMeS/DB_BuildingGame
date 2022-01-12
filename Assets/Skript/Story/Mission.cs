@@ -137,6 +137,8 @@ public class Mission : MonoBehaviour
         masterKreuz.SetActive(true);
         masterHacken.SetActive(false);  
         textInput.SetActive(false);
+
+
          
     }
     // Update is called once per frame

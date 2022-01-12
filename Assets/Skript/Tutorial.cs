@@ -26,6 +26,8 @@ public class Tutorial : MonoBehaviour
     public GameObject textER;
     public GameObject buttonMission;
     Button bMission;
+    public Image MissionButtonImage;
+    public Color MissionTemp;
     public GameObject container;
     public GameObject feld;
     public GameObject buttonZusatz;
@@ -78,6 +80,9 @@ public class Tutorial : MonoBehaviour
 
         IconTemp = ZusatzIcon.color;
         IconTemp.a = 1.0f;
+
+        MissionTemp = MissionButtonImage.color;
+        MissionTemp.a = 1.0f;
     }
 
     // Update is called once per frame
@@ -120,6 +125,7 @@ public class Tutorial : MonoBehaviour
         bZusatz = buttonZusatz.GetComponent<Button>();
         bMission = buttonMission.GetComponent<Button>();
         bMission.interactable = true;
+        MissionButtonImage.color = MissionTemp;
         bZusatz.interactable=true;
         ZusatzBackground.color = BackgroundTemp;
         ZusatzIcon.color = IconTemp;
@@ -209,6 +215,7 @@ public class Tutorial : MonoBehaviour
 
             bZusatz.enabled = false;
             bMission.enabled = true;
+            MissionButtonImage.color = MissionTemp;
             FehlerAnzeige.tutorialtext_Spiel = "Schau dir nun deine Mission an!";
             FehlerAnzeige.tutorialtext_ER = "Sehr gut! Tipp: Halte das Diagramm durch Verschiebung per Drag'n'Drop übersichtlich!\n Wechsel zurück in die Siedlung!"; 
             

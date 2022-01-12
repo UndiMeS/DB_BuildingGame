@@ -96,6 +96,7 @@ public class Story : MonoBehaviour
     void Update()
     {
         if(offModus == false){
+            
             checkLevel(); 
         }
     }
