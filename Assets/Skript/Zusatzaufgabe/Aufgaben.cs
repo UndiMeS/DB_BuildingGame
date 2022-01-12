@@ -142,12 +142,12 @@ public class Aufgaben : MonoBehaviour
         AudioSource soundTrue = sound_true.GetComponent<AudioSource>();
         AudioSource soundFalse = sound_false.GetComponent<AudioSource>();
 
-
+        toogle.toggleWhite();
         //keine Eingabe
-        if(toogle.toggleGroupInstance.AnyTogglesOn() == false)
+        if (toogle.toggleGroupInstance.AnyTogglesOn() == false)
         {
            toogle.toggleRed();
-           Invoke("toggleFarbe",1);
+            toogle.toggleWhite();
         }else{
             //Richtige Eingabe
             if (toogle.currentSelection.name.Equals(correct[welcheAufgabe]))
@@ -264,9 +264,8 @@ public class Aufgaben : MonoBehaviour
     */
     public void openAufgabe()
     {
-        
         //Prüfen, ob noch eine zweite Chance aus vorheriger Aufgabe da ist
-        if(cheat_temp == 1){
+        if (cheat_temp == 1){
             temp = 1;
             hinweisButton.SetActive(true);
             //falschKreuz.SetActive(true);
@@ -336,7 +335,7 @@ public class Aufgaben : MonoBehaviour
     public void toggleFarbe()
     {
         toogle.toggleWhite();
-        if(cheat_temp == 0)
+        if(cheat_temp == 0&& temp==2)
         {
             toogle.toggleOff();
             if (correct[welcheAufgabe - 1] == "A")

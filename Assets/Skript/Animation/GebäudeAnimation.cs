@@ -31,7 +31,7 @@ public class GebäudeAnimation : MonoBehaviour
         
 
         
-        if(LandingAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        if(LandingAnimation.isActiveAndEnabled&&LandingAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
                 {
                     ParachuteAnimation.enabled = true;
                     Debug.Log("not playing");
@@ -40,14 +40,14 @@ public class GebäudeAnimation : MonoBehaviour
                     //ParachuteAnimation.SetBool("DriveIn", false);
                     
                     //GebäudeAnzeige.SetActive(true);
-                }
-                    
+                }                    
                 else
-                {                   
-                    
-                }
+                {
+            
+        }
+       
 
-                if(ParachuteAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+                if (ParachuteAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
                 {
                     ParachuteAnimation.enabled = false;
                     Parachute.SetActive(false);
@@ -55,12 +55,12 @@ public class GebäudeAnimation : MonoBehaviour
                     ParachuteAnimation.SetBool("DriveIn", false);
                     
                     GebäudeAnzeige.SetActive(true);
+
                     
-                    
-                }
-                    
+                }    
                 else
-                {                   
+                {       
+            
                     if(ResetBeschreibungPosition.ERButtonClick == true && AnimationEndet == false)
                         {
                             
@@ -96,10 +96,5 @@ public class GebäudeAnimation : MonoBehaviour
                     
                 }
 
-
-                if(this.gameObject.activeSelf == true)
-                {
-                    
-                }
     }
 }

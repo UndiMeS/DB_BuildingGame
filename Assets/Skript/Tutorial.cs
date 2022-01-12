@@ -146,7 +146,7 @@ public class Tutorial : MonoBehaviour
             HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = true;//zu ERD gehen
             bZusatz.enabled = false;
             bMission.enabled = false;
-            FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, folge dem roten Pfeil und öffne zuerst den ER-Editor!";
+            FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, folge den Markierungen und öffne zuerst den ER-Editor!";
 
             //wenn noch ncith geöffnet, dann öffnet es sich
             if (!KonventionsClick)
@@ -386,7 +386,7 @@ public class Tutorial : MonoBehaviour
                 missionTemp = true;
                 //Prüfe, ob Missionsfenster geklickt wurde
                 if(missionClick){
-                    FehlerAnzeige.tutorialtext_Spiel = "Für Feldsphären benötigst du die eben eingeflogenen Feldastronauten. Hinweis: Rechts neben der Guthabenanzeige in der Infoleiste am oberen Bildschirmrand siehst du den Ertrag, der dir alle "+SpielInfos.neuerUmsatz+" Sol (Marstage) ausgezahlt wird.";
+                    FehlerAnzeige.tutorialtext_Spiel = "Für Feldsphären benötigst du die eben eingeflogenen Feldastronauten. Hinweis: Am oberen Bildschirmrand siehst du den Ertrag, der dir alle "+SpielInfos.neuerUmsatz+" Sol (Marstage) ausgezahlt wird.";
                     HighlightErtrag.GetComponent<HighlightButton>().highlinghtingOn = true;
                 }
                 else{
