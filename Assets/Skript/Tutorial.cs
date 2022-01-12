@@ -138,7 +138,6 @@ public class Tutorial : MonoBehaviour
         if(Story.lvl[0] == false && Mission.missionsLevel[6] == false){
             
             HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = true;//zu ERD gehen
-            Debug.Log("!");
             bZusatz.enabled = false;
             bMission.enabled = false;
             FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, folge dem roten Pfeil und öffne zuerst den ER-Editor!";

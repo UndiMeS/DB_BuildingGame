@@ -175,7 +175,7 @@ public class Aufgaben : MonoBehaviour
                 temp++;//temp zählt die Chancen (temp == 2 dann keine Chance mehr!)
                //falschKreuz.SetActive(true);
                 toogle.toggleColor(Color.red, toogle.currentSelection);
-                Invoke("toggleFarbe",2);
+                Invoke("toggleFarbe",1);
                 //zweite chance bereits gehabt
                 if(temp == 2){
                     cheat_temp = 0;
@@ -336,5 +336,33 @@ public class Aufgaben : MonoBehaviour
     public void toggleFarbe()
     {
         toogle.toggleWhite();
+        if(cheat_temp == 0)
+        {
+            toogle.toggleOff();
+            if (correct[welcheAufgabe - 1] == "A")
+            {
+               var toggles = toogle.toggleGroupInstance.GetComponentsInChildren<Toggle>();
+                toggles[0].isOn = true;
+                toogle.toggleColor(Color.green, toggles[0]);
+            }
+            else if (correct[welcheAufgabe - 1] == "B")
+            {
+                var toggles = toogle.toggleGroupInstance.GetComponentsInChildren<Toggle>();
+                toggles[1].isOn = true;
+                toogle.toggleColor(Color.green, toggles[1]);
+            }
+            else if (correct[welcheAufgabe - 1] == "C")
+            {
+                var toggles = toogle.toggleGroupInstance.GetComponentsInChildren<Toggle>();
+                toggles[2].isOn = true;
+                toogle.toggleColor(Color.green, toggles[2]);
+            }
+            else if (correct[welcheAufgabe - 1] == "D")
+            {
+                var toggles = toogle.toggleGroupInstance.GetComponentsInChildren<Toggle>();
+                toggles[3].isOn = true;
+                toogle.toggleColor(Color.green, toggles[3]);
+            }
+        }
     }
 }
