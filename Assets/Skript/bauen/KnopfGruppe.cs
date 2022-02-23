@@ -25,13 +25,10 @@ public class KnopfGruppe : MonoBehaviour
     public void OnTabEnter(PanelKnopf knopf)
     {
         ResetTabs();
-        if (selected == null || selected != knopf)
-        {
-            knopf.hintergrund.color = tabHover;
-        }
+        knopf.hintergrund.color = tabHover;
     }
 
-    public void OnTabExit(PanelKnopf knopf)
+    public void OnTabExit()
     {
         ResetTabs();
     }
@@ -46,10 +43,8 @@ public class KnopfGruppe : MonoBehaviour
     {
         foreach(PanelKnopf knopf in panelknoepfe)
         {
-            if (selected!= null&&selected != knopf)
-            {
-                knopf.hintergrund.color = tabIdle;
-            }
+           knopf.hintergrund.color = tabIdle;
+           
         }
     }
 }

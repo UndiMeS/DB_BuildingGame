@@ -22,7 +22,10 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     void Start()
     {
         hintergrund = GetComponent<RawImage>();
-        knopfGruppe.Subscribe(this);
+        if (gebaeudeNummer != 0)
+        {
+            knopfGruppe.Subscribe(this);
+        }
     }
     //Methode beim erzeugen eines Gebaeudes
     public void KnopfGedrueckt()
@@ -43,12 +46,14 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public void OnPointerEnter(PointerEventData eventData)
     {
         knopfGruppe.OnTabEnter(this);
-
+        if (gebaeudeNummer == 0)
+        {
+            hintergrund.color = Color.red;
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
-    {
-        
+    {        
         knopfGruppe.OnTabSelected(this);
         if (gebaeudeNummer != 0 && Testing.objektGebaut == 0)
         {
@@ -67,12 +72,29 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
                 KameraKontroller.aktiviert = true;
             }
         }
+        if (gebaeudeNummer != 0)
+        {
+            hintergrund.color = knopfGruppe.tabIdle;
+        }
+        else
+        {
+            hintergrund.color = Color.black;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        knopfGruppe.OnTabExit(this);
+        if (gebaeudeNummer != 0)
+        {
+            knopfGruppe.OnTabExit();
+        }
+        else
+        {
+            hintergrund.color = Color.black;
+        }
+        
     }
+   
 
     public void testenObBedingungenErfuellt()
     {

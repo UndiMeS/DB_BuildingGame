@@ -362,7 +362,7 @@ public class Tutorial : MonoBehaviour
             bZusatz.interactable = true;
 
             ZusatzBackground.color = BackgroundTemp;
-        ZusatzIcon.color = IconTemp;
+            ZusatzIcon.color = IconTemp;
             HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = false;
@@ -378,11 +378,19 @@ public class Tutorial : MonoBehaviour
                 FehlerAnzeige.tutorialtext_ER = "Super! Im Baumenü sind nun Feldsphären freigeschaltet. Auf geht's in die neue Mission!";
                 HighlightZusatz.GetComponent<HighlightButton>().highlinghtingOn = true;
             }
+            
 
             //Prüfe ob Zusatzfenster geklickt wurde
             if(zusatzClick){
                 FehlerAnzeige.tutorialtext_ER = "Du musst erst die Mission erfüllen und mit Feldspähren Erträge erwirtschaften! \nTipp: Du benötigst 4 Feldsphären!";
-                HighlightZusatz.GetComponent<HighlightButton>().highlinghtingOn = false;
+                if (Testing.geld < 50)
+                {
+                    HighlightZusatz.GetComponent<HighlightButton>().highlinghtingOn = true;
+                }
+                else
+                {
+                    HighlightZusatz.GetComponent<HighlightButton>().highlinghtingOn = false;
+                }
                 missionTemp = true;
                 //Prüfe, ob Missionsfenster geklickt wurde
                 if(missionClick){

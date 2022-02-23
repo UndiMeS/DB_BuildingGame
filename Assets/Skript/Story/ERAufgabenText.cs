@@ -72,7 +72,7 @@ public class ERAufgabenText : MonoBehaviour, IPointerClickHandler
     public GameObject restKlicks;
     public GameObject absolutKlicks;
     public static bool werteGesetzt = false; //Wird in ERAufgabe.cs auf false gesetzt, wenn ER-Level erfüllt wurde.
-    private int[] lvlKlicks = new int[] { 10,15, 15, 10, 20, 6, 12, 12, 0, 0 }; //Klickguthaben der einzelnen Levels
+    private int[] lvlKlicks = new int[] { 10,17, 17, 12, 20, 10, 17, 17, 0, 0 }; //Klickguthaben der einzelnen Levels
     private List<int>[] geklickteWörter;
 
     private int storyChanged = 0; //setzt Scrollview nach oben
