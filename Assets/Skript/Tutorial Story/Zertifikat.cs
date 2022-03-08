@@ -22,7 +22,9 @@ public class Zertifikat : MonoBehaviour
             Directory.CreateDirectory(Application.streamingAssetsPath + "/PDF/");
         }
         
-        path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +"/ missionsbestätigung.pdf";  
+        path = Application.streamingAssetsPath + "/PDF/missionsbestätigung.pdf";
+
+         
 
     }
 
@@ -67,7 +69,6 @@ public class Zertifikat : MonoBehaviour
         {
             myPage.addText(Testing.menschen[0].name, 702, 2945, myDoc.getFontReference("AstroSpace"), 40);
         }
-        String level = "";
 
         myPage.addText(Story.level.ToString(), 2109, 2946, myDoc.getFontReference("AstroSpace"), schriftSize);
         
@@ -80,7 +81,7 @@ public class Zertifikat : MonoBehaviour
         
 
 
-        myDoc.createPDF( Application.streamingAssetsPath + @"\PDF\missionsbestätigung.pdf");
+        myDoc.createPDF(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/missionsbestätigung.pdf");
         myPage = null;
         myDoc = null; 
 

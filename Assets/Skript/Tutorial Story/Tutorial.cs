@@ -139,9 +139,41 @@ public class Tutorial : MonoBehaviour
         //Vorbereitung der Komponenten
         containerKiller.SetActive(false);
         //konventionsFenster.SetActive(false);
+        if (ZertifikatErstellen.abkuerzer || (Story.lvl[7] == true && Mission.missionsLevel[5] == true && Mission.missionsLevel[9] == false))
+        {
+            bZusatz.enabled = false;
+            bMission.enabled = true;
+            MissionButtonImage.color = MissionTemp;
 
+            FehlerAnzeige.tutorialtext_Spiel = "Erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot. Achte darauf, dass deine ganze Siedlung sichtbar ist.";
+            FehlerAnzeige.tutorialtext_ER = "Achte darauf, dass deine ganzes ER-Modell sichtbar ist.";
+
+
+            HighlightMarsOption.GetComponent<HighlightButton>().highlinghtingOn = true;
+            HighlightERDOption.GetComponent<HighlightButton>().highlinghtingOn = true;
+
+            HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDLeisteUntenEntity.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDLeisteUntenAttribut.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDLeisteUntenBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightMarsMission.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightWohncontainer.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERKlick.GetComponent<HighlightButton>().highlinghtingOn = false;
+
+            HighlightFeldastros.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightTabelleAstros.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightAnzFeldastros.GetComponent<HighlightButton>().highlinghtingOn = false;
+
+            HighlightZusatz.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightErtrag.GetComponent<HighlightButton>().highlinghtingOn = false;
+
+            //Zur Erde zurückkehren
+        }
         //Zeitpunkt: Neues Spiel gestartet und Wechsel in ER-Editor
-        if (Story.lvl[0] == false && Mission.missionsLevel[6] == false)
+        else if (Story.lvl[0] == false && Mission.missionsLevel[6] == false)
         {
 
             HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = true;//zu ERD gehen
@@ -475,21 +507,6 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_ER = "Du hast es geschafft. Dein ER-Diagramm ist für diese Siedlung komplett! Auf zu deinen letzten Missionen!";
 
             //Screenshots erstellen
-        }
-        else if (ZertifikatErstellen.abkuerzer || (Story.lvl[7] == true && Mission.missionsLevel[5] == true && Mission.missionsLevel[9] == false))
-        {
-            bZusatz.enabled = false;
-            bMission.enabled = true;
-            MissionButtonImage.color = MissionTemp;
-
-            FehlerAnzeige.tutorialtext_Spiel = "Erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot. Achte darauf, dass deine ganze Siedlung sichtbar ist.";
-            FehlerAnzeige.tutorialtext_ER = "Achte darauf, dass deine ganzes ER-Modell sichtbar ist.";
-
-
-            HighlightMarsOption.GetComponent<HighlightButton>().highlinghtingOn = true;
-            HighlightERDOption.GetComponent<HighlightButton>().highlinghtingOn = true;
-
-            //Zur Erde zurückkehren
         }
         else if (Story.lvl[7] == true && Mission.missionsLevel[9] == true)
         {

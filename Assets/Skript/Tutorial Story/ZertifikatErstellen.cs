@@ -11,14 +11,14 @@ public class ZertifikatErstellen : MonoBehaviour
 
     public void Update()
     {
-        if (first1 && Story.lvl[0] == false && Mission.missionsLevel[6] == false)
+        if (first1 && Story.lvl[0] == false )
         {
             gameObject.GetComponent<Button>().interactable = false;
             gameObject.GetComponent<Button>().enabled = false;
             gameObject.GetComponent<Button>().image.color = MinusA(gameObject.GetComponent<Button>().image.color, new Color(0, 0, 0, 0.5f));
             first1 = false;
         }
-        else if(first2&& Story.lvl[0] == true && Mission.missionsLevel[6] == false) {
+        if(first2&& Story.lvl[0] == true) {
             gameObject.GetComponent<Button>().interactable = true;
             gameObject.GetComponent<Button>().enabled = true;
             gameObject.GetComponent<Button>().image.color = MinusA(gameObject.GetComponent<Button>().image.color, new Color(0, 0, 0,- 0.5f));

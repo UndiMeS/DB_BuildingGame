@@ -27,6 +27,8 @@ public class ERAufgabe : MonoBehaviour
     //für Rechtschreibprüfung
     private bool rechtschreibPrueferAktiv = false;
     private List<string> falschGeschriebeneNamen = new List<string>();
+    private float BeginningTime;
+    private float zeitZumLoesen=300; //nach 5min erscheint erst Hilfestellung für Rechtschreibfehler
 
     //Welche Attribute je EM
     private string[][] wohncontainer = {
@@ -184,6 +186,8 @@ public class ERAufgabe : MonoBehaviour
 
     public GameObject levelGeschafft;
 
+    
+
 
     // Start is called before the first frame update
     void Awake()
@@ -336,6 +340,7 @@ public class ERAufgabe : MonoBehaviour
                 kreisKreuz.SetActive(true);
                 if (firsttime)
                 {
+                    BeginningTime = Time.time;
                     //aufgabenFenster.SetActive(true);
                     //checkbox.SetActive(true);
                 }
@@ -734,7 +739,8 @@ public class ERAufgabe : MonoBehaviour
 
         beziehungKardRichtig = (beziehungenRichtig[i] == beziehungenHat[i]) && (kardHat[i] == kardRichtig[i]);
 
-        if (beziehungenRichtig[i]+1 == beziehungenHat[i]||  ( attributeRichtig[i]- attributeHat[i]<=2 && attributeRichtig[i] != attributeHat[i]))
+
+        if ((beziehungenRichtig[i]+1 == beziehungenHat[i]||  ( attributeRichtig[i]- attributeHat[i]<=2 && attributeRichtig[i] != attributeHat[i]))&&Time.time-BeginningTime>zeitZumLoesen)
         {
             rechtschreibPrueferAktiv = true;
             ausgabe &= false;
