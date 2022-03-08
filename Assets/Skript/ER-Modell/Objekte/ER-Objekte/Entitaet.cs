@@ -25,6 +25,7 @@ public class Entitaet : MonoBehaviour
     public List<GameObject> primaerschluessel;
     public List<GameObject> beziehungen;
 
+    public string singularName;
     
     public void Update()
     {

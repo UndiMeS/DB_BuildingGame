@@ -111,8 +111,11 @@ public class SaveLoad : MonoBehaviour
         saveLoadER.speichern();
         saveLoadBeziehungen.speichern();
 
-        FrageMars.SetActive(true);
-        FrageER.SetActive(true);
+        if (!ZertifikatErstellen.abkuerzer)
+        {
+            FrageMars.SetActive(true);
+            FrageER.SetActive(true);
+        }
     }
 
     public void laden()

@@ -130,7 +130,6 @@ public class ObjektBewegung : MonoBehaviour
 
             if(!Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)||!outBox(Input.mousePosition))
             {
-                Debug.Log("besetzt");
                 GrünesGebäudeRenderer.SetColor("_BaseColor", RedHouseColor);
                 
                  

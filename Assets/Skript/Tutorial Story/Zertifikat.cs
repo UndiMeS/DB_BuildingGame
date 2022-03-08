@@ -22,7 +22,7 @@ public class Zertifikat : MonoBehaviour
             Directory.CreateDirectory(Application.streamingAssetsPath + "/PDF/");
         }
         
-        path = Application.streamingAssetsPath + "/PDF/missionsbestätigung.pdf";  
+        path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +"/ missionsbestätigung.pdf";  
 
     }
 
@@ -56,9 +56,19 @@ public class Zertifikat : MonoBehaviour
         myDoc.addTrueTypeFont(Application.streamingAssetsPath + @"\Font\AstroSpace-eZ2Bg.ttf", "AstroSpace");
         //Schriftart FallingSky: myDoc.getFontReference("FallingSky")
         myDoc.addTrueTypeFont(Application.streamingAssetsPath + @"\Font\FallingSky-JKwK.ttf", "FallingSky");
-        
+
         //Name und Level
-        myPage.addText(Testing.menschen[0].name, 702, 2945, myDoc.getFontReference("AstroSpace"), 40);
+        if (Testing.summeMenschen == 0)
+        {
+            Mensch mensch = new Mensch("",1);
+            myPage.addText(mensch.name, 702, 2945, myDoc.getFontReference("AstroSpace"), 40);
+        }
+        else
+        {
+            myPage.addText(Testing.menschen[0].name, 702, 2945, myDoc.getFontReference("AstroSpace"), 40);
+        }
+        String level = "";
+
         myPage.addText(Story.level.ToString(), 2109, 2946, myDoc.getFontReference("AstroSpace"), schriftSize);
         
         //Siedlungsdaten
@@ -108,7 +118,7 @@ public class Zertifikat : MonoBehaviour
 
     public void OpenOutro()
     {
-        Invoke("Outro",4);
+        Invoke("Outro",1);
     }
 
     void Outro()

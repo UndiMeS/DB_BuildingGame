@@ -73,7 +73,7 @@ public class Testing : MonoBehaviour
         //boden.transform.localScale = new Vector3(20000,20000,200);
         //boden.transform.localRotation = Quaternion.Euler(42, 222, -148);
         FehlerAnzeige.fehlertext = "";
-
+        boden.SetActive(true);
         ObjektBewegung.erstellfenster = erstellfenster;
         ObjektBewegung.infoAnzeige = infofesnter;
         objektGebaut = 0;

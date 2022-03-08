@@ -34,7 +34,7 @@ public class GebäudeAnimation : MonoBehaviour
         if(LandingAnimation.isActiveAndEnabled&&LandingAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
                 {
                     ParachuteAnimation.enabled = true;
-                    Debug.Log("not playing");
+                   // Debug.Log("not playing");
                     ParachuteAnimation.SetBool("DriveIn", true);
 
                     //ParachuteAnimation.SetBool("DriveIn", false);

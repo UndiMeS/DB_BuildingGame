@@ -16,68 +16,65 @@ public class ERAufgabe : MonoBehaviour
     public bool testModus = true ;
     public static bool beziehungKardRichtig;
 
-    //Welche EM je Level
-    private string[][] listeEntity = {
-                                        new string[] { "W" },               /*LvL 0*/
-                                        new string[] { "A" },                   /*LvL 1*/
-                                        new string[] { "F" },                  /*LvL 2*/
-                                        new string[] { "S" },           /*LvL 3*/
-                                        new string[] { "P" },           /*LvL 4*/
-                                        new string[] {  },                              /*LvL 5*/
-                                        new string[] { "Nutztier", "Stallcontainer" },  /*LvL 6*/
-                                        new string[] { "Weidesphäre" },                 /*LvL 7*/   
-                                    };
 
+
+    //Welche EM je Level
+    private string[][] listeEntity;
+    private string[][] listeEntityPlural;
     //in diesen Lvl befinden sich schwache Entitys, muss an erster Stelle von listeEntity stehen
     public bool[] listeSchwacheEntity = { false, true, false, false, true, false, true, false };
 
+    //für Rechtschreibprüfung
+    private bool rechtschreibPrueferAktiv = false;
+    private List<string> falschGeschriebeneNamen = new List<string>();
+
     //Welche Attribute je EM
     private string[][] wohncontainer = {
-                                        new string[] { "1", "Kosten", "Baukosten", "Preis", "Baupreis", "€" },
-                                        new string[] { "2", "Containernummer", "Cnr","Cnr.","CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer", "ID", "id", "Id","Cnr" },
-                                        new string[] { "3", "Bettenzahl", "Bettenanzahl","Bettanzahl","Bettzahl", "Betten", "Kapazität" },
-                                        new string[] { "4", "freie Betten", "freieBetten", "Betten frei", "Freie Betten", "FreieBetten", "BettenFrei", "Bettenfrei" }
+                                        new string[] { "1", "Kosten", "Baukosten", "Preis", "Baupreis"},
+                                        new string[] { "2", "Containernummer", "Cnr","Cnr.","CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer","Cnr" },
+                                        new string[] { "3", "Bettenzahl", "Bettenanzahl", "Betten", "Kapazität" },
+                                        new string[] { "4", "freie Betten", "freieBetten", "Freie Betten", "FreieBetten", "BettenFrei", "Bettenfrei" }
                                         };
     private string[][] astronaut = {
-                                        new string[] { "1","Anreisegebühr","Anreisegebühren","Anreisekosten", "Kosten", "Gebühren", "Reisekosten", "Preis" },
-                                        new string[] { "2","Aufgabe", "Beruf", "Job", "Art"},
+                                        new string[] { "1","Anreisegebühr","Anreisegebühren","Anreisekosten", "Kosten", "Gebühren"},
+                                        new string[] { "2","Aufgabe","Aufgaben"},
                                         new string[] { "3", "Name", "Namen"},
-                                        new string[] { "4", "Geburtsdatum", "Geburtstag", "Datum"}
+                                        new string[] { "4", "Geburtsdatum", "Geburtstag"}
                                     };
     private string[][] feldspaehre = {
-                                        new string[] { "1","Kosten", "Baukosten", "Preis", "Baupreis", "€" },
-                                        new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Feldarbeiter", "Anzahl Arbeiter", "Arbeiteranzahl"},
-                                        new string[] { "3","Ertrag", "Gewinn", "Gehalt"},
-                                        new string[] { "4", "Feldnummer", "FNR", "Fnr", "Fnr.", "fnr", "FNr", "FNR.", "Fnr.", "FNr.", "Feldnr.", "Nummer", "ID", "id", "Id" }
+                                        new string[] { "1","Kosten", "Baukosten", "Preis", "Baupreis" },
+                                        new string[] { "2","Arbeiterzahl","Feldarbeiter", "Arbeiteranzahl"},
+                                        new string[] { "3","Ertrag"},
+                                        new string[] { "4", "Feldnummer", "FNR", "Fnr", "Fnr.", "fnr", "FNr", "FNR.", "Fnr.", "FNr.", "Feldnr.", "Nummer" }
                                     };
     private string[][] weidespaehre = {
-                                        new string[] { "1","Kosten", "Baukosten", "Preis", "Baupreis", "€" },
-                                        new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Weidenarbeiter", "Weidearbeiter", "Anzahl","Anzahl Arbeiter", "Arbeiteranzahl"},
-                                        new string[] { "3","Ertrag", "Gewinn", "Gehalt"},
-                                        new string[] { "4","Weidennummer", "Weidenummer", "Wnr", "Wnr.", "WNR", "wnr", "WNr", "WNR.", "Wnr.", "WNr.", "Weidenr.","Weidenr.", "Nummer", "ID", "id", "Id" },
+                                        new string[] { "1","Kosten", "Baukosten", "Preis", "Baupreis" },
+                                        new string[] { "2","Arbeiterzahl", "Weidenarbeiter", "Weidearbeiter", "Anzahl Arbeiter", "Arbeiteranzahl"},
+                                        new string[] { "3","Ertrag"},
+                                        new string[] { "4","Weidennummer", "Weidenummer", "Wnr", "Wnr.", "WNR", "wnr", "WNr", "WNR.", "Wnr.", "WNr.", "Weidenr.","Weidenr.", "Nummer" },
                                         new string[] { "5","Tierzahl", "Tiere", "Tieranzahl", "Anzahl Tiere", "AnzahlTiere"}
                                     };
     private string[][] nutztier = {
                                         new string[] { "1","Name", "Namen" },
-                                        new string[] { "2","Anreisegebühr", "Kosten", "Gebühren", "Reisekosten", "Preis", "Transportkosten", "Transportpreis" },
-                                        new string[] { "3","Art", "Gattung", "Tierart"},
+                                        new string[] { "2","Anreisegebühr", "Kosten", "Preis", "Transportkosten", "Transportpreis" },
+                                        new string[] { "3","Art", "Tierart"},
                                     };
     private string[][] stallcontainer = {
-                                        new string[] {"1","Kosten", "Baukosten", "Preis", "Baupreis", "€", "Containerkosten" },
-                                        new string[] {"2","Containernummer", "Cnr", "Cnr.", "CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer", "ID", "id", "Id", "Stallnummer", "SNR","Stallnr.", "snr", "SNr", "SNR.", "snr.", "SNr.", "Containernr."},
+                                        new string[] {"1","Kosten", "Baukosten", "Preis", "Baupreis" },
+                                        new string[] {"2","Containernummer", "Cnr", "Cnr.", "CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer", "Stallnummer", "SNR","Stallnr.", "snr", "SNr", "SNR.", "snr.", "SNr.", "Containernr."},
                                         new string[] {"3","Gehegezahl", "Gehegeanzahl", "Gehege", "Kapazität" },
                                         new string[] {"4","freie Gehege", "freieGehege", "Gehege frei" }
                                         };
     private string[][] forschungsstation ={
-                                        new string[] {"1","Kosten", "Baukosten", "Preis", "Baupreis", "€", "Stationskosten" },
-                                        new string[] {"2","Stationsnummer", "SNR", "Snr", "Snr.", "snr", "SNr", "SNR.", "snr.", "SNr.", "Stationsnr.", "Nummer", "ID", "id", "Id"},
-                                        new string[] {"3","Spezialisierung", "Gebiet", "Typ", "Bereich"},
+                                        new string[] {"1","Kosten", "Baukosten", "Preis", "Baupreis"},
+                                        new string[] {"2","Stationsnummer", "SNR", "Snr", "Snr.", "snr", "SNr", "SNR.", "snr.", "SNr.", "Stationsnr.", "Nummer"},
+                                        new string[] {"3","Spezialisierung"},
                                         };
     private string[][] forschungsprojekt = {
-                                        new string[] { "1","Kosten", "Baukosten", "Preis", "Baupreis", "€", "Projektkosten", "Forschungskosten" },
-                                        new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Mitarbeiter", "Forschungsarbeiter", "Forschungsastronauten", "Anzahl","Anzahl Arbeiter", "Arbeiteranzahl"},
-                                        new string[] { "3","Verbesserungsfaktor", "Gewinn", "Faktor", "Verbesserung"},
-                                        new string[] { "4","Stufe", "Forschungsstufe", "Level", "LvL", "Forschungslevel"},
+                                        new string[] { "1","Kosten", "Baukosten", "Preis", "Baupreis", "Projektkosten", "Forschungskosten" },
+                                        new string[] { "2","Arbeiterzahl", "Astronautenzahl", "Astronautenanzahl", "Forschungsarbeiter", "Forschungsastronauten", "Anzahl","Anzahl Arbeiter", "Arbeiteranzahl"},
+                                        new string[] { "3","Verbesserungsfaktor", "Faktor", "Verbesserung"},
+                                        new string[] { "4","Stufe", "Forschungsstufe"},
                                         new string[] { "5","Merkmal", "Forschungsmerkmal", "Attribut", "Forschungsattribut", "Projektmerkmal"}
                                     };
 
@@ -86,43 +83,43 @@ public class ERAufgabe : MonoBehaviour
     //EM1_EM2_Eig = {EM1, EM2, EM2_schwach(1 ja), Kard1, Kard2}
 
     private string[] astronaut_forschungsstation = { "arbeitet","verantwortet","verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für","istverantwortlich","istVerantwortlich","ist verantwortlich" };
-    private string[] astronaut_forschungsstation_Eig = { "A", "S", "0", "1", "1" };
+    private string[] astronaut_forschungsstation_Eig;
 
-    private string[] wohncontainer_astronaut = { "wohnt in","wohntIn", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "wohnen" };
-    public string[] wohncontainer_astronaut_Eig = { "W", "A", "1", "n", "1" };
+    private string[] wohncontainer_astronaut = { "wohnt in","wohntIn", "wohnt", "wohnenIn", "wohnenIn", "wohnen" };
+    public string[] wohncontainer_astronaut_Eig;
 
     private string[] astronaut_forschungsprojekt = { "forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht" };
-    private string[] astronaut_forschungsprojekt_Eig = { "A", "P", "0", "1", "n" };
+    private string[] astronaut_forschungsprojekt_Eig;
 
-    private string[] astronaut_feldsphaere = {"arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
-    private string[] astronaut_feldsphaere_Eig = { "A", "F", "0", "1", "n" };
+    private string[] astronaut_feldsphaere = {"arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf"};
+    private string[] astronaut_feldsphaere_Eig;
 
-    private string[] astronaut_weidesphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften" };
-    private string[] astronaut_weidesphaere_Eig = { "A", "Weidesphäre", "0", "1", "n" };
+    private string[] astronaut_weidesphaere = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf" };
+    private string[] astronaut_weidesphaere_Eig;
 
-    private string[] stallcontainer_nutztier = { "leben", "lebt", "wohnen","wohntIn","wohnt in", "wohnt", "wohnenIn", "wohnenIn", "beherbergt", "schläftIn", "PlatzFür" };
-    public string[] stallcontainer_nutztier_Eig = { "Stallcontainer", "Nutztier", "1", "n", "1" };
+    private string[] stallcontainer_nutztier = { "leben", "lebt", "wohnen","wohntIn","wohnt in", "wohnt", "wohnenIn", "wohnenIn" };
+    public string[] stallcontainer_nutztier_Eig;
 
-    private string[] weidesphaere_nutztier = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "bewirtschaften", "grasenAuf", "grasen auf", "helfenAuf", "helfen auf","leben","lebenAuf", "leben auf" };
-    private string[] weidesphaere_nutztier_Eig = { "Weidesphäre", "Nutztier", "0", "n", "1" };
+    private string[] weidesphaere_nutztier = { "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "helfen", "grasenAuf", "grasen auf", "helfenAuf", "helfen auf"};
+    private string[] weidesphaere_nutztier_Eig;
 
-    private string[] forschungsprojekt_wohncontainer = { "optimiert", "forschen", "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
-    private string[] forschungsprojekt_wohncontainer_Eig = { "P", "W", "0", "n", "n" };
+    private string[] forschungsprojekt_wohncontainer = { "forschen", "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
+    private string[] forschungsprojekt_wohncontainer_Eig;
 
-    private string[] forschungsprojekt_feldsphaere = {"optimiert", "forschen" ,"verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
-    private string[] forschungsprojekt_feldsphaere_Eig = { "P", "F", "0", "n", "n" };
+    private string[] forschungsprojekt_feldsphaere = {"forschen" ,"verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
+    private string[] forschungsprojekt_feldsphaere_Eig;
 
-    private string[] forschungsprojekt_stallcontainer = { "optimiert", "forschen", "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
-    private string[] forschungsprojekt_stallcontainer_Eig = { "P", "Stallcontainer", "0", "n", "n" };
+    private string[] forschungsprojekt_stallcontainer = { "forschen", "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
+    private string[] forschungsprojekt_stallcontainer_Eig;
 
-    private string[] forschungsprojekt_weidesphaere = { "optimiert", "forschen", "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
-    private string[] forschungsprojekt_weidesphaere_Eig = { "P", "Weidesphäre", "0", "n", "n" };
+    private string[] forschungsprojekt_weidesphaere = {"forschen", "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern" };
+    private string[] forschungsprojekt_weidesphaere_Eig;
 
-    private string[] forschungsprojekt_forschungsprojekt = {"optimiert", "verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern", "MethodenVerbessern", "verbessertMethodenVon", "verbessertMethoden","forscht" };
-    private string[] forschungsprojekt_forschungsprojekt_Eig = { "P", "P", "0", "1", "n" };
+    private string[] forschungsprojekt_forschungsprojekt = {"verbessert", "erforscht", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern", "MethodenVerbessern", "verbessertMethodenVon", "verbessertMethoden","forscht" };
+    private string[] forschungsprojekt_forschungsprojekt_Eig;
 
-    private string[] forschungsstation_forschungsprojekt = { "organisiert", "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für" };
-    public string[] forschungsstation_forschungsprojekt_Eig = { "S", "P", "1", "n", "1" };
+    private string[] forschungsstation_forschungsprojekt = { "organisiert", "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für" };
+    public string[] forschungsstation_forschungsprojekt_Eig;
 
     //PS Attribut mit 1 setzten für das jeweilige Level
     // Reihenfolge von Attributen 0 kein Ps, 1 PS
@@ -143,8 +140,8 @@ public class ERAufgabe : MonoBehaviour
 
     //Anzahl der Elemente pro Level      lvl{ 0, 1, 2, 3, 4, 5, 6, 7 }
     private int[] entitysRichtig = { 1, 1, 1, 1, 1, 0, 2, 1 };
-    private int[] attributeRichtig = { 0, 0, 0, 0, 0, 0, 0, 0 };//{ 4, 4, 4, 3, 5, 0, 7, 5 };
-    private int[] primaerschluesselRichtig = { 0, 0, 0, 0, 0, 0, 0, 0 };//{ 1, 2, 1, 1, 2, 0, 3, 1 };
+    private int[] attributeRichtig ;//{ 4, 4, 4, 3, 5, 0, 7, 5 };
+    private int[] primaerschluesselRichtig;//{ 1, 2, 1, 1, 2, 0, 3, 1 };
     private int[] beziehungenRichtig = { 0, 1, 1, 1, 3, 2, 2, 3 };
     private int[] kardRichtig = { 0, 2, 2, 2, 6, 4, 4, 6 }; //2 pro Relation
 
@@ -155,7 +152,7 @@ public class ERAufgabe : MonoBehaviour
     private int[] kardHat;
 
     //Anzahl der Objekte, die im LvL sind (#EM + #Attribute + #Relationen)
-    private int[] anzahlObjekte = { 1, 2, 2, 2, 4, 2, 4, 4 }; //{ 5, 6, 6, 5, 9, 2, 11, 9 };
+    private int[] anzahlObjekte; //{ 5, 6, 6, 5, 9, 2, 11, 9 };
 
     public GameObject dasIstSchonFertig;
     public GameObject aufgabenText;
@@ -206,6 +203,18 @@ public class ERAufgabe : MonoBehaviour
                                         new string[] { "N", "St" },  /*LvL 6*/
                                         new string[] { "We" },                 /*LvL 7*/   
                                     };
+            listeEntityPlural = new string[][]{
+                                        new string[] { "W" },               /*LvL 0*/
+                                        new string[] { "A" },                   /*LvL 1*/
+                                        new string[] { "F" },                  /*LvL 2*/
+                                        new string[] { "S" },           /*LvL 3*/
+                                        new string[] { "P" },           /*LvL 4*/
+                                        new string[] {  },                              /*LvL 5*/
+                                        new string[] { "N", "St" },  /*LvL 6*/
+                                        new string[] { "We" },                 /*LvL 7*/   
+                                    };
+
+
             attributeRichtig = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };//{ 4, 4, 4, 3, 5, 0, 7, 5 };
             primaerschluesselRichtig = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };//{ 1, 2, 1, 1, 2, 0, 3, 1 };
 
@@ -237,6 +246,16 @@ public class ERAufgabe : MonoBehaviour
                                         new string[] {  },                              /*LvL 5*/
                                         new string[] { "Nutztier", "Stallcontainer" },  /*LvL 6*/
                                         new string[] { "Weidesphäre" },                 /*LvL 7*/   
+                                    };
+            listeEntityPlural = new string[][]{
+                                        new string[] { "Wohncontainer" },               /*LvL 0*/
+                                        new string[] { "Astronauten" },                   /*LvL 1*/
+                                        new string[] { "Feldsphären" },                  /*LvL 2*/
+                                        new string[] { "Forschungsstationen" },           /*LvL 3*/
+                                        new string[] { "Forschungsprojekte" },           /*LvL 4*/
+                                        new string[] {  },                              /*LvL 5*/
+                                        new string[] { "Nutztiere", "Stallcontainer" },  /*LvL 6*/
+                                        new string[] { "Weidesphären" },                 /*LvL 7*/   
                                     };
             attributeRichtig = new int[] { 4, 4, 4, 3, 5, 0, 7, 5 };
             primaerschluesselRichtig = new int[] { 1, 2, 1, 1, 2, 0, 3, 1 };
@@ -378,7 +397,7 @@ public class ERAufgabe : MonoBehaviour
 
         int indexEntity = 0;
         checkBeziehung();
-        foreach (string entityName in listeEntity[Story.level])
+        for(int i=0;i<listeEntity[Story.level].Length;i++)
         {
             foreach (GameObject entity in ERErstellung.modellObjekte)
             {
@@ -387,9 +406,9 @@ public class ERAufgabe : MonoBehaviour
                 {
                     FehlerAnzeige.fehlertext = "Achte auf korrekte Rechtschreibung. Sp<b>h</b>äre statt Spä<b>h</b>re!";
                 }
-                if (name.Equals(entityName))
+                if (name.Equals(listeEntity[Story.level][i])|| name.Equals(listeEntityPlural[Story.level][i]))
                 {                  
-                    if (listeSchwacheEntity[Story.level] && listeEntity[Story.level][0] == entityName && entity.GetComponent<Entitaet>().schwach)
+                    if (listeSchwacheEntity[Story.level] && i==0 && entity.GetComponent<Entitaet>().schwach)
                     {
                         entitysHat[Story.level]++;
                     }
@@ -397,16 +416,21 @@ public class ERAufgabe : MonoBehaviour
                     {
                         entitysHat[Story.level]++;
                     }
-
+                    entity.GetComponent<Entitaet>().singularName = listeEntity[Story.level][i];
                     checkAttribute(indexEntity, entity);
                 }
+                
                 
             }
             indexEntity++;
         }
+        
 
         if (checkAllesRichtig())
         {
+            rechtschreibPrueferAktiv = false;
+            falschGeschriebeneNamen.Clear();
+
             //Check Sound wenn alles richtig ist
             AudioSource x = lvl_true.GetComponent<AudioSource>();
             x.Play(0);
@@ -481,8 +505,8 @@ public class ERAufgabe : MonoBehaviour
                     GameObject ob1 = null;
                     GameObject ob2 = null;
                     GameObject ob12 = null;
-                    string name1 = obj.GetComponent<Beziehung>().objekt1.name.Trim(' ');
-                    string name2 = obj.GetComponent<Beziehung>().objekt2.name.Trim(' ');
+                    string name1 = obj.GetComponent<Beziehung>().objekt1.GetComponent<Entitaet>().singularName;
+                    string name2 = obj.GetComponent<Beziehung>().objekt2.GetComponent<Entitaet>().singularName;
                     //Entitäten und Kardinalität prüfen
                     if (obj.GetComponent<Beziehung>().objekt1 != null && listeBeziehungsEigenschaften[Story.level][i][0].Equals(name1))
                     {
@@ -490,7 +514,7 @@ public class ERAufgabe : MonoBehaviour
                         {
                             ob1 = obj.GetComponent<Beziehung>().objekt1;
                             ob12 = obj.GetComponent<Beziehung>().objekt2;
-                            nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt2.name.Trim(' '); 
+                            nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt2.GetComponent<Entitaet>().singularName;
                         }
                         if (checkKard(obj, 1, i, 4))
                         {
@@ -509,7 +533,7 @@ public class ERAufgabe : MonoBehaviour
                         {
                             ob2 = obj.GetComponent<Beziehung>().objekt2;
                             ob12 = obj.GetComponent<Beziehung>().objekt1;
-                            nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt1.name.Trim(' ');
+                            nameAnderesEnitity = obj.GetComponent<Beziehung>().objekt1.GetComponent<Entitaet>().singularName;
                         }
                         if (checkKard(obj, 2, i, 4))
                         {
@@ -568,11 +592,16 @@ public class ERAufgabe : MonoBehaviour
                     bool temp = true;
                     foreach (string name in listeBeziehungen[Story.level][i])
                     {
+                       
                         if ((obj.name.Trim(' ')).Equals(name))
                         {
                             allesDa &= true;
                             temp = false;
                             break;
+                        }
+                        else if (rechtschreibPrueferAktiv && SpellChecking.rechtschreibPruefer(obj.name).Equals(name) && !falschGeschriebeneNamen.Contains(obj.name))
+                        {
+                            falschGeschriebeneNamen.Add(obj.name);
                         }
                     }
                     if (temp)
@@ -705,6 +734,14 @@ public class ERAufgabe : MonoBehaviour
 
         beziehungKardRichtig = (beziehungenRichtig[i] == beziehungenHat[i]) && (kardHat[i] == kardRichtig[i]);
 
+        if (beziehungenRichtig[i]+1 == beziehungenHat[i]||  ( attributeRichtig[i]- attributeHat[i]<=2 && attributeRichtig[i] != attributeHat[i]))
+        {
+            rechtschreibPrueferAktiv = true;
+            ausgabe &= false;
+        }
+        else { rechtschreibPrueferAktiv = false; }
+
+
         int count = 0;
         foreach (GameObject obj in ERErstellung.modellObjekte)
         {
@@ -713,6 +750,7 @@ public class ERAufgabe : MonoBehaviour
                 count++;
             }
         }
+        
         if (count == anzahlObjekte[Story.level])
         {
             ausgabe &= true;
@@ -733,6 +771,32 @@ public class ERAufgabe : MonoBehaviour
                 FehlerAnzeige.fehlertext = "trigger";
             }
         }
+        if (rechtschreibPrueferAktiv && falschGeschriebeneNamen.Count>0)
+        {
+            while (falschGeschriebeneNamen.Contains(""))
+            {
+                falschGeschriebeneNamen.Remove("");
+            }
+            string fehlerNachricht = "Die Bezeichnungen ";
+            foreach(string wort in falschGeschriebeneNamen)
+            {
+                fehlerNachricht += wort + ", ";
+            }
+            fehlerNachricht = fehlerNachricht.Substring(0,fehlerNachricht.Length - 2);
+            if (falschGeschriebeneNamen.Count == 1)
+            {
+                fehlerNachricht += " ist falsch geschrieben.";
+            }else
+            {
+                fehlerNachricht += " sind falsch geschrieben.";
+            }
+            FehlerAnzeige.fehlertext = fehlerNachricht;
+            falschGeschriebeneNamen.Clear();
+        }
+        else
+        {
+            FehlerAnzeige.fehlertext = "trigger";
+        }
 
 
         return ausgabe;
@@ -749,6 +813,8 @@ public class ERAufgabe : MonoBehaviour
                 foreach (string attributName in attributNamesMoeglichkeiten)
                 {
                     string name = attribut.name.Trim(' ');
+                    
+
                     if (name.Equals(attributName))
                     {
                         attributeHat[Story.level]++;
@@ -763,6 +829,9 @@ public class ERAufgabe : MonoBehaviour
                         schonGefunden = true;
                         break;
 
+                    }else if (rechtschreibPrueferAktiv && SpellChecking.rechtschreibPruefer(name).Equals(attributName) && !falschGeschriebeneNamen.Contains(name))
+                    {
+                        falschGeschriebeneNamen.Add(name);
                     }
                 }
 

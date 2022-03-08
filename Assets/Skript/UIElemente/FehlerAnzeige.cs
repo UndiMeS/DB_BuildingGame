@@ -39,7 +39,9 @@ public class FehlerAnzeige : MonoBehaviour
                 tutorialanzeige_Spiel.SetActive(true);
             }else if(!fehlertext.Equals("Es sind zu viele Objekte.")&& 
                !fehlertext.Equals("Es dürfen keine zwei Beziehungen zwischen den gleichen Entitäten existieren.")&&
-               !fehlertext.Equals("Achte auf korrekte Rechtschreibung. Sphäre statt Spähre!")){
+               !fehlertext.Equals("Achte auf korrekte Rechtschreibung. Sphäre statt Spähre!") &&
+               !fehlertext.Contains("Die Bezeichnungen"))
+            {
                     Invoke("Zuruek",5);//anzeige des Fehlertextes fuer 2s, dann wieder auf "" zurückgesetz  
                 
             }      

@@ -11,10 +11,11 @@ public class HighlightButton : MonoBehaviour
     private float schnelligkeit=1.5f;
 
     public void Update()
-    {  
-            if (highlinghtingOn)
-            {  
-                if ((int)(Time.time / schnelligkeit) % 2 == 0&& einmal)
+    {
+        if (highlinghtingOn)
+            
+            {
+            if ((int)(Time.time / schnelligkeit) % 2 == 0&& einmal)
                 {
                     gameObject.GetComponent<Image>().CrossFadeAlpha(0f, schnelligkeit, true);
                     einmal=false;
