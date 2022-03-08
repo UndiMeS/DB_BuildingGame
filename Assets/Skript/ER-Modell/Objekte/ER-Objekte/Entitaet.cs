@@ -19,13 +19,15 @@ public class Entitaet : MonoBehaviour
     public float x;
     public float y;
 
+    public string singularName;
+
     public GameObject vaterEntitaet;
     public GameObject schwacheBeziehung;
     public List<GameObject> attribute;
     public List<GameObject> primaerschluessel;
     public List<GameObject> beziehungen;
 
-    public string singularName;
+    
     
     public void Update()
     {
@@ -67,6 +69,7 @@ public class Entitaet : MonoBehaviour
         beziehungenID = ent.beziehungenID;
         x = ent.x;
         y = ent.y;
+        singularName = ent.singularName;
     }
 
     public void attributloeschen(GameObject selectedGameObjekt)

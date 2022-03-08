@@ -139,6 +139,9 @@ public class Tutorial : MonoBehaviour
         //Vorbereitung der Komponenten
         containerKiller.SetActive(false);
         //konventionsFenster.SetActive(false);
+
+
+        //Screenshot
         if (ZertifikatErstellen.abkuerzer || (Story.lvl[7] == true && Mission.missionsLevel[5] == true && Mission.missionsLevel[9] == false))
         {
             bZusatz.enabled = false;
@@ -152,12 +155,11 @@ public class Tutorial : MonoBehaviour
             HighlightMarsOption.GetComponent<HighlightButton>().highlinghtingOn = true;
             HighlightERDOption.GetComponent<HighlightButton>().highlinghtingOn = true;
 
-            HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false;
+            
             HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightERDLeisteUntenEntity.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightERDLeisteUntenAttribut.GetComponent<HighlightButton>().highlinghtingOn = false;
-            HighlightERDLeisteUntenBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
-            HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDLeisteUntenBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;            
             HighlightMarsMission.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightWohncontainer.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
@@ -170,7 +172,51 @@ public class Tutorial : MonoBehaviour
             HighlightZusatz.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightErtrag.GetComponent<HighlightButton>().highlinghtingOn = false;
 
-            //Zur Erde zurückkehren
+            if (Mission.screenshotER && !Mission.screenshotSpiel)
+            {
+                HighlightMarsOption.GetComponent<HighlightButton>().highlinghtingOn = true;
+                HighlightERDOption.GetComponent<HighlightButton>().highlinghtingOn = false;
+                HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = true;
+                HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false;
+            }else if (!Mission.screenshotER && Mission.screenshotSpiel)
+            {
+                HighlightMarsOption.GetComponent<HighlightButton>().highlinghtingOn = false;
+                HighlightERDOption.GetComponent<HighlightButton>().highlinghtingOn = true;
+                HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = false;
+                HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = true;
+            }
+            else if (!Mission.screenshotER && !Mission.screenshotSpiel)
+            {
+                HighlightMarsOption.GetComponent<HighlightButton>().highlinghtingOn = true;
+                HighlightERDOption.GetComponent<HighlightButton>().highlinghtingOn = true;
+                HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = false;
+                HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false;
+            }
+            else if (Mission.screenshotER && Mission.screenshotSpiel)
+            {
+                HighlightMarsOption.GetComponent<HighlightButton>().highlinghtingOn = false;
+                HighlightERDOption.GetComponent<HighlightButton>().highlinghtingOn = false;
+                HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = true;
+                HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false;
+            }
+
+
+        }//zur Erde zurückkehren
+        else if ((Story.lvl[7] == true && Mission.missionsLevel[9] == true) || Mission.screenshotMission)
+        {
+            HighlightMarsOption.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDOption.GetComponent<HighlightButton>().highlinghtingOn = false;
+
+            if (zurErdeClick == false)
+            {
+                FehlerAnzeige.tutorialtext_Spiel = "Hervorragend! Deine Marsmission ist erfolgreich beendet. Du kannst nun noch weiter deine Siedlung erweitern oder zur Erde zurückkehren, um dein Missionszertifikat zu erhalten!";
+                FehlerAnzeige.tutorialtext_ER = "Hervorragend! Deine Marsmission ist erfolgreich beendet. Du kannst nun noch weiter deine Siedlung erweitern oder zur Erde zurückkehren, um dein Missionszertifikat zu erhalten!";
+            }
+            else
+            {
+                FehlerAnzeige.tutorialtext_Spiel = "Herzlichen Glückwunsch zu deinem Missionszertifikat! Das Spiel wird nun automatisch beendet!";
+            }
+            //Falls kein Tutorialhinweis geplant ist, so gib bei erfülltem ER-Level einen Standarttext aus
         }
         //Zeitpunkt: Neues Spiel gestartet und Wechsel in ER-Editor
         else if (Story.lvl[0] == false && Mission.missionsLevel[6] == false)
@@ -506,24 +552,8 @@ public class Tutorial : MonoBehaviour
             FehlerAnzeige.tutorialtext_Spiel = "Deine Siedlung ist nun grundsätzlich aufgebaut, muss jedoch noch umfangreich erweitert werden. Tipp: Vielleicht kannst du durch intelligentes Forschen deine letzte Mission einfacher erfüllen!";
             FehlerAnzeige.tutorialtext_ER = "Du hast es geschafft. Dein ER-Diagramm ist für diese Siedlung komplett! Auf zu deinen letzten Missionen!";
 
-            //Screenshots erstellen
         }
-        else if (Story.lvl[7] == true && Mission.missionsLevel[9] == true)
-        {
-            HighlightMarsOption.GetComponent<HighlightButton>().highlinghtingOn = false;
-            HighlightERDOption.GetComponent<HighlightButton>().highlinghtingOn = false;
-
-            if (zurErdeClick == false)
-            {
-                FehlerAnzeige.tutorialtext_Spiel = "Hervorragend! Deine Marsmission ist erfolgreich beendet. Du kannst nun noch weiter deine Siedlung erweitern oder zur Erde zurückkehren, um dein Missionszertifikat zu erhalten!";
-                FehlerAnzeige.tutorialtext_ER = "Hervorragend! Deine Marsmission ist erfolgreich beendet. Du kannst nun noch weiter deine Siedlung erweitern oder zur Erde zurückkehren, um dein Missionszertifikat zu erhalten!";
-            }
-            else
-            {
-                FehlerAnzeige.tutorialtext_Spiel = "Herzlichen Glückwunsch zu deinem Missionszertifikat! Das Spiel wird nun automatisch beendet!";
-            }
-            //Falls kein Tutorialhinweis geplant ist, so gib bei erfülltem ER-Level einen Standarttext aus
-        }
+        
         else if (Story.lvl[7] == false && ERAufgabe.missionCheck == false)
         {
             FehlerAnzeige.tutorialtext_Spiel = "";

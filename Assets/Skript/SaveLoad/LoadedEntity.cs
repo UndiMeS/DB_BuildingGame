@@ -9,6 +9,7 @@ public class LoadedEntity
     public int instanceID;
     public int vaterEntitaetID;
     public int schwacheBeziehungID;
+    public string singularName;
     public List<int> attributeID;
     public List<int> primaerschluesselID;
     public List<int> beziehungenID;

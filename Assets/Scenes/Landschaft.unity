@@ -26292,30 +26292,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1923305765}
-        m_TargetAssemblyTypeName: ZertifikatErstellen, Assembly-CSharp
-        m_MethodName: KnopfGedrueckt
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1493995339}
-        m_TargetAssemblyTypeName: SaveLoad, Assembly-CSharp
-        m_MethodName: speichern
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1005837856}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Weiterspielen
@@ -26368,6 +26344,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1923305765}
+        m_TargetAssemblyTypeName: ZertifikatErstellen, Assembly-CSharp
+        m_MethodName: KnopfGedrueckt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1493995339}
+        m_TargetAssemblyTypeName: SaveLoad, Assembly-CSharp
+        m_MethodName: speichern
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -28128,7 +28128,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 821967011}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: WeiterspielenER
+        m_MethodName: Weiterspielen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -55341,8 +55341,20 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1005837856}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: SpielBeenden
+        m_MethodName: LadeMenu
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 206193144}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -95903,7 +95915,7 @@ MonoBehaviour:
   dd1: {fileID: 2138949200}
   dd2: {fileID: 1967986360}
   linienordner: {fileID: 163748123}
-  kamerakontroller: {fileID: 0}
+  pauseScript: {fileID: 1005837856}
   schwachEntSelected: {fileID: 21300000, guid: a0e76b41ffc740645ab49ef8455614ad, type: 3}
   schwachEnt: {fileID: 21300000, guid: 170001f73eb248a41a6661815a5823bc, type: 3}
   schwachBezSelected: {fileID: 21300000, guid: a01052f6e2c56d1499b2b13c9964366c, type: 3}
@@ -109818,8 +109830,20 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1005837856}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: SpielBeenden
+        m_MethodName: LadeMenu
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 185215405}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

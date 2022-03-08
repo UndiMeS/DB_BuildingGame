@@ -22,7 +22,7 @@ public class SaveLoadER : MonoBehaviour
     public GameObject dd2;
     public GameObject linienordner;
 
-    public KameraKontroller kamerakontroller;
+    public PauseMenu pauseScript;
 
     public Sprite schwachEntSelected;
     public Sprite schwachEnt;
@@ -40,12 +40,12 @@ public class SaveLoadER : MonoBehaviour
     public void laden()
     {
         //erCanvas.transform.position = Vector3.zero;
-        kamerakontroller.changeHintergrund(1);
+        pauseScript.changeHintergrund(1);
         ladeEntity();
         ladeAttribute();
         ladeBeziehungen();
 
-        kamerakontroller.changeHintergrund(0);
+        pauseScript.changeHintergrund(0);
 
         string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/fertigeObjekte.json");
         FertigeObjekte fertige = JsonUtility.FromJson<FertigeObjekte>(json);
@@ -130,6 +130,7 @@ public class SaveLoadER : MonoBehaviour
                 game.GetComponent<Beziehung>().linienOrdner=linienordner;
 
                 game.transform.position = new Vector3(game.GetComponent<Beziehung>().x, game.GetComponent<Beziehung>().y);
+                game.transform.localScale = new Vector3(6.172226f, 6.172226f, 6.172226f);               
 
                 game.GetComponent<TMPro.TMP_InputField>().text = game.GetComponent<Beziehung>().name;
             }
@@ -178,6 +179,7 @@ public class SaveLoadER : MonoBehaviour
                 game.GetComponent<ERObjekt>().dd3 = ddSchwach;
 
                 game.transform.position = new Vector3(game.GetComponent<Attribut>().x, game.GetComponent<Attribut>().y);
+                game.transform.localScale = new Vector3(1, 1, 1);
 
                 game.GetComponent<TMPro.TMP_InputField>().text = game.GetComponent<Attribut>().name;
             }
@@ -217,6 +219,7 @@ public class SaveLoadER : MonoBehaviour
                 }
 
                 game.transform.position = new Vector3(game.GetComponent<Entitaet>().x, game.GetComponent<Entitaet>().y);
+                game.transform.localScale = new Vector3(6.172226f, 6.172226f, 6.172226f);
                 game.GetComponent<TMPro.TMP_InputField>().text = game.GetComponent<Entitaet>().name;
             }
         }

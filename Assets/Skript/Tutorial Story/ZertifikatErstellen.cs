@@ -28,7 +28,6 @@ public class ZertifikatErstellen : MonoBehaviour
 
     public void KnopfGedrueckt()
     {
-        Mission.screenshotMission = true;
         abkuerzer = true;
         Tutorial.missionClick = false;        
     }

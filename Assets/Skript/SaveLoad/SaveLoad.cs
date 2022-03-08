@@ -116,6 +116,10 @@ public class SaveLoad : MonoBehaviour
             FrageMars.SetActive(true);
             FrageER.SetActive(true);
         }
+        else
+        {
+            Mission.screenshotMission = true;
+        }
     }
 
     public void laden()
@@ -228,6 +232,8 @@ public class SaveLoad : MonoBehaviour
             GameObject geb = Instantiate(stallPrefab, gebauedeOrdner.transform);
             Stallcontainer stall = geb.AddComponent<Stallcontainer>();
             JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", stall);//entfernt ,
+            geb.GetComponent<ObjektBewegung>().GrünesGebäude.SetActive(false);
+            geb.GetComponent<ObjektBewegung>().FinalGebäude.SetActive(true);
 
             Destroy(geb.GetComponent<ObjektBewegung>());
             geb.transform.lossyScale.Set(250,250,250);
@@ -249,6 +255,8 @@ public class SaveLoad : MonoBehaviour
             GameObject geb = Instantiate(weidePrefab, gebauedeOrdner.transform);
             Weide weide = geb.AddComponent<Weide>();
             JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", weide);//entfernt ,
+            geb.GetComponent<ObjektBewegung>().GrünesGebäude.SetActive(false);
+            geb.GetComponent<ObjektBewegung>().FinalGebäude.SetActive(true);
 
             Destroy(geb.GetComponent<ObjektBewegung>());
             geb.transform.localScale = new Vector3(1, 1, 1);
@@ -270,6 +278,8 @@ public class SaveLoad : MonoBehaviour
             GameObject geb = Instantiate(feldPrefab, gebauedeOrdner.transform);
             Feld feld = geb.AddComponent<Feld>();
             JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", feld);//entfernt ,
+            geb.GetComponent<ObjektBewegung>().GrünesGebäude.SetActive(false);
+            geb.GetComponent<ObjektBewegung>().FinalGebäude.SetActive(true);
 
             Destroy(geb.GetComponent<ObjektBewegung>());
             geb.transform.localScale = new Vector3(1, 1, 1);
@@ -291,6 +301,8 @@ public class SaveLoad : MonoBehaviour
             GameObject geb = Instantiate(forschungPrefab, gebauedeOrdner.transform);
             Forschung fos = geb.AddComponent<Forschung>();
             JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", fos);//entfernt ,
+            geb.GetComponent<ObjektBewegung>().GrünesGebäude.SetActive(false);
+            geb.GetComponent<ObjektBewegung>().FinalGebäude.SetActive(true);
 
             Destroy(geb.GetComponent<ObjektBewegung>());
             geb.transform.localScale = new Vector3(1, 1, 1);
@@ -315,6 +327,8 @@ public class SaveLoad : MonoBehaviour
             GameObject geb = Instantiate(wohncontainerPrefab, gebauedeOrdner.transform);
             Wohncontainer wohn = geb.AddComponent<Wohncontainer>();
             JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", wohn);//entfernt ,
+            geb.GetComponent<ObjektBewegung>().GrünesGebäude.SetActive(false);
+            geb.GetComponent<ObjektBewegung>().FinalGebäude.SetActive(true);
 
             Destroy(geb.GetComponent<ObjektBewegung>());
             geb.transform.rotation = Quaternion.Euler(0, 0, -180);
@@ -358,8 +372,8 @@ public class SaveLoad : MonoBehaviour
         public bool [] missionsTeilLevel8 = Mission.missionsTeilLevel8;
         public bool [] missionsTeilLevel9 = Mission.missionsTeilLevel9;
 
-        public bool finale;
-        public bool screenshotMission;
+        public bool finale = false;
+        public bool screenshotMission = false;
 
         public bool missionCheck = ERAufgabe.missionCheck;
         
