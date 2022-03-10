@@ -72,7 +72,7 @@ public class Feld : MonoBehaviour
     internal static void resetStatics()
     {
         neuErtrag = 30; //unten auch
-        nummerZaehler = 1100;
+        nummerZaehler = 1;
         preis = 70;
         arbeiterzahl = 4;
     }

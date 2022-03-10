@@ -161,7 +161,7 @@ public class Testing : MonoBehaviour
         Mission.missionsTeilLevel2 = new bool[] {false,false,false,false};
         Mission.missionsTeilLevel3 = new bool[] {false,false,false};
         Mission.missionsTeilLevel4 = new bool[] {false,false,false,false};
-        Mission.missionsTeilLevel5 = new bool[] {false,false};
+        Mission.missionsTeilLevel5 = new bool[] {false,false,false};
         Mission.missionsTeilLevel6 = new bool[] {false}; 
         Mission.missionsTeilLevel7 = new bool[] {false}; 
         Mission.missionsTeilLevel8 = new bool[] {false, false, false}; 

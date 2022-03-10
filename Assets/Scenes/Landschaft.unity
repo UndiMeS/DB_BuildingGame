@@ -2960,13 +2960,10 @@ MonoBehaviour:
   textER: {fileID: 1508547997}
   buttonMission: {fileID: 1905278430}
   MissionButtonImage: {fileID: 1112753524}
-  MissionTemp: {r: 0, g: 0, b: 0, a: 0}
   container: {fileID: 20067404}
   feld: {fileID: 1682569805}
   buttonZusatz: {fileID: 2109065769}
   ZusatzBackground: {fileID: 1844510805}
-  BackgroundTemp: {r: 0, g: 0, b: 0, a: 0}
-  IconTemp: {r: 0, g: 0, b: 0, a: 0}
   ZusatzIcon: {fileID: 59910690}
   beschreibungER: {fileID: 901882044}
   wohncontainerGebaeudeanzeige: {fileID: 243676920}
@@ -2991,6 +2988,8 @@ MonoBehaviour:
   HighlightErtrag: {fileID: 1669811888}
   HighlightMarsOption: {fileID: 1147406425}
   HighlightERDOption: {fileID: 522042689}
+  saveLoad: {fileID: 1493995339}
+  zertifikat: {fileID: 1868759485}
 --- !u!224 &54561990
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3602,7 +3601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.49803922}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15867,7 +15866,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &211956888
 Transform:
   m_ObjectHideFlags: 0
@@ -52247,6 +52246,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outro: {fileID: 1044023698}
+  MarsZertifikatKnopf: {fileID: 0}
+  MarsScreenshotKnopf: {fileID: 0}
+  ErdZertifikatKnopf: {fileID: 0}
+  ErdScreenshotKnopf: {fileID: 0}
 --- !u!224 &797408288
 RectTransform:
   m_ObjectHideFlags: 0
@@ -73584,7 +73587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: d0aa579202c7e6c4ca611a6a91643e1c, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.49803922}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -76412,18 +76415,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1493995339}
-        m_TargetAssemblyTypeName: SaveLoad, Assembly-CSharp
-        m_MethodName: speichern
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 54561989}
         m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
         m_MethodName: ClickOnZurErde
@@ -118142,7 +118133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: cbe12284677fbd34eb1939631f075dd3, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.49803922}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -120256,6 +120247,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outro: {fileID: 1044023698}
+  MarsZertifikatKnopf: {fileID: 1923305763}
+  MarsScreenshotKnopf: {fileID: 153249621}
+  ErdZertifikatKnopf: {fileID: 958258178}
+  ErdScreenshotKnopf: {fileID: 822910198}
 --- !u!1 &1869227992
 GameObject:
   m_ObjectHideFlags: 0
@@ -122594,7 +122589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1909574203
 Transform:
   m_ObjectHideFlags: 0

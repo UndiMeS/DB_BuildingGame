@@ -26,13 +26,11 @@ public class Tutorial : MonoBehaviour
     public GameObject buttonMission;
     Button bMission;
     public Image MissionButtonImage;
-    public Color MissionTemp;
+
     public GameObject container;
     public GameObject feld;
     public GameObject buttonZusatz;
     public Image ZusatzBackground;
-    public Color BackgroundTemp;
-    public Color IconTemp;
     public Image ZusatzIcon;
     Button bZusatz;
     public GameObject beschreibungER;
@@ -64,6 +62,9 @@ public class Tutorial : MonoBehaviour
     public GameObject HighlightMarsOption;
     public GameObject HighlightERDOption;
 
+    public SaveLoad saveLoad;
+    public Zertifikat zertifikat;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,15 +74,6 @@ public class Tutorial : MonoBehaviour
         }
         bZusatz = buttonZusatz.GetComponent<Button>();
         bMission = buttonMission.GetComponent<Button>();
-
-        BackgroundTemp = ZusatzBackground.color;
-        BackgroundTemp.a = 1.0f;
-
-        IconTemp = ZusatzIcon.color;
-        IconTemp.a = 1.0f;
-
-        MissionTemp = MissionButtonImage.color;
-        MissionTemp.a = 1.0f;
     }
 
     // Update is called once per frame
@@ -125,10 +117,7 @@ public class Tutorial : MonoBehaviour
         bZusatz = buttonZusatz.GetComponent<Button>();
         bMission = buttonMission.GetComponent<Button>();
         bMission.interactable = true;
-        MissionButtonImage.color = MissionTemp;
         bZusatz.interactable = true;
-        ZusatzBackground.color = BackgroundTemp;
-        ZusatzIcon.color = IconTemp;
         containerKiller.SetActive(false);
         WohncontainerTutorialPfeil.anzeigen = false;
         konventionsFenster.SetActive(false);
@@ -144,9 +133,9 @@ public class Tutorial : MonoBehaviour
         //Screenshot
         if (ZertifikatErstellen.abkuerzer || (Story.lvl[7] == true && Mission.missionsLevel[5] == true && Mission.missionsLevel[9] == false))
         {
-            bZusatz.enabled = false;
+            zertifikat.ChangeToScreenshot();
             bMission.enabled = true;
-            MissionButtonImage.color = MissionTemp;
+
 
             FehlerAnzeige.tutorialtext_Spiel = "Erstelle sowohl für die Siedlung, als auch für das ER-Diagramm einen Screenshot. Achte darauf, dass deine ganze Siedlung sichtbar ist.";
             FehlerAnzeige.tutorialtext_ER = "Achte darauf, dass deine ganzes ER-Modell sichtbar ist.";
@@ -206,6 +195,8 @@ public class Tutorial : MonoBehaviour
         {
             HighlightMarsOption.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightERDOption.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = false;
+            HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false;
 
             if (zurErdeClick == false)
             {
@@ -225,6 +216,19 @@ public class Tutorial : MonoBehaviour
             HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = true;//zu ERD gehen
             bZusatz.enabled = false;
             bMission.enabled = false;
+
+            Color temp = ZusatzBackground.color;
+            temp.a = 0.5f;
+            ZusatzBackground.color=temp;
+
+            temp = ZusatzIcon.color;
+            temp.a = 0.5f;
+            ZusatzIcon.color = temp;
+            
+            temp = MissionButtonImage.color;
+            temp.a = 0.5f;
+            MissionButtonImage.color = temp;
+
             FehlerAnzeige.tutorialtext_Spiel = "Um den Siedlungsbau zu beginnen, folge den Markierungen und öffne zuerst den ER-Editor!";
 
             //wenn noch ncith geöffnet, dann öffnet es sich
@@ -296,7 +300,20 @@ public class Tutorial : MonoBehaviour
 
             bZusatz.enabled = false;
             bMission.enabled = true;
-            MissionButtonImage.color = MissionTemp;
+
+            Color temp = ZusatzBackground.color;
+            temp.a = 0.5f;
+            ZusatzBackground.color = temp;
+
+            temp = ZusatzIcon.color;
+            temp.a = 0.5f;
+            ZusatzIcon.color = temp;
+
+            temp = MissionButtonImage.color;
+            temp.a = 1f;
+            MissionButtonImage.color = temp;
+
+
             FehlerAnzeige.tutorialtext_Spiel = "Schau dir nun deine Mission an!";
             FehlerAnzeige.tutorialtext_ER = "Sehr gut! Tipp: Halte das Diagramm durch Verschiebung per Drag'n'Drop übersichtlich!\n Wechsel zurück in die Siedlung!";
 
@@ -349,7 +366,20 @@ public class Tutorial : MonoBehaviour
             }
 
             missionClick = false;
+            bMission.enabled = true;
+
             bZusatz.enabled = false;
+            Color temp = ZusatzBackground.color;
+            temp.a = 0.5f;
+            ZusatzBackground.color = temp;
+
+            temp = ZusatzIcon.color;
+            temp.a = 0.5f;
+            ZusatzIcon.color = temp;
+
+            temp = MissionButtonImage.color;
+            temp.a = 1f;
+            MissionButtonImage.color = temp;
             GebaeudeAnzeige.allesAus = true;
 
             //Zeitpunkt: ER-Level 1 fertig (Astronauten) und wechsel zur Mission (Astronauten)
@@ -408,6 +438,19 @@ public class Tutorial : MonoBehaviour
 
 
             bZusatz.enabled = false;
+            bMission.enabled = true;
+
+            Color temp = ZusatzBackground.color;
+            temp.a = 0.5f;
+            ZusatzBackground.color = temp;
+
+            temp = ZusatzIcon.color;
+            temp.a = 0.5f;
+            ZusatzIcon.color = temp;
+
+            temp = MissionButtonImage.color;
+            temp.a = 1;
+            MissionButtonImage.color = temp;
 
             //Zeitpunkt: Mission 1 (Astronauten einfliegen) fertig und Wechsel in ER-Editor (Feldsphäre)
         }
@@ -428,13 +471,24 @@ public class Tutorial : MonoBehaviour
             HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = !beschreibungER.activeSelf; //an aus
 
             bZusatz.enabled = true;
+            bMission.enabled = true;
 
-            ZusatzBackground.color = BackgroundTemp;
-            ZusatzIcon.color = IconTemp;
+            Color temp = ZusatzBackground.color;
+            temp.a = 1;
+            ZusatzBackground.color = temp;
+
+            temp = ZusatzIcon.color;
+            temp.a = 1;
+            ZusatzIcon.color = temp;
+
+            temp = MissionButtonImage.color;
+            temp.a = 1;
+            MissionButtonImage.color = temp;
+
             missionClick = false;
 
             Beziehung bez;
-            if (ERErstellung.selectedGameObjekt.TryGetComponent(out bez) && !ERAufgabe.beziehungKardRichtig)
+            if (ERErstellung.selectedGameObjekt.TryGetComponent(out bez) && !ERAufgabe.gespeicherteObjekte.Contains(ERErstellung.selectedGameObjekt) && !ERAufgabe.beziehungKardRichtig)
             {
                 HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = true;
             }
@@ -451,8 +505,23 @@ public class Tutorial : MonoBehaviour
         {
             bZusatz.interactable = true;
 
-            ZusatzBackground.color = BackgroundTemp;
-            ZusatzIcon.color = IconTemp;
+
+
+            bZusatz.enabled = true;
+            bMission.enabled = true;
+
+            Color temp = ZusatzBackground.color;
+            temp.a = 1;
+            ZusatzBackground.color = temp;
+
+            temp = ZusatzIcon.color;
+            temp.a = 1;
+            ZusatzIcon.color = temp;
+
+            temp = MissionButtonImage.color;
+            temp.a = 1;
+            MissionButtonImage.color = temp;
+
             HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = false;
@@ -505,6 +574,7 @@ public class Tutorial : MonoBehaviour
         }
         else if ((Story.lvl[2] == true && Story.lvl[3] == false) && (Mission.missionsLevel[1] == true && Mission.missionsLevel[7] == false))
         {
+            HighlightZusatz.GetComponent<HighlightButton>().highlinghtingOn = false;
             FehlerAnzeige.tutorialtext_Spiel = "Klasse! Erweitere erneut dein ER-Diagramm!";
             FehlerAnzeige.tutorialtext_ER = "";
             HighlightErtrag.GetComponent<HighlightButton>().highlinghtingOn = false;
@@ -598,6 +668,10 @@ public class Tutorial : MonoBehaviour
     public void ClickOnZurErde()
     {
         zurErdeClick = true;
+        if (!ZertifikatErstellen.abkuerzer)
+        {
+            saveLoad.speichern();
+        }
     }
 
     public void ClickOnKonvention()

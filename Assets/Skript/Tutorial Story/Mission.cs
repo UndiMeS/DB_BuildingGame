@@ -620,7 +620,7 @@ public class Mission : MonoBehaviour
                     hacken2.SetActive(true);
                     zwischenziel2 = 1; 
                     missionsTeilLevel5[1] = true;
-                }
+                }Debug.Log(Testing.umsatz + " " + System.Convert.ToInt32(mission[5][7]));
                 if(missionsTeilLevel5[2] || Testing.umsatz >= System.Convert.ToInt32(mission[5][7]))
                 {
                     hacken3.SetActive(true);

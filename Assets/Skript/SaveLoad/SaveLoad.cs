@@ -234,6 +234,7 @@ public class SaveLoad : MonoBehaviour
             JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", stall);//entfernt ,
             geb.GetComponent<ObjektBewegung>().GrünesGebäude.SetActive(false);
             geb.GetComponent<ObjektBewegung>().FinalGebäude.SetActive(true);
+            geb.GetComponent<GebäudeAnimation>().GebäudeAnzeige.SetActive(true);
 
             Destroy(geb.GetComponent<ObjektBewegung>());
             geb.transform.lossyScale.Set(250,250,250);
@@ -257,6 +258,7 @@ public class SaveLoad : MonoBehaviour
             JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", weide);//entfernt ,
             geb.GetComponent<ObjektBewegung>().GrünesGebäude.SetActive(false);
             geb.GetComponent<ObjektBewegung>().FinalGebäude.SetActive(true);
+            geb.GetComponent<GebäudeAnimation>().GebäudeAnzeige.SetActive(true);
 
             Destroy(geb.GetComponent<ObjektBewegung>());
             geb.transform.localScale = new Vector3(1, 1, 1);
@@ -280,11 +282,14 @@ public class SaveLoad : MonoBehaviour
             JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", feld);//entfernt ,
             geb.GetComponent<ObjektBewegung>().GrünesGebäude.SetActive(false);
             geb.GetComponent<ObjektBewegung>().FinalGebäude.SetActive(true);
+            geb.GetComponent<GebäudeAnimation>().GebäudeAnzeige.SetActive(true);
+            geb.GetComponent<GebäudeAnimation>().GebäudeAnzeige.transform.localPosition = new Vector3( -3.9f, -15.8f, -1.7f);
+            Destroy(geb.GetComponent<GebäudeAnimation>());
 
             Destroy(geb.GetComponent<ObjektBewegung>());
             geb.transform.localScale = new Vector3(1, 1, 1);
             geb.transform.rotation = Quaternion.Euler(0, 0, 0);
-            geb.transform.position = Testing.grid.GetWorldPosition(feld.x, feld.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
+            geb.transform.position = Testing.grid.GetWorldPosition(feld.x, feld.y) + new Vector3(Testing.zellengroesse / 2, 3*Testing.zellengroesse / 2, 0);
             Testing.grid.SetWert(feld.x, feld.y, 2, geb);
 
             Testing.felder.Add(feld);
@@ -303,11 +308,12 @@ public class SaveLoad : MonoBehaviour
             JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", fos);//entfernt ,
             geb.GetComponent<ObjektBewegung>().GrünesGebäude.SetActive(false);
             geb.GetComponent<ObjektBewegung>().FinalGebäude.SetActive(true);
+            geb.GetComponent<GebäudeAnimation>().GebäudeAnzeige.SetActive(true);
 
             Destroy(geb.GetComponent<ObjektBewegung>());
             geb.transform.localScale = new Vector3(1, 1, 1);
             geb.transform.rotation = Quaternion.Euler(0, 0, 0);
-            geb.transform.position = Testing.grid.GetWorldPosition(fos.x, fos.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, 0);
+            geb.transform.position = Testing.grid.GetWorldPosition(fos.x, fos.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, -15);
             Testing.grid.SetWert(fos.x, fos.y, 3, geb);
 
             Testing.forschungsstationen.Add(fos);
@@ -329,6 +335,8 @@ public class SaveLoad : MonoBehaviour
             JsonUtility.FromJsonOverwrite(split[i].Remove(0, 1) + "}", wohn);//entfernt ,
             geb.GetComponent<ObjektBewegung>().GrünesGebäude.SetActive(false);
             geb.GetComponent<ObjektBewegung>().FinalGebäude.SetActive(true);
+            geb.GetComponent<GebäudeAnimation>().GebäudeAnzeige.SetActive(true);
+            Destroy(geb.GetComponent<GebäudeAnimation>());
 
             Destroy(geb.GetComponent<ObjektBewegung>());
             geb.transform.rotation = Quaternion.Euler(0, 0, -180);

@@ -14,6 +14,11 @@ public class Zertifikat : MonoBehaviour
     string path = null;
     public GameObject outro;
 
+    public GameObject MarsZertifikatKnopf;
+    public GameObject MarsScreenshotKnopf;
+    public GameObject ErdZertifikatKnopf;
+    public GameObject ErdScreenshotKnopf;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -131,5 +136,13 @@ public class Zertifikat : MonoBehaviour
         Mission.missionsLevel[5] = true;
         Mission.missionsTeilLevel5 = new bool[] { true, true, true };
         Mission.screenshotMission = true;
+    }
+
+    public void ChangeToScreenshot()
+    {
+        MarsZertifikatKnopf.SetActive(false);
+        MarsScreenshotKnopf.SetActive(true);
+        ErdZertifikatKnopf.SetActive(false);
+        ErdScreenshotKnopf.SetActive(true);
     }
 }
