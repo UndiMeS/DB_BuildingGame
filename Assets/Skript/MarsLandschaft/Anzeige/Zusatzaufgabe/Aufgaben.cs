@@ -48,6 +48,43 @@ public class Aufgaben : MonoBehaviour
     public GameObject sound_true;
     public GameObject sound_false;
 
+    public TMPro.TextMeshProUGUI aufgabenstellung;
+    public List<string> inhalt_aufgabenstellung = new List<string> {
+        "Benenne die Kardinalität der Beziehung “gehtIn”!",
+        "Benenne die Kardinalität der Beziehung “unterrichtetVon”!",
+        "Benenne die Kardinalität der Beziehung “istIn”!",
+        "Benenne die Kardinalität der Beziehung “verheiratetMit”!",
+        "Welche Kardinalität steht für folgende Beschreibung?",
+        "Welche Kardinalität steht für folgende Beschreibung?",
+        "Benenne die Kardinalität der Beziehung “parktIn”!",
+        "Benenne die Kardinalität der Beziehung “gezeigtIn”!",
+        "Benenne die Kardinalität der Beziehung “ausüben”!"
+    };
+    public GameObject image;
+    public List<Sprite> inhalt_image;
+    public TMPro.TextMeshProUGUI text;
+    public List<string> inhalt_text = new List<string> {
+        "","","","",
+        "Jeder Entität der Entitätsmenge A können mehrere Objekte der Entitätsmenge B zugeordnet werden. Umgekehrt kann jedoch jeder Entität aus B nur eine Entität aus A zugeordnet werden.",
+        "Jeder Entität der Entitätsmenge A wird genau eine Entität der Entitätsmenge B zugeordnet. Gleiches gilt für die Zuordnung der Entitäten von B  auf A.",
+        "","",""
+    };
+    public TMPro.TextMeshProUGUI anwortA;
+    public List<string> inhalt_anwortA = new List<string> {
+        "1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1"
+    };
+    public TMPro.TextMeshProUGUI anwortB;
+    public List<string> inhalt_anwortB = new List<string> {
+        "1 : n","1 : n","1 : n","1 : n","1 : n","1 : n","1 : n","1 : n","1 : n"   };
+    public TMPro.TextMeshProUGUI anwortC;
+    public List<string> inhalt_anwortC = new List<string> {
+        "n : 1","n : 1","n : 1","n : 1","n : 1","n : 1","n : 1","n : 1","n : 1"
+            };
+    public TMPro.TextMeshProUGUI anwortD;
+    public List<string> inhalt_anwortD = new List<string> {
+        "n : m","n : m","n : m","n : m","n : m","n : m","n : m","n : m","n : m"    };
+
+
     public void Start()
     {
         if (!OhneSchwacheEntity.schwachAus)
@@ -104,9 +141,9 @@ public class Aufgaben : MonoBehaviour
         secondchance[12] = "Es ist zwar selten, jedoch kommt es vor, dass zwei Bücher mit gleichen Namen zu selben zeit veröffentlicht werden. ";
         secondchance[13] = "Laut Wikipedia ist die die Internationale Standartbuchnummer (ISBN) “eine Nummer zur eindeutigen Kennzeichnung von Büchern [...]“.";
         secondchance[14] = "Hast du schon einmal davon gehört, dass in einer Klasse zwei Schüler oder Schülerinnen den gleichen Namen haben?";
-        secondchance[15] = "Achte auf die Primärschlüssel der Entitymenge und die Kardinalität.";
+        secondchance[15] = "Achte auf die Primärschlüssel der Entitätsmenge und die Kardinalität.";
         secondchance[16] = "Welcher Bereich auf der Rechnung beschreibt die gekauften Artikel? Dort stehen die Attribute!";
-        secondchance[17] = "Es gibt auch eine Entitymenge „Rechnung“. Achte auf ALLE Attribute der Entitymenge „Kunde“.";
+        secondchance[17] = "Es gibt auch eine Entitätsmenge „Rechnung“. Achte auf ALLE Attribute der Entitätsmenge „Kunde“.";
         secondchance[18] = "Hast du schon einmal Artikel in einem Sportgeschäft gekauft und eine Rechnung/Quittung erhalten? Wie viele waren das? Waren die Artikel auch nach deinem Kauf noch im Laden auf Lager?";
         secondchance[19] = "Tipp: Ein Kunde kauft an einem gewissen Tag in dem Geschäft ein und bezahlt einen bestimmten Preis. Und wir benötigen noch einen Primärschlüssel!";
         secondchance[20] = "An einem Tag werden in dem Sporthaus 300 Rechnungen ausgestellt. Welche Attributwerte könnten doppelt vorkommen?";
@@ -284,7 +321,16 @@ public class Aufgaben : MonoBehaviour
         toogle.toggleOff();
         if (welcheAufgabe < aufgabenListe.Count)
         {
-            gameObject.GetComponent<Image>().sprite = aufgabenListe[welcheAufgabe];
+            //gameObject.GetComponent<Image>().sprite = aufgabenListe[welcheAufgabe];
+            aufgabenstellung.SetText(inhalt_aufgabenstellung[welcheAufgabe]);
+            image.SetActive(inhalt_image[welcheAufgabe] != null);
+            image.GetComponent<Image>().sprite = inhalt_image[welcheAufgabe];
+            image.GetComponent<Image>().SetNativeSize();
+            text.SetText(inhalt_text[welcheAufgabe]);
+            anwortA.SetText(inhalt_anwortA[welcheAufgabe]);
+            anwortB.SetText(inhalt_anwortB[welcheAufgabe]);
+            anwortC.SetText(inhalt_anwortC[welcheAufgabe]);
+            anwortD.SetText(inhalt_anwortD[welcheAufgabe]);
         }
         exitKnopfHinweis.SetActive(false);
         clearAnzeige();
