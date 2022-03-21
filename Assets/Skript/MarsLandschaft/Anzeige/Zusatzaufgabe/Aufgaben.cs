@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Aufgaben : MonoBehaviour
 {
@@ -48,8 +49,8 @@ public class Aufgaben : MonoBehaviour
     public GameObject sound_true;
     public GameObject sound_false;
 
-    public TMPro.TextMeshProUGUI aufgabenstellung;
-    public List<string> inhalt_aufgabenstellung = new List<string> {
+    public GameObject aufgabenstellung;
+    private List<string> inhalt_aufgabenstellung = new List<string> {
         "Benenne die Kardinalität der Beziehung “gehtIn”!",
         "Benenne die Kardinalität der Beziehung “unterrichtetVon”!",
         "Benenne die Kardinalität der Beziehung “istIn”!",
@@ -58,31 +59,61 @@ public class Aufgaben : MonoBehaviour
         "Welche Kardinalität steht für folgende Beschreibung?",
         "Benenne die Kardinalität der Beziehung “parktIn”!",
         "Benenne die Kardinalität der Beziehung “gezeigtIn”!",
-        "Benenne die Kardinalität der Beziehung “ausüben”!"
+        "Benenne die Kardinalität der Beziehung “ausüben”!",
+        "Bestimme den Primärschlüssel, bzw. die Schlüsselattribute für die Entitätsmenge Mensch.",
+        "Bestimme den Primärschlüssel, bzw. die Schlüsselattribute für die Entitätsmenge Film.",
+        "Bestimme den Primärschlüssel, bzw. die Schlüsselattribute für die Entitätsmenge Buch.",
+        "Bestimme den Primärschlüssel, bzw. die Schlüsselattribute für die Entitätsmenge Buch.",
+        "Bestimme den Primärschlüssel, bzw. die Schlüsselattribute für die Entitätsmenge Schüler.",
+        "",
+        "Gegeben ist folgende Rechnung eines Sporthandels. Welche Attribute besitzt die Entitätsmenge „Artikel“?",
+        "Gegeben ist folgende Rechnung eines Sporthandels. In einem ER-Diagramm zu diesem Sporthandel existiert eine Relation “enthält” zwischen Rechnung und Artikel.\nBenenne die Kardinalität dieser Relation!",
     };
     public GameObject image;
     public List<Sprite> inhalt_image;
     public TMPro.TextMeshProUGUI text;
-    public List<string> inhalt_text = new List<string> {
+    private List<string> inhalt_text = new List<string> {
         "","","","",
         "Jeder Entität der Entitätsmenge A können mehrere Objekte der Entitätsmenge B zugeordnet werden. Umgekehrt kann jedoch jeder Entität aus B nur eine Entität aus A zugeordnet werden.",
         "Jeder Entität der Entitätsmenge A wird genau eine Entität der Entitätsmenge B zugeordnet. Gleiches gilt für die Zuordnung der Entitäten von B  auf A.",
-        "","",""
+        "","","","","","","",
+        "",
+        "","",
+
     };
     public TMPro.TextMeshProUGUI anwortA;
-    public List<string> inhalt_anwortA = new List<string> {
-        "1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1"
+    private List<string> inhalt_anwortA = new List<string> {
+        "1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1",
+        "n : 1 und n : 1",
+        "Handynummer","Hauptperson und Name","Name und Erscheinungsdatum","Name und Erscheinungsdatum","Geschlecht und E-Mail",
+        "",
+        "Artikelnummer, Preis","1 : 1"
     };
     public TMPro.TextMeshProUGUI anwortB;
-    public List<string> inhalt_anwortB = new List<string> {
-        "1 : n","1 : n","1 : n","1 : n","1 : n","1 : n","1 : n","1 : n","1 : n"   };
+    private List<string> inhalt_anwortB = new List<string> {
+        "1 : n","1 : n","1 : n","1 : n","1 : n","1 : n","1 : n","1 : n","1 : n",
+        "n : m und n : m",
+        "Personalausweisnummer","Name","Erscheinungsdatum und Autor","Name und ISBN","E-Mail",
+        "",
+        "Beschreibung, Farbe, Größe","1 : n"
+    };
     public TMPro.TextMeshProUGUI anwortC;
-    public List<string> inhalt_anwortC = new List<string> {
-        "n : 1","n : 1","n : 1","n : 1","n : 1","n : 1","n : 1","n : 1","n : 1"
+    private List<string> inhalt_anwortC = new List<string> {
+        "n : 1","n : 1","n : 1","n : 1","n : 1","n : 1","n : 1","n : 1","n : 1",
+        "1 : n und n : m",
+        "Adresse", "Erscheinungsdatum und Hauptperson", "Autor und Name und Erscheinungsdatum", "Autor und Name und Erscheinungsdatum","Name und Klasse",
+        "",
+        "Artikelnummer, Rechnungsnummer", "n : 1"
+
             };
     public TMPro.TextMeshProUGUI anwortD;
-    public List<string> inhalt_anwortD = new List<string> {
-        "n : m","n : m","n : m","n : m","n : m","n : m","n : m","n : m","n : m"    };
+    private List<string> inhalt_anwortD = new List<string> {
+        "n : m","n : m","n : m","n : m","n : m","n : m","n : m","n : m","n : m",
+        "1 : 1 und 1 : n",
+        "Name und Geburtstag", "Name und Erscheinungsdatum","Name","ISBN","Name und E-Mail" ,
+        "",
+        "Artikelnummer, Beschreibung, Farbe, Größe, Preis", "n : m"
+    };
 
 
     public void Start()
@@ -322,7 +353,7 @@ public class Aufgaben : MonoBehaviour
         if (welcheAufgabe < aufgabenListe.Count)
         {
             //gameObject.GetComponent<Image>().sprite = aufgabenListe[welcheAufgabe];
-            aufgabenstellung.SetText(inhalt_aufgabenstellung[welcheAufgabe]);
+            aufgabenstellung.GetComponent<TextMeshProUGUI>().SetText(inhalt_aufgabenstellung[welcheAufgabe]);
             image.SetActive(inhalt_image[welcheAufgabe] != null);
             image.GetComponent<Image>().sprite = inhalt_image[welcheAufgabe];
             image.GetComponent<Image>().SetNativeSize();
@@ -331,6 +362,7 @@ public class Aufgaben : MonoBehaviour
             anwortB.SetText(inhalt_anwortB[welcheAufgabe]);
             anwortC.SetText(inhalt_anwortC[welcheAufgabe]);
             anwortD.SetText(inhalt_anwortD[welcheAufgabe]);
+
         }
         exitKnopfHinweis.SetActive(false);
         clearAnzeige();
