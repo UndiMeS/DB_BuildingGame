@@ -60,14 +60,28 @@ public class Aufgaben : MonoBehaviour
         "Benenne die Kardinalität der Beziehung “parktIn”!",
         "Benenne die Kardinalität der Beziehung “gezeigtIn”!",
         "Benenne die Kardinalität der Beziehung “ausüben”!",
+        "Gegeben ist folgendes ER-Diagramm. Benenne das passende Paar an Kardinalitäten für die Relationen “besitzt” und “nutzt” (in dieser Reihenfolge)!",
         "Bestimme den Primärschlüssel, bzw. die Schlüsselattribute für die Entitätsmenge Mensch.",
         "Bestimme den Primärschlüssel, bzw. die Schlüsselattribute für die Entitätsmenge Film.",
         "Bestimme den Primärschlüssel, bzw. die Schlüsselattribute für die Entitätsmenge Buch.",
         "Bestimme den Primärschlüssel, bzw. die Schlüsselattribute für die Entitätsmenge Buch.",
         "Bestimme den Primärschlüssel, bzw. die Schlüsselattribute für die Entitätsmenge Schüler.",
-        "",
         "Gegeben ist folgende Rechnung eines Sporthandels. Welche Attribute besitzt die Entitätsmenge „Artikel“?",
-        "Gegeben ist folgende Rechnung eines Sporthandels. In einem ER-Diagramm zu diesem Sporthandel existiert eine Relation “enthält” zwischen Rechnung und Artikel.\nBenenne die Kardinalität dieser Relation!",
+        "Gegeben ist folgende Rechnung eines Sporthandels. Welche Attribute besitzt die Entitätsmenge „Kunde“?",
+        "Gegeben ist folgende Rechnung eines Sporthandels. In einem ER-Diagramm zu diesem Sporthandel existiert eine Relation “enthält” zwischen Rechnung und Artikel.\nBenenne die Kardinalität dieser Relationship!",
+        "Gegeben ist folgende Rechnung eines Sporthandels. Welche Attribute besitzt die Entitätsmenge „Rechnung“?",
+        "Gegeben ist folgende Rechnung eines Sporthandels. Welche Attribute lassen die <b>Rechnung</b> eindeutig ermitteln?",
+        "Gegeben ist folgende Rechnung eines Sporthandels. Welche Aussage ist falsch?",
+        //Artikel Kunde
+        "Wie viele Entitätsmengen enthält das ER-Model mindestens?",
+        "Benenne die  Attribute besitzt die Entitätsmenge „Kunde“?",
+        "Bestimme den Primärschlüssel, bzw. die Schlüsselattribute für die Entitätsmenge Artikel.",
+        "Benenne die Kardinalität der Beziehung zwischen „Kunde“ und „Artikel“!",
+        //schwache
+        "Gegeben ist folgendes ER-Diagramm! Welche Entitätsmenge muss als schwach gekennzeichnet werden?",
+        "Gegeben ist folgendes ER-Diagramm! Welche Entitätsmenge muss als schwach gekennzeichnet werden?",
+        "Gegeben ist folgendes ER-Diagramm! Welche Entitätsmenge muss als schwach gekennzeichnet werden?",
+        "Bestimme die Vaterentitätsmenge und die schwache Entitätsmenge (in dieser Reihenfolge) aus diesem Text."
     };
     public GameObject image;
     public List<Sprite> inhalt_image;
@@ -76,9 +90,16 @@ public class Aufgaben : MonoBehaviour
         "","","","",
         "Jeder Entität der Entitätsmenge A können mehrere Objekte der Entitätsmenge B zugeordnet werden. Umgekehrt kann jedoch jeder Entität aus B nur eine Entität aus A zugeordnet werden.",
         "Jeder Entität der Entitätsmenge A wird genau eine Entität der Entitätsmenge B zugeordnet. Gleiches gilt für die Zuordnung der Entitäten von B  auf A.",
-        "","","","","","","",
+        "","","","","","",
         "",
-        "","",
+        "","","","","","","",
+        //Artikel Kunde
+        "Jeder Kunde kann in einem Onlineshop mehrere Artikel kaufen. Der Kunde besitzt eine Kundennummer und sein Name ist hinterlegt. Jeder Artikel besitzt eine eindeutige ID, sodass er im Lager gefunden werden kann und natürlich auch einen Namen, damit der Kunde weiß, was er kauft, sowie einen Preis.",
+        "Jeder Kunde kann in einem Onlineshop mehrere Artikel kaufen. Der Kunde besitzt eine Kundennummer und sein Name ist hinterlegt. Jeder Artikel besitzt eine eindeutige ID, sodass er im Lager gefunden werden kann und natürlich auch einen Namen, damit der Kunde weiß, was er kauft, sowie einen Preis.",
+        "Jeder Kunde kann in einem Onlineshop mehrere Artikel kaufen. Der Kunde besitzt eine Kundennummer und sein Name ist hinterlegt. Jeder Artikel besitzt eine eindeutige ID, sodass er im Lager gefunden werden kann und natürlich auch einen Namen, damit der Kunde weiß, was er kauft, sowie einen Preis.",
+        "Jeder Kunde kann in einem Onlineshop mehrere Artikel kaufen. Der Kunde besitzt eine Kundennummer und sein Name ist hinterlegt. Jeder Artikel besitzt eine eindeutige ID, sodass er im Lager gefunden werden kann und natürlich auch einen Namen, damit der Kunde weiß, was er kauft, sowie einen Preis.",
+        //schwach
+        "","","","","Für eine Zahnarztpraxis soll ein ER-Diagramm erstellt werden. Ein Patient der Praxis hat einen Namen und eine eindeutige Patientennummer. Ein Patient besitzt Zähne. Ohne Patient würden diese nicht existieren. Jeder Zahn wird einem Quadranten zugeordnet und hat eine eindeutige Nummer. Auch hat jeder Zahn einen Zustand. Jeder Zahnarzt hat einen Namen und eine eindeutige Zulassungsnummer. Ein Zahnarzt behandelt Zähne. Manchmal müssen jedoch auch mehrere Zahnärzte einen Zahn behandeln."
 
     };
     public TMPro.TextMeshProUGUI anwortA;
@@ -86,43 +107,63 @@ public class Aufgaben : MonoBehaviour
         "1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1","1 : 1",
         "n : 1 und n : 1",
         "Handynummer","Hauptperson und Name","Name und Erscheinungsdatum","Name und Erscheinungsdatum","Geschlecht und E-Mail",
-        "",
-        "Artikelnummer, Preis","1 : 1"
+        "Artikelnummer, Preis","Adresse, Name, Kundennummer","1 : 1","Rechnungsbetrag, Rechnungsdatum",
+        "Rechnungsbetrag, Rechnungsdatum","Rechnungsnummer ist Primärschlüssel	der Entitymenge Rechnung.",
+        //Artikel Kunde
+        "keine","Name und Kundenummer","Name", "1 : 1",
+        //schwach
+        "Schulgebäude","keine","Computer","keine"
     };
     public TMPro.TextMeshProUGUI anwortB;
     private List<string> inhalt_anwortB = new List<string> {
         "1 : n","1 : n","1 : n","1 : n","1 : n","1 : n","1 : n","1 : n","1 : n",
         "n : m und n : m",
         "Personalausweisnummer","Name","Erscheinungsdatum und Autor","Name und ISBN","E-Mail",
-        "",
-        "Beschreibung, Farbe, Größe","1 : n"
+        "Beschreibung, Farbe, Größe","Name, Adresse","1 : n", "Kundennummer, Artikelnummer, Rechnungsnummer",
+        "Kundennummer, Artikelnummer, Rechnungsdatum","Ein Kunde kann zwei Rechnungen mit gleichen Rechnungsbetrag erhalten.",
+        //Artikel Kunde
+        "eine","Kundennummer","ID", "1 ; n",
+        //schwach
+        "Klassenzimmer","Zeitschrift","Monitor","Patient und Zahn"
     };
     public TMPro.TextMeshProUGUI anwortC;
     private List<string> inhalt_anwortC = new List<string> {
         "n : 1","n : 1","n : 1","n : 1","n : 1","n : 1","n : 1","n : 1","n : 1",
         "1 : n und n : m",
         "Adresse", "Erscheinungsdatum und Hauptperson", "Autor und Name und Erscheinungsdatum", "Autor und Name und Erscheinungsdatum","Name und Klasse",
-        "",
-        "Artikelnummer, Rechnungsnummer", "n : 1"
-
+        "Artikelnummer, Rechnungsnummer","Rechnungsdatum, Kundennummer", "n : 1", "Kundennummer, Rechnungsnummer, Rechnungsbetrag, Rechnungsdatum",
+        "Kundennummer, Rechnungsbetrag, Rechnungsdatum","Jede Rechnung wird genau einem Kunden zugeordnet.",
+        //Artikel Kunde
+        "zwei","Kundenummer, Name, Adresse","Name und Preis","n : 1",
+        //schwach
+        "keine","Artikel","Computer und Monitor","Zahn und Patient"
             };
     public TMPro.TextMeshProUGUI anwortD;
     private List<string> inhalt_anwortD = new List<string> {
         "n : m","n : m","n : m","n : m","n : m","n : m","n : m","n : m","n : m",
         "1 : 1 und 1 : n",
         "Name und Geburtstag", "Name und Erscheinungsdatum","Name","ISBN","Name und E-Mail" ,
-        "",
-        "Artikelnummer, Beschreibung, Farbe, Größe, Preis", "n : m"
+        "Artikelnummer, Beschreibung, Farbe, Größe, Preis","Adresse, Kundennummer", "n : m","Rechnungsnummer, Name, Adresse, Rechnungsbetrag, Rechnungsdatum",
+        "Rechnungsnummer", "Beschreibung und Größe sind Schlüsselattribute der Entitätsmenge Artikel.",
+        //Artikel Kunde
+        "drei","keine","ID, Name, Preis","n : m",
+        //schwach
+        "Schulgebäude und Klassenzimmer","Zeitschrift und Artikel","keine","Zahnarzt und Zahn"
     };
 
 
     public void Start()
     {
-        if (!OhneSchwacheEntity.schwachAus)
+        if (OhneSchwacheEntity.schwachAus)
         {
-            aufgabenListe.AddRange(SchwachaufgabenListe);
-            loesungsListe.AddRange(SchwachloesungsListe);
-
+            int anzahlSchwach = 4;
+            inhalt_anwortA = inhalt_anwortA.GetRange(0, inhalt_anwortA.Count - anzahlSchwach);
+            inhalt_anwortB = inhalt_anwortB.GetRange(0, inhalt_anwortB.Count - anzahlSchwach);
+            inhalt_anwortD = inhalt_anwortD.GetRange(0, inhalt_anwortD.Count - anzahlSchwach);
+            inhalt_anwortC = inhalt_anwortC.GetRange(0, inhalt_anwortC.Count - anzahlSchwach);
+            inhalt_aufgabenstellung = inhalt_aufgabenstellung.GetRange(0, inhalt_aufgabenstellung.Count - anzahlSchwach);
+            inhalt_image = inhalt_image.GetRange(0, inhalt_image.Count - anzahlSchwach);
+            inhalt_text = inhalt_text.GetRange(0, inhalt_text.Count - anzahlSchwach);
         }
 
         //Richtige Antworten
@@ -142,14 +183,16 @@ public class Aufgaben : MonoBehaviour
         correct[12] = "C";
         correct[13] = "D";
         correct[14] = "B";
-        correct[15] = "C";
-        correct[16] = "D";
-        correct[17] = "A";
-        correct[18] = "D";
-        correct[19] = "C";
+        correct[15] = "D";
+        correct[16] = "A";
+        correct[17] = "D";
+        correct[18] = "C";
+        correct[19] = "D";
         correct[20] = "D";
-        correct[21] = "D";
-        
+        correct[21] = "C";
+        correct[22] = "A";
+        correct[23] = "B";
+        correct[24] = "D";
 
 
         level = new int[aufgabenListe.Count]; //?
@@ -172,24 +215,27 @@ public class Aufgaben : MonoBehaviour
         secondchance[12] = "Es ist zwar selten, jedoch kommt es vor, dass zwei Bücher mit gleichen Namen zu selben zeit veröffentlicht werden. ";
         secondchance[13] = "Laut Wikipedia ist die die Internationale Standartbuchnummer (ISBN) “eine Nummer zur eindeutigen Kennzeichnung von Büchern [...]“.";
         secondchance[14] = "Hast du schon einmal davon gehört, dass in einer Klasse zwei Schüler oder Schülerinnen den gleichen Namen haben?";
-        secondchance[15] = "Achte auf die Primärschlüssel der Entitätsmenge und die Kardinalität.";
-        secondchance[16] = "Welcher Bereich auf der Rechnung beschreibt die gekauften Artikel? Dort stehen die Attribute!";
-        secondchance[17] = "Es gibt auch eine Entitätsmenge „Rechnung“. Achte auf ALLE Attribute der Entitätsmenge „Kunde“.";
-        secondchance[18] = "Hast du schon einmal Artikel in einem Sportgeschäft gekauft und eine Rechnung/Quittung erhalten? Wie viele waren das? Waren die Artikel auch nach deinem Kauf noch im Laden auf Lager?";
-        secondchance[19] = "Tipp: Ein Kunde kauft an einem gewissen Tag in dem Geschäft ein und bezahlt einen bestimmten Preis. Und wir benötigen noch einen Primärschlüssel!";
-        secondchance[20] = "An einem Tag werden in dem Sporthaus 300 Rechnungen ausgestellt. Welche Attributwerte könnten doppelt vorkommen?";
-        secondchance[21] = "Das ist die letzte Aufgabe! Alle Antwortmöglichkeiten wurden in vorherigen Aufgaben thematisiert! Versuche es nochmal!";
+        secondchance[15] = "Welcher Bereich auf der Rechnung beschreibt die gekauften Artikel? Dort stehen die Attribute!";
+        secondchance[16] = "Es gibt auch eine Entitätsmenge „Rechnung“. Achte auf ALLE Attribute der Entitätsmenge „Kunde“.";
+        secondchance[17] = "Hast du schon einmal Artikel in einem Sportgeschäft gekauft und eine Rechnung/Quittung erhalten? Wie viele waren das? Waren die Artikel auch nach deinem Kauf noch im Laden auf Lager?";
+        secondchance[18] = "Tipp: Ein Kunde kauft an einem gewissen Tag in dem Geschäft ein und bezahlt einen bestimmten Preis. Und wir benötigen noch einen Primärschlüssel!";
+        secondchance[19] = "An einem Tag werden in dem Sporthaus 300 Rechnungen ausgestellt. Welche Attributwerte könnten doppelt vorkommen?";
+        secondchance[20] = "Das ist die letzte Aufgabe! Alle Antwortmöglichkeiten wurden in vorherigen Aufgaben thematisiert! Versuche es nochmal!";
+        secondchance[21] = "Um welche Subjektive geht es in den Text hauptsächlich.";
+        secondchance[22] = "Steht in dem Text irgendwas von einer Adresse?";
+        secondchance[23] = "Es kann 2 Kugelschreiber geben, die gleich heißen und den gleichen Namen haben.";
+        secondchance[24] = "Wieviele Artikel kann man kaufen und kann nicht ein Artikel von mehreren gekauft werden?";
 
         if (!OhneSchwacheEntity.schwachAus)
         {
-            secondchance[22] = "Teilen zwei Patienten sich dieselben Zähne? Und können Zähne überhaupt ohne Menschen/Patienten „existieren“?";
-            secondchance[23] = "Was geschieht mit dem Klassenzimmer, wenn das Schulgebäude abgerissen wird?";
-            secondchance[24] = "Was geschieht, wenn du die Zeitschrift in den Müll wirfst?";
-            secondchance[25] = "Was geschieht mit dem Monitor, wenn du den Computer herunterfährst oder dir einen neuen zulegst?";
-            correct[22] = "A";
-            correct[23] = "B";
-            correct[24] = "C";
-            correct[25] = "D";
+            secondchance[25] = "Was geschieht mit dem Klassenzimmer, wenn das Schulgebäude abgerissen wird?";
+            secondchance[26] = "Was geschieht, wenn du die Zeitschrift in den Müll wirfst?";
+            secondchance[27] = "Was geschieht mit dem Monitor, wenn du den Computer herunterfährst oder dir einen neuen zulegst?";
+            secondchance[28] = "Was kann nicht ohne den anderen exisiteren?";
+            correct[25] = "B";
+            correct[26] = "C";
+            correct[27] = "D";
+            correct[28] = "B";
         }
     }
     public void Update()

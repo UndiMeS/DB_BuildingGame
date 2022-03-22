@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OhneSchwacheEntity : MonoBehaviour
 {
-    public static bool schwachAus = false;
+    public static bool schwachAus = true;
     public ERAufgabe eRAufgabe;
     public ERAufgabenText eRAufgabenText;
     public GameObject schwacheEMButton;
