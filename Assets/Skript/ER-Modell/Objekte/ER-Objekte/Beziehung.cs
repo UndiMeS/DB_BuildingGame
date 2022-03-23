@@ -196,9 +196,17 @@ public class Beziehung : MonoBehaviour
             }
         }
         if(temp){
-            FehlerAnzeige.fehlertext = "Es dürfen keine zwei Beziehungen zwischen den gleichen Entitäten existieren.";
+            if (Sprache.sprache == "en")
+            {
+                FehlerAnzeige.fehlertext = "Es dürfen keine zwei Relationships zwischen den gleichen Entitymengen existieren.";
+            }
+            else
+            {
+                FehlerAnzeige.fehlertext = "Es dürfen keine zwei Beziehungen zwischen den gleichen Entitätsmengen existieren.";
+            }
         }else{
-            if(FehlerAnzeige.fehlertext.Equals("Es dürfen keine zwei Beziehungen zwischen den gleichen Entitäten existieren.")){
+            if(FehlerAnzeige.fehlertext.Equals("Es dürfen keine zwei Relationships zwischen den gleichen Entitymengen existieren.")|| FehlerAnzeige.fehlertext.Equals("Es dürfen keine zwei Beziehungen zwischen den gleichen Entitätsmengen existieren."))
+            {
                 FehlerAnzeige.fehlertext = "trigger";
             }
         }
@@ -377,7 +385,14 @@ public class Beziehung : MonoBehaviour
         }
         if (schwach && einsOderZwei == 1) //wenn Kind verändert werden will
         {
-            FehlerAnzeige.fehlertext = "Änderung der Entitäten nicht möglich!";
+            if (Sprache.sprache == "en")
+            {
+                FehlerAnzeige.fehlertext = "Änderung der Entitysmengen nicht möglich!";
+            }
+            else
+            {
+                FehlerAnzeige.fehlertext = "Änderung der Entitätsmengen nicht möglich!";
+            }
             return;
         }
 
@@ -407,7 +422,14 @@ public class Beziehung : MonoBehaviour
         {
             if (objekt1.Equals(entity))
             {
-                FehlerAnzeige.fehlertext = "Es kann keine schwache Entität zu sich selber erstellt werden.";
+                if (Sprache.sprache == "en")
+                {
+                    FehlerAnzeige.fehlertext = "Es kann keine schwache Entitymenge zu sich selber erstellt werden.";
+                }
+                else
+                {
+                    FehlerAnzeige.fehlertext = "Es kann keine schwache Entitätsmenge zu sich selber erstellt werden.";
+                }
                 return;
             }
             else if (objekt2 != null)
@@ -491,7 +513,14 @@ public class Beziehung : MonoBehaviour
         {
             if (objekt1 == null)
             {
-                FehlerAnzeige.fehlertext = "Lege zuerst die Entität fest!";
+                if (Sprache.sprache == "en")
+                {
+                    FehlerAnzeige.fehlertext = "Lege zuerst die Entitymenge fest!";
+                }
+                else
+                {
+                    FehlerAnzeige.fehlertext = "Lege zuerst die Entitätsmenge fest!";
+                }
                 return;
             }
             if (option == 0)

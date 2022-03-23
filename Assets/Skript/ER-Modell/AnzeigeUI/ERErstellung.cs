@@ -78,7 +78,7 @@ public class ERErstellung : MonoBehaviour
         }
         if (prefab.CompareTag("Beziehung") && modellObjekte.Count == 0)
         {
-            FehlerAnzeige.fehlertext = "Erstelle zuerst einen Entität.";
+            FehlerAnzeige.fehlertext = "Erstelle zuerst einen Entitätsmenge.";
             return;
         }
 
@@ -92,13 +92,13 @@ public class ERErstellung : MonoBehaviour
         if (temp.CompareTag("Attribut") && modellObjekte.Count == 0)
         {
             Destroy(temp.GetComponent<ERObjekt>());
-            FehlerAnzeige.fehlertext = "Wähle zuerst die Entität aus, zu der das Attribute gehören soll.";
+            FehlerAnzeige.fehlertext = "Wähle zuerst die Entitätsmenge aus, zu der das Attribute gehören soll.";
             Destroy(temp);
         }
         else if (temp.CompareTag("Attribut") && selectedGameObjekt!= null &&(!selectedGameObjekt.CompareTag("Entitaet") &&!selectedGameObjekt.CompareTag("Attribut")))
         {
             Destroy(temp.GetComponent<ERObjekt>());
-            FehlerAnzeige.fehlertext = "Wähle zuerst die Entität aus, zu der das Attribute gehören soll.";
+            FehlerAnzeige.fehlertext = "Wähle zuerst die Entitätsmenge aus, zu der das Attribute gehören soll.";
             Destroy(temp);
         }
         else //erzeugt neues Objekt und markiert es
@@ -156,7 +156,7 @@ public class ERErstellung : MonoBehaviour
     {
         if (selectedGameObjekt.CompareTag("Entitaet"))
         {
-            selectedGameObjekt.name = "neue Entität";
+            selectedGameObjekt.name = "neue Entitätsmenge";
         }
         else if (selectedGameObjekt.CompareTag("Attribut"))
         {
@@ -164,7 +164,15 @@ public class ERErstellung : MonoBehaviour
         }
         else if (selectedGameObjekt.CompareTag("Beziehung"))
         {
-            selectedGameObjekt.name = "neue Beziehung";
+            if (Sprache.sprache == "ge")
+            {
+                selectedGameObjekt.name = "neue Beziehung";
+            }
+            else
+            {
+                selectedGameObjekt.name = "neue Relationship";
+            }
+            
         }
     }
 
@@ -334,7 +342,15 @@ public class ERErstellung : MonoBehaviour
                 {
                     if (bez.GetComponent<Beziehung>().schwach&& selectedGameObjekt == bez.GetComponent<Beziehung>().objekt2)
                     {
-                        FehlerAnzeige.fehlertext = "Lösche zuerst die schwache Beziehung ''"+ bez.name+"''.";
+                        if (Sprache.sprache == "ge")
+                        {
+                            FehlerAnzeige.fehlertext = "Lösche zuerst die schwache Beziehung ''" + bez.name + "''.";
+                        }
+                        else
+                        {
+                            FehlerAnzeige.fehlertext = "Lösche zuerst die schwache Relationship ''" + bez.name + "''.";
+                        }
+                        
                         return;
                     }
                     if (bez.GetComponent<Beziehung>().objekt1!=null&&bez.GetComponent<Beziehung>().objekt1.Equals(selectedGameObjekt))

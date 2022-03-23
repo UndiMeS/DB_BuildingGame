@@ -349,7 +349,15 @@ public class Tutorial : MonoBehaviour
             Beziehung bez;
             if (ERErstellung.selectedGameObjekt.TryGetComponent(out bez) && !ERAufgabe.beziehungKardRichtig)
             {
-                FehlerAnzeige.tutorialtext_ER = "In Beziehung stehende Entitymengen könnne in der rechten unteren Ecke eingestellt werden.";
+                if (Sprache.sprache == "en")
+                {
+                    FehlerAnzeige.tutorialtext_ER = "In Realtion stehende Entitymengen könnne in der rechten unteren Ecke eingestellt werden.";
+                }
+                else
+                {
+                    FehlerAnzeige.tutorialtext_ER = "In Beziehung stehende Entitätsmengen könnne in der rechten unteren Ecke eingestellt werden.";
+                }
+               
                 HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = true;
             }
             else
@@ -360,7 +368,15 @@ public class Tutorial : MonoBehaviour
                 }
                 else
                 {
-                    FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Hinweis: Wird eine Entitymenge als 'schwach' gekennzeichnet, wird automatisch auch eine schwache Relation erzeugt! ";
+                    if (Sprache.sprache == "en")
+                    {
+                        FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Hinweis: Wird eine Entitymenge als 'schwach' gekennzeichnet, wird automatisch auch eine schwache Relationship erzeugt! ";
+                    }
+                    else
+                    {
+                        FehlerAnzeige.tutorialtext_ER = "Erweitere das vorhandene Diagramm mit der neuen ER-Beschreibung! \n Hinweis: Wird eine Entitätsmenge als 'schwach' gekennzeichnet, wird automatisch auch eine schwache Beziehung erzeugt! ";
+                    }
+                    
                 }
                 HighlightBeziehung.GetComponent<HighlightButton>().highlinghtingOn = false;
             }
@@ -465,7 +481,14 @@ public class Tutorial : MonoBehaviour
             WohncontainerTutorialPfeil.anzeigen = false;
 
             FehlerAnzeige.tutorialtext_Spiel = "Die ersten Siedlungsbewohner sind gelandet. Wechsel, wie nach jeder Mission in den ER-Editor!";
-            FehlerAnzeige.tutorialtext_ER = "Beim Anlegen einer Relationship musst du die entsprechenden Entitymengen noch auswählen und die gewünschte Kardinalität setzen.";
+            if (Sprache.sprache == "en")
+            {
+                FehlerAnzeige.tutorialtext_ER = "Beim Anlegen einer Beziehung musst du die entsprechenden Entitymengen noch auswählen und die gewünschte Kardinalität setzen.";
+            }
+            else
+            {
+                FehlerAnzeige.tutorialtext_ER = "Beim Anlegen einer Beziehung musst du die entsprechenden Entitätsmengen noch auswählen und die gewünschte Kardinalität setzen.";
+            }
 
             HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = true;
             HighlightERDBeschreibung.GetComponent<HighlightButton>().highlinghtingOn = !beschreibungER.activeSelf; //an aus
