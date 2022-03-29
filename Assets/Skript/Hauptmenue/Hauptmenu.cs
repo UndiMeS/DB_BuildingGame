@@ -20,11 +20,15 @@ public class Hauptmenu : MonoBehaviour
     public void Start()
     {
         Screen.SetResolution(1920, 1080, true);
-        SetFullscreen(PlayerPrefs.GetInt("Vollbild"));
-        lautstaerke.value = PlayerPrefs.GetFloat("Volume");
-        SetVolume(PlayerPrefs.GetFloat("Volume"));
-        SetSprache(PlayerPrefs.GetString("Sprache"));
-        SetSchwach(PlayerPrefs.GetInt("Schwach"));
+
+        if (!SceneManager.GetSceneByName("Landschaft").Equals(SceneManager.GetActiveScene()))
+        {
+            SetFullscreen(PlayerPrefs.GetInt("Vollbild"));
+            lautstaerke.value = PlayerPrefs.GetFloat("Volume");
+            SetVolume(PlayerPrefs.GetFloat("Volume"));
+            SetSprache(PlayerPrefs.GetString("Sprache"));
+            SetSchwach(PlayerPrefs.GetInt("Schwach"));
+        }
     }
 
     //Startknopf nach Introvideo über neues Spiel
