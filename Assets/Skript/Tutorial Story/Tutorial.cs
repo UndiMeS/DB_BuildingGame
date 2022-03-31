@@ -36,6 +36,7 @@ public class Tutorial : MonoBehaviour
     Button bZusatz;
     public GameObject beschreibungER;
     public GameObject wohncontainerGebaeudeanzeige;
+    public GameObject wohncontainerGebaeudeanzeigeTransparent;
     public GameObject konventionsFenster;
     public GameObject buttonHilfeInGame;
     public RTS_Cam.RTS_Camera RTS_Camera;
@@ -322,6 +323,7 @@ public class Tutorial : MonoBehaviour
             //Prüfe, ob Missionsbutten gedrückt wurde
             if (missionClick)
             {
+                Story.ErstesHaus = true;
                 containerKiller.SetActive(false);
                 HighlightMarsMission.GetComponent<HighlightButton>().highlinghtingOn = false;
                 HighlightWohncontainer.GetComponent<HighlightButton>().highlinghtingOn = true;
@@ -331,6 +333,7 @@ public class Tutorial : MonoBehaviour
             }
             else
             {
+                Story.ErstesHaus = false;
                 containerKiller.SetActive(true);
             }
 
@@ -338,6 +341,8 @@ public class Tutorial : MonoBehaviour
         }
         else if ((Story.lvl[0] == true && Story.lvl[1] == false) && (Mission.missionsLevel[6] == true && Mission.missionsLevel[0] == false))
         {
+
+            Story.ErstesHaus = false;
 
             HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightWohncontainer.GetComponent<HighlightButton>().highlinghtingOn = false;

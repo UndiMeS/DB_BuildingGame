@@ -84,6 +84,8 @@ public class Story : MonoBehaviour
     Button bHilfeER;
     public GameObject titelER;
 
+    public static bool ErstesHaus;
+
     void Awake()
     {
         if(offModus == false){
@@ -175,25 +177,51 @@ public class Story : MonoBehaviour
         if (lvl[0])
         {
             //Debug.Log("Level 0 korrekt");
-            transparentWohncontainer.SetActive(false);    
+
+            // if(Testing.objektGebaut <3)
+            // {
+            //     
+            // }
+            // else
+            // {
+            //     transparentWohncontainer.SetActive(true);
+            // }
+
+
+            if(ErstesHaus == true)
+            {
+                transparentWohncontainer.SetActive(false);
+            }
+            else
+            {
+                transparentWohncontainer.SetActive(true);
+            }
+            
+            
         }
         if(lvl[1])
         {
             //Debug.Log("Level 1 korrekt");
-            bForscher.interactable = true;
+
+            //transparentWohncontainer.SetActive(false);
+            
             bFeld.interactable = true;
-            bWeide.interactable = true;
+            
             bAlle.interactable = true;
             bWohnende.interactable = true;
         }
         if(lvl[2])
         {
             //Debug.Log("Level 2 korrekt");
+            ErstesHaus = true;
+            bForscher.interactable = true;
+            bWeide.interactable = true;
             transparentFeld.SetActive(false);
         }
         if(lvl[3])
         {
             //Debug.Log("Level 3 korrekt");
+            
             transparentForschungsstation.SetActive(false);
         }
         if(lvl[4])
