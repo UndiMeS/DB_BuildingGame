@@ -186,6 +186,19 @@ public class ERAufgabe : MonoBehaviour
 
     public GameObject levelGeschafft;
 
+
+    public GameObject[] AttributeTag;
+    public int AttributeCount;
+    public int AttributeCountTemp;
+
+    public GameObject[] EntityTag;
+    public int EntityCount;
+    public int EntityCountTemp;
+
+    public GameObject[] RelationTag;
+    public int RelationCount;
+    public int RelationCountTemp;
+
     
 
 
@@ -329,10 +342,29 @@ public class ERAufgabe : MonoBehaviour
         {
             ERAufgabenText.textAnzeigen(Story.level);
 
+            
+
+            AttributeTag = GameObject.FindGameObjectsWithTag("Attribut");
+                EntityTag = GameObject.FindGameObjectsWithTag("Entitaet");
+                RelationTag = GameObject.FindGameObjectsWithTag("Beziehung");
+
+            
+            
+
 
             //wenn die Mission erfolgreich absolviert wurde, kann wieder im ER gebastelt werden und es wird chckObjekte() ausgeführt
             if (missionCheck)
             {
+
+                
+
+             
+                AttributeCount = AttributeTag.Length - AttributeCountTemp;
+                EntityCount = EntityTag.Length - EntityCountTemp;
+                RelationCount = RelationTag.Length - RelationCountTemp;
+
+                
+
                 infobox.transform.localPosition = new Vector3(0, 0, 0);
                 bottomLeiste.SetActive(true);
                 aufgabeButton.SetActive(true);
@@ -350,6 +382,11 @@ public class ERAufgabe : MonoBehaviour
             }
             else
             {
+                AttributeCountTemp = AttributeTag.Length;
+                EntityCountTemp = EntityTag.Length;
+                RelationCountTemp = RelationTag.Length;
+
+
                 bottomLeiste.SetActive(false);
                 aufgabenFenster.SetActive(false);
                 checkbox.SetActive(false);
@@ -493,6 +530,7 @@ public class ERAufgabe : MonoBehaviour
 
     private void checkBeziehung()
     {
+        
         List<GameObject> erfolgreichbetrachtet = new List<GameObject>();
         for (int i = 0; i < listeBeziehungen[Story.level].Length; i++)
         {
@@ -682,7 +720,7 @@ public class ERAufgabe : MonoBehaviour
         bool ausgabe = true;
         int i = Story.level;
         ausgabe &= entitysHat[i] == entitysRichtig[i];
-        if (entitysHat[i] == entitysRichtig[i])
+        if (entitysHat[i] == entitysRichtig[i] && entitysRichtig[Story.level] == EntityCount)
         {
             checkliste[0].SetActive(true);
             checkliste_Namen[0].color = gruen;
@@ -693,7 +731,7 @@ public class ERAufgabe : MonoBehaviour
             checkliste_Namen[0].color = Color.black;
         }
         ausgabe &= attributeHat[i] == attributeRichtig[i];
-        if (attributeHat[i] == attributeRichtig[i])
+        if (attributeHat[i] == attributeRichtig[i] && attributeRichtig[Story.level] == AttributeCount)
         {
             checkliste[1].SetActive(true);
             checkliste_Namen[1].color = gruen;
@@ -715,7 +753,7 @@ public class ERAufgabe : MonoBehaviour
             checkliste_Namen[2].color = Color.black;
         }
         ausgabe &= beziehungenRichtig[i] == beziehungenHat[i];
-        if (beziehungenRichtig[i] == beziehungenHat[i])
+        if (beziehungenRichtig[i] == beziehungenHat[i] && beziehungenRichtig[Story.level] == RelationCount)
         {
             checkliste[3].SetActive(true);
             checkliste_Namen[3].color = gruen;
