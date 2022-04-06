@@ -60,6 +60,8 @@ public class GebaeudeAnzeige : MonoBehaviour
     public TargetSelector Target;
     public RTS_Cam.RTS_Camera Camera;
 
+    public static int GebaeudeZahl;
+
 
     // Start is called before the first frame update
     void Start()
@@ -98,11 +100,11 @@ public class GebaeudeAnzeige : MonoBehaviour
         }
         if (!ObjektBewegung.selected && Testing.gebautesObjekt != null)
         {
-            GebaeudeInfoBauen.wertFest = 0;
-            wert = Testing.objektGebaut;
-            gebaeude = Testing.grid.GetGebaeude(Testing.gebautesObjekt.transform.position);
-            Testing.gebautesObjekt = null;
-            Testing.objektGebaut = 0;
+            // GebaeudeInfoBauen.wertFest = 0;
+            // wert = Testing.objektGebaut;
+            // gebaeude = Testing.grid.GetGebaeude(Testing.gebautesObjekt.transform.position);
+            // Testing.gebautesObjekt = null;
+            //Testing.objektGebaut = 0;
         }
         if (ObjektBewegung.selected || GebaeudeInfoBauen.wertFest != 0 || allesAus)
         {

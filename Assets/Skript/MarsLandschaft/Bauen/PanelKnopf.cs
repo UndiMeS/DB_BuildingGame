@@ -16,31 +16,84 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public static GameObject gebautetsGebaeude;
     public GameObject spezialisierungsauswahl;
     public GameObject gebaeudeOrdner;
+    public static bool NochEinBau;
+    public GameObject gebaeudeTemp;
     //public Animator LandingAnimation;
 
     // Start is called before the first frame update
     void Start()
     {
         hintergrund = GetComponent<RawImage>();
+
+
+        
+        
+        
         if (gebaeudeNummer != 0)
         {
+            
             knopfGruppe.Subscribe(this);
         }
     }
     //Methode beim erzeugen eines Gebaeudes
     public void KnopfGedrueckt()
     {
-        Testing.objektGebaut = gebaeudeNummer;
-        gebautetsGebaeude = Instantiate(gebaeude);
+        
+        Debug.Log("wir sind hier PanelKnopf first " + Testing.objektGebaut);
+        
+        if(NochEinBau == false)
+        {
+            Testing.objektGebaut = this.gebaeudeNummer;
+            //Testing.gebautesObjekt = this.gebaeude;
+            Testing.GebaeudeTemp = this.gebaeude;
+            
+        }
+
+        Debug.Log("wir sind hier PanelKnopf second " + Testing.objektGebaut);
+        
+        if(Testing.GebaeudeTemp != null)
+        {
+            gebautetsGebaeude = Instantiate(Testing.GebaeudeTemp);
+            gebautetsGebaeude.transform.SetParent(gebaeudeOrdner.transform);
+        }
+        
+        
         //LandingAnimation = gebautetsGebaeude.GetComponent<Animator>();
-        gebautetsGebaeude.transform.SetParent(gebaeudeOrdner.transform);
+        
         //LandingAnimation.SetBool("Landing", true);
+        //Debug.Log("wir sind hier " + Testing.objektGebaut);
     }
 
     // Update is called once per frame
     void Update()
     {
+        
 
+        if(Testing.GebaeudeTemp != null)
+        {
+            //NochEinBau = this.gebaeudeTemp.GetComponent<ObjektBewegung>().nocheinbau;
+            
+            Debug.Log("NochEinBau directly = "+ NochEinBau);
+        }
+        
+        if(NochEinBau == true)
+        {
+            Debug.Log("NochEinBau = true");
+
+            
+            
+            //GebaeudeAnzeige.GebaeudeZahl = gebaeudeNummer;
+            KnopfGedrueckt();
+            
+            //gebaeude.GetComponent<ObjektBewegung>().nocheinbau = false;
+            NochEinBau = false;
+        }
+        // else
+        // {
+        //     Testing.GebaeudeTemp = this.gebaeude;
+        // }
+
+        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -49,6 +102,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         if (gebaeudeNummer == 0)
         {
             hintergrund.color = Color.red;
+            //Testing.GebaeudeTemp = null;
         }
     }
 
@@ -64,6 +118,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         {
             if (gebaeudeNummer == 0 && gebautetsGebaeude != null)
             {
+                Testing.GebaeudeTemp = null;
                 Testing.objektGebaut = 0;
                 ObjektBewegung.selected = false;
                 Destroy(gebautetsGebaeude.GetComponent<ObjektBewegung>());
@@ -75,6 +130,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         if (gebaeudeNummer != 0)
         {
             hintergrund.color = knopfGruppe.tabIdle;
+            
         }
         else
         {
@@ -87,6 +143,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         if (gebaeudeNummer != 0)
         {
             knopfGruppe.OnTabExit();
+            
         }
         else
         {

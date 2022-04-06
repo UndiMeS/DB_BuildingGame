@@ -1158,6 +1158,7 @@ MonoBehaviour:
   hintergrund: {fileID: 20067407}
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
+  gebaeudeTemp: {fileID: 0}
 --- !u!114 &20067407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2312,6 +2313,7 @@ MonoBehaviour:
   hintergrund: {fileID: 45016126}
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
+  gebaeudeTemp: {fileID: 0}
 --- !u!114 &45016126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2953,7 +2955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3726a15791d6ea44b8d3dd0560768ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialOff: 0
+  tutorialOff: 1
   ClickOnBeschreibungstext: 0
   containerKiller: {fileID: 1342842098}
   buttonER: {fileID: 180412312}
@@ -2968,6 +2970,7 @@ MonoBehaviour:
   ZusatzIcon: {fileID: 59910690}
   beschreibungER: {fileID: 901882044}
   wohncontainerGebaeudeanzeige: {fileID: 243676920}
+  wohncontainerGebaeudeanzeigeTransparent: {fileID: 0}
   konventionsFenster: {fileID: 1479528826}
   buttonHilfeInGame: {fileID: 1545071741}
   RTS_Camera: {fileID: 2006992626}
@@ -102029,6 +102032,7 @@ MonoBehaviour:
   hintergrund: {fileID: 1583389244}
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
+  gebaeudeTemp: {fileID: 0}
 --- !u!114 &1583389244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107570,6 +107574,7 @@ MonoBehaviour:
   hintergrund: {fileID: 1682569808}
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
+  gebaeudeTemp: {fileID: 0}
 --- !u!114 &1682569808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110852,6 +110857,15 @@ MonoBehaviour:
   infobox: {fileID: 2008418258}
   lvl_true: {fileID: 925841683}
   levelGeschafft: {fileID: 1897467843}
+  AttributeTag: []
+  AttributeCount: 0
+  AttributeCountTemp: 0
+  EntityTag: []
+  EntityCount: 0
+  EntityCountTemp: 0
+  RelationTag: []
+  RelationCount: 0
+  RelationCountTemp: 0
 --- !u!222 &1730754996
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -112897,6 +112911,7 @@ MonoBehaviour:
   hintergrund: {fileID: 1756822247}
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
+  gebaeudeTemp: {fileID: 0}
 --- !u!114 &1756822247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118158,7 +118173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4836ad1e902274242aadfc3504d79743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offModus: 0
+  offModus: 1
   transparentWohncontainer: {fileID: 865439306}
   buttonForscher: {fileID: 1566984999}
   buttonFeld: {fileID: 857717934}
@@ -125585,6 +125600,7 @@ MonoBehaviour:
   hintergrund: {fileID: 1961960878}
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
+  gebaeudeTemp: {fileID: 0}
 --- !u!114 &1961960878
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -60,6 +60,9 @@ public class Testing : MonoBehaviour
 
     public PauseMenu PauseScript;
 
+    public static GameObject GebaeudeTemp;
+    public GameObject ShowGebaeude;
+
 
   
     // Start is called before the first frame update
@@ -91,6 +94,7 @@ public class Testing : MonoBehaviour
 
     private void Update()
     {
+        ShowGebaeude = GebaeudeTemp;
         /*
         if (geld < 25 && zuvorNichtAn)
         {
