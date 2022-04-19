@@ -23,6 +23,8 @@ public class ObjektBewegung : MonoBehaviour
     public Material GrünesGebäudeRenderer;
     public Color RedHouseColor;
     public Color GreenHouseColor;
+
+    public GameObject ButtonLeisteRechts;
     public bool nocheinbau;
 
     //public bool BuildBool = true;
@@ -31,6 +33,7 @@ public class ObjektBewegung : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ButtonLeisteRechts = GameObject.Find("ButtonLeisteRechts");
         GebaeudeInfoBauen.wertFest = 0;
         selected = true;
         Testing.gebautesObjekt = gameObject;
@@ -48,13 +51,16 @@ public class ObjektBewegung : MonoBehaviour
         {
             
             //nocheinbau = true;
-            PanelKnopf.NochEinBau = true;
+            
             
             //Schaue, ob schon Gebäude an der Stelle und abfangen ob in Bildschirmflaeche
-            if (initKlasseTestePreis()&& Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
+            if (Testing.NeuesGebaeude == false && initKlasseTestePreis()&& Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
             {
                 
                 selected = false;
+                PanelKnopf.NochEinBau = true;
+
+                Debug.Log("baue das Haus");
                 GrünesGebäude.SetActive(false);
                 FinalGebäude.SetActive(true);
                 
@@ -108,7 +114,23 @@ public class ObjektBewegung : MonoBehaviour
                 selected = false;                
                 int x, y;
                 Testing.grid.GetXY(transform.position, out x, out y);
+                //Testing.objektGebaut = 0;
+                KameraKontroller.aktiviert = true;
+                PanelKnopf.gebautetsGebaeude = null;
+                Testing.gebautesObjekt = null;
+                Destroy(gameObject);
+                Destroy(GetComponent<ObjektBewegung>());
+            }
+
+            if(Testing.neuesgebaeude == true)
+            {
                 Testing.objektGebaut = 0;
+                Testing.GebaeudeTemp = null;
+
+                selected = false;                
+                int x, y;
+                Testing.grid.GetXY(transform.position, out x, out y);
+                //Testing.objektGebaut = 0;
                 KameraKontroller.aktiviert = true;
                 PanelKnopf.gebautetsGebaeude = null;
                 Testing.gebautesObjekt = null;
@@ -330,7 +352,7 @@ public class ObjektBewegung : MonoBehaviour
 
     private bool outBox(Vector3 mousePosition)
     {
-        bool temp = RectTransformUtility.RectangleContainsScreenPoint(erstellfenster.GetComponent<RectTransform>(), mousePosition,null);
+        bool temp = RectTransformUtility.RectangleContainsScreenPoint(ButtonLeisteRechts.GetComponent<RectTransform>(), mousePosition,null);
         if (!GebaeudeAnzeige.childOn) { return !temp; }
         return !temp&&!RectTransformUtility.RectangleContainsScreenPoint(infoAnzeige.GetComponent<RectTransform>(), mousePosition, null); 
     }

@@ -26,11 +26,13 @@ public class KnopfGruppe : MonoBehaviour
     {
         ResetTabs();
         knopf.hintergrund.color = tabHover;
+        Testing.NeuesGebaeude = true;
     }
 
     public void OnTabExit()
     {
         ResetTabs();
+        Testing.NeuesGebaeude = false;
     }
     public void OnTabSelected(PanelKnopf knopf)
     {

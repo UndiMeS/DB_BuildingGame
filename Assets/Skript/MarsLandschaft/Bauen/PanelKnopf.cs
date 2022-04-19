@@ -18,6 +18,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public GameObject gebaeudeOrdner;
     public static bool NochEinBau;
     public GameObject gebaeudeTemp;
+    public bool ShowOver;
     //public Animator LandingAnimation;
 
     // Start is called before the first frame update
@@ -40,14 +41,23 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     {
         
         Debug.Log("wir sind hier PanelKnopf first " + Testing.objektGebaut);
+
+        if(Testing.neuesgebaeude == true)
+        {
+            Testing.objektGebaut = this.gebaeudeNummer;
+            Testing.GebaeudeTemp = this.gebaeude;
+
+            Testing.neuesgebaeude = false;
+
+        }
         
         if(NochEinBau == false)
         {
             Testing.objektGebaut = this.gebaeudeNummer;
-            //Testing.gebautesObjekt = this.gebaeude;
             Testing.GebaeudeTemp = this.gebaeude;
             
         }
+
 
         Debug.Log("wir sind hier PanelKnopf second " + Testing.objektGebaut);
         
@@ -56,12 +66,6 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             gebautetsGebaeude = Instantiate(Testing.GebaeudeTemp);
             gebautetsGebaeude.transform.SetParent(gebaeudeOrdner.transform);
         }
-        
-        
-        //LandingAnimation = gebautetsGebaeude.GetComponent<Animator>();
-        
-        //LandingAnimation.SetBool("Landing", true);
-        //Debug.Log("wir sind hier " + Testing.objektGebaut);
     }
 
     // Update is called once per frame
@@ -79,18 +83,23 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         if(NochEinBau == true)
         {
             Debug.Log("NochEinBau = true");
-
-            
-            
-            //GebaeudeAnzeige.GebaeudeZahl = gebaeudeNummer;
             KnopfGedrueckt();
-            
-            //gebaeude.GetComponent<ObjektBewegung>().nocheinbau = false;
+            //testenObBedingungenErfuellt();
+        }
+        
+        if(Testing.objektGebaut != gebaeudeNummer)
+        {
             NochEinBau = false;
         }
-        // else
+
+
+        // if(Testing.neuesgebaeude == true)
         // {
+        //     Testing.objektGebaut = this.gebaeudeNummer;
         //     Testing.GebaeudeTemp = this.gebaeude;
+
+        //     Testing.neuesgebaeude = false;
+
         // }
 
         
@@ -98,6 +107,8 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        Testing.neuesgebaeude = true;
+        
         knopfGruppe.OnTabEnter(this);
         if (gebaeudeNummer == 0)
         {
@@ -108,9 +119,17 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
     public void OnPointerClick(PointerEventData eventData)
     {        
+        
         knopfGruppe.OnTabSelected(this);
-        if (gebaeudeNummer != 0 && Testing.objektGebaut == 0)
+
+        
+
+        
+        if (gebaeudeNummer != 0 && Testing.objektGebaut == 0 && NochEinBau == false)
         {
+            Debug.Log("test");
+            Testing.objektGebaut = gebaeudeNummer;
+        Testing.GebaeudeTemp = this.gebaeude;
             KameraKontroller.aktiviert = false;
             testenObBedingungenErfuellt();
         }
@@ -127,6 +146,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
                 KameraKontroller.aktiviert = true;
             }
         }
+        
         if (gebaeudeNummer != 0)
         {
             hintergrund.color = knopfGruppe.tabIdle;
@@ -136,10 +156,25 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         {
             hintergrund.color = Color.black;
         }
+
+
+    if(Testing.neuesgebaeude == true)
+        {
+            Testing.objektGebaut = this.gebaeudeNummer;
+            Testing.GebaeudeTemp = this.gebaeude;
+
+            Testing.neuesgebaeude = false;
+            testenObBedingungenErfuellt();
+
+        }
+        
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+
+        Testing.neuesgebaeude = false;
+        
         if (gebaeudeNummer != 0)
         {
             knopfGruppe.OnTabExit();
@@ -192,6 +227,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         {
             if (0== Testing.forscher)
             {
+                Debug.Log("Gebäude Nummer: " + gebaeudeNummer);
                 KameraKontroller.aktiviert = true;
                 GebaeudeInfoBauen.wertFest = 3;
                 FehlerAnzeige.fehlertext = "Siedle zuerst Forschungsastronauten in einem Wohncontainer mit noch freien Betten an!";
@@ -202,4 +238,16 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
         KnopfGedrueckt();
     }
+
+    // void OnMouseOver()
+    // {
+    //     Testing.NeuesGebaeude = true;
+    //     ShowOver = true;
+    // }
+
+    // void OnMouseExit()
+    // {
+    //     ShowOver = false;
+    //     Testing.NeuesGebaeude = false;
+    // }
 }
