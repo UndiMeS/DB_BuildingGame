@@ -48,14 +48,17 @@ public class Zertifikat : MonoBehaviour
         
         
         //Hintergrundbild
-        myDoc.addImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\Zertifikat.png","Hintergrund");
-        myPage.addImage(myDoc.getImageReference("Hintergrund"),0 ,0);
+        // myDoc.addImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\Zertifikat.png","Hintergrund");
+        // myPage.addImage(myDoc.getImageReference("Hintergrund"),0 ,0);
+        myPage.addImage(myDoc.getImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\Zertifikat.png"),0 ,0);
         //Spiel-Screenshot
-        myDoc.addImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\Spiel.png","Spiel");
-        myPage.addImage(myDoc.getImageReference("Spiel"),241,1692, 1044, 1878);
+        // myDoc.addImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\Spiel.png","Spiel");
+        // myPage.addImage(myDoc.getImageReference("Spiel"),241,1692, 1044, 1878);
+        myPage.addImage(myDoc.getImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\Spiel.png"),241,1692, 1044, 1878);
         //ER-Screenshot
-        myDoc.addImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\ERD.png","ERD");
-        myPage.addImage(myDoc.getImageReference("ERD"), 241,478, 1044, 1878);
+        // myDoc.addImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\ERD.png","ERD");
+        // myPage.addImage(myDoc.getImageReference("ERD"), 241,478, 1044, 1878);
+        myPage.addImage(myDoc.getImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\ERD.png"), 241,478, 1044, 1878);
 
         //Schriftgröße
         int schriftSize = 50;
