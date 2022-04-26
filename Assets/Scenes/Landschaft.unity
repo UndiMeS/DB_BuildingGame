@@ -1159,6 +1159,7 @@ MonoBehaviour:
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
   gebaeudeTemp: {fileID: 0}
+  ShowOver: 0
 --- !u!114 &20067407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2314,6 +2315,7 @@ MonoBehaviour:
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
   gebaeudeTemp: {fileID: 0}
+  ShowOver: 0
 --- !u!114 &45016126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39186,7 +39188,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1600, y: 900}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -73350,6 +73352,8 @@ MonoBehaviour:
   KameraScript: {fileID: 0}
   canvas: {fileID: 608227078}
   PauseScript: {fileID: 1005837856}
+  ShowGebaeude: {fileID: 0}
+  showNummer: 0
 --- !u!4 &1103306954
 Transform:
   m_ObjectHideFlags: 0
@@ -102033,6 +102037,7 @@ MonoBehaviour:
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
   gebaeudeTemp: {fileID: 0}
+  ShowOver: 0
 --- !u!114 &1583389244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107575,6 +107580,7 @@ MonoBehaviour:
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
   gebaeudeTemp: {fileID: 0}
+  ShowOver: 0
 --- !u!114 &1682569808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112912,6 +112918,7 @@ MonoBehaviour:
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
   gebaeudeTemp: {fileID: 0}
+  ShowOver: 0
 --- !u!114 &1756822247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125171,7 +125178,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1600, y: 900}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -125601,6 +125608,7 @@ MonoBehaviour:
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
   gebaeudeTemp: {fileID: 0}
+  ShowOver: 0
 --- !u!114 &1961960878
 MonoBehaviour:
   m_ObjectHideFlags: 0
