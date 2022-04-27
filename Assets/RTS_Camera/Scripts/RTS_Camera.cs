@@ -262,10 +262,29 @@ namespace RTS_Cam
         private void HeightCalculation()
         {
             float distanceToGround = DistanceToGround();
-            if(useScrollwheelZooming)
+            if(Input.touchCount == 2)
+            {
+                Touch touchZero = Input.GetTouch(0);
+                Touch touchOne = Input.GetTouch(1);
+
+                Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+                Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+                float prevMagnitude = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+                float currentMagnitude = (touchZero.position - touchOne.position).magnitude;
+
+                float Difference = currentMagnitude - prevMagnitude;
+
+                zoomPos += Difference * 0.01f;
+            }
+            else
+            {
+                if(useScrollwheelZooming)
                 zoomPos += ScrollWheel * Time.deltaTime * scrollWheelZoomingSensitivity;
             if (useKeyboardZooming)
                 zoomPos += ZoomDirection * Time.deltaTime * keyboardZoomingSensitivity;
+            }
+            
 
             zoomPos = Mathf.Clamp01(zoomPos);
 
