@@ -7565,8 +7565,8 @@ GameObject:
   - component: {fileID: 2040067692}
   - component: {fileID: 2040067691}
   - component: {fileID: 2040067690}
-  - component: {fileID: 2040067693}
   - component: {fileID: 2040067694}
+  - component: {fileID: 2040067693}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7648,16 +7648,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2040067689}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9420f5aea32df7646ab1a75a6346d5df, type: 3}
+  m_Script: {fileID: 11500000, guid: e188ee899633d0b49870a5ae38b7359d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  referenceMode: 0
-  x: 16
-  y: 9
-  width: 960
-  height: 540
-  onAwake: 1
-  onUpdate: 1
+  ratio: {x: 16, y: 9}
+  forceRatioOnAwake: 1
+  listenForWindowChanges: 1
+  createCameraForLetterBoxRendering: 1
+  findCamerasAutomatically: 1
+  letterBoxCameraColor: {r: 0, g: 0, b: 0, a: 1}
+  cameras: []
+  letterBoxCamera: {fileID: 0}
 --- !u!114 &2040067694
 MonoBehaviour:
   m_ObjectHideFlags: 0
