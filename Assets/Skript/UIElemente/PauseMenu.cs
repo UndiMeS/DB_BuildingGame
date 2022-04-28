@@ -212,6 +212,7 @@ public class PauseMenu : MonoBehaviour
 
     public void SwitchToER()
     {
+        Screen.SetResolution ((int)Screen.width, (int)Screen.height, true);
         ERon = true;
         SpielIstPausiert = false;
         changeHintergrund(1);
@@ -240,6 +241,7 @@ public class PauseMenu : MonoBehaviour
 
     public void SwitchToBaumenue()
     {
+        Screen.SetResolution ((int)Screen.width, (int)Screen.height, true);
         levelGeschafft.SetActive(false);
         ERon = false;
         SpielIstPausiert = false;

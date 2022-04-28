@@ -90,6 +90,7 @@ namespace RTS_Cam
         public bool useScreenEdgeInput = true;
         public float screenEdgeBorder = 25f;
 
+        public bool useTouchInput = true;
         public bool useKeyboardInput = true;
         public string horizontalAxis = "Horizontal";
         public string verticalAxis = "Vertical";
@@ -120,6 +121,10 @@ namespace RTS_Cam
         {
             get { return Input.mousePosition; }
         }
+        private Vector2 TouchInput
+        {
+            get{ return Input.GetTouch(0).position; }
+        }
 
         private float ScrollWheel
         {
@@ -129,6 +134,11 @@ namespace RTS_Cam
         private Vector2 MouseAxis
         {
             get { return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")); }
+        }
+
+        private Vector2 TouchAxis
+        {
+            get { return new Vector2(Input.touches[0].deltaPosition.x, Input.touches[0].deltaPosition.y); }
         }
 
         private int ZoomDirection
@@ -246,6 +256,18 @@ namespace RTS_Cam
             if(usePanning && Input.GetKey(panningKey) && MouseAxis != Vector2.zero)
             {
                 Vector3 desiredMove = new Vector3(-MouseAxis.x, -MouseAxis.y, 0);
+
+                desiredMove *= panningSpeed;
+                desiredMove *= Time.deltaTime;
+                desiredMove = Quaternion.Euler(new Vector3(0f, 0f, transform.eulerAngles.y)) * desiredMove;
+                desiredMove = m_Transform.InverseTransformDirection(desiredMove);
+
+                m_Transform.Translate(desiredMove, Space.Self);
+            }
+
+            if(useTouchInput && Input.touchCount == 1 && TouchAxis != Vector2.zero)
+            {
+                Vector3 desiredMove = new Vector3(-TouchAxis.x, -TouchAxis.y, 0);
 
                 desiredMove *= panningSpeed;
                 desiredMove *= Time.deltaTime;

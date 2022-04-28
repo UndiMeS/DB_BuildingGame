@@ -75,6 +75,19 @@ namespace RTS_Cam
             {
                 camera.panningKey = (KeyCode)EditorGUILayout.EnumPopup("Panning when holding: ", camera.panningKey);
                 camera.panningSpeed = EditorGUILayout.FloatField("Panning speed: ", camera.panningSpeed);
+                //camera.useTouchInput = false;
+            }
+
+            using (new HorizontalBlock())
+            {
+                GUILayout.Label("Panning with touch: ", EditorStyles.boldLabel, GUILayout.Width(170f));
+                camera.useTouchInput = EditorGUILayout.Toggle(camera.useTouchInput);
+            }
+            if(camera.useTouchInput)
+            {
+                //camera.panningKey = (KeyCode)EditorGUILayout.EnumPopup("Panning when holding: ", camera.panningKey);
+                camera.panningSpeed = EditorGUILayout.FloatField("Touch speed: ", camera.panningSpeed);
+                //camera.usePanning = false;
             }
 
             using (new HorizontalBlock())
