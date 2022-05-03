@@ -16,12 +16,12 @@ public class StopMoving : MonoBehaviour
 
         if (inBox()||moveselected())
         {
-            Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = false;
+            //Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = false;
             Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = false;
         }
         else
         {
-            Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
+            //Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
             Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;
         }
     }
@@ -46,7 +46,7 @@ public class StopMoving : MonoBehaviour
             drin = drin || RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), Input.mousePosition, null);
             drin = drin || RectTransformUtility.RectangleContainsScreenPoint(aufgabe.GetComponent<RectTransform>(), Input.mousePosition, null);
         }
-        drin = drin || RectTransformUtility.RectangleContainsScreenPoint(leisteRechts.GetComponent<RectTransform>(), Input.mousePosition, null);
+        // drin = drin || RectTransformUtility.RectangleContainsScreenPoint(leisteRechts.GetComponent<RectTransform>(), Input.mousePosition, null);
         return drin;
     }
 }

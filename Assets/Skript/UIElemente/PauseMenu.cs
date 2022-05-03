@@ -235,7 +235,7 @@ public class PauseMenu : MonoBehaviour
         RTS_CameraScript.zoomPos = lastZoomPos;
         lastZoomPos = tempZoomPos;
 
-        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
+        //Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
         Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;
     }
 
@@ -261,7 +261,7 @@ public class PauseMenu : MonoBehaviour
         RTS_CameraScript.zoomPos = lastZoomPos;
         lastZoomPos = tempZoomPos;
 
-        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
+        //Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
         Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;
 
         //levelGeschafft.SetActive(false);

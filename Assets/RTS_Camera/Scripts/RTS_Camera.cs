@@ -95,6 +95,8 @@ namespace RTS_Cam
         public string horizontalAxis = "Horizontal";
         public string verticalAxis = "Vertical";
 
+        private Vector3 touchStart;
+
         public bool usePanning = true;
         public KeyCode panningKey = KeyCode.Mouse2;
 
@@ -265,16 +267,27 @@ namespace RTS_Cam
                 m_Transform.Translate(desiredMove, Space.Self);
             }
 
-            if(useTouchInput && Input.touchCount == 1 && TouchAxis != Vector2.zero)
+            if(useTouchInput && Input.touchCount == 1 )
             {
-                Vector3 desiredMove = new Vector3(-TouchAxis.x, -TouchAxis.y, 0);
+                // Vector3 desiredMove = new Vector3(-TouchAxis.x, -TouchAxis.y, 0);
 
-                desiredMove *= panningSpeed;
-                desiredMove *= Time.deltaTime;
-                desiredMove = Quaternion.Euler(new Vector3(0f, 0f, transform.eulerAngles.y)) * desiredMove;
-                desiredMove = m_Transform.InverseTransformDirection(desiredMove);
+                // desiredMove *= panningSpeed;
+                // desiredMove *= Time.deltaTime;
+                // desiredMove = Quaternion.Euler(new Vector3(0f, 0f, transform.eulerAngles.y)) * desiredMove;
+                // desiredMove = m_Transform.InverseTransformDirection(desiredMove);
 
-                m_Transform.Translate(desiredMove, Space.Self);
+                // m_Transform.Translate(desiredMove, Space.Self);
+
+
+
+
+                if(Input.GetMouseButtonDown(0)){
+                    touchStart = GetWorldPostion(0);
+                }
+                if(Input.GetMouseButton(0)){
+                    Vector3 direction = touchStart - GetWorldPostion(0);
+                    Camera.main.transform.position += direction;
+                }
             }
         }
 
@@ -297,7 +310,7 @@ namespace RTS_Cam
 
                 float Difference = currentMagnitude - prevMagnitude;
 
-                zoomPos += Difference * 0.01f;
+                zoomPos -= Difference * 0.01f;
             }
             else
             {
@@ -404,5 +417,15 @@ namespace RTS_Cam
         }
 
         #endregion
+
+        private Vector3 GetWorldPostion(float z){
+        Ray mousePos = this.gameObject.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+        Plane ground = new Plane(Vector3.forward, new Vector3(0,0,z));
+        float distance;
+        ground.Raycast(mousePos, out distance);
+        return mousePos.GetPoint(distance);
     }
+    }
+
+    
 }
