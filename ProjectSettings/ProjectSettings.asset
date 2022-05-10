@@ -154,6 +154,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.UndiMeS.SphERe
     Standalone: com.UndiMeS.SphERe
+    iPhone: com.UndiMeS.SphERe
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -440,7 +441,9 @@ PlayerSettings:
     Android: 1
     iPhone: 1
     tvOS: 1
-  m_BuildTargetGroupLightmapEncodingQuality: []
+  m_BuildTargetGroupLightmapEncodingQuality:
+  - m_BuildTarget: iPhone
+    m_EncodingQuality: 2
   m_BuildTargetGroupLightmapSettings: []
   m_BuildTargetNormalMapEncoding: []
   playModeTestRunnerEnabled: 0

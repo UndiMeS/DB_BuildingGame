@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4482453, g: 0.49827206, b: 0.5755818, a: 1}
+  m_IndirectSpecularColor: {r: 0.4482448, g: 0.4982714, b: 0.575581, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10349,6 +10349,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 211956888}
     m_Modifications:
+    - target: {fileID: 638428678983444427, guid: d16ef0d498beb3c4b9c892dd47c8ed67,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 638428678983444427, guid: d16ef0d498beb3c4b9c892dd47c8ed67,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1431260605894719925, guid: d16ef0d498beb3c4b9c892dd47c8ed67,
         type: 3}
       propertyPath: m_TagString
@@ -16018,7 +16028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &211956888
 Transform:
   m_ObjectHideFlags: 0
@@ -16103,8 +16113,8 @@ RectTransform:
   m_Father: {fileID: 1716699979}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.37271184}
+  m_AnchorMax: {x: 1, y: 0.9999998}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -39871,7 +39881,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 367.41928, y: 92.17369}
-  m_SizeDelta: {x: 754.9796, y: 0}
+  m_SizeDelta: {x: 754.9796, y: 293.88}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &616779708
 MonoBehaviour:
@@ -122755,7 +122765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1909574203
 Transform:
   m_ObjectHideFlags: 0
@@ -127609,7 +127619,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 215266178}
   m_HandleRect: {fileID: 215266177}
   m_Direction: 2
-  m_Value: 0.9999995
+  m_Value: 0.99999994
   m_Size: 0.627288
   m_NumberOfSteps: 0
   m_OnValueChanged:
