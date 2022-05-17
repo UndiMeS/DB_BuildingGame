@@ -250,6 +250,7 @@ public class ObjektBewegung : MonoBehaviour
                 Testing.GebaeudeTemp = null;
                 GebaeudeInfoBauen.wertFest = 1;
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
+                Testing.objektGebaut = 0;
                 return false;
             }
             else
@@ -266,6 +267,7 @@ public class ObjektBewegung : MonoBehaviour
                 GebaeudeInfoBauen.wertFest = 2;
 
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
+                Testing.objektGebaut = 0;
                 return false;
             }
             else
@@ -282,6 +284,7 @@ public class ObjektBewegung : MonoBehaviour
                 GebaeudeInfoBauen.wertFest = 3;
 
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
+                Testing.objektGebaut = 0;
                 return false;
             }
             else
@@ -298,6 +301,7 @@ public class ObjektBewegung : MonoBehaviour
                 GebaeudeInfoBauen.wertFest = 4;
 
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
+                Testing.objektGebaut = 0;
                 return false;
             }
             else
@@ -314,6 +318,7 @@ public class ObjektBewegung : MonoBehaviour
                 GebaeudeInfoBauen.wertFest =5;
 
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
+                Testing.objektGebaut = 0;
                 return false;
             }
             else
