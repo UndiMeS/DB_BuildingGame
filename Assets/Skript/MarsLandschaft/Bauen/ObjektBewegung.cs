@@ -23,12 +23,9 @@ public class ObjektBewegung : MonoBehaviour
     public Material GrünesGebäudeRenderer;
     public Color RedHouseColor;
     public Color GreenHouseColor;
-<<<<<<< HEAD
 
     public GameObject ButtonLeisteRechts;
     public bool nocheinbau;
-=======
->>>>>>> parent of e240492d... direktes Bauen mehrerer Gebäude
 
     //public bool BuildBool = true;
     
@@ -48,18 +45,18 @@ public class ObjektBewegung : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        Debug.Log("wir sind hier " + Testing.objektGebaut);
         if (Input.GetMouseButtonUp(0) )
         {
-<<<<<<< HEAD
             
             //nocheinbau = true;
             
             
-=======
->>>>>>> parent of e240492d... direktes Bauen mehrerer Gebäude
             //Schaue, ob schon Gebäude an der Stelle und abfangen ob in Bildschirmflaeche
             if (Testing.NeuesGebaeude == false && initKlasseTestePreis()&& Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
             {
+                
                 selected = false;
                 PanelKnopf.NochEinBau = true;
 
@@ -98,6 +95,8 @@ public class ObjektBewegung : MonoBehaviour
 
                 
                 Destroy(GetComponent<ObjektBewegung>());
+
+                
                
             }
             else
@@ -248,6 +247,7 @@ public class ObjektBewegung : MonoBehaviour
         {
             if (Testing.geld < Wohncontainer.preis)
             {
+                Testing.GebaeudeTemp = null;
                 GebaeudeInfoBauen.wertFest = 1;
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
                 return false;
@@ -262,6 +262,7 @@ public class ObjektBewegung : MonoBehaviour
         {
             if (Testing.geld < Feld.preis)
             {
+                Testing.GebaeudeTemp = null;
                 GebaeudeInfoBauen.wertFest = 2;
 
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
@@ -277,6 +278,7 @@ public class ObjektBewegung : MonoBehaviour
         {
             if (Testing.geld < Forschung.preis)
             {
+                Testing.GebaeudeTemp = null;
                 GebaeudeInfoBauen.wertFest = 3;
 
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
@@ -292,6 +294,7 @@ public class ObjektBewegung : MonoBehaviour
         {
             if (Testing.geld < Weide.preis)
             {
+                Testing.GebaeudeTemp = null;
                 GebaeudeInfoBauen.wertFest = 4;
 
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
@@ -307,6 +310,7 @@ public class ObjektBewegung : MonoBehaviour
         {
             if (Testing.geld < Stallcontainer.preis)
             {
+                Testing.GebaeudeTemp = null;
                 GebaeudeInfoBauen.wertFest =5;
 
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";

@@ -16,27 +16,29 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public static GameObject gebautetsGebaeude;
     public GameObject spezialisierungsauswahl;
     public GameObject gebaeudeOrdner;
-<<<<<<< HEAD
     public static bool NochEinBau;
     public GameObject gebaeudeTemp;
     public bool ShowOver;
-=======
->>>>>>> parent of e240492d... direktes Bauen mehrerer Gebäude
     //public Animator LandingAnimation;
 
     // Start is called before the first frame update
     void Start()
     {
         hintergrund = GetComponent<RawImage>();
+
+
+        
+        
+        
         if (gebaeudeNummer != 0)
         {
+            
             knopfGruppe.Subscribe(this);
         }
     }
     //Methode beim erzeugen eines Gebaeudes
     public void KnopfGedrueckt()
     {
-<<<<<<< HEAD
         
         Debug.Log("wir sind hier PanelKnopf first " + Testing.objektGebaut);
 
@@ -64,19 +66,11 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             gebautetsGebaeude = Instantiate(Testing.GebaeudeTemp);
             gebautetsGebaeude.transform.SetParent(gebaeudeOrdner.transform);
         }
-=======
-        Testing.objektGebaut = gebaeudeNummer;
-        gebautetsGebaeude = Instantiate(gebaeude);
-        //LandingAnimation = gebautetsGebaeude.GetComponent<Animator>();
-        gebautetsGebaeude.transform.SetParent(gebaeudeOrdner.transform);
-        //LandingAnimation.SetBool("Landing", true);
->>>>>>> parent of e240492d... direktes Bauen mehrerer Gebäude
     }
 
     // Update is called once per frame
     void Update()
     {
-<<<<<<< HEAD
         
 
         if(Testing.GebaeudeTemp != null)
@@ -109,9 +103,6 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         // }
 
         
-=======
-
->>>>>>> parent of e240492d... direktes Bauen mehrerer Gebäude
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -122,6 +113,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         if (gebaeudeNummer == 0)
         {
             hintergrund.color = Color.red;
+            //Testing.GebaeudeTemp = null;
         }
     }
 
@@ -145,6 +137,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         {
             if (gebaeudeNummer == 0 && gebautetsGebaeude != null)
             {
+                Testing.GebaeudeTemp = null;
                 Testing.objektGebaut = 0;
                 ObjektBewegung.selected = false;
                 Destroy(gebautetsGebaeude.GetComponent<ObjektBewegung>());
@@ -157,6 +150,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         if (gebaeudeNummer != 0)
         {
             hintergrund.color = knopfGruppe.tabIdle;
+            
         }
         else
         {
@@ -184,6 +178,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         if (gebaeudeNummer != 0)
         {
             knopfGruppe.OnTabExit();
+            
         }
         else
         {
