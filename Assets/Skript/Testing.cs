@@ -60,6 +60,7 @@ public class Testing : MonoBehaviour
 
     public PauseMenu PauseScript;
 
+<<<<<<< HEAD
     public static GameObject GebaeudeTemp;
     public GameObject ShowGebaeude;
     public static bool NeuesGebaeude;
@@ -67,6 +68,8 @@ public class Testing : MonoBehaviour
     public static int gebaeudeNummer;
     public int showNummer;
 
+=======
+>>>>>>> parent of e240492d... direktes Bauen mehrerer Gebäude
 
   
     // Start is called before the first frame update
@@ -98,8 +101,11 @@ public class Testing : MonoBehaviour
 
     private void Update()
     {
+<<<<<<< HEAD
         ShowGebaeude = GebaeudeTemp;
         showNummer = objektGebaut;
+=======
+>>>>>>> parent of e240492d... direktes Bauen mehrerer Gebäude
         /*
         if (geld < 25 && zuvorNichtAn)
         {
