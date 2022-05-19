@@ -46,19 +46,19 @@ public class ObjektBewegung : MonoBehaviour
     void Update()
     {
         
-        Debug.Log("wir sind hier " + Testing.objektGebaut);
+        //Debug.Log("wir sind hier " + Testing.objektGebaut);
         if (Input.GetMouseButtonUp(0) )
         {
             
             //nocheinbau = true;
-            
-            
+            // Multiple Builds
+            //Testing.NeuesGebaeude == false && 
             //Schaue, ob schon Gebäude an der Stelle und abfangen ob in Bildschirmflaeche
-            if (Testing.NeuesGebaeude == false && initKlasseTestePreis()&& Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
+            if (initKlasseTestePreis()&& Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
             {
                 
                 selected = false;
-                PanelKnopf.NochEinBau = true;
+                //PanelKnopf.NochEinBau = true;
 
                 Debug.Log("baue das Haus");
                 GrünesGebäude.SetActive(false);
@@ -122,21 +122,22 @@ public class ObjektBewegung : MonoBehaviour
                 Destroy(GetComponent<ObjektBewegung>());
             }
 
-            if(Testing.neuesgebaeude == true)
-            {
-                Testing.objektGebaut = 0;
-                Testing.GebaeudeTemp = null;
+            // if(Testing.neuesgebaeude == true)
+            // {
+            //     Testing.objektGebaut = 0;
+            //     //multiple Builds
+            //     //Testing.GebaeudeTemp = null;
 
-                selected = false;                
-                int x, y;
-                Testing.grid.GetXY(transform.position, out x, out y);
-                //Testing.objektGebaut = 0;
-                KameraKontroller.aktiviert = true;
-                PanelKnopf.gebautetsGebaeude = null;
-                Testing.gebautesObjekt = null;
-                Destroy(gameObject);
-                Destroy(GetComponent<ObjektBewegung>());
-            }
+            //     selected = false;                
+            //     int x, y;
+            //     Testing.grid.GetXY(transform.position, out x, out y);
+            //     //Testing.objektGebaut = 0;
+            //     KameraKontroller.aktiviert = true;
+            //     PanelKnopf.gebautetsGebaeude = null;
+            //     Testing.gebautesObjekt = null;
+            //     Destroy(gameObject);
+            //     Destroy(GetComponent<ObjektBewegung>());
+            // }
         }
         if (PauseMenu.SpielIstPausiert)
         {
@@ -247,10 +248,12 @@ public class ObjektBewegung : MonoBehaviour
         {
             if (Testing.geld < Wohncontainer.preis)
             {
-                Testing.GebaeudeTemp = null;
+                //multiple Builds
+                //Testing.GebaeudeTemp = null;
+                //Testing.objektGebaut = 0;
                 GebaeudeInfoBauen.wertFest = 1;
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
-                Testing.objektGebaut = 0;
+                
                 return false;
             }
             else
@@ -263,11 +266,13 @@ public class ObjektBewegung : MonoBehaviour
         {
             if (Testing.geld < Feld.preis)
             {
-                Testing.GebaeudeTemp = null;
+                //multiple Builds
+                //Testing.GebaeudeTemp = null;
+                //Testing.objektGebaut = 0;
                 GebaeudeInfoBauen.wertFest = 2;
 
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
-                Testing.objektGebaut = 0;
+                
                 return false;
             }
             else
@@ -280,11 +285,13 @@ public class ObjektBewegung : MonoBehaviour
         {
             if (Testing.geld < Forschung.preis)
             {
-                Testing.GebaeudeTemp = null;
+                //multiple Builds
+                //Testing.GebaeudeTemp = null;
+                //Testing.objektGebaut = 0;
                 GebaeudeInfoBauen.wertFest = 3;
 
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
-                Testing.objektGebaut = 0;
+                
                 return false;
             }
             else
@@ -297,11 +304,13 @@ public class ObjektBewegung : MonoBehaviour
         {
             if (Testing.geld < Weide.preis)
             {
-                Testing.GebaeudeTemp = null;
+                //multiple Builds
+                //Testing.GebaeudeTemp = null;
+                //Testing.objektGebaut = 0;
                 GebaeudeInfoBauen.wertFest = 4;
 
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
-                Testing.objektGebaut = 0;
+                
                 return false;
             }
             else
@@ -314,11 +323,13 @@ public class ObjektBewegung : MonoBehaviour
         {
             if (Testing.geld < Stallcontainer.preis)
             {
-                Testing.GebaeudeTemp = null;
+                //multiple Builds
+                //Testing.GebaeudeTemp = null;
+                //Testing.objektGebaut = 0;
                 GebaeudeInfoBauen.wertFest =5;
 
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
-                Testing.objektGebaut = 0;
+                
                 return false;
             }
             else
@@ -358,6 +369,10 @@ public class ObjektBewegung : MonoBehaviour
     private bool outBox(Vector3 mousePosition)
     {
         bool temp = RectTransformUtility.RectangleContainsScreenPoint(ButtonLeisteRechts.GetComponent<RectTransform>(), mousePosition,null);
+        bool temptwo = RectTransformUtility.RectangleContainsScreenPoint(erstellfenster.GetComponent<RectTransform>(), mousePosition,null);
+        if(temp || temptwo == true)
+            temp = true;
+        
         if (!GebaeudeAnzeige.childOn) { return !temp; }
         return !temp&&!RectTransformUtility.RectangleContainsScreenPoint(infoAnzeige.GetComponent<RectTransform>(), mousePosition, null); 
     }

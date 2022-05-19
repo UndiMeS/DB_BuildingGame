@@ -60,7 +60,7 @@ public class Testing : MonoBehaviour
 
     public PauseMenu PauseScript;
 
-    public static GameObject GebaeudeTemp;
+    //public static GameObject GebaeudeTemp;
     public GameObject ShowGebaeude;
     public static bool NeuesGebaeude;
     public static bool neuesgebaeude;
@@ -98,7 +98,7 @@ public class Testing : MonoBehaviour
 
     private void Update()
     {
-        ShowGebaeude = GebaeudeTemp;
+        //ShowGebaeude = GebaeudeTemp;
         showNummer = objektGebaut;
         /*
         if (geld < 25 && zuvorNichtAn)
