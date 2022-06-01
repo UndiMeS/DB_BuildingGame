@@ -54,11 +54,13 @@ public class ObjektBewegung : MonoBehaviour
             // Multiple Builds
             //Testing.NeuesGebaeude == false && 
             //Schaue, ob schon Gebäude an der Stelle und abfangen ob in Bildschirmflaeche
-            if (initKlasseTestePreis()&& Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
+            if (outBoxTwo(Input.mousePosition) && initKlasseTestePreis()&& Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
             {
                 
                 selected = false;
-                //PanelKnopf.NochEinBau = true;
+                PanelKnopf.NochEinBau = false;
+
+                Testing.NeuesGebaeude = false;
 
                 Debug.Log("baue das Haus");
                 GrünesGebäude.SetActive(false);
@@ -101,25 +103,41 @@ public class ObjektBewegung : MonoBehaviour
             }
             else
             {
-                if (FehlerAnzeige.fehlertext.Equals("") && !outBox(Input.mousePosition))
+                // 
+                // PanelKnopf.NochEinBau = false;
+                //     Testing.objektGebaut = 0;
+                if (FehlerAnzeige.fehlertext.Equals("") && !outBox(Input.mousePosition) && !outBoxTwo(Input.mousePosition))
                 {
+                    
                     //GrünesGebäudeRenderer.material.SetColor("_Color", Color.red); 
                     FehlerAnzeige.fehlertext = "Wähle zum Bauen eine freie Fläche!";
+                    
                 }else if (FehlerAnzeige.fehlertext.Equals("") && !Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z))
                     {
                         FehlerAnzeige.fehlertext = "An dieser Stelle befindet sich schon ein Gebäude!";
                         //GrünesGebäudeRenderer.material.SetColor("_Color", Color.red); 
                     }
 
-                selected = false;                
-                int x, y;
-                Testing.grid.GetXY(transform.position, out x, out y);
-                //Testing.objektGebaut = 0;
-                KameraKontroller.aktiviert = true;
-                PanelKnopf.gebautetsGebaeude = null;
-                Testing.gebautesObjekt = null;
-                Destroy(gameObject);
-                Destroy(GetComponent<ObjektBewegung>());
+                    if(outBoxTwo(Input.mousePosition))
+                    {
+                        
+
+                        selected = false;                
+                        int x, y;
+                        Testing.grid.GetXY(transform.position, out x, out y);
+                        //Testing.objektGebaut = 0;
+                        KameraKontroller.aktiviert = true;
+                        PanelKnopf.gebautetsGebaeude = null;
+                        Testing.gebautesObjekt = null;
+                        Destroy(gameObject);
+                        Destroy(GetComponent<ObjektBewegung>());
+                    }
+                    else
+                    {
+                        Debug.Log("anderes Gebäude gewählt");
+                    }
+
+                    
             }
 
             // if(Testing.neuesgebaeude == true)
@@ -369,12 +387,20 @@ public class ObjektBewegung : MonoBehaviour
     private bool outBox(Vector3 mousePosition)
     {
         bool temp = RectTransformUtility.RectangleContainsScreenPoint(ButtonLeisteRechts.GetComponent<RectTransform>(), mousePosition,null);
-        bool temptwo = RectTransformUtility.RectangleContainsScreenPoint(erstellfenster.GetComponent<RectTransform>(), mousePosition,null);
-        if(temp || temptwo == true)
-            temp = true;
+        // if(temp || temptwo == true)
+        //     temp = true;
         
         if (!GebaeudeAnzeige.childOn) { return !temp; }
         return !temp&&!RectTransformUtility.RectangleContainsScreenPoint(infoAnzeige.GetComponent<RectTransform>(), mousePosition, null); 
+    }
+
+    private bool outBoxTwo(Vector3 mousePosition)
+    {
+        bool temptwo = RectTransformUtility.RectangleContainsScreenPoint(erstellfenster.GetComponent<RectTransform>(), mousePosition,null);
+        if (!GebaeudeAnzeige.childOn) { return !temptwo; }
+        return !temptwo; 
+    
+
     }
 
     /*private void GridWertSetzen2x2()

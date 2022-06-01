@@ -17,6 +17,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public GameObject spezialisierungsauswahl;
     public GameObject gebaeudeOrdner;
     public static bool NochEinBau;
+    public bool NochEinBauShow;
     public GameObject gebaeudeTemp;
     public bool ShowOver;
     //public Animator LandingAnimation;
@@ -40,6 +41,30 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public void KnopfGedrueckt()
     {
 
+        // Multiple Builds
+        if(NochEinBau == true)
+        {
+            // Testing.objektGebaut = this.gebaeudeNummer;
+            // Testing.GebaeudeTemp = this.gebaeude;
+
+            Debug.Log("anderes Gebäude gewählt");
+
+            //this.gebaeudeNummer = 0;
+            
+            
+
+                
+            NochEinBau = false;
+        }
+        
+
+        if(gebautetsGebaeude != null)
+            {
+                
+                Destroy(gebautetsGebaeude.GetComponent<ObjektBewegung>());
+                Destroy(gebautetsGebaeude);
+            }
+
         Testing.objektGebaut = gebaeudeNummer;
         gebautetsGebaeude = Instantiate(gebaeude);
         
@@ -54,14 +79,10 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         //     Testing.neuesgebaeude = false;
 
         // }
+
         
-        // Multiple Builds
-        // if(NochEinBau == false)
-        // {
-        //     Testing.objektGebaut = this.gebaeudeNummer;
-        //     Testing.GebaeudeTemp = this.gebaeude;
-            
-        // }
+        
+        
 
             Testing.objektGebaut = this.gebaeudeNummer;
             //Testing.GebaeudeTemp = this.gebaeude;
@@ -77,6 +98,8 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         //     gebautetsGebaeude.transform.SetParent(gebaeudeOrdner.transform);
         // }
 
+        NochEinBau = true;
+
 
         
     }
@@ -84,6 +107,8 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     // Update is called once per frame
     void Update()
     {
+
+        NochEinBauShow = NochEinBau;
         
 
         // if(Testing.GebaeudeTemp != null)
@@ -132,6 +157,7 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             hintergrund.color = Color.red;
             // Multiple Builds
             //Testing.GebaeudeTemp = null;
+            NochEinBau = false;
         }
     }
 
@@ -142,8 +168,8 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
         
 
-        // Multiple Builds --> && NochEinBau == false
-        if (gebaeudeNummer != 0 && Testing.objektGebaut == 0 )
+        // Multiple Builds --> && NochEinBau == false   && Testing.objektGebaut == 0
+        if (gebaeudeNummer != 0  )
         {
             Debug.Log("test");
             Testing.objektGebaut = gebaeudeNummer;
