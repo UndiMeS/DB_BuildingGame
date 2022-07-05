@@ -28,6 +28,7 @@ public class Hauptmenu : MonoBehaviour
             SetVolume(PlayerPrefs.GetFloat("Volume"));
             SetSprache(PlayerPrefs.GetString("Sprache"));
             SetSchwach(PlayerPrefs.GetInt("Schwach"));
+            SetRechtschreibung(PlayerPrefs.GetInt("Rechtschreibung"));
         }
     }
 
@@ -147,6 +148,31 @@ public class Hauptmenu : MonoBehaviour
         {
             OhneSchwacheEntity.schwachAus = true;
             schwacheEntity.isOn = true;
+        }
+    }
+
+    public void SetRechtschreibung(bool rechtschreibungAn)
+    {
+        if (rechtschreibungAn)
+        {
+            ERAufgabe.zeitZumLoesen = 0;
+            PlayerPrefs.SetInt("Rechtschreibung", 1);
+        }
+        else
+        {
+            ERAufgabe.zeitZumLoesen = 30 * 60;
+            PlayerPrefs.SetInt("Rechtschreibung", 0);
+        }
+    }
+    public void SetRechtschreibung(int rechtschreibungAn)
+    {
+        if (rechtschreibungAn == 0)
+        {
+            ERAufgabe.zeitZumLoesen = 30 * 60;
+        }
+        else
+        {
+            ERAufgabe.zeitZumLoesen = 0;
         }
     }
 }

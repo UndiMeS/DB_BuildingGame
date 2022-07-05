@@ -28,7 +28,8 @@ public class ERAufgabe : MonoBehaviour
     private bool rechtschreibPrueferAktiv = false;
     private List<string> falschGeschriebeneNamen = new List<string>();
     private float BeginningTime;
-    private float zeitZumLoesen=300; //nach 5min erscheint erst Hilfestellung für Rechtschreibfehler
+    public static float zeitZumLoesen=0; //nach 5min erscheint erst Hilfestellung für Rechtschreibfehler
+    public SpellChecking spellChecking;
 
     //Welche Attribute je EM
     private string[][] wohncontainer = {
@@ -338,6 +339,8 @@ public class ERAufgabe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (Story.level < 8)
         {
             ERAufgabenText.textAnzeigen(Story.level);
@@ -444,6 +447,7 @@ public class ERAufgabe : MonoBehaviour
             foreach (GameObject entity in ERErstellung.modellObjekte)
             {
                 string name = entity.name.Trim(' ');
+
                 if (name.ToLower().Contains("spähre"))
                 {
                     FehlerAnzeige.fehlertext = "Achte auf korrekte Rechtschreibung. Sp<b>h</b>äre statt Spä<b>h</b>re!";
@@ -461,8 +465,25 @@ public class ERAufgabe : MonoBehaviour
                     entity.GetComponent<Entitaet>().singularName = listeEntity[Story.level][i];
                     checkAttribute(indexEntity, entity);
                 }
-                
-                
+
+                if (rechtschreibPrueferAktiv&&(!entity.GetComponent<TMPro.TMP_InputField>().isFocused))
+                {
+                    if (SpellChecking.ueberpruefteWoerterFalsch.Contains(name)&& entity.GetComponent<TMPro.TMP_InputField>().textComponent.color == Color.black)
+                    {
+                        entity.GetComponent<TMPro.TMP_InputField>().textComponent.color = Color.red;
+                    }else if (SpellChecking.ueberpruefteWoerterKorrekt.Contains(name)|| SpellChecking.ueberpruefteWoerterFalsch.Contains(name))
+                    {
+
+                    }
+                    else if (spellChecking.rechtschreibPruefer(name))
+                    {
+                          entity.GetComponent<TMPro.TMP_InputField>().textComponent.color = Color.black;
+                    }
+                    
+
+                }
+
+
             }
             indexEntity++;
         }
@@ -642,10 +663,25 @@ public class ERAufgabe : MonoBehaviour
                             temp = false;
                             break;
                         }
-                        else if (rechtschreibPrueferAktiv && SpellChecking.rechtschreibPruefer(obj.name).Equals(name) && !falschGeschriebeneNamen.Contains(obj.name))
+                        if (rechtschreibPrueferAktiv && (!obj.GetComponent<TMPro.TMP_InputField>().isFocused))
                         {
-                            falschGeschriebeneNamen.Add(obj.name);
+                            if (SpellChecking.ueberpruefteWoerterFalsch.Contains(name) && obj.GetComponent<TMPro.TMP_InputField>().textComponent.color == Color.black)
+                            {
+                                obj.GetComponent<TMPro.TMP_InputField>().textComponent.color = Color.red;
+                            }
+                            else if (SpellChecking.ueberpruefteWoerterKorrekt.Contains(name) || SpellChecking.ueberpruefteWoerterFalsch.Contains(name))
+                            {
+
+                            }
+                            else if (spellChecking.rechtschreibPruefer(name))
+                            {
+                                obj.GetComponent<TMPro.TMP_InputField>().textComponent.color = Color.black;
+                            }
+
                         }
+
+
+
                     }
                     if (temp)
                     {
@@ -777,11 +813,10 @@ public class ERAufgabe : MonoBehaviour
 
         beziehungKardRichtig = (beziehungenRichtig[i] == beziehungenHat[i]) && (kardHat[i] == kardRichtig[i]);
 
-
-        if ((beziehungenRichtig[i]+1 == beziehungenHat[i]||  ( attributeRichtig[i]- attributeHat[i]<=2 && attributeRichtig[i] != attributeHat[i]))&&Time.time-BeginningTime>zeitZumLoesen)
+        //(beziehungenRichtig[i]+1 == beziehungenHat[i]||  ( attributeRichtig[i]- attributeHat[i]<=2 && attributeRichtig[i] != attributeHat[i]))&&
+        if (Time.time-BeginningTime>zeitZumLoesen)
         {
             rechtschreibPrueferAktiv = true;
-            ausgabe &= false;
         }
         else { rechtschreibPrueferAktiv = false; }
 
@@ -815,32 +850,7 @@ public class ERAufgabe : MonoBehaviour
                 FehlerAnzeige.fehlertext = "trigger";
             }
         }
-        if (rechtschreibPrueferAktiv && falschGeschriebeneNamen.Count>0)
-        {
-            while (falschGeschriebeneNamen.Contains(""))
-            {
-                falschGeschriebeneNamen.Remove("");
-            }
-            string fehlerNachricht = "Die Bezeichnungen ";
-            foreach(string wort in falschGeschriebeneNamen)
-            {
-                fehlerNachricht += wort + ", ";
-            }
-            fehlerNachricht = fehlerNachricht.Substring(0,fehlerNachricht.Length - 2);
-            if (falschGeschriebeneNamen.Count == 1)
-            {
-                fehlerNachricht += " ist falsch geschrieben.";
-            }else
-            {
-                fehlerNachricht += " sind falsch geschrieben.";
-            }
-            FehlerAnzeige.fehlertext = fehlerNachricht;
-            falschGeschriebeneNamen.Clear();
-        }
-        else
-        {
-            FehlerAnzeige.fehlertext = "trigger";
-        }
+        
 
 
         return ausgabe;
@@ -873,9 +883,23 @@ public class ERAufgabe : MonoBehaviour
                         schonGefunden = true;
                         break;
 
-                    }else if (rechtschreibPrueferAktiv && SpellChecking.rechtschreibPruefer(name).Equals(attributName) && !falschGeschriebeneNamen.Contains(name))
+                    }
+                    if (rechtschreibPrueferAktiv && (!attribut.GetComponent<TMPro.TMP_InputField>().isFocused))
                     {
-                        falschGeschriebeneNamen.Add(name);
+                        if (SpellChecking.ueberpruefteWoerterFalsch.Contains(name) && attribut.GetComponent<TMPro.TMP_InputField>().textComponent.color == Color.black)
+                        {
+                            attribut.GetComponent<TMPro.TMP_InputField>().textComponent.color = Color.red;
+                        }
+                        else if (SpellChecking.ueberpruefteWoerterKorrekt.Contains(name) || SpellChecking.ueberpruefteWoerterFalsch.Contains(name))
+                        {
+
+                        }
+                        else if (spellChecking.rechtschreibPruefer(name))
+                        {
+                            attribut.GetComponent<TMPro.TMP_InputField>().textComponent.color = Color.black;
+                        }
+
+
                     }
                 }
 

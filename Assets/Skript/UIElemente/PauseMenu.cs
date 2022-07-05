@@ -270,11 +270,11 @@ public class PauseMenu : MonoBehaviour
         LeanTween.cancel(mission);
         if (mission.transform.localPosition.y < 400)
         {
-            Debug.Log(mission.transform.localPosition);
+            //Debug.Log(mission.transform.localPosition);
             LeanTween.moveLocalY(mission, 800, 0.3f);
         }
         else{
-            Debug.Log(mission.transform.localPosition);
+            //Debug.Log(mission.transform.localPosition);
             LeanTween.moveLocalY(mission, 348, 0.3f);
         }
         

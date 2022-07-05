@@ -149,6 +149,7 @@ public class ERErstellung : MonoBehaviour
             {
                 selectedGameObjekt.GetComponent<Beziehung>().erstelleBeziehung();
             }
+            selectedGameObjekt.GetComponent<TMPro.TMP_InputField>().textComponent.color = Color.black;
         }
     }
 

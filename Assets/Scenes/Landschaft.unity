@@ -1159,6 +1159,7 @@ MonoBehaviour:
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
   gebaeudeTemp: {fileID: 0}
+  ShowOver: 0
 --- !u!114 &20067407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2314,6 +2315,7 @@ MonoBehaviour:
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
   gebaeudeTemp: {fileID: 0}
+  ShowOver: 0
 --- !u!114 &45016126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73350,6 +73352,8 @@ MonoBehaviour:
   KameraScript: {fileID: 0}
   canvas: {fileID: 608227078}
   PauseScript: {fileID: 1005837856}
+  ShowGebaeude: {fileID: 0}
+  showNummer: 0
 --- !u!4 &1103306954
 Transform:
   m_ObjectHideFlags: 0
@@ -102033,6 +102037,7 @@ MonoBehaviour:
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
   gebaeudeTemp: {fileID: 0}
+  ShowOver: 0
 --- !u!114 &1583389244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105063,6 +105068,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632119002}
   m_CullTransparentMesh: 1
+--- !u!1 &1633094750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1633094752}
+  - component: {fileID: 1633094751}
+  m_Layer: 5
+  m_Name: Spellchecking
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1633094751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633094750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab974627b306cf4bbc926dbbb67a41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &1633094752
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633094750}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1730754997}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.000000059604645}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1633488019
 GameObject:
   m_ObjectHideFlags: 0
@@ -107575,6 +107628,7 @@ MonoBehaviour:
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
   gebaeudeTemp: {fileID: 0}
+  ShowOver: 0
 --- !u!114 &1682569808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110811,6 +110865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testModus: 0
   listeSchwacheEntity: 0001000001000100
+  spellChecking: {fileID: 1633094751}
   wohncontainer_astronaut_Eig:
   - W
   - A
@@ -110886,6 +110941,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 925841684}
+  - {fileID: 1633094752}
   m_Father: {fileID: 817594681}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -112912,6 +112968,7 @@ MonoBehaviour:
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
   gebaeudeTemp: {fileID: 0}
+  ShowOver: 0
 --- !u!114 &1756822247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125601,6 +125658,7 @@ MonoBehaviour:
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
   gebaeudeTemp: {fileID: 0}
+  ShowOver: 0
 --- !u!114 &1961960878
 MonoBehaviour:
   m_ObjectHideFlags: 0
