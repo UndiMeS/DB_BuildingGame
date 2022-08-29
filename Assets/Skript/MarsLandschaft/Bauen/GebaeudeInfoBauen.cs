@@ -25,13 +25,14 @@ public class GebaeudeInfoBauen : MonoBehaviour
     {
 
         int wert = 0;
-        if (wertFest == 0)
+        if (wertFest == 0 && PanelKnopf.gebautetsGebaeude != null)
         {
              wert = Testing.objektGebaut;
         }
         else
         {
-            wert = wertFest;
+            Testing.objektGebaut = 0;
+            wert = 0;
         }
         int i = 1;
             foreach (GameObject anzeige in anzeigen)

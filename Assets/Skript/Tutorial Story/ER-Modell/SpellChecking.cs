@@ -10,6 +10,10 @@ public class SpellChecking : MonoBehaviour
     public static List<string> ueberpruefteWoerterKorrekt= new List<string>();
     public static List<string> ueberpruefteWoerterFalsch = new List<string>();
 
+    public static List<string> WORDS = new List<string>() { "", "neues Attribut", "neue Entitätsmenge", "neue Beziehung", "Kosten", "Baukosten", "Preis", "Baupreis", "Containernummer", "Cnr", "Cnr.", "CNR", "cnr", "CNr", "CNR.", "cnr.", "CNr.", "Containernr.", "Nummer", "Cnr", "Bettenzahl", "Bettenanzahl", "Betten", "Kapazität", "freie Betten", "freieBetten", "Freie Betten", "FreieBetten", "BettenFrei", "Bettenfrei", "Anreisegebühr", "Anreisegebühren", "Anreisekosten", "Kosten", "Gebühren", "Aufgabe", "Aufgaben", "Name", "Namen", "Geburtsdatum", "Geburtstag", "Arbeiterzahl", "Feldarbeiter", "Arbeiteranzahl", "Ertrag", "Feldnummer", "FNR", "Fnr", "Fnr.", "fnr", "FNr", "FNR.", "Fnr.", "FNr.", "Feldnr.", "Weidenarbeiter", "Weidearbeiter", "Anzahl Arbeiter", "Weidennummer", "Weidenummer", "Wnr", "Wnr.", "WNR", "wnr", "WNr", "WNR.", "Wnr.", "WNr.", "Weidenr.", "Weidenr.", "Tierzahl", "Tiere", "Tieranzahl", "Anzahl Tiere", "AnzahlTiere", "Transportkosten", "Transportpreis", "Art", "Tierart", "Stallnummer", "SNR", "Stallnr.", "snr", "SNr", "SNR.", "snr.", "SNr.", "Gehegezahl", "Gehegeanzahl", "Gehege", "freie Gehege", "freieGehege", "Gehege frei", "Stationsnummer", "Stationsnr.", "Spezialisierung", "Astronautenzahl", "Astronautenanzahl", "Forschungsarbeiter", "Forschungsastronauten", "Verbesserungsfaktor", "Faktor", "Verbesserung", "Stufe", "Forschungsstufe", "Merkmal", "Forschungsmerkmal", "Attribut", "Forschungsattribut", "Projektmerkmal", "arbeitet", "verantwortet", "verantwortlichFür", "verantwortlichfür", "verantwortlich", "istverantwortlichfür", "istVerantwortlichFür", "Verantwortung für", "verantwortlich für", "verantwortlich", "ist verantwortlich für", "Verantwortung für", "istverantwortlich", "istVerantwortlich", "ist verantwortlich", "wohnt in", "wohntIn", "wohnt", "wohnenIn", "wohnenIn", "wohnen", "forschtIn", "forscht in", "forscht", "forschen", "erforschen", "erforscht", "arbeitetAuf", "arbeitet auf", "arbeitet", "arbeiten", "arbeiten auf", "leben", "lebt", "helfen", "grasenAuf", "grasen auf", "helfenAuf", "helfen auf", "forschen", "verbessert", "forschtAn", "forscht an", "verbessertVon", "verbessert von", "erfoschtVon", "erforscht von", "verbessern", "MethodenVerbessern", "verbessertMethodenVon", "verbessertMethoden", "organisiert","Wohncontainer","Astronaut","Astronauten","Feldsphäre", "Feldsphären", "Forschungsstation", "Forschungsstationen", "Forschungsprojekt", "Forschungsprojekte", "Forschungsstation", "Stallcontainer","Nutztier","Nutztiere","Weidesphäre", "Weidesphären" };
+
+
+
     public void Awake()
     {
         if (ERAufgabe.zeitZumLoesen == 0)
@@ -35,19 +39,17 @@ public class SpellChecking : MonoBehaviour
             
             //SpellChecker.Text = word;
             bool temp = true;
-            if (word.Contains(" "))
-            {
-                string[] splited = word.Split(' ');
-                foreach (string wordpart in splited)
+            
+                if (WORDS.Contains(word))
                 {
-                    temp &= SpellChecker.TestWord(wordpart);
-                    
+                    temp&= true;
                 }
-            }
-            else
-            {
-                temp = SpellChecker.TestWord(word);
-            }
+                else
+                {
+                    temp &= false;
+                }          
+
+            
 
             if (temp)
             {

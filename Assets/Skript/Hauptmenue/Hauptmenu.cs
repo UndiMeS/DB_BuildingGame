@@ -157,11 +157,13 @@ public class Hauptmenu : MonoBehaviour
         {
             ERAufgabe.zeitZumLoesen = 0;
             PlayerPrefs.SetInt("Rechtschreibung", 1);
+
         }
         else
         {
             ERAufgabe.zeitZumLoesen = 30 * 60;
             PlayerPrefs.SetInt("Rechtschreibung", 0);
+
         }
     }
     public void SetRechtschreibung(int rechtschreibungAn)
@@ -169,10 +171,12 @@ public class Hauptmenu : MonoBehaviour
         if (rechtschreibungAn == 0)
         {
             ERAufgabe.zeitZumLoesen = 30 * 60;
+            PlayerPrefs.SetInt("Rechtschreibung", 0);
         }
         else
         {
             ERAufgabe.zeitZumLoesen = 0;
+            PlayerPrefs.SetInt("Rechtschreibung", 1);
         }
     }
 }

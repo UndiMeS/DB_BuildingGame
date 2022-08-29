@@ -2957,7 +2957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3726a15791d6ea44b8d3dd0560768ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialOff: 1
+  tutorialOff: 0
   ClickOnBeschreibungstext: 0
   containerKiller: {fileID: 1342842098}
   buttonER: {fileID: 180412312}
@@ -79364,6 +79364,12 @@ MonoBehaviour:
   - {fileID: 1257506828}
   - {fileID: 789614251}
   - {fileID: 1602757794}
+  prefabEM: {fileID: 1141620032127629371, guid: 116b02e25de6b164d82ef7d06c3c2bc6,
+    type: 3}
+  prefabAtt: {fileID: 4991376348046480694, guid: ccb774529809ffd41b1a4301b6381d29,
+    type: 3}
+  prefabBez: {fileID: 4991376348046480694, guid: 3a99a9483acea62499e4756187dcad1c,
+    type: 3}
 --- !u!1 &1192723344
 GameObject:
   m_ObjectHideFlags: 0
@@ -118230,7 +118236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4836ad1e902274242aadfc3504d79743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offModus: 1
+  offModus: 0
   transparentWohncontainer: {fileID: 865439306}
   buttonForscher: {fileID: 1566984999}
   buttonFeld: {fileID: 857717934}

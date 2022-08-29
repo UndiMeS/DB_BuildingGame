@@ -10,10 +10,18 @@ public class Sprache : MonoBehaviour
     public List<GameObject> relationshipsSingular;
     public List<GameObject> relationshipsPlural;
 
+    public GameObject prefabEM;
+    public GameObject prefabAtt;
+    public GameObject prefabBez;
+
     private void Start()
     {
+        Debug.Log(prefabBez.transform.GetChild(1).GetChild(0).name);
         if (sprache == "en")
         {
+            prefabBez.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text= "Relationshipname";
+            prefabEM.transform.GetChild(1).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = "Entitymengenname";
+
             foreach (GameObject game in entitymengenSingular)
             {
                 string text = game.GetComponent<TMPro.TextMeshProUGUI>().text;

@@ -31,18 +31,18 @@ public class SaveLoad : MonoBehaviour
     public void speichern()
     {
         //überall Application.persistentDataPath
-        if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/"))
+        if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/"))
         {
-            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/");
-            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/");
+            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/");
+            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/");
         }
         playerData = new PlayerData();
         string json = JsonUtility.ToJson(playerData);
-        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/saveFile.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/saveFile.json", json);
 
         StaticWerte staticWerte = new StaticWerte();
         json = JsonUtility.ToJson(staticWerte);
-        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/staticsGebaeude.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/staticsGebaeude.json", json);
 
         json = "[";
         foreach (Wohncontainer wohn in Testing.wohncontainer)
@@ -50,7 +50,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(wohn) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Wohncontainer.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Wohncontainer.json", json);
 
         json = "[";
         foreach (Feld feld in Testing.felder)
@@ -58,7 +58,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(feld) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Feldsphaere.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Feldsphaere.json", json);
 
         json = "[";
         foreach (Forschung obj in Testing.forschungsstationen)
@@ -66,7 +66,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Forschungsstation.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Forschungsstation.json", json);
 
         json = "[";
         foreach (Projekt obj in Testing.forschungsprojekte)
@@ -74,7 +74,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Forschungsprojekte.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Forschungsprojekte.json", json);
 
         json = "[";
         foreach (Weide obj in Testing.weiden)
@@ -82,7 +82,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Weidesphaere.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Weidesphaere.json", json);
 
         json = "[";
         foreach (Stallcontainer obj in Testing.stallcontainer)
@@ -90,7 +90,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Stallcontainer.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Stallcontainer.json", json);
 
         json = "[";
         foreach (Mensch obj in Testing.menschen)
@@ -98,7 +98,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Astronaut.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Astronaut.json", json);
 
         json = "[";
         foreach (Tiere obj in Testing.tier)
@@ -106,7 +106,7 @@ public class SaveLoad : MonoBehaviour
             json += JsonUtility.ToJson(obj) + ",";
         }
         json = json.Remove(json.Length - 1) + "]";
-        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Tiere.json", json);
+        File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Tiere.json", json);
 
         saveLoadER.speichern();
         saveLoadBeziehungen.speichern();
@@ -124,14 +124,18 @@ public class SaveLoad : MonoBehaviour
 
     public void laden()
     {
-
-        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/saveFile.json");
+        if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/"))
+        {
+            return;
+        }
+        
+        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/saveFile.json");
         LoadedPlayerData loadedplayerData = JsonUtility.FromJson<LoadedPlayerData>(json);
         loadedplayerData.setData();
 
         
 
-        json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/staticsGebaeude.json");
+        json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/staticsGebaeude.json");
         LoadedStaticWerte loadedstaticWerte = JsonUtility.FromJson<LoadedStaticWerte>(json);
         loadedstaticWerte.setData();
 
@@ -161,7 +165,7 @@ public class SaveLoad : MonoBehaviour
 
     private void tiereLaden()
     {
-        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Tiere.json");
+        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Tiere.json");
         json = json.Remove(json.Length - 1);//] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -180,7 +184,7 @@ public class SaveLoad : MonoBehaviour
 
     private void menschenLaden()
     {
-        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Astronaut.json");
+        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Astronaut.json");
         json = json.Remove(json.Length - 1);//] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -199,7 +203,7 @@ public class SaveLoad : MonoBehaviour
 
     private void projekteLaden()
     {
-        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Forschungsprojekte.json");
+        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Forschungsprojekte.json");
         json = json.Remove(json.Length - 1);//] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -224,7 +228,7 @@ public class SaveLoad : MonoBehaviour
     }
     private void stallLaden()
     {
-        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Stallcontainer.json");
+        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Stallcontainer.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -248,7 +252,7 @@ public class SaveLoad : MonoBehaviour
     }
     private void weideLaden()
     {
-        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Weidesphaere.json");
+        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Weidesphaere.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -272,7 +276,7 @@ public class SaveLoad : MonoBehaviour
     }
     private void feldLaden()
     {
-        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Feldsphaere.json");
+        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Feldsphaere.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -298,7 +302,7 @@ public class SaveLoad : MonoBehaviour
     }
     private void forschungLaden()
     {
-        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Forschungsstation.json");
+        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Forschungsstation.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)
@@ -313,7 +317,7 @@ public class SaveLoad : MonoBehaviour
             Destroy(geb.GetComponent<ObjektBewegung>());
             geb.transform.localScale = new Vector3(1, 1, 1);
             geb.transform.rotation = Quaternion.Euler(0, 0, 0);
-            geb.transform.position = Testing.grid.GetWorldPosition(fos.x, fos.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, -15);
+            geb.transform.position = Testing.grid.GetWorldPosition(fos.x, fos.y) + new Vector3(Testing.zellengroesse / 2, Testing.zellengroesse / 2, -1);
             Testing.grid.SetWert(fos.x, fos.y, 3, geb);
 
             Testing.forschungsstationen.Add(fos);
@@ -325,7 +329,7 @@ public class SaveLoad : MonoBehaviour
     }
     private void wohncontainerLaden()
     {
-        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SaveState/DB/Wohncontainer.json");
+        string json = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe_Speicherdaten/Datenbank/Wohncontainer.json");
         json = json.Remove(json.Length - 1);//[] löschen
         string[] split = json.Split('}');
         for (int i = 0; i < split.Length - 1; i++)

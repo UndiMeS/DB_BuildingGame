@@ -470,6 +470,7 @@ public class ERAufgabe : MonoBehaviour
                 {
                     if (SpellChecking.ueberpruefteWoerterFalsch.Contains(name)&& entity.GetComponent<TMPro.TMP_InputField>().textComponent.color == Color.black)
                     {
+                        Debug.Log("EM+ \""+name+"\"");
                         entity.GetComponent<TMPro.TMP_InputField>().textComponent.color = Color.red;
                     }else if (SpellChecking.ueberpruefteWoerterKorrekt.Contains(name)|| SpellChecking.ueberpruefteWoerterFalsch.Contains(name))
                     {
@@ -667,6 +668,7 @@ public class ERAufgabe : MonoBehaviour
                         {
                             if (SpellChecking.ueberpruefteWoerterFalsch.Contains(name) && obj.GetComponent<TMPro.TMP_InputField>().textComponent.color == Color.black)
                             {
+                                Debug.Log("Beziehung");
                                 obj.GetComponent<TMPro.TMP_InputField>().textComponent.color = Color.red;
                             }
                             else if (SpellChecking.ueberpruefteWoerterKorrekt.Contains(name) || SpellChecking.ueberpruefteWoerterFalsch.Contains(name))
@@ -888,6 +890,7 @@ public class ERAufgabe : MonoBehaviour
                     {
                         if (SpellChecking.ueberpruefteWoerterFalsch.Contains(name) && attribut.GetComponent<TMPro.TMP_InputField>().textComponent.color == Color.black)
                         {
+                            Debug.Log("Attribut: :"+name+":");
                             attribut.GetComponent<TMPro.TMP_InputField>().textComponent.color = Color.red;
                         }
                         else if (SpellChecking.ueberpruefteWoerterKorrekt.Contains(name) || SpellChecking.ueberpruefteWoerterFalsch.Contains(name))

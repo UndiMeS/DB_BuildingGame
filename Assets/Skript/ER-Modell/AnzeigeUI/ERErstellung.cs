@@ -157,7 +157,14 @@ public class ERErstellung : MonoBehaviour
     {
         if (selectedGameObjekt.CompareTag("Entitaet"))
         {
-            selectedGameObjekt.name = "neue Entitätsmenge";
+            if (Sprache.sprache == "ge")
+            {
+                selectedGameObjekt.name = "neue Entitätsmenge";
+            }
+            else
+            {
+                selectedGameObjekt.name = "neue Entitymenge";
+            }
         }
         else if (selectedGameObjekt.CompareTag("Attribut"))
         {

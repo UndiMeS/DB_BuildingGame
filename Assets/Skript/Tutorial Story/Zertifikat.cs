@@ -22,43 +22,40 @@ public class Zertifikat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(!Directory.Exists(Application.streamingAssetsPath + "/PDF/"))
+        if (!Directory.Exists(Application.streamingAssetsPath + "/PDF/"))
         {
             Directory.CreateDirectory(Application.streamingAssetsPath + "/PDF/");
         }
-        
+
         path = Application.streamingAssetsPath + "/PDF/missionsbestätigung.pdf";
 
-         
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void CreatePDF()
     {
-        
 
-        pdfDocument myDoc = new pdfDocument("Missionsbestätigung","UndiMeS");
+
+        pdfDocument myDoc = new pdfDocument("Missionsbestätigung", "UndiMeS");
         pdfPage myPage = myDoc.addPage(3508, 2480);
-        
-        
+
+
         //Hintergrundbild
-        // myDoc.addImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\Zertifikat.png","Hintergrund");
-        // myPage.addImage(myDoc.getImageReference("Hintergrund"),0 ,0);
-        myPage.addImage(myDoc.getImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\Zertifikat.png"),0 ,0);
+        myDoc.addImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\Zertifikat.png", "Hintergrund");
+        myPage.addImage(myDoc.getImageReference("Hintergrund"), 0, 0);
         //Spiel-Screenshot
-        // myDoc.addImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\Spiel.png","Spiel");
-        // myPage.addImage(myDoc.getImageReference("Spiel"),241,1692, 1044, 1878);
-        myPage.addImage(myDoc.getImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\Spiel.png"),241,1692, 1044, 1878);
+        myDoc.addImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\Spiel.png", "Spiel");
+        myPage.addImage(myDoc.getImageReference("Spiel"), 241, 1692, 1044, 1878);
         //ER-Screenshot
-        // myDoc.addImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\ERD.png","ERD");
-        // myPage.addImage(myDoc.getImageReference("ERD"), 241,478, 1044, 1878);
-        myPage.addImage(myDoc.getImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\ERD.png"), 241,478, 1044, 1878);
+        myDoc.addImageReference(Application.streamingAssetsPath + @"\Zertifikatsbilder\ERD.png", "ERD");
+        myPage.addImage(myDoc.getImageReference("ERD"), 241, 478, 1044, 1878);
 
         //Schriftgröße
         int schriftSize = 50;
@@ -70,8 +67,8 @@ public class Zertifikat : MonoBehaviour
         //Name und Level
         if (Testing.summeMenschen == 0)
         {
-            Mensch mensch = new Mensch("",1);
-            myPage.addText(mensch.name, 702, 2945, myDoc.getFontReference("AstroSpace"), 40);
+           
+            myPage.addText("-", 702, 2945, myDoc.getFontReference("AstroSpace"), 40);
         }
         else
         {
@@ -79,23 +76,23 @@ public class Zertifikat : MonoBehaviour
         }
 
         myPage.addText(Story.level.ToString(), 2109, 2946, myDoc.getFontReference("AstroSpace"), schriftSize);
-        
+
         //Siedlungsdaten
         myPage.addText(Testing.summeMenschen.ToString(), 355, 152, myDoc.getFontReference("AstroSpace"), schriftSize);
         myPage.addText(Testing.summeTiere.ToString(), 868, 152, myDoc.getFontReference("AstroSpace"), schriftSize);
         myPage.addText(Testing.summeForschungen.ToString(), 1307, 152, myDoc.getFontReference("AstroSpace"), schriftSize);
         myPage.addText(Testing.umsatz.ToString(), 1966, 152, myDoc.getFontReference("AstroSpace"), schriftSize);
-        
-        
 
 
-        myDoc.createPDF(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/missionsbestätigung.pdf");
+
+
+        myDoc.createPDF(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/SphERe-Zertifikat.pdf");
         myPage = null;
-        myDoc = null; 
+        myDoc = null;
 
-        Invoke("PrintFiles",2);
+        Invoke("PrintFiles", 2);
     }
-    public void PrintFiles() 
+    public void PrintFiles()
     {
         /*
         Debug.Log(path);
@@ -127,7 +124,7 @@ public class Zertifikat : MonoBehaviour
 
     public void OpenOutro()
     {
-        Invoke("Outro",1);
+        Invoke("Outro", 1);
     }
 
     void Outro()
