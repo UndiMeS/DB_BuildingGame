@@ -291,6 +291,7 @@ public class Tutorial : MonoBehaviour
         //Zeitpunkt: ER-Level 0 (Wohncontainer) fertig und öffnen des Missionsfensters
         else if (Story.lvl[0] == true && Mission.missionsLevel[6] == false)
         {
+            beschreibungER.transform.GetChild(0).GetChild(0).GetComponent<ScrollRect>().enabled = true; 
             //ausschalten aus den vorherrigen Level
             HighlightMarsToERD.GetComponent<HighlightButton>().highlinghtingOn = false;
             HighlightERDLeisteUntenEntity.GetComponent<HighlightButton>().highlinghtingOn = false;
@@ -341,7 +342,7 @@ public class Tutorial : MonoBehaviour
         }
         else if ((Story.lvl[0] == true && Story.lvl[1] == false) && (Mission.missionsLevel[6] == true && Mission.missionsLevel[0] == false))
         {
-
+            Testing.NeuesGebaeude = true;
             Story.ErstesHaus = false;
 
             HighlightERDToMars.GetComponent<HighlightButton>().highlinghtingOn = false;

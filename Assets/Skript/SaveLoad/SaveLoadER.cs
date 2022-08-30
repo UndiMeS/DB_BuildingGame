@@ -298,6 +298,9 @@ public class SaveLoadER : MonoBehaviour
 
         public void setData()
         {
+            ERAufgabe.EntityCountTemp = 0;
+            ERAufgabe.AttributeCountTemp = 0;
+            ERAufgabe.RelationCountTemp = 0;
             foreach (GameObject game in ERErstellung.modellObjekte)
             {
                 if (game != null && (game.CompareTag("Entitaet") && fertigeInstanceID.Contains(game.GetComponent<Entitaet>().instanceID)
@@ -306,7 +309,18 @@ public class SaveLoadER : MonoBehaviour
                 {
                     ERAufgabe.gespeicherteObjekte.Add(game);
                 }
-
+                if (game.CompareTag("Entitaet"))
+                {
+                    ERAufgabe.EntityCountTemp++;
+                }
+                if (game.CompareTag("Attribut"))
+                {
+                    ERAufgabe.AttributeCountTemp++;
+                }
+                if (game.CompareTag("Beziehung"))
+                {
+                    ERAufgabe.RelationCountTemp++;
+                }
             }
             ERAufgabe.gespeicherteObjekteAus();
         }

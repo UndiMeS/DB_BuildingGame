@@ -190,15 +190,15 @@ public class ERAufgabe : MonoBehaviour
 
     public GameObject[] AttributeTag;
     public int AttributeCount;
-    public int AttributeCountTemp;
+    public static int AttributeCountTemp;
 
     public GameObject[] EntityTag;
     public int EntityCount;
-    public int EntityCountTemp;
+    public static int EntityCountTemp;
 
     public GameObject[] RelationTag;
     public int RelationCount;
-    public int RelationCountTemp;
+    public static int RelationCountTemp;
 
     
 
@@ -343,11 +343,11 @@ public class ERAufgabe : MonoBehaviour
 
         if (Story.level < 8)
         {
-            ERAufgabenText.textAnzeigen(Story.level);
+                ERAufgabenText.textAnzeigen(Story.level);
 
             
 
-            AttributeTag = GameObject.FindGameObjectsWithTag("Attribut");
+                AttributeTag = GameObject.FindGameObjectsWithTag("Attribut");
                 EntityTag = GameObject.FindGameObjectsWithTag("Entitaet");
                 RelationTag = GameObject.FindGameObjectsWithTag("Beziehung");
 
@@ -447,6 +447,11 @@ public class ERAufgabe : MonoBehaviour
             foreach (GameObject entity in ERErstellung.modellObjekte)
             {
                 string name = entity.name.Trim(' ');
+                if (name.Equals("Forschungsprojekt"))
+                {
+                    Debug.Log("Forschungsprojekt");
+                }
+
 
                 if (name.ToLower().Contains("spähre"))
                 {
@@ -758,7 +763,7 @@ public class ERAufgabe : MonoBehaviour
         bool ausgabe = true;
         int i = Story.level;
         ausgabe &= entitysHat[i] == entitysRichtig[i];
-        if (entitysHat[i] == entitysRichtig[i] && entitysRichtig[Story.level] == EntityCount)
+        if (entitysHat[i] == entitysRichtig[i])// && entitysRichtig[Story.level] == EntityCount)
         {
             checkliste[0].SetActive(true);
             checkliste_Namen[0].color = gruen;
@@ -769,7 +774,7 @@ public class ERAufgabe : MonoBehaviour
             checkliste_Namen[0].color = Color.black;
         }
         ausgabe &= attributeHat[i] == attributeRichtig[i];
-        if (attributeHat[i] == attributeRichtig[i] && attributeRichtig[Story.level] == AttributeCount)
+        if (attributeHat[i] == attributeRichtig[i])// attributeRichtig[Story.level] == AttributeCount)
         {
             checkliste[1].SetActive(true);
             checkliste_Namen[1].color = gruen;
@@ -791,7 +796,7 @@ public class ERAufgabe : MonoBehaviour
             checkliste_Namen[2].color = Color.black;
         }
         ausgabe &= beziehungenRichtig[i] == beziehungenHat[i];
-        if (beziehungenRichtig[i] == beziehungenHat[i] && beziehungenRichtig[Story.level] == RelationCount)
+        if (beziehungenRichtig[i] == beziehungenHat[i])// beziehungenRichtig[Story.level] == RelationCount)
         {
             checkliste[3].SetActive(true);
             checkliste_Namen[3].color = gruen;

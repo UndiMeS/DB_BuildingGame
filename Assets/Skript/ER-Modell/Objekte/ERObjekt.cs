@@ -52,6 +52,7 @@ public class ERObjekt : MonoBehaviour
         }
         maxX += 100;
         RTS_Camera = CameraRTS.GetComponent<RTS_Cam.RTS_Camera>();
+        GetComponent<TMPro.TMP_InputField>().textComponent.color = Color.black;
     }
 
    

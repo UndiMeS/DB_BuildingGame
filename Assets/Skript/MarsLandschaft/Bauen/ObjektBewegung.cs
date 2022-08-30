@@ -39,24 +39,47 @@ public class ObjektBewegung : MonoBehaviour
         Testing.gebautesObjekt = gameObject;
         //GrünesGebäudeRenderer = GrünesGebäude.GetComponent<Renderer>();
         //LandingAnimation = this.gameObject.GetComponent<Animator>();
+
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        
+
         Debug.Log("wir sind hier " + Testing.objektGebaut);
         if (Input.GetMouseButtonUp(0) )
         {
-            
+
             //nocheinbau = true;
-            
-            
+
+           
             //Schaue, ob schon Gebäude an der Stelle und abfangen ob in Bildschirmflaeche
             if (Testing.NeuesGebaeude == false && initKlasseTestePreis()&& Testing.grid.CheckEmpty(transform.position, Testing.objektGebaut, (int)transform.rotation.eulerAngles.z)&& outBox(Input.mousePosition))
             {
+                if (Testing.objektGebaut == 1)
+                {
+                     gameObject.AddComponent<Wohncontainer>();
+                }
+                else if (Testing.objektGebaut == 2)
+                {
+                    gameObject.AddComponent<Feld>();
+                }
+                else if (Testing.objektGebaut == 3)
+                {
+                    gameObject.AddComponent<Forschung>();
+                }
+                else if (Testing.objektGebaut == 4)
+                {
+                   gameObject.AddComponent<Weide>();
+                }
+                else if (Testing.objektGebaut == 5)
+                {
+                   gameObject.AddComponent<Stallcontainer>();
+                }
                 
+
+
                 selected = false;
                 PanelKnopf.NochEinBau = true;
 
@@ -88,12 +111,12 @@ public class ObjektBewegung : MonoBehaviour
                 
                 PanelKnopf.gebautetsGebaeude = null;
                 KameraKontroller.aktiviert = true;
-                
 
-               
-                    
 
-                
+
+
+                Debug.Log("Panel" + Testing.objektGebaut);
+
                 Destroy(GetComponent<ObjektBewegung>());
 
                 
@@ -118,6 +141,7 @@ public class ObjektBewegung : MonoBehaviour
                 KameraKontroller.aktiviert = true;
                 PanelKnopf.gebautetsGebaeude = null;
                 Testing.gebautesObjekt = null;
+                Debug.Log("Hier!");
                 Destroy(gameObject);
                 Destroy(GetComponent<ObjektBewegung>());
             }
@@ -134,12 +158,15 @@ public class ObjektBewegung : MonoBehaviour
                 KameraKontroller.aktiviert = true;
                 PanelKnopf.gebautetsGebaeude = null;
                 Testing.gebautesObjekt = null;
+                Debug.Log("Hier!");
                 Destroy(gameObject);
                 Destroy(GetComponent<ObjektBewegung>());
             }
         }
-        if (PauseMenu.SpielIstPausiert)
+        Debug.Log("Hier!" + PauseMenu.SpielIstPausiert + " " + initKlasseTestePreis());
+        if (PauseMenu.SpielIstPausiert||!initKlasseTestePreis())
         {
+            selected = false;
             int x, y;
             Testing.grid.GetXY(transform.position, out x, out y);
             Testing.grid.SetWert(transform.position, 0, null);
@@ -147,6 +174,7 @@ public class ObjektBewegung : MonoBehaviour
             KameraKontroller.aktiviert = true;
             PanelKnopf.gebautetsGebaeude = null;
             Testing.gebautesObjekt = null;
+            Debug.Log("Hier!"+ PauseMenu.SpielIstPausiert+" "+ initKlasseTestePreis());
             Destroy(gameObject);
             Destroy(GetComponent<ObjektBewegung>());
         }
@@ -243,6 +271,7 @@ public class ObjektBewegung : MonoBehaviour
 
     private bool initKlasseTestePreis()
     {
+        Debug.Log(Testing.objektGebaut);
         if (Testing.objektGebaut == 1)
         {
             if (Testing.geld < Wohncontainer.preis)
@@ -255,7 +284,6 @@ public class ObjektBewegung : MonoBehaviour
             }
             else
             {
-                gameObject.AddComponent<Wohncontainer>();
                 return true;
             }
         }
@@ -270,9 +298,17 @@ public class ObjektBewegung : MonoBehaviour
                 Testing.objektGebaut = 0;
                 return false;
             }
+            else if (Feld.arbeiterzahl > Testing.feldarbeiter)
+            {
+                Testing.GebaeudeTemp = null;
+                GebaeudeInfoBauen.wertFest = 2;
+
+                FehlerAnzeige.fehlertext = "Siedle zuerst Feldastronauten in einem Wohncontainer mit noch freien Betten an! ";
+                Testing.objektGebaut = 0;
+                return false;
+            }
             else
             {
-                gameObject.AddComponent<Feld>();
                 return true;
             }
         }
@@ -287,9 +323,17 @@ public class ObjektBewegung : MonoBehaviour
                 Testing.objektGebaut = 0;
                 return false;
             }
+            else if (0 == Testing.forscher)
+            {
+                Testing.GebaeudeTemp = null;
+                GebaeudeInfoBauen.wertFest = 3;
+
+                FehlerAnzeige.fehlertext = "Siedle zuerst Forschungsastronauten in einem Wohncontainer mit noch freien Betten an!";
+                Testing.objektGebaut = 0;
+                return false;
+            }
             else
             {
-                gameObject.AddComponent<Forschung>();
                 return true;
             }
         }
@@ -299,14 +343,41 @@ public class ObjektBewegung : MonoBehaviour
             {
                 Testing.GebaeudeTemp = null;
                 GebaeudeInfoBauen.wertFest = 4;
-
+                Debug.Log("3");
                 FehlerAnzeige.fehlertext = "Du hast zu wenig Geld. Mache eine Zusatzaufgabe!";
+                Testing.objektGebaut = 0;
+                return false;
+            }
+            else if (Weide.arbeiterzahl > Testing.tierpfleger && Weide.tierAnzahl > Testing.summeTiere)
+            {
+                Testing.GebaeudeTemp = null;
+                GebaeudeInfoBauen.wertFest = 4;
+                Debug.Log("3");
+                FehlerAnzeige.fehlertext = "Siedle zuerst Weideastronauten und Tiere an!";
+                Testing.objektGebaut = 0;
+                return false;
+            }
+            else if (Weide.arbeiterzahl > Testing.tierpfleger)
+            {
+                Testing.GebaeudeTemp = null;
+                GebaeudeInfoBauen.wertFest = 4;
+                Debug.Log("3");
+                FehlerAnzeige.fehlertext = "Siedle zuerst Weideastronauten an!";
+                Testing.objektGebaut = 0;
+                return false;
+            }
+            else if (Weide.tierAnzahl > Testing.summeTiere)
+            {
+                Testing.GebaeudeTemp = null;
+                GebaeudeInfoBauen.wertFest = 4;
+                Debug.Log("3");
+                FehlerAnzeige.fehlertext = "Siedle zuerst Tiere an!";
                 Testing.objektGebaut = 0;
                 return false;
             }
             else
             {
-                gameObject.AddComponent<Weide>();
+                Debug.Log("3");
                 return true;
             }
         }
@@ -323,7 +394,6 @@ public class ObjektBewegung : MonoBehaviour
             }
             else
             {
-                gameObject.AddComponent<Stallcontainer>();
                 return true;
             }
         }

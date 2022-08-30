@@ -25,6 +25,7 @@ public class Wohncontainer : MonoBehaviour
         if (containernummer == 0)
         {
             containernummer = nummerZaehler;
+            Debug.Log("1");
             nummerZaehler++;
             baukosten = preis;
             Testing.geld -= preis;

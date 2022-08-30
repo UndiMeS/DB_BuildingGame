@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Spielwerte : MonoBehaviour
 {
+    public Tutorial tutorial;
+
 
     public static void Werte()
     {
-        Testing.geld = 400;
+        Testing.geld =400000000;
+      
         Testing.feldarbeiter = 0;
         Testing.forscher = 0;
         Testing.tierpfleger = 0;

@@ -204,20 +204,23 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         }
         if(gebaeudeNummer == 4)
         {
-            GebaeudeInfoBauen.wertFest = 4;
+            
             if (Weide.arbeiterzahl > Testing.tierpfleger&&Weide.tierAnzahl> Testing.summeTiere)
             {
+                GebaeudeInfoBauen.wertFest = 4;
                 KameraKontroller.aktiviert = true;
                 FehlerAnzeige.fehlertext = "Siedle zuerst Weideastronauten und Tiere an!";
                 return;
             }else if (Weide.arbeiterzahl > Testing.tierpfleger)
             {
+                GebaeudeInfoBauen.wertFest = 4;
                 KameraKontroller.aktiviert = true;
                 FehlerAnzeige.fehlertext = "Siedle zuerst Weideastronauten an!";
                 return;
             }
             else if (Weide.tierAnzahl > Testing.tiere)
             {
+                GebaeudeInfoBauen.wertFest = 4;
                 KameraKontroller.aktiviert = true;
                 FehlerAnzeige.fehlertext = "Siedle zuerst Tiere an!";
                 return;

@@ -141,12 +141,12 @@ public class Hauptmenu : MonoBehaviour
     {
         if (schwach==0)
         {
-            OhneSchwacheEntity.schwachAus = false;
+            OhneSchwacheEntity.schwachAus = true;
             schwacheEntity.isOn = false;
         }
         else
         {
-            OhneSchwacheEntity.schwachAus = true;
+            OhneSchwacheEntity.schwachAus = false;
             schwacheEntity.isOn = true;
         }
     }
