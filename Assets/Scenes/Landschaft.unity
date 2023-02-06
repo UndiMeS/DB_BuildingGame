@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4482448, g: 0.4982714, b: 0.575581, a: 1}
+  m_IndirectSpecularColor: {r: 0.4482453, g: 0.49827206, b: 0.5755818, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1158,6 +1158,7 @@ MonoBehaviour:
   hintergrund: {fileID: 20067407}
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
+  NochEinBauShow: 0
   gebaeudeTemp: {fileID: 0}
   ShowOver: 0
 --- !u!114 &20067407
@@ -2314,6 +2315,7 @@ MonoBehaviour:
   hintergrund: {fileID: 45016126}
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
+  NochEinBauShow: 0
   gebaeudeTemp: {fileID: 0}
   ShowOver: 0
 --- !u!114 &45016126
@@ -2957,7 +2959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3726a15791d6ea44b8d3dd0560768ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialOff: 1
+  tutorialOff: 0
   ClickOnBeschreibungstext: 0
   containerKiller: {fileID: 1342842098}
   buttonER: {fileID: 180412312}
@@ -73340,6 +73342,7 @@ MonoBehaviour:
   canvas: {fileID: 608227078}
   PauseScript: {fileID: 1005837856}
   ShowGebaeude: {fileID: 0}
+  ShowBoolGebaeude: 0
   showNummer: 0
 --- !u!4 &1103306954
 Transform:
@@ -102022,6 +102025,7 @@ MonoBehaviour:
   hintergrund: {fileID: 1583389244}
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
+  NochEinBauShow: 0
   gebaeudeTemp: {fileID: 0}
   ShowOver: 0
 --- !u!114 &1583389244
@@ -107565,6 +107569,7 @@ MonoBehaviour:
   hintergrund: {fileID: 1682569808}
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
+  NochEinBauShow: 0
   gebaeudeTemp: {fileID: 0}
   ShowOver: 0
 --- !u!114 &1682569808
@@ -112883,6 +112888,7 @@ MonoBehaviour:
   hintergrund: {fileID: 1756822247}
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
+  NochEinBauShow: 0
   gebaeudeTemp: {fileID: 0}
   ShowOver: 0
 --- !u!114 &1756822247
@@ -118146,7 +118152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4836ad1e902274242aadfc3504d79743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offModus: 1
+  offModus: 0
   transparentWohncontainer: {fileID: 865439306}
   buttonForscher: {fileID: 1566984999}
   buttonFeld: {fileID: 857717934}
@@ -125602,6 +125608,7 @@ MonoBehaviour:
   hintergrund: {fileID: 1961960878}
   spezialisierungsauswahl: {fileID: 705717515}
   gebaeudeOrdner: {fileID: 725775541}
+  NochEinBauShow: 0
   gebaeudeTemp: {fileID: 0}
   ShowOver: 0
 --- !u!114 &1961960878
