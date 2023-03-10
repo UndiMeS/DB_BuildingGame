@@ -29,6 +29,12 @@ public class PauseMenu : MonoBehaviour
     public GameObject Checkliste;
     public GameObject baumenuTransparent;
     public GameObject mission;
+
+    public RectTransform RectMission;
+
+    // public RectTransform MissionOffScreenPos;
+    // public RectTransform MissionOnScreenPos;
+    public bool ShowMission = false;
     public GameObject leisteRechts;
     public GameObject infoBox;
     public GameObject leisteBottom;
@@ -268,28 +274,50 @@ public class PauseMenu : MonoBehaviour
     public void animationMission()
     {
         LeanTween.cancel(mission);
-        if (mission.transform.localPosition.y < 400)
+        // if (mission.transform.position.y < 400)
+        // {
+        //     //Debug.Log(mission.transform.localPosition);
+        //     //LeanTween.moveY(mission, 800, 0.3f);
+        //     LeanTween.moveY(mission, mission.transform.position.y -800.0f, 0.3f);
+        // }
+        // else{
+        //     //Debug.Log(mission.transform.localPosition);
+        //     //LeanTween.moveY(mission, 348, 0.3f);
+        //     LeanTween.moveY(mission, mission.transform.position.y -800.0f, 0.3f);
+        // }
+
+        if(ShowMission == false)
         {
-            //Debug.Log(mission.transform.localPosition);
-            LeanTween.moveLocalY(mission, 800, 0.3f);
+            //MissionOffScreenPos = new Vector3(0.0f, -140.0f, 0.0f);
+
+            LeanTween.move(RectMission, new Vector3(0.0f, RectMission.anchoredPosition.x - 140.0f , 0.0f), 0.3f);
+
+            //LeanTween.moveY(mission, 564.0f, 0.3f);
+            ShowMission = true;
         }
-        else{
-            //Debug.Log(mission.transform.localPosition);
-            LeanTween.moveLocalY(mission, 348, 0.3f);
+        else
+        {
+
+            //MissionOnScreenPos = new Vector3(0.0f, 280.0f, 0.0f);
+
+            LeanTween.move(RectMission, new Vector3(0.0f, RectMission.anchoredPosition.x + 280.0f , 0.0f), 0.3f);
+
+            //LeanTween.moveY(mission, 150.0f, 0.3f);
+            ShowMission = false;
         }
         
     }
     public void animationMissionHalb()
     {
-        LeanTween.cancel(mission);
-        if (mission.transform.localPosition.y == 380)
-        {
-            LeanTween.moveLocalY(mission, 650, 0.3f);
-        }
-        else 
-        {
-            LeanTween.moveLocalY(mission, 380, 0.3f);
-        }      
+        // LeanTween.cancel(mission);
+        // if (mission.transform.position.y == 380)
+        // {
+        //     LeanTween.moveY(mission, 650, 0.3f);
+        // }
+        // else 
+        // {
+        //     LeanTween.moveY(mission, 380, 0.3f);
+        // }      
     }
 
     public void screenshotMachen()

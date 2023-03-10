@@ -368,7 +368,7 @@ public class ERAufgabe : MonoBehaviour
 
                 
 
-                infobox.transform.localPosition = new Vector3(0, 0, 0);
+                //infobox.transform.localPosition = new Vector3(0, 0, 0);
                 bottomLeiste.SetActive(true);
                 aufgabeButton.SetActive(true);
                 kreisHacken.SetActive(false);
@@ -400,7 +400,8 @@ public class ERAufgabe : MonoBehaviour
         else
         {
             //FehlerAnzeige.tutorialtext_ER = "Du hast es geschafft. Dein ER-Diagramm ist für diese Siedlung komplett! Auf zu deinen letzten Missionen!";
-            infobox.transform.localPosition = new Vector3(0, -82, 0);
+            //infobox.transform.localPosition = new Vector3(0, -82, 0);
+            infobox.GetComponent<RectTransform>().anchoredPosition = new Vector3(0,-92,0);
             bottomLeiste.SetActive(false);
             aufgabenFenster.SetActive(false);
             checkbox.SetActive(false);
@@ -509,7 +510,7 @@ public class ERAufgabe : MonoBehaviour
 
 
             //wenn alles richtig ist wird default alles auf aus gesetzt (in Update wird es aber wieder auf true gesetzt, wenn missioncheck == true ist)
-            infobox.transform.localPosition = new Vector3(0,-82,0);
+            infobox.GetComponent<RectTransform>().anchoredPosition = new Vector3(0,-92,0);
             
             bottomLeiste.SetActive(false);
             aufgabeButton.SetActive(false);
@@ -552,6 +553,10 @@ public class ERAufgabe : MonoBehaviour
                 }
             }
             Story.level++;
+        }
+        else
+        {
+            infobox.GetComponent<RectTransform>().anchoredPosition = new Vector3(0,0,0);
         }
     }
 

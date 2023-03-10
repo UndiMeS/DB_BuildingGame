@@ -242,10 +242,15 @@ public class ERErstellung : MonoBehaviour
                 ausserhalb = false;
             }
             //Grenze, denn sonst wird es zur Unendlich Schleife
-            if (zaehler>40
-                && !RectTransformUtility.RectangleContainsScreenPoint(aufgabentext.GetComponent<RectTransform>(), pos, null)
-                && !RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), pos, null)
-                && !RectTransformUtility.RectangleContainsScreenPoint(infobox.GetComponent<RectTransform>(), pos, null)) 
+            // if (zaehler>40
+            //     && !RectTransformUtility.RectangleContainsScreenPoint(aufgabentext.GetComponent<RectTransform>(), pos, null)
+            //     && !RectTransformUtility.RectangleContainsScreenPoint(checkliste.GetComponent<RectTransform>(), pos, null)
+            //     && !RectTransformUtility.RectangleContainsScreenPoint(infobox.GetComponent<RectTransform>(), pos, null)) 
+            // {
+            //     ausserhalb = false;
+            // }
+
+            if (zaehler>40) 
             {
                 ausserhalb = false;
             }
