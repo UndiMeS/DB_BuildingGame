@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Hilfe_Anzeige : MonoBehaviour
@@ -12,9 +13,12 @@ public class Hilfe_Anzeige : MonoBehaviour
     public GameObject hilfeTexte;
     public GameObject baumenuTransparent;
     public GameObject mission;
+    public Button MissionButton;
     public GameObject tutorial;
     public Tutorial tutorialgross;
     public GameObject info;
+
+    public PauseMenu PauseMenuScript;
 
 
     //Hilfe Anzeigen in PauseMen� der Landschaft
@@ -31,7 +35,12 @@ public class Hilfe_Anzeige : MonoBehaviour
             hilfeButtondestroyer.SetActive(true);
             hilfeTexte.SetActive(true);
             baumenuTransparent.SetActive(false);
-            LeanTween.moveLocalY(mission, 650, 0.3f);
+            //LeanTween.moveLocalY(mission, 650, 0.3f);
+            if(PauseMenuScript.ShowMission == true)
+            {
+                MissionButton.onClick.Invoke();
+            }
+            
             tutorial.SetActive(false);
             info.SetActive(false);
             tutorialgross.tutorialOff = true;
@@ -42,6 +51,8 @@ public class Hilfe_Anzeige : MonoBehaviour
             KameraKontroller.aktiviert = true;
             hilfeFenster.SetActive(false);
             hilfeZurueckButton.SetActive(false);
+            MissionButton.onClick.Invoke();
+            PauseMenuScript.ShowMission = false;
             //hilfeGebaeudeinfo.SetActive(false);
             hilfeButtondestroyer.SetActive(false);
             hilfeTexte.SetActive(false);
