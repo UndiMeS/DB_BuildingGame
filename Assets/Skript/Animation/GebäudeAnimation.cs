@@ -27,6 +27,7 @@ public class GebäudeAnimation : MonoBehaviour
         if(AnimationEndet == true)
         {
             LandingAnimation.enabled = false;
+            LandingAnimation.SetBool("Landing", false);
         }
         
 
@@ -34,7 +35,7 @@ public class GebäudeAnimation : MonoBehaviour
         if(LandingAnimation.isActiveAndEnabled&&LandingAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
                 {
                     ParachuteAnimation.enabled = true;
-                   // Debug.Log("not playing");
+                    //Debug.Log("not playing");
                     ParachuteAnimation.SetBool("DriveIn", true);
 
                     //ParachuteAnimation.SetBool("DriveIn", false);
@@ -63,10 +64,10 @@ public class GebäudeAnimation : MonoBehaviour
             
                     if(ResetBeschreibungPosition.ERButtonClick == true && AnimationEndet == false)
                         {
-                            
+                            LandingAnimation.enabled = true;
                             LandingAnimation.Play("LandingAnimation",0,1);
                             LandingAnimation.Play("Idle",0,1);
-                            LandingAnimation.enabled = true;
+                            
                             
                             Parachute.SetActive(false);
                             GebäudeAnzeige.SetActive(true);
@@ -83,14 +84,17 @@ public class GebäudeAnimation : MonoBehaviour
 
                 if(GebäudeBauen == true)
                 {
-                    GebäudeBauen = false;
+                    
                     LandingAnimation.enabled = true;
                     Parachute.SetActive(true);
 
                     LandingAnimation.SetBool("Landing", true);
+                    Debug.Log("lande endlich");
+
+                    
 
 
-                    LandingAnimation.SetBool("Landing", false);
+                    GebäudeBauen = false;
                     
 
                     

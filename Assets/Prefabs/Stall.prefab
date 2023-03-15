@@ -332,6 +332,8 @@ MonoBehaviour:
     type: 2}
   RedHouseColor: {r: 1, g: 0, b: 0, a: 0.19607843}
   GreenHouseColor: {r: 0, g: 1, b: 0, a: 0.19607843}
+  ButtonLeisteRechts: {fileID: 0}
+  nocheinbau: 0
 --- !u!114 &4174344393663335879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,30 +360,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LandingAnimation: {fileID: 577645002255012004}
-  ParachuteAnimation: {fileID: 510237031573516250}
+  ParachuteAnimation: {fileID: 5628737461193696773}
   "Geb\xE4udeAnzeige": {fileID: 4617973694685794715}
-  Parachute: {fileID: 7908500115295373021}
+  Parachute: {fileID: 8747086642270941874}
   AnimationEndet: 0
   "Geb\xE4udeBauen": 0
---- !u!95 &510237031573516250
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7908500115295373021}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 13dedcbe08e00e54aa738a53bbb13b3c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8723606717234733990
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +541,112 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 23387304717320016}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &45578628088787392
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 565676588902947003}
+    m_Modifications:
+    - target: {fileID: 5673593675783247813, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673593675783247813, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9366ed03db64b9f4d873582700e2fa19, type: 2}
+    - target: {fileID: 8253367334509156808, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253367334509156808, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253367334509156808, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253367334509156808, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253367334509156808, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253367334509156808, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253367334509156808, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253367334509156808, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253367334509156808, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253367334509156808, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253367334509156808, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253367334509156808, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253367334509156808, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253367334509156808, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8773585402130547570, guid: 7abc626798fb34ac98a5435821d41775,
+        type: 3}
+      propertyPath: m_Name
+      value: MarsParachute_Joined_2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7abc626798fb34ac98a5435821d41775, type: 3}
+--- !u!1 &8747086642270941874 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8773585402130547570, guid: 7abc626798fb34ac98a5435821d41775,
+    type: 3}
+  m_PrefabInstance: {fileID: 45578628088787392}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5628737461193696773 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5673593675783247813, guid: 7abc626798fb34ac98a5435821d41775,
+    type: 3}
+  m_PrefabInstance: {fileID: 45578628088787392}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &66734013778995233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -678,99 +767,4 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3ab8b0b482cecb749a03a1eec14b5dd5,
     type: 3}
   m_PrefabInstance: {fileID: 66734013778995233}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &6990091459824991116
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 565676588902947003}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.009976938
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.004719748
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.007687526
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.00014142622
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.0003843769
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_Name
-      value: MarsParachute_Joined_2
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 31acd5647832f2e4d8102994947505b2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 31acd5647832f2e4d8102994947505b2, type: 3}
---- !u!1 &7908500115295373021 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 31acd5647832f2e4d8102994947505b2,
-    type: 3}
-  m_PrefabInstance: {fileID: 6990091459824991116}
   m_PrefabAsset: {fileID: 0}
