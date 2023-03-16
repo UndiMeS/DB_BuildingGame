@@ -36,9 +36,10 @@ public class Hilfe_Anzeige : MonoBehaviour
             hilfeTexte.SetActive(true);
             baumenuTransparent.SetActive(false);
             //LeanTween.moveLocalY(mission, 650, 0.3f);
-            if(PauseMenuScript.ShowMission == true)
+            if(PauseMenuScript.ShowMission == false)
             {
                 MissionButton.onClick.Invoke();
+                PauseMenuScript.ShowMission = true;
             }
             
             tutorial.SetActive(false);
@@ -51,8 +52,11 @@ public class Hilfe_Anzeige : MonoBehaviour
             KameraKontroller.aktiviert = true;
             hilfeFenster.SetActive(false);
             hilfeZurueckButton.SetActive(false);
-            MissionButton.onClick.Invoke();
-            PauseMenuScript.ShowMission = false;
+            // if(PauseMenuScript.ShowMission == false)
+            // {
+            //     MissionButton.onClick.Invoke();
+            //     PauseMenuScript.ShowMission = true;
+            // }
             //hilfeGebaeudeinfo.SetActive(false);
             hilfeButtondestroyer.SetActive(false);
             hilfeTexte.SetActive(false);

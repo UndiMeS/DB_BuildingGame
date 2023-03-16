@@ -86,6 +86,10 @@ public class PauseMenu : MonoBehaviour
         }
         //hilfeButtondestroyer.SetActive(false);
         //hilfeTexte.SetActive(false);
+        if(ShowMission == true)
+            {
+                animationMission();
+            }
         SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
         RTS_CameraScript.enabled = true;
