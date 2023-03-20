@@ -10721,7 +10721,7 @@ PrefabInstance:
     - target: {fileID: 2854035851831483297, guid: d16ef0d498beb3c4b9c892dd47c8ed67,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2854035851831483297, guid: d16ef0d498beb3c4b9c892dd47c8ed67,
         type: 3}
@@ -129641,7 +129641,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 119
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 1
   m_Antialiasing: 0
@@ -131174,8 +131174,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2808810203750505459, guid: 1201fbb80dac9304ca9c80cae071fdcf,
         type: 3}
+      propertyPath: m_HDR
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808810203750505459, guid: 1201fbb80dac9304ca9c80cae071fdcf,
+        type: 3}
+      propertyPath: m_AllowMSAA
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808810203750505459, guid: 1201fbb80dac9304ca9c80cae071fdcf,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808810203750505459, guid: 1201fbb80dac9304ca9c80cae071fdcf,
+        type: 3}
       propertyPath: far clip plane
       value: 196.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808810203750505459, guid: 1201fbb80dac9304ca9c80cae071fdcf,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808810203750505459, guid: 1201fbb80dac9304ca9c80cae071fdcf,
+        type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808810203750505459, guid: 1201fbb80dac9304ca9c80cae071fdcf,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808810203750505459, guid: 1201fbb80dac9304ca9c80cae071fdcf,
+        type: 3}
+      propertyPath: m_AllowDynamicResolution
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808810203750505459, guid: 1201fbb80dac9304ca9c80cae071fdcf,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2808810203750505460, guid: 1201fbb80dac9304ca9c80cae071fdcf,
         type: 3}
