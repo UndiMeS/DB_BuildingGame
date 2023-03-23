@@ -98,7 +98,7 @@ public class ERObjekt : MonoBehaviour
             selected = true;
             moveSelected = true;
             KameraKontroller.aktiviert = false;
-            RTS_Camera.usePanning = false;
+            RTS_Camera.enabled = false;
             RTS_Camera.targetFollow = null;
         }
         if (Input.GetMouseButtonUp(0))
@@ -107,7 +107,7 @@ public class ERObjekt : MonoBehaviour
             selected = false;
             KameraKontroller.aktiviert = true;
 
-            RTS_Camera.usePanning = true;
+            RTS_Camera.enabled = true;
             //setzt Pivot zurueck in die Mitte, wenn Maus losgelassen wird
             // Vector3[] v = new Vector3[4];
             // rectTransform.GetWorldCorners(v);
@@ -119,6 +119,10 @@ public class ERObjekt : MonoBehaviour
         }
         if (moveSelected)//bewegen des Objekts
         {
+
+
+            inputfield.DeactivateInputField();
+
             Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);
             //cursorPos = imSichtfeld(cursorPos);
 

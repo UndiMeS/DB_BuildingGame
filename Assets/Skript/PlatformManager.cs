@@ -9,17 +9,30 @@ public class PlatformManager : MonoBehaviour
     public GameObject LetterBoxDown;
     public LetterBoxer letterbox;
     public RectTransform LandschaftCanvas;
+    public RTS_Cam.RTS_Camera CameraScript;
+
 
     void Awake()
     {
+
+
+
         #if UNITY_IOS
         LetterBoxDown.SetActive(false);
         LetterBoxUp.SetActive(false);
         letterbox.onAwake = false;
 
-
-
+        CameraScript.useTouchInput = true;
+        CameraScript.usePanning = false;
         //LandschaftCanvas.sizeDelta = new Vector3 (1600.0f, 1200.0f, 0.0f);
+        #endif
+
+        #if Unity_STANDALONE
+
+
+
+        CameraScript.useTouchInput = false;
+        CameraScript.usePanning = true;
 
         #endif
     }

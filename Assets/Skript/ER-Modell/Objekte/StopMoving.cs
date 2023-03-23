@@ -14,15 +14,26 @@ public class StopMoving : MonoBehaviour
     void Update()
     {
 
+        //
+        // if (inBox()||moveselected())
+        // {
+        //     Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = false;
+        //     Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = false;
+        // }
+        // else
+        // {
+        //     Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
+        //     Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;
+        // }
+
+
         if (inBox()||moveselected())
         {
-            Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = false;
-            Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = false;
+            Camera.main.GetComponent<RTS_Cam.RTS_Camera>().enabled = false;
         }
         else
         {
-            Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
-            Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;
+            Camera.main.GetComponent<RTS_Cam.RTS_Camera>().enabled = true;
         }
     }
 

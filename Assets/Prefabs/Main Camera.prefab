@@ -92,7 +92,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2808810203750505457}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28ef8c68bade09b41aca258d42a632f2, type: 3}
   m_Name: 
@@ -110,32 +110,34 @@ MonoBehaviour:
   screenEdgeMovementSpeed: 3
   followingSpeed: 15
   rotationSped: 3
-  panningSpeed: 15
+  panningSpeed: 35
   mouseRotationSpeed: 10
   autoHeight: 1
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  maxHeight: 7
-  minHeight: 3
+  maxHeight: -35
+  minHeight: -7
   heightDampening: 5
   keyboardZoomingSensitivity: 2
   scrollWheelZoomingSensitivity: 25
+  zoomPos: 0
   limitMap: 1
-  limitXMin: -50
-  limitXMax: 50
-  limitYMin: -50
-  limitYMax: 50
+  limitXMin: 0
+  limitXMax: 175
+  limitYMin: -20
+  limitYMax: 120
   targetFollow: {fileID: 0}
   targetOffset: {x: 0, y: 0, z: 0}
-  useScreenEdgeInput: 1
+  useScreenEdgeInput: 0
   screenEdgeBorder: 25
-  useKeyboardInput: 1
+  useTouchInput: 1
+  useKeyboardInput: 0
   horizontalAxis: Horizontal
   verticalAxis: Vertical
   usePanning: 1
   panningKey: 323
-  useKeyboardZooming: 1
+  useKeyboardZooming: 0
   zoomInKey: 101
   zoomOutKey: 113
   useScrollwheelZooming: 1

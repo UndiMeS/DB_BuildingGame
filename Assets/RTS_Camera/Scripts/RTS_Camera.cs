@@ -90,9 +90,12 @@ namespace RTS_Cam
         public bool useScreenEdgeInput = true;
         public float screenEdgeBorder = 25f;
 
+        public bool useTouchInput = true;
         public bool useKeyboardInput = true;
         public string horizontalAxis = "Horizontal";
         public string verticalAxis = "Vertical";
+
+        private Vector3 touchStart;
 
         public bool usePanning = true;
         public KeyCode panningKey = KeyCode.Mouse2;
@@ -120,6 +123,10 @@ namespace RTS_Cam
         {
             get { return Input.mousePosition; }
         }
+        private Vector2 TouchInput
+        {
+            get{ return Input.GetTouch(0).position; }
+        }
 
         private float ScrollWheel
         {
@@ -129,6 +136,11 @@ namespace RTS_Cam
         private Vector2 MouseAxis
         {
             get { return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")); }
+        }
+
+        private Vector2 TouchAxis
+        {
+            get { return new Vector2(Input.touches[0].deltaPosition.x, Input.touches[0].deltaPosition.y); }
         }
 
         private int ZoomDirection
@@ -254,6 +266,29 @@ namespace RTS_Cam
 
                 m_Transform.Translate(desiredMove, Space.Self);
             }
+
+            if(useTouchInput && Input.touchCount == 1 )
+            {
+                // Vector3 desiredMove = new Vector3(-TouchAxis.x, -TouchAxis.y, 0);
+
+                // desiredMove *= panningSpeed;
+                // desiredMove *= Time.deltaTime;
+                // desiredMove = Quaternion.Euler(new Vector3(0f, 0f, transform.eulerAngles.y)) * desiredMove;
+                // desiredMove = m_Transform.InverseTransformDirection(desiredMove);
+
+                // m_Transform.Translate(desiredMove, Space.Self);
+
+
+
+
+                if(Input.GetMouseButtonDown(0)){
+                    touchStart = GetWorldPostion(0);
+                }
+                if(Input.GetMouseButton(0)){
+                    Vector3 direction = touchStart - GetWorldPostion(0);
+                    Camera.main.transform.position += direction;
+                }
+            }
         }
 
         /// <summary>
@@ -262,10 +297,29 @@ namespace RTS_Cam
         private void HeightCalculation()
         {
             float distanceToGround = DistanceToGround();
-            if(useScrollwheelZooming)
+            if(Input.touchCount == 2)
+            {
+                Touch touchZero = Input.GetTouch(0);
+                Touch touchOne = Input.GetTouch(1);
+
+                Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+                Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+                float prevMagnitude = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+                float currentMagnitude = (touchZero.position - touchOne.position).magnitude;
+
+                float Difference = currentMagnitude - prevMagnitude;
+
+                zoomPos -= Difference * 0.01f;
+            }
+            else
+            {
+                if(useScrollwheelZooming)
                 zoomPos += ScrollWheel * Time.deltaTime * scrollWheelZoomingSensitivity;
             if (useKeyboardZooming)
                 zoomPos += ZoomDirection * Time.deltaTime * keyboardZoomingSensitivity;
+            }
+            
 
             zoomPos = Mathf.Clamp01(zoomPos);
 
@@ -363,5 +417,15 @@ namespace RTS_Cam
         }
 
         #endregion
+
+        private Vector3 GetWorldPostion(float z){
+        Ray mousePos = this.gameObject.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+        Plane ground = new Plane(Vector3.forward, new Vector3(0,0,z));
+        float distance;
+        ground.Raycast(mousePos, out distance);
+        return mousePos.GetPoint(distance);
     }
+    }
+
+    
 }

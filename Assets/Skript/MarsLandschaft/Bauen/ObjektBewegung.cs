@@ -27,6 +27,8 @@ public class ObjektBewegung : MonoBehaviour
     public GameObject ButtonLeisteRechts;
     public bool nocheinbau;
 
+    public RTS_Cam.RTS_Camera RTSscript;
+
     //public bool BuildBool = true;
     
 
@@ -37,6 +39,8 @@ public class ObjektBewegung : MonoBehaviour
         GebaeudeInfoBauen.wertFest = 0;
         selected = true;
         Testing.gebautesObjekt = gameObject;
+
+        RTSscript = GameObject.FindWithTag("MainCamera").GetComponent<RTS_Cam.RTS_Camera>();
         //GrünesGebäudeRenderer = GrünesGebäude.GetComponent<Renderer>();
         //LandingAnimation = this.gameObject.GetComponent<Animator>();
 
@@ -46,10 +50,16 @@ public class ObjektBewegung : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetMouseButtonDown(0))
+        {
+            RTSscript.enabled = false;
+        }
 
         Debug.Log("wir sind hier " + Testing.objektGebaut);
         if (Input.GetMouseButtonUp(0) )
         {
+
+            RTSscript.enabled = true;
 
             //nocheinbau = true;
 
@@ -181,7 +191,10 @@ public class ObjektBewegung : MonoBehaviour
         
         //Position der Maus= Postion vom Haus
         if (selected == true)
-        {
+        {     
+
+            
+
             Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);
             Vector3 position = Testing.grid.stayInGrid(cursorPos);
             position.z = 0;
@@ -197,6 +210,7 @@ public class ObjektBewegung : MonoBehaviour
             else
             {
                 GrünesGebäudeRenderer.SetColor("_BaseColor", GreenHouseColor);
+                
             }
         }
 

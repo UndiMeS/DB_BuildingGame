@@ -222,6 +222,12 @@ public class PauseMenu : MonoBehaviour
 
     public void SwitchToER()
     {
+
+        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().enabled = true;
+
+
+
+
         ERon = true;
         SpielIstPausiert = false;
         changeHintergrund(1);
@@ -244,12 +250,15 @@ public class PauseMenu : MonoBehaviour
         RTS_CameraScript.zoomPos = lastZoomPos;
         lastZoomPos = tempZoomPos;
 
-        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
-        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;
+        // Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
+        // Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;
     }
 
     public void SwitchToBaumenue()
     {
+
+        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().enabled = true;
+
         levelGeschafft.SetActive(false);
         ERon = false;
         SpielIstPausiert = false;
@@ -269,8 +278,8 @@ public class PauseMenu : MonoBehaviour
         RTS_CameraScript.zoomPos = lastZoomPos;
         lastZoomPos = tempZoomPos;
 
-        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
-        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;
+        // Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
+        // Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;
 
         //levelGeschafft.SetActive(false);
     }
