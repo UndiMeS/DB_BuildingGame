@@ -52,14 +52,32 @@ public class ObjektBewegung : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            RTSscript.enabled = false;
+            //RTSscript.enabled = false;
+
+            if(PlatformManager.touch == true)
+            {
+                RTSscript.useTouchInput = false;
+            }
+            else
+            {
+                RTSscript.usePanning = false;
+            }
         }
 
         Debug.Log("wir sind hier " + Testing.objektGebaut);
         if (Input.GetMouseButtonUp(0) )
         {
 
-            RTSscript.enabled = true;
+            //RTSscript.enabled = true;
+
+            if(PlatformManager.touch == true)
+            {
+                RTSscript.useTouchInput = true;
+            }
+            else
+            {
+                RTSscript.usePanning = true;
+            }
 
             //nocheinbau = true;
 

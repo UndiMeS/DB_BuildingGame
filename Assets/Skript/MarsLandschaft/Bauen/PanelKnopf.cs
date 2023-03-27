@@ -19,6 +19,8 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public static bool NochEinBau;
     public GameObject gebaeudeTemp;
     public bool ShowOver;
+
+    public RTS_Cam.RTS_Camera RTSscript;
     //public Animator LandingAnimation;
 
     // Start is called before the first frame update
@@ -137,6 +139,15 @@ public class PanelKnopf : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         {
             if (gebaeudeNummer == 0 && gebautetsGebaeude != null)
             {
+                //RTSscript.enabled = true;
+                if(PlatformManager.touch == true)
+                {
+                    RTSscript.useTouchInput = true;
+                }
+                else
+                {
+                    RTSscript.usePanning = true;
+                }
                 Testing.GebaeudeTemp = null;
                 Testing.objektGebaut = 0;
                 ObjektBewegung.selected = false;

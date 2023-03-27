@@ -29,11 +29,30 @@ public class StopMoving : MonoBehaviour
 
         if (inBox()||moveselected())
         {
-            Camera.main.GetComponent<RTS_Cam.RTS_Camera>().enabled = false;
+            //Camera.main.GetComponent<RTS_Cam.RTS_Camera>().enabled = false;
+            if(PlatformManager.touch == true)
+            {
+                Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useTouchInput = false;
+
+                
+            }
+            else
+            {
+                Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = false;
+            }
         }
         else
         {
-            Camera.main.GetComponent<RTS_Cam.RTS_Camera>().enabled = true;
+            //Camera.main.GetComponent<RTS_Cam.RTS_Camera>().enabled = true;
+
+            if(PlatformManager.touch == true)
+            {
+                Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useTouchInput = true;
+            }
+            else
+            {
+                Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
+            }
         }
     }
 

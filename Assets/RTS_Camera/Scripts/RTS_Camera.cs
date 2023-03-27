@@ -278,16 +278,28 @@ namespace RTS_Cam
 
                 // m_Transform.Translate(desiredMove, Space.Self);
 
-
+                
 
 
                 if(Input.GetMouseButtonDown(0)){
+
                     touchStart = GetWorldPostion(0);
+
+                    // if(targetFollow == null)
+                    // {
+                    //     touchStart = GetWorldPostion(0);
+                    // }
+                    // else
+                    // {
+                    //     Camera.main.transform.position = new Vector3(targetFollow.position.x, targetFollow.position.y , m_Transform.position.z);
+                    // }
+                    
                 }
                 if(Input.GetMouseButton(0)){
                     Vector3 direction = touchStart - GetWorldPostion(0);
                     Camera.main.transform.position += direction;
                 }
+                
             }
         }
 
@@ -311,6 +323,24 @@ namespace RTS_Cam
                 float Difference = currentMagnitude - prevMagnitude;
 
                 zoomPos -= Difference * 0.01f;
+
+
+
+            //     zoomPos = Mathf.Clamp01(zoomPos);
+
+            // float TargetHeight = Mathf.Lerp(minHeight, maxHeight, zoomPos);
+            // float DistanceDifference = 0; 
+
+            // if(distanceToGround != TargetHeight)
+            //     DistanceDifference = TargetHeight - distanceToGround;
+
+
+            //     if(DistanceDifference != 0)
+            //     m_Transform.position = Vector3.Lerp(m_Transform.position, 
+            //     new Vector3(m_Transform.position.x, m_Transform.position.y + Difference, m_Transform.position.z), Time.deltaTime * heightDampening);
+
+
+                
             }
             else
             {
@@ -326,11 +356,27 @@ namespace RTS_Cam
             float targetHeight = Mathf.Lerp(minHeight, maxHeight, zoomPos);
             float difference = 0; 
 
+            float ZoomYPosition = 0;
+
             if(distanceToGround != targetHeight)
                 difference = targetHeight - distanceToGround;
 
+                if(Testing.Mars == true)
+                {
+                    ZoomYPosition = m_Transform.position.y - (m_Transform.position.z - (targetHeight + difference));
+                }
+                else
+                {
+                    ZoomYPosition = m_Transform.position.y;
+                }
+
             m_Transform.position = Vector3.Lerp(m_Transform.position, 
-                new Vector3(m_Transform.position.x, m_Transform.position.y, targetHeight + difference), Time.deltaTime * heightDampening);
+                new Vector3(m_Transform.position.x, ZoomYPosition, targetHeight + difference), Time.deltaTime * heightDampening);
+        
+
+        
+        
+        
         }
 
         /// <summary>
@@ -360,6 +406,7 @@ namespace RTS_Cam
             }
             else
             {
+                Move();
                 targetOffset.y = 0;
             }
 

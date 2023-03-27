@@ -92,7 +92,16 @@ public class PauseMenu : MonoBehaviour
             }
         SpielIstPausiert = false;
         KameraKontroller.aktiviert = true;
-        RTS_CameraScript.enabled = true;
+        //RTS_CameraScript.enabled = true;
+
+        if(PlatformManager.touch == true)
+            {
+                RTS_CameraScript.useTouchInput = true;
+            }
+            else
+            {
+                RTS_CameraScript.usePanning = true;
+            }
         GebaeudeAnzeige.allesAus = false;
         baumenuTransparent.SetActive(true);
     }
@@ -102,7 +111,16 @@ public class PauseMenu : MonoBehaviour
     {
         PauseMenuUI.SetActive(false);
         KameraKontroller.aktiviert = true;
-        RTS_CameraScript.enabled = true;
+        //RTS_CameraScript.enabled = true;
+        if(PlatformManager.touch == true)
+            {
+                RTS_CameraScript.useTouchInput = true;
+            }
+            else
+            {
+                RTS_CameraScript.usePanning = true;
+            }
+
         GebaeudeAnzeige.allesAus = false;
         SpielIstPausiert = false;
         Time.timeScale = 1;
@@ -115,7 +133,16 @@ public class PauseMenu : MonoBehaviour
         PauseMenuUI.SetActive(true);
         SpielIstPausiert = true;
         KameraKontroller.aktiviert = false;
-        RTS_CameraScript.enabled = false;
+        //RTS_CameraScript.enabled = false;
+        if(PlatformManager.touch == true)
+            {
+                RTS_CameraScript.useTouchInput = false;
+            }
+            else
+            {
+                RTS_CameraScript.usePanning = false;
+            }
+
         GebaeudeInfoBauen.wertFest = 0;
         GebaeudeAnzeige.allesAus = true;
         
@@ -139,7 +166,17 @@ public class PauseMenu : MonoBehaviour
         Aufgabenfenster.SetActive(false);
         Checkliste.SetActive(false);
         KameraKontroller.aktiviert = false;
-        RTS_CameraScript.enabled = false;
+        //RTS_CameraScript.enabled = false;
+
+        if(PlatformManager.touch == true)
+            {
+                RTS_CameraScript.useTouchInput = false;
+            }
+            else
+            {
+                RTS_CameraScript.usePanning = false;
+            }
+
         tutorial.GetComponent<Tutorial>().tutorialOff = true;
     }
 
@@ -153,7 +190,17 @@ public class PauseMenu : MonoBehaviour
         Aufgabenfenster.SetActive(true);
         Checkliste.SetActive(true);
         KameraKontroller.aktiviert = true;
-        RTS_CameraScript.enabled = true;
+        //RTS_CameraScript.enabled = true;
+
+        if(PlatformManager.touch == true)
+            {
+                RTS_CameraScript.useTouchInput = true;
+            }
+            else
+            {
+                RTS_CameraScript.usePanning = true;
+            }
+
         tutorial.GetComponent<Tutorial>().tutorialOff = false;
     }
 
@@ -166,7 +213,17 @@ public class PauseMenu : MonoBehaviour
             objekt.SetActive(false);
             SpielIstPausiert = false;
             KameraKontroller.aktiviert = true;
-            RTS_CameraScript.enabled = true;            
+            //RTS_CameraScript.enabled = true;       
+
+            if(PlatformManager.touch == true)
+            {
+                RTS_CameraScript.useTouchInput = true;
+            }
+            else
+            {
+                RTS_CameraScript.usePanning = true;
+            }
+
             GebaeudeAnzeige.allesAus = false;
             Time.timeScale = 1;
         }
@@ -175,7 +232,18 @@ public class PauseMenu : MonoBehaviour
             objekt.SetActive(true);
             SpielIstPausiert = true;
             KameraKontroller.aktiviert = false;
-            RTS_CameraScript.enabled = false;
+            //RTS_CameraScript.enabled = false;
+
+            if(PlatformManager.touch == true)
+            {
+                RTS_CameraScript.useTouchInput = false;
+            }
+            else
+            {
+                RTS_CameraScript.usePanning = false;
+            }
+
+
             GebaeudeInfoBauen.wertFest = 0;
             GebaeudeAnzeige.allesAus = true;
             Time.timeScale = 0;
@@ -192,14 +260,35 @@ public class PauseMenu : MonoBehaviour
         {
             objekt.SetActive(false);
             KameraKontroller.aktiviert = true;
-            RTS_CameraScript.enabled = true;
+            //RTS_CameraScript.enabled = true;
+
+            if(PlatformManager.touch == true)
+            {
+                RTS_CameraScript.useTouchInput = true;
+            }
+            else
+            {
+                RTS_CameraScript.usePanning = true;
+            }
+
+
             GebaeudeAnzeige.allesAus = false;
         }
         else
         {
             objekt.SetActive(true);
             KameraKontroller.aktiviert = false;
-            RTS_CameraScript.enabled = false;
+            //RTS_CameraScript.enabled = false;
+
+            if(PlatformManager.touch == true)
+            {
+                RTS_CameraScript.useTouchInput = false;
+            }
+            else
+            {
+                RTS_CameraScript.usePanning = false;
+            }
+
             GebaeudeInfoBauen.wertFest = 0;
             GebaeudeAnzeige.allesAus = true;
         }
@@ -223,7 +312,19 @@ public class PauseMenu : MonoBehaviour
     public void SwitchToER()
     {
 
-        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().enabled = true;
+        ShowMission = true;
+        animationMission();
+
+        //Camera.main.GetComponent<RTS_Cam.RTS_Camera>().enabled = true;
+
+        if(PlatformManager.touch == true)
+            {
+                Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useTouchInput = true;
+            }
+            else
+            {
+                Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
+            }
 
 
 
@@ -257,13 +358,25 @@ public class PauseMenu : MonoBehaviour
     public void SwitchToBaumenue()
     {
 
-        Camera.main.GetComponent<RTS_Cam.RTS_Camera>().enabled = true;
+        //Camera.main.GetComponent<RTS_Cam.RTS_Camera>().enabled = true;
+
+        if(PlatformManager.touch == true)
+            {
+                RTS_CameraScript.useTouchInput = true;
+            }
+            else
+            {
+                RTS_CameraScript.usePanning = true;
+            }
 
         levelGeschafft.SetActive(false);
         ERon = false;
         SpielIstPausiert = false;
         changeHintergrund(0);
-        mission.transform.localPosition = new Vector3(16, 800, 0);
+        //mission.transform.localPosition = new Vector3(16, 800, 0);
+
+        
+
         RTS_CameraScript.minHeight = -7.0f;
         RTS_CameraScript.maxHeight = -35.0f;
         RTS_CameraScript.limitXMax = 175;
@@ -277,6 +390,9 @@ public class PauseMenu : MonoBehaviour
         float tempZoomPos = RTS_CameraScript.zoomPos;
         RTS_CameraScript.zoomPos = lastZoomPos;
         lastZoomPos = tempZoomPos;
+
+
+        
 
         // Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
         // Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useScrollwheelZooming = true;

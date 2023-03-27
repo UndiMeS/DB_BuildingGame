@@ -73,7 +73,16 @@ public class KameraKontroller : MonoBehaviour
         //Debug.Log(Utilitys.GetMouseWorldPosition(new Vector3(0, 50, 0)) + " " + Utilitys.GetMouseWorldPosition(new Vector3(Screen.width, Screen.height - 50, 0)));
         if (aktiviert)
         {
-            Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
+            //Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
+
+            if(PlatformManager.touch == true)
+            {
+                Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useTouchInput = true;
+            }
+            else
+            {
+                Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = true;
+            }
             //testPos = newPosition;
             //HandleMouseInput();     //speichert Daten des Touch Inputs in newPosition und newZoom
             //HandleMovementInput();  //speichert Daten der Tastaur in newPosition und newZoom
@@ -107,7 +116,17 @@ public class KameraKontroller : MonoBehaviour
         }
         else
         {
-            Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = false;
+            //Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = false;
+
+            if(PlatformManager.touch == true)
+            {
+                Camera.main.GetComponent<RTS_Cam.RTS_Camera>().useTouchInput = false;
+            }
+            else
+            {
+                Camera.main.GetComponent<RTS_Cam.RTS_Camera>().usePanning = false;
+            }
+            
             Debug.Log("Bewegeung pausiert");
         }
 

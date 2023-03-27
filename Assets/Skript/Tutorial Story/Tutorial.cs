@@ -707,7 +707,15 @@ public class Tutorial : MonoBehaviour
 
     public void ClickOnKonvention()
     {
-        RTS_Camera.enabled = true;
+        //RTS_Camera.enabled = true;
+        if(PlatformManager.touch == true)
+            {
+                RTS_Camera.useTouchInput = true;
+            }
+            else
+            {
+                RTS_Camera.usePanning = true;
+            }
         KonventionsClick = true;
     }
 

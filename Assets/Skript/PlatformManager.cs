@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine;
 
 public class PlatformManager : MonoBehaviour
@@ -11,6 +12,14 @@ public class PlatformManager : MonoBehaviour
     public RectTransform LandschaftCanvas;
     public RTS_Cam.RTS_Camera CameraScript;
 
+    public static bool touch;
+
+    void OnEnable()
+    {
+        TouchSimulation.Enable();
+        //PlayerInput.SwitchCurrentControlScheme(InputSystem.devices.First(d => d == Touchscreen.current));
+    }
+
 
     void Awake()
     {
@@ -18,6 +27,7 @@ public class PlatformManager : MonoBehaviour
 
 
         #if UNITY_IOS
+        touch = true;
         LetterBoxDown.SetActive(false);
         LetterBoxUp.SetActive(false);
         letterbox.onAwake = false;
@@ -29,7 +39,7 @@ public class PlatformManager : MonoBehaviour
 
         #if Unity_STANDALONE
 
-
+        touch = false;
 
         CameraScript.useTouchInput = false;
         CameraScript.usePanning = true;

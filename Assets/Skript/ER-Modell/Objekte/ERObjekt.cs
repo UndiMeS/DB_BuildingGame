@@ -42,7 +42,7 @@ public class ERObjekt : MonoBehaviour
     public void Start()
     {
  
-        inputfield.ActivateInputField();
+        //inputfield.ActivateInputField();
 
         
 
@@ -55,12 +55,23 @@ public class ERObjekt : MonoBehaviour
         GetComponent<TMPro.TMP_InputField>().textComponent.color = Color.black;
     }
 
+    public void FixedUpdate()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            inputfield.DeactivateInputField();
+            inputfield.interactable = false;
+        }
+    }
+
    
     private void Update()
     {
 
         if(Input.GetMouseButtonDown(0))
         {
+            inputfield.DeactivateInputField();
+            inputfield.interactable = false;
             RTS_Camera.targetFollow = null;
         }
         
@@ -93,21 +104,47 @@ public class ERObjekt : MonoBehaviour
                 // float pivotY = rectTransform.pivot.y * (Utilitys.GetMouseWorldPosition(Input.mousePosition).y - v[0].y) / (gameObject.transform.position.y - v[0].y);
                 // rectTransform.pivot = new Vector2(pivotX, pivotY);
                 ERErstellung.changeSelectedGameobjekt(gameObject);
-                inputfield.ActivateInputField();
+                //inputfield.ActivateInputField();
             }
             selected = true;
             moveSelected = true;
             KameraKontroller.aktiviert = false;
-            RTS_Camera.enabled = false;
+            //RTS_Camera.enabled = false;
+            if(PlatformManager.touch == true)
+            {
+                RTS_Camera.useTouchInput = false;
+            }
+            else
+            {
+                RTS_Camera.usePanning = false;
+            }
             RTS_Camera.targetFollow = null;
         }
         if (Input.GetMouseButtonUp(0))
         {
+            //inputfield.ActivateInputField();
+
+            if(selected)
+            {
+                Debug.Log("activate InputField");
+                inputfield.interactable = true;
+                inputfield.ActivateInputField();
+            }
+
             moveSelected = false;
             selected = false;
             KameraKontroller.aktiviert = true;
 
-            RTS_Camera.enabled = true;
+            //RTS_Camera.enabled = true;
+
+            if(PlatformManager.touch == true)
+            {
+                RTS_Camera.useTouchInput = true;
+            }
+            else
+            {
+                RTS_Camera.usePanning = true;
+            }
             //setzt Pivot zurueck in die Mitte, wenn Maus losgelassen wird
             // Vector3[] v = new Vector3[4];
             // rectTransform.GetWorldCorners(v);
@@ -120,7 +157,7 @@ public class ERObjekt : MonoBehaviour
         if (moveSelected)//bewegen des Objekts
         {
 
-
+            inputfield.interactable = false;
             inputfield.DeactivateInputField();
 
             Vector3 cursorPos = Utilitys.GetMouseWorldPosition(Input.mousePosition);

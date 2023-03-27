@@ -9,7 +9,16 @@ public class KonventionCameraOff : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RTS_Camera.enabled = false;
+        //RTS_Camera.enabled = false;
+
+        if(PlatformManager.touch == true)
+            {
+                RTS_Camera.useTouchInput = false;
+            }
+            else
+            {
+                RTS_Camera.usePanning = false;
+            }
     }
 
     // Update is called once per frame
