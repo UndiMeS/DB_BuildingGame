@@ -95,7 +95,7 @@ namespace RTS_Cam
         public string horizontalAxis = "Horizontal";
         public string verticalAxis = "Vertical";
 
-        private Vector3 touchStart;
+        public Vector3 touchStart;
 
         public bool usePanning = true;
         public KeyCode panningKey = KeyCode.Mouse2;
@@ -113,6 +113,15 @@ namespace RTS_Cam
 
         public bool useMouseRotation = true;
         public KeyCode mouseRotationKey = KeyCode.Mouse1;
+
+        public bool InBox;
+        
+
+        Ray ray;
+        RaycastHit hit;
+
+
+        bool checkit;
 
         private Vector2 KeyboardInput
         {
@@ -208,6 +217,23 @@ namespace RTS_Cam
         /// </summary>
         private void CameraUpdate()
         {
+            
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+         if(Physics.Raycast(ray, out hit))
+         {
+             if(hit.collider != null)
+             {
+                Debug.Log("RacatHit Collider");
+                if(hit.transform.tag ==  "StopMovement")
+                {
+                    StopMoving.HitUI = true;
+                }
+                
+             }
+         }
+
+
+            
             if (FollowingTarget)
                 FollowTarget();
             else
@@ -267,7 +293,7 @@ namespace RTS_Cam
                 m_Transform.Translate(desiredMove, Space.Self);
             }
 
-            if(useTouchInput && Input.touchCount == 1 )
+            if(useTouchInput && Input.touchCount == 1 && InBox == false)
             {
                 // Vector3 desiredMove = new Vector3(-TouchAxis.x, -TouchAxis.y, 0);
 
@@ -278,27 +304,47 @@ namespace RTS_Cam
 
                 // m_Transform.Translate(desiredMove, Space.Self);
 
+
+                
                 
 
+                    if(Input.GetMouseButtonDown(0)){
 
-                if(Input.GetMouseButtonDown(0)){
+                            // if(InBox == false)
+                            // {
+                            //     Vector3 temp = RTS_Camera.transform.position;
+                            //     RTS_Camera.transform.position = lastpos;
+                            //     lastpos = temp;
+                            // }
 
-                    touchStart = GetWorldPostion(0);
-
-                    // if(targetFollow == null)
-                    // {
-                    //     touchStart = GetWorldPostion(0);
-                    // }
-                    // else
-                    // {
-                    //     Camera.main.transform.position = new Vector3(targetFollow.position.x, targetFollow.position.y , m_Transform.position.z);
-                    // }
+                        
+                            touchStart = GetWorldPostion(0);
+                        
                     
-                }
-                if(Input.GetMouseButton(0)){
-                    Vector3 direction = touchStart - GetWorldPostion(0);
-                    Camera.main.transform.position += direction;
-                }
+                            
+
+
+                        
+                        
+
+                        // if(targetFollow == null)
+                        // {
+                        //     touchStart = GetWorldPostion(0);
+                        // }
+                        // else
+                        // {
+                        //     Camera.main.transform.position = new Vector3(targetFollow.position.x, targetFollow.position.y , m_Transform.position.z);
+                        // }
+                        
+                    }
+                    if(Input.GetMouseButton(0)){
+                        Vector3 direction = touchStart - GetWorldPostion(0);
+
+                            
+                            Camera.main.transform.position += direction;
+                        
+                    }
+                
                 
             }
         }
@@ -406,7 +452,8 @@ namespace RTS_Cam
             }
             else
             {
-                Move();
+                //touchStart = targetFollow.position;
+                
                 targetOffset.y = 0;
             }
 
@@ -465,8 +512,9 @@ namespace RTS_Cam
 
         #endregion
 
-        private Vector3 GetWorldPostion(float z){
+        public Vector3 GetWorldPostion(float z){
         Ray mousePos = this.gameObject.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+        //Ray mousePos = this.gameObject.GetComponent<Camera>().ScreenPointToRay(m_Transform.position);
         Plane ground = new Plane(Vector3.forward, new Vector3(0,0,z));
         float distance;
         ground.Raycast(mousePos, out distance);

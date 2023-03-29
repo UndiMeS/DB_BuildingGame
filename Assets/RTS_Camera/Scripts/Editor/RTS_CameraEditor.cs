@@ -42,6 +42,11 @@ namespace RTS_Cam
             }
             using (new HorizontalBlock())
             {
+                GUILayout.Label("InBox:", EditorStyles.boldLabel, GUILayout.Width(170f));
+                camera.InBox = EditorGUILayout.Toggle(camera.InBox);
+            }
+            using (new HorizontalBlock())
+            {
                 
 
                 GUILayout.Label("Use keyboard input: ", EditorStyles.boldLabel, GUILayout.Width(170f));
