@@ -113,12 +113,7 @@ namespace RTS_Cam
 
         public bool useMouseRotation = true;
         public KeyCode mouseRotationKey = KeyCode.Mouse1;
-
-        public bool InBox;
-        
-
-        Ray ray;
-        RaycastHit hit;
+ 
 
 
         bool checkit;
@@ -218,21 +213,7 @@ namespace RTS_Cam
         private void CameraUpdate()
         {
             
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-         if(Physics.Raycast(ray, out hit))
-         {
-             if(hit.collider != null)
-             {
-                Debug.Log("RacatHit Collider");
-                if(hit.transform.tag ==  "StopMovement")
-                {
-                    StopMoving.HitUI = true;
-                }
-                
-             }
-         }
-
-
+         
             
             if (FollowingTarget)
                 FollowTarget();
@@ -293,7 +274,7 @@ namespace RTS_Cam
                 m_Transform.Translate(desiredMove, Space.Self);
             }
 
-            if(useTouchInput && Input.touchCount == 1 && InBox == false)
+            if(useTouchInput && Input.touchCount == 1)
             {
                 // Vector3 desiredMove = new Vector3(-TouchAxis.x, -TouchAxis.y, 0);
 

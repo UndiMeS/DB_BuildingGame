@@ -39,10 +39,15 @@ public class ERObjekt : MonoBehaviour
     public float maxY = 130;
     public Vector3 ObjectPos;
 
+    public float timer = 0f;
+    public float InputActivateTime;
+
     public void Start()
     {
- 
-        //inputfield.ActivateInputField();
+        if(PlatformManager.touch == false)
+        {
+            inputfield.ActivateInputField();
+        }
 
         
 
@@ -85,6 +90,11 @@ public class ERObjekt : MonoBehaviour
             changeSprite(false);
         }
 
+        if (Input.GetMouseButton(0) && checkMausIn(Input.mousePosition)&&dropdownclose() && ERErstellung.testAufGleicherPosition(Input.mousePosition) != null && ERErstellung.testAufGleicherPosition(Input.mousePosition).Equals(gameObject)&& !PauseMenu.SpielIstPausiert)
+        {
+            timer += Time.deltaTime;
+        }
+
         if (Input.GetMouseButtonDown(0) && checkMausIn(Input.mousePosition)&&dropdownclose() && ERErstellung.testAufGleicherPosition(Input.mousePosition) != null && ERErstellung.testAufGleicherPosition(Input.mousePosition).Equals(gameObject)&& !PauseMenu.SpielIstPausiert)
         //wenn Maus gedrückt, dann kann bewegen beim nächsten Aufruf von Update ausgeführt werden
         {
@@ -95,6 +105,10 @@ public class ERObjekt : MonoBehaviour
             }
             if (!selected) //wenn neu selected, dann wird Objekt zu aktuellen ER-Objekt
             {
+
+                
+
+
                 //setzt Pivot des Objektes auf die Position der Maus
 
                 // Vector3[] v = new Vector3[4];
@@ -122,14 +136,27 @@ public class ERObjekt : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
+
+            
             //inputfield.ActivateInputField();
 
-            if(selected)
+            if(PlatformManager.touch == true)
+            {
+                if(selected && timer <= InputActivateTime)
+                {
+                    Debug.Log("activate InputField");
+                    inputfield.interactable = true;
+                    inputfield.ActivateInputField();
+                }
+            }
+            else
             {
                 Debug.Log("activate InputField");
                 inputfield.interactable = true;
                 inputfield.ActivateInputField();
             }
+
+            
 
             moveSelected = false;
             selected = false;
@@ -145,6 +172,11 @@ public class ERObjekt : MonoBehaviour
             {
                 RTS_Camera.usePanning = true;
             }
+
+
+            timer = 0f;
+
+
             //setzt Pivot zurueck in die Mitte, wenn Maus losgelassen wird
             // Vector3[] v = new Vector3[4];
             // rectTransform.GetWorldCorners(v);

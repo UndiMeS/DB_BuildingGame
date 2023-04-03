@@ -40,11 +40,7 @@ namespace RTS_Cam
                 GUILayout.Label("Mars:", EditorStyles.boldLabel, GUILayout.Width(170f));
                 Testing.Mars = EditorGUILayout.Toggle(Testing.Mars);
             }
-            using (new HorizontalBlock())
-            {
-                GUILayout.Label("InBox:", EditorStyles.boldLabel, GUILayout.Width(170f));
-                camera.InBox = EditorGUILayout.Toggle(camera.InBox);
-            }
+            
             using (new HorizontalBlock())
             {
                 

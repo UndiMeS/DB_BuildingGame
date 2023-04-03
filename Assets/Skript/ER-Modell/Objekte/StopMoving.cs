@@ -39,8 +39,6 @@ public class StopMoving : MonoBehaviour
         if (inBox() ||moveselected())
         {
 
-            Camera.main.GetComponent<RTS_Cam.RTS_Camera>().InBox = true;
-
             //Camera.main.GetComponent<RTS_Cam.RTS_Camera>().enabled = false;
             if(PlatformManager.touch == true)
             {
@@ -61,7 +59,6 @@ public class StopMoving : MonoBehaviour
             Camera.main.GetComponent<RTS_Cam.RTS_Camera>().touchStart = Camera.main.GetComponent<RTS_Cam.RTS_Camera>().GetWorldPostion(0);
 
             //Camera.main.GetComponent<RTS_Cam.RTS_Camera>().enabled = true;
-            Camera.main.GetComponent<RTS_Cam.RTS_Camera>().InBox = false;
 
             if(PlatformManager.touch == true)
             {
@@ -102,26 +99,5 @@ public class StopMoving : MonoBehaviour
         //return false;
     }
 
-    // private bool IsMouseOverUI(){
-    //     ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-    //      if(Physics.Raycast(ray, out hit))
-    //      {
-    //          if(hit.collider != null)
-    //          {
-    //             if(hit.transform.tag ==  "StopMovement")
-    //             {
-    //                 return true;
-    //             }
-    //             else
-    //             {
-    //                 return false;
-    //             }
-                
-    //          }
-    //          else
-    //          return false;
-    //      }
-    //      else
-    //      return false;
-    // }
+    
 }

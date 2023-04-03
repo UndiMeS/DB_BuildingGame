@@ -19,6 +19,21 @@ public class WohncontainerTabelle : MonoBehaviour
 
     public GameObject mission;
     public GameObject gebaeudeAnzeige;
+    public RTS_Cam.RTS_Camera RTS_Camera;
+
+    public void Start()
+    {
+        if(PlatformManager.touch == true)
+            {
+                RTS_Camera.useTouchInput = false;
+                RTS_Camera.useScrollwheelZooming = false;
+            }
+            else
+            {
+                RTS_Camera.usePanning = false;
+                RTS_Camera.useScrollwheelZooming = false;
+            }
+    }
 
     public void TabellenAn()
     {
@@ -98,6 +113,20 @@ public class WohncontainerTabelle : MonoBehaviour
 
     public void exit()
     {
+
+
+        if(PlatformManager.touch == true)
+            {
+                RTS_Camera.useTouchInput = true;
+                RTS_Camera.useScrollwheelZooming = true;
+            }
+            else
+            {
+                RTS_Camera.usePanning = true;
+                RTS_Camera.useScrollwheelZooming = true;
+            }
+
+
         alleAstroTabelleAus();
         wohnendeAstroTabelleAus();
         wohnTabelleAus();
